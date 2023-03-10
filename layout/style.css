@@ -1,0 +1,18 @@
+body{
+    background-color:black;
+}
+.body_header{
+    background-color:red;
+    margin: 0 auto;
+    width: 1284.5px;
+}
+.body_chest{
+    background-color:aqua;
+    margin: 0 auto;
+    width: 1284.5px;
+}
+.body_footer{
+    background-color:blue;
+    margin: 0 auto;
+    width: 1284.5px;
+}
