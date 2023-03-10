@@ -1,11 +1,7 @@
 <?php include("layout/header.php");?>  
-<font>here goes the content</font><br><font>here goes the content</font><br><font>here goes the content</font><br>
-<font>here goes the content</font><br><font>here goes the content</font><br><font>here goes the content</font><br>
+<canvas id="canvasone" class="canvasone"></canvas>
 
-
-
-
-
+<script src="./game.js"></script>
 
 
 

@@ -11,10 +11,12 @@
     <title>Web tittle</title>
     <link rel="icon" type="image/x-icon" href="layout/img/logo.png">
     <link rel="stylesheet" href="layout/style.css">
+   
 </head>
 <body>
-<div class="body_header">hello</div>
-
+    <center>
+<div class="body_header" style="color:white;font-size:50px;">Game Developing Canvas</div>
+</center>
 
 
 
