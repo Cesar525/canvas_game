@@ -76,21 +76,22 @@ function animate(){
     }
 if(player.position.x + player.velocity.x > c.width){
     console.log("hit the left wall");
-    player.position.x += -100 + player.velocity.x 
+    player.position.x += player.width 
+   ;
 }
 if(player.position.x + player.velocity.x < 0){
-    player.position.x += +100 + player.velocity.x
+    player.position.x += +1 + player.velocity.x
     console.log("hit backwall");
 }
 if(player.position.y + player.velocity.y > c.height){
-    player.position.y += -100 + player.velocity.y
+    player.position.y += -100 - player.velocity.y
     console.log("hit backwall");
 }
 if(player.position.y + player.velocity.y < 0){
     player.position.y += +100 + player.velocity.y
     console.log("hit backwall");
 }
-
+ console.log(player.position.x) 
 }
 animate()
 
