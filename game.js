@@ -12,8 +12,8 @@ this.position ={
     y:100
 }
 this.velocity ={
-    x:40,
-    y:40
+    x:20,
+    y:20
 }
 
 
@@ -37,7 +37,7 @@ this.draw()
 
 }
 }
-
+console.log(c.height);
 const player = new Player;
 const keys = {
 right : {
@@ -76,19 +76,19 @@ function animate(){
     }
 if(player.position.x + player.velocity.x > c.width){
     console.log("hit the left wall");
-    player.position.x += player.width 
+    player.position.x -= player.velocity.x 
    ;
 }
 if(player.position.x + player.velocity.x < 0){
-    player.position.x += +1 + player.velocity.x
+    player.position.x += player.velocity.x 
     console.log("hit backwall");
 }
 if(player.position.y + player.velocity.y > c.height){
-    player.position.y += -100 - player.velocity.y
+    player.position.y -=   player.velocity.y
     console.log("hit backwall");
 }
 if(player.position.y + player.velocity.y < 0){
-    player.position.y += +100 + player.velocity.y
+    player.position.y +=  player.velocity.y + 60
     console.log("hit backwall");
 }
  console.log(player.position.x) 
