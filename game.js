@@ -1,9 +1,9 @@
 var c = document.getElementById("canvasone");
 var ctx = c.getContext("2d");
 
-c.width = window.innerWidth
-c.height = window.innerHeight
-const gravity = 1
+c.width = 1000
+c.height = 1000
+const gravity = 20;
 
 class Player{
 constructor(){
@@ -12,8 +12,8 @@ this.position ={
     y:100
 }
 this.velocity ={
-    x:20,
-    y:20
+    x:40,
+    y:40  
 }
 
 
@@ -34,11 +34,12 @@ this.draw()
 //  }else{
 //     this.velocity.y = 0;
 //  }
-
+console.log("position y =" + this.position.y)
+console.log("position x =" + this.position.x)
 }
 }
-console.log(c.height);
 const player = new Player;
+
 const keys = {
 right : {
     pressed:false
@@ -51,6 +52,9 @@ up : {
 },
 down : {
     pressed:false
+},
+jumping : {
+    pressed: false
 }
 
 }
@@ -74,24 +78,37 @@ function animate(){
     if(keys.down.pressed){
         player.position.y += player.velocity.y
     }
-if(player.position.x + player.velocity.x > c.width){
-    console.log("hit the left wall");
-    player.position.x -= player.velocity.x 
+    if(keys.jumping.pressed){
+        if(player.position.y > 500){
+        player.position.y -= player.velocity.y
+        console.log(keys.jumping.pressed);
+        }else{
+            keys.jumping.pressed =false
+        }
+    }
+
+if(player.position.x + player.velocity.x > c.width - 100){
+   
+    player.position.x = c.width - 100 
    ;
 }
-if(player.position.x + player.velocity.x < 0){
-    player.position.x += player.velocity.x 
-    console.log("hit backwall");
+if(player.position.x < 0){
+    player.position.x = 0
+    
 }
-if(player.position.y + player.velocity.y > c.height){
-    player.position.y -=   player.velocity.y
-    console.log("hit backwall");
+if(player.position.y + player.velocity.y > c.height - 100){
+    player.position.y =  c.height - 100
+   
 }
-if(player.position.y + player.velocity.y < 0){
-    player.position.y +=  player.velocity.y + 60
-    console.log("hit backwall");
+if(player.position.y < 0){
+    player.position.y =  0
+   
 }
- console.log(player.position.x) 
+
+if(player.position.y != c.height - 100){
+    player.position.y += gravity
+}
+
 }
 animate()
 
@@ -104,14 +121,18 @@ addEventListener("keydown", function ({keyCode}){
         case 40 : console.log ("arrow down")
         keys.down.pressed = true;
         break;
-        case 37 : console.log("left")
+        case 37 : console.log("arrow left")
         keys.left.pressed = true
         break;
-        case 39 : console.log("right")
+        case 39 : console.log("arrow right")
         keys.right.pressed = true
         break;
+        case 32 : console.log("jumping space button")
+        keys.jumping.pressed = true
+        break;
+        
     }
-    console.log(keys.right.pressed)
+    
 });
 
 addEventListener("keyup", function ({keyCode}){
@@ -123,12 +144,13 @@ addEventListener("keyup", function ({keyCode}){
          case 40 : console.log ("arrow down");
          keys.down.pressed = false;
          break;
-         case 37 : console.log("left");
+         case 37 : console.log("left arrow");
          keys.left.pressed = false;
          break;
-         case 39 : console.log("right");
-keys.right.pressed = false;
+         case 39 : console.log("right arrow");
+         keys.right.pressed = false;
          break;
      }
-     console.log(keys.right.pressed)
+     
  });
+ console.log(keyCode)
