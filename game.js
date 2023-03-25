@@ -3,7 +3,7 @@ var ctx = c.getContext("2d");
 
 c.width = 2000
 c.height = 2000
-const gravity = 1
+const gravity = 20
 
 class Player{
 constructor(){
@@ -12,8 +12,8 @@ this.position ={
     y:100
 }
 this.velocity ={
-    x:40,
-    y:40  
+    x:60,
+    y:60  
 }
 
 
@@ -34,8 +34,7 @@ this.draw()
 //  }else{
 //     this.velocity.y = 0;
 //  }
-console.log("position y =" + this.position.y)
-console.log("position x =" + this.position.x)
+
 }
 }
 const player = new Player;
@@ -83,9 +82,11 @@ function animate(){
         player.position.y -= player.velocity.y
         console.log(keys.jumping.pressed);
         }else{
-            keys.jumping.pressed =false
+            keys.jumping.pressed = false
         }
     }
+    console.log("position y =" + player.position.y)
+console.log("position x =" + player.position.x)
 
 if(player.position.x + player.velocity.x > c.width - 100){
    
