@@ -15,15 +15,16 @@ this.velocity ={
     x:50,
     y:50  
 }
-
-
-this.width = 100
-this.height = 100
-
+this.width = 300
+this.height = 300
 }
 draw(){
     ctx.fillStyle = "red";
-    ctx.fillRect(this.position.x, this.position.y, this.width, this.height)
+    //ctx.fillRect(this.position.x, this.position.y, this.width, this.height)
+    const image = new Image();
+    image.src = "assets/spaceshipone.png";
+    ctx.drawImage(image, this.position.x, this.position.y , player.width, player.height);
+
 }
 
 update(){
@@ -91,15 +92,14 @@ console.log("position x =" + player.position.x)
 // player ned to stay insidew the canvas
 if(player.position.x + player.velocity.x > c.width - player.width + player.velocity.x){
    
-    player.position.x = c.width - 100 
-   ;
+    player.position.x = c.width - player.width
 }
 if(player.position.x < 0){
     player.position.x = 0
     
 }
-if(player.position.y + player.velocity.y > c.height - 100){
-    player.position.y =  c.height - 100
+if(player.position.y + player.velocity.y > c.height - player.height){
+    player.position.y =  c.height - player.height
    
 }
 if(player.position.y < 0){
