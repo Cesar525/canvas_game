@@ -12,8 +12,8 @@ this.position ={
     y:100
 }
 this.velocity ={
-    x:60,
-    y:60  
+    x:50,
+    y:50  
 }
 
 
@@ -77,18 +77,19 @@ function animate(){
     if(keys.down.pressed){
         player.position.y += player.velocity.y
     }
-    if(keys.jumping.pressed){
-        if(player.position.y > 500){
-        player.position.y -= player.velocity.y
-        console.log(keys.jumping.pressed);
-        }else{
-            keys.jumping.pressed = false
-        }
-    }
+    // if(keys.jumping.pressed){
+    //     if(player.position.y > 500){
+    //     player.position.y -= player.velocity.y
+    //     console.log(keys.jumping.pressed);
+    //     }else{
+    //         keys.jumping.pressed = false
+    //     }
+    // }
     console.log("position y =" + player.position.y)
 console.log("position x =" + player.position.x)
 
-if(player.position.x + player.velocity.x > c.width - 100){
+// player ned to stay insidew the canvas
+if(player.position.x + player.velocity.x > c.width - player.width + player.velocity.x){
    
     player.position.x = c.width - 100 
    ;
@@ -106,9 +107,9 @@ if(player.position.y < 0){
    
 }
 
-if(player.position.y != c.height - 100){
-    player.position.y += gravity
-}
+// if(player.position.y != c.height - 100){
+//     player.position.y += gravity
+// }
 
 }
 animate()
