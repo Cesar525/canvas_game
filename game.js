@@ -1,8 +1,8 @@
 var c = document.getElementById("canvasone");
 var ctx = c.getContext("2d");
 
-c.width = window.innerWidth
-c.height = window.innerHeight
+c.width = 2000
+c.height = 2000
 const gravity = 1
 
 class Player{
