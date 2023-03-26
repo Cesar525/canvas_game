@@ -1,47 +1,49 @@
 var c = document.getElementById("canvasone");
 var ctx = c.getContext("2d");
 
-c.width = 2000
-c.height = 2000
+c.width = 1000
+c.height = 900
 const gravity = 20
 
 
 class shots {
     constructor(){
     this.position = {
-        x : 1000,
-        y : 1000
+        x : 500,
+        y : 500
     }
     this.velocity = {
-        x : 30,
-        y : 30
+        x : 10,
+        y : 10
     }
     this.damage = 20;
-    this.shot_width = 100;
-    this.shot_height = 100;
+    this.shot_width = 30;
+    this.shot_height = 30;
     }
     drawShot(){
+     
+
         ctx.fillStyle = "red";
         this.position.y -= this.velocity.y;
         ctx.fillRect(this.position.x, this.position.y ,this.shot_width, this.shot_height);
     }
-    updateShot(){
-    this.drawShot()
+    updateShot(x, y){
+    this.drawShot(x, y);
     }
-    
+     
     }
 class Player{
 constructor(){
 this.position ={
-    x:100,
-    y:100
+    x:1000,
+    y:500
 }
 this.velocity ={
-    x:50,
-    y:50  
+    x:20,
+    y:20  
 }
-this.width = 300
-this.height = 300
+this.width = 100
+this.height = 100
 }
 draw(){
     //ctx.fillStyle = "red";
@@ -54,13 +56,6 @@ draw(){
 
 update(){
 this.draw()
-//  this.position.y += this.velocity.y
-//  if(this.position.y + this.height + this.velocity.y <= c.height){
-//     this.velocity.y += gravity
-//  }else{
-//     this.velocity.y = 0;
-//  }
-
 }
 }
 const player = new Player;
@@ -89,7 +84,7 @@ function animate(){
     requestAnimationFrame(animate)
     ctx.clearRect(0,0,c.width, c.height)
     player.update();
-   
+   shot.updateShot();
     
     if(keys.right.pressed){
         player.position.x += player.velocity.x
@@ -106,7 +101,7 @@ function animate(){
         player.position.y += player.velocity.y
     }
     if(keys.jumping.pressed){
-        shot.updateShot();
+        
      }
     console.log("position y =" + player.position.y)
 console.log("position x =" + player.position.x)
