@@ -15,7 +15,7 @@
 </head>
 <body>
     <center>
-<div class="body_header" style="color:white;font-size:50px;">Game Developing Canvas</div>
+<div>Game Developing Canvas</div>
 </center>
 
 

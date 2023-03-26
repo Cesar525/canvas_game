@@ -1,0 +1,28 @@
+class Player{
+    constructor(){
+    this.position ={
+        x:600,
+        y:450
+    },
+    this.velocity ={
+        x:20,
+        y:20  
+    },
+    this.body = {
+        health : 100,
+    }
+    this.width = 100
+    this.height = 100
+    }
+    draw(){
+        //ctx.fillStyle = "red";
+        //ctx.fillRect(this.position.x, this.position.y, this.width, this.height)
+        const image = new Image();
+        image.src = "assets/spaceshipone.png";
+        ctx.drawImage(image, this.position.x, this.position.y , player.width, player.height);
+    }
+    
+    update(){
+    this.draw()
+    }
+    }
