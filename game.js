@@ -37,7 +37,6 @@ function animate(){
     player.update();
     monster.updateMonster();
 
-
     if(keys.right.pressed){
         player.position.x += player.velocity.x
         

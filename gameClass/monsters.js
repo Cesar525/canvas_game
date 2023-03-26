@@ -28,7 +28,7 @@ this.movements = {
     left : false,
     right : false
 }
-
+// working on this
 if(this.movements.right){
     this.position.x += this.velocity;
 }
