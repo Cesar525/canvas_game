@@ -4,39 +4,35 @@ var ctx = c.getContext("2d");
 c.width = 1000
 c.height = 900
 const gravity = 20
-
-
-class shots {
+class Background{
     constructor(){
     this.position = {
-        x : 500,
-        y : 500
+        x : 0,
+        y : 0
+    }  
     }
-    this.velocity = {
-        x : 10,
-        y : 10
-    }
-    this.damage = 20;
-    this.shot_width = 30;
-    this.shot_height = 30;
-    }
-    drawShot(){
-     
+    drawBackground(){
+        const background_image = new Image();
+        background_image.src = "assets/background.png";
+        this.position.y += 5;
+        ctx.drawImage(background_image, this.position.x, this.position.y, c.width, c.height);
+        ctx.drawImage(background_image, this.position.x, this.position.y - c.height, c.width, c.height);
+        ctx.drawImage(background_image, this.position.x, this.position.y - c.height, c.width, c.height);
 
-        ctx.fillStyle = "red";
-        this.position.y -= this.velocity.y;
-        ctx.fillRect(this.position.x, this.position.y ,this.shot_width, this.shot_height);
     }
-    updateShot(x, y){
-    this.drawShot(x, y);
-    }
-     
-    }
+        
+        update_backg(){
+            this.drawBackground()
+        }
+
+}
+
+
 class Player{
 constructor(){
 this.position ={
-    x:1000,
-    y:500
+    x:600,
+    y:450
 }
 this.velocity ={
     x:20,
@@ -58,8 +54,41 @@ update(){
 this.draw()
 }
 }
+
+class shots {
+    constructor(){
+    this.position = {
+        x : 600,
+        y : 450
+    }
+    this.velocity = {
+        x : 100,
+        y : 100
+    }
+    this.damage = 20;
+    this.shot_width = 30;
+    this.shot_height = 30;
+    }
+    drawShot(){
+     
+
+        ctx.fillStyle = "red";
+        this.position.y -= this.velocity.y;
+        ctx.fillRect(this.position.x, this.position.y ,this.shot_width, this.shot_height);
+        if(this.position.y <  - this.shot_height){
+this.position.y = player.position.y;
+this.position.x =  35 + player.position.x;
+        }
+    }
+    updateShot(){
+    this.drawShot();
+    }
+    }
+
+
 const player = new Player;
 const shot = new shots();
+const backg = new Background();
 
 const keys = {
 right : {
@@ -74,7 +103,7 @@ up : {
 down : {
     pressed:false
 },
-jumping : {
+shotting : {
     pressed: false
 }
 
@@ -83,8 +112,8 @@ jumping : {
 function animate(){
     requestAnimationFrame(animate)
     ctx.clearRect(0,0,c.width, c.height)
+    backg.update_backg();
     player.update();
-   shot.updateShot();
     
     if(keys.right.pressed){
         player.position.x += player.velocity.x
@@ -100,8 +129,8 @@ function animate(){
     if(keys.down.pressed){
         player.position.y += player.velocity.y
     }
-    if(keys.jumping.pressed){
-        
+    if(keys.shotting.pressed){
+        shot.updateShot();
      }
     console.log("position y =" + player.position.y)
 console.log("position x =" + player.position.x)
@@ -145,8 +174,8 @@ addEventListener("keydown", function ({keyCode}){
         case 39 : console.log("arrow right")
         keys.right.pressed = true
         break;
-        case 32 : console.log("jumping space button")
-        keys.jumping.pressed = true
+        case 83 : console.log("shotting space button")
+        keys.shotting.pressed = true
         break;
         
     }
@@ -167,6 +196,9 @@ addEventListener("keyup", function ({keyCode}){
          break;
          case 39 : console.log("right arrow");
          keys.right.pressed = false;
+         break;
+         case 83 : console.log("shotting space button")
+         keys.shotting.pressed = false
          break;
      }
      
