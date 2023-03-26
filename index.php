@@ -1,6 +1,6 @@
 <?php include("layout/header.php");?>  
-<canvas id="canvasone" class="canvasone"></canvas>
 
+<canvas id="canvasone" class="canvasone"></canvas>
 <script src="./game.js"></script>
 
 

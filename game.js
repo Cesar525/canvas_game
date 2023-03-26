@@ -5,6 +5,31 @@ c.width = 2000
 c.height = 2000
 const gravity = 20
 
+
+class shots {
+    constructor(){
+    this.position = {
+        x : 1000,
+        y : 1000
+    }
+    this.velocity = {
+        x : 30,
+        y : 30
+    }
+    this.damage = 20;
+    this.shot_width = 100;
+    this.shot_height = 100;
+    }
+    drawShot(){
+        ctx.fillStyle = "red";
+        this.position.y -= this.velocity.y;
+        ctx.fillRect(this.position.x, this.position.y ,this.shot_width, this.shot_height);
+    }
+    updateShot(){
+    this.drawShot()
+    }
+    
+    }
 class Player{
 constructor(){
 this.position ={
@@ -19,7 +44,7 @@ this.width = 300
 this.height = 300
 }
 draw(){
-    ctx.fillStyle = "red";
+    //ctx.fillStyle = "red";
     //ctx.fillRect(this.position.x, this.position.y, this.width, this.height)
     const image = new Image();
     image.src = "assets/spaceshipone.png";
@@ -39,6 +64,7 @@ this.draw()
 }
 }
 const player = new Player;
+const shot = new shots();
 
 const keys = {
 right : {
@@ -63,7 +89,8 @@ function animate(){
     requestAnimationFrame(animate)
     ctx.clearRect(0,0,c.width, c.height)
     player.update();
-
+   
+    
     if(keys.right.pressed){
         player.position.x += player.velocity.x
         
@@ -78,14 +105,9 @@ function animate(){
     if(keys.down.pressed){
         player.position.y += player.velocity.y
     }
-    // if(keys.jumping.pressed){
-    //     if(player.position.y > 500){
-    //     player.position.y -= player.velocity.y
-    //     console.log(keys.jumping.pressed);
-    //     }else{
-    //         keys.jumping.pressed = false
-    //     }
-    // }
+    if(keys.jumping.pressed){
+        shot.updateShot();
+     }
     console.log("position y =" + player.position.y)
 console.log("position x =" + player.position.x)
 
@@ -109,7 +131,6 @@ if(player.position.y < 0){
 
 // if(player.position.y != c.height - 100){
 //     player.position.y += gravity
-// }
 
 }
 animate()
