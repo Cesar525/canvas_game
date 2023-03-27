@@ -1,8 +1,8 @@
 class Monsters {
 constructor(){
 this.position = {
-    x : 0,
-    y : 0
+    x : 500,
+    y : 500
 },
 this.velocity = {
     x : 10,
@@ -26,22 +26,22 @@ drawMonster(){
 
     //movements
 
-this.position.y += 1;
-if(this.moveRight){
-    this.position.x += this.velocity.x;
-}
-if(this.moveLeft){
-    this.position.x -= this.velocity.x;
-}
+// this.position.y += 1;
+// if(this.moveRight){
+//     this.position.x += this.velocity.x;
+// }
+// if(this.moveLeft){
+//     this.position.x -= this.velocity.x;
+// }
 
-if(this.position.x < 0){
-    this.moveLeft = false;
-    this.moveRight = true;
-}
-if(this.position.x > c.width - player.width){
-    this.moveLeft = true;
-    this.moveRight = false;
-}
+// if(this.position.x < 0){
+//     this.moveLeft = false;
+//     this.moveRight = true;
+// }
+// if(this.position.x > c.width - player.width){
+//     this.moveLeft = true;
+//     this.moveRight = false;
+// }
 
 
 

@@ -5,8 +5,8 @@ class Player{
         y:450
     },
     this.velocity ={
-        x:20,
-        y:20  
+        x:5,
+        y:5  
     },
     this.body = {
         health : 100,
