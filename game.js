@@ -76,11 +76,26 @@ if(player.position.y < 0){
    
 }
 // currently working on
-if(player.position.x <= monster.position.x + monster.monsterWidth && player.position.x + player.width >= monster.position.x){
-    console.log("wokring leftRight");
+var colision_x = false;
+var colision_y = false;
+if(colision_x){
+    console.log("hittingx");
 }
-if(player.position.y <= monster.position.y + monster.monsterheight && player.position.y + player.width >= monster.position.y){
-    console.log("touched top bottom");
+if(colision_y){
+    console.log("hittingy");
+}
+
+
+
+if((player.position.x >= monster.position.x && player.position.x <= monster.position.x + monster.monsterWidth)){
+    colision_x = true;
+}else{
+    colision_x = false;
+}
+if((player.position.y + player.height >= monster.position.y && player.position.y <= monster.position.y + monster.monsterheight)){
+    colision_y = true;
+}else{
+    colision_y = false;
 }
 
 
