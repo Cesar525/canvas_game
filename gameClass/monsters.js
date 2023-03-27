@@ -13,7 +13,8 @@ this.body = {
 }
 this.monsterWidth = 100;
 this.monsterheight = 100;
-
+this.moveRight = true;
+this.moveLeft = false
 }
 
 getHealth(){return this.body.health;};
@@ -24,25 +25,24 @@ drawMonster(){
     ctx.fillRect(this.position.x, this.position.y, this.monsterWidth, this.monsterheight);
 
     //movements
-this.movements = {
-    left : false,
-    right : false
+
+
+if(this.moveRight){
+    this.position.x += this.velocity.x;
 }
-// working on this
-if(this.movements.right){
-    this.position.x += this.velocity;
+if(this.moveLeft){
+    this.position.x -= this.velocity.x;
 }
-if(this.movements.left){
-    this.position.x -= this.velocity;
+
+if(this.position.x < 0){
+    this.moveLeft = false;
+    this.moveRight = true;
 }
-    if(this.position.x < 1000){
-        this.movements.left = true;
-        this.movements.right = false;
-    }
-    if(this.position > 0){
-        this.movements.right = true;
-        this.movements.left = false;
-    }
+if(this.position.x > c.width){
+    this.moveLeft = true;
+    this.moveRight = false;
+}
+
 }
 updateMonster(){
     this.drawMonster();

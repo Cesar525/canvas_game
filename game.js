@@ -54,8 +54,8 @@ function animate(){
     if(true){
         shot.updateShot();
      }
-    console.log("position y =" + player.position.y)
-console.log("position x =" + player.position.x)
+    //console.log("position y =" + player.position.y)
+    //console.log("position x =" + player.position.x)
 
 // player ned to stay insidew the canvas
 if(player.position.x + player.velocity.x > c.width - player.width + player.velocity.x){
@@ -80,7 +80,7 @@ if(player.position.y < 0){
 animate()
 
 addEventListener("keydown", function ({keyCode}){
-   console.log(keyCode);
+   //console.log(keyCode);
     switch(keyCode){
         case 38 : console.log("arrow up")
         keys.up.pressed = true;
@@ -103,7 +103,7 @@ addEventListener("keydown", function ({keyCode}){
 });
 
 addEventListener("keyup", function ({keyCode}){
-    console.log(keyCode);
+  //  console.log(keyCode);
      switch(keyCode){
          case 38 : console.log("arrow up");
          keys.up.pressed = false;
