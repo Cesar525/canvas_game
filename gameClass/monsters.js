@@ -26,7 +26,7 @@ drawMonster(){
 
     //movements
 
-
+this.position.y += 1;
 if(this.moveRight){
     this.position.x += this.velocity.x;
 }
@@ -38,10 +38,12 @@ if(this.position.x < 0){
     this.moveLeft = false;
     this.moveRight = true;
 }
-if(this.position.x > c.width){
+if(this.position.x > c.width - player.width){
     this.moveLeft = true;
     this.moveRight = false;
 }
+
+
 
 }
 updateMonster(){

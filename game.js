@@ -120,4 +120,4 @@ addEventListener("keyup", function ({keyCode}){
      }
      
  });
- console.log(keyCode)
+ 
