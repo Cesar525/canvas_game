@@ -23,7 +23,7 @@ objectCollisionPLayerTOuchingMonster(){
         touch_y = true;
     }
     if(touch_x && touch_y){
-        console.log("touching");
+        console.log("TOUCHING AHHHHHHHHHHHHHHHHHHHHH");
         return true;
     }else{
         return false;
