@@ -10,7 +10,7 @@ const player = new Player();
 const shot = new shots();
 const backg = new Background();
 const monster = new Monsters();
-
+const collision = new Collision();
 
 
 function buffer(){
@@ -19,7 +19,7 @@ function buffer(){
     backg.update_backg();
     player.update();
     monster.updateMonster();
-
+collision.objectCollisionPLayerTOuchingMonster();
 
     if(keys.right.pressed){
         player.position.x += player.velocity.x
@@ -59,23 +59,9 @@ if(player.position.y < 0){
    
 }
 // currently working on
-var colision_x = false;
-var colision_y = false;
-if(colision_x){
-    console.log("hittingx");
-}
-if(colision_y){
-    console.log("hittingy");
-}
 
 
 
-if(player.position.x >= monster.position.x && player.position.x <= monster.position.x + monster.monsterWidth){
-    console.log("hittingx");
-}
-if(player.position.y + player.height >= monster.position.y && player.position.y <= monster.position.y + monster.monsterheight){
-    console.log("hitting-y");
-}
 
 
 }

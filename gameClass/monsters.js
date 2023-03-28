@@ -11,8 +11,8 @@ this.velocity = {
 this.body = {
     health : 100
 }
-this.monsterWidth = 100;
-this.monsterheight = 100;
+this.width = 100;
+this.height = 100;
 this.moveRight = true;
 this.moveLeft = false
 }
@@ -22,7 +22,7 @@ getHealth(){return this.body.health;};
 drawMonster(){
     const drawMonster = new Image();
     ctx.fillStyle = "red";
-    ctx.fillRect(this.position.x, this.position.y, this.monsterWidth, this.monsterheight);
+    ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
 
     //movements
 
