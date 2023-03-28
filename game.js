@@ -87,15 +87,11 @@ if(colision_y){
 
 
 
-if((player.position.x >= monster.position.x && player.position.x <= monster.position.x + monster.monsterWidth)){
-    colision_x = true;
-}else{
-    colision_x = false;
+if(player.position.x >= monster.position.x && player.position.x <= monster.position.x + monster.monsterWidth){
+    console.log("hittingx");
 }
-if((player.position.y + player.height >= monster.position.y && player.position.y <= monster.position.y + monster.monsterheight)){
-    colision_y = true;
-}else{
-    colision_y = false;
+if(player.position.y + player.height >= monster.position.y && player.position.y <= monster.position.y + monster.monsterheight){
+    console.log("hitting-y");
 }
 
 

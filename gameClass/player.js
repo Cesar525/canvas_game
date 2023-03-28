@@ -18,7 +18,7 @@ class Player{
         //ctx.fillStyle = "red";
         //ctx.fillRect(this.position.x, this.position.y, this.width, this.height)
         const image = new Image();
-        image.src = "assets/spaceshipone.png";
+        image.src = "assets/spaceship/spaceshipone.png";
         ctx.drawImage(image, this.position.x, this.position.y , player.width, player.height);
     }
     
