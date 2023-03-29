@@ -8,32 +8,43 @@ this.velocity = {
     x : 0,
     y : 0
 }
-this.width = 960;
-this.height = 576;
-this.sprite_right = 0;
-this.sprite_bottom = 0;
+this.width = 960 / 5;
+this.height = 576 / 3;
+this.frameX = 0;
+this.frameY = 2;
+this.gameFrame = 0;
+this.staggerFrame = 3;
+
 }
 // shield animation
+frame(){
+
+}
+
 drawShield(){
     const shieldImage = new Image();
 shieldImage.src = "assets/shields/bluebean.png";
+ctx.globalAlpha = 0.4;
+
+
+
+//console.log("bottom" + this.sprite_bottom);
+//console.log( "right" + this.sprite_right);
+
+let positionX = Math.floor(this.gameFrame/this.staggerFrame) % 5;
+let positionY = Math.floor(this.gameFrame/(this.staggerFrame * 5)) % 3;
+
+this.position.x = player.position.x - 55;
+this.position.y = player.position.y - 55;
+
+ctx.drawImage(shieldImage, 1 * (192 * this.frameX), 1 * (192 * this.frameY), this.width, this.height, this.position.x, this.position.y, this.width + 20, this.height + 20 );
 ctx.globalAlpha = 1;
+this.frameX = positionX;
+this.frameY = positionY;
 
-this.sprite_right ++
-if(this.sprite_right == 6){
-    this.sprite_right = 0
-   // this.sprite_bottom ++
-}
-// if(this.sprite_bottom == 3){
-//     this.sprite_bottom = 0;
-//     this.sprite_right = 0;
-// }
+console.log( "Showing" + this.frameX);
 
-console.log("bottom" + this.sprite_bottom);
-console.log( "right" + this.sprite_right);
-
-ctx.drawImage(shieldImage, 1 * (192 * 4), 1 * (192 * 2), this.width, this.height, player.position.x - 45 - (192 * this.sprite_right), player.position.y - 40 - (192 *  this.sprite_bottom), this.width, this.height );
-ctx.globalAlpha = 1;
+this.gameFrame++;
 }
 updateshield(){
     this.drawShield();
