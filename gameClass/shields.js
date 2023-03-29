@@ -24,7 +24,7 @@ frame(){
 drawShield(){
     const shieldImage = new Image();
 shieldImage.src = "assets/shields/bluebean.png";
-ctx.globalAlpha = 0.4;
+ctx.globalAlpha = 0.5;
 
 
 
@@ -32,7 +32,7 @@ ctx.globalAlpha = 0.4;
 //console.log( "right" + this.sprite_right);
 
 let positionX = Math.floor(this.gameFrame/this.staggerFrame) % 5;
-let positionY = Math.floor(this.gameFrame/(this.staggerFrame * 5)) % 3;
+let positionY = Math.floor(this.gameFrame/(this.staggerFrame * 5)) % 4;
 
 this.position.x = player.position.x - 55;
 this.position.y = player.position.y - 55;
