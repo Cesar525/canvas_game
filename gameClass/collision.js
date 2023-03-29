@@ -5,15 +5,15 @@ constructor(){
 
 }
 
-objectCollisionPLayerTOuchingMonster(){
-    var player_posx1 = player.position.x;
-    var player_posx2 = player.position.x + player.width;
-    var monster_posx1 = monster.position.x;
-    var monster_posx2 = monster.position.x + monster.width; 
-    var playerposty1 = player.position.y;
-    var playerposty2 = player.position.y + player.height;
-    var monsterposty1 = monster.position.y;
-    var monsterposty2 = monster.position.y + monster.width;
+objectCollisionPLayerTOuchingMonster(objectone, objecttwo){
+    var player_posx1 = objectone.position.x;
+    var player_posx2 = objectone.position.x + objectone.width;
+    var monster_posx1 = objecttwo.position.x;
+    var monster_posx2 = objecttwo.position.x + objecttwo.width; 
+    var playerposty1 = objectone.position.y;
+    var playerposty2 = objectone.position.y + objectone.height;
+    var monsterposty1 = objecttwo.position.y;
+    var monsterposty2 = objecttwo.position.y + objecttwo.width;
     var touch_x = false;
     var touch_y = false;
     if(player_posx1 <= monster_posx2 && player_posx1 >= monster_posx1 || player_posx2 <= monster_posx2 && player_posx2 >= monster_posx1){

@@ -11,7 +11,7 @@ const shot = new shots();
 const backg = new Background();
 const monster = new Monsters();
 const collision = new Collision();
-
+const shield = new Shields();
 
 function buffer(){
     requestAnimationFrame(buffer)
@@ -19,7 +19,9 @@ function buffer(){
     backg.update_backg();
     player.update();
     monster.updateMonster();
-collision.objectCollisionPLayerTOuchingMonster();
+    console.log(collision.objectCollisionPLayerTOuchingMonster(player, monster));
+   
+    shield.updateshield();
 
     if(keys.right.pressed){
         player.position.x += player.velocity.x
