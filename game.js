@@ -20,7 +20,7 @@ function buffer(){
     player.update();
     monster.updateMonster();
     console.log(collision.objectCollisionPLayerTOuchingMonster(player, monster));
-    shield.updateshield();
+     shield.updateshield();
 
     if(keys.right.pressed){
         player.position.x += player.velocity.x
