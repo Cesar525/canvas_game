@@ -9,8 +9,8 @@ class shots {
         y : 40
     }
     this.damage = 20;
-    this.shot_width = 70;
-    this.shot_height = 70;
+    this.width = 70;
+    this.height = 70;
     }
     drawShot(){
      
@@ -20,13 +20,16 @@ this.position.y -= this.velocity.y;
 const shotimage = new Image();
 shotimage.src = "assets/shots/beanone.png";
 
-ctx.drawImage(shotimage,this.position.x, this.position.y ,this.shot_width, this.shot_height);
-if(this.position.y <  - this.shot_height){
+ctx.drawImage(shotimage,this.position.x, this.position.y ,this.width, this.height);
+if(this.position.y <  - this.height){
 this.position.y = player.position.y;
 this.position.x =  15 + player.position.x;
         }
     }
     updateShot(){
-    this.drawShot();
+        if(!collision.objectCollisionPLayerTOuchingMonster(shot, monster)){
+this.drawShot();
+        }
+
     }
     }
