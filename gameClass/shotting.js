@@ -5,8 +5,8 @@ class shots {
         y : 0
     }
     this.velocity = {
-        x : 100,
-        y : 100
+        x : 10,
+        y : 10
     }
     this.damage = 20;
     this.width = 70;
@@ -25,11 +25,11 @@ if(this.position.y <  - this.height){
 this.position.y = player.position.y;
 this.position.x =  15 + player.position.x;
         }
+if(collision.objectCollisionPLayerTOuchingMonster(shot, monster)){
+    console.log("HIT MONSTERS");
+    }
     }
     updateShot(){
-        if(!collision.objectCollisionPLayerTOuchingMonster(shot, monster)){
-        }
         this.drawShot();
-
     }
     }

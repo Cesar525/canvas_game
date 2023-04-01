@@ -5,7 +5,8 @@ constructor(){
 
 }
 
-objectCollisionPLayerTOuchingMonster(objectone, objecttwo){
+
+objectCollisionPLayerTOuchingMonster(objectone, objecttwo, hit_desapear){
     var player_posx1 = objectone.position.x;
     var player_posx2 = objectone.position.x + objectone.width;
     var monster_posx1 = objecttwo.position.x;
@@ -22,15 +23,15 @@ objectCollisionPLayerTOuchingMonster(objectone, objecttwo){
     if(playerposty1 <= monsterposty2 && playerposty1 >= monsterposty1 || playerposty2 <= monsterposty2 && playerposty2 >= monsterposty1){
         touch_y = true;
     }
+    
     if(touch_x && touch_y){
-        console.log("TOUCHING AHHHHHHHHHHHHHHHHHHHHH");
+       // console.log("TOUCHING AHHHHHHHHHHHHHHHHHHHHH");
         return true;
     }else{
         return false;
     }
 
 }
-
 
 
 }

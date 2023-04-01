@@ -43,7 +43,7 @@ ctx.globalAlpha = 1;
 this.frameX = positionX;
 this.frameY = positionY;
 
-console.log( "Showing" + this.frameX);
+//console.log( "Showing" + this.frameX);
 
 this.gameFrame++;
 }
@@ -69,7 +69,7 @@ ctx.globalAlpha = 1;
 this.frameX = positionX;
 this.frameY = positionY;
 
-console.log( "Showing" + this.frameX);
+//console.log( "Showing" + this.frameX);
 
 this.gameFrame++;
 }

@@ -1,5 +1,5 @@
 class Monsters {
-constructor(){
+constructor(health, damage){
 this.position = {
     x : 500,
     y : 500
@@ -9,7 +9,8 @@ this.velocity = {
     y : 10
 },
 this.body = {
-    health : 100
+    m_health : health,
+    m_damage : damage
 }
 this.width = 100;
 this.height = 100;
@@ -24,29 +25,9 @@ drawMonster(){
     ctx.fillStyle = "red";
     ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
 
-    //movements
-
-// this.position.y += 1;
-// if(this.moveRight){
-//     this.position.x += this.velocity.x;
-// }
-// if(this.moveLeft){
-//     this.position.x -= this.velocity.x;
-// }
-
-// if(this.position.x < 0){
-//     this.moveLeft = false;
-//     this.moveRight = true;
-// }
-// if(this.position.x > c.width - player.width){
-//     this.moveLeft = true;
-//     this.moveRight = false;
-// }
-
-
-
 }
 updateMonster(){
+
     this.drawMonster();
 }
 }

@@ -19,19 +19,17 @@ function buffer(){
     backg.update_backg();
     player.update();
     monster.updateMonster();
-    console.log(collision.objectCollisionPLayerTOuchingMonster(player, monster));
+    //console.log(collision.objectCollisionPLayerTOuchingMonster(player, monster));
      shield.updateshield();
 
     if(keys.right.pressed){
         player.position.x += player.velocity.x
-        
     }
     if(keys.left.pressed){
         player.position.x -= player.velocity.x
     }
     if(keys.up.pressed){
         player.position.y -= player.velocity.y
-        
     }
     if(keys.down.pressed){
         player.position.y += player.velocity.y
