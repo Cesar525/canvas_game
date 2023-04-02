@@ -15,18 +15,19 @@ class Player{
     this.height = 100
     this.thruster_size =150;
     this.thruster_animation = 0;
-    }
+    this.thruster_position_x =  25;
+this.thruster_position_y =  54;    }
     draw(){
      
        const image = new Image();
        image.src = "assets/spaceship/spaceshipone.png";
         ctx.drawImage(image, this.position.x, this.position.y , player.width, player.height);
     }
-    setPlayerThruster(){
+    setThruster(){
     const thruster = new Image();
     thruster.src = "assets/thrusters/thruster08.png";
     
-    ctx.drawImage(thruster , this.position.x - 25, this.position.y + 54 , this.thruster_size, this.thruster_size + this.thruster_animation);
+    ctx.drawImage(thruster , this.position.x - this.thruster_position_x, this.position.y + this.thruster_position_y , this.thruster_size, this.thruster_size + this.thruster_animation);
 if(this.thruster_animation <= 20){
     this.thruster_animation += 1
 }if(this.thruster_animation == 20){
@@ -41,7 +42,7 @@ if(this.thruster_animation <= 20){
         this.velocity.y = velocity;
     }
     update(){
-        this.setPlayerThruster();
+        this.setThruster();
     this.draw()
    // shield.updateshield();
 
