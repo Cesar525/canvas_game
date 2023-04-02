@@ -16,7 +16,6 @@ class shots {
      
 ctx.fillStyle = "red";
 this.position.y -= this.velocity.y;
-
 const shotimage = new Image();
 shotimage.src = "assets/shots/beanone.png";
 
@@ -26,8 +25,10 @@ this.position.y = player.position.y;
 this.position.x =  15 + player.position.x;
         }
 if(collision.objectCollisionPLayerTOuchingMonster(shot, monster)){
-    console.log("HIT MONSTERS");
+    console.log("HIT MONSTERS"); 
     }
+
+    
     }
     updateShot(){
         this.drawShot();
