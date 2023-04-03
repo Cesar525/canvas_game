@@ -13,6 +13,7 @@ const monster = new Monsters();
 const collision = new Collision();
 const shield = new Shields();
 
+
 function buffer(){
     requestAnimationFrame(buffer)
     ctx.clearRect(0,0,c.width, c.height)

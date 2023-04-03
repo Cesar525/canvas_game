@@ -2,8 +2,8 @@
 
 <canvas style="border: solid 1px white;" id="canvasone" class="canvasone"></canvas>
 
+<script src="./gameClass/thruster_selection.js"></script>
 <script src="./gameClass/shields.js"></script>
-
 <script src="./gameClass/controller.js"></script>
 <script src="./gameClass/collision.js"></script>
 <script src="./gameClass/monsters.js"></script>

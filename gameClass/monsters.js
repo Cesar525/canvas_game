@@ -1,8 +1,8 @@
 class Monsters {
 constructor(health, damage){
 this.position = {
-    x : 500,
-    y : 500
+    x : 0,
+    y : 0
 },
 this.velocity = {
     x : 10,
@@ -24,10 +24,17 @@ drawMonster(){
     const drawMonster = new Image();
     ctx.fillStyle = "red";
     ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
-
 }
-updateMonster(){
 
-    this.drawMonster();
+movements(){
+    console.log(this.position.x);
+    if(this.position.x < c.width){
+        this.position.x += this.velocity.x;
+    }
+}
+
+updateMonster(){
+this.movements();
+this.drawMonster();
 }
 }
