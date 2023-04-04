@@ -49,7 +49,7 @@ hit(){
 }
 
     updateShot(){
-        this.hit();
+    
 
     }
     }

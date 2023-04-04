@@ -5,8 +5,8 @@ class Player{
         y:600
     },
     this.velocity ={
-        x:20,
-        y:20  
+        x:5,
+        y:5  
     },
     this.body = {
         health : 100,
@@ -30,7 +30,8 @@ this.thruster_position_y =  54;    }
     }
     update(){ 
     this.draw()
-    shot.makeGuns(2, 20, 1, 15);
+    collision.objectCollisionPLayerTOuchingMonster(player, monster);
+    //shot.makeGuns(2, 20, 1, 15);
 //    shield.updateshield();
 
     }
