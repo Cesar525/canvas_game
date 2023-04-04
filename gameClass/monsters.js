@@ -1,19 +1,19 @@
 class Monsters {
-constructor(_name, _health, _damage, speed, gun, _movements, _posx, _posy){
+constructor(){
 this.position = {
-    x : _posx,
-    y : _posy
+    x : 300,
+    y : 300
 },
 this.velocity = {
-    x : speed,
-    y : speed
+    x : 10,
+    y : 10
 },
 this.body = {
-    name : _name,
-    health : _health,
-    damage : _damage,
-    gun_type : gun,
-    movements : _movements
+    name : "Monster",
+    health : 120,
+    damage : 100,
+    gun_type : "supershot",
+    movements : "allover"
 }
 this.width = 100;
 this.height = 100;
@@ -51,15 +51,10 @@ movements(move){
         this.moveRight = false;
     }
     }}
-hit(){
-    if(collision.objectCollisionPLayerTOuchingMonster(cesar, shot)){
-        console.log("Monster hit by bullet");
-    }
-}
+
     
 updateMonster(){
     this.drawMonster();
-    this.hit();
     death.death(this.getHealth())
     // this.movements("sidebyside");
 }
