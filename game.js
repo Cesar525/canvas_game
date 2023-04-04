@@ -13,7 +13,6 @@ const collision = new Collision();
 const shield = new Shields();
 const death = new Death();
 const cesar = new Monsters("cesar", 100, 100, 20 , "supershot", "sidebyside", "100", "100");
-const manka = new Monsters("manka", 100, 100, 20 , "supershot", "sidebyside", "500", "500");
 
 function buffer(){
     requestAnimationFrame(buffer)
@@ -21,8 +20,8 @@ function buffer(){
     backg.update_backg();
     player.update();
     cesar.updateMonster();
-    manka.updateMonster();
     
+
     if(keys.right.pressed){
         player.position.x += player.velocity.x
     }
