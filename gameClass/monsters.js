@@ -51,15 +51,10 @@ movements(move){
         this.moveRight = false;
     }
     }}
-hit(){
-    if(collision.objectCollisionPLayerTOuchingMonster(cesar, shot)){
-        console.log("Monster hit by bullet");
-    }
-}
+
     
 updateMonster(){
     this.drawMonster();
-    this.hit();
     death.death(this.getHealth())
     // this.movements("sidebyside");
 }

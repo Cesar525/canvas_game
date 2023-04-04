@@ -30,7 +30,8 @@ this.thruster_position_y =  54;    }
     }
     update(){ 
     this.draw()
-    shot.makeGuns(2, 20, 1, 15);
+    //shot.makeGuns(2, 20, 1, 15);
+    collision.objectCollisionPLayerTOuchingMonster(player, monster)
 //    shield.updateshield();
 
     }

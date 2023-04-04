@@ -44,12 +44,9 @@ if(direction == 1){
   this.position.y -= this.velocity.y;  
 }
 }
-hit(){
-    collision.objectCollisionPLayerTOuchingMonster(cesar, shot);
-}
+
 
     updateShot(){
-        this.hit();
 
     }
     }
