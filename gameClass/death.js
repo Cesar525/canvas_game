@@ -2,9 +2,10 @@ class Death {
 constructor(){
 
 }
-death(health){
+death(health){ // this is base on health
     if(health == 0){
-        console.log("DEAAADDDDDDDD");
+        this.clearRect = true;
+        //EFFECT
     }
 }
 

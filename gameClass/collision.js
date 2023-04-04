@@ -23,7 +23,7 @@ objectCollisionPLayerTOuchingMonster(objectone, objecttwo){
     if(playerposty1 <= monsterposty2 && playerposty1 >= monsterposty1 || playerposty2 <= monsterposty2 && playerposty2 >= monsterposty1){
         touch_y = true;
     }
-    
+
     if(touch_x && touch_y){
        console.log("TOUCHING AHHHHHHHHHHHHHHHHHHHHH");
         return true;

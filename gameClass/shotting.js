@@ -47,8 +47,8 @@ if(direction == 1){
 }
 
 
-    updateShot(){
-    collision.objectCollisionPLayerTOuchingMonster(shot, monster);
+updateShot(){
 
-    }
+
+}
     }

@@ -5,8 +5,8 @@ class Player{
         y:600
     },
     this.velocity ={
-        x:5,
-        y:5  
+        x:20,
+        y:20  
     },
     this.body = {
         health : 100,
@@ -16,12 +16,15 @@ class Player{
     this.thruster_size =150;
     this.thruster_animation = 0;
     this.thruster_position_x =  25;
-this.thruster_position_y =  54;    }
+    this.thruster_position_y =  54;    
+    this.clearRect = false;
+}
     draw(){
-     
+     if(!this.clearRect){
        const image = new Image();
        image.src = "assets/spaceship/spaceshipone.png";
         ctx.drawImage(image, this.position.x, this.position.y , player.width, player.height);
+     }
     }
 
     setPlayerVelocity(velocity){
@@ -30,8 +33,10 @@ this.thruster_position_y =  54;    }
     }
     update(){ 
     this.draw()
-    collision.objectCollisionPLayerTOuchingMonster(player, monster);
-    shot.makeGuns(2, 20, 1, 15);
+    if(collision.objectCollisionPLayerTOuchingMonster(player, monster)){
+    this.clearRect = true;
+    }
+    shot.makeGuns(2, 30, 1, 100);
 //    shield.updateshield();
 
     }

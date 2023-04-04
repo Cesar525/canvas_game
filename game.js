@@ -6,18 +6,21 @@ c.height = 900
 const gravity = 20
 
 
-const player = new Player();
+
 const shot = new shots();
 const backg = new Background();
 const collision = new Collision();
 const shield = new Shields();
 const death = new Death();
-const monster = new Monsters("cesar", 100, 100, 20 , "supershot", "sidebyside", "100", "100");
+//game
+const player = new Player();
+const monster = new Monsters("monster", 100, 100, 10 , "supershot", "sidebyside", 100, 100);
 
 function buffer(){
     requestAnimationFrame(buffer)
     ctx.clearRect(0,0,c.width, c.height)
     backg.update_backg();
+    //adding objects
     player.update();
     monster.updateMonster();
     
