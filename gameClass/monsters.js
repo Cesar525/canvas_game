@@ -1,16 +1,19 @@
 class Monsters {
-constructor(health, damage){
+constructor(_name, _health, _damage, speed, gun, _movements, _posx, _posy){
 this.position = {
-    x : 0,
-    y : 0
+    x : _posx,
+    y : _posy
 },
 this.velocity = {
-    x : 10,
-    y : 10
+    x : speed,
+    y : speed
 },
 this.body = {
-    m_health : health,
-    m_damage : damage
+    name : _name,
+    health : _health,
+    damage : _damage,
+    gun_type : gun,
+    movements : _movements
 }
 this.width = 100;
 this.height = 100;
@@ -24,17 +27,40 @@ drawMonster(){
     const drawMonster = new Image();
     ctx.fillStyle = "red";
     ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
+//monsters health
+    if(this.body.health < 0){
+        this.body.health = 0
+                }
 }
 
-movements(){
-    console.log(this.position.x);
-    if(this.position.x < c.width){
+movements(move){
+    if(move == "sidebyside"){
+    if(this.moveRight){
         this.position.x += this.velocity.x;
     }
+    if(this.moveLeft){
+        this.position.x -= this.velocity.x;
+    }
+    
+    if(this.position.x < 0){
+        this.moveLeft = false;
+        this.moveRight = true;
+    }
+    if(this.position.x > c.width - player.width){
+        this.moveLeft = true;
+        this.moveRight = false;
+    }
+    }}
+hit(){
+    if(collision.objectCollisionPLayerTOuchingMonster(cesar, shot)){
+        console.log("Monster hit by bullet");
+    }
 }
-
+    
 updateMonster(){
-this.movements();
-this.drawMonster();
+    this.drawMonster();
+    this.hit();
+    death.death(this.getHealth())
+    // this.movements("sidebyside");
 }
 }

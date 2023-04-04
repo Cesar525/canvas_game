@@ -28,9 +28,9 @@ this.thruster_position_y =  54;    }
         this.velocity.x = velocity;
         this.velocity.y = velocity;
     }
-    update(){
-        
+    update(){ 
     this.draw()
+    shot.makeGuns(2, 20, 1, 15);
 //    shield.updateshield();
 
     }

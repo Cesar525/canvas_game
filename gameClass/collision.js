@@ -6,7 +6,7 @@ constructor(){
 }
 
 
-objectCollisionPLayerTOuchingMonster(objectone, objecttwo, hit_desapear){
+objectCollisionPLayerTOuchingMonster(objectone, objecttwo){
     var player_posx1 = objectone.position.x;
     var player_posx2 = objectone.position.x + objectone.width;
     var monster_posx1 = objecttwo.position.x;
@@ -25,7 +25,7 @@ objectCollisionPLayerTOuchingMonster(objectone, objecttwo, hit_desapear){
     }
     
     if(touch_x && touch_y){
-       // console.log("TOUCHING AHHHHHHHHHHHHHHHHHHHHH");
+       console.log("TOUCHING AHHHHHHHHHHHHHHHHHHHHH");
         return true;
     }else{
         return false;

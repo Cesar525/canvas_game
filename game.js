@@ -2,25 +2,27 @@ var c = document.getElementById("canvasone");
 var ctx = c.getContext("2d");
 
 c.width = 1000
-c.height = 900
+c.height = 1000
 const gravity = 20
 
 
 const player = new Player();
 const shot = new shots();
 const backg = new Background();
-const monster = new Monsters();
 const collision = new Collision();
 const shield = new Shields();
-
+const death = new Death();
+const cesar = new Monsters("cesar", 100, 100, 20 , "supershot", "sidebyside", "100", "100");
+const manka = new Monsters("manka", 100, 100, 20 , "supershot", "sidebyside", "500", "500");
 
 function buffer(){
     requestAnimationFrame(buffer)
     ctx.clearRect(0,0,c.width, c.height)
     backg.update_backg();
     player.update();
-    monster.updateMonster();
-
+    cesar.updateMonster();
+    manka.updateMonster();
+    
     if(keys.right.pressed){
         player.position.x += player.velocity.x
     }
