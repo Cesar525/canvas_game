@@ -37,8 +37,9 @@ class Player{
     if(collision.objectCollisionPLayerTOuchingMonster(player, monster)){
     this.clearRect = true;
     }
-    shot.makeGuns(2, 30, 1, 10);
-//    shield.updateshield();
+    shot.shotSelection(10, 30, 20);
+    
+  //shield.updateshield();
 
 
     }

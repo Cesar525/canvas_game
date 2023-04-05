@@ -14,21 +14,21 @@ const shield = new Shields();
 const death = new Death();
 //game
 const player = new Player();
-const monster = new Monsters( 100, 100);
-const monsterTwo = new Monsters(  300, 100);
-const monsterThree = new Monsters( 500, 100);
-const monsterFour = new Monsters(700, 100);
+const monster = new Monsters( 500, 100);
+
 
 function buffer(){
 requestAnimationFrame(buffer)
 ctx.clearRect(0,0,c.width, c.height)
-backg.update_backg();
+backg.update_backg(); // background image
+shot.updateShot(); // shotting
+
 //adding objects
 player.update();
 monster.updateMonster();
-monsterTwo.updateMonster();
-monsterThree.updateMonster();
-monsterFour.updateMonster();
+
+
+
 
     if(keys.right.pressed){
         player.position.x += player.velocity.x
@@ -43,7 +43,7 @@ monsterFour.updateMonster();
         player.position.y += player.velocity.y
     }
     if(true){
-        shot.updateShot();
+        
      }
     //console.log("position y =" + player.position.y)
     //console.log("position x =" + player.position.x)

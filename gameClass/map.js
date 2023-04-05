@@ -13,7 +13,9 @@ class Background{
 
 
     
-    drawBackground(){
+    drawBackground(speed){
+        this.velocity.x = speed;
+        this.velocity.y = speed;
         const background_image = new Image();
         background_image.src = "assets/background.png";
         this.position.y += this.velocity.y;
@@ -26,7 +28,7 @@ class Background{
         }
         
         update_backg(){
-            this.drawBackground()
+            this.drawBackground(5)
         }
 
 }
