@@ -1,8 +1,8 @@
 class Monsters {
-constructor(){
+constructor( pos_x, pos_y){
 this.position = {
-    x : 0,
-    y : 0
+    x : pos_x,
+    y : pos_y
 },
 this.velocity = {
     x : 10,
@@ -11,11 +11,13 @@ this.velocity = {
 this.body = {
    
 }
+
 this.width = 100;
 this.height = 100;
 this.moveRight = true;
 this.moveLeft = false;
 this.clearRect = false;
+this.collision_bool = true;
 }
 
 getHealth(){return this.body.health;};
@@ -51,16 +53,24 @@ movements(move){
     }
     }}
 
+    monsterCollision(){
+        
+     if(collision.objectCollisionPLayerTOuchingMonster(shot, monster)){
+this.clearRect = true;
+console.log("Monster Dead..");
+this.position.x = NaN;
+this.position.y = NaN;
+this.collision_bool = false;
+}   
+    }
     
 updateMonster(){
  
-    this.drawMonster();
-    this.movements("sidebyside");
+this.drawMonster();
+//this.movements("sidebyside");
+//this.monsterCollision();
 
-//collison -- this collision is having problems.
-// if(collision.objectCollisionPLayerTOuchingMonster(shot,monster)){
-// this.clearRect = true;
-//  console.log("its true");
-// }
+
+
 }
 }

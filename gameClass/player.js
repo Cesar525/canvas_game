@@ -1,8 +1,8 @@
 class Player{
     constructor(){
     this.position ={
-        x:600,
-        y:600
+        x:500,
+        y:500
     },
     this.velocity ={
         x:20,
@@ -20,6 +20,7 @@ class Player{
     this.clearRect = false;
 }
     draw(){
+        
      if(!this.clearRect){
        const image = new Image();
        image.src = "assets/spaceship/spaceshipone.png";
@@ -36,8 +37,9 @@ class Player{
     if(collision.objectCollisionPLayerTOuchingMonster(player, monster)){
     this.clearRect = true;
     }
-    shot.makeGuns(2, 30, 1, 100);
+    shot.makeGuns(2, 30, 1, 10);
 //    shield.updateshield();
+
 
     }
     }

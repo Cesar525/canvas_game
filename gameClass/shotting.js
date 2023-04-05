@@ -11,6 +11,8 @@ class shots {
     this.damage = 0;
     this.width = 30;
     this.height = 30;
+    this.clearRect = false;
+    this.collision_bool = true;
     // here we add all guns images sprites
     this.shotImages = {
     1 : "assets/shots/bean_1.png",
@@ -22,14 +24,12 @@ class shots {
 
 makeGuns(select_shot, damage, direction, speed){
 if(select_shot && damage && direction && speed ){
+   if(!this.clearRect){
     this.velocity.x = speed;
     this.velocity.y = speed;
     this.shotDirection(direction);
-    
-    
     const shotimage = new Image()
     //shotimage.src = this.shotImages[select_shot];
-    
     ctx.fillStyle = "border";
     ctx.fillStyle = 'white';
     ctx.fillRect(this.position.x, this.position.y ,this.width, this.height);
@@ -39,6 +39,8 @@ if(select_shot && damage && direction && speed ){
             }
     
     }
+
+}
 }
 shotDirection(direction){
 if(direction == 1){
@@ -46,9 +48,17 @@ if(direction == 1){
 }
 }
 
+bulletCollition(){
+
+    if(collision.objectCollisionPLayerTOuchingMonster(shot, monster) && this.collision_bool){
+        //this.clearRect = true;
+         console.log("Bullet banished");
+         this.collision_bool = false;
+        } 
+}
 
 updateShot(){
-
+this.bulletCollition();
 
 }
     }
