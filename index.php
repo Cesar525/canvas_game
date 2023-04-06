@@ -2,6 +2,7 @@
 
 <canvas style="border: solid 1px white;" id="canvasone" class="canvasone"></canvas>
 
+<script src="./gameClass/animation.js"></script>
 <script src="./gameClass/death.js"></script>
 <script src="./gameClass/thruster_selection.js"></script>
 <script src="./gameClass/shields.js"></script>
