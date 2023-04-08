@@ -36,6 +36,10 @@ this.frameY = positionY;
 this.gameFrame++;
 }
 
+animationEffect(){
 
+
+    
+}
 
 }
