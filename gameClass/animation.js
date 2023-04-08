@@ -4,12 +4,11 @@ constructor(){
         x : 0,
         y : 0
     }
-    this.width = 960 / 5;
-    this.height = 576 / 3;
+  
     this.frameX = 0;
-    this.frameY = 2;
+    this.frameY = 0;
     this.gameFrame = 0;
-    this.staggerFrame = 5;
+    this.staggerFrame = 1;
 }
 spritePage(sprite_path, posx, posy, sprite_page_width, sprite_page_height, sprite_count_width, sprite_count_height, sprite_size_w, sprite_size_h, speed){
     const animation = new Image();
@@ -22,7 +21,7 @@ ctx.globalAlpha = 1;
 let m_width = sprite_page_width / sprite_count_width;
 let m_height = sprite_page_height/ sprite_count_height;
 let positionX = Math.floor(this.gameFrame/this.staggerFrame) % sprite_count_width;
-let positionY = Math.floor(this.gameFrame/(this.staggerFrame * 5)) % sprite_count_height;
+let positionY = Math.floor(this.gameFrame/(this.staggerFrame * sprite_count_width)) % sprite_count_height;
 
 this.position.x = posx;
 this.position.y = posy;
@@ -36,4 +35,7 @@ this.frameY = positionY;
 
 this.gameFrame++;
 }
+
+
+
 }

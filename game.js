@@ -16,15 +16,20 @@ const death = new Death();
 const player = new Player();
 const monster = new Monsters( 500, 100);
 const animation = new Animation();
+const animationTwo = new Animation();
+const animationThree = new Animation();
+
 
 function buffer(){
     requestAnimationFrame(buffer)
     ctx.clearRect(0,0,c.width, c.height)
     backg.update_backg(); // background image
     shot.updateShot(); // shotting
-    animation.spritePage("assets/shields/bluebean.png", 0 , 0, 960, 768, 4, 3, 192, 192, 20);
-    animation.spritePage("assets/explosions/explosion_one.png", 0 , 500, 2048, 1280, 7, 5, 256, 256, 20);
-    
+    animation.spritePage("assets/shields/bluebean.png", 0 , 0, 960, 768, 5, 4, 192, 192, 4);    
+    animation.spritePage("assets/shields/shield_arm_top.png", 0 , 576, 960, 768, 5, 4, 192, 192, 4);    
+    animationTwo.spritePage("assets/explosions/explosion_one.png", 0 , 192, 2048, 1280, 8, 5, 256, 256, 1);    
+    animationThree.spritePage("assets/shields/shield_on.png", 0 , 384, 960, 576, 5, 3, 192, 192, 4);    
+
 
 //adding objects
 player.update();
