@@ -67,7 +67,7 @@ this.collision_bool = false;
 updateMonster(){
  
 this.drawMonster();
-//this.movements("sidebyside");
+this.movements("sidebyside");
 this.monsterCollision();
 
 

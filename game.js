@@ -16,9 +16,8 @@ const death = new Death();
 const player = new Player();
 const monster = new Monsters( 500, 100);
 const animation = new Animation();
-const animationTwo = new Animation();
-const animationThree = new Animation();
-const animationfour = new Animation();
+
+
 
 function buffer(){
     requestAnimationFrame(buffer)
@@ -26,20 +25,14 @@ function buffer(){
     ctx.clearRect(0,0,c.width, c.height)
     backg.update_backg(); // background image
     shot.updateShot(); // shotting
-   
+    
+    
     //adding objects
     player.update();
     monster.updateMonster();
-
     //EFFECTS
-   animation.spritePage("assets/shields/shield_arm_top.png", 0 , 576, 960, 768, 5, 4, 192, 192, 4);    
-   animationTwo.spritePage("assets/explosions/explosion_one.png", 0 , 192, 2048, 1280, 8, 5, 256, 256, 1);    
-   animationTwo.spritePage("assets/explosions/explosion_one.png", 192 , 192, 2048, 1280, 8, 5, 256, 256, 3);    
-   animationTwo.spritePage("assets/explosions/explosion_one.png", 100 , 192, 2048, 1280, 8, 5, 256, 256, 6);    
-   animationThree.spritePage("assets/explosions/explosion_two.png", 200 , 192, 2048, 1280, 8, 5, 256, 256, 4);    
-   animationfour.spritePage("assets/explosions/explosion_three.png", 400 , 192, 2048, 1280, 8, 5, 256, 256, 4);    
-
-
+    animation.updateAnimation();
+    
     if(keys.right.pressed){
         player.position.x += player.velocity.x
     }
