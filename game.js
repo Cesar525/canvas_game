@@ -25,13 +25,13 @@ function buffer(){
     ctx.clearRect(0,0,c.width, c.height)
     backg.update_backg(); // background image
     shot.updateShot(); // shotting
-    
+    animation.explosionEffect(5, 0, 0);
     
     //adding objects
     player.update();
     monster.updateMonster();
     //EFFECTS
-    animation.updateAnimation();
+    
     
     if(keys.right.pressed){
         player.position.x += player.velocity.x
@@ -70,11 +70,17 @@ if(player.position.y < 0){
 }
 // currently working on
 
-
+ 
 
 
 
 }
-
-buffer()
+function bufferAnimation(){
+    requestAnimationFrame(bufferAnimation)
+    //GAME
+    ctx.clearRect(0,0,c.width, c.height)
+   
+}
+bufferAnimation();
+buffer();
 

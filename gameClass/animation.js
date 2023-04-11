@@ -9,11 +9,11 @@ constructor(){
     this.frameY = 0;
     this.gameFrame = 0;
     this.staggerFrame = 1;
-   
+   this.show = true;
 }
-spritePage(sprite_path, posx, posy, sprite_page_width, sprite_page_height, sprite_count_width, sprite_count_height, sprite_size_w, sprite_size_h, speed){
-  
-
+spritePage(sprite_path, posx, posy, sprite_page_width, sprite_page_height, sprite_count_width, sprite_count_height, sprite_size_w, sprite_size_h, speed, show){
+ 
+if(this.show){
     const animation = new Image();
     if(speed){
 this.staggerFrame = speed;
@@ -34,28 +34,36 @@ ctx.globalAlpha = 1;
 this.frameX = positionX;
 this.frameY = positionY;
 
+console.log(this.frameY);
+console.log(this.frameX);
+
 //console.log( "Showing" + this.frameX);
 
 this.gameFrame++;
-  
+if(this.frameX >= sprite_count_width - 1 && this.frameY >= sprite_count_height - 1){
+    this.show = false;
+}else{
+    this.show = true;
+}
+}
 }
 
-explosionEffect(effect, posx, posy){
+explosionEffect(effect, posx, posy, send){
 switch(effect){
 case 1 :
-this.spritePage("assets/explosions/explosion_1.png", posx , posy, 2048, 1280, 8, 5, 256, 256, 11);
+this.spritePage("assets/explosions/explosion_1.png", posx , posy, 2048, 1280, 8, 5, 256, 256, 1, send);
 break;
 case 2 :
-this.spritePage("assets/explosions/explosion_2.png", posx , posy, 2048, 1280, 8, 5, 256, 256, 1);
+this.spritePage("assets/explosions/explosion_2.png", posx , posy, 2048, 1280, 8, 5, 256, 256, 1, send);
 break;
 case 3 : 
-this.spritePage("assets/explosions/explosion_3.png", posx , posy, 2048, 1280, 8, 5, 256, 256, 1);
+this.spritePage("assets/explosions/explosion_3.png", posx , posy, 2048, 1280, 8, 5, 256, 256, 1, send);
 break;
 case 4 : 
-this.spritePage("assets/explosions/explosion_4.png", posx , posy, 2048, 1280, 8, 5, 256, 256, 1);
+this.spritePage("assets/explosions/explosion_4.png", posx , posy, 2048, 1280, 8, 5, 256, 256, 1, send);
 break;
 case 5 : 
-this.spritePage("assets/explosions/explosion_5.png", posx , posy, 2048, 1280, 8, 5, 256, 256, 1);
+this.spritePage("assets/explosions/explosion_5.png", posx , posy, 2048, 1280, 8, 5, 256, 256, 1, send);
 break;
 }
 }
@@ -63,14 +71,14 @@ break;
 shieldsEffect(effect, posx, posy){
 switch(effect){
 case 1 :
-this.spritePage("assets/shield/shield_one.png", posx , posy, 2048, 1280, 8, 5, 256, 256, 3);
+this.spritePage("assets/shield/shield_one.png", posx , posy, 2048, 1280, 8, 5, 256, 256, 3, send);
 break;
 }
 }
 
 updateAnimation(){
     
-    this.explosionEffect(5, 600, 500);
+    this.explosionEffect(1, 600, 500);
 
 }
 }

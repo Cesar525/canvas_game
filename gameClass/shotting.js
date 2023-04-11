@@ -74,6 +74,7 @@ if(this.counter > 5 && this.clearRect){
          this.position.x = -50;
     this.position.y = - 50;
     
+   
         } 
 }
 
