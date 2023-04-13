@@ -5,7 +5,7 @@ constructor(){
 }
 
 
- setPlayersThruster(select_thruster, player_posx, player_posy){
+ setPlayersThruster(select_thruster, player_posx, player_posy, sizew, sizeh){
     const thruster = new Image();
     const thrusters = {
         1 : "assets/thrusters/thruster01.png",
@@ -27,7 +27,7 @@ constructor(){
 
     };
     thruster.src = thrusters[select_thruster];
-    ctx.drawImage(thruster , player_posx, player_posy , 100, 100 + this.thruster_animation);
+    ctx.drawImage(thruster , player_posx, player_posy , sizew, sizeh + this.thruster_animation);
 if(this.thruster_animation <= 20){
     this.thruster_animation += 1
 }if(this.thruster_animation == 20){

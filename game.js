@@ -26,13 +26,13 @@ function buffer(){
  
     backg.update_backg(); // background image
     shot.updateShot(); // shotting
-    thruster.setPlayersThruster();
+    
     
     //adding objects
     player.update();
     monster.updateMonster();
     //EFFECTS
-      //animation.explosionEffect(5, 0, 0, true);
+      animation.explosionEffect(5, 0, 0, true);
     
     if(keys.right.pressed){
         player.position.x += player.velocity.x

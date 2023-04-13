@@ -65,9 +65,9 @@ playerGetHit(){
     update(){ 
         this.playerDeath();
     this.draw()
-    
+  
     this.playerGetHit();
     shot.shotSelection(6, 30, 20);
-    
+    thruster.setPlayersThruster(8, this.position.x - this.thruster_position_x, this.position.y + this.thruster_position_y, this.thruster_size, this.thruster_size);
     }
     }
