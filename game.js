@@ -25,7 +25,7 @@ function buffer(){
     ctx.clearRect(0,0,c.width, c.height)
     backg.update_backg(); // background image
     shot.updateShot(); // shotting
-    animation.explosionEffect(5, 0, 0);
+    
     
     //adding objects
     player.update();
@@ -78,9 +78,11 @@ if(player.position.y < 0){
 function bufferAnimation(){
     requestAnimationFrame(bufferAnimation)
     //GAME
-    ctx.clearRect(0,0,c.width, c.height)
+  
+    animation.explosionEffect(5, 0, 0);
+    
    
 }
-bufferAnimation();
 buffer();
+bufferAnimation();
 

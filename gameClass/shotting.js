@@ -60,7 +60,7 @@ if(select_shot && damage && speed ){
 shotDirection(direction){
   this.position.y -= this.velocity.y;  
 }
-
+//bullet hit monster
 bulletCollition(){
 this.counter += 1;
 if(this.counter > 5 && this.clearRect){

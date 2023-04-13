@@ -22,19 +22,19 @@ const keys = {
 addEventListener("keydown", function ({keyCode}){
     //console.log(keyCode);
      switch(keyCode){
-         case 38 : console.log("arrow up")
+         case 38 :
          keys.up.pressed = true;
          break;
-         case 40 : console.log ("arrow down")
+         case 40 :
          keys.down.pressed = true;
          break;
-         case 37 : console.log("arrow left")
+         case 37 : 
          keys.left.pressed = true
          break;
-         case 39 : console.log("arrow right")
+         case 39 : 
          keys.right.pressed = true
          break;
-         case 83 : console.log("shotting space button")
+         case 83 : 
          keys.shotting.pressed = true
          break;
          
@@ -45,16 +45,16 @@ addEventListener("keydown", function ({keyCode}){
  addEventListener("keyup", function ({keyCode}){
    //  console.log(keyCode);
       switch(keyCode){
-          case 38 : console.log("arrow up");
+          case 38 : 
           keys.up.pressed = false;
           break;
-          case 40 : console.log ("arrow down");
+          case 40 : 
           keys.down.pressed = false;
           break;
-          case 37 : console.log("left arrow");
+          case 37 : 
           keys.left.pressed = false;
           break;
-          case 39 : console.log("right arrow");
+          case 39 :
           keys.right.pressed = false;
           break;
       }

@@ -57,20 +57,18 @@ movements(move){
         
      if(collision.objectCollisionPLayerTOuchingMonster(shot, monster)){
 //this.clearRect = true;
-console.log("Monster Dead..");
-this.position.x = NaN;
-this.position.y = NaN;
+console.log("monster and shot collided");
+// this.position.x = NaN;
+// this.position.y = NaN;
 this.collision_bool = false;
 }   
+
     }
     
 updateMonster(){
  
 this.drawMonster();
-this.movements("sidebyside");
+//this.movements("sidebyside");
 this.monsterCollision();
-
-
-
 }
 }
