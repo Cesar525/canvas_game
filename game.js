@@ -16,22 +16,23 @@ const death = new Death();
 const player = new Player();
 const monster = new Monsters( 500, 100);
 const animation = new Animation();
-
+const thruster = new Thruster();
 
 
 function buffer(){
     requestAnimationFrame(buffer)
     //GAME
     ctx.clearRect(0,0,c.width, c.height)
+ 
     backg.update_backg(); // background image
     shot.updateShot(); // shotting
-    
+    thruster.setPlayersThruster();
     
     //adding objects
     player.update();
     monster.updateMonster();
     //EFFECTS
-    
+      //animation.explosionEffect(5, 0, 0, true);
     
     if(keys.right.pressed){
         player.position.x += player.velocity.x
@@ -79,7 +80,7 @@ function bufferAnimation(){
     requestAnimationFrame(bufferAnimation)
     //GAME
   
-    animation.explosionEffect(5, 0, 0, true);
+                                  
     
    
 }

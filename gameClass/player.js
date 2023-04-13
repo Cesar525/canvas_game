@@ -20,6 +20,7 @@ class Player{
     this.thruster_position_y =  54;    
     this.clearRect = false;
     this.playerDead = false;
+    
 }
 
 draw(){
@@ -64,8 +65,9 @@ playerGetHit(){
     update(){ 
         this.playerDeath();
     this.draw()
+    
     this.playerGetHit();
     shot.shotSelection(6, 30, 20);
-
+    
     }
     }
