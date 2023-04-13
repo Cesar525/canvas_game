@@ -12,7 +12,9 @@ constructor(){
    this.show = true;
 }
 spritePage(sprite_path, posx, posy, sprite_page_width, sprite_page_height, sprite_count_width, sprite_count_height, sprite_size_w, sprite_size_h, speed, show){
-
+if(show){
+    this.show = show;
+}
 if(this.show){
     const animation = new Image();
     if(speed){

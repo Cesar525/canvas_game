@@ -79,7 +79,7 @@ function bufferAnimation(){
     requestAnimationFrame(bufferAnimation)
     //GAME
   
-    animation.explosionEffect(5, 0, 0);
+    animation.explosionEffect(5, 0, 0, true);
     
    
 }
