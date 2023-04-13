@@ -7,7 +7,7 @@ const gravity = 20
 
 
 
-const shot = new shots();
+
 const backg = new Background();
 const collision = new Collision();
 const shield = new Shields();
@@ -17,7 +17,7 @@ const player = new Player();
 const monster = new Monsters( 500, 100);
 const animation = new Animation();
 const thruster = new Thruster();
-
+const shot = new shots();
 
 function buffer(){
     requestAnimationFrame(buffer)

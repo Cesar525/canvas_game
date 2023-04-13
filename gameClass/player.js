@@ -9,7 +9,7 @@ class Player{
         y:20  
     },
     this.body = {
-        health : 2,
+        health : 100,
         energy : 100
     }
     this.width = 100
@@ -29,7 +29,8 @@ draw(){
     const image = new Image();
     image.src = "assets/spaceship/spaceshipone.png";
     ctx.drawImage(image, this.position.x, this.position.y , player.width, player.height);
-    }
+   
+}
 }
 
 setPlayerVelocity(velocity){
@@ -44,8 +45,8 @@ if(this.body.health == 0){
     const posy = this.position.y;
     const playerDeathAnimation = new Animation();
     playerDeathAnimation.explosionEffect(1, posx, posy, true)
-    // this.position.x = NaN;
-    // this.position.y = NaN;
+     this.position.x = NaN;
+     this.position.y = NaN;
     this.clearRect = true;
     this.playerDead = true;
 }
@@ -65,9 +66,9 @@ playerGetHit(){
     update(){ 
         this.playerDeath();
     this.draw()
-  
+   thruster.setPlayersThruster(5, this.position.x - this.thruster_position_x, this.position.y + this.thruster_position_y, this.thruster_size, this.thruster_size);   
+    shot.shotSelection(4, 30, 20);
     this.playerGetHit();
-    shot.shotSelection(6, 30, 20);
-    thruster.setPlayersThruster(8, this.position.x - this.thruster_position_x, this.position.y + this.thruster_position_y, this.thruster_size, this.thruster_size);
+    
     }
     }
