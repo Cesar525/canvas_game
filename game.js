@@ -32,7 +32,7 @@ function buffer(){
     player.update();
     monster.updateMonster();
     //EFFECTS
-      animation.explosionEffect(5, 0, 0, true);
+      animation.explosionEffect(5, 0, 0);
     
     if(keys.right.pressed){
         player.position.x += player.velocity.x
