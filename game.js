@@ -14,7 +14,13 @@ const shield = new Shields();
 const death = new Death();
 //game
 const player = new Player();
-const monster = new Monsters( 500, 100);
+
+//Monsters
+const monster = new Monsters( 0, 0, 10, "invaderOne");
+const monsterTwo = new Monsters(-100, -100 , 10, "invaderTwo");
+
+
+
 const animation = new Animation();
 const thruster = new Thruster();
 const shot = new shots();
@@ -31,9 +37,8 @@ function buffer(){
     //adding objects
     player.update();
     monster.updateMonster();
-    //EFFECTS
-      animation.explosionEffect(5, 0, 0);
-    
+    monsterTwo.updateMonster();
+
     if(keys.right.pressed){
         player.position.x += player.velocity.x
     }
