@@ -16,9 +16,8 @@ const death = new Death();
 const player = new Player();
 
 //Monsters
-const monster = new Monsters( 0, 0, 10, "invaderOne");
-const monsterTwo = new Monsters(-100, -100 , 10, "invaderTwo");
-
+const monsterTwo = new Monsters(100, 100 , 20, "invaderTwo");
+ const monster = new Monsters( 300, 100, 10, "invaderOne");
 
 
 const animation = new Animation();
@@ -81,14 +80,7 @@ if(player.position.y < 0){
 
 
 }
-function bufferAnimation(){
-    requestAnimationFrame(bufferAnimation)
-    //GAME
-  
-                                  
-    
-   
-}
+
 buffer();
-bufferAnimation();
+
 

@@ -10,7 +10,7 @@ this.velocity = {
 },
 this.body = {
     m_name : name,
-   m_health : health
+    m_health : health
 }
 
 this.width = 100;
@@ -62,16 +62,16 @@ movements(move){
     }
 }
 
-    monsterHitByShot(){   
-     if(collision.objectCollisionPLayerTOuchingMonster(shot, monster)){
+monsterHitByShot(){   
+     if(collision.collisionTouch(shot.position.x, shot.position.y,shot.width, shot.height, this.position.x, this.position.y, this.width, this.height)){
          this.setMonsterHealth(1);
-         console.log("Monster ramina life =  " + this.getMonsterHealth());
+         console.log(this.body.m_name + " ramina life =  " + this.getMonsterHealth());
         }   
         
     }
     
-    monsterDeath(){
-      
+monsterDeath(){
+      if(this.collision_bool){
         if(this.body.m_health == 0 ){
             this.clearRect = true;
             console.log(this.body.m_name + " is dead life i set to " + this.getMonsterHealth());
@@ -79,13 +79,14 @@ movements(move){
             this.position.y = NaN;
             this.collision_bool = false;
         }
+    }
     
 }
 
 updateMonster(){
  
 this.drawMonster();
-this.movements("sidebyside");
+//this.movements("sidebyside");
 this.monsterHitByShot();
 this.monsterDeath();
 }

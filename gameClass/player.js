@@ -56,7 +56,7 @@ playerGetHit(){
     if(this.body.health < 0 ){
         this.body.health = 0;
     }
-  if(collision.objectCollisionPLayerTOuchingMonster(player, monster)){
+  if(collision.collisionTouch(player, monster)){
     this.body.health -= 1; 
     console.log("you have been damage your current life is  = " + this.body.health);
     }
@@ -65,7 +65,7 @@ playerGetHit(){
     update(){
 this.draw();
 thruster.setPlayersThruster(5, this.position.x - this.thruster_position_x, this.position.y + this.thruster_position_y, this.thruster_size, this.thruster_size);   
-shot.shotSelection(4, 30, 100);
+shot.shotSelection(4, 30, 16);
 this.playerGetHit();
 this.playerDeath();
     }

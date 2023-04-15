@@ -1,4 +1,4 @@
-class shots {
+class shots{
     constructor(){
     this.position = {
         x : -50,
@@ -68,13 +68,11 @@ if(this.counter > 5 && this.clearRect){
     this.clearRect = false;
 
 }
-    if(collision.objectCollisionPLayerTOuchingMonster(shot, monster)){
+    if(collision.collisionTouch(this.position.x, this.position.y, this.width, this.height)){
         this.clearRect = true;
          console.log("Bullet banished..");
          this.position.x = -50;
     this.position.y = - 50;
-    
-   
         } 
 }
 
