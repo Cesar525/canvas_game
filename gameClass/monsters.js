@@ -63,7 +63,7 @@ movements(move){
 }
 
 monsterHitByShot(){   
-     if(collision.collisionTouch(shot.position.x, shot.position.y,shot.width, shot.height, this.position.x, this.position.y, this.width, this.height)){
+     if(collision.collisionTouch(shot, monster)){
          this.setMonsterHealth(1);
          console.log(this.body.m_name + " ramina life =  " + this.getMonsterHealth());
         }   

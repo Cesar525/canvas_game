@@ -64,13 +64,13 @@ shotDirection(direction){
 bulletCollition(){
 this.counter += 1;
 if(this.counter > 5 && this.clearRect){
-    console.log("reset");
+   // console.log("reset");
     this.clearRect = false;
 
 }
-    if(collision.collisionTouch(this.position.x, this.position.y, this.width, this.height)){
+    if(collision.collisionTouch(shot, monster)){
         this.clearRect = true;
-         console.log("Bullet banished..");
+        // console.log("Bullet banished..");
          this.position.x = -50;
     this.position.y = - 50;
         } 

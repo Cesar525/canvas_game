@@ -6,15 +6,15 @@ constructor(){
 }
 
 
-collisionTouch(posx, posy, p1width, p1height, p2posx, p2posy, p2width, p2height){
-    var player_posx1 = posx;
-    var player_posx2 = posx + p1width;
-    var playerposty1 = posy;
-    var playerposty2 = posy + p1height;
-    var monster_posx1 = p2posx;
-    var monster_posx2 = p2posx + p2width; 
-    var monsterposty1 = p2posy;
-    var monsterposty2 = p2posy + p2height;
+collisionTouch(obj1, obj2){
+    var player_posx1 = obj1.position.x;
+    var player_posx2 = obj1.position.x + obj1.width;
+    var playerposty1 = obj1.position.y;
+    var playerposty2 = obj1.position.y + obj1.height;
+    var monster_posx1 = obj2.position.x;
+    var monster_posx2 = obj2.position.x + obj2.width; 
+    var monsterposty1 = obj2.position.y;
+    var monsterposty2 = obj2.position.y + obj2.width;
     var touch_x = false;
     var touch_y = false;
     if(player_posx1 <= monster_posx2 && player_posx1 >= monster_posx1 || player_posx2 <= monster_posx2 && player_posx2 >= monster_posx1){

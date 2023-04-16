@@ -16,7 +16,7 @@ const death = new Death();
 const player = new Player();
 
 //Monsters
-const monsterTwo = new Monsters(100, 100 , 20, "invaderTwo");
+//const monsterTwo = new Monsters(100, 100 , 20, "invaderTwo");
  const monster = new Monsters( 300, 100, 10, "invaderOne");
 
 
@@ -36,7 +36,7 @@ function buffer(){
     //adding objects
     player.update();
     monster.updateMonster();
-    monsterTwo.updateMonster();
+   // monsterTwo.updateMonster();
 
     if(keys.right.pressed){
         player.position.x += player.velocity.x
