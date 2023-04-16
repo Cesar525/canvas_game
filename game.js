@@ -18,10 +18,10 @@ const player = new Player(7);
 //Monsters
 const monsters = 
 [
-new Monsters(1, 0, 0 , 20, "invaderone", 10, "red"),
-new Monsters( 2, -100, -100, 10, "invaderTwo", 10, "green"),
-new Monsters( 2, -200, -200, 10, "invaderThree", 10, "blue"),
-new Monsters( 2, -300, -300, 10, "invaderfour", 10, "orange")
+new Monsters(1, 100, 100 , 20, "invaderslevel1", 10, "orange", "none"),
+new Monsters( 2, 200, 100, 10, "invaderlevel2", 10, "green", "none"),
+new Monsters( 2, 300, 100, 10, "invaderlevel3", 10, "blue", "none"),
+new Monsters( 2, 400, 100, 10, "BOSS", 10, "red", "none")
 ];
 
 
@@ -58,6 +58,13 @@ if(shot.counter > 5 && shot.clearRect){
 console.log("reset");
 shot.clearRect = false;
 }
+//player collision
+
+    if(collision.collisionTouch(player, monsters[i])){
+      player.body.health -= 1; 
+      console.log("you have been damage your current life is  = " + player.body.health);
+      }
+  
 
 if(collision.collisionTouch(shot, monsters[i])){
 shot.clearRect = true;
@@ -66,6 +73,9 @@ shot.position.x = -50;
 shot.position.y = - 50;
 }  
 }
+
+
+
 
 
 

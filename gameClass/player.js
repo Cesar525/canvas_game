@@ -5,8 +5,8 @@ class Player{
         y:500
     },
     this.velocity ={
-        x:20,
-        y:20  
+        x:10,
+        y:10  
     },
     this.body = {
         health : 100,
@@ -22,6 +22,7 @@ class Player{
     this.thruster_position_y =  54;    
     this.clearRect = false;
     this.playerDead = false;
+    this.guntype = 0;
     
 }
 
@@ -32,6 +33,9 @@ draw(){
     image.src = "assets/spaceship/spaceshipone.png";
     ctx.drawImage(image, this.position.x, this.position.y , player.width, player.height);
    
+    if(this.body.health < 0 ){
+        this.body.health = 0;
+    }
 }
 }
 
@@ -41,6 +45,7 @@ setPlayerVelocity(velocity){
 }
 
 playerDeath(){
+    if(!this.playerDead){
 if(this.body.health == 0){
     console.log("player is dead.");
     const posx = this.position.x;
@@ -53,24 +58,12 @@ if(this.body.health == 0){
     this.playerDead = true;
 }
 }
-
-playerGetHit(){
-    if(this.body.health < 0 ){
-        this.body.health = 0;
-    }
-    for(let i = 0; i < monsters.length; i++){
-  if(collision.collisionTouch(player, monsters[1])){
-    this.body.health -= 1; 
-    console.log("you have been damage your current life is  = " + this.body.health);
-    }
-}
 }
 
     update(){
 this.draw();
 thruster.setPlayersThruster(this.body.thruster, this.position.x - this.thruster_position_x, this.position.y + this.thruster_position_y, this.thruster_size, this.thruster_size);   
-shot.shotSelection(4, 30, 40);
-this.playerGetHit();
+shot.shotSelection(4, 20, 40);
 this.playerDeath();
     }
     }

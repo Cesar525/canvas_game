@@ -1,5 +1,5 @@
 class Monsters {
-constructor( id, pos_x, pos_y, health, name, speed, color){
+constructor( id, pos_x, pos_y, health, name, speed, color, movements){
 this.position = {
     x : pos_x,
     y : pos_y
@@ -20,6 +20,7 @@ this.moveRight = true;
 this.moveLeft = false;
 this.clearRect = false;
 this.collision_bool = true;
+this.monsterMovement = movements;
 }
 
 getHealth(){return this.body.health;};
@@ -43,7 +44,7 @@ this.body.m_health -= sethit;
 }
 
 movements(move){
-    if(move == "sidebyside"){
+    if(move == this.monsterMovement){
         this.position.y += 0.6
     if(this.moveRight){
         this.position.x += this.velocity.x;
@@ -61,17 +62,12 @@ movements(move){
         this.moveRight = false;
     }
     }
+    if(move == this.monsterMovement){
+
+    }
 }
 
-// monsterHitByShot(){   
-//     for(let i = 0 ; i < monsters.length; i++){
-//      if(collision.collisionTouch(shot, monsters[i])){
-//          this.setMonsterHealth(1);
-//          console.log(this.body.m_name + " ramina life =  " + this.getMonsterHealth());
-//         }   
-//     }        
-//     }
-    
+
 monsterDeath(){
       if(this.collision_bool){
         if(this.body.m_health == 0 ){
