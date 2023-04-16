@@ -18,7 +18,7 @@ const player = new Player(7);
 //Monsters
 const monsters = 
 [
-new Monsters(1, 0, 0 , 20, "invaderone", 10, "red"), 
+new Monsters(1, 0, 0 , 20, "invaderone", 10, "red"),
 new Monsters( 2, -100, -100, 10, "invaderTwo", 10, "green"),
 new Monsters( 2, -200, -200, 10, "invaderThree", 10, "blue"),
 new Monsters( 2, -300, -300, 10, "invaderfour", 10, "orange")
