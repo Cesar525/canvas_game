@@ -1,8 +1,8 @@
 class shots{
     constructor(){
     this.position = {
-        x : -50,
-        y : -50
+        x : player.position.x,
+        y : player.position.y
     }
     this.velocity = {
         x : 20,
@@ -60,24 +60,10 @@ if(select_shot && damage && speed ){
 shotDirection(direction){
   this.position.y -= this.velocity.y;  
 }
-//bullet hit monster
-bulletCollition(){
-this.counter += 1;
-if(this.counter > 5 && this.clearRect){
-   // console.log("reset");
-    this.clearRect = false;
 
-}
-    if(collision.collisionTouch(shot, monster)){
-        this.clearRect = true;
-        // console.log("Bullet banished..");
-         this.position.x = -50;
-    this.position.y = - 50;
-        } 
-}
 
 updateShot(){
-this.bulletCollition();
+
 
 }
     }

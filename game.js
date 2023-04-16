@@ -9,15 +9,21 @@ const gravity = 20
 
 
 const backg = new Background();
-const collision = new Collision();
 const shield = new Shields();
 const death = new Death();
 //game
-const player = new Player();
+const collision = new Collision();
+const player = new Player(7);
 
 //Monsters
-//const monsterTwo = new Monsters(100, 100 , 20, "invaderTwo");
- const monster = new Monsters( 300, 100, 10, "invaderOne");
+const monsters = 
+[
+new Monsters(1, 0, 0 , 20, "invaderone", 10, "red"), 
+new Monsters( 2, -100, -100, 10, "invaderTwo", 10, "green"),
+new Monsters( 2, -200, -200, 10, "invaderThree", 10, "blue"),
+new Monsters( 2, -300, -300, 10, "invaderfour", 10, "orange")
+];
+
 
 
 const animation = new Animation();
@@ -35,8 +41,34 @@ function buffer(){
     
     //adding objects
     player.update();
-    monster.updateMonster();
-   // monsterTwo.updateMonster();
+
+
+
+
+//collison monsters and shots
+for(let i = 0 ; i < monsters.length; i ++){
+monsters[i].updateMonster();
+if(collision.collisionTouch(shot, monsters[i])){
+monsters[i].setMonsterHealth(1); // set up the hit depend on the shot
+console.log(monsters[i].body.m_name + " ramina life =  " + monsters[i].getMonsterHealth());
+}  
+
+shot.counter += 1;
+if(shot.counter > 5 && shot.clearRect){
+console.log("reset");
+shot.clearRect = false;
+}
+
+if(collision.collisionTouch(shot, monsters[i])){
+shot.clearRect = true;
+//console.log("Bullet banished..");
+shot.position.x = -50;
+shot.position.y = - 50;
+}  
+}
+
+
+
 
     if(keys.right.pressed){
         player.position.x += player.velocity.x

@@ -6,6 +6,7 @@ constructor(){
 }
 
 
+
 collisionTouch(obj1, obj2){
     var player_posx1 = obj1.position.x;
     var player_posx2 = obj1.position.x + obj1.width;

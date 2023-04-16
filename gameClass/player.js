@@ -1,5 +1,5 @@
 class Player{
-    constructor(){
+    constructor(thruster_selection){
     this.position ={
         x:500,
         y:500
@@ -10,8 +10,10 @@ class Player{
     },
     this.body = {
         health : 100,
-        energy : 100
+        energy : 100,
+        thruster : thruster_selection
     }
+    
     this.width = 100
     this.height = 100
     this.thruster_size =150;
@@ -56,16 +58,18 @@ playerGetHit(){
     if(this.body.health < 0 ){
         this.body.health = 0;
     }
-  if(collision.collisionTouch(player, monster)){
+    for(let i = 0; i < monsters.length; i++){
+  if(collision.collisionTouch(player, monsters[1])){
     this.body.health -= 1; 
     console.log("you have been damage your current life is  = " + this.body.health);
     }
 }
+}
 
     update(){
 this.draw();
-thruster.setPlayersThruster(5, this.position.x - this.thruster_position_x, this.position.y + this.thruster_position_y, this.thruster_size, this.thruster_size);   
-shot.shotSelection(4, 30, 16);
+thruster.setPlayersThruster(this.body.thruster, this.position.x - this.thruster_position_x, this.position.y + this.thruster_position_y, this.thruster_size, this.thruster_size);   
+shot.shotSelection(4, 30, 40);
 this.playerGetHit();
 this.playerDeath();
     }
