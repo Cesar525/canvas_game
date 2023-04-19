@@ -1,7 +1,7 @@
 class shots{
     constructor(){
     this.position = {
-        x : player.position.x,
+        x : player.position.x + 25,
         y : player.position.y
     }
     this.velocity = {

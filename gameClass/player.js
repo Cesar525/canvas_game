@@ -63,7 +63,7 @@ if(this.body.health == 0){
     update(){
 this.draw();
 thruster.setPlayersThruster(this.body.thruster, this.position.x - this.thruster_position_x, this.position.y + this.thruster_position_y, this.thruster_size, this.thruster_size);   
-shot.shotSelection(4, 20, 40);
+shot.shotSelection(4, 20, 20);
 this.playerDeath();
     }
     }
