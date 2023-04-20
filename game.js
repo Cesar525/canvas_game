@@ -20,17 +20,17 @@ const monsters =
 [
 new Monsters(1, 100, 100 , 20, "invaderslevel1", 10, "orange", "none"),
 new Monsters( 2, 200, 100, 10, "invaderlevel2", 10, "green", "none"),
-new Monsters( 2, 300, 100, 10, "invaderlevel3", 10, "blue", "none"),
-new Monsters( 2, 400, 100, 10, "BOSS", 10, "red", "none")
+new Monsters( 3, 300, 100, 10, "invaderlevel3", 10, "blue", "none"),
+new Monsters( 4, 400, 100, 10, "BOSS", 10, "red", "none")
 ];
 
 
 const animation = new Animation();
 const thruster = new Thruster();
 const shot = new shots();
-function explosion(){
-    animation.explosionEffect(5, monsters[1].position.x, monsters[1].position.y);
-}
+
+    
+
 function buffer(){
     requestAnimationFrame(buffer)
     //GAME
@@ -51,10 +51,12 @@ function buffer(){
 //collison monsters and shots
 for(let i = 0 ; i < monsters.length; i ++){
 monsters[i].updateMonster();
+
 if(collision.collisionTouch(shot, monsters[i])){
 monsters[i].setMonsterHealth(1); // set up the hit depend on the shot
 console.log(monsters[i].body.m_name + " ramina life =  " + monsters[i].getMonsterHealth());
-explosions = true
+var explosions = true;
+
 }  
 
 shot.counter += 1;
@@ -76,12 +78,10 @@ shot.clearRect = true;
 shot.position.x = -50;
 shot.position.y = - 50;
 }  
+var monster = i;
 }
-if(explosions){
-   var mino = true;
-    if(mino){
-explosion();}
-}
+console.log("monster"+monster);
+animation.explosionEffect(5, monsters[monster].position.x - 95, monsters[monster].position.y - 95, explosions);
 
 
 
