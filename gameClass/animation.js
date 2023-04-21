@@ -36,8 +36,8 @@ ctx.globalAlpha = 1;
 this.frameX = positionX;
 this.frameY = positionY;
 
-console.log(this.frameY);
-console.log(this.frameX);
+//console.log(this.frameY);
+//console.log(this.frameX);
 
 //console.log( "Showing" + this.frameX);
 
@@ -65,10 +65,11 @@ case 4 :
 this.spritePage("assets/explosions/explosion_4.png", posx , posy, 2048, 1280, 8, 5, 256, 256, 1, send);
 break;
 case 5 : 
-this.spritePage("assets/explosions/explosion_5.png", posx , posy, 2048, 1280, 8, 5, 256, 256, 1, send);
+this.spritePage("assets/explosions/explosion_5.png", posx , posy, 2048, 1280, 8, 5, 256, 256, 5, send);
 break;
 }
 }
+
 
 shieldsEffect(effect, posx, posy){
 switch(effect){

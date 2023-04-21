@@ -19,17 +19,18 @@ const player = new Player(7);
 const monsters = 
 [
 new Monsters(1, 100, 100 , 20, "invaderslevel1", 10, "orange", "none"),
-new Monsters( 2, 200, 100, 10, "invaderlevel2", 10, "green", "none"),
-new Monsters( 3, 300, 100, 10, "invaderlevel3", 10, "blue", "none"),
-new Monsters( 4, 400, 100, 10, "BOSS", 10, "red", "none")
+new Monsters( 2, 300, 100, 10, "invaderlevel2", 10, "green", "none"),
+new Monsters( 3, 500, 100, 10, "invaderlevel3", 10, "blue", "none"),
+new Monsters( 4, 700, 100, 10, "BOSS", 10, "red", "none")
 ];
 
 
 const animation = new Animation();
+const animation2 = new Animation();
 const thruster = new Thruster();
 const shot = new shots();
 
-    
+
 
 function buffer(){
     requestAnimationFrame(buffer)
@@ -42,8 +43,9 @@ function buffer(){
     
     //adding objects
     player.update();
-    var explosions; 
     
+   
+
 
 
 
@@ -55,17 +57,16 @@ monsters[i].updateMonster();
 if(collision.collisionTouch(shot, monsters[i])){
 monsters[i].setMonsterHealth(1); // set up the hit depend on the shot
 console.log(monsters[i].body.m_name + " ramina life =  " + monsters[i].getMonsterHealth());
-var explosions = true;
-
-}  
-
+monsters[i].monsterHit(collision.collisionTouch(shot, monsters[i]));
+}
+// bullet disapear collision
 shot.counter += 1;
 if(shot.counter > 5 && shot.clearRect){
-console.log("reset");
+//console.log("reset");
 shot.clearRect = false;
+
 }
 //player collision
-
     if(collision.collisionTouch(player, monsters[i])){
       player.body.health -= 1; 
       console.log("you have been damage your current life is  = " + player.body.health);
@@ -78,10 +79,11 @@ shot.clearRect = true;
 shot.position.x = -50;
 shot.position.y = - 50;
 }  
-var monster = i;
+
 }
-console.log("monster"+monster);
-animation.explosionEffect(5, monsters[monster].position.x - 95, monsters[monster].position.y - 95, explosions);
+
+
+
 
 
 

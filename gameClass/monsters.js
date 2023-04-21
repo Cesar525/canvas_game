@@ -21,6 +21,8 @@ this.moveLeft = false;
 this.clearRect = false;
 this.collision_bool = true;
 this.monsterMovement = movements;
+this.monster_hit;
+
 }
 
 getHealth(){return this.body.health;};
@@ -66,9 +68,12 @@ movements(move){
 
     }
 }
+monsterHit(collisions){
 
-
+}
 monsterDeath(){
+    const explosion_monster = new Animation();
+
       if(this.collision_bool){
         if(this.body.m_health == 0 ){
             this.clearRect = true;
@@ -76,16 +81,21 @@ monsterDeath(){
             this.position.x = NaN;
             this.position.y = NaN;
             this.collision_bool = false;
+          
         }
     }
-    
+
 }
 
 updateMonster(){
  
 this.drawMonster();
 this.movements("sidebyside");
-//this.monsterHitByShot();
 this.monsterDeath();
+
+animation.explosionEffect(5, this.position.x - 95, this.position.y - 95, true);
+ 
+
+ 
 }
 }

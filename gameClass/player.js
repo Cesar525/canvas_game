@@ -65,5 +65,7 @@ this.draw();
 thruster.setPlayersThruster(this.body.thruster, this.position.x - this.thruster_position_x, this.position.y + this.thruster_position_y, this.thruster_size, this.thruster_size);   
 shot.shotSelection(4, 20, 10);
 this.playerDeath();
+
+
     }
     }

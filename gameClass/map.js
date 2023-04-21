@@ -11,7 +11,9 @@ class Background{
     this.countingBackground  = 0;
     }
 
-
+getVelocity(){
+    return this.velocity.y;
+}
     
     drawBackground(speed){
         this.velocity.x = speed;
