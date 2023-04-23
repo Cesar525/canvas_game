@@ -38,17 +38,13 @@ function buffer(){
     ctx.clearRect(0,0,c.width, c.height)
  
     backg.update_backg(); // background image
-    shot.updateShot(); // shotting
-    
-    
-    //adding objects
+     //adding objects
     player.update();
-    
-   
-
-
-
-
+    shot.updateShot(); // shotting
+    var explosion;
+    var posx;
+    var posy;
+    var monster;
 
 //collison monsters and shots
 for(let i = 0 ; i < monsters.length; i ++){
@@ -58,6 +54,8 @@ if(collision.collisionTouch(shot, monsters[i])){
 monsters[i].setMonsterHealth(1); // set up the hit depend on the shot
 console.log(monsters[i].body.m_name + " ramina life =  " + monsters[i].getMonsterHealth());
 monsters[i].monsterHit(collision.collisionTouch(shot, monsters[i]));
+explosion = true;
+
 }
 // bullet disapear collision
 shot.counter += 1;
@@ -80,54 +78,13 @@ shot.position.x = -50;
 shot.position.y = - 50;
 }  
 
+posx = monsters[i].position.x;
+posy = monsters[i].position.y;
+
 }
+// collison ends
 
-
-
-
-
-
-
-
-    if(keys.right.pressed){
-        player.position.x += player.velocity.x
-    }
-    if(keys.left.pressed){
-        player.position.x -= player.velocity.x
-    }
-    if(keys.up.pressed){
-        player.position.y -= player.velocity.y
-    }
-    if(keys.down.pressed){
-        player.position.y += player.velocity.y
-    }
-    if(true){
-        
-     }
-    //console.log("position y =" + player.position.y)
-    //console.log("position x =" + player.position.x)
-
-// player ned to stay insidew the canvas
-if(player.position.x + player.velocity.x > c.width - player.width + player.velocity.x){
-   
-    player.position.x = c.width - player.width
-}
-if(player.position.x < 0){
-    player.position.x = 0
-    
-}
-if(player.position.y + player.velocity.y > c.height - player.height){
-    player.position.y =  c.height - player.height
-   
-}
-if(player.position.y < 0){
-    player.position.y =  0
-   
-}
-// currently working on
-
- 
-
+animation2.explosionEffect(5,  posx - 95, posy - 95, explosion);
 
 
 }

@@ -1,8 +1,8 @@
 class Animation {
 constructor(){
     this.position = {
-        x : 0,
-        y : 0
+        x : NaN,
+        y : NaN
     }
   
     this.frameX = 0;
@@ -43,9 +43,9 @@ this.frameY = positionY;
 
 this.gameFrame++;
 if(this.frameX >= sprite_count_width - 1 && this.frameY >= sprite_count_height - 1){
-    this.show = false;
+   return this.show = false;
 }else{
-    this.show = true;
+   return this.show = true;
 }
 }
 }
@@ -65,7 +65,7 @@ case 4 :
 this.spritePage("assets/explosions/explosion_4.png", posx , posy, 2048, 1280, 8, 5, 256, 256, 1, send);
 break;
 case 5 : 
-this.spritePage("assets/explosions/explosion_5.png", posx , posy, 2048, 1280, 8, 5, 256, 256, 5, send);
+this.spritePage("assets/explosions/explosion_5.png", posx , posy, 2048, 1280, 8, 5, 256, 256, 1, send);
 break;
 }
 }

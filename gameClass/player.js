@@ -67,5 +67,44 @@ shot.shotSelection(4, 20, 10);
 this.playerDeath();
 
 
+
+
+// player movements
+if(keys.right.pressed){
+    player.position.x += player.velocity.x
+}
+if(keys.left.pressed){
+    player.position.x -= player.velocity.x
+}
+if(keys.up.pressed){
+    player.position.y -= player.velocity.y
+}
+if(keys.down.pressed){
+    player.position.y += player.velocity.y
+}
+if(true){
+    
+ }
+//console.log("position y =" + player.position.y)
+//console.log("position x =" + player.position.x)
+
+// player ned to stay insidew the canvas
+if(player.position.x + player.velocity.x > c.width - player.width + player.velocity.x){
+
+player.position.x = c.width - player.width
+}
+if(player.position.x < 0){
+player.position.x = 0
+
+}
+if(player.position.y + player.velocity.y > c.height - player.height){
+player.position.y =  c.height - player.height
+
+}
+if(player.position.y < 0){
+player.position.y =  0
+
+}
+
     }
     }
