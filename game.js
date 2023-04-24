@@ -27,6 +27,8 @@ new Monsters( 4, 700, 100, 10, "BOSS", 10, "red", "none")
 
 const animation = new Animation();
 const animation2 = new Animation();
+const animation1 = new Animation();
+
 const thruster = new Thruster();
 const shot = new shots();
 
@@ -45,32 +47,42 @@ function buffer(){
     var posx;
     var posy;
     var monster;
-
+    var exp;
+    var exp2;
 //collison monsters and shots
 for(let i = 0 ; i < monsters.length; i ++){
-monsters[i].updateMonster();
-
-if(collision.collisionTouch(shot, monsters[i])){
-monsters[i].setMonsterHealth(1); // set up the hit depend on the shot
-console.log(monsters[i].body.m_name + " ramina life =  " + monsters[i].getMonsterHealth());
-monsters[i].monsterHit(collision.collisionTouch(shot, monsters[i]));
-explosion = true;
-
-}
-// bullet disapear collision
-shot.counter += 1;
-if(shot.counter > 5 && shot.clearRect){
-//console.log("reset");
-shot.clearRect = false;
-
-}
-//player collision
+    monsters[i].updateMonster();
+    
+    if(collision.collisionTouch(shot, monsters[i])){
+        monsters[i].setMonsterHealth(1); // set up the hit depend on the shot
+        console.log(monsters[i].body.m_name + " ramina life =  " + monsters[i].getMonsterHealth());
+        monsters[i].monsterHit(collision.collisionTouch(shot, monsters[i]));
+        explosion = true;
+        monsters[i].collision_bool = true;
+       // exp = monsters[i].collision_bool;
+       console.log("explosion");
+    }else{
+        monsters[i].collision_bool = false;
+    }
+    //console.log(monsters[i].collision_bool)
+    // bullet disapear collision
+    shot.counter += 1;
+    if(shot.counter > 5 && shot.clearRect){
+        //console.log("reset");
+        shot.clearRect = false;
+        
+    }
+    //player collision
     if(collision.collisionTouch(player, monsters[i])){
-      player.body.health -= 1; 
-      console.log("you have been damage your current life is  = " + player.body.health);
-      }
-  
-
+        player.body.health -= 1; 
+        console.log("you have been damage your current life is  = " + player.body.health);
+        
+    }
+    
+    posx = monsters[i].position.x;
+    posy = monsters[i].position.y;
+   
+    //console.log(exp);
 if(collision.collisionTouch(shot, monsters[i])){
 shot.clearRect = true;
 //console.log("Bullet banished..");
@@ -78,14 +90,14 @@ shot.position.x = -50;
 shot.position.y = - 50;
 }  
 
-posx = monsters[i].position.x;
-posy = monsters[i].position.y;
 
 }
 // collison ends
 
-animation2.explosionEffect(5,  posx - 95, posy - 95, explosion);
 
+spritePageFunction("assets/explosions/explosion_5.png", posx , posy, 2048, 1280, 8, 5, 256, 256, 2);
+//animation2.explosionEffect(5,  posx - 95, posy - 95, exp);
+//animation1.explosionEffect(5,  posx - 95, posy - 95, exp);
 
 }
 

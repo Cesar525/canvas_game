@@ -19,9 +19,8 @@ this.height = 100;
 this.moveRight = true;
 this.moveLeft = false;
 this.clearRect = false;
-this.collision_bool = true;
+this.collision_bool;
 this.monsterMovement = movements;
-this.monsterDead;
 
 }
 
@@ -83,7 +82,6 @@ monsterDeath(){
             this.position.x = NaN;
             this.position.y = NaN;
             this.collision_bool = false;
-          this.monsterDead = true;
         }
     }
 
