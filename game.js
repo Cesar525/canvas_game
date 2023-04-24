@@ -91,6 +91,8 @@ shot.position.y = - 50;
  animation.explosionEffect(5, monsters[1].position.x - 85, monsters[1].position.y - 85, true, 5);
 
 animation.explosionEffect(5, monsters[1].position.x, monsters[1].position.y - 85, true, 6);
+animation.explosionEffect(5, monsters[1].position.x, monsters[1].position.y - 40, true, 8);
+
 
 
 }
