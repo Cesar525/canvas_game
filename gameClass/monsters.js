@@ -21,7 +21,6 @@ this.moveLeft = false;
 this.clearRect = false;
 this.collision_bool;
 this.monsterMovement = movements;
-this.monsterhit = new Animation();
 }
 
 getHealth(){return this.body.health;};
@@ -87,9 +86,10 @@ monsterDeath(){
 
 }
 
+
+
 updateMonster(){
 
-    this.monsterhit.explosionEffect(1, 100, 100, true);
 this.drawMonster();
 this.monsterDeath();
 
