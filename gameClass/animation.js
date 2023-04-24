@@ -10,56 +10,14 @@ constructor(){
     this.gameFrame = 0;
     this.staggerFrame = 1;
    this.show = true;
-   this.show2 = true;
+   this.show2 = false;
 }
-
-
-spritePage2(sprite_path, posx, posy, sprite_page_width, sprite_page_height, sprite_count_width, sprite_count_height, sprite_size_w, sprite_size_h, speed, show){
-    if(show){
-        this.show2 = show;
-    }
-    if(this.show2){
-        const animation = new Image();
-        if(speed){
-    this.staggerFrame = speed;
-        }
-    animation.src = sprite_path;
-    ctx.globalAlpha = 1;
-    
-    let m_width = sprite_page_width / sprite_count_width;
-    let m_height = sprite_page_height/ sprite_count_height;
-    let positionX = Math.floor(this.gameFrame/this.staggerFrame) % sprite_count_width;
-    let positionY = Math.floor(this.gameFrame/(this.staggerFrame * sprite_count_width)) % sprite_count_height;
-    
-    this.position.x = posx;
-    this.position.y = posy;
-    
-    ctx.drawImage(animation, 1 * (sprite_size_w * this.frameX), 1 * (sprite_size_h * this.frameY), m_width, m_height, this.position.x, this.position.y, m_width + 20, m_height + 20 );
-    ctx.globalAlpha = 1;
-    this.frameX = positionX;
-    this.frameY = positionY;
-    
-    //console.log(this.frameY);
-    //console.log(this.frameX);
-    
-    //console.log( "Showing" + this.frameX);
-    
-    this.gameFrame++;
-    if(this.frameX >= sprite_count_width - 1 && this.frameY >= sprite_count_height - 1){
-       this.show2 = false;
-    }else{
-       this.show2 = true;
-    }
-    }
-    
-    
-    }
 
 spritePage(sprite_path, posx, posy, sprite_page_width, sprite_page_height, sprite_count_width, sprite_count_height, sprite_size_w, sprite_size_h, speed, show){
 if(show){
     this.show = show;
 }
-if(true){
+if(this.show){
     const animation = new Image();
     if(speed){
 this.staggerFrame = speed;
@@ -90,13 +48,15 @@ if(this.frameX >= sprite_count_width - 1 && this.frameY >= sprite_count_height -
    this.show = false;
 }else{
    this.show = true;
+  
 }
 }
 
-console.log("animation respond " + this.show);
+
+console.log("animation respond show = " + this.show);
 }
 
-explosionEffect(effect, posx, posy, send){
+explosionEffect(effect, posx, posy, send, speed){
 switch(effect){
 case 1 :
 this.spritePage("assets/explosions/explosion_1.png", posx , posy, 2048, 1280, 8, 5, 256, 256, 1, send);
@@ -111,7 +71,7 @@ case 4 :
 this.spritePage("assets/explosions/explosion_4.png", posx , posy, 2048, 1280, 8, 5, 256, 256, 1, send);
 break;
 case 5 : 
-this.spritePage("assets/explosions/explosion_5.png", posx , posy, 2048, 1280, 8, 5, 256, 256, 2, send);
+this.spritePage("assets/explosions/explosion_5.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
 break;
 }
 }
@@ -125,10 +85,9 @@ break;
 }
 }
 
-updateAnimation(){
-    
-    this.explosionEffect(1, 600, 500, true);
+updateAnimation(){   
 
 }
+
 
 }

@@ -1,4 +1,4 @@
-class Monsters extends Animation {
+class Monsters{
 constructor( id, pos_x, pos_y, health, name, speed, color, movements){
 this.position = {
     x : pos_x,
@@ -68,12 +68,8 @@ movements(move){
 
     }
 }
-monsterHit(collisions){
-this.monster_hit = collisions;  
-}
-monsterDeath(){
-    const explosion_monster = new Animation();
 
+monsterDeath(){
       if(this.collision_bool){
         if(this.body.m_health == 0 ){
             this.clearRect = true;
