@@ -94,11 +94,6 @@ shot.position.y = - 50;
 }
 // collison ends
 
-
-spritePageFunction("assets/explosions/explosion_5.png", posx , posy, 2048, 1280, 8, 5, 256, 256, 2);
-//animation2.explosionEffect(5,  posx - 95, posy - 95, exp);
-//animation1.explosionEffect(5,  posx - 95, posy - 95, exp);
-
 }
 
 buffer();

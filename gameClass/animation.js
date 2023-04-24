@@ -127,7 +127,8 @@ break;
 
 updateAnimation(){
     
-    this.explosionEffect(1, 600, 500);
+    this.explosionEffect(1, 600, 500, true);
 
 }
+
 }
