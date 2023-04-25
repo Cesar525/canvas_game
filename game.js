@@ -14,6 +14,10 @@ const death = new Death();
 //game
 const collision = new Collision();
 const player = new Player(7);
+const animation = new Animation();
+const thruster = new Thruster();
+const shot = new shots();
+
 
 //Monsters
 const monsters = 
@@ -25,11 +29,6 @@ new Monsters( 4, 700, 100, 10, "BOSS", 10, "red", "none")
 ];
 
 
-const animation = new Animation();
-
-
-const thruster = new Thruster();
-const shot = new shots();
 
 
 function buffer(){
@@ -41,19 +40,21 @@ function buffer(){
      //adding objects
     player.update();
     shot.updateShot(); // shotting
+    animation.updateAnimation();
     var explosion;
     var posx;
     var posy;
-//collison monsters and shots
+//collison monsters and shots 
+
 for(let i = 0 ; i < monsters.length; i ++){
-     monsters[i].updateMonster();
+    monsters[i].updateMonster();
     
     if(collision.collisionTouch(shot, monsters[i])){
         monsters[i].setMonsterHealth(1); // set up the hit depend on the shot
         console.log(monsters[i].body.m_name + " ramina life =  " + monsters[i].getMonsterHealth());
         explosion = true;
         monsters[i].collision_bool = true;
-    
+   
 
     }else{
         monsters[i].collision_bool = false;
@@ -64,7 +65,8 @@ for(let i = 0 ; i < monsters.length; i ++){
     if(shot.counter > 5 && shot.clearRect){
         //console.log("reset");
         shot.clearRect = false;
-        
+     
+   
     }
     //player collision
     if(collision.collisionTouch(player, monsters[i])){
@@ -88,12 +90,6 @@ shot.position.y = - 50;
 
 }
 // collison ends
- animation.explosionEffect(5, monsters[1].position.x - 85, monsters[1].position.y - 85, true, 5);
-
-animation.explosionEffect(5, monsters[1].position.x, monsters[1].position.y - 85, true, 6);
-animation.explosionEffect(5, monsters[1].position.x, monsters[1].position.y - 40, true, 8);
-
-
 
 }
 buffer();

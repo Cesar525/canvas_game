@@ -21,6 +21,7 @@ this.moveLeft = false;
 this.clearRect = false;
 this.collision_bool;
 this.monsterMovement = movements;
+this.explosion_dead = true;
 }
 
 getHealth(){return this.body.health;};
@@ -77,18 +78,27 @@ monsterDeath(){
             this.position.x = NaN;
             this.position.y = NaN;
             this.collision_bool = false;
+            this.explosion_dead = true;    
+            
+console.log("explosion");
         }
     }
 
 }
 
+eexplosionDead(explo){
+    
+   //  animation.explosionEffect(5, this.position.x, this.position.y - 85, explo, 6);
+   //  animation.explosionEffect(5, this.position.x, this.position.y - 40, explo, 8);
+this.explosion_dead = false;
+
+}
 
 
 updateMonster(){
-
 this.drawMonster();
+this.eexplosionDead(this.explosion_dead);
 this.monsterDeath();
-
 
 
 }
