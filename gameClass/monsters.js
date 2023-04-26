@@ -23,10 +23,12 @@ this.collision_bool;
 this.monsterMovement = movements;
 this.explosion_dead = true;
 this.explosion = false;
-this.collision_positionX;
-this.collision_positionY;
-this.animationTwo;
+
+//hit monster
+this.collision_posX;
+this.collision_posY;
 this.animationThree;
+
 }
 
 getHealth(){return this.body.health;};
@@ -50,7 +52,18 @@ getMonsterHealth(){
 setMonsterHealth(sethit){
 this.body.m_health -= sethit;
 }
-
+getPosX(){
+    return this.position.x;
+}
+getPosY(){
+    return this.position.y;
+}
+setPosXCol(pos){
+    this.collision_posX = pos;
+}
+setPosYCol(pos){
+    this.collision_posY
+}
 movements(move){
     if(move == this.monsterMovement){
         this.position.y += 0.6
@@ -75,11 +88,10 @@ movements(move){
     }
 }
 
-reset(){
-    this.collision_positionX;
-this.collision_positionY;
-this.animationTwo;
-this.animationThree;
+resetColPos(){
+ this.collision_posX;
+ this.collision_posY;
+this.collision_bool = false;
 }
 monsterlifeBar(){
     //const lifebar = new Image();
@@ -109,7 +121,10 @@ monsterDeath(){
 }
 
 
+
 updateMonster(){
+
+    
 this.monsterlifeBar();
 this.drawMonster();
 this.monsterDeath();
