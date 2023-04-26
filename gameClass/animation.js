@@ -9,8 +9,12 @@ constructor(){
     this.frameY = 0;
     this.gameFrame = 0;
     this.staggerFrame = 1;
-   this.show = true;
-   this.show2 = false;
+   this.show = false;
+   this.onAnimation = false;
+   this.animationTwo;
+   this.animationThree;
+
+
 }
 
 spritePage(sprite_path, posx, posy, sprite_page_width, sprite_page_height, sprite_count_width, sprite_count_height, sprite_size_w, sprite_size_h, speed, show){
@@ -24,7 +28,7 @@ this.staggerFrame = speed;
     }
 animation.src = sprite_path;
 ctx.globalAlpha = 1;
-
+this.onAnimation = true;
 let m_width = sprite_page_width / sprite_count_width;
 let m_height = sprite_page_height/ sprite_count_height;
 let positionX = Math.floor(this.gameFrame/this.staggerFrame) % sprite_count_width;
@@ -38,22 +42,36 @@ ctx.globalAlpha = 1;
 this.frameX = positionX;
 this.frameY = positionY;
 
-//console.log(this.frameY);
-//console.log(this.frameX);
+//console.log(" Y Frame = " + this.frameY);
+//console.log("X Frames = " + this.frameX);
 
 //console.log( "Showing" + this.frameX);
 
-this.gameFrame++;
+this.gameFrame += 1;
 if(this.frameX >= sprite_count_width - 1 && this.frameY >= sprite_count_height - 1){
    this.show = false;
+   this.reset();
+  // console.log(" Y Frame SET = " + this.frameY);
+//console.log("X Frames SET = " + this.frameX);
+this.onAnimation = false;
 }else{
-   this.show = true;
-  
+   return this.onAnimation;
 }
 }
 
 
-console.log("animation respond show = " + this.show);
+//console.log("animation respond show = " + this.show);
+}
+getFrameY(){
+    return this.frameY;
+}
+reset(){
+    this.frameX = 0;
+    this.frameY = 0;
+    this.gameFrame = 0;
+    this.staggerFrame = 1;
+   
+ 
 }
 
 explosionEffect(effect, posx, posy, send, speed){
@@ -71,26 +89,30 @@ case 4 :
 this.spritePage("assets/explosions/explosion_4.png", posx , posy, 2048, 1280, 8, 5, 256, 256, 1, send);
 break;
 case 5 : 
-this.spritePage("assets/explosions/explosion_5.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
+this.spritePage("assets/explosions/explosion_5.png", posx , posy, 2048, 1280, 8, 5, 256, 256, 1, send);
 break;
 }
 }
-
+getAnimationStatus(){
+    return this.onAnimation;
+}
 
 shieldsEffect(effect, posx, posy){
 switch(effect){
 case 1 :
-this.spritePage("assets/shield/shield_one.png", posx , posy, 2048, 1280, 8, 5, 256, 256, 3, send);
+this.spritePage("assets/shield/shield_one.png", posx , posy, 2048, 1280, 8, 5, 256, 256, 4, send);
 break;
 }
 }
 
+
 updateAnimation(){   
 
-animation.explosionEffect(5, monsters[1].position.x - 85, monsters[1].position.y - 85, true, 5);
-animation.explosionEffect(5, monsters[1].position.x, monsters[1].position.y - 85, true, 6);
-animation.explosionEffect(5, monsters[1].position.x, monsters[1].position.y - 40, true, 4);
-animation.explosionEffect(5, monsters[1].position.x, monsters[1].position.y - 40, true, 3);
+
+// animation.explosionEffect(5, monsters[1].position.x - 85, monsters[1].position.y - 85, true, 5);
+// animation.explosionEffect(5, monsters[1].position.x, monsters[1].position.y - 85, true, 6);
+// animation.explosionEffect(5, monsters[1].position.x, monsters[1].position.y - 40, true, 4);
+// animation.explosionEffect(5, monsters[1].position.x, monsters[1].position.y - 40, true, 3);
 
 }
 

@@ -1,12 +1,12 @@
-class Player{
+class Player {
     constructor(thruster_selection){
     this.position ={
         x:500,
         y:500
     },
     this.velocity ={
-        x:10,
-        y:10  
+        x:20,
+        y:20  
     },
     this.body = {
         health : 100,
@@ -23,6 +23,11 @@ class Player{
     this.clearRect = false;
     this.playerDead = false;
     this.guntype = 0;
+    this.m_name = "Player One";
+this.deathpositionX;
+this.deathpositiony;
+this.showdeathexplosion;
+
     
 }
 
@@ -48,10 +53,9 @@ playerDeath(){
     if(!this.playerDead){
 if(this.body.health == 0){
     console.log("player is dead.");
-    const posx = this.position.x;
-    const posy = this.position.y;
-    const playerDeathAnimation = new Animation();
-    playerDeathAnimation.explosionEffect(1, posx, posy, true)
+    this.deathpositionX =  this.position.x;
+    this.deathpositiony = this.position.y;
+    
     this.position.x = NaN;
     this.position.y = NaN;
     this.clearRect = true;
@@ -60,13 +64,30 @@ if(this.body.health == 0){
 }
 }
 
+lifeBar(){
+    //const lifebar = new Image();
+    ctx.fillStyle = "white";
+    ctx.font = "30px";
+    ctx.fillText(this.m_name, this.position.x - 70, this.position.y - 15);
+    ctx.fillText("LvL 2", this.position.x - 70, this.position.y + 10);
+    //background
+    ctx.fillStyle = "red";
+    ctx.fillRect(this.position.x - 70 , this.position.y - 10, 100, 9);
+    //life
+    ctx.fillStyle = "green";
+    ctx.fillRect(this.position.x - 70 , this.position.y - 10, this.body.health, 9);
+}
+
+
+
     update(){
+this.lifeBar();
 this.draw();
 thruster.setPlayersThruster(this.body.thruster, this.position.x - this.thruster_position_x, this.position.y + this.thruster_position_y, this.thruster_size, this.thruster_size);   
-shot.shotSelection(4, 20, 20);
+shot.shotSelection(8, 50, 30);
 this.playerDeath();
 
-
+playerDeathAnimation.explosionEffect(3, this.deathpositionX - 85, this.deathpositiony - 85)
 
 
 // player movements
