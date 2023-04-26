@@ -8,7 +8,7 @@ class shots{
         x : 20,
         y : 20
     }
-    this.damage = 0;
+    this.m_damage = 0;
     this.width = 50;
     this.height = 100;
     this.clearRect = false;
@@ -45,7 +45,7 @@ if(select_shot && damage && speed ){
     ctx.fillStyle = 'black';
     //ctx.fillRect( this.position.x, this.position.y ,this.width , this.height);
     ctx.drawImage(shotimage, this.position.x, this.position.y ,this.width, this.height);
-
+this.m_damage = damage
 
     //shot starting point
     if(this.position.y <  - this.height){

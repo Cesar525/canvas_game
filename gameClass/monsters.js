@@ -23,6 +23,10 @@ this.collision_bool;
 this.monsterMovement = movements;
 this.explosion_dead = true;
 this.explosion = false;
+this.collision_positionX;
+this.collision_positionY;
+this.animationTwo;
+this.animationThree;
 }
 
 getHealth(){return this.body.health;};
@@ -71,6 +75,12 @@ movements(move){
     }
 }
 
+reset(){
+    this.collision_positionX;
+this.collision_positionY;
+this.animationTwo;
+this.animationThree;
+}
 monsterlifeBar(){
     //const lifebar = new Image();
     ctx.fillStyle = "white";
@@ -96,35 +106,16 @@ monsterDeath(){
             this.explosion_dead = true;
         }
     }
-
-}
-
-eexplosionDead(explo){
-    
-   //  animation.explosionEffect(5, this.position.x, this.position.y - 85, explo, 6);
-   //  animation.explosionEffect(5, this.position.x, this.position.y - 40, explo, 8);
-this.explosion_dead = false;
-
 }
 
 
 updateMonster(){
 this.monsterlifeBar();
-  //  animation.explosionEffect(5, this.position.x - 85, this.position.y - 85, this.explosion_dead, 9);
 this.drawMonster();
-this.eexplosionDead(this.explosion_dead);
 this.monsterDeath();
 this.movements("sidebyside");
-//console.log(this.explosion_dead);
 
 
-// console.log(this.explosion);
-// animation.explosionEffect(5, this.position.x - 85, this.position.y - 85, this.explosion);
-// if(animation.getAnimationStatus() && this.explosion){
-//  animation2.reset();
-// this.animationTwo = true;
-// }
-//  animation2.explosionEffect(5, this.position.x - 85, this.position.y - 85, this.animationTwo);
-//  this.explosion = false;
+
 }
 }

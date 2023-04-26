@@ -25,10 +25,10 @@ const monst = new Monsters();
 //Monsters
 const monsters = 
 [
-new Monsters(1, 100, 100 , 100, "invaderslevel1", 10, "orange", "none"),
-new Monsters( 2, 300, 100, 100, "invaderlevel2", 10, "green", "none"),
-new Monsters( 3, 500, 100, 100, "invaderlevel3", 10, "blue", "none"),
-new Monsters( 4, 700, 100, 100, "BOSS", 10, "red", "none")
+// new Monsters(1, 100, 100 , 100, "invaderslevel1", 10, "orange", "none"),
+// new Monsters( 2, 300, 100, 100, "invaderlevel2", 10, "green", "none"),
+ new Monsters( 3, 500, 100, 100, "invaderlevel3", 10, "blue", "sidebyside"),
+new Monsters( 4, 700, 100, 100, "BOSS", 10, "red", "sidebyside")
 ];
 
 
@@ -50,17 +50,16 @@ function buffer(){
     var animationTwo;
 var animationThree;
 //collison monsters and shots 
+ 
 
 for(let i = 0 ; i < monsters.length; i ++){
     monsters[i].updateMonster();
-    
+
     if(collision.collisionTouch(shot, monsters[i])){
-        monsters[i].setMonsterHealth(1); // set up the hit depend on the shot
+        monsters[i].setMonsterHealth(shot.m_damage); // set up the hit depend on the shot
         console.log(monsters[i].body.m_name + " ramina life =  " + monsters[i].getMonsterHealth());
         explosion = true;
-        monsters[i].collision_bool = true;
-       
-
+       monsters[i].collision_bool = true;
     }else{
         monsters[i].collision_bool = false;
     }

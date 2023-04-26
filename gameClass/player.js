@@ -84,7 +84,7 @@ lifeBar(){
 this.lifeBar();
 this.draw();
 thruster.setPlayersThruster(this.body.thruster, this.position.x - this.thruster_position_x, this.position.y + this.thruster_position_y, this.thruster_size, this.thruster_size);   
-shot.shotSelection(8, 50, 30);
+shot.shotSelection(8, 5, 30);
 this.playerDeath();
 
 playerDeathAnimation.explosionEffect(3, this.deathpositionX - 85, this.deathpositiony - 85)
