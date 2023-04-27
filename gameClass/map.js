@@ -30,7 +30,7 @@ getVelocity(){
         }
         
         update_backg(){
-            this.drawBackground(5)
+            this.drawBackground(20)
         }
 
 }

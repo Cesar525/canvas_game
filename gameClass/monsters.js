@@ -22,13 +22,15 @@ this.moveLeft = false;
 this.clearRect = false;
 this.collision_bool;
 this.monsterMovement = movements;
-this.explosion_dead = true;
+this.explosion_dead = false;
 this.explosion = false;
 this.health_total = health;
 //hit monster
 this.collision_posX;
 this.collision_posY;
 this.animationThree;
+this.deadposX;
+this.deadposY;
 
 
 }
@@ -125,7 +127,6 @@ monsterlifeBar(){
         if(Math.round((this.body.m_health / this.health_total) * 100) > 50){
            ctx.fillStyle = "white"; 
         }
-    console.log(Math.round((this.body.m_health / this.health_total) * 100));
     ctx.font = "15px Roboto Mono";
     ctx.fillText(this.body.m_name, this.position.x - 70, this.position.y - 15);
     ctx.fillText("HP: "+ this.body.m_health, this.position.x - 70, this.position.y + 15);
@@ -143,26 +144,32 @@ monsterDeath(){
         if(this.body.m_health == 0 ){
             this.clearRect = true;
             console.log(this.body.m_name + " is dead life i set to " + this.getMonsterHealth());
+            this.deadposX = this.position.x;
+            this.deadposY = this.position.y;
             this.position.x = NaN;
             this.position.y = NaN;
             this.collision_bool = false;
-            this.explosion_dead = true;
-            
+             this.explosion_dead = true;
+            return this.explosion_dead;
             
         }
     }
+    if(!this.collision_bool){
+
+        this.explosion_dead = false;
+    }
 }
 monsterClearDeath(){
-    explosion
+    this.explosion_dead = false;
 }
 
 updateMonster(){
-  
+  console.log(this.explosion_dead)
 this.monsterlifeBar();
 this.drawMonster();
-this.monsterDeath();
+
 this.movements("sidebyside");
 
-
+//this.monsterClearDeath();
 }
 }

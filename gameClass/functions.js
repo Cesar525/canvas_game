@@ -1,11 +1,22 @@
-function monsterHit(animationOne, animationTwoo ,col, posx_, posy_){
+function monsterHit(animationOne, animationTwoo ,col, posx_, posy_, hiteffect){
     var animationTwo;
-    animationOne.explosionEffect(5,  posx_ - 85, posy_ - 85, col);
+    animationOne.explosionEffect(hiteffect,  posx_ - 85, posy_ - 85, col);
     if(animationOne.getAnimationStatus() && col){
      animationTwoo.reset();
     animationTwo = true;
      }
-      animationTwoo.explosionEffect(5, posx_ - 85, posy_ - 85, animationTwo);
+      animationTwoo.explosionEffect(hiteffect, posx_ - 85, posy_ - 85, animationTwo);
+      
+}
+
+function monsterDeathExplosion(animationOne, animationTwoo ,col, posx_, posy_){
+    var animationTwo;
+    animationOne.explosionEffect(3,  posx_ - 85, posy_ - 85, col);
+    if(animationOne.getAnimationStatus() && col){
+     animationTwoo.reset();
+    animationTwo = true;
+     }
+      animationTwoo.explosionEffect(3, posx_ - 85, posy_ - 85, animationTwo);
       
 }
 
@@ -15,10 +26,10 @@ function collisionMonster(monsters){
         monsters.setMonsterHealth(shot.m_damage); // set up the hit depend on the shot
         console.log(monsters.body.m_name + " ramina life =  " + monsters.getMonsterHealth());
        monsters.collision_bool = true;
+       monsters.collision_posX  = monsters.position.x;
+      monsters.collision_posY = monsters.position.y;
     }else{
         monsters.collision_bool = false;
-        monsters.collision_posX;
-       monsters.collision_posY;
     }
 
    // bullet disapear collision

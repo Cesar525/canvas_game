@@ -82,7 +82,6 @@ lifeBar(){
            ctx.fillStyle = "white"; 
         }
    
-        console.log(Math.round((this.body.health / this.health_total) * 100));
         ctx.font = "15px Roboto Mono";
         ctx.fillText("Lvl:" + this.player_level, this.position.x - 70, this.position.y + 35);
 
