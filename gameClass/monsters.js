@@ -24,7 +24,7 @@ this.collision_bool;
 this.monsterMovement = movements;
 this.explosion_dead = true;
 this.explosion = false;
-
+this.health_total = health;
 //hit monster
 this.collision_posX;
 this.collision_posY;
@@ -110,32 +110,32 @@ resetColPos(){
     
 }
 monsterlifeBar(){
-    //color bas eon life    
+    //color bas eon life   
+ 
    ctx.globalCompositeOperation = "source-over";
-    if(this.body.m_health <= 50){
+    if(Math.round((this.body.m_health / this.health_total) * 100) <= 50){
         ctx.fillStyle = "orange";
     }
-        if(this.body.m_health <= 20){
+        if(Math.round((this.body.m_health / this.health_total) * 100) <= 20){
             ctx.fillStyle = "red";
         }
-        if(this.body.m_health <= 10){
+        if(Math.round((this.body.m_health / this.health_total) * 100) <= 10){
             ctx.fillStyle = " #720000";
         }
-        if(this.body.m_health > 50){
+        if(Math.round((this.body.m_health / this.health_total) * 100) > 50){
            ctx.fillStyle = "white"; 
         }
-    
+    console.log(Math.round((this.body.m_health / this.health_total) * 100));
     ctx.font = "15px Roboto Mono";
     ctx.fillText(this.body.m_name, this.position.x - 70, this.position.y - 15);
     ctx.fillText("HP: "+ this.body.m_health, this.position.x - 70, this.position.y + 15);
-    
-    
+  
     //background
     ctx.fillStyle = "red";
     ctx.fillRect(this.position.x - 70 , this.position.y - 10, 100, 9);
     //life
     ctx.fillStyle = "green";
-    ctx.fillRect(this.position.x - 70 , this.position.y - 10, this.body.m_health / 1, 9);
+    ctx.fillRect(this.position.x - 70 , this.position.y - 10, Math.round((this.body.m_health / this.health_total) * 100), 9);
    ctx.globalCompositeOperation = "source-over";
 }
 monsterDeath(){

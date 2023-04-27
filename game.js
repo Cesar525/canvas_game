@@ -14,7 +14,7 @@ const death = new Death();
 //game
 const playerDeathAnimation = new Animation();
 const collision = new Collision();
-const player = new Player(8);
+const player = new Player("Cesar", 123,  8, 500);
 
 const animation3 = new Animation();
 const thruster = new Thruster();
@@ -24,7 +24,7 @@ const monst = new Monsters();
 //Monsters
 
 const monsters = [
-new Monsters(1, 100, 100 , 100, "MONSTER 1", 10, "orange", "none"),
+new Monsters(1, 100, 100 , 500, "MONSTER 1", 10, "orange", "none"),
 new Monsters( 2, 300, 100, 100, "MONSTER 3", 10, "green", "none"),
 new Monsters( 3, 600, 100, 100, "MONSTER 3", 10, "blue", "none"),
 new Monsters( 4, 800, 100, 100, "MOSTER 4", 10, "red", "none"),

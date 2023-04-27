@@ -1,5 +1,5 @@
 class Player {
-    constructor(thruster_selection){
+    constructor(name, level, thruster_selection, get_health, ){
     this.position ={
         x:500,
         y:500
@@ -9,13 +9,14 @@ class Player {
         y:20  
     },
     this.body = {
-        health : 100,
+        health : get_health,
         energy : 100,
         thruster : thruster_selection
     }
     
-    this.width = 100
-    this.height = 100
+    this.width = 100;
+    this.height = 100;
+    this.health_total = get_health;
     this.thruster_size =150;
     this.thruster_animation = 0;
     this.thruster_position_x =  25;
@@ -23,10 +24,11 @@ class Player {
     this.clearRect = false;
     this.playerDead = false;
     this.guntype = 0;
-    this.m_name = "Player One";
+    this.m_name = name;
 this.deathpositionX;
 this.deathpositiony;
 this.showdeathexplosion;
+this.player_level = level;
 
     
 }
@@ -67,30 +69,33 @@ if(this.body.health == 0){
 lifeBar(){
     //const lifebar = new Image();
 
-      if(this.body.health <= 50){
+    if(Math.round((this.body.health / this.health_total) * 100) <= 50){
         ctx.fillStyle = "orange";
     }
-        if(this.body.health <= 20){
+        if(Math.round((this.body.health / this.health_total) * 100) <= 20){
             ctx.fillStyle = "red";
         }
-        if(this.body.health <= 10){
+        if(Math.round((this.body.health / this.health_total) * 100) <= 10){
             ctx.fillStyle = " #720000";
         }
-        if(this.body.health > 50){
+        if(Math.round((this.body.health / this.health_total) * 100) > 50){
            ctx.fillStyle = "white"; 
         }
-     
    
-    ctx.font = "15px Roboto Mono";
-    ctx.fillText(this.m_name, this.position.x - 70, this.position.y - 15);
-    ctx.fillText("LvL 2", this.position.x - 70, this.position.y + 13);
-    //background
-    ctx.fillStyle = "red";
-    ctx.fillRect(this.position.x - 70 , this.position.y - 10, 100, 9);
-    //life
-    ctx.fillStyle = "green";
-    ctx.fillRect(this.position.x - 70 , this.position.y - 10, this.body.health, 9);
-   
+        console.log(Math.round((this.body.health / this.health_total) * 100));
+        ctx.font = "15px Roboto Mono";
+        ctx.fillText("Lvl:" + this.player_level, this.position.x - 70, this.position.y + 35);
+
+        ctx.fillText(this.m_name, this.position.x - 70, this.position.y - 15);
+        ctx.fillText("HP: "+ this.body.health, this.position.x - 70, this.position.y + 15);
+      
+        
+        //background
+        ctx.fillStyle = "red";
+        ctx.fillRect(this.position.x - 70 , this.position.y - 10, 100, 9);
+        //life
+        ctx.fillStyle = "green";
+        ctx.fillRect(this.position.x - 70 , this.position.y - 10, Math.round((this.body.health / this.health_total) * 100), 9);
 }
 
 
