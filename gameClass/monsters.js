@@ -1,5 +1,6 @@
-class Monsters{
+class Monsters extends Animation{
 constructor( id, pos_x, pos_y, health, name, speed, color, movements){
+    super();
 this.position = {
     x : pos_x,
     y : pos_y
@@ -29,7 +30,9 @@ this.collision_posX;
 this.collision_posY;
 this.animationThree;
 
+
 }
+
 
 getHealth(){return this.body.health;};
 
@@ -48,6 +51,7 @@ drawMonster(){
 }
 getMonsterHealth(){
     return this.body.m_health;
+
 }
 setMonsterHealth(sethit){
 this.body.m_health -= sethit;
@@ -89,24 +93,51 @@ movements(move){
 }
 
 resetColPos(){
- this.collision_posX;
- this.collision_posY;
-this.collision_bool = false;
+
+    this.width = 100;
+    this.height = 100;
+    this.moveRight = true;
+    this.moveLeft = false;
+    this.clearRect = false;
+    this.collision_bool;
+    this.explosion_dead = true;
+    this.explosion = false;
+    
+    //hit monster
+    this.collision_posX;
+    this.collision_posY;
+    this.animationThree;
+    
 }
 monsterlifeBar(){
-    //const lifebar = new Image();
-    ctx.fillStyle = "white";
-    ctx.font = "30px";
+    //color bas eon life    
+   ctx.globalCompositeOperation = "source-over";
+    if(this.body.m_health <= 50){
+        ctx.fillStyle = "orange";
+    }
+        if(this.body.m_health <= 20){
+            ctx.fillStyle = "red";
+        }
+        if(this.body.m_health <= 10){
+            ctx.fillStyle = " #720000";
+        }
+        if(this.body.m_health > 50){
+           ctx.fillStyle = "white"; 
+        }
+    
+    ctx.font = "15px Roboto Mono";
     ctx.fillText(this.body.m_name, this.position.x - 70, this.position.y - 15);
-    ctx.fillText("Monster Type", this.position.x - 70, this.position.y + 10);
+    ctx.fillText("HP: "+ this.body.m_health, this.position.x - 70, this.position.y + 15);
+    
+    
     //background
     ctx.fillStyle = "red";
     ctx.fillRect(this.position.x - 70 , this.position.y - 10, 100, 9);
     //life
     ctx.fillStyle = "green";
     ctx.fillRect(this.position.x - 70 , this.position.y - 10, this.body.m_health / 1, 9);
+    ctx.globalCompositeOperation = "source-over";
 }
-
 monsterDeath(){
       if(this.collision_bool){
         if(this.body.m_health == 0 ){
@@ -121,10 +152,8 @@ monsterDeath(){
 }
 
 
-
 updateMonster(){
-
-    
+  
 this.monsterlifeBar();
 this.drawMonster();
 this.monsterDeath();

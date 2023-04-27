@@ -66,29 +66,44 @@ if(this.body.health == 0){
 
 lifeBar(){
     //const lifebar = new Image();
-    ctx.fillStyle = "white";
-    ctx.font = "30px";
+
+      if(this.body.health <= 50){
+        ctx.fillStyle = "orange";
+    }
+        if(this.body.health <= 20){
+            ctx.fillStyle = "red";
+        }
+        if(this.body.health <= 10){
+            ctx.fillStyle = " #720000";
+        }
+        if(this.body.health > 50){
+           ctx.fillStyle = "white"; 
+        }
+     
+   
+    ctx.font = "15px Roboto Mono";
     ctx.fillText(this.m_name, this.position.x - 70, this.position.y - 15);
-    ctx.fillText("LvL 2", this.position.x - 70, this.position.y + 10);
+    ctx.fillText("LvL 2", this.position.x - 70, this.position.y + 13);
     //background
     ctx.fillStyle = "red";
     ctx.fillRect(this.position.x - 70 , this.position.y - 10, 100, 9);
     //life
     ctx.fillStyle = "green";
     ctx.fillRect(this.position.x - 70 , this.position.y - 10, this.body.health, 9);
+   
 }
 
 
 
     update(){
-this.lifeBar();
+
 this.draw();
 thruster.setPlayersThruster(this.body.thruster, this.position.x - this.thruster_position_x, this.position.y + this.thruster_position_y, this.thruster_size, this.thruster_size);   
-shot.shotSelection(8, 5, 20);
+shot.shotSelection(8, 1, 30);
 this.playerDeath();
 
 playerDeathAnimation.explosionEffect(3, this.deathpositionX - 85, this.deathpositiony - 85)
-
+this.lifeBar();
 
 // player movements
 if(keys.right.pressed){

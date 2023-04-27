@@ -70,8 +70,10 @@ reset(){
     this.frameY = 0;
     this.gameFrame = 0;
     this.staggerFrame = 1;
-   
- 
+}
+resetPost(){
+this.position.x = NaN;
+this.position.y = NaN;
 }
 
 explosionEffect(effect, posx, posy, send, speed){
