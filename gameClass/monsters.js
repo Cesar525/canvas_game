@@ -99,8 +99,8 @@ resetColPos(){
     this.moveRight = true;
     this.moveLeft = false;
     this.clearRect = false;
-    this.collision_bool;
-    this.explosion_dead = true;
+    this.collision_bool =- false;
+    this.explosion_dead = false;
     this.explosion = false;
     
     //hit monster
@@ -136,7 +136,7 @@ monsterlifeBar(){
     //life
     ctx.fillStyle = "green";
     ctx.fillRect(this.position.x - 70 , this.position.y - 10, this.body.m_health / 1, 9);
-    ctx.globalCompositeOperation = "source-over";
+   ctx.globalCompositeOperation = "source-over";
 }
 monsterDeath(){
       if(this.collision_bool){
@@ -147,10 +147,14 @@ monsterDeath(){
             this.position.y = NaN;
             this.collision_bool = false;
             this.explosion_dead = true;
+            
+            
         }
     }
 }
-
+monsterClearDeath(){
+    explosion
+}
 
 updateMonster(){
   
@@ -158,7 +162,6 @@ this.monsterlifeBar();
 this.drawMonster();
 this.monsterDeath();
 this.movements("sidebyside");
-
 
 
 }

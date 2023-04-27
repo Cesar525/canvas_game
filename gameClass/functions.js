@@ -1,43 +1,48 @@
-function spritePageFunction(sprite_path, posx, posy, sprite_page_width, sprite_page_height, sprite_count_width, sprite_count_height, sprite_size_w, sprite_size_h, speed, show){
-    var shows = true;
-    var frameX = 0;
-    var frameY = 0;
-    var gameFrame = 0;
-    var staggerFrame = 1;
-    var show = true;
-    var show2 = true;
-  console.log(shows);
-    if(shows){
-        const animation = new Image();
-        if(speed){
-    staggerFrame = 20;
-        }
-    animation.src = sprite_path;
-    ctx.globalAlpha = 1;
-    
-    let m_width = sprite_page_width / sprite_count_width;
-    let m_height = sprite_page_height/ sprite_count_height;
-    let positionX = Math.floor(gameFrame/staggerFrame) % sprite_count_width;
-    let positionY = Math.floor(gameFrame/(staggerFrame * sprite_count_width)) % sprite_count_height;
+function monsterHit(animationOne, animationTwoo ,col, posx_, posy_){
+    var animationTwo;
+    animationOne.explosionEffect(5,  posx_ - 85, posy_ - 85, col);
+    if(animationOne.getAnimationStatus() && col){
+     animationTwoo.reset();
+    animationTwo = true;
+     }
+      animationTwoo.explosionEffect(5, posx_ - 85, posy_ - 85, animationTwo);
+      
+}
 
+function collisionMonster(monsters){
     
-    ctx.drawImage(animation, 1 * (sprite_size_w * frameX), 1 * (sprite_size_h * frameY), m_width, m_height, posx, posy, m_width + 20, m_height + 20 );
-    ctx.globalAlpha = 1;
-    frameX = positionX;
-    frameY = positionY;
-    
-    //console.log(this.frameY);
-    //console.log(this.frameX);
-    
-    //console.log( "Showing" + this.frameX);
-    
-    gameFrame++;
-    if(frameX >= sprite_count_width - 1 && frameY >= sprite_count_height - 1){
-       shows = false;
+    if(collision.collisionTouch(shot, monsters)){
+        monsters.setMonsterHealth(shot.m_damage); // set up the hit depend on the shot
+        console.log(monsters.body.m_name + " ramina life =  " + monsters.getMonsterHealth());
+       monsters.collision_bool = true;
     }else{
-       shows = true;
+        monsters.collision_bool = false;
+        monsters.collision_posX;
+       monsters.collision_posY;
     }
+
+   // bullet disapear collision
+    shot.counter += 1;
+    if(shot.counter > 5 && shot.clearRect){
+        //console.log("reset");
+        shot.clearRect = false;
+     
+   
+    }
+    //player collision
+    if(collision.collisionTouch(player, monsters)){
+        player.body.health -= 1; 
+        console.log("you have been damage your current life is  = " + player.body.health);
+        
     }
     
-    //console.log("animation respond " + shows);
-    }
+    //console.log(exp);
+if(collision.collisionTouch(shot, monsters)){
+shot.clearRect = true;
+//console.log("Bullet banished..");
+shot.position.x = -50;
+shot.position.y = - 50;
+}  
+
+
+}
