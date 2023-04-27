@@ -24,7 +24,7 @@ function collisionMonster(monsters){
     
     if(collision.collisionTouch(shot, monsters)){
         monsters.setMonsterHealth(shot.m_damage); // set up the hit depend on the shot
-        console.log(monsters.body.m_name + " ramina life =  " + monsters.getMonsterHealth());
+        console.log(monsters.body.m_name + " remaining life =  " + monsters.getMonsterHealth());
        monsters.collision_bool = true;
        monsters.collision_posX  = monsters.position.x;
       monsters.collision_posY = monsters.position.y;

@@ -164,7 +164,7 @@ monsterClearDeath(){
 }
 
 updateMonster(){
-  console.log(this.explosion_dead)
+
 this.monsterlifeBar();
 this.drawMonster();
 
