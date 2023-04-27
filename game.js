@@ -24,11 +24,11 @@ const monst = new Monsters();
 //Monsters
 
 const monsters = [
-new Monsters(1, 100, 100 , 500, "MONSTER 1", 10, "orange", "none"),
+new Monsters(1, 100, 100 , 100, "MONSTER 1", 10, "orange", "none"),
 new Monsters( 2, 300, 100, 100, "MONSTER 3", 10, "green", "none"),
 new Monsters( 3, 600, 100, 100, "MONSTER 3", 10, "blue", "none"),
 new Monsters( 4, 800, 100, 100, "MOSTER 4", 10, "red", "none"),
-new Monsters( 4, 300, 300, 100, "BOSS", 10, "red", "none")
+new Monsters( 4, 300, 300, 1000, "BOSS", 10, "red", "none")
 ];
 
 const animation = [];
