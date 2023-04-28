@@ -84,7 +84,7 @@ movements(move){
         this.moveLeft = false;
         this.moveRight = true;
     }
-    if(this.position.x > c.width - player.width){
+    if(this.position.x > c.width - this.width){
         this.moveLeft = true;
         this.moveRight = false;
     }
@@ -114,7 +114,7 @@ resetColPos(){
 monsterlifeBar(){
     //color bas eon life   
  
-   ctx.globalCompositeOperation = "source-over";
+   
     if(Math.round((this.body.m_health / this.health_total) * 100) <= 50){
         ctx.fillStyle = "orange";
     }
@@ -165,11 +165,12 @@ monsterClearDeath(){
 
 updateMonster(){
 
-this.monsterlifeBar();
+
 this.drawMonster();
 
 this.movements("sidebyside");
-
+ctx.globalCompositeOperation = "source-over";
+this.monsterlifeBar();
 //this.monsterClearDeath();
 }
 }

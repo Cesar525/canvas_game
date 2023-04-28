@@ -1,11 +1,13 @@
-function monsterHit(animationOne, animationTwoo ,col, posx_, posy_, hiteffect){
+function monsterHit(animationOne, animationTwoo ,col, posx_, posy_, hiteffect, speed){
     var animationTwo;
-    animationOne.explosionEffect(hiteffect,  posx_ - 85, posy_ - 85, col);
+    
+    animationOne.explosionEffect(hiteffect,  posx_ - 85, posy_ - 85, col, speed);
     if(animationOne.getAnimationStatus() && col){
      animationTwoo.reset();
     animationTwo = true;
      }
-      animationTwoo.explosionEffect(hiteffect, posx_ - 85, posy_ - 85, animationTwo);
+      animationTwoo.explosionEffect(hiteffect, posx_ - 85, posy_ - 85, animationTwo, speed);
+      
       
 }
 
@@ -20,7 +22,7 @@ function monsterDeathExplosion(animationOne, animationTwoo ,col, posx_, posy_){
       
 }
 
-function collisionMonster(monsters){
+function collisionMonster(monsters, player, shot){
     
     if(collision.collisionTouch(shot, monsters)){
         monsters.setMonsterHealth(shot.m_damage); // set up the hit depend on the shot

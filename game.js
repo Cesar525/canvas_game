@@ -14,25 +14,31 @@ const death = new Death();
 //game
 const playerDeathAnimation = new Animation();
 const collision = new Collision();
-const player = new Player("Player One", 123,  8, 500);
-
-
+// const player = new Player("Player One", 123,  8, 500);
 const thruster = new Thruster();
-const shot = new shots();
-const monst = new Monsters();
+
+
+
+
+
 
 //players
 const players = [
-    new Player("Player Two", 1230,  8, 500)
+    //CREATING A PLAYER Player(name, level, thruster_selection, get_health, energy, m_damage,  gunType, posx, posy, gun_speed)
+new Player("Player One", 1230,  6, 500, 500, 1, 3, 100, 500, 50),
+new Player("Player Two", 1230,  8, 300, 500, 1, 4, 300, 500, 50),
+new Player("Player Three", 1230,  7, 500, 500, 1, 5, 500, 500, 100),
+new Player("Player Four", 1230,  3, 300, 500, 1, 6, 700, 500, 50),
+new Player("Player Five", 1230,  3, 300, 500, 1, 6, 900, 500, 50),
 ]
 //Monsters
 
 const monsters = [
-new Monsters(1, 100, 100 , 100, "MONSTER 1", 10, "orange", "sidebyside"),
-new Monsters( 2, 300, 100, 100, "MONSTER 3", 10, "green", "none"),
-new Monsters( 3, 600, 100, 100, "MONSTER 3", 10, "blue", "none"),
-new Monsters( 4, 800, 100, 100, "MOSTER 4", 10, "red", "none"),
-new Monsters( 4, 300, 300, 1000, "BOSS", 10, "red", "none")
+new Monsters(1, 0, 100 , 100, "MONSTER 1", 10, "orange", "none"),
+new Monsters( 4, 200, 100, 1000, "BOSS", 10, "red", "none"),
+new Monsters( 3, 400, 100, 100, "MONSTER 3", 10, "blue", "none"),
+new Monsters( 4, 600, 100, 100, "MOSTER 4", 10, "red", "none"),
+new Monsters( 4, 800, 100, 1000, "BOSS", 10, "red", "none")
 ];
 
 const animation = [];
@@ -47,8 +53,13 @@ animation2.push(new Animation());
 monsterDeadAnimation.push(new Animation());
 monsterDeadAnimation2.push(new Animation());
 }
+//SHOTTING
+const guns = [
+]
+for(var player_loop = 0; player_loop < players.length; player_loop++){
+guns.push(new shots());
 
-
+}
 
 //BUFFERRRR
 function buffer(){
@@ -58,25 +69,28 @@ function buffer(){
  
     backg.update_backg(); // background image
      //adding objects
-    player.update();
+    // player.update();
     // shotting
-    shot.updateShot(); 
+    
+     
 
     //Monsters for loops
     for(var i = 0; i < monsters.length; i++){
-    collisionMonster(monsters[i]);
-   monsters[i].updateMonster();
-   monsterHit(animation[i], animation2[i], monsters[i].collision_bool, monsters[i].collision_posX, monsters[i].collision_posY , 5);
-   monsterDeathExplosion(monsterDeadAnimation[i], monsterDeadAnimation2[i],monsters[i].monsterDeath(), monsters[i].deadposX, monsters[i].deadposY);
-    }
+        for(var player_loop = 0; player_loop < players.length; player_loop++){
 
+            collisionMonster(monsters[i], players[player_loop], guns[player_loop]);
+       
+   monsters[i].updateMonster();
+   monsterHit(animation[i], animation2[i], monsters[i].collision_bool, monsters[i].collision_posX, monsters[i].collision_posY , 5, players.length);
+   monsterDeathExplosion(monsterDeadAnimation[i], monsterDeadAnimation2[i],monsters[i].monsterDeath(), monsters[i].deadposX, monsters[i].deadposY); }
+    }
 
 //############################################################
 //PLAYERS WORK
      //players for lopp
 for(var player_loop = 0; player_loop < players.length; player_loop++){
-    players[player_loop].update();
-
+    players[player_loop].update(player_loop);
+    guns[player_loop].updateShot();
     // player movements
 if(keys.right.pressed){
     players[player_loop].position.x += players[player_loop].velocity.x
@@ -96,7 +110,7 @@ if(true){
 
 
 // player need to stay inside the canvas
-if(players[player_loop].position.x + players[player_loop].velocity.x > c.width - player.width + players[player_loop].velocity.x){
+if(players[player_loop].position.x + players[player_loop].velocity.x > c.width - players[player_loop].width + players[player_loop].velocity.x){
 
 players[player_loop].position.x = c.width - players[player_loop].width
 }

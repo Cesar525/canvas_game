@@ -1,8 +1,8 @@
 class shots{
     constructor(){
     this.position = {
-        x : 0, //player.position.x + 25,
-        y : 0 //player.position.y
+        x :  -100,
+        y : -100
     }
     this.velocity = {
         x : 20,
@@ -27,11 +27,9 @@ class shots{
     9 : "assets/shots/bean_9.png",
     10 : "assets/shots/bean_10.png"
     }
-
     }
 
-
-shotSelection(select_shot, damage, speed){
+shotSelection(player,select_shot, damage, speed){
 if(select_shot && damage && speed ){
    if(!this.clearRect){
     this.velocity.x = speed;
