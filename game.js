@@ -34,11 +34,11 @@ new Player("Player One", 1230,  6, 100, 500, 1, 3, 100, 500, 50),
 //Monsters
 
 const monsters = [
-new Monsters(1, 0, 100 , 100, "MONSTER 1", 10, "orange", "none"),
-new Monsters( 4, 200, 100, 1000, "BOSS", 10, "red", "none"),
-new Monsters( 3, 400, 100, 100, "MONSTER 3", 10, "blue", "none"),
-new Monsters( 4, 600, 100, 100, "MOSTER 4", 10, "red", "none"),
-new Monsters( 4, 800, 100, 1000, "BOSS", 10, "red", "none")
+// new Monsters(1, 0, 100 , 100, "MONSTER 1", 10, "orange", "none", 100 , 500),
+// new Monsters( 4, 200, 100, 1000, "BOSS", 10, "red", "none", 100 , 100),
+// new Monsters( 3, 400, 100, 100, "MONSTER 3", 10, "blue", "none", 100 , 100),
+// new Monsters( 4, 600, 100, 100, "MOSTER 4", 10, "red", "none", 100 , 100),
+new Monsters( 4, 800, 100, 1000, "BOSS", 10, "red", "none", 500 ,500)
 ];
 
 const animation = [];

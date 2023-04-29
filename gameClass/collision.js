@@ -15,7 +15,7 @@ collisionTouch(obj1, obj2){
     var monster_posx1 = obj2.position.x;
     var monster_posx2 = obj2.position.x + obj2.width; 
     var monsterposty1 = obj2.position.y;
-    var monsterposty2 = obj2.position.y + obj2.width;
+    var monsterposty2 = obj2.position.y + obj2.height;
     var touch_x = false;
     var touch_y = false;
     if(player_posx1 <= monster_posx2 && player_posx1 >= monster_posx1 || player_posx2 <= monster_posx2 && player_posx2 >= monster_posx1){

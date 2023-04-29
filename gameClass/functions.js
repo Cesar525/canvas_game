@@ -29,7 +29,7 @@ function playerDeathExplosion(animationOne, animationTwoo ,col, posx_, posy_){
      animationTwoo.reset();
     animationTwo = true;
      }
-      animationTwoo.explosionEffect(3, posx_ - 85, posy_ - 85, animationTwo);
+      animationTwoo.explosionEffect(2, posx_ - 85, posy_ - 85, animationTwo);
       
 }
 

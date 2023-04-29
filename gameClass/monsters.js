@@ -1,5 +1,5 @@
 class Monsters extends Animation{
-constructor( id, pos_x, pos_y, health, name, speed, color, movements){
+constructor( id, pos_x, pos_y, health, name, speed, color, movements, s_width, s_height){
     super();
 this.position = {
     x : pos_x,
@@ -15,8 +15,8 @@ this.body = {
 }
 this.monster_color = color
 this.monster_id = id
-this.width = 100;
-this.height = 100;
+this.width = s_width;
+this.height = s_height;
 this.moveRight = true;
 this.moveLeft = false;
 this.clearRect = false;
