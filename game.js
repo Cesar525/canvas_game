@@ -25,11 +25,11 @@ const thruster = new Thruster();
 //players
 const players = [
     //CREATING A PLAYER Player(name, level, thruster_selection, get_health, energy, m_damage,  gunType, posx, posy, gun_speed)
-new Player("Player One", 1230,  6, 500, 500, 1, 3, 100, 500, 50),
-new Player("Player Two", 1230,  8, 300, 500, 1, 4, 300, 500, 50),
-new Player("Player Three", 1230,  7, 500, 500, 1, 5, 500, 500, 100),
-new Player("Player Four", 1230,  3, 300, 500, 1, 6, 700, 500, 50),
-new Player("Player Five", 1230,  3, 300, 500, 1, 6, 900, 500, 50),
+new Player("Player One", 1230,  6, 100, 500, 1, 3, 100, 500, 50),
+// new Player("Player Two", 1230,  8, 300, 500, 1, 4, 300, 500, 50),
+// new Player("Player Three", 1230,  7, 500, 500, 1, 5, 500, 500, 100),
+// new Player("Player Four", 1230,  3, 300, 500, 1, 6, 700, 500, 50),
+// new Player("Player Five", 1230,  3, 300, 500, 1, 6, 900, 500, 50),
 ]
 //Monsters
 
@@ -45,6 +45,9 @@ const animation = [];
 const animation2 = [];
 const monsterDeadAnimation = [];
 const monsterDeadAnimation2 = [];
+const playerDeadAnimation = [];
+const playerDeadAnimation2 = [];
+
 
 //Monsters Animation for loop
 for(var i = 0; i < monsters.length + 1; i++){
@@ -52,13 +55,15 @@ animation.push(new Animation());
 animation2.push(new Animation());
 monsterDeadAnimation.push(new Animation());
 monsterDeadAnimation2.push(new Animation());
+
 }
 //SHOTTING
 const guns = [
 ]
 for(var player_loop = 0; player_loop < players.length; player_loop++){
 guns.push(new shots());
-
+playerDeadAnimation.push(new Animation());
+playerDeadAnimation2.push(new Animation());
 }
 
 //BUFFERRRR
@@ -79,7 +84,7 @@ function buffer(){
         for(var player_loop = 0; player_loop < players.length; player_loop++){
 
             collisionMonster(monsters[i], players[player_loop], guns[player_loop]);
-       
+            
    monsters[i].updateMonster();
    monsterHit(animation[i], animation2[i], monsters[i].collision_bool, monsters[i].collision_posX, monsters[i].collision_posY , 5, players.length);
    monsterDeathExplosion(monsterDeadAnimation[i], monsterDeadAnimation2[i],monsters[i].monsterDeath(), monsters[i].deadposX, monsters[i].deadposY); }
@@ -89,6 +94,7 @@ function buffer(){
 //PLAYERS WORK
      //players for lopp
 for(var player_loop = 0; player_loop < players.length; player_loop++){
+    playerDeathExplosion(playerDeadAnimation[player_loop], playerDeadAnimation2[player_loop], players[player_loop].playerOnDeath(),players[player_loop].deathpositionX, players[player_loop].deathpositiony);
     players[player_loop].update(player_loop);
     guns[player_loop].updateShot();
     // player movements

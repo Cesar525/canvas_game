@@ -54,17 +54,18 @@ setPlayerVelocity(velocity){
     this.velocity.y = velocity;
 }
 
-playerDeath(){
+playerOnDeath(){
     if(!this.playerDead){
 if(this.body.health == 0){
     console.log("player is dead.");
     this.deathpositionX =  this.position.x;
     this.deathpositiony = this.position.y;
+    this.playerDead = true;
     
     this.position.x = NaN;
     this.position.y = NaN;
     this.clearRect = true;
-    this.playerDead = true;
+    return this.playerDead;
 }
 }
 }
@@ -107,7 +108,7 @@ lifeBar(){
 this.draw();
 thruster.setPlayersThruster(this.body.thruster, this.position.x - this.thruster_position_x, this.position.y + this.thruster_position_y, this.thruster_size, this.thruster_size);   
 guns[loop].shotSelection(players[loop],this.body.m_gun_type, this.body.m_damage, this.body.m_gun_speed);
-this.playerDeath();
+this.playerOnDeath();
 
 playerDeathAnimation.explosionEffect(3, this.deathpositionX - 85, this.deathpositiony - 85)
 ctx.globalCompositeOperation = "source-over";
