@@ -13,6 +13,8 @@ class shots{
     this.height = 100;
     this.clearRect = false;
     this.collision_bool = true;
+    this.collision_posx;
+    this.collision_posy;
     this.counter = 0;
     // here we add all guns images sprites
     this.shotImages = {
@@ -50,10 +52,11 @@ this.m_damage = damage
     this.position.y = player.position.y;
     this.position.x =  25 + player.position.x;
             }
-    
+            
+        }
+        
     }
 
-}
 }
 shotDirection(direction){
   this.position.y -= this.velocity.y;  

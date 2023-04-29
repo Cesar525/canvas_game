@@ -46,16 +46,16 @@ this.frameY = positionY;
 //console.log("X Frames = " + this.frameX);
 
 //console.log( "Showing" + this.frameX);
-
 this.gameFrame += 1;
+
 if(this.frameX >= sprite_count_width - 1 && this.frameY >= sprite_count_height - 1){
-   this.show = false;
-   this.reset();
-  // console.log(" Y Frame SET = " + this.frameY);
-//console.log("X Frames SET = " + this.frameX);
-this.onAnimation = false;
+    this.show = false;
+    this.reset();
+    // console.log(" Y Frame SET = " + this.frameY);
+    //console.log("X Frames SET = " + this.frameX);
+    this.onAnimation = false;
 }else{
-   return this.onAnimation;
+    return this.onAnimation;
 }
 }
 
@@ -107,15 +107,21 @@ break;
 }
 }
 
+sparks(){
+const sparks = new Image();
+
+const sparksOne = [
+sparks.src = "assets/sparks/MetallicHit01/MetallicHit010000.png"
+]
+ctx.drawImage(sparksOne[0], 100,100, 100, 100);
+
+}
+
+
+
 
 updateAnimation(){   
-
-
-// animation.explosionEffect(5, monsters[1].position.x - 85, monsters[1].position.y - 85, true, 5);
-// animation.explosionEffect(5, monsters[1].position.x, monsters[1].position.y - 85, true, 6);
-// animation.explosionEffect(5, monsters[1].position.x, monsters[1].position.y - 40, true, 4);
-// animation.explosionEffect(5, monsters[1].position.x, monsters[1].position.y - 40, true, 3);
-
+this.sparks();
 }
 
 

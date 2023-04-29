@@ -7,8 +7,7 @@ function monsterHit(animationOne, animationTwoo ,col, posx_, posy_, hiteffect, s
     animationTwo = true;
      }
       animationTwoo.explosionEffect(hiteffect, posx_ - 85, posy_ - 85, animationTwo, speed);
-      
-      
+         
 }
 
 function monsterDeathExplosion(animationOne, animationTwoo ,col, posx_, posy_){
@@ -41,6 +40,8 @@ function collisionMonster(monsters, player, shot){
        monsters.collision_bool = true;
        monsters.collision_posX  = monsters.position.x;
       monsters.collision_posY = monsters.position.y;
+      shot.collision_posX = shot.position.x;
+      shot.collision_posY = shot.position.y;
     }else{
         monsters.collision_bool = false;
     }
