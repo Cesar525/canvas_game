@@ -76,6 +76,32 @@ this.position.x = NaN;
 this.position.y = NaN;
 }
 
+monsterHit(animationOne, animationTwoo ,col, posx_, posy_, hiteffect, speed, shot){
+    var animationTwo;
+    
+    animationOne.explosionEffect(hiteffect,  posx_ - 85, posy_ - 85, col, speed);
+    if(animationOne.getAnimationStatus() && col){
+     animationTwoo.reset();
+    animationTwo = true;
+     }
+      animationTwoo.explosionEffect(hiteffect, posx_ - 85, posy_ - 85, animationTwo, speed);
+      if(!(animationOne.getAnimationStatus() && animationTwoo.getAnimationStatus())){
+        shot.clearCollisionShot();
+      } 
+}
+
+monsterDeathExplosion(animationOne, animationTwoo ,col, posx_, posy_){
+    var animationTwo;
+    animationOne.explosionEffect(3,  posx_ - 85, posy_ - 85, col);
+    if(animationOne.getAnimationStatus() && col){
+     animationTwoo.reset();
+    animationTwo = true;
+     }
+      animationTwoo.explosionEffect(3, posx_ - 85, posy_ - 85, animationTwo);
+      
+}
+
+
 explosionEffect(effect, posx, posy, send, speed){
 switch(effect){
 case 1 :

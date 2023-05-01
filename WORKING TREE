@@ -5,4 +5,4 @@ pass:525002cc
 
 
 working on -
-explosion should be made where the bullet hits. not in the center of the monster.
+clear collision after hitting monster.
