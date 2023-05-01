@@ -111,7 +111,7 @@ guns[loop].shotSelection(players[loop],this.body.m_gun_type, this.body.m_damage,
 this.playerOnDeath();
 
 playerDeathAnimation.explosionEffect(3, this.deathpositionX - 85, this.deathpositiony - 85)
-ctx.globalCompositeOperation = "source-over";
+
 this.lifeBar();
 
 
