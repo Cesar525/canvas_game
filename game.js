@@ -26,20 +26,20 @@ const thruster = new Thruster();
 const players = [
     //CREATING A PLAYER Player(name, level, thruster_selection, get_health, energy, m_damage,  gunType, posx, posy, gun_speed)
 new Player("Player One", 1230,  6, 100, 500, 1, 3, 100, 500, 50),
-//  new Player("Player Two", 1230,  8, 300, 500, 1, 4, 300, 500, 50),
-//  new Player("Player Three", 1230,  7, 500, 500, 1, 5, 500, 500, 100),
-//  new Player("Player Four", 1230,  3, 300, 500, 1, 6, 700, 500, 50),
-// new Player("Player Five", 1230,  3, 300, 500, 1, 6, 900, 500, 50),
+ new Player("Player Two", 1230,  8, 300, 500, 1, 4, 300, 500, 50),
+ new Player("Player Three", 1230,  7, 500, 500, 1, 5, 500, 500, 100),
+ new Player("Player Four", 1230,  3, 300, 500, 1, 6, 700, 500, 50),
+new Player("Player Five", 1230,  3, 300, 500, 1, 6, 900, 500, 50),
 ]
 //Monsters
 const sparks = new Animation();
 
 const monsters = [
-new Monsters(1, 0, 100 , 10, "invaderOne", 10, "orange", "none", 100 , 100),
-new Monsters( 4, 200, 100, 1000, "BOSS", 10, "red", "none", 100 , 100),
-new Monsters( 3, 400, 100, 100, "MONSTER 3", 10, "blue", "none", 100 , 100),
-new Monsters( 4, 600, 100, 100, "MOSTER 4", 10, "red", "none", 100 , 100),
-// new Monsters( 4, 800, 100, 1000, "BOSS", 10, "red", "none", 500 ,500)
+// new Monsters(1, 0, 100 , 10, "invaderOne", 10, "orange", "none", 100 , 100),
+// new Monsters( 4, 200, 100, 1000, "BOSS", 10, "red", "none", 100 , 100),
+// new Monsters( 3, 400, 100, 100, "MONSTER 3", 10, "blue", "none", 100 , 100),
+// new Monsters( 4, 600, 100, 100, "MOSTER 4", 10, "red", "none", 100 , 100),
+new Monsters( 4, 800, 100, 1000, "BOSS", 10, "red", "none", 500 ,500)
 ];
 
 const animation = [];
@@ -136,7 +136,7 @@ players[player_loop].position.y =  0
 
 }
 
-sparks.sparks();
+//sparks.updateAnimation();
 
 } 
 

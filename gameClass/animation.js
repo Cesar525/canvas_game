@@ -121,7 +121,7 @@ ctx.drawImage(sparksOne[0], 100,100, 100, 100);
 
 
 updateAnimation(){   
-this.sparks();
+//this.sparks();
 }
 
 
