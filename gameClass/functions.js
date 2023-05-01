@@ -10,16 +10,16 @@
        
 // }
 
-// function monsterDeathExplosion(animationOne, animationTwoo ,col, posx_, posy_){
-//     var animationTwo;
-//     animationOne.explosionEffect(3,  posx_ - 85, posy_ - 85, col);
-//     if(animationOne.getAnimationStatus() && col){
-//      animationTwoo.reset();
-//     animationTwo = true;
-//      }
-//       animationTwoo.explosionEffect(3, posx_ - 85, posy_ - 85, animationTwo);
+function monsterDeathExplosion(animationOne, animationTwoo ,col, posx_, posy_){
+    var animationTwo;
+    animationOne.explosionEffect(3,  posx_ - 85, posy_ - 85, col);
+    if(animationOne.getAnimationStatus() && col){
+     animationTwoo.reset();
+    animationTwo = true;
+     }
+      animationTwoo.explosionEffect(3, posx_ - 85, posy_ - 85, animationTwo);
       
-// }
+}
 
 function playerDeathExplosion(animationOne, animationTwoo ,col, posx_, posy_){
     var animationTwo;

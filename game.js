@@ -49,7 +49,7 @@ const monsterDeadAnimation2 = [];
 const playerDeadAnimation = [];
 const playerDeadAnimation2 = [];
 const animationExplosionHit = [];
-const animationExplosionDeath = [];
+
 
 //Monsters Animation for loop
 for(var i = 0; i < monsters.length + 1; i++){
@@ -57,7 +57,7 @@ animation.push(new Animation());
 animation2.push(new Animation());
 monsterDeadAnimation.push(new Animation());
 monsterDeadAnimation2.push(new Animation());
-animationExplosionDeath.push(new Animation());
+
 
 
 }
@@ -90,8 +90,8 @@ function buffer(){
             count_player_loop = player_loop;
             ctx.globalCompositeOperation = "source-over";
             collisionMonster(monsters[i], players[player_loop], guns[player_loop]);
-            animationExplosionDeath[i].monsterDeathExplosion(monsterDeadAnimation[i], monsterDeadAnimation2[i],monsters[i].monsterDeath(), monsters[i].deadposX, monsters[i].deadposY); 
             monsters[i].updateMonster();
+            monsterDeathExplosion(monsterDeadAnimation[i], monsterDeadAnimation2[i],monsters[i].monsterDeath(), monsters[i].deadposX, monsters[i].deadposY); 
             animationExplosionHit[player_loop].monsterHit(animation[i], animation2[i], monsters[i].collision_bool, guns[player_loop].collision_posX, guns[player_loop].collision_posY , 5, players.length, guns[player_loop]);
        
         }

@@ -5,4 +5,4 @@ pass:525002cc
 
 
 working on -
-clear collision after hitting monster.
+There is a problem with bullets and collision when there is two players.
