@@ -32,28 +32,28 @@ function playerDeathExplosion(animationOne, animationTwoo ,col, posx_, posy_){
       
 }
 
-function collisionMonster(collision,monsters, player, shot){
-    
+function collisionMonster(monsters, player, shot){
+   // collision monster to shot
     if(collision.collisionTouch(shot, monsters)){
         monsters.setMonsterHealth(shot.m_damage); // set up the hit depend on the shot
-        console.log(monsters.body.m_name + " remaining life =  " + monsters.getMonsterHealth());
+      //  console.log(monsters.body.m_name + " remaining life =  " + monsters.getMonsterHealth());
        monsters.collision_bool = true;
        monsters.collision_posX  = monsters.position.x;
       monsters.collision_posY = monsters.position.y;
-       shot.collision_posX = shot.position.x;
-       shot.collision_posY = shot.position.y;
+      
+   shot.getCollisionPosition(shot.position.x, shot.position.y);
     }else{
         monsters.collision_bool = false;
-      
+      shot.clearCollisionShot();
     }
+//console.log("bool Player " + player.m_name + " == " + monsters.collision_bool);
 
    //bullet disapear collision
     shot.counter += 1;
     if(shot.counter > 5 && shot.clearRect){
-        console.log("reset");
+      //  console.log("reset");
         shot.clearRect = false;
-        shot.collision_posX;
-        shot.collision_posY;
+       
    
     }
    // player collision

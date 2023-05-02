@@ -140,6 +140,7 @@ monsterlifeBar(){
    ctx.globalCompositeOperation = "source-over";
 }
 monsterDeath(){
+    console.log(this.collision_bool);
       if(this.collision_bool){
         if(this.body.m_health == 0 ){
             this.clearRect = true;
@@ -171,6 +172,7 @@ this.drawMonster();
 this.movements("sidebyside");
 ctx.globalCompositeOperation = "source-over";
 this.monsterlifeBar();
+
 //this.monsterClearDeath();
 }
 }

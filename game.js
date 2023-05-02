@@ -50,7 +50,7 @@ const animationExplosionHit = [];
 
 const animation = [];
 const animation2 = [];
-const collision = [];
+const collision = new Collision();
 
 //Monsters Animation for loop
 for(var i = 0; i < monsters.length + 1; i++){
@@ -58,10 +58,8 @@ animation.push(new Animation());
 animation2.push(new Animation());
 monsterDeadAnimation.push(new Animation());
 monsterDeadAnimation2.push(new Animation());
-collision.push(new Collision());
-
-
 }
+
 //SHOTTING
 const guns = [
 ]
@@ -92,9 +90,9 @@ function buffer(){
 
 
         for(var player_loop = 0; player_loop < players.length; player_loop++){
-            count_player_loop = player_loop;
-            // ctx.globalCompositeOperation = "source-over";
-            collisionMonster(collision[i], monsters[i], players[player_loop], guns[player_loop]);
+            
+           
+            collisionMonster(monsters[i], players[player_loop], guns[player_loop]);
             monsterHit(animation[i], animation2[i], monsters[i].collision_bool, guns[player_loop].collision_posX, guns[player_loop].collision_posY , 6, players.length, guns[player_loop]);
             
             
@@ -103,9 +101,6 @@ function buffer(){
         
     }
     
-    for(var t = 0; t < monsters.length; t++){
-        for(var player_loop = 0; player_loop < players.length; player_loop++){
-        }}
      
         //############################################################
 //PLAYERS WORK
