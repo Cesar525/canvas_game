@@ -1,9 +1,9 @@
 var c = document.getElementById("canvasone");
 var ctx = c.getContext("2d");
 
-c.width = 2000
-c.height = 2000
-const gravity = 20
+c.width = 1000
+c.height = 1000
+const gravity = 10;
 
 
 
@@ -13,7 +13,7 @@ const shield = new Shields();
 const death = new Death();
 //game
 const playerDeathAnimation = new Animation();
-const collision = new Collision();
+
 // const player = new Player("Player One", 123,  8, 500);
 const thruster = new Thruster();
 
@@ -26,7 +26,7 @@ const thruster = new Thruster();
 const players = [
     //CREATING A PLAYER Player(name, level, thruster_selection, get_health, energy, m_damage,  gunType, posx, posy, gun_speed)
 new Player("Player One", 1230,  6, 100, 500, 10, 3, 100, 500, 50),
- new Player("Player Two", 1230,  8, 300, 500, 1, 4, 300, 500, 10),
+  new Player("Player Two", 1230,  8, 600, 500, 1, 4, 600, 500, 10),
 //  new Player("Player Three", 1230,  7, 500, 500, 1, 5, 500, 500, 100),
 //  new Player("Player Four", 1230,  3, 300, 500, 1, 6, 700, 500, 50),
 // new Player("Player Five", 1230,  3, 300, 500, 1, 6, 900, 500, 50),
@@ -35,21 +35,22 @@ new Player("Player One", 1230,  6, 100, 500, 10, 3, 100, 500, 50),
 const sparks = new Animation();
 
 const monsters = [
-new Monsters(1, 100, 100 , 10, "invaderOne", 10, "orange", "none", 100 , 100),
-new Monsters( 4, 300, 100, 1000, "BOSS", 10, "red", "none", 100 , 100),
-new Monsters( 3, 700, 100, 100, "MONSTER 3", 10, "blue", "none", 100 , 100),
-new Monsters( 4, 800, 100, 100, "MOSTER 4", 10, "red", "none", 100 , 100),
-new Monsters( 4, 800, 100, 1000, "BOSS", 10, "red", "none", 500 ,500)
+new Monsters(1, 100, 100 , 1000, "invaderOne", 10, "orange", "none", 700 , 100),
+// new Monsters( 4, 300, 100, 1000, "BOSS", 10, "red", "none", 100 , 100),
+// new Monsters( 3, 400, 100, 1000, "MONSTER 3", 10, "blue", "none", 100 , 100),
+// new Monsters( 4, 800, 100, 100, "MOSTER 4", 10, "red", "none", 100 , 100),
+// new Monsters( 4, 800, 100, 1000, "BOSS", 10, "red", "none", 500 ,500)
 ];
 
-const animation = [];
-const animation2 = [];
 const monsterDeadAnimation = [];
 const monsterDeadAnimation2 = [];
 const playerDeadAnimation = [];
 const playerDeadAnimation2 = [];
 const animationExplosionHit = [];
 
+const animation = [];
+const animation2 = [];
+const collision = [];
 
 //Monsters Animation for loop
 for(var i = 0; i < monsters.length + 1; i++){
@@ -57,7 +58,7 @@ animation.push(new Animation());
 animation2.push(new Animation());
 monsterDeadAnimation.push(new Animation());
 monsterDeadAnimation2.push(new Animation());
-
+collision.push(new Collision());
 
 
 }
@@ -86,19 +87,25 @@ function buffer(){
 
     //Monsters for loops for collision and monster updates
     for(var i = 0; i < monsters.length; i++){
+        monsters[i].updateMonster();
+        monsterDeathExplosion(monsterDeadAnimation[i], monsterDeadAnimation2[i],monsters[i].monsterDeath(), monsters[i].deadposX, monsters[i].deadposY); 
+
+
         for(var player_loop = 0; player_loop < players.length; player_loop++){
             count_player_loop = player_loop;
-            ctx.globalCompositeOperation = "source-over";
-            collisionMonster(monsters[i], players[player_loop], guns[player_loop]);
-            monsters[i].updateMonster();
-            monsterDeathExplosion(monsterDeadAnimation[i], monsterDeadAnimation2[i],monsters[i].monsterDeath(), monsters[i].deadposX, monsters[i].deadposY); 
-            animationExplosionHit[player_loop].monsterHit(animation[i], animation2[i], monsters[i].collision_bool, guns[player_loop].collision_posX, guns[player_loop].collision_posY , 5, players.length, guns[player_loop]);
-       
+            // ctx.globalCompositeOperation = "source-over";
+            collisionMonster(collision[i], monsters[i], players[player_loop], guns[player_loop]);
+            monsterHit(animation[i], animation2[i], monsters[i].collision_bool, guns[player_loop].collision_posX, guns[player_loop].collision_posY , 6, players.length, guns[player_loop]);
+            
+            
+            //    guns[player_loop].collision_posY += 2;
         }
         
     }
     
-
+    for(var t = 0; t < monsters.length; t++){
+        for(var player_loop = 0; player_loop < players.length; player_loop++){
+        }}
      
         //############################################################
 //PLAYERS WORK

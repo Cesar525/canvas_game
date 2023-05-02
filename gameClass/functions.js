@@ -1,14 +1,14 @@
-// function monsterHit(animationOne, animationTwoo ,col, posx_, posy_, hiteffect, speed, shot){
-//     var animationTwo;
+function monsterHit(animationOne, animationTwoo ,col, posx_, posy_, hiteffect, speed, shot){
+    var animationTwo;
     
-//     animationOne.explosionEffect(hiteffect,  posx_ - 85, posy_ - 85, col, speed);
-//     if(animationOne.getAnimationStatus() && col){
-//      animationTwoo.reset();
-//     animationTwo = true;
-//      }
-//       animationTwoo.explosionEffect(hiteffect, posx_ - 85, posy_ - 85, animationTwo, speed);
+    animationOne.explosionEffect(hiteffect,  posx_ - 85, posy_ - 85, col, speed);
+    if(animationOne.getAnimationStatus() && col){
+     animationTwoo.reset();
+    animationTwo = true;
+     }
+      animationTwoo.explosionEffect(hiteffect, posx_ - 85, posy_ - 85, animationTwo, speed);
        
-// }
+}
 
 function monsterDeathExplosion(animationOne, animationTwoo ,col, posx_, posy_){
     var animationTwo;
@@ -32,7 +32,7 @@ function playerDeathExplosion(animationOne, animationTwoo ,col, posx_, posy_){
       
 }
 
-function collisionMonster(monsters, player, shot){
+function collisionMonster(collision,monsters, player, shot){
     
     if(collision.collisionTouch(shot, monsters)){
         monsters.setMonsterHealth(shot.m_damage); // set up the hit depend on the shot
@@ -40,11 +40,11 @@ function collisionMonster(monsters, player, shot){
        monsters.collision_bool = true;
        monsters.collision_posX  = monsters.position.x;
       monsters.collision_posY = monsters.position.y;
-      shot.collision_posX = shot.position.x;
-      shot.collision_posY = shot.position.y;
+       shot.collision_posX = shot.position.x;
+       shot.collision_posY = shot.position.y;
     }else{
         monsters.collision_bool = false;
-        
+      
     }
 
    //bullet disapear collision
@@ -52,7 +52,8 @@ function collisionMonster(monsters, player, shot){
     if(shot.counter > 5 && shot.clearRect){
         console.log("reset");
         shot.clearRect = false;
-     
+        shot.collision_posX;
+        shot.collision_posY;
    
     }
    // player collision

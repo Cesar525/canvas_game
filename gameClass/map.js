@@ -5,8 +5,8 @@ class Background{
         y : 0
     },
     this.velocity = {
-        x : 10,
-        y : 10
+        x : 2,
+        y : 2
     }
     this.countingBackground  = 0;
     }
@@ -30,7 +30,7 @@ getVelocity(){
         }
         
         update_backg(){
-            this.drawBackground(20)
+            this.drawBackground(this.velocity.y);
         }
 
 }
