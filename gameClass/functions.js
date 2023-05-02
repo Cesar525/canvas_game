@@ -31,13 +31,17 @@ function collisionTouch(obj1, obj2){
 function monsterHit(animationOne, animationTwoo ,col, posx_, posy_, hiteffect, speed, shot){
     var animationTwo;
     
-    animationOne.explosionEffect(hiteffect,  posx_ - 85, posy_ - 85, col, speed);
+    animationOne.explosionEffect(hiteffect,  posx_ - 100, posy_ - 100, col, speed);
     if(animationOne.getAnimationStatus() && col){
      animationTwoo.reset();
     animationTwo = true;
      }
-      animationTwoo.explosionEffect(hiteffect, posx_ - 85, posy_ - 85, animationTwo, speed);
+      animationTwoo.explosionEffect(hiteffect, posx_ - 100, posy_ - 100, animationTwo, speed);
        
+if( animationOne.getAnimationStatus() == false && animationTwoo.getAnimationStatus() == false){
+  shot.clearCollisionShot();
+}
+
 }
 
 function monsterDeathExplosion(animationOne, animationTwoo ,col, posx_, posy_){
@@ -74,7 +78,7 @@ function collisionMonster(monsters, player, shot){
    shot.getCollisionPosition(shot.position.x, shot.position.y);
     }else{
         monsters.collision_bool = false;
-      shot.clearCollisionShot();
+    
     }
 //console.log("bool Player " + player.m_name + " == " + monsters.collision_bool);
 

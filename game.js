@@ -26,10 +26,6 @@ const thruster = new Thruster();
 const players = [
     //CREATING A PLAYER Player(name, level, thruster_selection, get_health, energy, m_damage,  gunType, posx, posy, gun_speed)
 new Player("Player One", 1230,  6, 100, 500, 1, 3, 100, 500, 5),
-  new Player("Player Two", 1230,  8, 600, 500, 1, 4, 600, 500, 10),
-//  new Player("Player Three", 1230,  7, 500, 500, 1, 5, 500, 500, 100),
-//  new Player("Player Four", 1230,  3, 300, 500, 1, 6, 700, 500, 50),
-// new Player("Player Five", 1230,  3, 300, 500, 1, 6, 900, 500, 50),
 ]
 //Monsters
 const sparks = new Animation();
@@ -94,7 +90,7 @@ function buffer(){
         for(var player_loop = 0; player_loop < players.length; player_loop++){
             
            
-            monsterHit(hitExplosionAnimation[i], hitExplosionAnimation2[i], monsters[i].collision_bool, guns[player_loop].collision_posX, guns[player_loop].collision_posY , 6, players.length, guns[player_loop]);
+            monsterHit(hitExplosionAnimation[i], hitExplosionAnimation2[i], monsters[i].collision_bool, guns[player_loop].collision_posx, guns[player_loop].collision_posy , 6, players.length, guns[player_loop]);
             
             
             //    guns[player_loop].collision_posY += 2;

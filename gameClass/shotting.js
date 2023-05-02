@@ -63,8 +63,8 @@ shotDirection(direction){
 }
 
 getCollisionPosition(posx, posy){
-    this.collision_posX = posx;
-    this.collision_posY = posy;
+    this.collision_posx = posx;
+    this.collision_posy = posy;
 
 }
 
@@ -75,6 +75,9 @@ clearCollisionShot(){
 
 
 updateShot(){
+
+    ctx.fillStyle = "red";
+    ctx.fillRect(this.collision_posx, this.collision_posy, this.width, this.height);
 
 
 }
