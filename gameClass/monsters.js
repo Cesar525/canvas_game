@@ -20,7 +20,7 @@ this.height = s_height;
 this.moveRight = true;
 this.moveLeft = false;
 this.clearRect = false;
-this.collision_bool;
+this.collision_bool  = false;
 this.monsterMovement = movements;
 this.explosion_dead = false;
 this.explosion = false;
@@ -162,6 +162,10 @@ monsterDeath(){
 }
 monsterClearDeath(){
     this.explosion_dead = false;
+}
+
+setMonsterCollitionBool(set){
+    this.collision_bool = set;
 }
 
 updateMonster(){

@@ -25,7 +25,7 @@ const thruster = new Thruster();
 //players
 const players = [
     //CREATING A PLAYER Player(name, level, thruster_selection, get_health, energy, m_damage,  gunType, posx, posy, gun_speed)
-new Player("Player One", 1230,  6, 100, 500, 10, 3, 100, 500, 50),
+new Player("Player One", 1230,  6, 100, 500, 1, 3, 100, 500, 5),
   new Player("Player Two", 1230,  8, 600, 500, 1, 4, 600, 500, 10),
 //  new Player("Player Three", 1230,  7, 500, 500, 1, 5, 500, 500, 100),
 //  new Player("Player Four", 1230,  3, 300, 500, 1, 6, 700, 500, 50),
@@ -35,7 +35,7 @@ new Player("Player One", 1230,  6, 100, 500, 10, 3, 100, 500, 50),
 const sparks = new Animation();
 
 const monsters = [
-new Monsters(1, 100, 100 , 1000, "invaderOne", 10, "orange", "none", 700 , 100),
+new Monsters(1, 100, 100 , 10, "invaderOne", 10, "orange", "none", 700 , 100),
 // new Monsters( 4, 300, 100, 1000, "BOSS", 10, "red", "none", 100 , 100),
 // new Monsters( 3, 400, 100, 1000, "MONSTER 3", 10, "blue", "none", 100 , 100),
 // new Monsters( 4, 800, 100, 100, "MOSTER 4", 10, "red", "none", 100 , 100),
@@ -48,14 +48,14 @@ const playerDeadAnimation = [];
 const playerDeadAnimation2 = [];
 const animationExplosionHit = [];
 
-const animation = [];
-const animation2 = [];
-const collision = new Collision();
+const hitExplosionAnimation = [];
+const hitExplosionAnimation2 = [];
+
 
 //Monsters Animation for loop
 for(var i = 0; i < monsters.length + 1; i++){
-animation.push(new Animation());
-animation2.push(new Animation());
+hitExplosionAnimation.push(new Animation());
+hitExplosionAnimation2.push(new Animation());
 monsterDeadAnimation.push(new Animation());
 monsterDeadAnimation2.push(new Animation());
 }
@@ -89,11 +89,12 @@ function buffer(){
         monsterDeathExplosion(monsterDeadAnimation[i], monsterDeadAnimation2[i],monsters[i].monsterDeath(), monsters[i].deadposX, monsters[i].deadposY); 
 
 
+        collisionMonster(monsters[0], players[0], guns[0]);
+       // collisionMonster(monsters[0], players[1], guns[1]);
         for(var player_loop = 0; player_loop < players.length; player_loop++){
             
            
-            collisionMonster(monsters[i], players[player_loop], guns[player_loop]);
-            monsterHit(animation[i], animation2[i], monsters[i].collision_bool, guns[player_loop].collision_posX, guns[player_loop].collision_posY , 6, players.length, guns[player_loop]);
+            monsterHit(hitExplosionAnimation[i], hitExplosionAnimation2[i], monsters[i].collision_bool, guns[player_loop].collision_posX, guns[player_loop].collision_posY , 6, players.length, guns[player_loop]);
             
             
             //    guns[player_loop].collision_posY += 2;
