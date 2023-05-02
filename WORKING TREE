@@ -6,3 +6,4 @@ pass:525002cc
 
 working on -
 There is a problem with bullets and collision when there is two players.
+solution. create an interval so the collision desapear after centain time.
