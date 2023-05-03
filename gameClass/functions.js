@@ -38,9 +38,9 @@ function monsterHit(animationOne, animationTwoo ,col, posx_, posy_, hiteffect, s
      }
       animationTwoo.explosionEffect(hiteffect, posx_ - 100, posy_ - 100, animationTwo, speed);
        
-if( animationOne.getAnimationStatus() == false && animationTwoo.getAnimationStatus() == false){
-  shot.clearCollisionShot();
-}
+// if( animationOne.getAnimationStatus() == false && animationTwoo.getAnimationStatus() == false){
+//   shot.clearCollisionShot();
+// }
 
 }
 

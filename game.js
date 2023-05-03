@@ -26,13 +26,14 @@ const thruster = new Thruster();
 const players = [
     //CREATING A PLAYER Player(name, level, thruster_selection, get_health, energy, m_damage,  gunType, posx, posy, gun_speed)
 new Player("Player One", 1230,  6, 100, 500, 1, 3, 100, 500, 5),
+new Player("Player One", 1230,  6, 100, 500, 1, 3, 500, 500, 5)
 ]
 //Monsters
 const sparks = new Animation();
 
 const monsters = [
-new Monsters(1, 100, 100 , 10, "invaderOne", 10, "orange", "none", 700 , 100),
-// new Monsters( 4, 300, 100, 1000, "BOSS", 10, "red", "none", 100 , 100),
+new Monsters(1, 100, 100 , 10, "invaderOne", 10, "orange", "none", 100 , 100),
+ new Monsters( 4, 300, 100, 10, "BOSS", 10, "red", "none", 500 , 100),
 // new Monsters( 3, 400, 100, 1000, "MONSTER 3", 10, "blue", "none", 100 , 100),
 // new Monsters( 4, 800, 100, 100, "MOSTER 4", 10, "red", "none", 100 , 100),
 // new Monsters( 4, 800, 100, 1000, "BOSS", 10, "red", "none", 500 ,500)
@@ -85,12 +86,12 @@ function buffer(){
         monsterDeathExplosion(monsterDeadAnimation[i], monsterDeadAnimation2[i],monsters[i].monsterDeath(), monsters[i].deadposX, monsters[i].deadposY); 
 
 
-        collisionMonster(monsters[0], players[0], guns[0]);
-       // collisionMonster(monsters[0], players[1], guns[1]);
+        // collisionMonster(monsters[0], players[1], guns[1]);
         for(var player_loop = 0; player_loop < players.length; player_loop++){
             
+            collisionMonster(monsters[i], players[player_loop], guns[player_loop]);
            
-            monsterHit(hitExplosionAnimation[i], hitExplosionAnimation2[i], monsters[i].collision_bool, guns[player_loop].collision_posx, guns[player_loop].collision_posy , 6, players.length, guns[player_loop]);
+            monsterHit(hitExplosionAnimation[player_loop], hitExplosionAnimation2[player_loop], monsters[player_loop].collision_bool, guns[player_loop].collision_posx, guns[player_loop].collision_posy , 6, players.length, guns[player_loop]);
             
             
             //    guns[player_loop].collision_posY += 2;
