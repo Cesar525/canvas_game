@@ -1,5 +1,5 @@
 class Monsters extends Animation{
-constructor( id, pos_x, pos_y, health, name, speed, color, movements, s_width, s_height){
+constructor( id, pos_x, pos_y, health, name, speed, color, movements, s_width, s_height, damage){
     super();
 this.position = {
     x : pos_x,
@@ -11,8 +11,21 @@ this.velocity = {
 },
 this.body = {
     m_name : name,
-    m_health : health
+    m_health : health,
+    m_damage : damage,
+    m_dead : false,
+    m_deadPosX : NaN,
+    m_deadPosY : NaN
 }
+
+this.collition = {
+    collition_posX : NaN,
+    collition_posY : NaN,
+    collition_with_shot : false
+}
+
+
+
 this.monster_color = color
 this.monster_id = id
 this.width = s_width;
@@ -26,11 +39,8 @@ this.explosion_dead = false;
 this.explosion = false;
 this.health_total = health;
 //hit monster
-this.collision_posX;
-this.collision_posY;
-this.animationThree;
-this.deadposX;
-this.deadposY;
+
+
 
 
 }
@@ -101,14 +111,14 @@ resetColPos(){
     this.moveRight = true;
     this.moveLeft = false;
     this.clearRect = false;
-    this.collision_bool =- false;
+    this.collition.collition_with_shot = false;
     this.explosion_dead = false;
     this.explosion = false;
     
     //hit monster
     this.collision_posX;
     this.collision_posY;
-    this.animationThree;
+  
     
 }
 monsterlifeBar(){
@@ -121,15 +131,15 @@ monsterlifeBar(){
         if(Math.round((this.body.m_health / this.health_total) * 100) <= 20){
             ctx.fillStyle = "red";
         }
-        if(Math.round((this.body.m_health / this.health_total) * 100) <= 10){
-            ctx.fillStyle = " #720000";
-        }
-        if(Math.round((this.body.m_health / this.health_total) * 100) > 50){
-           ctx.fillStyle = "white"; 
-        }
+            if(Math.round((this.body.m_health / this.health_total) * 100) <= 10){
+                ctx.fillStyle = " #720000";
+            }
+                if(Math.round((this.body.m_health / this.health_total) * 100) > 50){
+                ctx.fillStyle = "white"; 
+                }
     ctx.font = "15px Roboto Mono";
     ctx.fillText(this.body.m_name, this.position.x - 70, this.position.y - 15);
-    ctx.fillText("HP: "+ this.body.m_health, this.position.x - 70, this.position.y + 15);
+    ctx.fillText("HP: " + this.body.m_health, this.position.x - 70, this.position.y + 15);
   
     //background
     ctx.fillStyle = "red";
@@ -139,43 +149,32 @@ monsterlifeBar(){
     ctx.fillRect(this.position.x - 70 , this.position.y - 10, Math.round((this.body.m_health / this.health_total) * 100), 9);
    ctx.globalCompositeOperation = "source-over";
 }
+
 monsterDeath(){
-    //console.log(this.collision_bool + " == " +  this.body.m_name);
-      if(this.collision_bool){
+      if(!this.body.m_dead){
         if(this.body.m_health == 0 ){
             this.clearRect = true;
             console.log(this.body.m_name + " is dead life i set to " + this.getMonsterHealth());
-            this.deadposX = this.position.x;
-            this.deadposY = this.position.y;
+            this.body.m_deadPosX = this.position.x;
+            this.body.m_deadPosY = this.position.y;
             this.position.x = NaN;
             this.position.y = NaN;
-            this.collision_bool = false;
-             this.explosion_dead = true;
-            return this.explosion_dead;
+            this.body.m_dead = true;
+            return this.body.m_dead;
             
         }
-    }
-    if(!this.collision_bool){
-
-        this.explosion_dead = false;
     }
 }
 monsterClearDeath(){
     this.explosion_dead = false;
 }
 
-setMonsterCollitionBool(set){
-    this.collision_bool = set;
-}
 
 updateMonster(){
-
-
 this.drawMonster();
-
 this.movements("sidebyside");
 ctx.globalCompositeOperation = "source-over";
-this.monsterlifeBar();
+
 
 //this.monsterClearDeath();
 }

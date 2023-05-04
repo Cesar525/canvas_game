@@ -25,7 +25,12 @@ class Player {
         collition_posX : NaN,
         collition_posY : NaN
     }
-    
+    this.frames = {
+        gameFrame : 0,
+        staggerFrame : 0
+    }
+
+
     this.width = 100;
     this.height = 100;
     this.health_total = get_health;
@@ -120,20 +125,37 @@ lifeBar(){
 }
 
 playerDeathExplosion(animationOne, col, posx_, posy_){
-    //var animationTwo;
     animationOne.explosionEffect(3,  posx_ - 85, posy_ - 85, col);        
 }
 
+playerCollitionMonsters(monsters){
+    // player collision with monsters
+  this.frames.gameFrame ++;
+  this.frames.staggerFrame = 10;
+
+    if(collisionTouch(this, monsters)){
+   // if(Math.floor(this.frames.gameFrame/this.frames.staggerFrame) % 5 == 4){
+      let damage = 1
+        this.playerGetDamage(damage); 
+      console.log("you have been damage your current life is  = " + this.body.health);
+      return      
+ //  }
+  }
+  }
 
 
-    update(loop){
+
+
+
+
+update(loop){
 
 this.draw();
 thruster.setPlayersThruster(this.body.thruster, this.position.x - this.thruster_position_x, this.position.y + this.thruster_position_y, this.thruster_size, this.thruster_size);   
 
 
    
-//guns[loop].shotSelection(players[loop],this.body.m_gun_type, this.body.m_damage, this.body.m_gun_speed);
+guns[loop].shotSelection(players[loop],this.body.m_gun_type, this.body.m_damage, this.body.m_gun_speed);
     
 this.playerOnDeath();
 playerDeathAnimation.explosionEffect(3, this.deathpositionX - 85, this.deathpositiony - 85)

@@ -12,7 +12,17 @@ class shots{
     this.width = 50;
     this.height = 100;
     this.clearRect = false;
-    this.collision_bool = true;
+
+    this.collition = {
+        shot_collided : false,
+        collision_posx : NaN,
+        collision_posy : NaN
+
+    }
+    
+this.gameFrame = 0;
+this.staggerFrame = 10
+
     this.collision_posx;
     this.collision_posy;
     this.counter = 0;
@@ -36,14 +46,9 @@ if(select_shot && damage && speed ){
    if(!this.clearRect){
     this.velocity.x = speed;
     this.velocity.y = speed;
-    this.shotDirection();
+    this.shotDirectionUp();
     const shotimage = new Image()
     shotimage.src = this.shotImages[select_shot];
-    ctx.fillStyle = "borderColor";
-    ctx.fillStyle = 'white';
-    //ctx.fillRect( this.position.x - 1, this.position.y - 1 ,this.width + 2, this.height + 2);
-    ctx.fillStyle = 'black';
-    //ctx.fillRect( this.position.x, this.position.y ,this.width , this.height);
     ctx.drawImage(shotimage, this.position.x, this.position.y ,this.width, this.height);
 this.m_damage = damage
 
@@ -58,27 +63,26 @@ this.m_damage = damage
     }
 
 }
-shotDirection(direction){
+shotDirectionUp(direction){
   this.position.y -= this.velocity.y;  
 }
 
 getCollisionPosition(posx, posy){
-    this.collision_posx = posx;
-    this.collision_posy = posy;
+    this.collition.collision_posx = posx;
+    this.collition.collision_posy = posy;
 
 }
 
-clearCollisionShot(){
-    this.collision_posx = NaN;
-    this.collision_posy = NaN;
+clearCollisionShot(){ 
+    this.collition.collision_posx = NaN;
+    this.collition.collision_posy = NaN;
+
 }
+
 
 
 updateShot(){
-
-    ctx.fillStyle = "red";
-    ctx.fillRect(this.collision_posx, this.collision_posy, this.width, this.height);
-
-
-}
+    // ctx.fillStyle = "white";
+    // ctx.fillRect(this.collition.collision_posx, this.collition.collision_posy, 50, 50);
     }
+}

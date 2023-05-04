@@ -154,18 +154,64 @@ const spark1 = [
     sparks.src = spark1[Math.floor(this.gameFrame/this.staggerFrame) % 12];
     ctx.drawImage(sparks, posx,posy, width, height);
 }
+
+sparkTwo(speed, posx, posy, width, height){
+    const sparksTwo = new Image();
+    const spark2 = [
+        'assets/sparks/spark2/MetallicHit080000.png',
+        'assets/sparks/spark2/MetallicHit080001.png',
+        'assets/sparks/spark2/MetallicHit080002.png',
+        'assets/sparks/spark2/MetallicHit080003.png',
+        'assets/sparks/spark2/MetallicHit080004.png',
+        'assets/sparks/spark2/MetallicHit080005.png',
+        'assets/sparks/spark2/MetallicHit080006.png',
+        'assets/sparks/spark2/MetallicHit080007.png',
+        'assets/sparks/spark2/MetallicHit080008.png',
+        'assets/sparks/spark2/MetallicHit080009.png',
+        'assets/sparks/spark2/MetallicHit080010.png',
+        'assets/sparks/spark2/MetallicHit080011.png',
+        'assets/sparks/spark2/MetallicHit080012.png',
+        'assets/sparks/spark2/MetallicHit080013.png',
+        'assets/sparks/spark2/MetallicHit080014.png',
+        'assets/sparks/spark2/MetallicHit080015.png',
+        'assets/sparks/spark2/MetallicHit080016.png',
+        'assets/sparks/spark2/MetallicHit080017.png',
+        'assets/sparks/spark2/MetallicHit080018.png',
+        'assets/sparks/spark2/MetallicHit080019.png',
+        ]
+        this.gameFrame ++;
+        this.staggerFrame = speed;
+      
+        sparksTwo.src = spark2[Math.floor(this.gameFrame/this.staggerFrame) % 20];
+        ctx.drawImage(sparksTwo, posx,posy, width, height);
+    }
+
+
 playerSparks(player_posx, player_posy){
     this.sparkOne(4, player_posx, player_posy, 100, 100);
     this.sparkOne(5, player_posx, player_posy - 50, 150, 150);
+    this.sparkTwo(5, player_posx, player_posy - 50, 100, 100)
 }
 
 playerSparksHigh(player_posx, player_posy){
-    this.sparkOne(4, player_posx, player_posy, 100, 100);
-    this.sparkOne(5, player_posx, player_posy - 50, 150, 150);
-    this.sparkOne(6, player_posx, player_posy, 200, 200);
-    this.sparkOne(6, player_posx - 90, player_posy, 200, 200);
+    this.sparkOne(15, player_posx, player_posy, 100, 100);
+     this.sparkOne(13, player_posx, player_posy - 50, 150, 150);
+     this.sparkOne(8, player_posx, player_posy, 100, 100);
+   this.sparkOne(10, player_posx - 20, player_posy, 100, 100);
+    this.sparkTwo(9, player_posx, player_posy - 50, 100, 100)
+
+
     }
 
+    damageShowAnimation(){
+        //WORKING ON
+        ctx.fillStyle = "red";
+        ctx.strokeStyle = "gray"
+        ctx.font = "35px Roboto Mono"
+        ctx.fillText("-105", 500, 500);
+        ctx.strokeText("-105", 500, 500)
+
+    }
 
 
 updateAnimation(){   

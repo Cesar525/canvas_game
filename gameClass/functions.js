@@ -28,7 +28,7 @@ function collisionTouch(obj1, obj2){
 
 
 
-function monsterHit(animationOne, animationTwoo ,col, posx_, posy_, hiteffect, speed, shot){
+function bulletHitMonsterEffect(animationOne, animationTwoo ,col, posx_, posy_, hiteffect, speed, shot){
     var animationTwo;
     
     animationOne.explosionEffect(hiteffect,  posx_ - 100, posy_ - 100, col, speed);
@@ -37,22 +37,10 @@ function monsterHit(animationOne, animationTwoo ,col, posx_, posy_, hiteffect, s
     animationTwo = true;
      }
       animationTwoo.explosionEffect(hiteffect, posx_ - 100, posy_ - 100, animationTwo, speed);
-       
-// if( animationOne.getAnimationStatus() == false && animationTwoo.getAnimationStatus() == false){
-//   shot.clearCollisionShot();
-// }
-
 }
 
-function monsterDeathExplosion(animationOne, animationTwoo ,col, posx_, posy_){
-    var animationTwo;
+function monsterDeathExplosion(animationOne,col, posx_, posy_){  
     animationOne.explosionEffect(3,  posx_ - 85, posy_ - 85, col);
-    if(animationOne.getAnimationStatus() && col){
-     animationTwoo.reset();
-    animationTwo = true;
-     }
-      animationTwoo.explosionEffect(3, posx_ - 85, posy_ - 85, animationTwo);
-      
 }
 
 
@@ -60,18 +48,13 @@ function collisionMonsterShot(monsters, player, shot){
    // collision monster to shot
     if(collisionTouch(shot, monsters)){
         monsters.setMonsterHealth(shot.m_damage); // set up the hit depend on the shot
-      //console.log(monsters.body.m_name + " remaining life =  " + monsters.getMonsterHealth());
-       monsters.setMonsterCollitionBool(true);
-      console.log(monsters.body.m_name + " got hit by  == " + player.m_name);
-       monsters.collision_posX  = monsters.position.x;
-      monsters.collision_posY = monsters.position.y;
-      
-   shot.getCollisionPosition(shot.position.x, shot.position.y);
+       monsters.collition.collition_with_shot = true;
+       monsters.collition.collition_posX  = monsters.position.x;
+       monsters.collition.collition_posY = monsters.position.y;   
+    shot.getCollisionPosition(shot.position.x, shot.position.y);
     }else{
-        monsters.collision_bool = false;
-    
+      monsters.collition.collition_with_shot = false;   
     }
-
 
    //bullet disapear collision
     shot.counter += 1;
@@ -79,33 +62,15 @@ function collisionMonsterShot(monsters, player, shot){
       //  console.log("reset");
         shot.clearRect = false;
        
-   
     }
  
 if(collisionTouch(shot, monsters)){
 shot.clearRect = true;
-console.log("Bullet banished..");
+//console.log("Bullet banished..");
 shot.position.x = -50;
 shot.position.y = - 50;
 }  
 }
 
 
-function playerCollitionMonsters(player, monsters){
-  // player collision
 
-var gameFrame = 0;
-gameFrame++;
-var staggerFrame = 10;
-var pos = Math.floor(gameFrame/staggerFrame) % 30;
-
-//WORKINNG ON
-//console.log(pos);
-  if(collisionTouch(player, monsters)){
-   // if((Math.floor(gameFrame/staggerFrame) % 2) == 2){
-    player.playerGetDamage(1); 
-    console.log("you have been damage your current life is  = " + player.body.health);
-    
- // }
-}
-}
