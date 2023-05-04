@@ -9,29 +9,34 @@ class Player {
         y:10  
     },
     this.body = {
+        m_name : name,
+        m_level : level,
         health : get_health,
         energy : energy,
         thruster : thruster_selection,
         m_damage : m_damage,
         m_gun_type : gunType,
-        m_gun_speed : gun_speed
-        
+        m_gun_speed : gun_speed,
+        deathPositionX : NaN,
+        deathPositionY : NaN 
+    }
+    this.collition = {
+        collition_monsters : false,
+        collition_posX : NaN,
+        collition_posY : NaN
     }
     
     this.width = 100;
     this.height = 100;
     this.health_total = get_health;
-    this.thruster_size =150;
+    this.thruster_size = 150;
     this.thruster_animation = 0;
     this.thruster_position_x =  25;
     this.thruster_position_y =  54;    
     this.clearRect = false;
     this.playerDead = false;
-    this.m_name = name;
-    this.deathpositionX;
-    this.deathpositiony;
     this.showdeathexplosion;
-    this.player_level = level;
+    
 
     
 }
@@ -53,22 +58,25 @@ setPlayerVelocity(velocity){
     this.velocity.x = velocity;
     this.velocity.y = velocity;
 }
+playerGetDamage(health_){ this.body.health -= health_;};
+getPlayerHealth(){return this.body.health;};
+
 
 playerOnDeath(){
     if(!this.playerDead){
 if(this.body.health == 0){
     console.log("player is dead.");
-    this.deathpositionX =  this.position.x;
-    this.deathpositiony = this.position.y;
+    this.body.deathPositionX =  this.position.x;
+    this.body.deathPositionY = this.position.y;
     this.playerDead = true;
     
     this.position.x = NaN;
     this.position.y = NaN;
     this.clearRect = true;
     return this.playerDead;
-}
-}
-}
+};
+};
+};
 
 lifeBar(){
     //const lifebar = new Image();
@@ -87,9 +95,9 @@ lifeBar(){
         }
    
         ctx.font = "15px Roboto Mono";
-        ctx.fillText("Lvl:" + this.player_level, this.position.x - 70, this.position.y + 35);
+        ctx.fillText("Lvl:" + this.body.m_level, this.position.x - 70, this.position.y + 35);
 
-        ctx.fillText(this.m_name, this.position.x - 70, this.position.y - 15);
+        ctx.fillText(this.body.m_name, this.position.x - 70, this.position.y - 15);
         ctx.fillText("HP: "+ this.body.health, this.position.x - 70, this.position.y + 15);
       
         
@@ -97,8 +105,23 @@ lifeBar(){
         ctx.fillStyle = "red";
         ctx.fillRect(this.position.x - 70 , this.position.y - 10, 100, 9);
         //life
-        ctx.fillStyle = "green";
+
+        if(Math.round((this.body.health / this.health_total) * 100) <= 50){
+            ctx.fillStyle = "orange";
+        }
+       
+        if(Math.round((this.body.health / this.health_total) * 100) <= 10){
+            ctx.fillStyle = " #720000";
+        }
+        if(Math.round((this.body.health / this.health_total) * 100) > 50){
+            ctx.fillStyle = "green"; 
+         }
         ctx.fillRect(this.position.x - 70 , this.position.y - 10, Math.round((this.body.health / this.health_total) * 100), 9);
+}
+
+playerDeathExplosion(animationOne, col, posx_, posy_){
+    //var animationTwo;
+    animationOne.explosionEffect(3,  posx_ - 85, posy_ - 85, col);        
 }
 
 
@@ -110,12 +133,10 @@ thruster.setPlayersThruster(this.body.thruster, this.position.x - this.thruster_
 
 
    
-guns[loop].shotSelection(players[loop],this.body.m_gun_type, this.body.m_damage, this.body.m_gun_speed);
+//guns[loop].shotSelection(players[loop],this.body.m_gun_type, this.body.m_damage, this.body.m_gun_speed);
     
 this.playerOnDeath();
-
 playerDeathAnimation.explosionEffect(3, this.deathpositionX - 85, this.deathpositiony - 85)
-
 this.lifeBar();
 
 

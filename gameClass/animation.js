@@ -9,12 +9,8 @@ constructor(){
     this.frameY = 0;
     this.gameFrame = 0;
     this.staggerFrame = 1;
-   this.show = false;
-   this.onAnimation = false;
-   this.animationTwo;
-   this.animationThree;
-
-
+    this.show = false;
+    this.onAnimation = false;
 }
 
 spritePage(sprite_path, posx, posy, sprite_page_width, sprite_page_height, sprite_count_width, sprite_count_height, sprite_size_w, sprite_size_h, speed, show){
@@ -136,21 +132,44 @@ break;
 }
 }
 
-sparks(){
+sparkOne(speed, posx, posy, width, height){
 const sparks = new Image();
-
-const sparksOne = [
-sparks.src = "assets/sparks/MetallicHit01/MetallicHit010000.png"
-]
-ctx.drawImage(sparksOne[0], 100,100, 100, 100);
-
+const spark1 = [
+    'assets/sparks/spark1/MetallicHit010000.png',
+    'assets/sparks/spark1/MetallicHit010001.png',
+    'assets/sparks/spark1/MetallicHit010002.png',
+    'assets/sparks/spark1/MetallicHit010003.png',
+    'assets/sparks/spark1/MetallicHit010004.png',
+    'assets/sparks/spark1/MetallicHit010005.png',
+    'assets/sparks/spark1/MetallicHit010006.png',
+    'assets/sparks/spark1/MetallicHit010007.png',
+    'assets/sparks/spark1/MetallicHit010008.png',
+    'assets/sparks/spark1/MetallicHit010009.png',
+    'assets/sparks/spark1/MetallicHit010010.png',
+    'assets/sparks/spark1/MetallicHit010011.png',
+    ]
+    this.gameFrame ++;
+    this.staggerFrame = speed;
+  
+    sparks.src = spark1[Math.floor(this.gameFrame/this.staggerFrame) % 12];
+    ctx.drawImage(sparks, posx,posy, width, height);
+}
+playerSparks(player_posx, player_posy){
+    this.sparkOne(4, player_posx, player_posy, 100, 100);
+    this.sparkOne(5, player_posx, player_posy - 50, 150, 150);
 }
 
+playerSparksHigh(player_posx, player_posy){
+    this.sparkOne(4, player_posx, player_posy, 100, 100);
+    this.sparkOne(5, player_posx, player_posy - 50, 150, 150);
+    this.sparkOne(6, player_posx, player_posy, 200, 200);
+    this.sparkOne(6, player_posx - 90, player_posy, 200, 200);
+    }
 
 
 
 updateAnimation(){   
-//this.sparks();
+
 }
 
 

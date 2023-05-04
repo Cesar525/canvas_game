@@ -5,6 +5,5 @@ pass:525002cc
 
 
 working on -
-There is a problem with bullets and collision when there is two players.
-solution. create an interval so the collision desapear after centain time.
-Error -> collision_bool is only turning to true to the last player on the array.
+Players effects ect.
+search for the word "WORKING ON" and it will take you to where you left it.

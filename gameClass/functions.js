@@ -55,23 +55,14 @@ function monsterDeathExplosion(animationOne, animationTwoo ,col, posx_, posy_){
       
 }
 
-function playerDeathExplosion(animationOne, animationTwoo ,col, posx_, posy_){
-    var animationTwo;
-    animationOne.explosionEffect(3,  posx_ - 85, posy_ - 85, col);
-    if(animationOne.getAnimationStatus() && col){
-     animationTwoo.reset();
-    animationTwo = true;
-     }
-      animationTwoo.explosionEffect(2, posx_ - 85, posy_ - 85, animationTwo);
-      
-}
 
-function collisionMonster(monsters, player, shot){
+function collisionMonsterShot(monsters, player, shot){
    // collision monster to shot
     if(collisionTouch(shot, monsters)){
         monsters.setMonsterHealth(shot.m_damage); // set up the hit depend on the shot
-      //  console.log(monsters.body.m_name + " remaining life =  " + monsters.getMonsterHealth());
+      //console.log(monsters.body.m_name + " remaining life =  " + monsters.getMonsterHealth());
        monsters.setMonsterCollitionBool(true);
+      console.log(monsters.body.m_name + " got hit by  == " + player.m_name);
        monsters.collision_posX  = monsters.position.x;
       monsters.collision_posY = monsters.position.y;
       
@@ -80,7 +71,7 @@ function collisionMonster(monsters, player, shot){
         monsters.collision_bool = false;
     
     }
-//console.log("bool Player " + player.m_name + " == " + monsters.collision_bool);
+
 
    //bullet disapear collision
     shot.counter += 1;
@@ -90,20 +81,31 @@ function collisionMonster(monsters, player, shot){
        
    
     }
-   // player collision
-    if(collisionTouch(player, monsters)){
-        player.body.health -= 1; 
-        console.log("you have been damage your current life is  = " + player.body.health);
-        
-    }
-    
-  
+ 
 if(collisionTouch(shot, monsters)){
 shot.clearRect = true;
 console.log("Bullet banished..");
 shot.position.x = -50;
 shot.position.y = - 50;
 }  
+}
 
 
+function playerCollitionMonsters(player, monsters){
+  // player collision
+
+var gameFrame = 0;
+gameFrame++;
+var staggerFrame = 10;
+var pos = Math.floor(gameFrame/staggerFrame) % 30;
+
+//WORKINNG ON
+//console.log(pos);
+  if(collisionTouch(player, monsters)){
+   // if((Math.floor(gameFrame/staggerFrame) % 2) == 2){
+    player.playerGetDamage(1); 
+    console.log("you have been damage your current life is  = " + player.body.health);
+    
+ // }
+}
 }
