@@ -5,8 +5,8 @@ class Background{
         y : 0
     },
     this.velocity = {
-        x : 10,
-        y : 10
+        x : 5,
+        y : 5
     }
     this.countingBackground  = 0;
     }

@@ -5,8 +5,8 @@ class Player {
         y: posy
     },
     this.velocity ={
-        x:10,
-        y:10  
+        x:20,
+        y:20  
     },
     this.body = {
         m_name : name,
