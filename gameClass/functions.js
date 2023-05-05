@@ -44,7 +44,7 @@ function monsterDeathExplosion(animationOne,col, posx_, posy_){
 }
 
 
-function collisionMonsterShot(monsters, player, shot){
+function collisionMonsterShot(monsters,shot){
    // collision monster to shot
     if(collisionTouch(shot, monsters)){
         monsters.setMonsterHealth(shot.m_damage); // set up the hit depend on the shot
@@ -52,8 +52,11 @@ function collisionMonsterShot(monsters, player, shot){
        monsters.collition.collition_posX  = monsters.position.x;
        monsters.collition.collition_posY = monsters.position.y;   
     shot.getCollisionPosition(shot.position.x, shot.position.y);
+    shot.collition.shot_collided = true;
+
     }else{
-      monsters.collition.collition_with_shot = false;   
+      monsters.collition.collition_with_shot = false; 
+      shot.collition.shot_collided = false;  
     }
 
    //bullet disapear collision
@@ -71,6 +74,23 @@ shot.position.x = -50;
 shot.position.y = - 50;
 }  
 }
+
+function fadeOut(text) {
+  var alpha = 1.0,   // full opacity
+      interval = setInterval(function () {
+        
+          ctx.fillStyle = "rgba(255, 0, 0, " + alpha + ")";
+          ctx.font = "italic 200px Arial";
+          ctx.fillText(text, 505, 505);
+          alpha = alpha - 0.05; // decrease opacity (fade out)
+          if (alpha < 0) {
+           
+              clearInterval(interval);
+          }
+      }, 1000); 
+}
+
+
 
 
 

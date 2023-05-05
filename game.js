@@ -25,11 +25,11 @@ const thruster = new Thruster();
 //players
 const players = [
     //CREATING A PLAYER Player(name, level, thruster_selection, get_health, energy, m_damage,  gunType, posx, posy, gun_speed)
-new Player("Player One", 1230,  6, 100, 500, 1, 3, 100, 500, 100),
-// new Player("Player Two", 1230,  6, 100, 500, 1, 3, 500, 700, 100), 
-// new Player("Player Two", 1230,  6, 100, 500, 1, 3, 900, 800, 100),
-// new Player("Player Two", 1230,  6, 100, 500, 1, 3, 1000, 700, 100),
-// new Player("Player Two", 1230,  6, 100, 500, 1, 3, 1100, 400, 100)
+new Player("Player One", 1230,  6, 100, 500, 1, 3, 100, 500, 30),
+// new Player("Player Two", 1230,  6, 100, 500, 1, 3, 500, 700, 30), 
+// new Player("Player Two", 1230,  6, 100, 500, 1, 3, 900, 800, 30),
+// new Player("Player Two", 1230,  6, 100, 500, 1, 3, 1000, 700, 30),
+// new Player("Player Two", 1230,  6, 100, 500, 1, 3, 1100, 400, 30)
 ]
 //Monsters
 const sparks = new Animation();
@@ -63,7 +63,7 @@ const animation_playerspark_1_lowhealth = [];
 const guns = [];
 const hitExplosionAnimation = [];
 const hitExplosionAnimation2 = [];
-
+const hitDamageAnimation = [];
 // player animation loop to player length
 for(var player_loop = 0; player_loop < players.length; player_loop++){
 guns.push(new shots());
@@ -71,6 +71,7 @@ playerDeadAnimation.push(new Animation());
 animation_playerspark_1_lowhealth.push(new Animation());
 hitExplosionAnimation.push(new Animation());
 hitExplosionAnimation2.push(new Animation());
+hitDamageAnimation.push(new Animation());
 }
 
 //BUFFERRRR
@@ -95,15 +96,18 @@ function buffer(){
         for(var player_loop = 0; player_loop < players.length; player_loop++){
             //checking for collitions
             players[player_loop].playerCollitionMonsters(monsters[m]);
-            collisionMonsterShot(monsters[m], players[player_loop], guns[player_loop]);
+            collisionMonsterShot(monsters[m], guns[player_loop]);
            
-            bulletHitMonsterEffect(hitExplosionAnimation[player_loop], hitExplosionAnimation2[player_loop], monsters[m].collition.collition_with_shot, guns[player_loop].collition.collision_posx, guns[player_loop].collition.collision_posy += backg.velocity.y, 6, players.length, guns[player_loop]);
+            bulletHitMonsterEffect(hitExplosionAnimation[player_loop], hitExplosionAnimation2[player_loop], monsters[m].collition.collition_with_shot, guns[player_loop].collition.collision_posx, guns[player_loop].collition.collision_posy += backg.velocity.y, 6, players.length + 1, guns[player_loop]);
+// monsterAnimationDamage[m].damageShowAnimation();
+
+    hitDamageAnimation[player_loop].damageShowAnimation(1340,guns[player_loop].collition.collision_posx, guns[player_loop].collition.collision_posy -= backg.velocity.y, "white", monsters[m], guns[player_loop]);
 
             //    guns[player_loop].collision_posY += 2;
         }
 
         monsters[m].monsterlifeBar();
-        monsterAnimationDamage[m].damageShowAnimation();
+        
     }
     
      
@@ -114,6 +118,7 @@ for(var player_loop = 0; player_loop < players.length; player_loop++){
     players[player_loop].playerDeathExplosion(playerDeadAnimation[player_loop], players[player_loop].playerOnDeath(),players[player_loop].body.deathPositionX, players[player_loop].body.deathPositionY += backg.velocity.y);
     players[player_loop].update(player_loop);
     guns[player_loop].updateShot();
+
 
 
 

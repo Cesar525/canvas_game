@@ -11,6 +11,7 @@ constructor(){
     this.staggerFrame = 1;
     this.show = false;
     this.onAnimation = false;
+    this.showDamage;
 }
 
 spritePage(sprite_path, posx, posy, sprite_page_width, sprite_page_height, sprite_count_width, sprite_count_height, sprite_size_w, sprite_size_h, speed, show){
@@ -203,13 +204,34 @@ playerSparksHigh(player_posx, player_posy){
 
     }
 
-    damageShowAnimation(){
+    damageShowAnimation(damage,pos_x, pos_y, color){
         //WORKING ON
-        ctx.fillStyle = "red";
-        ctx.strokeStyle = "gray"
-        ctx.font = "35px Roboto Mono"
-        ctx.fillText("-105", 500, 500);
-        ctx.strokeText("-105", 500, 500)
+
+this.gameFrame++;
+console.log(this.gameFrame);
+if(true){
+    this.showDamage = true;
+}        
+console.log(this.showDamage);
+
+        if(this.showDamage){
+            ctx.fillStyle = color;
+            ctx.strokeStyle = "gray"
+            ctx.font = "35px Roboto Mono"
+            ctx.fillText("-"+ damage, pos_x, pos_y);
+            ctx.strokeText("-" + damage, pos_x, pos_y);
+        }
+        
+       if(this.gameFrame > 300){
+            this.showDamage = false;
+            this.gameFrame = 0;
+          }
+          
+
+
+       
+//clear damage
+
 
     }
 

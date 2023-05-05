@@ -8,7 +8,7 @@ class shots{
         x : 20,
         y : 20
     }
-    this.m_damage = 0;
+    this.m_damage = 20;
     this.width = 50;
     this.height = 100;
     this.clearRect = false;
@@ -71,6 +71,10 @@ getCollisionPosition(posx, posy){
     this.collition.collision_posx = posx;
     this.collition.collision_posy = posy;
 
+}
+
+shotDamageRandomizer(damage_set){
+    
 }
 
 clearCollisionShot(){ 
