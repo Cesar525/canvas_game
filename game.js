@@ -25,7 +25,7 @@ const thruster = new Thruster();
 //players
 const players = [
     //CREATING A PLAYER Player(name, level, thruster_selection, get_health, energy, m_damage,  gunType, posx, posy, gun_speed)
-new Player("Player One", 1230,  6, 100, 500, 1, 3, 100, 500, 30),
+new Player("Player One", 1230,  6, 100, 500, 100, 3, 100, 500, 30),
 // new Player("Player Two", 1230,  6, 100, 500, 1, 3, 500, 700, 30), 
 // new Player("Player Two", 1230,  6, 100, 500, 1, 3, 900, 800, 30),
 // new Player("Player Two", 1230,  6, 100, 500, 1, 3, 1000, 700, 30),
@@ -96,12 +96,12 @@ function buffer(){
         for(var player_loop = 0; player_loop < players.length; player_loop++){
             //checking for collitions
             players[player_loop].playerCollitionMonsters(monsters[m]);
-            collisionMonsterShot(monsters[m], guns[player_loop]);
+            collisionMonsterShot(monsters[m], guns[player_loop], hitDamageAnimation[player_loop]);
            
             bulletHitMonsterEffect(hitExplosionAnimation[player_loop], hitExplosionAnimation2[player_loop], monsters[m].collition.collition_with_shot, guns[player_loop].collition.collision_posx, guns[player_loop].collition.collision_posy += backg.velocity.y, 6, players.length + 1, guns[player_loop]);
 // monsterAnimationDamage[m].damageShowAnimation();
 
-    hitDamageAnimation[player_loop].damageShowAnimation(1340,guns[player_loop].collition.collision_posx, guns[player_loop].collition.collision_posy -= backg.velocity.y, "white", monsters[m], guns[player_loop]);
+    hitDamageAnimation[player_loop].damageShowAnimation(guns[player_loop].m_damage,guns[player_loop].collition.collision_posx, guns[player_loop].collition.collision_posy -= backg.velocity.y, "white", monsters[m], guns[player_loop]);
 
             //    guns[player_loop].collision_posY += 2;
         }

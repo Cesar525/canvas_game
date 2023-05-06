@@ -8,7 +8,7 @@ class shots{
         x : 20,
         y : 20
     }
-    this.m_damage = 20;
+    this.m_damage;
     this.width = 50;
     this.height = 100;
     this.clearRect = false;
@@ -19,6 +19,7 @@ class shots{
         collision_posy : NaN
 
     }
+    this.random = false;
     
 this.gameFrame = 0;
 this.staggerFrame = 10
@@ -40,6 +41,8 @@ this.staggerFrame = 10
     10 : "assets/shots/bean_10.png"
     }
     }
+
+bullethitmonsters(){return this.collition.shot_collided;}
 
 shotSelection(player,select_shot, damage, speed){
 if(select_shot && damage && speed ){
@@ -63,6 +66,18 @@ this.m_damage = damage
     }
 
 }
+
+gunTypes(player,selectingGun){
+    
+    switch(selectingGun){
+case 1 : 
+let damage = randomHit(11, 20, this.bullethitmonsters());
+this.shotSelection(player,1,damage, 20);
+break;
+    }
+}
+
+
 shotDirectionUp(direction){
   this.position.y -= this.velocity.y;  
 }
@@ -74,7 +89,7 @@ getCollisionPosition(posx, posy){
 }
 
 shotDamageRandomizer(damage_set){
-    
+
 }
 
 clearCollisionShot(){ 
