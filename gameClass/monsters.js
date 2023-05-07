@@ -38,6 +38,7 @@ this.monsterMovement = movements;
 this.explosion_dead = false;
 this.explosion = false;
 this.health_total = health;
+this.monsterGotHitDamages;
 //hit monster
 
 
@@ -67,6 +68,7 @@ getMonsterHealth(){
 }
 setMonsterHealth(sethit){
 this.body.m_health -= sethit;
+this.monsterGotHitDamages = sethit;
 }
 getPosX(){
     return this.position.x;

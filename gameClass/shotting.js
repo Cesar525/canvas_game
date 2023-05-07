@@ -19,8 +19,11 @@ class shots{
         collision_posy : NaN
 
     }
-    this.random = false;
-    
+    this.random = true;
+    this.randomNum;
+    this.damagesHit;
+
+
 this.gameFrame = 0;
 this.staggerFrame = 10
 
@@ -67,17 +70,28 @@ this.m_damage = damage
 
 }
 
+randomHit(from, to){
+    //WORKING ON
+    this.randomNum = Math.floor(Math.random() * to) + from   
+    return this.randomNum;
+  }
+
 gunTypes(player,selectingGun){
-    
+    //WORKING ON
     switch(selectingGun){
 case 1 : 
-let damage = randomHit(11, 20, this.bullethitmonsters());
-this.shotSelection(player,1,damage, 20);
+var gun_damage = 5;
+var totalDamage = player.body.m_damage + gun_damage;
+this.damages = this.randomHit(1, totalDamage);
+this.shotSelection(player,1,this.damages, player.body.m_gun_speed);
 break;
     }
 }
 
-
+setDamageHit(damagehit){
+    this.damagesHit = damagehit;
+}
+getDamageHit(){return this.damagesHit;}
 shotDirectionUp(direction){
   this.position.y -= this.velocity.y;  
 }

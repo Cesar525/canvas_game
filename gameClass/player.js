@@ -144,7 +144,8 @@ playerCollitionMonsters(monsters){
   }
 
 playerGun(gun){
-    gun.gunTypes(this,1);
+    //WORKING ON
+    gun.gunTypes(this, this.body.m_gun_type);
 }
 
 

@@ -48,7 +48,8 @@ function collisionMonsterShot(monsters,shot, hitDamageAnimations){
    // collision monster to shot
     if(collisionTouch(shot, monsters)){
         monsters.setMonsterHealth(shot.m_damage); // set up the hit depend on the shot
-       monsters.collition.collition_with_shot = true;
+        shot.setDamageHit(shot.m_damage);
+        monsters.collition.collition_with_shot = true;
        monsters.collition.collition_posX  = monsters.position.x;
        monsters.collition.collition_posY = monsters.position.y;   
     shot.getCollisionPosition(shot.position.x, shot.position.y);
@@ -76,15 +77,7 @@ shot.position.y = - 50;
 }  
 }
 
-function randomHit(from, to, check){
-  console.log(check)
-  if(check){
-  var number = Math.floor(Math.random() * to) + from
-}else{
-  var number = 0;
-}
-  return number
-}
+
 
 
 
