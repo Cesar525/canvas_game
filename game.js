@@ -5,9 +5,6 @@ c.width = 2000
 c.height = 1500
 const gravity = 10;
 
-
-
-
 const backg = new Background();
 const shield = new Shields();
 const death = new Death();
