@@ -13,14 +13,7 @@ const shield = new Shields();
 const death = new Death();
 //game
 const playerDeathAnimation = new Animation();
-
-// const player = new Player("Player One", 123,  8, 500);
 const thruster = new Thruster();
-
-
-
-
-
 
 //players
 const players = [
