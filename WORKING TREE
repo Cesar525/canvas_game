@@ -5,11 +5,5 @@ pass:525002cc
 
 
 working on -
-Players effects ect.
-search for the word "WORKING ON" and it will take you to where you left it.
-
-to do - 
-currently working when player hit the monsters along with the explosion it need to show the damage done by that shot.
-damage effect should be red with negative sign slightly comming up and desapearing right on top of the explosion.
-
--- working on random numbmer value.
+Working on Monster Spawns and Time
+we can make a spawn class to work on that.

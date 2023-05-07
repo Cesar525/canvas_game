@@ -71,13 +71,11 @@ this.m_damage = damage
 }
 
 randomHit(from, to){
-    //WORKING ON
     this.randomNum = Math.floor(Math.random() * to) + from   
     return this.randomNum;
   }
 
 gunTypes(player,selectingGun){
-    //WORKING ON
     switch(selectingGun){
 case 1 : 
 var gun_damage = 5;

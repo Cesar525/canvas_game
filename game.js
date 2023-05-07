@@ -84,7 +84,7 @@ function buffer(){
     
 
     //Monsters for loops for collision and monster updates
-    // MONSTERS WORK
+    
     for(var m = 0; m < monsters.length; m++){
         monsters[m].updateMonster();
         monsterDeathExplosion(monsterDeadAnimation[m], monsters[m].monsterDeath(), monsters[m].body.m_deadPosX, monsters[m].body.m_deadPosY += backg.velocity.y); 
@@ -101,7 +101,7 @@ function buffer(){
             bulletHitMonsterEffect(hitExplosionAnimation[player_loop], hitExplosionAnimation2[player_loop], monsters[m].collition.collition_with_shot, guns[player_loop].collition.collision_posx, guns[player_loop].collition.collision_posy , 6, players.length + 1, guns[player_loop]);
 // monsterAnimationDamage[m].damageShowAnimation();
 
-    hitDamageAnimation[player_loop].damageShowAnimation(guns[player_loop].getDamageHit(), guns[player_loop].collition.collision_posx, guns[player_loop].collition.collision_posy, "#ff4f46",collisionTouch(monsters[m], guns[player_loop]));
+    hitDamageAnimation[player_loop].damageShowAnimation(guns[player_loop].getDamageHit(), guns[player_loop].collition.collision_posx, guns[player_loop].collition.collision_posy, "red",collisionTouch(monsters[m], guns[player_loop]));
 
             //    guns[player_loop].collision_posY += 2;
         }
@@ -112,7 +112,7 @@ function buffer(){
     
      
         //############################################################
-//PLAYERS WORK
+
      //players for lopp
 for(var player_loop = 0; player_loop < players.length; player_loop++){
     players[player_loop].playerDeathExplosion(playerDeadAnimation[player_loop], players[player_loop].playerOnDeath(),players[player_loop].body.deathPositionX, players[player_loop].body.deathPositionY += backg.velocity.y);

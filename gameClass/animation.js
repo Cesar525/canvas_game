@@ -206,40 +206,23 @@ playerSparksHigh(player_posx, player_posy){
     }
 
 damageShowAnimation(damage,pos_x, pos_y, color, if_true){
-        //WORKING ON
-
 this.gameFrame++;
-
-//console.log(this.gameFrame);
-if(if_true){
-this.showDamage = true;
-}
+if(if_true){this.showDamage = true;}
 console.log(this.showDamage);
-       
-//console.log(this.showDamage);
 
         if(this.showDamage){
             ctx.fillStyle = color;
-            ctx.strokeStyle = "red"
-            ctx.font = "30px Anton";
+            ctx.strokeStyle = "black"
+            ctx.font = "40px Anton";
             ctx.fillText("-"+ damage, pos_x , pos_y);
-            ctx.strokeText("-" + damage, pos_x, pos_y);
-           
+            ctx.strokeText("-" + damage, pos_x, pos_y);       
         } 
-
         if(this.gameFrame >= 400){
                  this.showDamage = false;
                  this.gameFrame = 0;
                  this.animationSlowsGoesUp = 0
                }
-  console.log(this.gameFrame);
-          
-
-
-       
-//clear damage
         }
-
 
 updateAnimation(){   
 
