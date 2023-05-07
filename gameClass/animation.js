@@ -208,7 +208,7 @@ playerSparksHigh(player_posx, player_posy){
 damageShowAnimation(damage,pos_x, pos_y, color, if_true){
 this.gameFrame++;
 if(if_true){this.showDamage = true;}
-console.log(this.showDamage);
+
 
         if(this.showDamage){
             ctx.fillStyle = color;

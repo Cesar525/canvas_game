@@ -26,17 +26,33 @@ const thruster = new Thruster();
 const players = [
     //CREATING A PLAYER Player(name, level, thruster_selection, get_health, energy, m_damage,  gunType, posx, posy, gun_speed)
 new Player("Player One", 1230,  6, 100, 500, 100, 1, 100, 500, 100),
-// new Player("Player Two", 1230,  6, 100, 500, 450, 3, 500, 700, 30), 
-// new Player("Player Two", 1230,  6, 100, 500, 100, 3, 900, 800, 30),
-// new Player("Player Two", 1230,  6, 100, 500, 100, 3, 1000, 700, 30),
-// new Player("Player Two", 1230,  6, 100, 500, 1000, 3, 1100, 400, 30)
+new Player("Player Two", 1230,  6, 100, 500, 450, 1, 500, 700, 100), 
+new Player("Player Two", 1230,  6, 100, 500, 100, 1, 900, 800, 100),
+new Player("Player Two", 1230,  6, 100, 500, 100, 1, 1000, 700, 100),
+new Player("Player Two", 1230,  6, 100, 500, 1000, 1, 1100, 400, 100)
 ]
 //Monsters
 const sparks = new Animation();
 
 const monsters = [
- new Monsters(1, 100, 100 , 1000, "invaderOne", 10, "orange", "none", 100 , 100, 100),
- new Monsters( 4, 600, 100, 10000, "BOSS", 10, "white", "none", 800 , 500, 2),
+ new Monsters(1, 100, 100 , 100, "invaderOne", 10, "orange", "straightDown", 100 , 100, 100),
+ new Monsters(1, 100, 100 , 100, "invaderOne", 10, "orange", "straightDown", 100 , 100, 100),
+ new Monsters(1, 100, 100 , 100, "invaderOne", 10, "orange", "straightDown", 100 , 100, 100),
+ new Monsters(1, 100, 100 , 100, "invaderOne", 10, "orange", "straightDown", 100 , 100, 100),
+ new Monsters(1, 100, 100 , 100, "invaderOne", 10, "orange", "straightDown", 100 , 100, 100),
+ new Monsters(1, 100, 100 , 100, "invaderOne", 10, "orange", "straightDown", 100 , 100, 100),
+ new Monsters(1, 100, 100 , 100, "invaderOne", 10, "orange", "straightDown", 100 , 100, 100),
+ new Monsters(1, 100, 100 , 100, "invaderOne", 10, "orange", "straightDown", 100 , 100, 100),
+ new Monsters(1, 100, 100 , 100, "invaderOne", 10, "orange", "straightDown", 100 , 100, 100),
+ new Monsters(1, 100, 100 , 100, "invaderOne", 10, "orange", "straightDown", 100 , 100, 100),
+ new Monsters(1, 100, 100 , 100, "invaderOne", 10, "orange", "straightDown", 100 , 100, 100),
+ new Monsters(1, 100, 100 , 100, "invaderOne", 10, "orange", "straightDown", 100 , 100, 100),
+ new Monsters(1, 100, 100 , 100, "invaderOne", 10, "orange", "straightDown", 100 , 100, 100),
+ new Monsters(1, 100, 100 , 100, "invaderOne", 10, "orange", "straightDown", 100 , 100, 100),
+ new Monsters(1, 100, 100 , 100, "invaderOne", 10, "orange", "straightDown", 100 , 100, 100),
+
+
+  new Monsters( 4, 400, 400, 10000, "BOSS", 10, "white", "none", 400 , 400, 2),
 // new Monsters( 3, 400, 100, 1000, "MONSTER 3", 10, "blue", "none", 100 , 100),
 // new Monsters( 4, 800, 100, 100, "MOSTER 4", 10, "red", "none", 100 , 100),
 // new Monsters( 4, 800, 100, 1000, "BOSS", 10, "red", "none", 500 ,500)
@@ -98,7 +114,7 @@ function buffer(){
             players[player_loop].playerCollitionMonsters(monsters[m]);
             collisionMonsterShot(monsters[m], guns[player_loop], hitDamageAnimation[player_loop]);
            
-            bulletHitMonsterEffect(hitExplosionAnimation[player_loop], hitExplosionAnimation2[player_loop], monsters[m].collition.collition_with_shot, guns[player_loop].collition.collision_posx, guns[player_loop].collition.collision_posy , 6, players.length + 1, guns[player_loop]);
+            bulletHitMonsterEffect(hitExplosionAnimation[player_loop], hitExplosionAnimation2[player_loop], monsters[m].collition.collition_with_shot, guns[player_loop].collition.collision_posx, guns[player_loop].collition.collision_posy , 6, players.length + 5, guns[player_loop]);
 // monsterAnimationDamage[m].damageShowAnimation();
 
     hitDamageAnimation[player_loop].damageShowAnimation(guns[player_loop].getDamageHit(), guns[player_loop].collition.collision_posx, guns[player_loop].collition.collision_posy, "red",collisionTouch(monsters[m], guns[player_loop]));

@@ -26,6 +26,7 @@ this.collition = {
 
 
 
+this.spawnTime = 0
 this.monster_color = color
 this.monster_id = id
 this.width = s_width;
@@ -39,6 +40,10 @@ this.explosion_dead = false;
 this.explosion = false;
 this.health_total = health;
 this.monsterGotHitDamages;
+//need for spawns
+this.spawnPositionX = pos_x;
+this.spawnPositionY = pos_y;
+
 //hit monster
 
 
@@ -82,8 +87,17 @@ setPosXCol(pos){
 setPosYCol(pos){
     this.collision_posY
 }
+
+killMonster(){
+    this.body.m_health = 0;
+    this.body.m_dead = true;
+    this.position.x = NaN;
+    this.position.y = NaN;
+}
 movements(move){
-    if(move == this.monsterMovement){
+
+    switch(move){
+case "sidebyside":    
         this.position.y += 0.6
     if(this.moveRight){
         this.position.x += this.velocity.x;
@@ -100,12 +114,47 @@ movements(move){
         this.moveLeft = true;
         this.moveRight = false;
     }
-    }
-    if(move == this.monsterMovement){
-
-    }
+   
+break;
+case "straightDown":
+    this.position.y += 5;
+if(this.position.y > c.height){
+    this.killMonster();
 }
 
+
+
+}
+}
+
+randomSpawnPositionX(from, to){
+    this.randomNum = Math.floor(Math.random() * to) + from   
+    return this.randomNum;
+  }
+
+spawnMonster(){
+if(this.body.m_dead){
+    this.spawnTime++;
+    console.log(this.spawnTime);
+if(this.spawnTime >= 100){
+
+    this.position.x = this.randomSpawnPositionX(50, c.width - 300);
+    this.position.y = this.spawnPositionY;
+   
+    this.body.m_health = this.health_total; 
+    
+    this.moveRight = true;
+    this.moveLeft = false;
+    this.clearRect = false;
+    this.collision_bool  = false;
+    this.explosion_dead = false;
+    this.spawnTime = 0;
+    this.body.m_dead = false;
+}
+    
+}
+
+}
 resetColPos(){
 
     this.width = 100;
@@ -174,9 +223,9 @@ monsterClearDeath(){
 
 updateMonster(){
 this.drawMonster();
-this.movements("sidebyside");
+this.movements(this.monsterMovement);
 ctx.globalCompositeOperation = "source-over";
-
+this.spawnMonster();
 
 //this.monsterClearDeath();
 }
