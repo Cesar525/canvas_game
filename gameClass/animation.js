@@ -13,6 +13,7 @@ constructor(){
     this.onAnimation = false;
     this.showDamage = false;
     this.animationSlowsGoesUp = 0;
+    this.gameFrameDamageAnimation = 0;
 }
 
 spritePage(sprite_path, posx, posy, sprite_page_width, sprite_page_height, sprite_count_width, sprite_count_height, sprite_size_w, sprite_size_h, speed, show){
@@ -206,7 +207,7 @@ playerSparksHigh(player_posx, player_posy){
     }
 
 damageShowAnimation(damage,pos_x, pos_y, color, if_true){
-this.gameFrame++;
+this.gameFrameDamageAnimation++;
 if(if_true){this.showDamage = true;}
 
 
@@ -217,9 +218,9 @@ if(if_true){this.showDamage = true;}
             ctx.fillText("-"+ damage, pos_x , pos_y);
             ctx.strokeText("-" + damage, pos_x, pos_y);       
         } 
-        if(this.gameFrame >= 400){
+        if(this.gameFrameDamageAnimation >= 400){
                  this.showDamage = false;
-                 this.gameFrame = 0;
+                 this.gameFrameDamageAnimation = 0;
                  this.animationSlowsGoesUp = 0
                }
         }

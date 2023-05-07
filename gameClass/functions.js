@@ -52,7 +52,7 @@ function collisionMonsterShot(monsters,shot, hitDamageAnimations){
         monsters.collition.collition_with_shot = true;
        monsters.collition.collition_posX  = monsters.position.x;
        monsters.collition.collition_posY = monsters.position.y;   
-    shot.getCollisionPosition(shot.position.x, shot.position.y);
+    shot.setCollisionPosition(shot.position.x, shot.position.y);
     shot.collition.shot_collided = true;
     hitDamageAnimations.damageShowAnimation(shot.m_damage,shot.collition.collision_posx, shot.collition.collision_posy -= backg.velocity.y, "white", monsters, shot);
 console.log(collisionTouch(shot, monsters));

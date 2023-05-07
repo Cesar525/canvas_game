@@ -94,7 +94,7 @@ shotDirectionUp(direction){
   this.position.y -= this.velocity.y;  
 }
 
-getCollisionPosition(posx, posy){
+setCollisionPosition(posx, posy){
     this.collition.collision_posx = posx;
     this.collition.collision_posy = posy;
 
