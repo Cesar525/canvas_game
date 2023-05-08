@@ -28,37 +28,23 @@ function collisionTouch(obj1, obj2){
 
 
 
-function bulletHitMonsterEffect(animationOne, animationTwoo ,col, posx_, posy_, hiteffect, speed, shot){
-    var animationTwo;
-    
-    animationOne.explosionEffect(hiteffect,  posx_ - 100, posy_ - 100, col, speed);
-    if(animationOne.getAnimationStatus() && col){
-     animationTwoo.reset();
-    animationTwo = true;
-     }
-      animationTwoo.explosionEffect(hiteffect, posx_ - 100, posy_ - 100, animationTwo, speed);
-}
-
 function monsterDeathExplosion(animationOne,col, posx_, posy_){  
     animationOne.explosionEffect(3,  posx_ - 85, posy_ - 85, col);
 }
 
 
-function collisionMonsterShot(monsters,shot, hitDamageAnimations){
+function collisionMonsterShot(monsters,shot, hitDamageAnimations, hiteffectOne, hiteffectTwo){
    // collision monster to shot
     if(collisionTouch(shot, monsters)){
         monsters.setMonsterHealth(shot.m_damage); // set up the hit depend on the shot
+        monsters.setMonsterCollitionPost(monsters.position.x, monsters.position.y);
+        monsters.setMonsterCollitionWithShot(true);
         shot.setDamageHit(shot.m_damage);
-        monsters.collition.collition_with_shot = true;
-       monsters.collition.collition_posX  = monsters.position.x;
-       monsters.collition.collition_posY = monsters.position.y;   
-    shot.setCollisionPosition(shot.position.x, shot.position.y);
-    shot.collition.shot_collided = true;
-    hitDamageAnimations.damageShowAnimation(shot.m_damage,shot.collition.collision_posx, shot.collition.collision_posy -= backg.velocity.y, "white", monsters, shot);
-console.log(collisionTouch(shot, monsters));
+        shot.setCollisionPosition(shot.position.x, shot.position.y);
+        shot.setCollitionWithMonster(true);
     }else{
-      monsters.collition.collition_with_shot = false; 
-      shot.collition.shot_collided = false;  
+      monsters.setMonsterCollitionWithShot(false); 
+      shot.setCollitionWithMonster(false);  
     }
 
    //bullet disapear collision

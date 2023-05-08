@@ -14,7 +14,8 @@ class shots{
     this.clearRect = false;
 
     this.collition = {
-        shot_collided : false,
+        shot_collided_with_monster : false,
+        shot_collided_with_player : false,
         collision_posx : NaN,
         collision_posy : NaN
 
@@ -93,12 +94,19 @@ getDamageHit(){return this.damagesHit;}
 shotDirectionUp(direction){
   this.position.y -= this.velocity.y;  
 }
-
+//collitions in and outputs
 setCollisionPosition(posx, posy){
     this.collition.collision_posx = posx;
     this.collition.collision_posy = posy;
-
 }
+setCollitionWithMonster(input){this.collition.shot_collided_with_monster = input;};
+getCollitionWithMonster(){return this.collition.shot_collided_with_monster;};
+setCollitionWithPlayer(input){this.collition.shot_collided_with_player = input;};
+getCollitionWithPlayer(){return this.collition.shot_collided_with_player;};
+getCollitionPosX(){return this.collition.collision_posx;};
+getCollitionPosY(){return this.collition.collision_posy;};
+
+
 
 shotDamageRandomizer(damage_set){
 
@@ -111,9 +119,19 @@ clearCollisionShot(){
 }
 
 
+bulletHitMonsterEffect(animationOne, animationTwoo , hiteffect, speed){
+    var animationTwo;
+  
+    animationOne.explosionEffect(hiteffect,  this.collition.collision_posx - 100, this.collition.collision_posy - 100, this.collition.shot_collided_with_monster, speed);
+    if(animationOne.getAnimationStatus() && this.collition.shot_collided_with_monster){
+     animationTwoo.reset();
+    animationTwo = true;
+     }
+      animationTwoo.explosionEffect(hiteffect, this.collition.collision_posx - 100, this.collition.collision_posy - 100, animationTwo, speed);
+}
 
-updateShot(){
-    // ctx.fillStyle = "white";
-    // ctx.fillRect(this.collition.collision_posx, this.collition.collision_posy, 50, 50);
+
+updateShot(hiteffectOne, hiteffectTwo){
+
     }
 }

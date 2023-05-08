@@ -21,7 +21,8 @@ this.body = {
 this.collition = {
     collition_posX : NaN,
     collition_posY : NaN,
-    collition_with_shot : false
+    collition_with_shot : false,
+    collition_with_player : false
 }
 
 
@@ -44,11 +45,6 @@ this.monsterGotHitDamages;
 this.spawnPositionX = pos_x;
 this.spawnPositionY = pos_y;
 
-//hit monster
-
-
-
-
 }
 
 
@@ -63,31 +59,15 @@ drawMonster(){
     if(this.body.m_health < 0){
         this.body.m_health = 0;
                 }
-            }else{
-
             }
 }
-getMonsterHealth(){
-    return this.body.m_health;
-
-}
+getMonsterHealth(){ return this.body.m_health; }
 setMonsterHealth(sethit){
 this.body.m_health -= sethit;
 this.monsterGotHitDamages = sethit;
 }
-getPosX(){
-    return this.position.x;
-}
-getPosY(){
-    return this.position.y;
-}
-setPosXCol(pos){
-    this.collision_posX = pos;
-}
-setPosYCol(pos){
-    this.collision_posY
-}
-
+getPosX(){return this.position.x;}
+getPosY(){return this.position.y;}
 killMonster(){
     this.body.m_health = 0;
     this.body.m_dead = true;
@@ -122,8 +102,6 @@ if(this.position.y > c.height){
     this.killMonster();
 }
 
-
-
 }
 }
 
@@ -156,26 +134,28 @@ if(this.spawnTime >= 100){
 
 }
 resetColPos(){
-
-    this.width = 100;
-    this.height = 100;
     this.moveRight = true;
     this.moveLeft = false;
     this.clearRect = false;
     this.collition.collition_with_shot = false;
     this.explosion_dead = false;
-    this.explosion = false;
-    
-    //hit monster
-    this.collision_posX;
-    this.collision_posY;
-  
-    
+    this.explosion = false;   
+    this.collition.collition_posX;
+    this.collition.collition_posY;
 }
+//collition in && out puts
+setMonsterCollitionPost(posX, posY){
+    this.collition.collition_posX = posX;
+    this.collition.collition_posY = posY;
+};
+setMonsterCollitionWithShot(input){ this.collition.collition_with_shot = input;};
+getMonsterCollitionWithShot(){return this.collition_with_shot;};
+getCollitoinPosX(){return this.collition.collition_posX;};
+getCollitoinPosY(){return this.collition.collition_posY;};
+
+
 monsterlifeBar(){
-    //color bas eon life   
- 
-   
+
     if(Math.round((this.body.m_health / this.health_total) * 100) <= 50){
         ctx.fillStyle = "orange";
     }
@@ -225,8 +205,7 @@ updateMonster(){
 this.drawMonster();
 this.movements(this.monsterMovement);
 ctx.globalCompositeOperation = "source-over";
-this.spawnMonster();
+// this.spawnMonster();
 
-//this.monsterClearDeath();
 }
 }
