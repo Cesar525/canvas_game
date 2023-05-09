@@ -33,7 +33,7 @@ function monsterDeathExplosion(animationOne,col, posx_, posy_){
 }
 
 
-function collisionMonsterShot(monsters,shot, hitDamageAnimations, hiteffectOne, hiteffectTwo){
+function collisionMonsterShot(monsters,shot){
    // collision monster to shot
     if(collisionTouch(shot, monsters)){
         monsters.setMonsterHealth(shot.m_damage); // set up the hit depend on the shot

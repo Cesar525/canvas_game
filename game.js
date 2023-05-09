@@ -15,8 +15,8 @@ const thruster = new Thruster();
 //players
 const players = [
     //CREATING A PLAYER Player(name, level, thruster_selection, get_health, energy, m_damage,  gunType, posx, posy, gun_speed)
-new Player("Player One", 1230,  6, 100, 500, 10, 1, 100, 900, 100),
-new Player("Player Two", 1230,  6, 100, 500, 10, 1, 500, 900, 100), 
+new Player("Player One", 1230,  6, 100, 500, 10, 1, 100, 900, 30),
+new Player("Player Two", 1230,  6, 100, 500, 10, 1, 500, 900, 30), 
 // new Player("Player Two", 1230,  6, 100, 500, 1000, 1, 900, 900, 100),
 // new Player("Player Two", 1230,  6, 100, 500, 1000, 1, 1000, 900, 100),
 // new Player("Player Two", 1230,  6, 100, 500, 1000, 1, 1100, 900, 300)
@@ -26,9 +26,9 @@ const sparks = new Animation();
 
 const monsters = [
 
- new Monsters(2, 100, 100 , 100, "invaderOne", 10, "orange", "straightDown", 100 , 100, 2),
- new Monsters(2, 100, 100 , 100, "invaderOne", 10, "orange", "straightDown", 100 , 100, 2),
- new Monsters(2, 100, 100 , 100, "invaderOne", 10, "orange", "straightDown", 100 , 100, 2),
+ new Monsters(2, 100, 100 , 1000, "invaderOne", 10, "orange", "none", 100 , 100, 2),
+ new Monsters(2, 400, 100 , 1000, "invaderOne", 10, "orange", "none", 100 , 100, 2),
+ new Monsters(2, 600, 100 , 1000, "invaderOne", 10, "orange", "none", 100 , 100, 2),
 //  new Monsters(2, 100, 100 , 100, "invaderOne", 10, "orange", "straightDown", 100 , 100, 2),
 //  new Monsters(2, 100, 100 , 100, "invaderOne", 10, "orange", "straightDown", 100 , 100, 2),
 //  new Monsters(2, 100, 100 , 100, "invaderOne", 10, "orange", "straightDown", 100 , 100, 2),
@@ -46,7 +46,7 @@ const monsters = [
 
 
 
-  new Monsters( 4, 400,0, 10000, "BOSS", 10, "red", "none", 400 , 400, 2),
+//   new Monsters( 4, 400,0, 10000, "BOSS", 10, "red", "none", 400 , 400, 2),
 // new Monsters( 3, 400, 100, 1000, "MONSTER 3", 10, "blue", "none", 100 , 100),
 // new Monsters( 4, 800, 100, 100, "MOSTER 4", 10, "red", "none", 100 , 100),
 // new Monsters( 4, 800, 100, 1000, "BOSS", 10, "red", "none", 500 ,500)
@@ -107,8 +107,8 @@ for(var player_loop = 0; player_loop < players.length; player_loop++){
 
 //Monsters for loops for collision
 for(var m = 0; m < monsters.length; m++){       
+    console.log("times")
     for(var player_loop = 0; player_loop < players.length; player_loop++){ 
-            console.log("times")
             players[player_loop].playerCollitionMonsters(monsters[m]);
             collisionMonsterShot(monsters[m], guns[player_loop]);
         }    

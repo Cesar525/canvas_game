@@ -18,7 +18,6 @@ class shots{
         shot_collided_with_player : false,
         collision_posx : NaN,
         collision_posy : NaN
-
     }
     this.random = true;
     this.randomNum;
@@ -99,6 +98,7 @@ setCollisionPosition(posx, posy){
     this.collition.collision_posx = posx;
     this.collition.collision_posy = posy;
 }
+
 setCollitionWithMonster(input){this.collition.shot_collided_with_monster = input;};
 getCollitionWithMonster(){return this.collition.shot_collided_with_monster;};
 setCollitionWithPlayer(input){this.collition.shot_collided_with_player = input;};
@@ -107,10 +107,6 @@ getCollitionPosX(){return this.collition.collision_posx;};
 getCollitionPosY(){return this.collition.collision_posy;};
 
 
-
-shotDamageRandomizer(damage_set){
-
-}
 
 clearCollisionShot(){ 
     this.collition.collision_posx = NaN;
