@@ -26,6 +26,17 @@ function collisionTouch(obj1, obj2){
   }
 }
 
+function bulletHitMonsterEffect(hitanimationOne, hitanimationTwo,posx, posy,collition,hiteffect, speed){
+  var animationTwo;
+ 
+  hitanimationOne.explosionEffect(hiteffect,posx - 100, posy - 100, collition, speed);
+  if(hitanimationOne.getAnimationStatus() && collition){
+   hitanimationTwo.reset();
+  animationTwo = true;
+   }
+    hitanimationTwo.explosionEffect(hiteffect, posx - 100, posy - 100, animationTwo, speed);
+   
+  }
 
 
 function monsterDeathExplosion(animationOne,col, posx_, posy_){  
@@ -37,11 +48,10 @@ function collisionMonsterShot(monsters,shot){
    // collision monster to shot
     if(collisionTouch(shot, monsters)){
         monsters.setMonsterHealth(shot.m_damage); // set up the hit depend on the shot
-        monsters.setMonsterCollitionPost(monsters.position.x, monsters.position.y);
-        monsters.setMonsterCollitionWithShot(true);
+        shot.setCollitionWithMonster(true);
         shot.setDamageHit(shot.m_damage);
         shot.setCollisionPosition(shot.position.x, shot.position.y);
-        shot.setCollitionWithMonster(true);
+    
     }else{
       monsters.setMonsterCollitionWithShot(false); 
       shot.setCollitionWithMonster(false);  

@@ -1,5 +1,6 @@
-class shots{
+class shots {
     constructor(){
+       
     this.position = {
         x :  -100,
         y : -100
@@ -105,9 +106,6 @@ setCollitionWithPlayer(input){this.collition.shot_collided_with_player = input;}
 getCollitionWithPlayer(){return this.collition.shot_collided_with_player;};
 getCollitionPosX(){return this.collition.collision_posx;};
 getCollitionPosY(){return this.collition.collision_posy;};
-
-
-
 clearCollisionShot(){ 
     this.collition.collision_posx = NaN;
     this.collition.collision_posy = NaN;
@@ -115,16 +113,9 @@ clearCollisionShot(){
 }
 
 
-bulletHitMonsterEffect(animationOne, animationTwoo , hiteffect, speed){
-    var animationTwo;
-  
-    animationOne.explosionEffect(hiteffect,  this.collition.collision_posx - 100, this.collition.collision_posy - 100, this.collition.shot_collided_with_monster, speed);
-    if(animationOne.getAnimationStatus() && this.collition.shot_collided_with_monster){
-     animationTwoo.reset();
-    animationTwo = true;
-     }
-      animationTwoo.explosionEffect(hiteffect, this.collition.collision_posx - 100, this.collition.collision_posy - 100, animationTwo, speed);
-}
+
+
+
 
 
 updateShot(hiteffectOne, hiteffectTwo){

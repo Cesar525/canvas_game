@@ -2,7 +2,7 @@ var c = document.getElementById("canvasone");
 var ctx = c.getContext("2d");
 
 c.width = 2000
-c.height = 1500
+c.height = 8000
 const gravity = 10;
 
 const backg = new Background();
@@ -15,42 +15,38 @@ const thruster = new Thruster();
 //players
 const players = [
     //CREATING A PLAYER Player(name, level, thruster_selection, get_health, energy, m_damage,  gunType, posx, posy, gun_speed)
-new Player("Player One", 1230,  6, 100, 500, 10, 1, 100, 900, 30),
-new Player("Player Two", 1230,  6, 100, 500, 10, 1, 500, 900, 30), 
-// new Player("Player Two", 1230,  6, 100, 500, 1000, 1, 900, 900, 100),
-// new Player("Player Two", 1230,  6, 100, 500, 1000, 1, 1000, 900, 100),
-// new Player("Player Two", 1230,  6, 100, 500, 1000, 1, 1100, 900, 300)
+new Player("Player One", 1230,  6, 100, 500, 10, 1, 100, 900, 100),
+new Player("Player Two", 1230,  8, 100, 500, 10, 1, 400, 900, 100), 
+new Player("Player Two", 1230,  3, 100, 500, 10, 1, 900, 900, 100),
+new Player("Player Two", 1230,  4, 100, 500, 10, 1, 1000, 900, 100),
+
 ]
 //Monsters
 const sparks = new Animation();
 
 const monsters = [
-
- new Monsters(2, 100, 100 , 1000, "invaderOne", 10, "orange", "none", 100 , 100, 2),
- new Monsters(2, 400, 100 , 1000, "invaderOne", 10, "orange", "none", 100 , 100, 2),
- new Monsters(2, 600, 100 , 1000, "invaderOne", 10, "orange", "none", 100 , 100, 2),
-//  new Monsters(2, 100, 100 , 100, "invaderOne", 10, "orange", "straightDown", 100 , 100, 2),
-//  new Monsters(2, 100, 100 , 100, "invaderOne", 10, "orange", "straightDown", 100 , 100, 2),
-//  new Monsters(2, 100, 100 , 100, "invaderOne", 10, "orange", "straightDown", 100 , 100, 2),
-//  new Monsters(2, 100, 100 , 100, "invaderOne", 10, "orange", "straightDown", 100 , 100, 2),
-//  new Monsters(2, 100, 100 , 100, "invaderOne", 10, "orange", "straightDown", 100 , 100, 2),
-//  new Monsters(2, 100, 100 , 100, "invaderOne", 10, "orange", "straightDown", 100 , 100, 2),
-//  new Monsters(2, 100, 100 , 100, "invaderOne", 10, "orange", "straightDown", 100 , 100, 2),
-//  new Monsters(2, 100, 100 , 100, "invaderOne", 10, "orange", "straightDown", 100 , 100, 2),
-//  new Monsters(2, 100, 100 , 100, "invaderOne", 10, "orange", "straightDown", 100 , 100, 2),
-//  new Monsters(2, 100, 100 , 100, "invaderOne", 10, "orange", "straightDown", 100 , 100, 2),
-
-
-//  new Monsters(2, 100, 100 , 100, "invaderOne", 10, "orange", "straightDown", 100 , 100, 2),
-
-
-
-
-//   new Monsters( 4, 400,0, 10000, "BOSS", 10, "red", "none", 400 , 400, 2),
-// new Monsters( 3, 400, 100, 1000, "MONSTER 3", 10, "blue", "none", 100 , 100),
-// new Monsters( 4, 800, 100, 100, "MOSTER 4", 10, "red", "none", 100 , 100),
-// new Monsters( 4, 800, 100, 1000, "BOSS", 10, "red", "none", 500 ,500)
-];
+ new Monsters(2, 100, 100 , 100000, "BOSS", 10, "orange", "none", 2000 , 100, 2),
+ new Monsters(2, 100, 100 , 10, "invaderOne", 10, "orange", "none", 100 , 100, 2),
+ new Monsters(2, 100, 100 , 100000, "BOSS", 10, "orange", "none", 2000 , 100, 2),
+ new Monsters(2, 100, 100 , 10, "invaderOne", 10, "orange", "none", 100 , 100, 2),
+ new Monsters(2, 100, 100 , 100000, "BOSS", 10, "orange", "none", 2000 , 100, 2),
+ new Monsters(2, 100, 100 , 10, "invaderOne", 10, "orange", "none", 100 , 100, 2),
+ new Monsters(2, 100, 100 , 100000, "BOSS", 10, "orange", "none", 2000 , 100, 2),
+ new Monsters(2, 100, 100 , 10, "invaderOne", 10, "orange", "none", 100 , 100, 2),
+ new Monsters(2, 100, 100 , 100000, "BOSS", 10, "orange", "none", 2000 , 100, 2),
+ new Monsters(2, 100, 100 , 10, "invaderOne", 10, "orange", "none", 100 , 100, 2),
+ new Monsters(2, 100, 100 , 100000, "BOSS", 10, "orange", "none", 2000 , 100, 2),
+ new Monsters(2, 100, 100 , 10, "invaderOne", 10, "orange", "none", 100 , 100, 2),
+ new Monsters(2, 100, 100 , 100000, "BOSS", 10, "orange", "none", 2000 , 100, 2),
+ new Monsters(2, 100, 100 , 10, "invaderOne", 10, "orange", "none", 100 , 100, 2), new Monsters(2, 100, 100 , 100000, "BOSS", 10, "orange", "none", 2000 , 100, 2),
+ new Monsters(2, 100, 100 , 10, "invaderOne", 10, "orange", "none", 100 , 100, 2), new Monsters(2, 100, 100 , 100000, "BOSS", 10, "orange", "none", 2000 , 100, 2),
+ new Monsters(2, 100, 100 , 10, "invaderOne", 10, "orange", "none", 100 , 100, 2), new Monsters(2, 100, 100 , 100000, "BOSS", 10, "orange", "none", 2000 , 100, 2),
+ new Monsters(2, 100, 100 , 10, "invaderOne", 10, "orange", "none", 100 , 100, 2), new Monsters(2, 100, 100 , 100000, "BOSS", 10, "orange", "none", 2000 , 100, 2),
+ new Monsters(2, 100, 100 , 10, "invaderOne", 10, "orange", "none", 100 , 100, 2), new Monsters(2, 100, 100 , 100000, "BOSS", 10, "orange", "none", 2000 , 100, 2),
+ new Monsters(2, 100, 100 , 10, "invaderOne", 10, "orange", "none", 100 , 100, 2), new Monsters(2, 100, 100 , 100000, "BOSS", 10, "orange", "none", 2000 , 100, 2),
+ new Monsters(2, 100, 100 , 10, "invaderOne", 10, "orange", "none", 100 , 100, 2), new Monsters(2, 100, 100 , 100000, "BOSS", 10, "orange", "none", 2000 , 100, 2),
+ new Monsters(2, 100, 100 , 10, "invaderOne", 10, "orange", "none", 100 , 100, 2),
+]
 
 // ALL MONSTERS ANIMATION
 const monsterDeadAnimation = [];
@@ -68,21 +64,20 @@ monsterAnimationDamage.push(new Animation());
 // ALL PLAYERS ANIMATIONS
 const playerDeadAnimation = [];
 const animation_playerspark_1_lowhealth = [];
-
-// Player Gun shots && explosion
-const guns = [];
 const hitExplosionAnimation = [];
 const hitExplosionAnimation2 = [];
+// Player Gun shots && explosion
+const guns = [];
+
 const hitDamageAnimation = [];
 // player animation loop to player length
 
 for(var player_loop = 0; player_loop < players.length; player_loop++){
-
+hitExplosionAnimation.push(new Animation());
+hitExplosionAnimation2.push(new Animation());
 guns.push(new shots());
 playerDeadAnimation.push(new Animation());
 animation_playerspark_1_lowhealth.push(new Animation());
-hitExplosionAnimation.push(new Animation());
-hitExplosionAnimation2.push(new Animation());
 hitDamageAnimation.push(new Animation());
 }
 
@@ -101,24 +96,25 @@ for(var m = 0; m < monsters.length; m++){
 
 
 for(var player_loop = 0; player_loop < players.length; player_loop++){ 
-    guns[player_loop].bulletHitMonsterEffect(hitExplosionAnimation[player_loop], hitExplosionAnimation2[player_loop] , 6, 1)
-    hitDamageAnimation[player_loop].damageShowAnimation(guns[player_loop].getDamageHit(), guns[player_loop].getCollitionPosX(), guns[player_loop].getCollitionPosY(), "red",guns[player_loop].getCollitionWithMonster());
 }
 
 //Monsters for loops for collision
 for(var m = 0; m < monsters.length; m++){       
     console.log("times")
     for(var player_loop = 0; player_loop < players.length; player_loop++){ 
-            players[player_loop].playerCollitionMonsters(monsters[m]);
-            collisionMonsterShot(monsters[m], guns[player_loop]);
-        }    
-    }
-    
-    
-    //############################################################
-    
-    //players for lopp
-    for(var player_loop = 0; player_loop < players.length; player_loop++){
+        bulletHitMonsterEffect(hitExplosionAnimation[player_loop], hitExplosionAnimation2[player_loop],guns[player_loop].getCollitionPosX(), guns[player_loop].getCollitionPosY() ,guns[player_loop].getCollitionWithMonster(), 6, monsters.length)
+        hitDamageAnimation[player_loop].damageShowAnimation(guns[player_loop].getDamageHit(), guns[player_loop].getCollitionPosX(), guns[player_loop].getCollitionPosY(), "red",guns[player_loop].getCollitionWithMonster());
+      
+        players[player_loop].playerCollitionMonsters(monsters[m]);
+        collisionMonsterShot(monsters[m], guns[player_loop]);
+    }    
+}
+
+
+//############################################################
+
+//players for lopp
+for(var player_loop = 0; player_loop < players.length; player_loop++){
         players[player_loop].playerDeathExplosion(playerDeadAnimation[player_loop], players[player_loop].playerOnDeath(),players[player_loop].body.deathPositionX, players[player_loop].body.deathPositionY += backg.velocity.y);
         players[player_loop].update(player_loop);
         guns[player_loop].updateShot();

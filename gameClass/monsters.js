@@ -22,7 +22,9 @@ this.collition = {
     collition_posX : NaN,
     collition_posY : NaN,
     collition_with_shot : false,
-    collition_with_player : false
+    collition_with_player : false,
+    collition_shotX : NaN,
+    collition_shotY :NaN
 }
 
 
@@ -113,7 +115,7 @@ randomSpawnPositionX(from, to){
 spawnMonster(){
 if(this.body.m_dead){
     this.spawnTime++;
-    console.log(this.spawnTime);
+  
 if(this.spawnTime >= 100){
 
     this.position.x = this.randomSpawnPositionX(50, c.width - 300);
@@ -152,7 +154,10 @@ setMonsterCollitionWithShot(input){ this.collition.collition_with_shot = input;}
 getMonsterCollitionWithShot(){return this.collition_with_shot;};
 getCollitoinPosX(){return this.collition.collition_posX;};
 getCollitoinPosY(){return this.collition.collition_posY;};
-
+setShotCollition(posx, posy){
+    this.collition.collition_shotX = posx;
+    this.collition.collition_shotY = posy;
+};
 
 monsterlifeBar(){
 
@@ -205,7 +210,7 @@ updateMonster(){
 this.drawMonster();
 this.movements(this.monsterMovement);
 ctx.globalCompositeOperation = "source-over";
-// this.spawnMonster();
+this.spawnMonster();
 
 }
 }
