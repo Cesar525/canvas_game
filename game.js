@@ -2,9 +2,9 @@ var c = document.getElementById("canvasone");
 var ctx = c.getContext("2d");
 
 c.width = 2000
-c.height = 8000
+c.height = 1500
 const gravity = 10;
-
+const fps = 60;
 const backg = new Background();
 const shield = new Shields();
 const death = new Death();
@@ -12,51 +12,53 @@ const death = new Death();
 const playerDeathAnimation = new Animation();
 const thruster = new Thruster();
 
+const sprite = [
+
+    new Animation(),
+    new Animation(),
+    new Animation(),
+    new Animation(),
+    new Animation(),
+    new Animation(),
+    new Animation(),
+    new Animation(),
+    new Animation(),
+    new Animation(),
+    new Animation()
+
+];
+
 //players
 const players = [
     //CREATING A PLAYER Player(name, level, thruster_selection, get_health, energy, m_damage,  gunType, posx, posy, gun_speed)
-new Player("Player One", 1230,  6, 100, 500, 10, 1, 100, 900, 100),
-new Player("Player Two", 1230,  8, 100, 500, 10, 1, 400, 900, 100), 
-new Player("Player Two", 1230,  3, 100, 500, 10, 1, 900, 900, 100),
-new Player("Player Two", 1230,  4, 100, 500, 10, 1, 1000, 900, 100),
+new Player("Player One", 1230,  6, 400, 400, 10, 1, 100, 900, 100),
+
+
 
 ]
 //Monsters
 const sparks = new Animation();
 
 const monsters = [
- new Monsters(2, 100, 100 , 100000, "BOSS", 10, "orange", "none", 2000 , 100, 2),
- new Monsters(2, 100, 100 , 10, "invaderOne", 10, "orange", "none", 100 , 100, 2),
- new Monsters(2, 100, 100 , 100000, "BOSS", 10, "orange", "none", 2000 , 100, 2),
- new Monsters(2, 100, 100 , 10, "invaderOne", 10, "orange", "none", 100 , 100, 2),
- new Monsters(2, 100, 100 , 100000, "BOSS", 10, "orange", "none", 2000 , 100, 2),
- new Monsters(2, 100, 100 , 10, "invaderOne", 10, "orange", "none", 100 , 100, 2),
- new Monsters(2, 100, 100 , 100000, "BOSS", 10, "orange", "none", 2000 , 100, 2),
- new Monsters(2, 100, 100 , 10, "invaderOne", 10, "orange", "none", 100 , 100, 2),
- new Monsters(2, 100, 100 , 100000, "BOSS", 10, "orange", "none", 2000 , 100, 2),
- new Monsters(2, 100, 100 , 10, "invaderOne", 10, "orange", "none", 100 , 100, 2),
- new Monsters(2, 100, 100 , 100000, "BOSS", 10, "orange", "none", 2000 , 100, 2),
- new Monsters(2, 100, 100 , 10, "invaderOne", 10, "orange", "none", 100 , 100, 2),
- new Monsters(2, 100, 100 , 100000, "BOSS", 10, "orange", "none", 2000 , 100, 2),
- new Monsters(2, 100, 100 , 10, "invaderOne", 10, "orange", "none", 100 , 100, 2), new Monsters(2, 100, 100 , 100000, "BOSS", 10, "orange", "none", 2000 , 100, 2),
- new Monsters(2, 100, 100 , 10, "invaderOne", 10, "orange", "none", 100 , 100, 2), new Monsters(2, 100, 100 , 100000, "BOSS", 10, "orange", "none", 2000 , 100, 2),
- new Monsters(2, 100, 100 , 10, "invaderOne", 10, "orange", "none", 100 , 100, 2), new Monsters(2, 100, 100 , 100000, "BOSS", 10, "orange", "none", 2000 , 100, 2),
- new Monsters(2, 100, 100 , 10, "invaderOne", 10, "orange", "none", 100 , 100, 2), new Monsters(2, 100, 100 , 100000, "BOSS", 10, "orange", "none", 2000 , 100, 2),
- new Monsters(2, 100, 100 , 10, "invaderOne", 10, "orange", "none", 100 , 100, 2), new Monsters(2, 100, 100 , 100000, "BOSS", 10, "orange", "none", 2000 , 100, 2),
- new Monsters(2, 100, 100 , 10, "invaderOne", 10, "orange", "none", 100 , 100, 2), new Monsters(2, 100, 100 , 100000, "BOSS", 10, "orange", "none", 2000 , 100, 2),
- new Monsters(2, 100, 100 , 10, "invaderOne", 10, "orange", "none", 100 , 100, 2), new Monsters(2, 100, 100 , 100000, "BOSS", 10, "orange", "none", 2000 , 100, 2),
- new Monsters(2, 100, 100 , 10, "invaderOne", 10, "orange", "none", 100 , 100, 2),
+ new Monsters(2, 400, 400 , 100, "Asteroid Lvl 1", 10, "orange", "none", 100, 100, 2),
+
 ]
 
 // ALL MONSTERS ANIMATION
 const monsterDeadAnimation = [];
 const monsterAnimationDamage = [];
+const hitDamageAnimation = [];
+const hitExplosionAnimation = [];
+const hitExplosionAnimation2 = [];
+
 
 //Monsters Animation for loop to monsters length
 for(var m = 0; m < monsters.length; m++){
     monsterDeadAnimation.push(new Animation());
 monsterAnimationDamage.push(new Animation());
-
+hitDamageAnimation.push(new Animation());
+hitExplosionAnimation.push(new Animation());
+hitExplosionAnimation2.push(new Animation());
 }
 
 
@@ -64,26 +66,26 @@ monsterAnimationDamage.push(new Animation());
 // ALL PLAYERS ANIMATIONS
 const playerDeadAnimation = [];
 const animation_playerspark_1_lowhealth = [];
-const hitExplosionAnimation = [];
-const hitExplosionAnimation2 = [];
+
 // Player Gun shots && explosion
 const guns = [];
 
-const hitDamageAnimation = [];
+
 // player animation loop to player length
 
 for(var player_loop = 0; player_loop < players.length; player_loop++){
-hitExplosionAnimation.push(new Animation());
-hitExplosionAnimation2.push(new Animation());
+
 guns.push(new shots());
 playerDeadAnimation.push(new Animation());
 animation_playerspark_1_lowhealth.push(new Animation());
-hitDamageAnimation.push(new Animation());
+
 }
 
 //BUFFERRRR
 function buffer(){
-    requestAnimationFrame(buffer)
+   // setTimeout(() => {
+        requestAnimationFrame(buffer)
+    //  }, 1000 / fps);
     //GAME
     ctx.clearRect(0,0,c.width, c.height)
     backg.update_backg(); // background image
@@ -95,22 +97,22 @@ for(var m = 0; m < monsters.length; m++){
 }
 
 
-for(var player_loop = 0; player_loop < players.length; player_loop++){ 
-}
+
+
+
 
 //Monsters for loops for collision
+
+
 for(var m = 0; m < monsters.length; m++){       
-    console.log("times")
     for(var player_loop = 0; player_loop < players.length; player_loop++){ 
         bulletHitMonsterEffect(hitExplosionAnimation[player_loop], hitExplosionAnimation2[player_loop],guns[player_loop].getCollitionPosX(), guns[player_loop].getCollitionPosY() ,guns[player_loop].getCollitionWithMonster(), 6, monsters.length)
         hitDamageAnimation[player_loop].damageShowAnimation(guns[player_loop].getDamageHit(), guns[player_loop].getCollitionPosX(), guns[player_loop].getCollitionPosY(), "red",guns[player_loop].getCollitionWithMonster());
-      
+
         players[player_loop].playerCollitionMonsters(monsters[m]);
         collisionMonsterShot(monsters[m], guns[player_loop]);
     }    
 }
-
-
 //############################################################
 
 //players for lopp
@@ -170,6 +172,32 @@ players[player_loop].position.y =  0
 }
 
 //sparks.updateAnimation();
+
+
+
+
+
+
+
+
+
+// SETTING UP SPRITES
+sprite[0].spritePro(asteroid_one, 1, 200, 0, 200, 200);
+sprite[1].spritePro(asteroid_two, 1, 400, 0, 200, 200);
+sprite[2].spritePro(asteroid_three, 1, 800, 0, 200, 200);
+sprite[3].spritePro(asteroid_four,1, 600, 0, 200, 200);
+sprite[4].spritePro(asteroid_five, 1, 1000, 0, 200, 200);
+sprite[5].spritePro(asteroid_six, 1, 1200, 0, 200, 200);
+sprite[6].spritePro(asteroid_seven, 1, 1400, 0, 200, 200);
+sprite[7].spritePro(asteroid_eight, 1, 1600, 0, 200, 200);
+sprite[8].spritePro(asteroid_nine, 1, 1800, 0, 200, 200);
+sprite[9].spritePro(asteroid_ten, 1, 0, 200, 200, 200);
+sprite[10].spritePro(asteroid_eleven, 1, 200, 200, 200, 200);
+
+
+
+
+
 
 } 
 

@@ -7,6 +7,7 @@
     <canvas style="border: solid 1px white;" id="canvasone" class="canvasone"></canvas>
 </center>
 
+<script src="./gameClass/sprites.js"></script>
 <script src="./gameClass/functions.js"></script>
 <script src="./gameClass/animation.js"></script>
 <script src="./gameClass/death.js"></script>

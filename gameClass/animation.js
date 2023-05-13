@@ -227,6 +227,16 @@ if(if_true){this.showDamage = true;}
                }
         }
 
+        spritePro(sprite, speed, posx, posy, width, height){
+            const sparksTwo = new Image();
+         
+                this.gameFrame ++;
+                this.staggerFrame = speed;
+              
+                sparksTwo.src = sprite[Math.floor(this.gameFrame/this.staggerFrame) % sprite.length];
+                ctx.drawImage(sparksTwo, posx - 100,posy, width, height);
+            }
+
 updateAnimation(){   
 
 }

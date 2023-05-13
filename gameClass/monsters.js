@@ -1,3 +1,5 @@
+const drawMonster = new Animation();
+
 class Monsters extends Animation{
 constructor( id, pos_x, pos_y, health, name, speed, color, movements, s_width, s_height, damage){
     super();
@@ -54,9 +56,7 @@ getHealth(){return this.body.health;};
 
 drawMonster(){
     if(!this.clearRect){
-    const drawMonster = new Image();
-    ctx.fillStyle = this.monster_color;
-    ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
+    drawMonster.spritePro(asteroid_one, 2, this.position.x, this.position.y, 200, 200);
 //monsters health
     if(this.body.m_health < 0){
         this.body.m_health = 0;
@@ -206,11 +206,12 @@ monsterClearDeath(){
 }
 
 
-updateMonster(){
+updateMonster(monster){
 this.drawMonster();
 this.movements(this.monsterMovement);
 ctx.globalCompositeOperation = "source-over";
 this.spawnMonster();
+//bulletHitMonsterEffect(hitExplosionAnimation[0], hitExplosionAnimation2[0],guns[0].getCollitionPosX(), guns[0].getCollitionPosY() ,guns[0].getCollitionWithMonster(), 6, monsters.length)
 
 }
 }
