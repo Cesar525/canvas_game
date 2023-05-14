@@ -1,7 +1,7 @@
 const drawMonster = new Animation();
 
 class Monsters extends Animation{
-constructor( id, pos_x, pos_y, health, name, speed, color, movements, s_width, s_height, damage){
+constructor( id, sprite,  pos_x, pos_y, health, name, speed, color, movements, s_width, s_height, damage){
     super();
 this.position = {
     x : pos_x,
@@ -17,7 +17,8 @@ this.body = {
     m_damage : damage,
     m_dead : false,
     m_deadPosX : NaN,
-    m_deadPosY : NaN
+    m_deadPosY : NaN,
+    m_sprite : sprite
 }
 
 this.collition = {
@@ -54,9 +55,9 @@ this.spawnPositionY = pos_y;
 
 getHealth(){return this.body.health;};
 
-drawMonster(){
+drawMonster(animationDraw,){
     if(!this.clearRect){
-    drawMonster.spritePro(asteroid_one, 2, this.position.x, this.position.y, 200, 200);
+    animationDraw.spritePro(this.body.m_sprite, 4, this.position.x, this.position.y, this.width, this.height);
 //monsters health
     if(this.body.m_health < 0){
         this.body.m_health = 0;
@@ -206,12 +207,10 @@ monsterClearDeath(){
 }
 
 
-updateMonster(monster){
-this.drawMonster();
+updateMonster(){
 this.movements(this.monsterMovement);
 ctx.globalCompositeOperation = "source-over";
 this.spawnMonster();
-//bulletHitMonsterEffect(hitExplosionAnimation[0], hitExplosionAnimation2[0],guns[0].getCollitionPosX(), guns[0].getCollitionPosY() ,guns[0].getCollitionWithMonster(), 6, monsters.length)
 
 }
 }

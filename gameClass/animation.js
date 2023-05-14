@@ -216,7 +216,7 @@ if(if_true){this.showDamage = true;}
         if(this.showDamage){
             ctx.fillStyle = color;
             ctx.strokeStyle = "black"
-            ctx.font = "40px Anton";
+            ctx.font = "40px anton";
             ctx.fillText("-"+ damage, pos_x , pos_y);
             ctx.strokeText("-" + damage, pos_x, pos_y);       
         } 
@@ -234,7 +234,7 @@ if(if_true){this.showDamage = true;}
                 this.staggerFrame = speed;
               
                 sparksTwo.src = sprite[Math.floor(this.gameFrame/this.staggerFrame) % sprite.length];
-                ctx.drawImage(sparksTwo, posx - 100,posy, width, height);
+                ctx.drawImage(sparksTwo, posx,posy, width, height);
             }
 
 updateAnimation(){   
