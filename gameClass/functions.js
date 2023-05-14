@@ -83,6 +83,15 @@ function spritesProccessing(sprite, speed, posx, posy, width, height){
       ctx.drawImage(sparksTwo, posx,posy, width, height);
   }
 
+  function collitionPlayersShot(player_collition_connection){
+    for(var m = 0; m < monsters.length; m++){ 
+      bulletHitMonsterEffect(hitExplosionAnimation[player_collition_connection], hitExplosionAnimation2[player_collition_connection],guns[player_collition_connection].getCollitionPosX(), guns[player_collition_connection].getCollitionPosY() ,guns[player_collition_connection].getCollitionWithMonster(), guns[player_collition_connection].damage_effect, monsters.length)
+      
+      hitDamageAnimation[player_collition_connection].damageShowAnimation(guns[player_collition_connection].getDamageHit(), guns[player_collition_connection].getCollitionPosX(), guns[player_collition_connection].getCollitionPosY(), "red",guns[player_collition_connection].getCollitionWithMonster());
+      collisionMonsterShot(monsters[m], guns[player_collition_connection]);
+      players[player_collition_connection].playerCollitionMonsters(monsters[m]);
+    }
+  }
 
 
 

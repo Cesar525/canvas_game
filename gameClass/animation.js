@@ -26,7 +26,7 @@ if(this.show){
 this.staggerFrame = speed;
     }
 animation.src = sprite_path;
-ctx.globalAlpha = 1;
+
 this.onAnimation = true;
 let m_width = sprite_page_width / sprite_count_width;
 let m_height = sprite_page_height/ sprite_count_height;
@@ -35,7 +35,7 @@ let positionY = Math.floor(this.gameFrame/(this.staggerFrame * sprite_count_widt
 
 this.position.x = posx;
 this.position.y = posy;
-
+ctx.globalAlpha = 1;
 ctx.drawImage(animation, 1 * (sprite_size_w * this.frameX), 1 * (sprite_size_h * this.frameY), m_width, m_height, this.position.x, this.position.y, m_width + 20, m_height + 20 );
 ctx.globalAlpha = 1;
 this.frameX = positionX;
@@ -122,6 +122,7 @@ case 6 :
 this.spritePage("assets/explosions/explosion_6.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
 break;
 case 7 : 
+
 this.spritePage("assets/explosions/explosion_7.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
 break;
 }
