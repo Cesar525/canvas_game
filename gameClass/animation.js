@@ -119,9 +119,10 @@ case 5 :
 this.spritePage("assets/explosions/explosion_5.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
 break;
 case 6 : 
-ctx.globalAlpha = 0.2;
 this.spritePage("assets/explosions/explosion_6.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
-ctx.globalAlpha = 1;
+break;
+case 7 : 
+this.spritePage("assets/explosions/explosion_7.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
 break;
 }
 }

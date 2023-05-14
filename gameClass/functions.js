@@ -73,6 +73,15 @@ shot.position.y = - 50;
 }  
 }
 
+function spritesProccessing(sprite, speed, posx, posy, width, height){
+  const sparksTwo = new Image();
+
+      gameFrame ++;
+      var staggerFrame = speed;
+    
+      sparksTwo.src = sprite[Math.floor(gameFrame/staggerFrame) % sprite.length];
+      ctx.drawImage(sparksTwo, posx,posy, width, height);
+  }
 
 
 

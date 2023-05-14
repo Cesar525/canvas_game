@@ -1,8 +1,10 @@
 var c = document.getElementById("canvasone");
 var ctx = c.getContext("2d");
 
-c.width = 1000
-c.height = 1000
+var gameFrame = 0;
+
+c.width = 3000
+c.height = 2000
 const gravity = 10;
 const fps = 1000;
 const backg = new Background();
@@ -31,11 +33,8 @@ const sprite = [ // this is only use for sprite testing
 //players
 const players = [
     //CREATING A PLAYER Player(name, level, thruster_selection, get_health, energy, m_damage,  gunType, posx, posy, gun_speed)
-new Player("Player One", 1230,  6, 200, 400, 50, 1, 200, 900, 100),
-new Player("Player One", 1230,  6, 400, 400, 50, 1, 300, 900, 100),
-new Player("Player One", 1230,  6, 600, 400, 50, 1, 400, 900, 100),
-new Player("Player One", 1230,  6, 800, 400, 50, 1, 500, 900, 100),
-
+new Player("Player One", 1230,  6, 200, 400, 50, 2, 200, 900, 60),
+new Player("Player One", 1230,  6, 200, 400, 50, 1, 400, 900, 60),
 
 
 ]
@@ -43,25 +42,29 @@ new Player("Player One", 1230,  6, 800, 400, 50, 1, 500, 900, 100),
 const sparks = new Animation();
 
 const monsters = [
- new Monsters(2, asteroid_one,  400, 100 , 100, "Asteroid Lvl 1", 10, "orange", "straightDown", 100, 100, 2),
- new Monsters(2, asteroid_two,  400, 100 , 100, "Asteroid Lvl 1", 10, "orange", "straightDown", 200, 200, 2),
- new Monsters(2, asteroid_three,  400, 100 , 100, "Asteroid Lvl 1", 10, "orange", "straightDown", 200, 200, 2),
- new Monsters(2, asteroid_four,  400, 100 , 100, "Asteroid Lvl 1", 10, "orange", "straightDown", 100, 100, 2),
- new Monsters(2, asteroid_five,  400, 100 , 100, "Asteroid Lvl 1", 10, "orange", "straightDown", 200, 200, 2),
- new Monsters(2, asteroid_six,  400, 100 , 100, "Asteroid Lvl 1", 10, "orange", "straightDown", 200, 200, 2),
- new Monsters(2, asteroid_seven,  400, 100 , 100, "Asteroid Lvl 1", 10, "orange", "straightDown", 100, 100, 2),
- new Monsters(2, asteroid_three,  400, 100 , 100, "Asteroid Lvl 1", 10, "orange", "straightDown", 200, 200, 2),
- new Monsters(2, asteroid_four,  400, 100 , 100, "Asteroid Lvl 1", 10, "orange", "straightDown", 100, 100, 2),
- new Monsters(2, asteroid_five,  400, 100 , 100, "Asteroid Lvl 1", 10, "orange", "straightDown", 200, 200, 2),
- new Monsters(2, asteroid_six,  400, 100 , 100, "Asteroid Lvl 1", 10, "orange", "straightDown", 200, 200, 2),
- new Monsters(2, asteroid_seven,  400, 100 , 100, "Asteroid Lvl 1", 10, "orange", "straightDown", 100, 100, 2),
- new Monsters(2, asteroid_three,  400, 100 , 100, "Asteroid Lvl 1", 10, "orange", "straightDown", 200, 200, 2),
- new Monsters(2, asteroid_four,  400, 100 , 100, "Asteroid Lvl 1", 10, "orange", "straightDown", 100, 100, 2),
- new Monsters(2, asteroid_five,  400, 100 , 100, "Asteroid Lvl 1", 10, "orange", "straightDown", 200, 200, 2),
- new Monsters(2, asteroid_six,  400, 100 , 100, "Asteroid Lvl 1", 10, "orange", "straightDown", 200, 200, 2),
- new Monsters(2, asteroid_seven,  400, 100 , 100, "Asteroid Lvl 1", 10, "orange", "straightDown", 100, 100, 2),
-
-
+ new Monsters(2, asteroid_one,  200, 100 , 1, "Asteroid Lvl 1", 10, "orange", "straightDown", 200, 200, 2),
+ new Monsters(2, asteroid_one,  200, 100 , 1, "Asteroid Lvl 1", 10, "orange", "straightDown", 200, 200, 2),
+ new Monsters(2, asteroid_one,  200, 100 , 1, "Asteroid Lvl 1", 10, "orange", "straightDown", 200, 200, 2), new Monsters(2, asteroid_one,  200, 100 , 1, "Asteroid Lvl 1", 10, "orange", "straightDown", 200, 200, 2), new Monsters(2, asteroid_one,  200, 100 , 1, "Asteroid Lvl 1", 10, "orange", "straightDown", 200, 200, 2),
+ new Monsters(2, asteroid_one,  200, 100 , 1, "Asteroid Lvl 1", 10, "orange", "straightDown", 200, 200, 2),
+ new Monsters(2, asteroid_one,  200, 100 , 1, "Asteroid Lvl 1", 10, "orange", "straightDown", 200, 200, 2),
+ new Monsters(2, asteroid_one,  200, 100 , 1, "Asteroid Lvl 1", 10, "orange", "straightDown", 200, 200, 2),
+ new Monsters(2, asteroid_one,  200, 100 , 1, "Asteroid Lvl 1", 10, "orange", "straightDown", 200, 200, 2),
+ new Monsters(2, asteroid_one,  200, 100 , 1, "Asteroid Lvl 1", 10, "orange", "straightDown", 200, 200, 2),
+ new Monsters(2, asteroid_one,  200, 100 , 1, "Asteroid Lvl 1", 10, "orange", "straightDown", 200, 200, 2),
+ new Monsters(2, asteroid_one,  200, 100 , 1, "Asteroid Lvl 1", 10, "orange", "straightDown", 200, 200, 2),
+ new Monsters(2, asteroid_one,  200, 100 , 1, "Asteroid Lvl 1", 10, "orange", "straightDown", 200, 200, 2),
+ new Monsters(2, asteroid_one,  200, 100 , 1, "Asteroid Lvl 1", 10, "orange", "straightDown", 200, 200, 2),
+ new Monsters(2, asteroid_one,  200, 100 , 1, "Asteroid Lvl 1", 10, "orange", "straightDown", 200, 200, 2),
+ new Monsters(2, asteroid_one,  200, 100 , 1, "Asteroid Lvl 1", 10, "orange", "straightDown", 200, 200, 2),
+ new Monsters(2, asteroid_one,  200, 100 , 1, "Asteroid Lvl 1", 10, "orange", "straightDown", 200, 200, 2),
+ new Monsters(2, asteroid_one,  200, 100 , 1, "Asteroid Lvl 1", 10, "orange", "straightDown", 200, 200, 2),
+ new Monsters(2, asteroid_one,  200, 100 , 1, "Asteroid Lvl 1", 10, "orange", "straightDown", 200, 200, 2),
+ new Monsters(2, asteroid_one,  200, 100 , 1, "Asteroid Lvl 1", 10, "orange", "straightDown", 200, 200, 2),
+ new Monsters(2, asteroid_one,  200, 100 , 1, "Asteroid Lvl 1", 10, "orange", "straightDown", 200, 200, 2),
+ new Monsters(2, asteroid_one,  200, 100 , 1, "Asteroid Lvl 1", 10, "orange", "straightDown", 200, 200, 2),
+ new Monsters(2, asteroid_one,  200, 100 , 1, "Asteroid Lvl 1", 10, "orange", "straightDown", 200, 200, 2),
+ new Monsters(2, asteroid_one,  200, 100 , 1, "Asteroid Lvl 1", 10, "orange", "straightDown", 200, 200, 2),
+ new Monsters(2, asteroid_one,  200, 100 , 1, "Asteroid Lvl 1", 10, "orange", "straightDown", 200, 200, 2),
 ]
 
 // ALL MONSTERS ANIMATION
@@ -103,6 +106,7 @@ animation_playerspark_1_lowhealth.push(new Animation());
 function buffer(){
     setTimeout(() => {
         requestAnimationFrame(buffer)
+        gameFrame ++;
       }, 1000 / fps);
     //GAME
     ctx.clearRect(0,0,c.width, c.height)
@@ -119,12 +123,18 @@ for(var m = 0; m < monsters.length; m++){
 //Monsters for loops for collision
 for(var m = 0; m < monsters.length; m++){       
     for(var player_loop = 0; player_loop < players.length; player_loop++){ 
-        bulletHitMonsterEffect(hitExplosionAnimation[player_loop], hitExplosionAnimation2[player_loop],guns[player_loop].getCollitionPosX(), guns[player_loop].getCollitionPosY() ,guns[player_loop].getCollitionWithMonster(), 6, monsters.length)
+        bulletHitMonsterEffect(hitExplosionAnimation[player_loop], hitExplosionAnimation2[player_loop],guns[player_loop].getCollitionPosX(), guns[player_loop].getCollitionPosY() ,guns[player_loop].getCollitionWithMonster(), guns[player_loop].damage_effect, monsters.length+5)
         hitDamageAnimation[player_loop].damageShowAnimation(guns[player_loop].getDamageHit(), guns[player_loop].getCollitionPosX(), guns[player_loop].getCollitionPosY(), "red",guns[player_loop].getCollitionWithMonster());
         players[player_loop].playerCollitionMonsters(monsters[m]);
-        collisionMonsterShot(monsters[m], guns[player_loop]);
-    }    
+    }   
+    collisionMonsterShot(monsters[m], guns[0]);
+    // bad 
 }
+
+
+
+
+
 
 //############################################################
 
@@ -132,6 +142,7 @@ for(var m = 0; m < monsters.length; m++){
 for(var player_loop = 0; player_loop < players.length; player_loop++){
         players[player_loop].playerDeathExplosion(playerDeadAnimation[player_loop], players[player_loop].playerOnDeath(),players[player_loop].body.deathPositionX, players[player_loop].body.deathPositionY += backg.velocity.y);
         players[player_loop].update(player_loop);
+  
         guns[player_loop].updateShot();
      
         
@@ -205,8 +216,7 @@ players[player_loop].position.y =  0
 // sprite[7].spritePro(asteroid_eight, 1, 1600, 0, 200, 200);
 // sprite[8].spritePro(asteroid_nine, 1, 1800, 0, 200, 200);
 // sprite[9].spritePro(asteroid_ten, 1, 0, 200, 200, 200);
-// sprite[10].spritePro(asteroid_eleven, 1, 200, 200, 200, 200);
-
+// spritesProccessing(asteroid_one, 1, 500, 500, 800, 800);
 
 
 

@@ -1,6 +1,6 @@
-class shots {
+class shots extends Animation{
     constructor(){
-       
+       super();
     this.position = {
         x :  -100,
         y : -100
@@ -23,13 +23,11 @@ class shots {
     this.random = true;
     this.randomNum;
     this.damagesHit;
-
+    this.damage_effect;
 
 this.gameFrame = 0;
 this.staggerFrame = 10
 
-    this.collision_posx;
-    this.collision_posy;
     this.counter = 0;
     // here we add all guns images sprites
     this.shotImages = {
@@ -48,7 +46,7 @@ this.staggerFrame = 10
 
 bullethitmonsters(){return this.collition.shot_collided;}
 
-shotSelection(player,select_shot, damage, speed){
+shotSelection(player,select_shot, damage, speed, select_flame_shot){
 if(select_shot && damage && speed ){
    if(!this.clearRect){
     this.velocity.x = speed;
@@ -61,7 +59,7 @@ this.m_damage = damage
 
     //shot starting point
     if(this.position.y <  - this.height){
-    this.position.y = player.position.y;
+    this.position.y = player.position.y - 25;
     this.position.x =  25 + player.position.x;
             }
             
@@ -76,16 +74,7 @@ randomHit(from, to){
     return this.randomNum;
   }
 
-gunTypes(player,selectingGun){
-    switch(selectingGun){
-case 1 : 
-var gun_damage = 5;
-var totalDamage = player.body.m_damage + gun_damage;
-this.damages = this.randomHit(1, totalDamage);
-this.shotSelection(player,1,this.damages, player.body.m_gun_speed);
-break;
-    }
-}
+
 
 setDamageHit(damagehit){
     this.damagesHit = damagehit;
@@ -112,13 +101,47 @@ clearCollisionShot(){
 
 }
 
+bulletHitMonsterEffect(hiteffect, speed){
+    var animationTwo;
+   
+    this.explosionEffect(hiteffect,this.getCollitionPosX() - 100, this.collition.collision_posy - 100, this.collition.shot_collided_with_monster, speed);
+    if(this.getAnimationStatus() && this.shot_collided_with_monster){
+     this.reset();
+    animationTwo = true;
+     }
+      this.explosionEffect(hiteffect, this.getCollitionPosX() - 100, this.getCollitionPosY() - 100, animationTwo, speed);
+     
+    }
+
+
+gunTypes(player,selectingGun){
+    switch(selectingGun){
+case 1 : 
+//single missile
+var gun_damage = 15;
+var totalDamage = player.body.m_damage + gun_damage;
+this.damages = this.randomHit(1, totalDamage);
+this.shotSelection(player,2,this.damages, player.body.m_gun_speed);
+this.damage_effect = 5;
+break;
+case 2 : 
+var gun_damage = 25;
+var totalDamage = player.body.m_damage + gun_damage;
+this.damages = this.randomHit(1, totalDamage);
+this.shotSelection(player,5,this.damages, player.body.m_gun_speed);
+this.damage_effect = 7;
+break;
+
+    }
+}
 
 
 
 
 
-
-updateShot(hiteffectOne, hiteffectTwo){
+updateShot(){
+console.log(this.getCollitionWithMonster());
+//this.bulletHitMonsterEffect(5, 1)
 
     }
 }
