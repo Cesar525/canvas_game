@@ -6,7 +6,7 @@ var gameFrame = 0;
 c.width = 3000
 c.height = 2000
 const gravity = 10;
-const fps = 1000;
+const fps = 200;
 const backg = new Background();
 const shield = new Shields();
 const death = new Death();
@@ -34,30 +34,30 @@ const thruster = new Thruster();
 const players = [
     //CREATING A PLAYER Player(name, level, thruster_selection, get_health, energy, m_damage,  gunType, posx, posy, gun_speed)
 new Player("Player One", 1230,  6, 200, 400, 50, 2, 200, 900, 60),
-new Player("Player Two", 1230,  6, 200, 400, 50, 1, 400, 900, 60),
-
 
 ]
 //Monsters
 const sparks = new Animation();
 
 const monsters = [
- new Monsters(2, asteroid_one,  200, 100 , 10, "Asteroid Lvl 1", 10, "orange", "none", 200, 200, 2),
- new Monsters(2, asteroid_one,  200, 100 , 10, "Asteroid Lvl 1", 10, "orange", "none", 200, 200, 2),
- new Monsters(2, asteroid_one,  200, 100 , 10, "Asteroid Lvl 1", 10, "orange", "none", 200, 200, 2),
- new Monsters(2, asteroid_one,  200, 100 , 10, "Asteroid Lvl 1", 10, "orange", "none", 200, 200, 2),
- new Monsters(2, asteroid_one,  200, 100 , 10, "Asteroid Lvl 1", 10, "orange", "none", 200, 200, 2),
- new Monsters(2, asteroid_one,  200, 100 , 10, "Asteroid Lvl 1", 10, "orange", "none", 200, 200, 2),
- new Monsters(2, asteroid_one,  200, 100 , 10, "Asteroid Lvl 1", 10, "orange", "none", 200, 200, 2),
- new Monsters(2, asteroid_one,  200, 100 , 10, "Asteroid Lvl 1", 10, "orange", "none", 200, 200, 2),
- new Monsters(2, asteroid_one,  200, 100 , 10, "Asteroid Lvl 1", 10, "orange", "none", 200, 200, 2),
- new Monsters(2, asteroid_one,  200, 100 , 10, "Asteroid Lvl 1", 10, "orange", "none", 200, 200, 2),
- new Monsters(2, asteroid_one,  200, 100 , 10, "Asteroid Lvl 1", 10, "orange", "none", 200, 200, 2),
- new Monsters(2, asteroid_one,  200, 100 , 10, "Asteroid Lvl 1", 10, "orange", "none", 200, 200, 2),
- new Monsters(2, asteroid_one,  200, 100 , 10, "Asteroid Lvl 1", 10, "orange", "none", 200, 200, 2),
- new Monsters(2, asteroid_one,  200, 100 , 10, "Asteroid Lvl 1", 10, "orange", "none", 200, 200, 2),
- new Monsters(2, asteroid_one,  200, 100 , 10, "Asteroid Lvl 1", 10, "orange", "none", 200, 200, 2),
- new Monsters(2, asteroid_one,  200, 100 , 10, "Asteroid Lvl 1", 10, "orange", "none", 200, 200, 2),
+ new Monsters(2, asteroid_one,  400, 100 , 1000000, "Asteroid Lvl 1", 10, "orange", "none", 200, 200, 2),
+ new Monsters(2, asteroid_one,  400, 100 , 1000000, "Asteroid Lvl 1", 10, "orange", "none", 200, 200, 2),
+ new Monsters(2, asteroid_one,  400, 100 , 1000000, "Asteroid Lvl 1", 10, "orange", "none", 200, 200, 2),
+ new Monsters(2, asteroid_one,  400, 100 , 1000000, "Asteroid Lvl 1", 10, "orange", "none", 200, 200, 2),
+ new Monsters(2, asteroid_one,  400, 100 , 1000000, "Asteroid Lvl 1", 10, "orange", "none", 200, 200, 2),
+ new Monsters(2, asteroid_one,  400, 100 , 1000000, "Asteroid Lvl 1", 10, "orange", "none", 200, 200, 2),
+ new Monsters(2, asteroid_one,  400, 100 , 1000000, "Asteroid Lvl 1", 10, "orange", "none", 200, 200, 2),
+ new Monsters(2, asteroid_one,  400, 100 , 1000000, "Asteroid Lvl 1", 10, "orange", "none", 200, 200, 2),
+ new Monsters(2, asteroid_one,  400, 100 , 1000000, "Asteroid Lvl 1", 10, "orange", "none", 200, 200, 2),
+ new Monsters(2, asteroid_one,  400, 100 , 1000000, "Asteroid Lvl 1", 10, "orange", "none", 200, 200, 2),
+ new Monsters(2, asteroid_one,  400, 100 , 1000000, "Asteroid Lvl 1", 10, "orange", "none", 200, 200, 2),
+ new Monsters(2, asteroid_one,  400, 100 , 1000000, "Asteroid Lvl 1", 10, "orange", "none", 200, 200, 2),
+ new Monsters(2, asteroid_one,  400, 100 , 1000000, "Asteroid Lvl 1", 10, "orange", "none", 200, 200, 2),
+ new Monsters(2, asteroid_one,  400, 100 , 1000000, "Asteroid Lvl 1", 10, "orange", "none", 200, 200, 2),
+ new Monsters(2, asteroid_one,  400, 100 , 1000000, "Asteroid Lvl 1", 10, "orange", "none", 200, 200, 2),
+ new Monsters(2, asteroid_one,  400, 100 , 1000000, "Asteroid Lvl 1", 10, "orange", "none", 200, 200, 2),
+ new Monsters(2, asteroid_one,  400, 100 , 1000000, "Asteroid Lvl 1", 10, "orange", "none", 200, 200, 2),
+ new Monsters(2, asteroid_one,  400, 100 , 1000000, "Asteroid Lvl 1", 10, "orange", "none", 200, 200, 2),
 
 
 ]
@@ -82,6 +82,7 @@ const guns = [];
 const hitExplosionAnimation = [];
 const hitExplosionAnimation2 = [];
 const hitDamageAnimation = [];
+
 // player animation loop to player length
 for(var player_loop = 0; player_loop < players.length; player_loop++){
 guns.push(new shots());
@@ -91,7 +92,6 @@ hitExplosionAnimation.push(new Animation());
 hitExplosionAnimation2.push(new Animation());
 hitDamageAnimation.push(new Animation());
 }
-
 
 
 //BUFFERRRR
@@ -112,8 +112,11 @@ for(var m = 0; m < monsters.length; m++){
     monsters[m].drawMonster(spriteanimAtionMonsters[m]);
 }
 
-collitionPlayersShot(0);
-collitionPlayersShot(1);
+collitionPlayersShot(0, 0);
+
+// collitionPlayersShot(1);
+// collitionPlayersShot(2);
+// collitionPlayersShot(3);
 
 
 

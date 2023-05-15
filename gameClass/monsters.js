@@ -57,7 +57,7 @@ getHealth(){return this.body.health;};
 
 drawMonster(){
     if(!this.clearRect){
-    spritesProccessing(this.body.m_sprite, 4, this.position.x, this.position.y, this.width, this.height);
+    spritesProccessing(this.body.m_sprite, monsters.length + 4, this.position.x, this.position.y, this.width, this.height);
 //monsters health
     if(this.body.m_health < 0){
         this.body.m_health = 0;
