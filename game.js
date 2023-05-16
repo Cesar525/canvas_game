@@ -6,7 +6,7 @@ var gameFrame = 0;
 c.width = 3000
 c.height = 2000
 const gravity = 10;
-const fps = 200;
+const fps = 60;
 const backg = new Background();
 const shield = new Shields();
 const death = new Death();
@@ -33,45 +33,14 @@ const thruster = new Thruster();
 //players
 const players = [
     //CREATING A PLAYER Player(name, level, thruster_selection, get_health, energy, m_damage,  gunType, posx, posy, gun_speed)
-new Player("Player One", 1230,  6, 200, 400, 50, 2, 200, 900, 60),
-
+new Player("Player One", 1230,  6, 200, 400, 1, 2, 500, 900, 100),
 ]
 //Monsters
 const sparks = new Animation();
 
 const monsters = [
- new Monsters(2, asteroid_one,  400, 100 , 1000000, "Asteroid Lvl 1", 10, "orange", "none", 200, 200, 2),
- new Monsters(2, asteroid_one,  400, 100 , 1000000, "Asteroid Lvl 1", 10, "orange", "none", 200, 200, 2),
- new Monsters(2, asteroid_one,  400, 100 , 1000000, "Asteroid Lvl 1", 10, "orange", "none", 200, 200, 2),
- new Monsters(2, asteroid_one,  400, 100 , 1000000, "Asteroid Lvl 1", 10, "orange", "none", 200, 200, 2),
- new Monsters(2, asteroid_one,  400, 100 , 1000000, "Asteroid Lvl 1", 10, "orange", "none", 200, 200, 2),
- new Monsters(2, asteroid_one,  400, 100 , 1000000, "Asteroid Lvl 1", 10, "orange", "none", 200, 200, 2),
- new Monsters(2, asteroid_one,  400, 100 , 1000000, "Asteroid Lvl 1", 10, "orange", "none", 200, 200, 2),
- new Monsters(2, asteroid_one,  400, 100 , 1000000, "Asteroid Lvl 1", 10, "orange", "none", 200, 200, 2),
- new Monsters(2, asteroid_one,  400, 100 , 1000000, "Asteroid Lvl 1", 10, "orange", "none", 200, 200, 2),
- new Monsters(2, asteroid_one,  400, 100 , 1000000, "Asteroid Lvl 1", 10, "orange", "none", 200, 200, 2),
- new Monsters(2, asteroid_one,  400, 100 , 1000000, "Asteroid Lvl 1", 10, "orange", "none", 200, 200, 2),
- new Monsters(2, asteroid_one,  400, 100 , 1000000, "Asteroid Lvl 1", 10, "orange", "none", 200, 200, 2),
- new Monsters(2, asteroid_one,  400, 100 , 1000000, "Asteroid Lvl 1", 10, "orange", "none", 200, 200, 2),
- new Monsters(2, asteroid_one,  400, 100 , 1000000, "Asteroid Lvl 1", 10, "orange", "none", 200, 200, 2),
- new Monsters(2, asteroid_one,  400, 100 , 1000000, "Asteroid Lvl 1", 10, "orange", "none", 200, 200, 2),
- new Monsters(2, asteroid_one,  400, 100 , 1000000, "Asteroid Lvl 1", 10, "orange", "none", 200, 200, 2),
- new Monsters(2, asteroid_one,  400, 100 , 1000000, "Asteroid Lvl 1", 10, "orange", "none", 200, 200, 2),
- new Monsters(2, asteroid_one,  400, 100 , 1000000, "Asteroid Lvl 1", 10, "orange", "none", 200, 200, 2),
-
-
+ new Monsters(2, asteroid_one,  500, 100 , 10000, "Asteroid Lvl 1", 10, "orange", "none", 1000, 1000, 2),
 ]
-
-// ALL MONSTERS ANIMATION
-const monsterDeadAnimation = [];
-const spriteanimAtionMonsters = [];
-
-//Monsters Animation for loop to monsters length
-for(var m = 0; m < monsters.length; m++){
-monsterDeadAnimation.push(new Animation());
-spriteanimAtionMonsters.push(new Animation());
-}
-
 
 
 // ALL PLAYERS ANIMATIONS
@@ -79,18 +48,14 @@ const playerDeadAnimation = [];
 const animation_playerspark_1_lowhealth = [];
 // Player Gun shots && explosion
 const guns = [];
-const hitExplosionAnimation = [];
-const hitExplosionAnimation2 = [];
-const hitDamageAnimation = [];
+
 
 // player animation loop to player length
 for(var player_loop = 0; player_loop < players.length; player_loop++){
 guns.push(new shots());
 playerDeadAnimation.push(new Animation());
 animation_playerspark_1_lowhealth.push(new Animation());
-hitExplosionAnimation.push(new Animation());
-hitExplosionAnimation2.push(new Animation());
-hitDamageAnimation.push(new Animation());
+
 }
 
 
@@ -98,25 +63,22 @@ hitDamageAnimation.push(new Animation());
 function buffer(){
     setTimeout(() => {
         requestAnimationFrame(buffer)
-        gameFrame ++;
+        
       }, 1000 / fps);
     //GAME
     ctx.clearRect(0,0,c.width, c.height)
     backg.update_backg(); // background image
+  gameFrame ++;
   
-    //proccessing monsters
-for(var m = 0; m < monsters.length; m++){
-    monsters[m].updateMonster();
-    monsterDeathExplosion(monsterDeadAnimation[m], monsters[m].monsterDeath(), monsters[m].body.m_deadPosX, monsters[m].body.m_deadPosY += backg.velocity.y); 
-    monsters[m].monsterlifeBar();
-    monsters[m].drawMonster(spriteanimAtionMonsters[m]);
-}
 
-collitionPlayersShot(0, 0);
 
-// collitionPlayersShot(1);
-// collitionPlayersShot(2);
-// collitionPlayersShot(3);
+
+
+players[0].playerCollitionMonsters(monsters[0]);
+monsters[0].updateMonster();
+guns[0].updateShot(0);
+
+
 
 
 
@@ -126,11 +88,7 @@ collitionPlayersShot(0, 0);
 for(var player_loop = 0; player_loop < players.length; player_loop++){
         players[player_loop].playerDeathExplosion(playerDeadAnimation[player_loop], players[player_loop].playerOnDeath(),players[player_loop].body.deathPositionX, players[player_loop].body.deathPositionY += backg.velocity.y);
         players[player_loop].update(player_loop);
-  
-        guns[player_loop].updateShot();
-     
         
-
 
     //if players health 50 or under 50 sparks will come out.
     if(Math.round((players[player_loop].body.health / players[player_loop].health_total) * 100) <= 50){

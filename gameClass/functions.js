@@ -26,70 +26,19 @@ function collisionTouch(obj1, obj2){
   }
 }
 
-function bulletHitMonsterEffect(hitanimationOne, hitanimationTwo,posx, posy,collition,hiteffect, speed){
-  var animationTwo;
- 
-  hitanimationOne.explosionEffect(hiteffect,posx - 100, posy - 100, collition, speed);
-  if(hitanimationOne.getAnimationStatus() && collition){
-   hitanimationTwo.reset();
-  animationTwo = true;
-   }
-    hitanimationTwo.explosionEffect(hiteffect, posx - 100, posy - 100, animationTwo, speed);
-   
-  }
 
 
-function monsterDeathExplosion(animationOne,col, posx_, posy_){  
-    animationOne.explosionEffect(3,  posx_ - 85, posy_ - 85, col);
-}
 
 
-function collisionMonsterShot(monsters,shot){
-   // collision monster to shot
-    if(collisionTouch(shot, monsters)){
-        monsters.setMonsterHealth(shot.m_damage); // set up the hit depend on the shot
-        shot.setCollitionWithMonster(true);
-        shot.setDamageHit(shot.m_damage);
-        shot.setCollisionPosition(shot.position.x, shot.position.y);
-    
-    }else{
-      monsters.setMonsterCollitionWithShot(false); 
-      shot.setCollitionWithMonster(false);  
-    }
 
-   //bullet disapear collision
-    shot.counter += 1;
-    if(shot.counter > 5 && shot.clearRect){
-      //  console.log("reset");
-        shot.clearRect = false;
-       
-    }
- 
-if(collisionTouch(shot, monsters)){
-shot.clearRect = true;
-//console.log("Bullet banished..");
-shot.position.x = -50;
-shot.position.y = - 50;
-}  
-}
 
-function spritesProccessing(sprite, speed, posx, posy, width, height){
-  const sparksTwo = new Image();
 
-      gameFrame ++;
-      var staggerFrame = speed;
-    
-      sparksTwo.src = sprite[Math.floor(gameFrame/staggerFrame) % sprite.length];
-      ctx.drawImage(sparksTwo, posx,posy, width, height);
-  }
 
-  function collitionPlayersShot(player_collition_connection){
-    var m = 0
-      bulletHitMonsterEffect(hitExplosionAnimation[player_collition_connection], hitExplosionAnimation2[player_collition_connection],guns[player_collition_connection].getCollitionPosX(), guns[player_collition_connection].getCollitionPosY() ,guns[player_collition_connection].getCollitionWithMonster(), guns[player_collition_connection].damage_effect, 2)
+
+
+  function collitionPlayersShot(m,player_collition_connection){  
       
-      hitDamageAnimation[player_collition_connection].damageShowAnimation(guns[player_collition_connection].getDamageHit(), guns[player_collition_connection].getCollitionPosX(), guns[player_collition_connection].getCollitionPosY(), "red",guns[player_collition_connection].getCollitionWithMonster());
-      collisionMonsterShot(monsters[m], guns[player_collition_connection]);
-      players[player_collition_connection].playerCollitionMonsters(monsters[m]);
+    players[player_collition_connection].playerCollitionMonsters(monsters[m]);
     
   }
 

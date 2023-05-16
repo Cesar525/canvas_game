@@ -10,10 +10,7 @@ constructor(){
     this.gameFrame = 0;
     this.staggerFrame = 1;
     this.show = false;
-    this.onAnimation = false;
-    this.showDamage = false;
-    this.animationSlowsGoesUp = 0;
-    this.gameFrameDamageAnimation = 0;
+    this.onAnimation = false;  
 }
 
 spritePage(sprite_path, posx, posy, sprite_page_width, sprite_page_height, sprite_count_width, sprite_count_height, sprite_size_w, sprite_size_h, speed, show){
@@ -210,24 +207,7 @@ playerSparksHigh(player_posx, player_posy){
 
     }
 
-damageShowAnimation(damage,pos_x, pos_y, color, if_true){
-this.gameFrameDamageAnimation++;
-if(if_true){this.showDamage = true;}
 
-
-        if(this.showDamage){
-            ctx.fillStyle = color;
-            ctx.strokeStyle = "black"
-            ctx.font = "40px anton";
-            ctx.fillText("-"+ damage, pos_x , pos_y);
-            ctx.strokeText("-" + damage, pos_x, pos_y);       
-        } 
-        if(this.gameFrameDamageAnimation >= 400){
-                 this.showDamage = false;
-                 this.gameFrameDamageAnimation = 0;
-                 this.animationSlowsGoesUp = 0
-               }
-        }
 
         spritePro(sprite, speed, posx, posy, width, height){
             const sparksTwo = new Image();

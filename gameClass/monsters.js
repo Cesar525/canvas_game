@@ -50,14 +50,114 @@ this.monsterGotHitDamages;
 this.spawnPositionX = pos_x;
 this.spawnPositionY = pos_y;
 
+//Animation -> page
+this.frameX = 0;
+this.frameY = 0;
+this.gameFrame = 0;
+this.staggerFrame = 1;
+this.show = false;
+this.onAnimation = false;
+this.animation_PosX = NaN;
+this.animation_PosY = NaN;
+this.gameFrameDamageAnimation = 0;
+this.showDamage = false;
+
+
+
 }
 
+spritePage(sprite_path, posx, posy, sprite_page_width, sprite_page_height, sprite_count_width, sprite_count_height, sprite_size_w, sprite_size_h, speed, show){
+    if(show){
+        this.show = show;
+    }
+    if(this.show){
+        const animation = new Image();
+        if(speed){
+    this.staggerFrame = speed;
+        }
+    animation.src = sprite_path;
+    
+    this.onAnimation = true;
+    let m_width = sprite_page_width / sprite_count_width;
+    let m_height = sprite_page_height/ sprite_count_height;
+    let positionX = Math.floor(this.gameFrame/this.staggerFrame) % sprite_count_width;
+    let positionY = Math.floor(this.gameFrame/(this.staggerFrame * sprite_count_width)) % sprite_count_height;
+    
+    this.animation_PosX = posx;
+    this.animation_PosY = posy;
+    ctx.globalAlpha = 1;
+    ctx.drawImage(animation, 1 * (sprite_size_w * this.frameX), 1 * (sprite_size_h * this.frameY), m_width, m_height, this.animation_PosX, this.animation_PosY, m_width + 20, m_height + 20 );
+    ctx.globalAlpha = 1;
+    this.frameX = positionX;
+    this.frameY = positionY;
+    
+    //console.log(" Y Frame = " + this.frameY);
+    //console.log("X Frames = " + this.frameX);
+    
+    //console.log( "Showing" + this.frameX);
+    this.gameFrame += 1;
+    
+    if(this.frameX >= sprite_count_width - 1 && this.frameY >= sprite_count_height - 1){
+        this.show = false;
+        this.reset();
+        // console.log(" Y Frame SET = " + this.frameY);
+        //console.log("X Frames SET = " + this.frameX);
+        this.onAnimation = false;
+    }else{
+        return this.onAnimation;
+    }
+    }
+}
+
+
+explosionEffect(effect, posx, posy, send, speed){
+    switch(effect){
+    case 1 :
+    this.spritePage("assets/explosions/explosion_1.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
+    break;
+    case 2 :
+    this.spritePage("assets/explosions/explosion_2.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
+    break;
+    case 3 : 
+    this.spritePage("assets/explosions/explosion_3.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
+    break;
+    case 4 : 
+    this.spritePage("assets/explosions/explosion_4.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
+    break;
+    case 5 : 
+    this.spritePage("assets/explosions/explosion_5.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
+    break;
+    case 6 : 
+    this.spritePage("assets/explosions/explosion_6.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
+    break;
+    case 7 : 
+    this.spritePage("assets/explosions/explosion_7.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
+    break;
+    }
+    }
+
+ spritesProccessing(sprite, speed, posx, posy, width, height){
+        const sparksTwo = new Image();
+      
+            gameFrame ++;
+            var staggerFrame = speed;
+          
+            sparksTwo.src = sprite[Math.floor(gameFrame/staggerFrame) % sprite.length];
+            ctx.drawImage(sparksTwo, posx,posy, width, height);
+        }
+
+reset(){
+        this.frameX = 0;
+        this.frameY = 0;
+        this.gameFrame = 0;
+        this.staggerFrame = 1;
+    }
 
 getHealth(){return this.body.health;};
 
 drawMonster(){
     if(!this.clearRect){
-    spritesProccessing(this.body.m_sprite, monsters.length + 4, this.position.x, this.position.y, this.width, this.height);
+    this.spritesProccessing(this.body.m_sprite, monsters.length + 4, this.position.x, this.position.y, this.width, this.height);
 //monsters health
     if(this.body.m_health < 0){
         this.body.m_health = 0;
@@ -207,10 +307,17 @@ monsterClearDeath(){
 }
 
 
-updateMonster(){
-this.movements(this.monsterMovement);
-ctx.globalCompositeOperation = "source-over";
-this.spawnMonster();
 
+monsterDeathExplosion(){  
+    this.explosionEffect(3,  this.body.m_deadPosX - 85, this.body.m_deadPosY - 85, this.monsterDeath());
+}
+
+
+updateMonster(){
+this.drawMonster()
+this.monsterlifeBar();
+this.movements(this.monsterMovement);
+this.monsterDeathExplosion();
+this.spawnMonster();
 }
 }

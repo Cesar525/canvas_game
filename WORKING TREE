@@ -5,12 +5,7 @@ pass:525002cc
 
 
 working on -
-
-clean up player colliton with monsters--
-
-explosion when it hits monsters its looping too much.
-lets set it up inside shotting.js class and make it work individually.
-so bulletHitMonsterEffect() needs to be set inside shotting.js
+set all players credentials in players class even animations.
 
 
 
