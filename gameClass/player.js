@@ -1,6 +1,6 @@
-class Player extends shots{
+class Player{
     constructor(name, level, thruster_selection, get_health, energy, m_damage,  gunType, posx, posy, gun_speed){
-    super();
+  
         this.position ={
         x: posx,
         y: posy
@@ -30,7 +30,7 @@ class Player extends shots{
         gameFrame : 0,
         staggerFrame : 0
     }
-
+    this.count = 0;
 
     this.width = 100;
     this.height = 100;
@@ -55,6 +55,9 @@ this.animation_PosY = NaN;
 this.gameFrameDamageAnimation = 0;
 this.showDamage = false;
 
+//sparks animation
+this.gameFrame_sparks = 0;
+this.staggerFrame_sparks = 1;
     
 }
 
@@ -156,7 +159,7 @@ if(this.body.health == 0){
     this.body.deathPositionX =  this.position.x;
     this.body.deathPositionY = this.position.y;
     this.playerDead = true;
-    
+    this.showdeathexplosion = true;
     this.position.x = NaN;
     this.position.y = NaN;
     this.clearRect = true;
@@ -206,8 +209,9 @@ lifeBar(){
         ctx.fillRect(this.position.x - 70 , this.position.y - 10, Math.round((this.body.health / this.health_total) * 100), 9);
 }
 
-playerDeathExplosion(animationOne, col, posx_, posy_){
-    animationOne.explosionEffect(3,  posx_ - 85, posy_ - 85, col);        
+playerDeathExplosion(){
+    this.explosionEffect(3,  this.body.deathPositionX - 85, this.body.deathPositionY - 85, this.showdeathexplosion, 2);
+    this.showdeathexplosion = false; 
 }
 
 playerCollitionMonsters(monsters){
@@ -236,6 +240,127 @@ playerGun(gun){
     gun.gunTypes(this, this.body.m_gun_type);
 }
 
+playerMovemements(){
+        // player movements
+if(keys.right.pressed){
+    this.position.x += this.velocity.x
+}
+if(keys.left.pressed){
+    this.position.x -= this.velocity.x
+}
+if(keys.up.pressed){
+    this.position.y -= this.velocity.y
+}
+if(keys.down.pressed){
+    this.position.y += this.velocity.y
+}
+if(true){
+    
+ }
+
+
+// player need to stay inside the canvas
+if(this.position.x + this.velocity.x > c.width - this.width + this.velocity.x){
+
+this.position.x = c.width - this.width
+}
+if(this.position.x < 0){
+this.position.x = 0
+
+}
+if(this.position.y + this.velocity.y > c.height - this.height){
+this.position.y =  c.height - this.height
+
+}
+if(this.position.y < 0){
+this.position.y =  0
+
+}
+
+
+
+}
+
+sparkOne(speed, posx, posy, width, height){
+    const sparks = new Image();
+    const spark1 = [
+        'assets/sparks/spark1/MetallicHit010000.png',
+        'assets/sparks/spark1/MetallicHit010001.png',
+        'assets/sparks/spark1/MetallicHit010002.png',
+        'assets/sparks/spark1/MetallicHit010003.png',
+        'assets/sparks/spark1/MetallicHit010004.png',
+        'assets/sparks/spark1/MetallicHit010005.png',
+        'assets/sparks/spark1/MetallicHit010006.png',
+        'assets/sparks/spark1/MetallicHit010007.png',
+        'assets/sparks/spark1/MetallicHit010008.png',
+        'assets/sparks/spark1/MetallicHit010009.png',
+        'assets/sparks/spark1/MetallicHit010010.png',
+        'assets/sparks/spark1/MetallicHit010011.png',
+        ]
+        this.gameFrame_sparks ++;
+        this.staggerFrame_sparks = speed;
+      
+        sparks.src = spark1[Math.floor(this.gameFrame_sparks/this.staggerFrame_sparks) % 12];
+        ctx.drawImage(sparks, posx,posy, width, height);
+    }
+    
+    sparkTwo(speed, posx, posy, width, height){
+        const sparksTwo = new Image();
+        const spark2 = [
+            'assets/sparks/spark2/MetallicHit080000.png',
+            'assets/sparks/spark2/MetallicHit080001.png',
+            'assets/sparks/spark2/MetallicHit080002.png',
+            'assets/sparks/spark2/MetallicHit080003.png',
+            'assets/sparks/spark2/MetallicHit080004.png',
+            'assets/sparks/spark2/MetallicHit080005.png',
+            'assets/sparks/spark2/MetallicHit080006.png',
+            'assets/sparks/spark2/MetallicHit080007.png',
+            'assets/sparks/spark2/MetallicHit080008.png',
+            'assets/sparks/spark2/MetallicHit080009.png',
+            'assets/sparks/spark2/MetallicHit080010.png',
+            'assets/sparks/spark2/MetallicHit080011.png',
+            'assets/sparks/spark2/MetallicHit080012.png',
+            'assets/sparks/spark2/MetallicHit080013.png',
+            'assets/sparks/spark2/MetallicHit080014.png',
+            'assets/sparks/spark2/MetallicHit080015.png',
+            'assets/sparks/spark2/MetallicHit080016.png',
+            'assets/sparks/spark2/MetallicHit080017.png',
+            'assets/sparks/spark2/MetallicHit080018.png',
+            'assets/sparks/spark2/MetallicHit080019.png',
+            ]
+            this.gameFrame_sparks ++;
+            this.staggerFrame_sparks = speed;
+          
+            sparksTwo.src = spark2[Math.floor(this.gameFrame_sparks/this.staggerFrame_sparks) % 20];
+            ctx.drawImage(sparksTwo, posx,posy, width, height);
+        }
+    
+    
+    playerSparks(player_posx, player_posy){
+        this.sparkOne(4, player_posx, player_posy, 100, 100);
+        this.sparkOne(5, player_posx, player_posy - 50, 150, 150);
+        this.sparkTwo(5, player_posx, player_posy - 50, 100, 100)
+    }
+    
+    playerSparksHigh(player_posx, player_posy){
+        this.sparkOne(15, player_posx, player_posy, 100, 100);
+         this.sparkOne(13, player_posx, player_posy - 50, 150, 150);
+         this.sparkOne(8, player_posx, player_posy, 100, 100);
+       this.sparkOne(10, player_posx - 20, player_posy, 100, 100);
+        this.sparkTwo(9, player_posx, player_posy - 50, 100, 100)
+    
+    
+        }
+    
+    playerEffectSparks(){
+        if(Math.round((this.body.health / this.health_total) * 100) <= 50){
+            this.playerSparks(this.position.x, this.position.y);
+            }
+            if(Math.round((this.body.health / this.health_total) * 100) <= 10){
+                this.playerSparksHigh(this.position.x, this.position.y);
+              }
+    }
+
 
 
 
@@ -243,48 +368,11 @@ update(monster){
 this.draw();
 thruster.setPlayersThruster(this.body.thruster, this.position.x - this.thruster_position_x, this.position.y + this.thruster_position_y, this.thruster_size, this.thruster_size);       
 this.playerOnDeath();
-this.explosionEffect(3, this.deathpositionX - 85, this.deathpositiony - 85)
 this.lifeBar();
+this.playerMovemements();
+this.playerEffectSparks();
+this.playerDeathExplosion();
 
-
-
-
-// player movements
-// if(keys.right.pressed){
-//     player.position.x += player.velocity.x
-// }
-// if(keys.left.pressed){
-//     player.position.x -= player.velocity.x
-// }
-// if(keys.up.pressed){
-//     player.position.y -= player.velocity.y
-// }
-// if(keys.down.pressed){
-//     player.position.y += player.velocity.y
-// }
-// if(true){
-    
-//  }
-// console.log("position y =" + player.position.y)
-// console.log("position x =" + player.position.x)
-
-// player ned to stay insidew the canvas
-// if(player.position.x + player.velocity.x > c.width - player.width + player.velocity.x){
-
-// player.position.x = c.width - player.width
-// }
-// if(player.position.x < 0){
-// player.position.x = 0
-
-// }
-// if(player.position.y + player.velocity.y > c.height - player.height){
-// player.position.y =  c.height - player.height
-
-// }
-// if(player.position.y < 0){
-// player.position.y =  0
-
-// }
 
     }
     }

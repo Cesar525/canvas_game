@@ -1,8 +1,8 @@
-const drawMonster = new Animation();
 
-class Monsters extends Animation{
+
+class Monsters{
 constructor( id, sprite,  pos_x, pos_y, health, name, speed, color, movements, s_width, s_height, damage){
-    super();
+  
 this.position = {
     x : pos_x,
     y : pos_y
@@ -110,6 +110,8 @@ spritePage(sprite_path, posx, posy, sprite_page_width, sprite_page_height, sprit
 }
 
 
+
+
 explosionEffect(effect, posx, posy, send, speed){
     switch(effect){
     case 1 :
@@ -157,7 +159,7 @@ getHealth(){return this.body.health;};
 
 drawMonster(){
     if(!this.clearRect){
-    this.spritesProccessing(this.body.m_sprite, monsters.length + 4, this.position.x, this.position.y, this.width, this.height);
+    this.spritesProccessing(this.body.m_sprite,2, this.position.x, this.position.y, this.width, this.height);
 //monsters health
     if(this.body.m_health < 0){
         this.body.m_health = 0;
@@ -314,7 +316,7 @@ monsterDeathExplosion(){
 
 
 updateMonster(){
-this.drawMonster()
+this.drawMonster();
 this.monsterlifeBar();
 this.movements(this.monsterMovement);
 this.monsterDeathExplosion();

@@ -299,6 +299,6 @@ updateShot(m){
 this.bulletHitMonsterEffect(this.getCollitionPosX(), this.getCollitionPosY() ,this.getCollitionWithMonster(), this.damage_effect, 2)
 this.damageShowAnimation(this.getDamageHit(), this.getCollitionPosX(), this.getCollitionPosY(), "red",this.getCollitionWithMonster());
 this.clearingBulletOnceHit();
-this.collisionMonsterShot(monsters[m]);
+
     }
 }
