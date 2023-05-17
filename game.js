@@ -33,28 +33,36 @@ const thruster = new Thruster();
 //players
 const players = [
     //CREATING A PLAYER Player(name, level, thruster_selection, get_health, energy, m_damage,  gunType, posx, posy, gun_speed)
-new Player("Player One", 1230,  6, 200, 400, 1, 2, 500, 900, 100),
+new Player("Player One", 1230,  6, 200, 400, 1, 2, 500, 900, 10),
+
 ]
 //Monsters
 const sparks = new Animation();
 
 const monsters = [
- new Monsters(2, asteroid_one,  500, 100 , 10000, "Asteroid Lvl 1", 10, "orange", "none", 1000, 1000, 2),
+ new Monsters(2, asteroid_one,  500, 100 , 10000, "Asteroid Lvl 1", 10, "orange", "none", 200, 200, 2),
+ new Monsters(2, asteroid_one,  1000, 100 , 10000, "Asteroid Lvl 1", 10, "orange", "none", 200, 200, 2),
+
 ]
 
 
+
+const missiles = [];
+
+for(var m = 0; m < monsters.length; m++){
+  missiles.push(new shots());
+}
 // ALL PLAYERS ANIMATIONS
 const playerDeadAnimation = [];
 const animation_playerspark_1_lowhealth = [];
 // Player Gun shots && explosion
-const guns = [];
 
 
 // player animation loop to player length
 for(var player_loop = 0; player_loop < players.length; player_loop++){
-guns.push(new shots());
 playerDeadAnimation.push(new Animation());
 animation_playerspark_1_lowhealth.push(new Animation());
+
 
 }
 
@@ -63,31 +71,30 @@ animation_playerspark_1_lowhealth.push(new Animation());
 function buffer(){
     setTimeout(() => {
         requestAnimationFrame(buffer)
-        
+       
       }, 1000 / fps);
-    //GAME
+    //GAME 
+    gameFrame ++;
     ctx.clearRect(0,0,c.width, c.height)
     backg.update_backg(); // background image
-  gameFrame ++;
+
+
+
+
+
+    monsters[0].updateMonster();
+    var player_loop = 0
+        players[player_loop].playerCollitionMonsters(monsters[0]);
+      players[player_loop].playerGun(missiles[0])
+      missiles[player_loop].updateShot(0);
   
-
-
-
-
-players[0].playerCollitionMonsters(monsters[0]);
-monsters[0].updateMonster();
-guns[0].updateShot(0);
-
-
-
-
 
 //############################################################
 
 //players for lopp
 for(var player_loop = 0; player_loop < players.length; player_loop++){
         players[player_loop].playerDeathExplosion(playerDeadAnimation[player_loop], players[player_loop].playerOnDeath(),players[player_loop].body.deathPositionX, players[player_loop].body.deathPositionY += backg.velocity.y);
-        players[player_loop].update(player_loop);
+        players[player_loop].update();
         
 
     //if players health 50 or under 50 sparks will come out.

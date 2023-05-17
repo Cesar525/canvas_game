@@ -1,6 +1,7 @@
-class Player {
+class Player extends shots{
     constructor(name, level, thruster_selection, get_health, energy, m_damage,  gunType, posx, posy, gun_speed){
-    this.position ={
+    super();
+        this.position ={
         x: posx,
         y: posy
     },
@@ -42,9 +43,90 @@ class Player {
     this.playerDead = false;
     this.showdeathexplosion;
     
+    //Animation -> page
+this.frameX = 0;
+this.frameY = 0;
+this.gameFrame = 0;
+this.staggerFrame = 1;
+this.show = false;
+this.onAnimation = false;
+this.animation_PosX = NaN;
+this.animation_PosY = NaN;
+this.gameFrameDamageAnimation = 0;
+this.showDamage = false;
 
     
 }
+
+spritePage(sprite_path, posx, posy, sprite_page_width, sprite_page_height, sprite_count_width, sprite_count_height, sprite_size_w, sprite_size_h, speed, show){
+    if(show){
+        this.show = show;
+    }
+    if(this.show){
+        const animation = new Image();
+        if(speed){
+    this.staggerFrame = speed;
+        }
+    animation.src = sprite_path;
+    
+    this.onAnimation = true;
+    let m_width = sprite_page_width / sprite_count_width;
+    let m_height = sprite_page_height/ sprite_count_height;
+    let positionX = Math.floor(this.gameFrame/this.staggerFrame) % sprite_count_width;
+    let positionY = Math.floor(this.gameFrame/(this.staggerFrame * sprite_count_width)) % sprite_count_height;
+    
+    this.animation_PosX = posx;
+    this.animation_PosY = posy;
+    ctx.globalAlpha = 1;
+    ctx.drawImage(animation, 1 * (sprite_size_w * this.frameX), 1 * (sprite_size_h * this.frameY), m_width, m_height, this.animation_PosX, this.animation_PosY, m_width + 20, m_height + 20 );
+    ctx.globalAlpha = 1;
+    this.frameX = positionX;
+    this.frameY = positionY;
+    
+    //console.log(" Y Frame = " + this.frameY);
+    //console.log("X Frames = " + this.frameX);
+    
+    //console.log( "Showing" + this.frameX);
+    this.gameFrame += 1;
+    
+    if(this.frameX >= sprite_count_width - 1 && this.frameY >= sprite_count_height - 1){
+        this.show = false;
+        this.reset();
+        // console.log(" Y Frame SET = " + this.frameY);
+        //console.log("X Frames SET = " + this.frameX);
+        this.onAnimation = false;
+    }else{
+        return this.onAnimation;
+    }
+    }
+}
+
+explosionEffect(effect, posx, posy, send, speed){
+    switch(effect){
+    case 1 :
+    this.spritePage("assets/explosions/explosion_1.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
+    break;
+    case 2 :
+    this.spritePage("assets/explosions/explosion_2.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
+    break;
+    case 3 : 
+    this.spritePage("assets/explosions/explosion_3.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
+    break;
+    case 4 : 
+    this.spritePage("assets/explosions/explosion_4.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
+    break;
+    case 5 : 
+    this.spritePage("assets/explosions/explosion_5.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
+    break;
+    case 6 : 
+    this.spritePage("assets/explosions/explosion_6.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
+    break;
+    case 7 : 
+    
+    this.spritePage("assets/explosions/explosion_7.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
+    break;
+    }
+    }
 
 draw(){
     
@@ -143,6 +225,13 @@ playerCollitionMonsters(monsters){
   }
   }
 
+  reset(){
+    this.frameX = 0;
+    this.frameY = 0;
+    this.gameFrame = 0;
+    this.staggerFrame = 1;
+}
+
 playerGun(gun){
     gun.gunTypes(this, this.body.m_gun_type);
 }
@@ -150,18 +239,14 @@ playerGun(gun){
 
 
 
-update(loop){
-
+update(monster){
 this.draw();
-thruster.setPlayersThruster(this.body.thruster, this.position.x - this.thruster_position_x, this.position.y + this.thruster_position_y, this.thruster_size, this.thruster_size);   
-
-this.playerGun(guns[loop]);
-   
-
-    
+thruster.setPlayersThruster(this.body.thruster, this.position.x - this.thruster_position_x, this.position.y + this.thruster_position_y, this.thruster_size, this.thruster_size);       
 this.playerOnDeath();
-playerDeathAnimation.explosionEffect(3, this.deathpositionX - 85, this.deathpositiony - 85)
+this.explosionEffect(3, this.deathpositionX - 85, this.deathpositiony - 85)
 this.lifeBar();
+
+
 
 
 // player movements

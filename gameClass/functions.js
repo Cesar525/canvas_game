@@ -19,7 +19,6 @@ function collisionTouch(obj1, obj2){
   }
 
   if(touch_x && touch_y){
-    // console.log("TOUCHING AHHHHHHHHHHHHHHHHHHHHH");
       return true;
   }else{
       return false;
