@@ -80,7 +80,10 @@ function buffer(){
 
 
 
+monsters.forEach(function(monster){
+    
 
+});
 
     monsters[0].updateMonster();
     var player_loop = 0
