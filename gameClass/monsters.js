@@ -159,7 +159,7 @@ getHealth(){return this.body.health;};
 
 drawMonster(){
     if(!this.clearRect){
-    this.spritesProccessing(this.body.m_sprite,2, this.position.x, this.position.y, this.width, this.height);
+    this.spritesProccessing(this.body.m_sprite,monsters.length, this.position.x, this.position.y, this.width, this.height);
 //monsters health
     if(this.body.m_health < 0){
         this.body.m_health = 0;
@@ -233,6 +233,8 @@ if(this.spawnTime >= 100){
     this.explosion_dead = false;
     this.spawnTime = 0;
     this.body.m_dead = false;
+    this.body.m_deadPosX = NaN;
+    this.body.m_deadPosY = NaN;
 }
     
 }
@@ -245,8 +247,8 @@ resetColPos(){
     this.collition.collition_with_shot = false;
     this.explosion_dead = false;
     this.explosion = false;   
-    this.collition.collition_posX;
-    this.collition.collition_posY;
+    this.collition.collition_posX = NaN;
+    this.collition.collition_posY = NaN;
 }
 //collition in && out puts
 setMonsterCollitionPost(posX, posY){

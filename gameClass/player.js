@@ -364,7 +364,7 @@ sparkOne(speed, posx, posy, width, height){
 
 
 
-update(monster){
+update(gun_type){
 this.draw();
 thruster.setPlayersThruster(this.body.thruster, this.position.x - this.thruster_position_x, this.position.y + this.thruster_position_y, this.thruster_size, this.thruster_size);       
 this.playerOnDeath();
@@ -372,7 +372,7 @@ this.lifeBar();
 this.playerMovemements();
 this.playerEffectSparks();
 this.playerDeathExplosion();
-
+this.playerGun(gun_type);
 
     }
     }
