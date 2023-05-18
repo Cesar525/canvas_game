@@ -267,11 +267,13 @@ bulletHitMonsterEffect(posx, posy,collition,hiteffect, speed){
         
         
                 if(this.showDamage){
+                    
                     ctx.fillStyle = color;
                     ctx.strokeStyle = "black"
                     ctx.font = "40px anton";
                     ctx.fillText("-"+ damage, pos_x , pos_y);
-                    ctx.strokeText("-" + damage, pos_x, pos_y);       
+                    ctx.strokeText("-" + damage, pos_x, pos_y);
+                           
                 } 
                 if(this.gameFrameDamageAnimation >= 400){
                          this.showDamage = false;
@@ -287,15 +289,17 @@ collisionMonsterShot(monsters){
                          this.setCollitionWithMonster(true);
                          this.setDamageHit(this.m_damage);
                          this.setCollisionPosition(this.position.x, this.position.y);
-                     
+                     return true;
                      }else{
                        monsters.setMonsterCollitionWithShot(false); 
                        this.setCollitionWithMonster(false);  
+                       return false;
                      }
                    }
 
 updateShot(m){
 //console.log(this.getCollitionWithMonster());
+
 this.bulletHitMonsterEffect(this.getCollitionPosX(), this.getCollitionPosY() ,this.getCollitionWithMonster(), this.damage_effect, 2)
 this.damageShowAnimation(this.getDamageHit(), this.getCollitionPosX(), this.getCollitionPosY(), "red",this.getCollitionWithMonster());
 this.clearingBulletOnceHit();

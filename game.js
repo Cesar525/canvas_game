@@ -17,14 +17,21 @@ const thruster = new Thruster();
 
 //players
 //CREATING A PLAYER Player(name, level, thruster_selection, get_health, energy, m_damage,  gunType, posx, posy, gun_speed)
-const players = new Player("Player One", 1230,  6, 100, 400, 1, 2, 500, 900, 10);
+const players = new Player("Player One", 1230,  6, 100, 400, 1, 2, 500, 900, 100);
 
 //Monsters
 //CREATING A MONSTERS Monstrs( id, sprite,  pos_x, pos_y, health, name, speed, color, movements, s_width, s_height, damage)
-const monsters = new Monsters(2, asteroid_eleven,  500, 100 , 100, "Asteroid Lvl 1", 10, "orange", "none", 200, 200, 2);
+const monsters = [
+    new Monsters(2, asteroid_eleven,  500, 100 , 1, "Asteroid 1", 10, "orange", "straightDown", 200, 200, 2),
+    new Monsters(2, asteroid_eleven,  1000, 100 , 1, "Asteroid 1", 10, "orange", "straightDown", 200, 200, 2),
+    new Monsters(2, asteroid_eleven,  1500, 100 , 1, "Asteroid 1", 10, "orange", "straightDown", 200, 200, 2),
+    new Monsters(2, asteroid_eleven,  2000, 100 , 1, "Asteroid 1", 10, "orange", "straightDown", 200, 200, 2),
+ 
+ 
+];
 
 //Missiles
-const missiles = new shots();
+const missiles = [new shots()];
 
 
 //BUFFERRRR
@@ -38,13 +45,36 @@ function buffer(){
     ctx.clearRect(0,0,c.width, c.height)
     backg.update_backg(); // background image
 
-    monsters.updateMonster();
-    missiles.collisionMonsterShot(monsters);
-    missiles.updateShot();
-    players.playerCollitionMonsters(monsters);
-    players.playerGun(missiles)
-    players.update();
+  missiles.forEach((missiles_items, index_missles, missiles_array) => { 
+      missiles_items.updateShot();    
+    players.playerGun(missiles_items)    
+  }); 
+
+
+monsters.forEach((item, index, array) => {
+  ctx.globalCompositeOperation = "source-over"; 
+  item.updateMonster();  
+  missiles.forEach((item_missiles, index_missiles, array_missiles)=>{
+    let array_index = index_missiles;
+    if(item_missiles.collisionMonsterShot(item)){
+     
+      item_missiles[array_index].bulletHitMonsterEffect(item_missiles[array_index].getCollitionPosX(), item_missiles[array_index].getCollitionPosY() ,item_missiles[array_index].getCollitionWithMonster(), item_missiles[array_index].damage_effect, 2)
+
+      console.log(array_index);
+    } 
     
+
+    
+
+  })
+  
+});
+
+
+    
+    
+    
+    players.update();   
 } 
 
 buffer();
@@ -63,7 +93,7 @@ buffer();
 
 
 
-// const sprite = [ // this is only use for sprite testing
+// const sprite = [ // item_missiles is only use for sprite testing
 
 //     new Animation(),
 //     new Animation(),
