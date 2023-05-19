@@ -5,7 +5,10 @@ pass:525002cc
 
 
 working on -
-Working on timer.
+1) Timer
+2) 5 guns_types
+3) Make monsters drop Health
+
 
 
 const asteroid_eleven = [

@@ -313,7 +313,7 @@ monsterClearDeath(){
 
 
 monsterDeathExplosion(){  
-    this.explosionEffect(3,  this.body.m_deadPosX - 85, this.body.m_deadPosY - 85, this.monsterDeath());
+    this.explosionEffect(3,  this.body.m_deadPosX - 85, (this.body.m_deadPosY += backg.velocity.y) - 85 , this.monsterDeath());
 }
 
 

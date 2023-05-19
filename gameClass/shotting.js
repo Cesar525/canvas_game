@@ -1,3 +1,6 @@
+
+
+
 class shots{
     constructor(){
      
@@ -6,8 +9,8 @@ class shots{
         y : -100
     }
     this.velocity = {
-        x : 20,
-        y : 20
+        x : 1,
+        y : 1
     }
     this.m_damage;
     this.width = 50;
@@ -134,17 +137,7 @@ clearingBulletOnceHit(){
    }
 
 
-bulletHitMonsterEffect(hiteffect, speed){
-    var animationTwo;
-   
-    this.explosionEffect(hiteffect,this.getCollitionPosX() - 100, this.collition.collision_posy - 100, this.collition.shot_collided_with_monster, speed);
-    if(this.getAnimationStatus() && this.shot_collided_with_monster){
-     this.reset();
-    animationTwo = true;
-     }
-      this.explosionEffect(hiteffect, this.getCollitionPosX() - 100, this.getCollitionPosY() - 100, animationTwo, speed);
-     
-    }
+
 
     spritePage(sprite_path, posx, posy, sprite_page_width, sprite_page_height, sprite_count_width, sprite_count_height, sprite_size_w, sprite_size_h, speed, show){
         
@@ -213,7 +206,8 @@ bulletHitMonsterEffect(hiteffect, speed){
         ctx.globalAlpha = 1;
         this.frameX = positionX;
         this.frameY = positionY;
-        
+        this.DamageShowingcolorDefault;
+
         //console.log(" Y Frame = " + this.frameY);
         //console.log("X Frames = " + this.frameX);
         
@@ -232,12 +226,14 @@ bulletHitMonsterEffect(hiteffect, speed){
         }
     }
 
-
+getDamageNumberColor(){return this.DamageShowingcolorDefault;};
+setDamageNumberColor(color){ this.DamageShowingcolorDefault = color;}
 
 gunTypes(player,selectingGun){
     switch(selectingGun){
 case 1 : 
 //single missile
+this.setDamageNumberColor("red");
 var gun_damage = 15;
 var totalDamage = player.body.m_damage + gun_damage;
 this.damages = this.randomHit(1, totalDamage);
@@ -245,6 +241,7 @@ this.shotSelection(player,2,this.damages, player.body.m_gun_speed);
 this.damage_effect = 6;
 break;
 case 2 : 
+this.setDamageNumberColor("#6800ff");
 var gun_damage = 25;
 var totalDamage = player.body.m_damage + gun_damage;
 this.damages = this.randomHit(1, totalDamage);
@@ -281,7 +278,7 @@ explosionEffect(effect, posx, posy, send, speed){
         this.explosion = true;
     }
     if(this.explosion){
-    this.spritePage("assets/explosions/explosion_7.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
+    this.spritePage("assets/explosions/explosion_7.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send); 
     if(!this.onAnimation){
         this.explosion = false;
     }
@@ -302,16 +299,16 @@ explosionEffect(effect, posx, posy, send, speed){
     }
 
 
-bulletHitMonsterEffect(posx, posy,collition,hiteffect, speed){
+bulletHitMonsterEffect(explo, posx, posy,collition,hiteffect, speed){
     var animationTwo;
    
     this.explosionEffect(hiteffect,posx - 100, posy - 100, collition, speed);
     if(this.getAnimationStatus() && collition){
-     this.reset();
+     explo.reset();
     animationTwo = true;
      }
-      this.explosionEffect(hiteffect, posx - 100, posy - 100, animationTwo, speed);
-     
+
+      explo.explosionEffect(hiteffect, posx - 100, posy - 100, animationTwo, speed);
     }
 
     damageShowAnimation(damage,pos_x, pos_y, color, if_true){
@@ -352,10 +349,10 @@ collisionMonsterShot(monsters){
 efffects(){
  
 }
-updateShot(){
+updateShot(explo){
 //console.log(this.getCollitionWithMonster());
-this.bulletHitMonsterEffect(this.getCollitionPosX(), this.getCollitionPosY() ,this.getCollitionWithMonster(), this.damage_effect, 2)
-this.damageShowAnimation(this.getDamageHit(), this.getCollitionPosX(), this.getCollitionPosY(), "red",this.getCollitionWithMonster());
+this.bulletHitMonsterEffect(explo, this.getCollitionPosX(), this.getCollitionPosY() ,this.getCollitionWithMonster(), this.damage_effect, 2)
+this.damageShowAnimation(this.getDamageHit(), this.getCollitionPosX(), this.getCollitionPosY(), this.getDamageNumberColor(),this.getCollitionWithMonster());
 this.clearingBulletOnceHit();
 
 
