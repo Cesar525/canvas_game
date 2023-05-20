@@ -9,7 +9,7 @@
 
     <canvas style="border: solid 1px white;" id="canvasone" class="canvasone"></canvas>
 </center>
-
+<script src="./gameClass/powerups.js"></script>
 <script src="./gameClass/sprites.js"></script>
 <script src="./gameClass/functions.js"></script>
 <script src="./gameClass/animation.js"></script>

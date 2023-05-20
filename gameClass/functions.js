@@ -1,5 +1,3 @@
-
-
 function collisionTouch(obj1, obj2){
   var player_posx1 = obj1.position.x;
   var player_posx2 = obj1.position.x + obj1.width;
@@ -24,24 +22,3 @@ function collisionTouch(obj1, obj2){
       return false;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-  function collitionPlayersShot(m,player_collition_connection){  
-      
-    players[player_collition_connection].playerCollitionMonsters(monsters[m]);
-    
-  }
-
-
-
-
-

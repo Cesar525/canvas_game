@@ -67,6 +67,9 @@ draw(){
     if(this.body.health < 0 ){
         this.body.health = 0;
     }
+    if(this.body.health > this.health_total){
+        this.body.health = this.health_total;
+    }
 }
 }
 

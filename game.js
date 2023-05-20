@@ -9,10 +9,8 @@ const gravity = 10;
 const fps = 50;
 const backg = new Background();
 
+//testing
 
-const death = new Death();
-//game
-const playerDeathAnimation = new Animation();
 
 
 
@@ -29,10 +27,13 @@ const players = [
 const monsters = [
     new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 10, "orange", "none", 200, 200, 2),
     new Monsters(2, asteroid_two,  400, 100 , 100, "Asteroid 1", 10, "orange", "none", 200, 200, 2),
-
-
-   
   ];
+
+  //POWER UPS
+const powerUps = [
+new PowerUps(),
+
+];
 
 //Player Missiles & its effects
 const projectiles = [];
@@ -81,7 +82,7 @@ function buffer(){
     backg.update_backg(); // background image
 
 
-
+//colliton Monsters wiht Players && Projectiles
 for(var m = 0; m < monsters.length; m++){
   monsters[m].updateMonster(sprite_animation[m], explosion_onDeath_animation[m]);
     for(var pjct = 0; pjct < projectiles.length; pjct++){
@@ -95,17 +96,16 @@ for(var p = 0; p < players.length; p++){
       players[p].update(projectiles[p], sparks_low[p], sparks_high[p], thruster_animation[p], deathExplosionAnimation[p]);        
 }
 
- 
-    player_shield_effect_one[0].shieldStartingEffectSelection(1, true, 500, 500);
-    if(!player_shield_effect_one[0].getAnimationStatus()){
-   
- shieldon = true;
-    }
-  
-    if(shieldon){
- player_shield_effect_two[0].shieldConstantEffectSelectiion(1, true, 500, 500);
-    }
-//end of buffer function
+//collition Players With PowerUps
+for(var powers = 0;powers < powerUps.length; powers++){
+
+
+}
+
+
+powerUps[0].health(100, 500, 500, collisionTouch(players[0], powerUps[0]), players[0]);
+
+// end of buffer fucntion
 } 
 
 buffer();
