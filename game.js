@@ -27,6 +27,12 @@ const players = [
 const monsters = [
     new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 10, "orange", "none", 200, 200, 2),
     new Monsters(2, asteroid_two,  400, 100 , 100, "Asteroid 1", 10, "orange", "none", 200, 200, 2),
+    new Monsters(2, asteroid_two,  400, 100 , 100, "Asteroid 1", 10, "orange", "none", 200, 200, 2),
+    new Monsters(2, asteroid_two,  400, 100 , 100, "Asteroid 1", 10, "orange", "none", 200, 200, 2),
+    new Monsters(2, asteroid_two,  400, 100 , 100, "Asteroid 1", 10, "orange", "none", 200, 200, 2),
+    new Monsters(2, asteroid_two,  400, 100 , 100, "Asteroid 1", 10, "orange", "none", 200, 200, 2),
+    new Monsters(2, asteroid_two,  400, 100 , 100, "Asteroid 1", 10, "orange", "none", 200, 200, 2),
+
   ];
 
   //POWER UPS
