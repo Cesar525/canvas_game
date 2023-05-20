@@ -10,10 +10,21 @@ constructor(){
     this.gameFrame = 0;
     this.staggerFrame = 1;
     this.show = false;
-    this.onAnimation = false;  
+    this.onAnimation = false;
+    
+    //thruster animation
+    this.thruster_size =150;
+    this.thruster_animation = 0;
+
 }
 
-spritePage(sprite_path, posx, posy, sprite_page_width, sprite_page_height, sprite_count_width, sprite_count_height, sprite_size_w, sprite_size_h, speed, show){
+spritePage(sprite_path, posx, posy, sprite_page_width, sprite_page_height, sprite_count_width, sprite_count_height, sprite_size_w, sprite_size_h, speed, show, sprite_size_set_width, sprite_size_set_height, set_transparency){
+if(!sprite_size_set_width && !sprite_size_set_height && !set_transparency ){
+sprite_size_set_width = 0;
+sprite_size_set_height = 0;
+set_transparency = 1;
+}
+
 if(show){
     this.show = show;
 }
@@ -32,23 +43,16 @@ let positionY = Math.floor(this.gameFrame/(this.staggerFrame * sprite_count_widt
 
 this.position.x = posx;
 this.position.y = posy;
-ctx.globalAlpha = 1;
-ctx.drawImage(animation, 1 * (sprite_size_w * this.frameX), 1 * (sprite_size_h * this.frameY), m_width, m_height, this.position.x, this.position.y, m_width + 20, m_height + 20 );
+ctx.globalAlpha = set_transparency;
+ctx.drawImage(animation, 1 * (sprite_size_w * this.frameX), 1 * (sprite_size_h * this.frameY), m_width, m_height, this.position.x, this.position.y, (m_width + 20) + sprite_size_set_width, (m_height + 20) + sprite_size_set_height);
 ctx.globalAlpha = 1;
 this.frameX = positionX;
 this.frameY = positionY;
-
-//console.log(" Y Frame = " + this.frameY);
-//console.log("X Frames = " + this.frameX);
-
-//console.log( "Showing" + this.frameX);
 this.gameFrame += 1;
 
 if(this.frameX >= sprite_count_width - 1 && this.frameY >= sprite_count_height - 1){
     this.show = false;
     this.reset();
-    // console.log(" Y Frame SET = " + this.frameY);
-    //console.log("X Frames SET = " + this.frameX);
     this.onAnimation = false;
 }else{
     return this.onAnimation;
@@ -207,21 +211,65 @@ playerSparksHigh(player_posx, player_posy){
 
     }
 
+spriteProccessor(sprite, speed, posx, posy, width, height){
+    const sparksTwo = new Image();
+    
+        this.gameFrame ++;
+        this.staggerFrame = speed;
+        
+        sparksTwo.src = sprite[Math.floor(this.gameFrame/this.staggerFrame) % sprite.length];
+        ctx.drawImage(sparksTwo, posx,posy, width, height);
+    }
+setPlayersThruster(select_thruster, player_posx, player_posy, sizew, sizeh){
+    const thruster = new Image();
+    const thrusters = {//truster types
+        1 : "assets/thrusters/thruster01.png",
+        2 : "assets/thrusters/thruster02.png",
+        3 : "assets/thrusters/thruster03.png",
+        4 :  "assets/thrusters/thruster04.png",
+        5 :  "assets/thrusters/thruster05.png",
+        6 :  "assets/thrusters/thruster06.png",
+        7 :  "assets/thrusters/thruster07.png",
+        8 :  "assets/thrusters/thruster08.png",
+        9 :  "assets/thrusters/thruster09.png",
+        10 :  "assets/thrusters/thruster10.png",
+        11 :  "assets/thrusters/thruster11.png",
+        12 :  "assets/thrusters/thruster12.png",
+        13 : "assets/thrusters/thruster13.png",
+        14 : "assets/thrusters/thruster14.png",
+        15 : "assets/thrusters/thruster15.png",
+        16 :  "assets/thrusters/thruster16.png",
+    };
+    thruster.src = thrusters[select_thruster];
+    ctx.drawImage(thruster , player_posx, player_posy , sizew, sizeh + this.thruster_animation);
+if(this.thruster_animation <= 20){
+    this.thruster_animation += 1
+}if(this.thruster_animation == 20){
+    this.thruster_animation = 13;
+}
+    } 
+    
+shieldStartingEffectSelection(shield_Animation_selection, on_off, posx, posy){
+   switch(shield_Animation_selection){
+case 1: this.spritePage("assets/shields/shield_arm_top.png", posx, posy, 960, 768, 5, 4, 192, 192, 3, on_off, 200, 200, 0.4);
 
+break;
+   };
 
-        spritePro(sprite, speed, posx, posy, width, height){
-            const sparksTwo = new Image();
-         
-                this.gameFrame ++;
-                this.staggerFrame = speed;
-              
-                sparksTwo.src = sprite[Math.floor(this.gameFrame/this.staggerFrame) % sprite.length];
-                ctx.drawImage(sparksTwo, posx,posy, width, height);
-            }
+}
+
+shieldConstantEffectSelectiion(shield_Animation_selection, on_off, posx, posy){
+    switch(shield_Animation_selection){
+        case 1 : this.spritePage("assets/shields/shield_on.png", posx, posy, 960, 576, 5, 3, 192, 192, 3, on_off, 200, 200, 0.5);
+ break;
+    };
+ 
+ }
 
 updateAnimation(){   
-
+    
 }
 
 
 }
+//this.spritePage("assets/shields/shield_on.png", 500, 500, 960, 576, 5, 3, 192, 192, 3, true, 200, 200, 1)

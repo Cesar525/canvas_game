@@ -14,7 +14,6 @@
 <script src="./gameClass/functions.js"></script>
 <script src="./gameClass/animation.js"></script>
 <script src="./gameClass/death.js"></script>
-<script src="./gameClass/thruster_selection.js"></script>
 <script src="./gameClass/shields.js"></script>
 <script src="./gameClass/controller.js"></script>
 <script src="./gameClass/monsters.js"></script>

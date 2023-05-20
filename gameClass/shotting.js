@@ -1,6 +1,3 @@
-
-
-
 class shots{
     constructor(){
      
@@ -24,18 +21,6 @@ class shots{
         collision_posy : NaN
     }
 
-    this.explosion = false;
-    //Animation -> pageOne
-this.frameX = 0;
-this.frameY = 0;
-this.gameFrame = 0;
-this.staggerFrame = 1;
-this.show = false;
-this.onAnimation = false;
-this.animation_PosX = NaN;
-this.animation_PosY = NaN;
-this.gameFrameDamageAnimation = 0;
-this.showDamage = false;
 
     this.random = true;
     this.randomNum;
@@ -127,104 +112,14 @@ clearingBulletOnceHit(){
           
        }
     
-   if(this.getCollitionWithMonster()){
-   this.clearRect = true;
-   //console.log("Bullet banished..");
-   this.position.x = - 50;
-   this.position.y = - 50;
-   this.setCollitionWithMonster(false);
-   }  
-   }
-
-
-
-
-    spritePage(sprite_path, posx, posy, sprite_page_width, sprite_page_height, sprite_count_width, sprite_count_height, sprite_size_w, sprite_size_h, speed, show){
-        
-        if(show){
-            this.show = show;
-        }
-        if(this.show){
-            const animation = new Image();
-            if(speed){
-        this.staggerFrame = speed;
-            }
-        animation.src = sprite_path;
-        this.onAnimation = true;
-        let m_width = sprite_page_width / sprite_count_width;
-        let m_height = sprite_page_height/ sprite_count_height;
-        let positionX = Math.floor(this.gameFrame/this.staggerFrame) % sprite_count_width;
-        let positionY = Math.floor(this.gameFrame/(this.staggerFrame * sprite_count_width)) % sprite_count_height;
-        
-        this.animation_PosX = posx;
-        this.animation_PosY = posy;
-        ctx.globalAlpha = 1;
-        ctx.drawImage(animation, 1 * (sprite_size_w * this.frameX), 1 * (sprite_size_h * this.frameY), m_width, m_height, this.animation_PosX, this.animation_PosY, m_width + 20, m_height + 20 );
-        ctx.globalAlpha = 1;
-        this.frameX = positionX;
-        this.frameY = positionY;
-        
-        //console.log(" Y Frame = " + this.frameY);
-        //console.log("X Frames = " + this.frameX);
-        
-        //console.log( "Showing" + this.frameX);
-        this.gameFrame += 1;
-        
-        if(this.frameX >= sprite_count_width - 1 && this.frameY >= sprite_count_height - 1){
-            this.show = false;
-            this.reset();
-            // console.log(" Y Frame SET = " + this.frameY);
-            //console.log("X Frames SET = " + this.frameX);
-            this.onAnimation = false;
-        }else{
-            return this.onAnimation;
-        }
-        }
-    }
-
-      spritePage(sprite_path, posx, posy, sprite_page_width, sprite_page_height, sprite_count_width, sprite_count_height, sprite_size_w, sprite_size_h, speed, show){
-        
-        if(show){
-            this.show = show;
-        }
-        if(this.show){
-            const animation = new Image();
-            if(speed){
-        this.staggerFrame = speed;
-            }
-        animation.src = sprite_path;
-        this.onAnimation = true;
-        let m_width = sprite_page_width / sprite_count_width;
-        let m_height = sprite_page_height/ sprite_count_height;
-        let positionX = Math.floor(this.gameFrame/this.staggerFrame) % sprite_count_width;
-        let positionY = Math.floor(this.gameFrame/(this.staggerFrame * sprite_count_width)) % sprite_count_height;
-        
-        this.animation_PosX = posx;
-        this.animation_PosY = posy;
-        ctx.globalAlpha = 1;
-        ctx.drawImage(animation, 1 * (sprite_size_w * this.frameX), 1 * (sprite_size_h * this.frameY), m_width, m_height, this.animation_PosX, this.animation_PosY, m_width + 20, m_height + 20 );
-        ctx.globalAlpha = 1;
-        this.frameX = positionX;
-        this.frameY = positionY;
-        this.DamageShowingcolorDefault;
-
-        //console.log(" Y Frame = " + this.frameY);
-        //console.log("X Frames = " + this.frameX);
-        
-        //console.log( "Showing" + this.frameX);
-        this.gameFrame += 1;
-        
-        if(this.frameX >= sprite_count_width - 1 && this.frameY >= sprite_count_height - 1){
-            this.show = false;
-            this.reset();
-            // console.log(" Y Frame SET = " + this.frameY);
-            //console.log("X Frames SET = " + this.frameX);
-            this.onAnimation = false;
-        }else{
-            return this.onAnimation;
-        }
-        }
-    }
+if(this.getCollitionWithMonster()){
+    this.clearRect = true;
+    //console.log("Bullet banished..");
+    this.position.x = - 50;
+    this.position.y = - 50;
+    this.setCollitionWithMonster(false);
+}  
+}
 
 getDamageNumberColor(){return this.DamageShowingcolorDefault;};
 setDamageNumberColor(color){ this.DamageShowingcolorDefault = color;}
@@ -241,7 +136,7 @@ this.shotSelection(player,2,this.damages, player.body.m_gun_speed);
 this.damage_effect = 6;
 break;
 case 2 : 
-this.setDamageNumberColor("#6800ff");
+this.setDamageNumberColor("#7e50ff");
 var gun_damage = 25;
 var totalDamage = player.body.m_damage + gun_damage;
 this.damages = this.randomHit(1, totalDamage);
@@ -252,85 +147,50 @@ break;
     }
 }
 
-
-explosionEffect(effect, posx, posy, send, speed){
-    switch(effect){
-    case 1 :
-    this.spritePage("assets/explosions/explosion_1.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
-    break;
-    case 2 :
-    this.spritePage("assets/explosions/explosion_2.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
-    break;
-    case 3 : 
-    this.spritePage("assets/explosions/explosion_3.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
-    break;
-    case 4 : 
-    this.spritePage("assets/explosions/explosion_4.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
-    break;
-    case 5 : 
-    this.spritePage("assets/explosions/explosion_5.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
-    break;
-    case 6 : 
-    this.spritePage("assets/explosions/explosion_6.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
-    break;
-    case 7 : 
-    if(this.getCollitionWithMonster()){
-        this.explosion = true;
-    }
-    if(this.explosion){
-    this.spritePage("assets/explosions/explosion_7.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send); 
-    if(!this.onAnimation){
-        this.explosion = false;
-    }
+reset(){
+    this.frameX = 0;
+    this.frameY = 0;
+    this.gameFrame = 0;
+    this.staggerFrame = 1;
 }
-    break;
-    }
-    }
 
-    reset(){
-        this.frameX = 0;
-        this.frameY = 0;
-        this.gameFrame = 0;
-        this.staggerFrame = 1;
-    }
-
-    getAnimationStatus(){
-        return this.onAnimation;
-    }
+getAnimationStatus(){
+    return this.onAnimation;
+}
 
 
-bulletHitMonsterEffect(explo, posx, posy,collition,hiteffect, speed){
+bulletHitMonsterEffect(explosion_one, explosion_two, posx, posy,collition,hiteffect, speed){
     var animationTwo;
    
-    this.explosionEffect(hiteffect,posx - 100, posy - 100, collition, speed);
-    if(this.getAnimationStatus() && collition){
-     explo.reset();
+    explosion_one.explosionEffect(hiteffect,posx - 100, posy - 100, collition, speed);
+    if(explosion_one.getAnimationStatus() && collition){
+     explosion_two.reset();
     animationTwo = true;
      }
 
-      explo.explosionEffect(hiteffect, posx - 100, posy - 100, animationTwo, speed);
-    }
+      explosion_two.explosionEffect(hiteffect, posx - 100, posy - 100, animationTwo, speed);
+}
 
-    damageShowAnimation(damage,pos_x, pos_y, color, if_true){
-        this.gameFrameDamageAnimation++;
-        if(if_true){this.showDamage = true;}
-        
-        
-                if(this.showDamage){
+damageShowAnimation(damage,pos_x, pos_y, color, if_true){
+this.gameFrameDamageAnimation++;
+if(if_true){this.showDamage = true;}
+
+
+        if(this.showDamage){
+            
+            ctx.fillStyle = color;
+            ctx.strokeStyle = "black"
+            ctx.font = "40px anton";
+            ctx.fillText("-"+ damage, pos_x , pos_y);
+            ctx.strokeText("-" + damage, pos_x, pos_y);
                     
-                    ctx.fillStyle = color;
-                    ctx.strokeStyle = "black"
-                    ctx.font = "40px anton";
-                    ctx.fillText("-"+ damage, pos_x , pos_y);
-                    ctx.strokeText("-" + damage, pos_x, pos_y);
-                           
-                } 
-                if(this.gameFrameDamageAnimation >= 400){
-                         this.showDamage = false;
-                         this.gameFrameDamageAnimation = 0;
-                         this.animationSlowsGoesUp = 0
-                       }
+        } 
+        if(this.gameFrameDamageAnimation >= 400){
+                    this.showDamage = false;
+                    this.gameFrameDamageAnimation = 0;
+                    this.animationSlowsGoesUp = 0
                 }
+        }
 
 collisionMonsterShot(monsters){
                     // collision monster to shot
@@ -349,9 +209,9 @@ collisionMonsterShot(monsters){
 efffects(){
  
 }
-updateShot(explo){
+updateShot(explo_one_animation, explo_two_animation){
 //console.log(this.getCollitionWithMonster());
-this.bulletHitMonsterEffect(explo, this.getCollitionPosX(), this.getCollitionPosY() ,this.getCollitionWithMonster(), this.damage_effect, 2)
+this.bulletHitMonsterEffect(explo_one_animation, explo_two_animation, this.getCollitionPosX(), this.getCollitionPosY() ,this.getCollitionWithMonster(), this.damage_effect, 2)
 this.damageShowAnimation(this.getDamageHit(), this.getCollitionPosX(), this.getCollitionPosY(), this.getDamageNumberColor(),this.getCollitionWithMonster());
 this.clearingBulletOnceHit();
 

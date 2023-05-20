@@ -19,7 +19,8 @@ class Player{
         m_gun_type : gunType,
         m_gun_speed : gun_speed,
         deathPositionX : NaN,
-        deathPositionY : NaN 
+        deathPositionY : NaN,
+        shield_on_off : false
     }
     this.collition = {
         collition_monsters : false,
@@ -42,18 +43,8 @@ class Player{
     this.clearRect = false;
     this.playerDead = false;
     this.showdeathexplosion;
-    
-    //Animation -> page
-this.frameX = 0;
-this.frameY = 0;
-this.gameFrame = 0;
-this.staggerFrame = 1;
-this.show = false;
-this.onAnimation = false;
-this.animation_PosX = NaN;
-this.animation_PosY = NaN;
-this.gameFrameDamageAnimation = 0;
-this.showDamage = false;
+
+
 
 //sparks animation
 this.gameFrame_sparks = 0;
@@ -61,75 +52,10 @@ this.staggerFrame_sparks = 1;
     
 }
 
-spritePage(sprite_path, posx, posy, sprite_page_width, sprite_page_height, sprite_count_width, sprite_count_height, sprite_size_w, sprite_size_h, speed, show){
-    if(show){
-        this.show = show;
-    }
-    if(this.show){
-        const animation = new Image();
-        if(speed){
-    this.staggerFrame = speed;
-        }
-    animation.src = sprite_path;
-    
-    this.onAnimation = true;
-    let m_width = sprite_page_width / sprite_count_width;
-    let m_height = sprite_page_height/ sprite_count_height;
-    let positionX = Math.floor(this.gameFrame/this.staggerFrame) % sprite_count_width;
-    let positionY = Math.floor(this.gameFrame/(this.staggerFrame * sprite_count_width)) % sprite_count_height;
-    
-    this.animation_PosX = posx;
-    this.animation_PosY = posy;
-    ctx.globalAlpha = 1;
-    ctx.drawImage(animation, 1 * (sprite_size_w * this.frameX), 1 * (sprite_size_h * this.frameY), m_width, m_height, this.animation_PosX, this.animation_PosY, m_width + 20, m_height + 20 );
-    ctx.globalAlpha = 1;
-    this.frameX = positionX;
-    this.frameY = positionY;
-    
-    //console.log(" Y Frame = " + this.frameY);
-    //console.log("X Frames = " + this.frameX);
-    
-    //console.log( "Showing" + this.frameX);
-    this.gameFrame += 1;
-    
-    if(this.frameX >= sprite_count_width - 1 && this.frameY >= sprite_count_height - 1){
-        this.show = false;
-        this.reset();
-        // console.log(" Y Frame SET = " + this.frameY);
-        //console.log("X Frames SET = " + this.frameX);
-        this.onAnimation = false;
-    }else{
-        return this.onAnimation;
-    }
-    }
-}
+shieldEquip(Shield_animation_turningOn, Shieldanimation_on, Shield_on_off){
 
-explosionEffect(effect, posx, posy, send, speed){
-    switch(effect){
-    case 1 :
-    this.spritePage("assets/explosions/explosion_1.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
-    break;
-    case 2 :
-    this.spritePage("assets/explosions/explosion_2.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
-    break;
-    case 3 : 
-    this.spritePage("assets/explosions/explosion_3.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
-    break;
-    case 4 : 
-    this.spritePage("assets/explosions/explosion_4.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
-    break;
-    case 5 : 
-    this.spritePage("assets/explosions/explosion_5.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
-    break;
-    case 6 : 
-    this.spritePage("assets/explosions/explosion_6.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
-    break;
-    case 7 : 
     
-    this.spritePage("assets/explosions/explosion_7.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
-    break;
-    }
-    }
+}
 
 draw(){
     
@@ -209,8 +135,8 @@ lifeBar(){
         ctx.fillRect(this.position.x - 70 , this.position.y - 10, Math.round((this.body.health / this.health_total) * 100), 9);
 }
 
-playerDeathExplosion(){
-    this.explosionEffect(3,  this.body.deathPositionX - 85, this.body.deathPositionY - 85, this.showdeathexplosion, 2);
+playerDeathExplosion(explosion_animation){
+    explosion_animation.explosionEffect(3,  this.body.deathPositionX - 85, this.body.deathPositionY - 85, this.showdeathexplosion, 2);
     this.showdeathexplosion = false; 
 }
 
@@ -229,7 +155,7 @@ playerCollitionMonsters(monsters){
   }
   }
 
-  reset(){
+reset(){
     this.frameX = 0;
     this.frameY = 0;
     this.gameFrame = 0;
@@ -277,101 +203,28 @@ this.position.y =  0
 
 }
 
-
-
 }
 
-sparkOne(speed, posx, posy, width, height){
-    const sparks = new Image();
-    const spark1 = [
-        'assets/sparks/spark1/MetallicHit010000.png',
-        'assets/sparks/spark1/MetallicHit010001.png',
-        'assets/sparks/spark1/MetallicHit010002.png',
-        'assets/sparks/spark1/MetallicHit010003.png',
-        'assets/sparks/spark1/MetallicHit010004.png',
-        'assets/sparks/spark1/MetallicHit010005.png',
-        'assets/sparks/spark1/MetallicHit010006.png',
-        'assets/sparks/spark1/MetallicHit010007.png',
-        'assets/sparks/spark1/MetallicHit010008.png',
-        'assets/sparks/spark1/MetallicHit010009.png',
-        'assets/sparks/spark1/MetallicHit010010.png',
-        'assets/sparks/spark1/MetallicHit010011.png',
-        ]
-        this.gameFrame_sparks ++;
-        this.staggerFrame_sparks = speed;
-      
-        sparks.src = spark1[Math.floor(this.gameFrame_sparks/this.staggerFrame_sparks) % 12];
-        ctx.drawImage(sparks, posx,posy, width, height);
-    }
-    
-    sparkTwo(speed, posx, posy, width, height){
-        const sparksTwo = new Image();
-        const spark2 = [
-            'assets/sparks/spark2/MetallicHit080000.png',
-            'assets/sparks/spark2/MetallicHit080001.png',
-            'assets/sparks/spark2/MetallicHit080002.png',
-            'assets/sparks/spark2/MetallicHit080003.png',
-            'assets/sparks/spark2/MetallicHit080004.png',
-            'assets/sparks/spark2/MetallicHit080005.png',
-            'assets/sparks/spark2/MetallicHit080006.png',
-            'assets/sparks/spark2/MetallicHit080007.png',
-            'assets/sparks/spark2/MetallicHit080008.png',
-            'assets/sparks/spark2/MetallicHit080009.png',
-            'assets/sparks/spark2/MetallicHit080010.png',
-            'assets/sparks/spark2/MetallicHit080011.png',
-            'assets/sparks/spark2/MetallicHit080012.png',
-            'assets/sparks/spark2/MetallicHit080013.png',
-            'assets/sparks/spark2/MetallicHit080014.png',
-            'assets/sparks/spark2/MetallicHit080015.png',
-            'assets/sparks/spark2/MetallicHit080016.png',
-            'assets/sparks/spark2/MetallicHit080017.png',
-            'assets/sparks/spark2/MetallicHit080018.png',
-            'assets/sparks/spark2/MetallicHit080019.png',
-            ]
-            this.gameFrame_sparks ++;
-            this.staggerFrame_sparks = speed;
-          
-            sparksTwo.src = spark2[Math.floor(this.gameFrame_sparks/this.staggerFrame_sparks) % 20];
-            ctx.drawImage(sparksTwo, posx,posy, width, height);
+playerEffectSparks(spark_low_animation, spark_high_animation){
+    if(Math.round((this.body.health / this.health_total) * 100) <= 50){
+        spark_low_animation.playerSparks(this.position.x, this.position.y);
         }
-    
-    
-    playerSparks(player_posx, player_posy){
-        this.sparkOne(4, player_posx, player_posy, 100, 100);
-        this.sparkOne(5, player_posx, player_posy - 50, 150, 150);
-        this.sparkTwo(5, player_posx, player_posy - 50, 100, 100)
-    }
-    
-    playerSparksHigh(player_posx, player_posy){
-        this.sparkOne(15, player_posx, player_posy, 100, 100);
-         this.sparkOne(13, player_posx, player_posy - 50, 150, 150);
-         this.sparkOne(8, player_posx, player_posy, 100, 100);
-       this.sparkOne(10, player_posx - 20, player_posy, 100, 100);
-        this.sparkTwo(9, player_posx, player_posy - 50, 100, 100)
-    
-    
-        }
-    
-    playerEffectSparks(){
-        if(Math.round((this.body.health / this.health_total) * 100) <= 50){
-            this.playerSparks(this.position.x, this.position.y);
+        if(Math.round((this.body.health / this.health_total) * 100) <= 10){
+            spark_high_animation.playerSparksHigh(this.position.x, this.position.y);
             }
-            if(Math.round((this.body.health / this.health_total) * 100) <= 10){
-                this.playerSparksHigh(this.position.x, this.position.y);
-              }
-    }
+}
 
 
 
 
-update(gun_type){
+update(gun_type, animation_Sparks_low, animation_Sparks_high, thruster_animation, player_death_explosionAnimation){
 this.draw();
-thruster.setPlayersThruster(this.body.thruster, this.position.x - this.thruster_position_x, this.position.y + this.thruster_position_y, this.thruster_size, this.thruster_size);       
+thruster_animation.setPlayersThruster(this.body.thruster, this.position.x - this.thruster_position_x, this.position.y + this.thruster_position_y, this.thruster_size, this.thruster_size);       
 this.playerOnDeath();
 this.lifeBar();
 this.playerMovemements();
-this.playerEffectSparks();
-this.playerDeathExplosion();
+this.playerEffectSparks(animation_Sparks_low, animation_Sparks_high);
+this.playerDeathExplosion(player_death_explosionAnimation);
 this.playerGun(gun_type);
 
     }
