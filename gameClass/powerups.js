@@ -1,16 +1,12 @@
 class PowerUps{
-constructor(posx, posy, health){
+constructor(name, sprite_path, adding ){
     this.position = {
-        x : 100,
-        y : 100 
+        x : NaN,
+        y : NaN 
     }
     this.power = {
-        m_health : NaN,
-        m_speed : NaN,
-        m_money : NaN,
-        m_shield_type : NaN,
-        m_weapon_type : NaN,
-        m_massive_nuclear_type : NaN
+     amount_adding : adding,
+        m_sprite : sprite_path
     }
     this.velocity = {
         y : 10,
@@ -27,17 +23,23 @@ constructor(posx, posy, health){
     this.height = 100;
     this.clearItem = false;
     this.powerUp_taken = false;
+    this.display_orNot = false;
+    this.display = false;
 }
 
 
 
-health(health_points, posx, posy, collision, player){
+health(health_points, posx, posy, collision, player, display){
+
+
+this.display_orNot = display;
+if(this.display_orNot){
     
     if(!this.clearItem){ 
-            //this.position.x = posx;
-            // this.position.y = posy;
-            ctx.fillStyle = "pink";
-            ctx.fillRect(posx, posy += this.velocity.y, this.width , this.height)
+        this.position.x = posx;
+        this.position.y = posy;
+        ctx.fillStyle = "pink";
+            ctx.fillRect(this.position.x, this.position.y += 10, this.width , this.height)
         }
     if(collision){
         console.log("health Taken");
@@ -46,8 +48,8 @@ health(health_points, posx, posy, collision, player){
         this.powerUp_taken = true;
         this.clearItems();
         player.body.health += health_points;
-    }   
-    
+    } 
+    }
 }
 
 clearItems(){
@@ -55,8 +57,8 @@ clearItems(){
     this.clearItem = true;
     this.position.x = NaN;
     this.position.y = NaN;
+    this.display_orNot = false;
 }
-
 
 
 updatePowerUps(){

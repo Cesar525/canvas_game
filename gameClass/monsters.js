@@ -229,7 +229,6 @@ monsterClearDeath(){
 
 monsterDeathExplosion(explosion_deathAnimation){  
     explosion_deathAnimation.explosionEffect(3,  this.body.m_deadPosX - 85, (this.body.m_deadPosY += backg.velocity.y) - 85 , this.monsterDeath());
-
 }
 
 
@@ -247,8 +246,9 @@ this.give_nimber = false;
 }
 this.item_dropped = 4;
 return this.item_dropped;
-
 }
+
+
 
 
 

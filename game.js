@@ -17,7 +17,7 @@ const backg = new Background();
 //players
 //CREATING A PLAYER Player(name, level, thruster_selection, get_health, energy, m_damage,  gunType, posx, posy, gun_speed)
 const players = [
-  new Player("Player One", 1230,  6, 100, 400, 10, 1, 100, 900, 30),
+  new Player("Player One", 1230,  6, 100, 400, 10, 1, 100, 900, 60),
   // new Player("Player One", 1230,  6, 100, 400, 10, 2, 400, 900, 30),
   // new Player("Player One", 1230,  6, 100, 400, 10, 1, 900, 900, 100),
   // new Player("Player One", 1230,  6, 100, 400, 10, 2, 1500, 900, 100),
@@ -32,7 +32,6 @@ const monsters = [
   //POWER UPS
 const powerUps = [
 new PowerUps(),
-
 ];
 
 //Player Missiles & its effects
@@ -101,7 +100,7 @@ for(var powers = 0;powers < powerUps.length; powers++){
 
 
 }
-
+powerUps[0].health(100, 500, 200, collisionTouch(players[0], powerUps[0]), players[0], true);
 
 
 // end of buffer fucntion
