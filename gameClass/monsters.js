@@ -246,8 +246,8 @@ this.drop_item = false;
 this.give_nimber = false;
 }
 this.item_dropped = 4;
-
 return this.item_dropped;
+
 }
 
 
