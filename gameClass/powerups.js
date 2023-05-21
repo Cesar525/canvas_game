@@ -1,8 +1,8 @@
 class PowerUps{
-constructor(look_sprite_path, posx, posy, health, speed, money, shield, weapon, massive_nuclear_type){
+constructor(posx, posy, health){
     this.position = {
-        x : NaN,
-        y : NaN 
+        x : 100,
+        y : 100 
     }
     this.power = {
         m_health : NaN,
@@ -12,13 +12,17 @@ constructor(look_sprite_path, posx, posy, health, speed, money, shield, weapon, 
         m_weapon_type : NaN,
         m_massive_nuclear_type : NaN
     }
+    this.velocity = {
+        y : 10,
+        x : 10
+    }
     this.collision ={
         collision_posX : NaN,
         collision_posY : NaN,
         collision_with_player : NaN
 
     }
-    this.look = look_sprite_path;
+    this.look = NaN;
     this.width = 100;
     this.height = 100;
     this.clearItem = false;
@@ -28,13 +32,13 @@ constructor(look_sprite_path, posx, posy, health, speed, money, shield, weapon, 
 
 
 health(health_points, posx, posy, collision, player){
-
+    
     if(!this.clearItem){ 
-            this.position.x = posx;
-            this.position.y = posy;
+            //this.position.x = posx;
+            // this.position.y = posy;
             ctx.fillStyle = "pink";
-            ctx.fillRect(this.position.x, this.position.y, this.width , this.height)
-    }
+            ctx.fillRect(posx, posy += this.velocity.y, this.width , this.height)
+        }
     if(collision){
         console.log("health Taken");
         this.collision.collision_posX = this.position.x;
@@ -43,6 +47,7 @@ health(health_points, posx, posy, collision, player){
         this.clearItems();
         player.body.health += health_points;
     }   
+    
 }
 
 clearItems(){
@@ -51,6 +56,8 @@ clearItems(){
     this.position.x = NaN;
     this.position.y = NaN;
 }
+
+
 
 updatePowerUps(){
 

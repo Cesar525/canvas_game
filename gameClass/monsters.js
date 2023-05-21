@@ -50,8 +50,10 @@ this.monsterGotHitDamages;
 this.spawnPositionX = pos_x;
 this.spawnPositionY = pos_y;
 
-
-
+//powerUps
+this.dropPower_random;
+this.drop_item = false;
+this.give_nimber = true;
 }
 
 reset(){
@@ -121,6 +123,11 @@ randomSpawnPositionX(from, to){
     return this.randomNum;
   }
 
+  powerUpRandomNum(from, to){
+    this.dropPower_random = Math.floor(Math.random() * to) + from   
+    return this.dropPower_random;
+  }
+
 spawnMonster(){
 if(this.body.m_dead){
     this.spawnTime++;
@@ -129,9 +136,7 @@ if(this.spawnTime >= 100){
 
     this.position.x = this.randomSpawnPositionX(50, c.width - 300);
     this.position.y = this.spawnPositionY;
-   
     this.body.m_health = this.health_total; 
-    
     this.moveRight = true;
     this.moveLeft = false;
     this.clearRect = false;
@@ -141,6 +146,10 @@ if(this.spawnTime >= 100){
     this.body.m_dead = false;
     this.body.m_deadPosX = NaN;
     this.body.m_deadPosY = NaN;
+    this.dropPower_random;
+    this.drop_item = false;
+    this.give_nimber = true;
+    this.item_dropped = NaN;
 }
     
 }
@@ -220,7 +229,29 @@ monsterClearDeath(){
 
 monsterDeathExplosion(explosion_deathAnimation){  
     explosion_deathAnimation.explosionEffect(3,  this.body.m_deadPosX - 85, (this.body.m_deadPosY += backg.velocity.y) - 85 , this.monsterDeath());
+
 }
+
+
+randomSelectingPowerUps(){
+    if(this.body.m_dead){
+        if(this.give_nimber){
+        this.drop_item = true;
+        }
+    }
+    if(this.drop_item){
+var drop_power = this.powerUpRandomNum(4, 5);
+console.log(drop_power);
+this.drop_item = false;
+this.give_nimber = false;
+}
+this.item_dropped = 4;
+
+return this.item_dropped;
+}
+
+
+
 
 
 updateMonster(sprite_animator, explosionOnDeathAnimation){
@@ -228,6 +259,7 @@ this.drawMonster(sprite_animator);
 this.monsterlifeBar();
 this.movements(this.monsterMovement);
 this.monsterDeathExplosion(explosionOnDeathAnimation);
+//this.randomSelectingPowerUps();
 this.spawnMonster();
 }
 }
