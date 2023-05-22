@@ -42,7 +42,7 @@ if(this.display_orNot){
             ctx.fillRect(this.position.x, this.position.y += 10, this.width , this.height)
         }
     if(collision){
-        console.log("health Taken");
+        console.log("health Taken <EFFECT HERE>");
         this.collision.collision_posX = this.position.x;
         this.collision.collision_posY = this.position.y;
         this.powerUp_taken = true;
@@ -59,7 +59,6 @@ clearItems(){
     this.position.y = NaN;
     this.display_orNot = false;
 }
-
 
 updatePowerUps(){
 

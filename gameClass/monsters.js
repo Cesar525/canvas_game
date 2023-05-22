@@ -225,12 +225,9 @@ monsterClearDeath(){
     this.explosion_dead = false;
 }
 
-
-
 monsterDeathExplosion(explosion_deathAnimation){  
     explosion_deathAnimation.explosionEffect(3,  this.body.m_deadPosX - 85, (this.body.m_deadPosY += backg.velocity.y) - 85 , this.monsterDeath());
 }
-
 
 randomSelectingPowerUps(){
     if(this.body.m_dead){
@@ -239,7 +236,7 @@ randomSelectingPowerUps(){
         }
     }
     if(this.drop_item){
-var drop_power = this.powerUpRandomNum(4, 5);
+var drop_power = this.powerUpRandomNum(3, 5);
 console.log(drop_power);
 this.drop_item = false;
 this.give_nimber = false;
@@ -249,17 +246,14 @@ return this.item_dropped;
 }
 
 
-
-
-
-
-
-updateMonster(sprite_animator, explosionOnDeathAnimation){
+updateMonster(sprite_animator, explosionOnDeathAnimation, powerUps){
 this.drawMonster(sprite_animator);
 this.monsterlifeBar();
 this.movements(this.monsterMovement);
 this.monsterDeathExplosion(explosionOnDeathAnimation);
 //this.randomSelectingPowerUps();
 this.spawnMonster();
+
+
 }
 }
