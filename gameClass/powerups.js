@@ -1,12 +1,12 @@
 class PowerUps{
-constructor(name, sprite_path, adding ){
+constructor(){
     this.position = {
         x : NaN,
         y : NaN 
     }
     this.power = {
-     amount_adding : adding,
-        m_sprite : sprite_path
+     amount_adding : NaN,
+        m_sprite : NaN
     }
     this.velocity = {
         y : 10,
@@ -23,44 +23,62 @@ constructor(name, sprite_path, adding ){
     this.height = 100;
     this.clearItem = false;
     this.powerUp_taken = false;
-    this.display_orNot = false;
-    this.display = false;
+    this.display_orNot;
+    this.display_item = NaN;
+}
+setPos(posx, posy){
+    this.position.x = posx;
+    this .position.y = posy;
+}
+getPosX(){return this.position.x;};
+getPosY(){return this.position.y;};
+dropHealth(posx, posy, dead_orNot){
+this.position.x = posx;
+this.position.y = posy;
+this.display_orNot = dead_orNot;
 }
 
 
+health(player){
+var got_it = false;
 
-health(health_points, posx, posy, collision, player, display){
-
-
-this.display_orNot = display;
-if(this.display_orNot){
-    
-    if(!this.clearItem){ 
-        this.position.x = posx;
-        this.position.y = posy;
+    if(this.display_orNot){ 
         ctx.fillStyle = "pink";
-            ctx.fillRect(this.position.x, this.position.y += 10, this.width , this.height)
+            ctx.fillRect(this.position.x, this.position.y, this.width , this.height)
         }
-    if(collision){
+      if(this.collision.collision_with_player){
+        var health_points = 100;
         console.log("health Taken <EFFECT HERE>");
         this.collision.collision_posX = this.position.x;
         this.collision.collision_posY = this.position.y;
         this.powerUp_taken = true;
-        this.clearItems();
         player.body.health += health_points;
-    } 
-    }
+        this.display_orNot = false;
+        this.clearItems();
+      }
+   
 }
 
 clearItems(){
-    this.collision.collision_with_player = true;
-    this.clearItem = true;
-    this.position.x = NaN;
-    this.position.y = NaN;
-    this.display_orNot = false;
+        this.clearItem = true;
+        this.display_orNot = false;
+        this.powerUp_taken = false;
+
+        
 }
 
-updatePowerUps(){
+
+PowerUpcollisionWithPlayer(player){
+    if(collisionTouch(this, player)){
+console.log("its coliding");
+this.collision.collision_with_player = true;
+    }
+}
+
+updatePowerUps(player){
+this.PowerUpcollisionWithPlayer(player)
+this.health(player);
+this.clearItems();
 
 }
 

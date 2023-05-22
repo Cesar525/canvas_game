@@ -25,7 +25,7 @@ const players = [
 //Monsters
 //CREATING A MONSTERS Monstrs( id, sprite,  pos_x, pos_y, health, name, speed, color, movements, s_width, s_height, damage)
 const monsters = [
-    new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 10, "orange", "sidebyside", 200, 200, 2),
+    new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 10, "orange", "none", 200, 200, 2),
  
   ];
 
@@ -96,10 +96,20 @@ function buffer(){
 
 //colliton Monsters wiht Players && Projectiles
 for(var m = 0; m < monsters.length; m++){
-  monsters[m].updateMonster(sprite_animation[m], explosion_onDeath_animation[m]);
+  monsters[m].updateMonster(
+    sprite_animation[m],
+    explosion_onDeath_animation[m], 
+    health[m]
+    );
+
+
+
     for(var pjct = 0; pjct < projectiles.length; pjct++){
       projectiles[pjct].collisionMonsterShot(monsters[m])
       players[pjct].playerCollitionMonsters(monsters[m])
+
+health[m].updatePowerUps(players[pjct]);
+
     }
 }
 

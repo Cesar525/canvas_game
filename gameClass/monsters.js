@@ -2,7 +2,7 @@
 
 class Monsters{
 constructor( id, sprite,  pos_x, pos_y, health, name, speed, color, movements, s_width, s_height, damage){
-  
+
 this.position = {
     x : pos_x,
     y : pos_y
@@ -53,7 +53,7 @@ this.spawnPositionY = pos_y;
 //powerUps
 this.dropPower_random;
 this.drop_item = false;
-this.give_nimber = true;
+this.give_number = true;
 }
 
 reset(){
@@ -146,9 +146,11 @@ if(this.spawnTime >= 100){
     this.body.m_dead = false;
     this.body.m_deadPosX = NaN;
     this.body.m_deadPosY = NaN;
+
+
     this.dropPower_random;
     this.drop_item = false;
-    this.give_nimber = true;
+    this.give_number = true;
     this.item_dropped = NaN;
 }
     
@@ -231,7 +233,7 @@ monsterDeathExplosion(explosion_deathAnimation){
 
 randomSelectingPowerUps(){
     if(this.body.m_dead){
-        if(this.give_nimber){
+        if(this.give_number){
         this.drop_item = true;
         }
     }
@@ -239,10 +241,25 @@ randomSelectingPowerUps(){
 var drop_power = this.powerUpRandomNum(3, 5);
 console.log(drop_power);
 this.drop_item = false;
-this.give_nimber = false;
+this.give_number = false;
 }
 this.item_dropped = 4;
 return this.item_dropped;
+}
+
+dropHealth(powerups){    
+    if(this.body.m_dead){
+        var select = 1
+ switch(select){
+    case 1 : powerups.dropHealth(this.body.m_deadPosX, this.body.m_deadPosY, this.body.m_dead);
+ console.log("Droppping item");
+ console.log(this.body.m_dead)
+break;
+}
+
+        
+
+    }
 }
 
 
@@ -251,8 +268,9 @@ this.drawMonster(sprite_animator);
 this.monsterlifeBar();
 this.movements(this.monsterMovement);
 this.monsterDeathExplosion(explosionOnDeathAnimation);
-//this.randomSelectingPowerUps();
+this.dropHealth(powerUps);
 this.spawnMonster();
+
 
 
 }
