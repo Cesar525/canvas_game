@@ -25,27 +25,11 @@ const players = [
 //Monsters
 //CREATING A MONSTERS Monstrs( id, sprite,  pos_x, pos_y, health, name, speed, color, movements, s_width, s_height, damage)
 const monsters = [
-    new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 5, "orange", "straightDown", 200, 200, 2),
-    new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 5, "orange", "straightDown", 200, 200, 2),
-    new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 5, "orange", "straightDown", 200, 200, 2),
-    new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 5, "orange", "straightDown", 200, 200, 2),
-    new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 5, "orange", "straightDown", 200, 200, 2),
-    new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 5, "orange", "straightDown", 200, 200, 2),
-    new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 5, "orange", "straightDown", 200, 200, 2),
-    new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 5, "orange", "straightDown", 200, 200, 2),
-    new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 5, "orange", "straightDown", 200, 200, 2),
-    new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 5, "orange", "straightDown", 200, 200, 2),
-    new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 5, "orange", "straightDown", 200, 200, 2),
-    new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 5, "orange", "straightDown", 200, 200, 2),
-    new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 5, "orange", "straightDown", 200, 200, 2),
-    new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 5, "orange", "straightDown", 200, 200, 2),
-
+    new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 5, "orange", "none", 200, 200, 2),
   ];
 
   //POWER UPS
-const powerUps = [
-new PowerUps(),
-];
+
 
 //Player Missiles & its effects
 const projectiles = [];
@@ -83,15 +67,9 @@ explosion_onDeath_animation.push(new Animation());
 
 
 //Monster PowerUp Drop
-const health = [];
-const money = [];
-const energy = [];
-const shield = [];
+const powerups = [];
 for(var m = 0; m < monsters.length; m++){
-health.push(new PowerUps());
-money.push(new PowerUps());
-energy.push(new PowerUps());
-shield.push(new PowerUps());
+powerups.push(new PowerUps());
 }
 
 
@@ -112,7 +90,7 @@ for(var m = 0; m < monsters.length; m++){
   monsters[m].updateMonster(
     sprite_animation[m],
     explosion_onDeath_animation[m], 
-    health[m]
+    powerups[m]
     );
 
 
@@ -120,7 +98,7 @@ for(var m = 0; m < monsters.length; m++){
     for(var pjct = 0; pjct < projectiles.length; pjct++){
       projectiles[pjct].collisionMonsterShot(monsters[m])
       players[pjct].playerCollitionMonsters(monsters[m])
-      health[m].updatePowerUps(players[pjct]);
+      powerups[m].updatePowerUps(players[pjct]);
 
     }
 }

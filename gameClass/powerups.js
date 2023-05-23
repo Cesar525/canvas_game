@@ -51,7 +51,7 @@ selectingPowerUps(selecting_type){
 
 health(player){
 if(this.powerUps_Selecting.health){
-
+if(!this.clearItem){
     if(this.dropitem){ 
         ctx.fillStyle = "pink";
             ctx.fillRect(this.position.x, this.position.y, this.width , this.height)
@@ -65,30 +65,22 @@ if(this.powerUps_Selecting.health){
         player.body.health += health_points;
         this.clearItems();
       }
-  }
-}
-
-clearItemWhenPassCanvas(){
-    if(this.position.y + this.height > getScreenHeight()){
-        this.clearItem();
-        console.log("item Cleared");
     }
+  }
+  console.log(this.position.y);
 }
 
 clearItems(){
-    this.position.x = - 100;
-    this.position.y = - 100;
+    this.position.x = NaN;
+    this.position.y = - NaN;
     this.display_orNot = false;
     this.collision.collision_with_player = false;
 }
-
-powerUpTaken(){ this.powerUp_taken = true;};
 
 PowerUpcollisionWithPlayer(player){
     if(collisionTouch(this, player)){
 console.log("its coliding");
 this.collision.collision_with_player = true;
-this.powerUpTaken();
     }
 }
 
