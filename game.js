@@ -107,8 +107,7 @@ for(var m = 0; m < monsters.length; m++){
     for(var pjct = 0; pjct < projectiles.length; pjct++){
       projectiles[pjct].collisionMonsterShot(monsters[m])
       players[pjct].playerCollitionMonsters(monsters[m])
-
-health[m].updatePowerUps(players[pjct]);
+      health[m].updatePowerUps(players[pjct]);
 
     }
 }

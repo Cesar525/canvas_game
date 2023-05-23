@@ -22,3 +22,6 @@ function collisionTouch(obj1, obj2){
       return false;
   }
 }
+
+function getScreenWidth(){return c.width;};
+function getScreenHeight(){return c.height;};

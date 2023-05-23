@@ -1,8 +1,8 @@
 class PowerUps{
-constructor(){
+constructor(posx, posy, type){
     this.position = {
-        x : NaN,
-        y : NaN 
+        x : posx,
+        y : posy 
     }
     this.power = {
      amount_adding : NaN,
@@ -18,13 +18,19 @@ constructor(){
         collision_with_player : NaN
 
     }
+this.powerUps_Selecting = {
+    health : false,
+    energy : false,
+    money : false,
+    shield : false
+}
+this.m_type = type;
     this.look = NaN;
     this.width = 100;
     this.height = 100;
     this.clearItem = false;
     this.powerUp_taken = false;
     this.display_orNot;
-    this.display_item = NaN;
 }
 setPos(posx, posy){
     this.position.x = posx;
@@ -37,12 +43,18 @@ this.position.x = posx;
 this.position.y = posy;
 this.display_orNot = dead_orNot;
 }
+selectingPowerUps(selecting_type){
+    switch(selecting_type){
+        case 1 : this.powerUps_Selecting.health = true;
+    }
+}
+
+
 
 
 health(player){
-var got_it = false;
-
-    if(this.display_orNot){ 
+if(this.powerUps_Selecting.health){
+    if(!this.powerUp_taken){ 
         ctx.fillStyle = "pink";
             ctx.fillRect(this.position.x, this.position.y, this.width , this.height)
         }
@@ -53,32 +65,40 @@ var got_it = false;
         this.collision.collision_posY = this.position.y;
         this.powerUp_taken = true;
         player.body.health += health_points;
-        this.display_orNot = false;
         this.clearItems();
       }
-   
+    }
+}
+
+clearItemWhenPassCanvas(){
+    if(this.position.y + this.height > getScreenHeight()){
+        this.clearItem();
+        console.log("item Cleared");
+    }
 }
 
 clearItems(){
-        this.clearItem = true;
-        this.display_orNot = false;
-        this.powerUp_taken = false;
-
-        
+   
+    this.position.x = NaN;
+    this.position.y = NaN;
+    this.display_orNot = false;
+    this.collision.collision_with_player = false;
 }
-
+powerUpTaken(){ this.powerUp_taken = true;};
 
 PowerUpcollisionWithPlayer(player){
     if(collisionTouch(this, player)){
 console.log("its coliding");
 this.collision.collision_with_player = true;
+this.powerUpTaken();
     }
 }
 
 updatePowerUps(player){
-this.PowerUpcollisionWithPlayer(player)
+this.PowerUpcollisionWithPlayer(player);
 this.health(player);
-this.clearItems();
+this.selectingPowerUps(this.m_type);
+//this.clearItems();
 
 }
 
