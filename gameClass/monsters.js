@@ -253,19 +253,11 @@ dropHealth(powerups){
  switch(select){
     case 1 : 
     //powerups.dropHealth(this.body.m_deadPosX, this.body.m_deadPosY, this.body.m_dead);
-    powerups.dropHealth(500, 500, true);
-//item should not disapear until the monster is respawned.
-
-
-
-
+    powerups.dropHealth(this.body.m_deadPosX, this.body.m_deadPosY, this.body.m_dead, 1);
  console.log("Droppping item");
  console.log(this.body.m_dead)
 break;
 }
-
-        
-
     }
 }
 

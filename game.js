@@ -17,7 +17,7 @@ const backg = new Background();
 //players
 //CREATING A PLAYER Player(name, level, thruster_selection, get_health, energy, m_damage,  gunType, posx, posy, gun_speed)
 const players = [
-  new Player("Player One", 1230,  6, 100, 400, 5, 1, 100, 900, 60),
+  new Player("Player One", 1230,  6, 100, 400, 50, 1, 100, 900, 25),
   // new Player("Player One", 1230,  6, 100, 400, 10, 2, 400, 900, 30),
   // new Player("Player One", 1230,  6, 100, 400, 10, 1, 900, 900, 100),
   // new Player("Player One", 1230,  6, 100, 400, 10, 2, 1500, 900, 100),
@@ -25,8 +25,21 @@ const players = [
 //Monsters
 //CREATING A MONSTERS Monstrs( id, sprite,  pos_x, pos_y, health, name, speed, color, movements, s_width, s_height, damage)
 const monsters = [
-    new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 10, "orange", "none", 200, 200, 2),
- 
+    new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 5, "orange", "straightDown", 200, 200, 2),
+    new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 5, "orange", "straightDown", 200, 200, 2),
+    new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 5, "orange", "straightDown", 200, 200, 2),
+    new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 5, "orange", "straightDown", 200, 200, 2),
+    new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 5, "orange", "straightDown", 200, 200, 2),
+    new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 5, "orange", "straightDown", 200, 200, 2),
+    new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 5, "orange", "straightDown", 200, 200, 2),
+    new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 5, "orange", "straightDown", 200, 200, 2),
+    new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 5, "orange", "straightDown", 200, 200, 2),
+    new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 5, "orange", "straightDown", 200, 200, 2),
+    new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 5, "orange", "straightDown", 200, 200, 2),
+    new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 5, "orange", "straightDown", 200, 200, 2),
+    new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 5, "orange", "straightDown", 200, 200, 2),
+    new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 5, "orange", "straightDown", 200, 200, 2),
+
   ];
 
   //POWER UPS

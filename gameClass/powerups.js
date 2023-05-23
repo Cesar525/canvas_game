@@ -1,8 +1,8 @@
 class PowerUps{
-constructor(posx, posy, type){
+constructor(){
     this.position = {
-        x : posx,
-        y : posy 
+        x : NaN,
+        y : NaN 
     }
     this.power = {
      amount_adding : NaN,
@@ -24,13 +24,12 @@ this.powerUps_Selecting = {
     money : false,
     shield : false
 }
-this.m_type = type;
+
     this.look = NaN;
     this.width = 100;
     this.height = 100;
     this.clearItem = false;
-    this.powerUp_taken = false;
-    this.display_orNot;
+    this.dropitem = false;
 }
 setPos(posx, posy){
     this.position.x = posx;
@@ -38,10 +37,11 @@ setPos(posx, posy){
 }
 getPosX(){return this.position.x;};
 getPosY(){return this.position.y;};
-dropHealth(posx, posy, dead_orNot){
+dropHealth(posx, posy, dead_orNot, select){
 this.position.x = posx;
 this.position.y = posy;
-this.display_orNot = dead_orNot;
+this.dropitem = dead_orNot;
+this.selectingPowerUps(select)
 }
 selectingPowerUps(selecting_type){
     switch(selecting_type){
@@ -49,12 +49,10 @@ selectingPowerUps(selecting_type){
     }
 }
 
-
-
-
 health(player){
 if(this.powerUps_Selecting.health){
-    if(!this.powerUp_taken){ 
+
+    if(this.dropitem){ 
         ctx.fillStyle = "pink";
             ctx.fillRect(this.position.x, this.position.y, this.width , this.height)
         }
@@ -67,7 +65,7 @@ if(this.powerUps_Selecting.health){
         player.body.health += health_points;
         this.clearItems();
       }
-    }
+  }
 }
 
 clearItemWhenPassCanvas(){
@@ -78,12 +76,12 @@ clearItemWhenPassCanvas(){
 }
 
 clearItems(){
-   
-    this.position.x = NaN;
-    this.position.y = NaN;
+    this.position.x = - 100;
+    this.position.y = - 100;
     this.display_orNot = false;
     this.collision.collision_with_player = false;
 }
+
 powerUpTaken(){ this.powerUp_taken = true;};
 
 PowerUpcollisionWithPlayer(player){
@@ -97,8 +95,6 @@ this.powerUpTaken();
 updatePowerUps(player){
 this.PowerUpcollisionWithPlayer(player);
 this.health(player);
-this.selectingPowerUps(this.m_type);
-//this.clearItems();
 
 }
 
