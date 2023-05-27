@@ -255,7 +255,7 @@ dropHealth(powerups){
     //powerups.dropHealth(this.body.m_deadPosX, this.body.m_deadPosY, this.body.m_dead);
     powerups.dropHealth(this.body.m_deadPosX, this.body.m_deadPosY, this.body.m_dead, 1);
  console.log("Droppping item");
- console.log(this.body.m_dead)
+ //console.log(this.body.m_dead)
 break;
 }
     }

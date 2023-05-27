@@ -44,9 +44,11 @@ this.dropitem = dead_orNot;
 this.selectingPowerUps(select)
 }
 selectingPowerUps(selecting_type){
+    if(!this.clearItem){
     switch(selecting_type){
         case 1 : this.powerUps_Selecting.health = true;
     }
+}
 }
 
 health(player){
@@ -55,22 +57,26 @@ if(!this.clearItem){
     if(this.dropitem){ 
         ctx.fillStyle = "pink";
             ctx.fillRect(this.position.x, this.position.y, this.width , this.height)
+       
         }
-      if(this.collision.collision_with_player){
+         if(this.collision.collision_with_player){
         var health_points = 100;
         console.log("health Taken <EFFECT HERE>");
         this.collision.collision_posX = this.position.x;
         this.collision.collision_posY = this.position.y;
         this.powerUp_taken = true;
         player.body.health += health_points;
+        this.display_orNot = false;
         this.clearItems();
+        
       }
     }
   }
-  console.log(this.position.y);
+  console.log(this.clearItem);
 }
 
 clearItems(){
+    this.powerUps_Selecting.health
     this.position.x = NaN;
     this.position.y = - NaN;
     this.display_orNot = false;
@@ -85,9 +91,10 @@ this.collision.collision_with_player = true;
 }
 
 updatePowerUps(player){
-this.PowerUpcollisionWithPlayer(player);
-this.health(player);
-
+    this.PowerUpcollisionWithPlayer(player);
+    this.health(player);
+    this.clearItems()
+//console.log(this.powerUps_Selecting.health);
 }
 
 }
