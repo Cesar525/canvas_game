@@ -38,15 +38,31 @@ setPos(posx, posy){
 getPosX(){return this.position.x;};
 getPosY(){return this.position.y;};
 dropHealth(posx, posy, dead_orNot, select){
+    if(!this.clearItem){
 this.position.x = posx;
 this.position.y = posy;
 this.dropitem = dead_orNot;
 this.selectingPowerUps(select)
+    }
 }
 selectingPowerUps(selecting_type){
     if(!this.clearItem){
     switch(selecting_type){
-        case 1 : this.powerUps_Selecting.health = true;
+        case 1 : 
+        this.powerUps_Selecting.health = true;
+        this.powerUps_Selecting.energy = false;
+        this.powerUps_Selecting.money = false;
+        break;
+        case 2 : 
+        this.powerUps_Selecting.health = false;
+        this.powerUps_Selecting.energy = true;
+        this.powerUps_Selecting.money = false;
+        break;
+        case 3 : 
+        this.powerUps_Selecting.energy = false;
+        this.powerUps_Selecting.health = false;
+        this.powerUps_Selecting.money = true;
+        break;
     }
 }
 }
@@ -56,10 +72,10 @@ if(this.powerUps_Selecting.health){
 if(!this.clearItem){
     if(this.dropitem){ 
         ctx.fillStyle = "pink";
-            ctx.fillRect(this.position.x, this.position.y, this.width , this.height)
+            ctx.fillRect(this.position.x, this.position.y += 10 , this.width , this.height)
        
         }
-         if(this.collision.collision_with_player){
+         if(this.collision.collision_with_player && this.powerUps_Selecting.health){
         var health_points = 100;
         console.log("health Taken <EFFECT HERE>");
         this.collision.collision_posX = this.position.x;
@@ -68,19 +84,73 @@ if(!this.clearItem){
         player.body.health += health_points;
         this.display_orNot = false;
         this.clearItems();
+        this.powerUps_Selecting.health = false;
         
       }
     }
   }
-  console.log(this.clearItem);
+
 }
 
+energy(player){
+    if(this.powerUps_Selecting.energy && this.powerUps_Selecting.energy){
+    if(!this.clearItem){
+        if(this.dropitem){ 
+            ctx.fillStyle = "blue";
+                ctx.fillRect(this.position.x, this.position.y += 10, this.width , this.height);
+            }
+             if(this.collision.collision_with_player){
+            var health_points = 100;
+            console.log("ENERGY Taken <EFFECT HERE>");
+            this.collision.collision_posX = this.position.x;
+            this.collision.collision_posY = this.position.y;
+            this.powerUp_taken = true;
+            player.body.health += health_points;
+            this.display_orNot = false;
+            this.powerUps_Selecting.energy = false;
+            this.clearItems();
+            
+          }
+        }
+      }
+    
+    }
+
+    money(player){
+        if(this.powerUps_Selecting.money){
+        if(!this.clearItem){
+            if(this.dropitem){ 
+                ctx.fillStyle = "green";
+                    ctx.fillRect(this.position.x, this.position.y += 10, this.width , this.height)
+               
+                }
+                 if(this.collision.collision_with_player){
+                var health_points = 100;
+                console.log("MONEY Taken <EFFECT HERE>");
+                this.collision.collision_posX = this.position.x;
+                this.collision.collision_posY = this.position.y;
+                this.powerUp_taken = true;
+                player.body.health += health_points;
+                this.display_orNot = false;
+                this.powerUps_Selecting.money = false;
+                this.clearItems();
+                
+              }
+            }
+          }
+        
+        }
+
+
 clearItems(){
-    this.powerUps_Selecting.health
     this.position.x = NaN;
     this.position.y = - NaN;
-    this.display_orNot = false;
+    this.powerUps_Selecting.money = false;
+    this.powerUps_Selecting.health = false;
+    this.powerUps_Selecting.energy = false;
     this.collision.collision_with_player = false;
+    this.display_orNot = false;
+    this.clearItem = true;
 }
 
 PowerUpcollisionWithPlayer(player){
@@ -93,8 +163,8 @@ this.collision.collision_with_player = true;
 updatePowerUps(player){
     this.PowerUpcollisionWithPlayer(player);
     this.health(player);
-    this.clearItems()
-//console.log(this.powerUps_Selecting.health);
+    this.energy(player);
+    this.money(player);
 }
 
 }

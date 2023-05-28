@@ -128,7 +128,7 @@ randomSpawnPositionX(from, to){
     return this.dropPower_random;
   }
 
-spawnMonster(){
+spawnMonster(powerups){
 if(this.body.m_dead){
     this.spawnTime++;
   
@@ -152,6 +152,7 @@ if(this.spawnTime >= 100){
     this.drop_item = false;
     this.give_number = true;
     this.item_dropped = NaN;
+    powerups.clearItem = false;
 }
     
 }
@@ -238,37 +239,41 @@ randomSelectingPowerUps(){
         }
     }
     if(this.drop_item){
-var drop_power = this.powerUpRandomNum(3, 5);
+var drop_power = this.powerUpRandomNum(1, 10);
 console.log(drop_power);
 this.drop_item = false;
 this.give_number = false;
+
 }
-this.item_dropped = 4;
+this.item_dropped = drop_power;
 return this.item_dropped;
 }
 
-dropHealth(powerups){    
+dropHealth(powerups, item){  
+
     if(this.body.m_dead){
-        var select = 1
- switch(select){
-    case 1 : 
-    //powerups.dropHealth(this.body.m_deadPosX, this.body.m_deadPosY, this.body.m_dead);
-    powerups.dropHealth(this.body.m_deadPosX, this.body.m_deadPosY, this.body.m_dead, 1);
- console.log("Droppping item");
- //console.log(this.body.m_dead)
+        
+ switch(item){
+case 1 :     
+powerups.dropHealth(this.body.m_deadPosX, this.body.m_deadPosY, this.body.m_dead, 1);
+break;
+case 2 : 
+powerups.dropHealth(this.body.m_deadPosX, this.body.m_deadPosY, this.body.m_dead, 2);
+break;
+case 3 : 
+powerups.dropHealth(this.body.m_deadPosX, this.body.m_deadPosY, this.body.m_dead, 3);
 break;
 }
-    }
+    } 
 }
-
 
 updateMonster(sprite_animator, explosionOnDeathAnimation, powerUps){
 this.drawMonster(sprite_animator);
 this.monsterlifeBar();
 this.movements(this.monsterMovement);
 this.monsterDeathExplosion(explosionOnDeathAnimation);
-this.dropHealth(powerUps);
-this.spawnMonster();
+this.dropHealth(powerUps, this.randomSelectingPowerUps());
+this.spawnMonster(powerUps);
 
 
 

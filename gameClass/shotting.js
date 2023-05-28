@@ -26,7 +26,7 @@ class shots{
     this.randomNum;
     this.damagesHit;
     this.damage_effect;
-
+    this.gameFrameDamageAnimation = 0;
 this.gameFrame = 0;
 this.staggerFrame = 10
 
@@ -185,7 +185,7 @@ if(if_true){this.showDamage = true;}
             ctx.strokeText("-" + damage, pos_x, pos_y);
                     
         } 
-        if(this.gameFrameDamageAnimation >= 400){
+        if(this.gameFrameDamageAnimation >= 300){
                     this.showDamage = false;
                     this.gameFrameDamageAnimation = 0;
                     this.animationSlowsGoesUp = 0

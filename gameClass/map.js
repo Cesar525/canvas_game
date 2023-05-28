@@ -19,7 +19,7 @@ getVelocity(){
         this.velocity.x = speed;
         this.velocity.y = speed;
         const background_image = new Image();
-        background_image.src = "assets/background.png";
+        background_image.src = "assets/backgrounds/background.png";
         this.position.y += this.velocity.y;
 
         ctx.drawImage(background_image, this.position.x, this.position.y, c.width, c.height);
