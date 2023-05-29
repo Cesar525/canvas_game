@@ -1,5 +1,6 @@
-class PowerUps{
+class PowerUps extends Animation{
 constructor(){
+    super();
     this.position = {
         x : NaN,
         y : NaN 
@@ -71,9 +72,9 @@ health(player){
 if(this.powerUps_Selecting.health){
 if(!this.clearItem){
     if(this.dropitem){ 
-        ctx.fillStyle = "pink";
-            ctx.fillRect(this.position.x, this.position.y += 10 , this.width , this.height)
-       
+       ctx.fillStyle = "pink";
+           ctx.fillRect(this.position.x, this.position.y += 10 , this.width , this.height)
+           // this.spriteProccessor(heart_powerup, 3, this.position.x, this.position.y, this.width, this.height)
         }
          if(this.collision.collision_with_player && this.powerUps_Selecting.health){
         var health_points = 100;
