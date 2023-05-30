@@ -36,7 +36,7 @@ getVelocity(){
             this.velocity.x = speed;
             this.velocity.y = speed;
             this.gameFramee++
-            console.log(this.gameFramee)
+          
             if(this.gameFramee == 2){
                 this.position.x = this.randomSpawnPositionX(0, c.width)
             }

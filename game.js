@@ -10,7 +10,7 @@ const fps = 256;
 const backg = new Background();
 const nebula = [new Background(), new Background(), new Background()];
 //testing
-const animation = new Animation();
+const animation_TESTING = new Animation();
 
 
 
@@ -25,30 +25,8 @@ const players = [
 //Monsters
 //CREATING A MONSTERS Monstrs( id, sprite,  pos_x, pos_y, health, name, speed, color, movements, s_width, s_height, damage)
 const monsters = [
-    new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 5, "orange", "straightDown", 200, 200, 2),
-    new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 5, "orange", "straightDown", 200, 200, 2),
-    new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 5, "orange", "straightDown", 200, 200, 2),
-    new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 5, "orange", "straightDown", 200, 200, 2),
-    new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 5, "orange", "straightDown", 200, 200, 2),
-    new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 5, "orange", "straightDown", 200, 200, 2),
-    new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 5, "orange", "straightDown", 200, 200, 2),
-    new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 5, "orange", "straightDown", 200, 200, 2),
-    new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 5, "orange", "straightDown", 200, 200, 2),
-    new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 5, "orange", "straightDown", 200, 200, 2),
-    new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 5, "orange", "straightDown", 200, 200, 2),
-    new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 5, "orange", "straightDown", 200, 200, 2),
-    new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 5, "orange", "straightDown", 200, 200, 2),
-    new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 5, "orange", "straightDown", 200, 200, 2),
-    new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 5, "orange", "straightDown", 200, 200, 2),
-    new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 5, "orange", "straightDown", 200, 200, 2),
-    new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 5, "orange", "straightDown", 200, 200, 2),
-    new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 5, "orange", "straightDown", 200, 200, 2),
-    new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 5, "orange", "straightDown", 200, 200, 2),
-    new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 5, "orange", "straightDown", 200, 200, 2),
-    new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 5, "orange", "straightDown", 200, 200, 2),
-    new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 5, "orange", "straightDown", 200, 200, 2),
-    new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 5, "orange", "straightDown", 200, 200, 2),
-    new Monsters(2, asteroid_one,  100, 100 , 100, "Asteroid 1", 5, "orange", "straightDown", 200, 200, 2),
+    new Monsters(2, asteroid_one,  100, 100 , 1000, "Asteroid 1", 2, "orange", "none", 200, 200, 2),
+
 
   ];
 
@@ -135,7 +113,22 @@ for(var p = 0; p < players.length; p++){
 }
 
 
-animation.spriteProccessor(energy_powerup, 2, 100, 100, 100, 100);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // end of buffer fucntion
 } 

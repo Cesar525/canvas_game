@@ -1,6 +1,6 @@
-class PowerUps extends Animation{
+class PowerUps {
 constructor(){
-    super();
+  
     this.position = {
         x : NaN,
         y : NaN 
@@ -31,6 +31,8 @@ this.powerUps_Selecting = {
     this.height = 100;
     this.clearItem = false;
     this.dropitem = false;
+    this.gameFrame = 0;
+    this.staggerFrame = 0;
 }
 setPos(posx, posy){
     this.position.x = posx;
@@ -46,6 +48,18 @@ this.dropitem = dead_orNot;
 this.selectingPowerUps(select)
     }
 }
+
+
+spriteProccessor(sprite, speed, posx, posy, width, height){
+    const sparksTwo = new Image();
+    
+        this.gameFrame ++;
+        this.staggerFrame = speed;
+        
+        sparksTwo.src = sprite[Math.floor(this.gameFrame/this.staggerFrame) % sprite.length];
+        ctx.drawImage(sparksTwo, posx,posy, width, height);
+    }
+
 selectingPowerUps(selecting_type){
     if(!this.clearItem){
     switch(selecting_type){
@@ -72,9 +86,9 @@ health(player){
 if(this.powerUps_Selecting.health){
 if(!this.clearItem){
     if(this.dropitem){ 
-       ctx.fillStyle = "pink";
-           ctx.fillRect(this.position.x, this.position.y += 10 , this.width , this.height)
-           // this.spriteProccessor(heart_powerup, 3, this.position.x, this.position.y, this.width, this.height)
+    //    ctx.fillStyle = "pink";
+    //        ctx.fillRect(this.position.x, this.position.y += 10 , this.width , this.height)
+         this.spriteProccessor(heart_powerup, 3, this.position.x, this.position.y += 10, this.width, this.height)
         }
          if(this.collision.collision_with_player && this.powerUps_Selecting.health){
         var health_points = 100;
@@ -97,8 +111,10 @@ energy(player){
     if(this.powerUps_Selecting.energy && this.powerUps_Selecting.energy){
     if(!this.clearItem){
         if(this.dropitem){ 
-            ctx.fillStyle = "blue";
-                ctx.fillRect(this.position.x, this.position.y += 10, this.width , this.height);
+            // ctx.fillStyle = "blue";
+            //     ctx.fillRect(this.position.x, this.position.y += 10, this.width , this.height);
+
+                this.spriteProccessor(energy_powerup, 3, this.position.x, this.position.y += 10, this.width, this.height)
             }
              if(this.collision.collision_with_player){
             var health_points = 100;
@@ -121,9 +137,10 @@ energy(player){
         if(this.powerUps_Selecting.money){
         if(!this.clearItem){
             if(this.dropitem){ 
-                ctx.fillStyle = "green";
-                    ctx.fillRect(this.position.x, this.position.y += 10, this.width , this.height)
+                // ctx.fillStyle = "green";
+                //     ctx.fillRect(this.position.x, this.position.y += 10, this.width , this.height)
                
+                    this.spriteProccessor(money_powerup, 3, this.position.x, this.position.y += 10, this.width, this.height)
                 }
                  if(this.collision.collision_with_player){
                 var health_points = 100;

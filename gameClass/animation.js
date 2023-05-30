@@ -216,9 +216,8 @@ spriteProccessor(sprite, speed, posx, posy, width, height){
     
         this.gameFrame ++;
         this.staggerFrame = speed;
-        
         sparksTwo.src = sprite[Math.floor(this.gameFrame/this.staggerFrame) % sprite.length];
-        ctx.drawImage(sparksTwo, posx,posy, width, height);
+        ctx.drawImage(sparksTwo, posx,posy, width, height);       
     }
 setPlayersThruster(select_thruster, player_posx, player_posy, sizew, sizeh){
     const thruster = new Image();
