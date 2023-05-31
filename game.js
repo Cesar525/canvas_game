@@ -84,9 +84,9 @@ function buffer(){
     //GAME 
     gameFrame ++;
     ctx.clearRect(0,0,c.width, c.height)
+    nebula[0].drawNebulas(10);
+    nebula[1].drawNebulasBlue(2);
     backg.drawBackground(5); // background image
-   nebula[0].drawNebulas(10);
-   nebula[1].drawNebulasBlue(2);
    nebula[2].drawNebulaMulti(2)
 
 //colliton Monsters wiht Players && Projectiles
