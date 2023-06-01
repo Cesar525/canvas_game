@@ -7,6 +7,9 @@ c.width = 1000
 c.height = 1500
 const gravity = 10;
 const fps = 256;
+
+
+
 const backg = new Background();
 const nebula = [new Background(), new Background(), new Background()];
 //testing
@@ -25,7 +28,21 @@ const players = [
 //Monsters
 //CREATING A MONSTERS Monstrs( id, sprite,  pos_x, pos_y, health, name, speed, color, movements, s_width, s_height, damage)
 const monsters = [
-    new Monsters(2, asteroid_one,  100, 100 , 1000, "Asteroid 1", 2, "orange", "none", 200, 200, 2),
+    new Monsters(2, asteroid_one,  100, 100 , 100, "Invaders LvL 1", 10, "orange", "none", 200, 200, 2),
+ 
+    
+    // new Monsters(2, asteroid_one,  200, 200 , 100, "Invaders LvL 1", 10, "orange", "sidebyside", 200, 200, 2),
+    // new Monsters(2, asteroid_one,  300, 300 , 100, "Invaders LvL 1", 10, "orange", "sidebyside", 200, 200, 2),
+    // new Monsters(2, asteroid_one,  400, 400 , 100, "Invaders LvL 1", 10, "orange", "sidebyside", 200, 200, 2),
+    // new Monsters(2, asteroid_one,  500, 500 , 100, "Invaders LvL 1", 10, "orange", "sidebyside", 200, 200, 2),
+    // new Monsters(2, asteroid_one,  600, 600 , 100, "Invaders LvL 1", 10, "orange", "sidebyside", 200, 200, 2),
+    // new Monsters(2, asteroid_one,  700, 700 , 100, "Invaders LvL 1", 10, "orange", "sidebyside", 200, 200, 2),
+    // new Monsters(2, asteroid_one,  800, 800 , 100, "Invaders LvL 1", 10, "orange", "sidebyside", 200, 200, 2),
+    // new Monsters(2, asteroid_one,  100, 100 , 100, "Invaders LvL 1", 10, "orange", "sidebyside", 200, 200, 2),
+    // new Monsters(2, asteroid_one,  100, 100 , 100, "Invaders LvL 1", 10, "orange", "sidebyside", 200, 200, 2),
+    // new Monsters(2, asteroid_one,  100, 100 , 100, "Invaders LvL 1", 10, "orange", "sidebyside", 200, 200, 2),
+    // new Monsters(2, asteroid_one,  100, 100 , 100, "Invaders LvL 1", 10, "orange", "sidebyside", 200, 200, 2),
+    // new Monsters(2, asteroid_one,  100, 100 , 100, "Invaders LvL 1", 10, "orange", "sidebyside", 200, 200, 2),
 
 
   ];
@@ -70,8 +87,10 @@ explosion_onDeath_animation.push(new Animation());
 
 //Monster PowerUp Drop
 const powerups = [];
+const powerup_taken = [];
 for(var m = 0; m < monsters.length; m++){
 powerups.push(new PowerUps());
+powerup_taken.push(new PowerUps());
 }
 
 
@@ -102,19 +121,27 @@ for(var m = 0; m < monsters.length; m++){
     for(var pjct = 0; pjct < projectiles.length; pjct++){
       projectiles[pjct].collisionMonsterShot(monsters[m])
       players[pjct].playerCollitionMonsters(monsters[m])
-      powerups[m].updatePowerUps(players[pjct]);
+     
 
     }
 }
 
 for(var p = 0; p < players.length; p++){
-      projectiles[p].updateShot(explosion_1[p], explosion_2[p]);
-      players[p].update(projectiles[p], sparks_low[p], sparks_high[p], thruster_animation[p], deathExplosionAnimation[p]);        
+  projectiles[p].updateShot(explosion_1[p], explosion_2[p]);
+  players[p].update(projectiles[p], sparks_low[p], sparks_high[p], thruster_animation[p], deathExplosionAnimation[p]);        
 }
 
 
+for(var m = 0; m < monsters.length; m++){
+
+  for(var pjct = 0; pjct < projectiles.length; pjct++){
+ powerups[m].updatePowerUps(players[pjct], powerup_taken[m]);
+  }
 
 
+}
+
+animation_TESTING.spriteProccessor(taken_money, 2, 100, 100, 300, 300)
 
 
 

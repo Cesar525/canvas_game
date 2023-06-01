@@ -153,6 +153,7 @@ if(this.spawnTime >= 100){
     this.give_number = true;
     this.item_dropped = NaN;
     powerups.clearItem = false;
+   
 }
     
 }

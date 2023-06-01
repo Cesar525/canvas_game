@@ -15,7 +15,7 @@ constructor(){
     //thruster animation
     this.thruster_size =150;
     this.thruster_animation = 0;
-
+this.showeffects;
 }
 
 spritePage(sprite_path, posx, posy, sprite_page_width, sprite_page_height, sprite_count_width, sprite_count_height, sprite_size_w, sprite_size_h, speed, show, sprite_size_set_width, sprite_size_set_height, set_transparency){
@@ -212,13 +212,15 @@ playerSparksHigh(player_posx, player_posy){
     }
 
 spriteProccessor(sprite, speed, posx, posy, width, height){
+
     const sparksTwo = new Image();
     
         this.gameFrame ++;
         this.staggerFrame = speed;
         sparksTwo.src = sprite[Math.floor(this.gameFrame/this.staggerFrame) % sprite.length];
-        ctx.drawImage(sparksTwo, posx,posy, width, height);       
-    }
+        ctx.drawImage(sparksTwo, posx,posy, width, height); 
+
+}
 setPlayersThruster(select_thruster, player_posx, player_posy, sizew, sizeh){
     const thruster = new Image();
     const thrusters = {//truster types

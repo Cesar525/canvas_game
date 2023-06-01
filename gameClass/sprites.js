@@ -1,5 +1,71 @@
 
 
+const taken_health = [ 
+    'assets/capture_effects/capture_health/Capture050000.png',
+    'assets/capture_effects/capture_health/Capture050001.png',
+    'assets/capture_effects/capture_health/Capture050002.png',
+    'assets/capture_effects/capture_health/Capture050003.png',
+    'assets/capture_effects/capture_health/Capture050004.png',
+    'assets/capture_effects/capture_health/Capture050005.png',
+    'assets/capture_effects/capture_health/Capture050006.png',
+    'assets/capture_effects/capture_health/Capture050007.png',
+    'assets/capture_effects/capture_health/Capture050008.png',
+    'assets/capture_effects/capture_health/Capture050009.png',
+    'assets/capture_effects/capture_health/Capture050010.png',
+    'assets/capture_effects/capture_health/Capture050011.png',
+    'assets/capture_effects/capture_health/Capture050012.png',
+    'assets/capture_effects/capture_health/Capture050013.png',
+    'assets/capture_effects/capture_health/Capture050014.png',
+    'assets/capture_effects/capture_health/Capture050015.png',
+    'assets/capture_effects/capture_health/Capture050016.png',
+    'assets/capture_effects/capture_health/Capture050017.png',
+    'assets/capture_effects/capture_health/Capture050018.png',
+    'assets/capture_effects/capture_health/Capture050019.png',
+    'assets/capture_effects/capture_health/Capture050020.png',
+    'assets/capture_effects/capture_health/Capture050021.png',
+    'assets/capture_effects/capture_health/Capture050022.png',
+    'assets/capture_effects/capture_health/Capture050023.png',
+    ];
+
+    const taken_money = [ 
+        'assets/capture_effects/capture_money/Capture040000.png',
+        'assets/capture_effects/capture_money/Capture040001.png',
+        'assets/capture_effects/capture_money/Capture040002.png',
+        'assets/capture_effects/capture_money/Capture040003.png',
+        'assets/capture_effects/capture_money/Capture040004.png',
+        'assets/capture_effects/capture_money/Capture040005.png',
+        'assets/capture_effects/capture_money/Capture040006.png',
+        'assets/capture_effects/capture_money/Capture040007.png',
+        'assets/capture_effects/capture_money/Capture040008.png',
+        'assets/capture_effects/capture_money/Capture040009.png',
+        'assets/capture_effects/capture_money/Capture040010.png',
+        'assets/capture_effects/capture_money/Capture040011.png',
+        'assets/capture_effects/capture_money/Capture040012.png',
+        'assets/capture_effects/capture_money/Capture040013.png',
+        'assets/capture_effects/capture_money/Capture040014.png',
+        'assets/capture_effects/capture_money/Capture040015.png',
+        'assets/capture_effects/capture_money/Capture040016.png',
+        'assets/capture_effects/capture_money/Capture040017.png',
+        'assets/capture_effects/capture_money/Capture040018.png',
+        'assets/capture_effects/capture_money/Capture040019.png',
+        'assets/capture_effects/capture_money/Capture040020.png',
+        'assets/capture_effects/capture_money/Capture040021.png',
+        'assets/capture_effects/capture_money/Capture040022.png',
+        'assets/capture_effects/capture_money/Capture040023.png',
+        ];
+
+    const taken_energy = [ 
+        'assets/capture_effects/capture_energy/Capture010000.png',
+        'assets/capture_effects/capture_energy/Capture010001.png',
+        'assets/capture_effects/capture_energy/Capture010002.png',
+        'assets/capture_effects/capture_energy/Capture010003.png',
+        'assets/capture_effects/capture_energy/Capture010004.png',
+        'assets/capture_effects/capture_energy/Capture010005.png',
+        'assets/capture_effects/capture_energy/Capture010006.png',
+        'assets/capture_effects/capture_energy/Capture010007.png',
+
+        ];
+
 const energy_powerup = [
     'assets/space_assets/10. Powerups/03 flash 02/0000.png',
     'assets/space_assets/10. Powerups/03 flash 02/0001.png',
