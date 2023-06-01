@@ -141,7 +141,7 @@ for(var m = 0; m < monsters.length; m++){
 
 }
 
-animation_TESTING.spriteProccessor(taken_money, 2, 100, 100, 300, 300)
+animation_TESTING.spriteProccessor(taken_money, 5, 100, 100, 900, 900)
 
 
 
