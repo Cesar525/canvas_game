@@ -15,7 +15,7 @@ constructor(){
     //thruster animation
     this.thruster_size =150;
     this.thruster_animation = 0;
-this.showeffects;
+this.onSpriteProccessor = false;
 }
 
 spritePage(sprite_path, posx, posy, sprite_page_width, sprite_page_height, sprite_count_width, sprite_count_height, sprite_size_w, sprite_size_h, speed, show, sprite_size_set_width, sprite_size_set_height, set_transparency){
@@ -89,6 +89,8 @@ monsterHit(animationOne, animationTwoo ,col, posx_, posy_, hiteffect, speed, sho
         shot.clearCollisionShot();
       } 
 }
+
+
 
 monsterDeathExplosion(animationOne, animationTwoo ,col, posx_, posy_){
     var animationTwo;
@@ -210,6 +212,8 @@ playerSparksHigh(player_posx, player_posy){
 
 
     }
+getSpriteProccessorStatus(){return this.onSpriteProccessor;};
+setSpriteProccessorStatus(set){this.onSpriteProccessor = set;};
 
 spriteProccessor(sprite, speed, posx, posy, width, height){
 
@@ -219,11 +223,12 @@ spriteProccessor(sprite, speed, posx, posy, width, height){
         this.staggerFrame = speed;
         sparksTwo.src = sprite[Math.floor(this.gameFrame/this.staggerFrame) % sprite.length];
         ctx.drawImage(sparksTwo, posx,posy, width, height); 
-
 }
+
+
 setPlayersThruster(select_thruster, player_posx, player_posy, sizew, sizeh){
     const thruster = new Image();
-    const thrusters = {//truster types
+    const thrusters = { //truster types
         1 : "assets/thrusters/thruster01.png",
         2 : "assets/thrusters/thruster02.png",
         3 : "assets/thrusters/thruster03.png",
@@ -268,7 +273,6 @@ shieldConstantEffectSelectiion(shield_Animation_selection, on_off, posx, posy){
  }
 
 updateAnimation(){   
-    
 }
 
 

@@ -254,7 +254,7 @@ dropHealth(powerups, item){
 
     if(this.body.m_dead){
         
- switch(item){
+ switch(1){
 case 1 :     
 powerups.dropHealth(this.body.m_deadPosX, this.body.m_deadPosY, this.body.m_dead, 1);
 break;

@@ -8,6 +8,9 @@ c.height = 1500
 const gravity = 10;
 const fps = 256;
 
+//perfect Window size
+// 2000 -> width
+// 1500 -> height
 
 
 const backg = new Background();
@@ -21,9 +24,9 @@ const animation_TESTING = new Animation();
 //CREATING A PLAYER Player(name, level, thruster_selection, get_health, energy, m_damage,  gunType, posx, posy, gun_speed)
 const players = [
   new Player("Player One", 1230,  6, 100, 400, 50, 1, 100, 900, 60),
-  // new Player("Player One", 1230,  6, 100, 400, 10, 2, 400, 900, 30),
-  // new Player("Player One", 1230,  6, 100, 400, 10, 1, 900, 900, 100),
-  // new Player("Player One", 1230,  6, 100, 400, 10, 2, 1500, 900, 100),
+   new Player("Player One", 1230,  6, 100, 400, 10, 2, 400, 900, 30),
+   new Player("Player One", 1230,  6, 100, 400, 10, 1, 900, 900, 100),
+   new Player("Player One", 1230,  6, 100, 400, 10, 2, 1500, 900, 100),
 ]
 //Monsters
 //CREATING A MONSTERS Monstrs( id, sprite,  pos_x, pos_y, health, name, speed, color, movements, s_width, s_height, damage)
@@ -79,6 +82,7 @@ for(var p = 0; p < players.length; p++){
 //onMonster animation
 const sprite_animation = [];
 const explosion_onDeath_animation = [];
+
 for(var m = 0; m < monsters.length; m++){
 sprite_animation.push(new Animation());
 explosion_onDeath_animation.push(new Animation());
@@ -87,10 +91,10 @@ explosion_onDeath_animation.push(new Animation());
 
 //Monster PowerUp Drop
 const powerups = [];
-const powerup_taken = [];
+const powerup_taken_effect = [];
 for(var m = 0; m < monsters.length; m++){
 powerups.push(new PowerUps());
-powerup_taken.push(new PowerUps());
+powerup_taken_effect.push(new Animation());
 }
 
 
@@ -135,13 +139,13 @@ for(var p = 0; p < players.length; p++){
 for(var m = 0; m < monsters.length; m++){
 
   for(var pjct = 0; pjct < projectiles.length; pjct++){
- powerups[m].updatePowerUps(players[pjct], powerup_taken[m]);
+ powerups[m].updatePowerUps(players[pjct], powerup_taken_effect[m]);
   }
 
 
 }
 
-animation_TESTING.spriteProccessor(taken_money, 5, 100, 100, 900, 900)
+//animation_TESTING.spriteProccessor(taken_money, 2, players[0].position.x - 450, players[0].position.y - 450, 1000, 1000);
 
 
 

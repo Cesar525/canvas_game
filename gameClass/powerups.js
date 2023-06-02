@@ -33,7 +33,6 @@ this.powerUps_Selecting = {
     this.dropitem = false;
     this.gameFrame = 0;
     this.staggerFrame = 0;
-    this.taken = false;
 }
 setPos(posx, posy){
     this.position.x = posx;
@@ -59,10 +58,6 @@ spriteProccessor(sprite, speed, posx, posy, width, height){
         
         sparksTwo.src = sprite[Math.floor(this.gameFrame/this.staggerFrame) % sprite.length];
         ctx.drawImage(sparksTwo, posx,posy, width, height);
-        if(sprite.length - 1 == Math.floor(this.gameFrame/this.staggerFrame) % sprite.length){
-            console.log("returning False");
-           return Math.floor(this.gameFrame/this.staggerFrame) % sprite.length;
-        }
     }
 
 selectingPowerUps(selecting_type){
@@ -100,11 +95,9 @@ if(!this.clearItem){
          if(this.collision.collision_with_player && this.powerUps_Selecting.health){
         var health_points = 100; 
         this.powerUp_taken = true;
-        console.log("health Taken <EFFECT HERE>");
-        this.taken = true;
+        console.log("health Taken <EFFECT HERE>")
         this.collision.collision_posX = this.position.x;
         this.collision.collision_posY = this.position.y;
-        
         player.body.health += health_points;
         this.display_orNot = false;
         this.clearItems();
@@ -113,10 +106,6 @@ if(!this.clearItem){
     }
 }
 }
-
- effect_taken.spriteProccessor(taken_health, 3, player.position.x - 75, player.position.y - 75, this.width + 50, this.height + 50, this.collision.collision_with_player)
-
-
 }
 
 energy(player){
@@ -181,7 +170,7 @@ clearItems(){
     this.collision.collision_with_player = false;
     this.display_orNot = false;
     this.clearItem = true;
-    this.taken = false;
+    
 }
 
 PowerUpcollisionWithPlayer(player){
