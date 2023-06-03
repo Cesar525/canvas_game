@@ -13,6 +13,8 @@ class Background extends Monsters{
     this.gameFramee = 0;
     this.width = width;
     this.height = height;
+    this.posx_set = posx;
+    this.posy_set = posy;
     }
 
 getVelocity(){
@@ -49,7 +51,7 @@ console.log("reading it")
             ctx.drawImage(background_image, this.position.x, this.position.y, this.width, this.height);
            if(this.position.y > c.height){
             this.position.x = this.randomSpawnPositionX(0, c.width)
-            this.position.y = 0;
+            this.position.y = this.posy_set;
            }
             }
     drawNebulasBlue(speed){
@@ -66,7 +68,7 @@ console.log("reading it")
         ctx.drawImage(background_image, this.position.x, this.position.y, this.width, this.height);
         if(this.position.y > c.height){
         this.position.x = this.randomSpawnPositionX(0, c.width)
-        this.position.y = 0;
+        this.position.y = this.posy_set;
         }
         }
 
@@ -86,12 +88,12 @@ console.log("reading it")
             ctx.drawImage(background_image, this.position.x, this.position.y, this.width, this.height);
             if(this.position.y > c.height){
             this.position.x = this.randomSpawnPositionX(0, c.width - 500)
-            this.position.y = 0;
+            this.position.y = this.posy_set;
             }
         }
             }
 
-            drawPlanetOne(speed, pick_planet){
+            drawPlanet(speed, pick_planet){
                 this.velocity.x = speed;
                 this.velocity.y = speed;
                 this.gameFramee++
@@ -106,13 +108,16 @@ console.log("reading it")
                     case 2 : 
                     background_image.src = "assets/planets/planet02.png";
                     break;
+                    case 3 : 
+                    background_image.src = "assets/planets/planet14R.png";
+                    break;
                 }
                 this.position.y += speed;
         
                 ctx.drawImage(background_image, this.position.x, this.position.y, this.width, this.height);
                 if(this.position.y > c.height){
                 this.position.x = this.randomSpawnPositionX(0, c.width)
-                this.position.y = 0;
+                this.position.y = this.posy_set;
                 }
                 }
         

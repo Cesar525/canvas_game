@@ -228,7 +228,7 @@ monsterClearDeath(){
 }
 
 monsterDeathExplosion(explosion_deathAnimation){  
-    explosion_deathAnimation.explosionEffect(3,  this.body.m_deadPosX - 85, (this.body.m_deadPosY += backg.velocity.y) - 85 , this.monsterDeath());
+    explosion_deathAnimation.explosionEffect(3,  this.body.m_deadPosX - 85, (this.body.m_deadPosY += 10) - 85 , this.monsterDeath());
 }
 
 randomSelectingPowerUps(){

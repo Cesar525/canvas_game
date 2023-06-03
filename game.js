@@ -16,13 +16,14 @@ const fps = 256;
 
 const map_one = [
   //(posx, posy, width, height, speed)
-  new Background( 100, 100, 500, 500), 
-  new Background(200, 100, 200, 200), 
-  new Background(300, 100, 200, 200), 
+  new Background(100, -900, 500, 500), 
+  new Background(200, -900, 200, 200), 
+  new Background(300, -900, 200, 200), 
   new Background(), // stars
-  new Background(400, 100, 100, 100),
-  new Background(900, 100, 900, 900),
-  new Background() // stars
+  new Background(400, -900, 100, 100),
+  new Background(900, -900, 900, 900),
+  new Background(), // stars
+  new Background(0, -900, 100, 100)
 ];
 
 //testing
@@ -40,7 +41,8 @@ const players = [
 ]
 //Monsters
 //CREATING A MONSTERS Monstrs( id, sprite,  pos_x, pos_y, health, name, speed, color, movements, s_width, s_height, damage)
-const monsters = [  //  new Monsters(2, asteroid_one,  100, 100 , 50, "Asteroid", 5, "orange", "straightDown", 200, 200, 2),
+const monsters = [  
+  //  new Monsters(2, asteroid_one,  100, 100 , 50, "Asteroid", 5, "orange", "straightDown", 200, 200, 2),
   //  new Monsters(2, asteroid_two,  100, 100 , 50, "Asteroid 2", 5, "orange", "straightDown", 200, 200, 2),
   //  new Monsters(2, asteroid_three,  100, 100 , 50, "Asteroid 3", 5, "orange", "straightDown", 200, 200, 2),
   //  new Monsters(2, asteroid_four,  100, 100 , 50, "Asteroid 4", 5, "orange", "straightDown", 200, 200, 2),
@@ -168,12 +170,13 @@ function buffer(){
     //GAME 
     gameFrame ++;
     ctx.clearRect(0,0,c.width, c.height)
+    map_one[7].drawPlanet(2, 3);
     map_one[6].drawStars(2); // background image
-    map_one[5].drawPlanetOne(1, 2);
-    map_one[4].drawPlanetOne(1, 1);
+    map_one[5].drawPlanet(1, 2);
+    map_one[4].drawPlanet(1, 1);
     map_one[0].drawNebulas(5);
     map_one[1].drawNebulasBlue(2);
-    map_one[3].drawStars(10); // background image
+    map_one[3].drawStars(3); // background image
     map_one[2].drawNebulaMulti(2);
 
 ctx.font = "90px Roboto Mono";
