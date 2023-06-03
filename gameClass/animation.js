@@ -205,13 +205,11 @@ playerSparks(player_posx, player_posy){
 
 playerSparksHigh(player_posx, player_posy){
     this.sparkOne(15, player_posx, player_posy, 100, 100);
-     this.sparkOne(13, player_posx, player_posy - 50, 150, 150);
-     this.sparkOne(8, player_posx, player_posy, 100, 100);
-   this.sparkOne(10, player_posx - 20, player_posy, 100, 100);
+    this.sparkOne(13, player_posx, player_posy - 50, 150, 150);
+    this.sparkOne(8, player_posx, player_posy, 100, 100);
+    this.sparkOne(10, player_posx - 20, player_posy, 100, 100);
     this.sparkTwo(9, player_posx, player_posy - 50, 100, 100)
-
-
-    }
+}
 getSpriteProccessorStatus(){return this.onSpriteProccessor;};
 setSpriteProccessorStatus(set){this.onSpriteProccessor = set;};
 
@@ -223,7 +221,12 @@ spriteProccessor(sprite, speed, posx, posy, width, height){
         this.staggerFrame = speed;
         sparksTwo.src = sprite[Math.floor(this.gameFrame/this.staggerFrame) % sprite.length];
         ctx.drawImage(sparksTwo, posx,posy, width, height); 
+if(sprite.length - 1 == Math.floor(this.gameFrame/this.staggerFrame) % sprite.length){
+    return true;
+}else{
+    return false;
 }
+    }
 
 
 setPlayersThruster(select_thruster, player_posx, player_posy, sizew, sizeh){

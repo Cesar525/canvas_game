@@ -199,9 +199,10 @@ collisionMonsterShot(monsters){
                          this.setCollitionWithMonster(true);
                          this.setDamageHit(this.m_damage);
                          this.setCollisionPosition(this.position.x, this.position.y);
-                        
+                        monsters.setMonsterCollitionWithShot(true);
                      return true;
                      }else{
+                        monsters.setMonsterCollitionWithShot(false);
                         
                        return false;
                      }

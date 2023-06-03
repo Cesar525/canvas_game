@@ -1,17 +1,17 @@
 class PowerUps {
-constructor(){
+constructor(posx, posy, type){
   
     this.position = {
-        x : NaN,
-        y : NaN 
+        x : posx, 
+        y : posy
     }
     this.power = {
      amount_adding : NaN,
         m_sprite : NaN
     }
     this.velocity = {
-        y : 10,
-        x : 10
+        y : 1,
+        x : 1
     }
     this.collision ={
         collision_posX : NaN,
@@ -25,14 +25,16 @@ this.powerUps_Selecting = {
     money : false,
     shield : false
 }
-
+    this.m_type = type;
     this.look = NaN;
-    this.width = 200;
-    this.height = 200;
+    this.width = 150;
+    this.height = 150;
     this.clearItem = false;
     this.dropitem = false;
     this.gameFrame = 0;
     this.staggerFrame = 0;
+    this.health_powerUp_taken;
+    this.destroyPush = false;
 }
 setPos(posx, posy){
     this.position.x = posx;
@@ -84,38 +86,43 @@ selectingPowerUps(selecting_type){
 
 health(player, effect_taken){
 
-  
-if(this.powerUps_Selecting.health){
-if(!this.clearItem){
-    if(this.dropitem){ 
+    if(this.m_type == "health"){
+    if(!this.clearItem){
     //    ctx.fillStyle = "pink";
     //        ctx.fillRect(this.position.x, this.position.y += 10 , this.width , this.height)
-         this.spriteProccessor(heart_powerup, 3, this.position.x, this.position.y += 10, this.width, this.height)
+   
+         this.spriteProccessor(heart_powerup, 3, this.position.x, this.position.y += this.velocity.y, this.width, this.height)
         }
-         if(this.collision.collision_with_player && this.powerUps_Selecting.health){
+         if(this.collision.collision_with_player){
         var health_points = 100; 
-        this.powerUp_taken = true;
         console.log("health Taken <EFFECT HERE>")
         this.collision.collision_posX = this.position.x;
         this.collision.collision_posY = this.position.y;
+        this.powerUp_taken = true;
         player.body.health += health_points;
-        this.display_orNot = false;
         this.clearItems();
-        this.powerUps_Selecting.health = false;
-        
+    }
+
+
+    if(this.powerUp_taken){
+    if(effect_taken.spriteProccessor(taken_health, 2, player.position.x - 100, player.position.y - 100, 300, 300)){
+        this.destroyPush = true
+        this.powerUp_taken = false;
+    }
     }
 }
-}
+
 }
 
-energy(player){
-    if(this.powerUps_Selecting.energy && this.powerUps_Selecting.energy){
+
+
+
+energy(player, effect_taken ){
+    if(this.m_type == "energy"){
     if(!this.clearItem){
-        if(this.dropitem){ 
             // ctx.fillStyle = "blue";
             //     ctx.fillRect(this.position.x, this.position.y += 10, this.width , this.height);
-
-                this.spriteProccessor(energy_powerup, 3, this.position.x, this.position.y += 10, this.width, this.height)
+                this.spriteProccessor(energy_powerup, 3, this.position.x, this.position.y += 1, this.width, this.height)
             }
              if(this.collision.collision_with_player){
             var health_points = 100;
@@ -124,24 +131,27 @@ energy(player){
             this.collision.collision_posY = this.position.y;
             this.powerUp_taken = true;
             player.body.health += health_points;
-            this.display_orNot = false;
-            this.powerUps_Selecting.energy = false;
-            this.clearItems();
-            
-          }
-        }
+            this.clearItems();    
+             }
+          if(this.powerUp_taken){
+            if(effect_taken.spriteProccessor(taken_energy, 5, player.position.x - 100, player.position.y - 100, 300, 300)){
+                this.destroyPush = true
+                this.powerUp_taken = false;
+            }
+            }
+
       }
     
     }
 
-    money(player){
-        if(this.powerUps_Selecting.money){
+    money(player, effect_taken){
+        if(this.m_type == "money"){
         if(!this.clearItem){
-            if(this.dropitem){ 
+       
                 // ctx.fillStyle = "green";
                 //     ctx.fillRect(this.position.x, this.position.y += 10, this.width , this.height)
                
-                    this.spriteProccessor(money_powerup, 3, this.position.x, this.position.y += 10, this.width, this.height)
+                    this.spriteProccessor(money_powerup, 3, this.position.x, this.position.y += 1, this.width, this.height)
                 }
                  if(this.collision.collision_with_player){
                 var health_points = 100;
@@ -149,16 +159,18 @@ energy(player){
                 this.collision.collision_posX = this.position.x;
                 this.collision.collision_posY = this.position.y;
                 this.powerUp_taken = true;
-                player.body.health += health_points;
-                this.display_orNot = false;
-                this.powerUps_Selecting.money = false;
+                player.body.health += health_points;     
                 this.clearItems();
-                
-              }
-            }
           }
-        
+          if(this.powerUp_taken){
+            if(effect_taken.spriteProccessor(taken_money, 2, player.position.x - 100, player.position.y - 100, 300, 300)){
+                this.distroyPush = true;
+                this.powerUp_taken = false;
+            }
+            }
         }
+        }
+
 
 
 clearItems(){
@@ -180,11 +192,11 @@ this.collision.collision_with_player = true;
     }
 }
 
-updatePowerUps(player, effectTaken){
+updatePowerUps(player, effectTaken, getloop){
     this.PowerUpcollisionWithPlayer(player);
     this.health(player, effectTaken);
-    this.energy(player);
-    this.money(player);
+    this.energy(player, effectTaken);
+    this.money(player, effectTaken);
 }
 
 }
