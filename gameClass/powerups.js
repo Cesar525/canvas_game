@@ -10,8 +10,8 @@ constructor(posx, posy, type){
         m_sprite : NaN
     }
     this.velocity = {
-        y : 1,
-        x : 1
+        y : 5,
+        x : 5
     }
     this.collision ={
         collision_posX : NaN,
@@ -122,7 +122,7 @@ energy(player, effect_taken ){
     if(!this.clearItem){
             // ctx.fillStyle = "blue";
             //     ctx.fillRect(this.position.x, this.position.y += 10, this.width , this.height);
-                this.spriteProccessor(energy_powerup, 3, this.position.x, this.position.y += 1, this.width, this.height)
+                this.spriteProccessor(energy_powerup, 3, this.position.x, this.position.y += this.velocity.y, this.width, this.height)
             }
              if(this.collision.collision_with_player){
             var health_points = 100;
@@ -151,7 +151,7 @@ energy(player, effect_taken ){
                 // ctx.fillStyle = "green";
                 //     ctx.fillRect(this.position.x, this.position.y += 10, this.width , this.height)
                
-                    this.spriteProccessor(money_powerup, 3, this.position.x, this.position.y += 1, this.width, this.height)
+                    this.spriteProccessor(money_powerup, 3, this.position.x, this.position.y += this.velocity.y, this.width, this.height)
                 }
                  if(this.collision.collision_with_player){
                 var health_points = 100;
@@ -192,7 +192,7 @@ this.collision.collision_with_player = true;
     }
 }
 
-updatePowerUps(player, effectTaken, getloop){
+updatePowerUps(player, effectTaken){
     this.PowerUpcollisionWithPlayer(player);
     this.health(player, effectTaken);
     this.energy(player, effectTaken);

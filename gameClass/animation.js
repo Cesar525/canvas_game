@@ -16,6 +16,7 @@ constructor(){
     this.thruster_size =150;
     this.thruster_animation = 0;
 this.onSpriteProccessor = false;
+
 }
 
 spritePage(sprite_path, posx, posy, sprite_page_width, sprite_page_height, sprite_count_width, sprite_count_height, sprite_size_w, sprite_size_h, speed, show, sprite_size_set_width, sprite_size_set_height, set_transparency){
