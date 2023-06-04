@@ -114,7 +114,7 @@ case 2 :
 this.spritePage("assets/explosions/explosion_2.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
 break;
 case 3 : 
-this.spritePage("assets/explosions/explosion_3.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
+this.spritePage("assets/explosions/explosion_33.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
 break;
 case 4 : 
 this.spritePage("assets/explosions/explosion_4.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);

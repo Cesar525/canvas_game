@@ -21,11 +21,18 @@ getVelocity(){
     return this.velocity.y;
 }
     
-    drawStars(speed){
+    drawStars(speed, type_stars){
         this.velocity.x = speed;
         this.velocity.y = speed;
-        const background_image = new Image();
-        background_image.src = "assets/backgrounds/nebula/Stars.png";
+        const background_image = new Image()
+        switch(type_stars){
+case 1 : 
+background_image.src = "assets/backgrounds/nebula/stars.png";
+break;
+case 2 : 
+background_image.src = "assets/backgrounds/nebula/starsTwo.png";
+break;
+        }
         this.position.y += this.velocity.y;
 console.log("reading it")
         ctx.drawImage(background_image, this.position.x, this.position.y, c.width, c.height);

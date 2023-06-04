@@ -193,7 +193,6 @@ this.collision.collision_with_player = true;
 }
 
 updatePowerUps(player, effectTaken){
-    this.PowerUpcollisionWithPlayer(player);
     this.health(player, effectTaken);
     this.energy(player, effectTaken);
     this.money(player, effectTaken);
