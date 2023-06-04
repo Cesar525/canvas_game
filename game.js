@@ -173,7 +173,7 @@ function buffer(){
 
 ctx.font = "90px Roboto Mono";
 ctx.fillStyle = "white";
-ctx.fillText(gameFrame, 100, 100)
+ctx.fillText(gameFrame, 50, 100)
 
 //colliton Monsters wiht Players && Projectiles
 for(var m = 0; m < monsters.length; m++){
