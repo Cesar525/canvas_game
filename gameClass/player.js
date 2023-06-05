@@ -36,6 +36,7 @@ class Player{
     this.width = 100;
     this.height = 100;
     this.health_total = get_health;
+    this.total_energy = energy;
     this.thruster_size = 150;
     this.thruster_animation = 0;
     this.thruster_position_x =  25;
@@ -116,7 +117,7 @@ lifeBar(){
         ctx.font = "15px Roboto Mono";
         ctx.fillText("Lvl:" + this.body.m_level, this.position.x - 70, this.position.y + 35);
 
-        ctx.fillText(this.body.m_name, this.position.x - 70, this.position.y - 15);
+        ctx.fillText(this.body.m_name, this.position.x - 70, this.position.y - 25);
         ctx.fillText("HP: "+ this.body.health, this.position.x - 70, this.position.y + 15);
       
         
@@ -208,6 +209,42 @@ this.position.y =  0
 
 }
 
+energy(){
+    //const lifebar = new Image();
+
+    if(Math.round((this.body.energy / this.total_energy) * 100) <= 50){
+        ctx.fillStyle = "orange";
+    }
+        if(Math.round((this.body.energy / this.total_energy) * 100) <= 20){
+            ctx.fillStyle = "red";
+        }
+        if(Math.round((this.body.energy / this.total_energy) * 100) <= 10){
+            ctx.fillStyle = " #720000";
+        }
+        if(Math.round((this.body.energy / this.total_energy) * 100) > 50){
+           ctx.fillStyle = "white"; 
+        }
+        
+        //life bar background
+        ctx.fillStyle = "gray";
+        ctx.fillRect(this.position.x - 70 , this.position.y - 20, 100, 9);
+        //life
+
+        if(Math.round((this.body.energy / this.total_energy) * 100) <= 50){
+            ctx.fillStyle = "orange";
+        }
+       
+        if(Math.round((this.body.energy / this.total_energy) * 100) <= 10){
+            ctx.fillStyle = " #720000";
+        }
+        if(Math.round((this.body.energy / this.total_energy) * 100) > 50){
+            ctx.fillStyle = "blue"; 
+         }
+        //lifebar
+        ctx.fillRect(this.position.x - 70 , this.position.y - 20, Math.round((this.body.energy / this.total_energy) * 100), 9);
+
+
+}
 playerEffectSparks(spark_low_animation, spark_high_animation){
     if(Math.round((this.body.health / this.health_total) * 100) <= 50){
         spark_low_animation.playerSparks(this.position.x, this.position.y);
@@ -225,6 +262,7 @@ this.draw();
 thruster_animation.setPlayersThruster(this.body.thruster, this.position.x - this.thruster_position_x, this.position.y + this.thruster_position_y, this.thruster_size, this.thruster_size);       
 this.playerOnDeath();
 this.lifeBar();
+this.energy();
 this.playerMovemements();
 this.playerEffectSparks(animation_Sparks_low, animation_Sparks_high);
 this.playerDeathExplosion(player_death_explosionAnimation);

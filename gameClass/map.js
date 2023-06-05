@@ -1,9 +1,9 @@
-class Background extends Monsters{
+class Background extends Animation{
     constructor(posx, posy, width, height, speed){
         super();
     this.position = {
-        x : 0,
-        y : 0
+        x : posx,
+        y : posy
     },
     this.velocity = {
         x : 0,
@@ -41,7 +41,22 @@ console.log("reading it")
     this.position.y = 0;
   }
         }
+        randomSpawnPositionX(from, to){
+            this.randomNum = Math.floor(Math.random() * to) + from   
+            return this.randomNum;
+          }
 
+asteroids(speed){
+    this.velocity.x = speed;
+    this.velocity.y = speed;
+    ctx.globalAlpha = 0.5
+    this.spriteProccessor(asteroid_one, 2, this.position.x, this.position.y += this.velocity.y, this.width, this.height);
+    ctx.globalAlpha = 1
+    if(this.position.y == c.height){
+        this.position.x = this.randomSpawnPositionX(0, c.width)
+        this.position.y = 0;
+      }
+}
 
         drawNebulas(speed){
             this.velocity.x = speed;

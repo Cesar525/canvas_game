@@ -125,12 +125,12 @@ energy(player, effect_taken ){
                 this.spriteProccessor(energy_powerup, 3, this.position.x, this.position.y += this.velocity.y, this.width, this.height)
             }
              if(this.collision.collision_with_player){
-            var health_points = 100;
+            var energy_points = 100;
             console.log("ENERGY Taken <EFFECT HERE taken_energy sprite>");
             this.collision.collision_posX = this.position.x;
             this.collision.collision_posY = this.position.y;
             this.powerUp_taken = true;
-            player.body.health += health_points;
+            player.body.energy += energy_points;
             this.clearItems();    
              }
           if(this.powerUp_taken){
