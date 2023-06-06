@@ -254,7 +254,7 @@ dropPowerUps(){
         
         case 1 : 
         console.log("One = " + powerUp.length);
-        powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, "health" ));
+        powerUp.push(new PowerUps(100, 100, "health" ));
         powerup_capture_effect.push(new Animation());
         console.log(powerUp.length);
         this.drop_item = false;

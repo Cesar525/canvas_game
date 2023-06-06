@@ -116,7 +116,8 @@ const monsters = [
   ];
 
   //POWER UPS
-const powerUp = [];
+const powerUp = [new PowerUps(500, 100, "health")
+];
 const powerup_capture_effect = [];
 for(var f = 0; f < powerUp.length; f++){
   powerup_capture_effect.push(new Animation());
@@ -231,7 +232,7 @@ for(var m = 0; m < monsters.length; m++){
     }
   }
   
- animation_TESTING.spriteProccessor(taken_money, 2, players[0].position.x - 450, players[0].position.y - 450, 1000, 1000);
+ //animation_TESTING.spriteProccessor(taken_money, 2, players[0].position.x - 450, players[0].position.y - 450, 1000, 1000);
   //animation_TESTING.spritePage("assets/capture_effects/capture_money/spritesheet2.png", players[0].position.x - 450, players[0].position.y - 450, 11264, 512, 22, 1, 512, 512, 4, true, 600, 600)
   
   
