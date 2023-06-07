@@ -71,6 +71,14 @@ draw(){
     if(this.body.health > this.health_total){
         this.body.health = this.health_total;
     }
+
+
+    if(this.body.energy < 0 ){
+        this.body.energy = 0;
+    }
+    if(this.body.energy > this.total_energy){
+        this.body.energy = this.total_energy;
+    }
 }
 }
 
@@ -116,7 +124,7 @@ lifeBar(){
    
         ctx.font = "15px Roboto Mono";
         ctx.fillText("Lvl:" + this.body.m_level, this.position.x - 70, this.position.y + 35);
-
+ ctx.fillStyle = "#59ff59"
         ctx.fillText(this.body.m_name, this.position.x - 70, this.position.y - 25);
         ctx.fillText("HP: "+ this.body.health, this.position.x - 70, this.position.y + 15);
       

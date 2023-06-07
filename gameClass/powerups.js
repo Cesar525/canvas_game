@@ -10,8 +10,8 @@ constructor(posx, posy, type){
         m_sprite : NaN
     }
     this.velocity = {
-        y : 5,
-        x : 5
+        y : 0,
+        x : 0
     }
     this.collision ={
         collision_posX : NaN,
@@ -35,6 +35,7 @@ this.powerUps_Selecting = {
     this.staggerFrame = 0;
     this.health_powerUp_taken;
     this.destroyPush = false;
+    this.gameFramePowerups = 0;
 }
 setPos(posx, posy){
     this.position.x = posx;
@@ -86,6 +87,7 @@ selectingPowerUps(selecting_type){
 
 health(player, effect_taken){
 
+var health_points = 100;
     if(this.m_type == "health"){
     if(!this.clearItem){
     //    ctx.fillStyle = "pink";
@@ -94,7 +96,7 @@ health(player, effect_taken){
          this.spriteProccessor(heart_powerup, 3, this.position.x, this.position.y += this.velocity.y, this.width, this.height)
         }
          if(this.collision.collision_with_player){
-        var health_points = 100; 
+         
         console.log("health Taken <EFFECT HERE>")
         this.collision.collision_posX = this.position.x;
         this.collision.collision_posY = this.position.y;
@@ -105,10 +107,11 @@ health(player, effect_taken){
 
 
     if(this.powerUp_taken){
-    if(effect_taken.spriteProccessor(taken_health, 2, player.position.x - 100, player.position.y - 100, 300, 300)){
-        this.destroyPush = true
-        this.powerUp_taken = false;
-    }
+        if(effect_taken.spriteProccessor(taken_health, 2, player.position.x - 100, player.position.y - 100, 300, 300)){
+            this.destroyPush = true
+            this.powerUp_taken = false;
+        }
+        this.healShowAnimation(health_points, player.position.x, player.position.y, "#8aff8a", this.powerUp_taken, "+");
     }
 }
 
@@ -119,13 +122,13 @@ health(player, effect_taken){
 
 energy(player, effect_taken ){
     if(this.m_type == "energy"){
+        var energy_points = 100;
     if(!this.clearItem){
             // ctx.fillStyle = "blue";
             //     ctx.fillRect(this.position.x, this.position.y += 10, this.width , this.height);
                 this.spriteProccessor(energy_powerup, 3, this.position.x, this.position.y += this.velocity.y, this.width, this.height)
             }
              if(this.collision.collision_with_player){
-            var energy_points = 100;
             console.log("ENERGY Taken <EFFECT HERE taken_energy sprite>");
             this.collision.collision_posX = this.position.x;
             this.collision.collision_posY = this.position.y;
@@ -139,13 +142,14 @@ energy(player, effect_taken ){
                 this.powerUp_taken = false;
             }
             }
-
+            this.healShowAnimation(energy_points, player.position.x, player.position.y, "#4484ff", this.powerUp_taken, "+");
       }
     
     }
 
     money(player, effect_taken){
         if(this.m_type == "money"){
+            var money_points = 100;
         if(!this.clearItem){
        
                 // ctx.fillStyle = "green";
@@ -154,20 +158,22 @@ energy(player, effect_taken ){
                     this.spriteProccessor(money_powerup, 3, this.position.x, this.position.y += this.velocity.y, this.width, this.height)
                 }
                  if(this.collision.collision_with_player){
-                var health_points = 100;
                 console.log("MONEY Taken <EFFECT HERE>");
                 this.collision.collision_posX = this.position.x;
                 this.collision.collision_posY = this.position.y;
                 this.powerUp_taken = true;
-                player.body.health += health_points;     
+                player.body.money += money_points;     
                 this.clearItems();
           }
           if(this.powerUp_taken){
+           
             if(effect_taken.spriteProccessor(taken_money, 2, player.position.x - 100, player.position.y - 100, 300, 300)){
                 this.distroyPush = true;
                 this.powerUp_taken = false;
             }
+
             }
+            this.healShowAnimation(money_points, player.position.x, player.position.y - 20, "green", this.powerUp_taken, "$");
         }
         }
 
@@ -187,11 +193,31 @@ clearItems(){
 
 PowerUpcollisionWithPlayer(player){
     if(collisionTouch(this, player)){
-console.log("its coliding");
 this.collision.collision_with_player = true;
     }
 }
 
+
+healShowAnimation(damage,pos_x, pos_y, color, if_true, sign){
+    this.gameFramePowerups++;
+    if(if_true){this.showDamage = true;}
+    
+    
+            if(this.showDamage){
+                
+                ctx.fillStyle = color;
+                ctx.strokeStyle = "black"
+                ctx.font = "40px anton";
+                ctx.fillText(sign + damage, pos_x , pos_y);
+                ctx.strokeText(sign + damage, pos_x, pos_y);
+                        
+            } 
+            if(this.gameFramePowerups >= 300){
+                        this.showDamage = false;
+                        this.gameFrameDamageAnimation = 0;
+                        this.animationSlowsGoesUp = 0
+                    }
+            }
 updatePowerUps(player, effectTaken){
     this.health(player, effectTaken);
     this.energy(player, effectTaken);

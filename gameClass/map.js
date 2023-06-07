@@ -34,7 +34,6 @@ background_image.src = "assets/backgrounds/nebula/starsTwo.png";
 break;
         }
         this.position.y += this.velocity.y;
-console.log("reading it")
         ctx.drawImage(background_image, this.position.x, this.position.y, c.width, c.height);
         ctx.drawImage(background_image, this.position.x, this.position.y - c.height, c.width, c.height);
   if(this.position.y == c.height){

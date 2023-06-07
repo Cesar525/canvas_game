@@ -52,7 +52,7 @@ const players = [
 //Monsters
 //CREATING A MONSTERS Monstrs( id, sprite,  pos_x, pos_y, health, name, speed, color, movements, s_width, s_height, damage)
 const monsters = [  
-   new Monsters(2, asteroid_one,  100, 100 , 50, "Asteroid", 5, "orange", "straightDown", 200, 200, 2),
+  //  new Monsters(2, asteroid_one,  100, 100 , 50, "Asteroid", 5, "orange", "straightDown", 200, 200, 2),
   //  new Monsters(2, asteroid_two,  100, 100 , 50, "Asteroid 2", 5, "orange", "straightDown", 200, 200, 2),
   //  new Monsters(2, asteroid_three,  100, 100 , 50, "Asteroid 3", 5, "orange", "straightDown", 200, 200, 2),
   //  new Monsters(2, asteroid_four,  100, 100 , 50, "Asteroid 4", 5, "orange", "straightDown", 200, 200, 2),
@@ -116,7 +116,13 @@ const monsters = [
   ];
 
   //POWER UPS
-const powerUp = [new PowerUps(500, 100, "health")
+const powerUp = [
+  new PowerUps(100, 100, "health"),
+  new PowerUps(300, 100, "energy"),
+  new PowerUps(500, 100, "energy"),
+  new PowerUps(700, 100, "money"),
+  new PowerUps(900, 100, "money"),
+  new PowerUps(1000, 100, "health")
 ];
 const powerup_capture_effect = [];
 for(var f = 0; f < powerUp.length; f++){
@@ -174,7 +180,14 @@ function buffer(){
     gameFrame ++;
     ctx.clearRect(0,0,c.width, c.height)
 
+ctx.font = "90px Roboto Mono";
+ctx.fillStyle = "white";
+ctx.fillText(gameFrame, 50, 100);
 
+
+
+
+if(true){
     map_one[7].drawPlanet(2, 3);
     map_one[6].drawStars(1, 1); // background image
     map_one[5].drawPlanet(1, 2);
@@ -194,9 +207,6 @@ function buffer(){
 
 
 
-ctx.font = "90px Roboto Mono";
-ctx.fillStyle = "white";
-ctx.fillText(gameFrame, 50, 100)
 
 //colliton Monsters wiht Players && Projectiles
 for(var m = 0; m < monsters.length; m++){
@@ -241,7 +251,7 @@ for(var m = 0; m < monsters.length; m++){
   
   
   
-
+}
 
 
 
