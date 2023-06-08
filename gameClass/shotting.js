@@ -1,13 +1,13 @@
 class shots{
-    constructor(){
+    constructor(shot_type, start_posx, start_posy, damage, speed){
      
     this.position = {
-        x :  -100,
-        y : -100
+        x : 0,
+        y : 0
     }
     this.velocity = {
-        x : 1,
-        y : 1
+        x : speed,
+        y : speed
     }
     this.m_damage;
     this.width = 50;
@@ -20,6 +20,12 @@ class shots{
         collision_posx : NaN,
         collision_posy : NaN
     }
+
+this.m_damage = damage;
+this.calibrating_starting_posx = start_posx;
+this.calibrating_starting_posy = start_posy;
+this.bullet_image = shot_type;
+
 
 
     this.random = true;
@@ -48,27 +54,22 @@ this.staggerFrame = 10
 
 bullethitmonsters(){return this.collition.shot_collided;}
 
-shotSelection(player,select_shot, damage, speed){
-if(select_shot && damage && speed ){
+shotsCreation(player){
+    
    if(!this.clearRect){
-    this.velocity.x = speed;
-    this.velocity.y = speed;
     this.shotDirectionUp();
     const shotimage = new Image()
-    shotimage.src = this.shotImages[select_shot];
+    shotimage.src = this.shotImages[this.bullet_image];
+    
     ctx.drawImage(shotimage, this.position.x, this.position.y ,this.width, this.height);
-this.m_damage = damage
+    this.m_damage = this.m_damage;
 
     //shot starting point
     if(this.position.y <  - this.height){
-    this.position.y = player.position.y - 25;
-    this.position.x =  25 + player.position.x;
-            }
-            
-        }
-        
+    this.position.y = player.position.y - this.calibrating_starting_posy;
+    this.position.x =  this.calibrating_starting_posx + player.position.x;
+            }   
     }
-
 }
 
 randomHit(from, to){
@@ -124,27 +125,14 @@ if(this.getCollitionWithMonster()){
 getDamageNumberColor(){return this.DamageShowingcolorDefault;};
 setDamageNumberColor(color){ this.DamageShowingcolorDefault = color;}
 
-gunTypes(player,selectingGun){
-    switch(selectingGun){
-case 1 : 
+shot(player){
 //single missile
 this.setDamageNumberColor("red");
 var gun_damage = 15;
 var totalDamage = player.body.m_damage + gun_damage;
 this.damages = this.randomHit(1, totalDamage);
-this.shotSelection(player,2,this.damages, player.body.m_gun_speed);
+this.shotsCreation(player,2,this.damages, player.body.m_gun_speed, 25, 25);
 this.damage_effect = 6;
-break;
-case 2 : 
-this.setDamageNumberColor("#7e50ff");
-var gun_damage = 25;
-var totalDamage = player.body.m_damage + gun_damage;
-this.damages = this.randomHit(1, totalDamage);
-this.shotSelection(player,5,this.damages, player.body.m_gun_speed);
-this.damage_effect = 7;
-break;
-
-    }
 }
 
 reset(){
@@ -207,11 +195,9 @@ collisionMonsterShot(monsters){
                        return false;
                      }
                    }
-efffects(){
- 
-}
-updateShot(explo_one_animation, explo_two_animation){
+updateShot(player, explo_one_animation, explo_two_animation){
 //console.log(this.getCollitionWithMonster());
+this.shotsCreation(player);
 this.bulletHitMonsterEffect(explo_one_animation, explo_two_animation, this.getCollitionPosX(), this.getCollitionPosY() ,this.getCollitionWithMonster(), this.damage_effect, 1)
 this.damageShowAnimation(this.getDamageHit(), this.getCollitionPosX(), this.getCollitionPosY(), this.getDamageNumberColor(),this.getCollitionWithMonster());
 this.clearingBulletOnceHit();

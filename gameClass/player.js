@@ -175,7 +175,7 @@ reset(){
 }
 
 playerGun(gun){
-    gun.gunTypes(this, this.body.m_gun_type);
+gun.shot(this);
 }
 
 playerMovemements(){

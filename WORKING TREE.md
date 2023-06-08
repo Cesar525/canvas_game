@@ -3,6 +3,12 @@ https://themeforest.net/
 user:cesarsiri@live.com
 pass:525002cc
 
+Gun ideas. - 
+each shot should be set by a 
+new Shots(starting_posx, starting_posy, type_sprite, angle, speed)
+
+
+
 Wokring on --
 1) Two new gun Style (multiple guns)
 2) Power Bomb - use with energy and needs to be earned when killing a boss.

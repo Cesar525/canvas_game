@@ -3,7 +3,7 @@ var ctx = c.getContext("2d");
 
 var gameFrame = 0;
 
-c.width = 2000
+c.width = 1000
 c.height = 1500
 const gravity = 10;
 const fps = 256;
@@ -40,11 +40,10 @@ const map_one = [
 const animation_TESTING = new Animation();
 
 
-
 //players
 //CREATING A PLAYER Player(name, level, thruster_selection, get_health, energy, m_damage,  gunType, posx, posy, gun_speed)
 const players = [
-  new Player("Player One", 1230,  6, 100, 400, 50, 1, 100, 900, 50),
+  new Player("Player One", 1230,  6, 100, 400, 50, 3, 100, 900, 50),
   //  new Player("Player One", 1230,  6, 100, 400, 10, 2, 400, 900, 30),
   //  new Player("Player One", 1230,  6, 100, 400, 10, 1, 900, 900, 100),
   //  new Player("Player One", 1230,  6, 100, 400, 10, 2, 1500, 900, 100),
@@ -52,7 +51,7 @@ const players = [
 //Monsters
 //CREATING A MONSTERS Monstrs( id, sprite,  pos_x, pos_y, health, name, speed, color, movements, s_width, s_height, damage)
 const monsters = [  
-  //  new Monsters(2, asteroid_one,  100, 100 , 50, "Asteroid", 5, "orange", "straightDown", 200, 200, 2),
+   new Monsters(2, asteroid_one,  100, 100 , 500000000, "Asteroid", 5, "orange", "none", 200, 200, 2),
   //  new Monsters(2, asteroid_two,  100, 100 , 50, "Asteroid 2", 5, "orange", "straightDown", 200, 200, 2),
   //  new Monsters(2, asteroid_three,  100, 100 , 50, "Asteroid 3", 5, "orange", "straightDown", 200, 200, 2),
   //  new Monsters(2, asteroid_four,  100, 100 , 50, "Asteroid 4", 5, "orange", "straightDown", 200, 200, 2),
@@ -136,7 +135,7 @@ const projectiles = [];
 const explosion_1 = [];
 const explosion_2 = [];
 for(var p = 0; p < players.length; p++){
-projectiles.push(new shots());
+projectiles.push(new shots( 5, 25, 25, 10, 5));
 explosion_1.push(new Animation());
 explosion_2.push(new Animation());
 }
@@ -169,8 +168,6 @@ explosion_onDeath_animation.push(new Animation());
 
 //Monster PowerUp Drop
 
-
-
 //BUFFERRRR
 function buffer(){
     setTimeout(() => {
@@ -197,15 +194,14 @@ if(true){
     map_one[1].drawNebulasBlue(2);
     map_one[3].drawStars(2, 2); // background image
     map_one[2].drawNebulaMulti(2);
-    map_one[8].asteroids(10);
-    map_one[9].asteroids(10);
-    map_one[10].asteroids(10);
-    map_one[11].asteroids(15);
-    map_one[12].asteroids(5);
-    map_one[13].asteroids(3);
-    map_one[14].asteroids(20);
-    map_one[15].asteroids(3);
-
+    // map_one[8].asteroids(10);
+    // map_one[9].asteroids(10);
+    // map_one[10].asteroids(10);
+    // map_one[11].asteroids(15);
+    // map_one[12].asteroids(5);
+    // map_one[13].asteroids(3);
+    // map_one[14].asteroids(20);
+    // map_one[15].asteroids(3);
 
 
 
@@ -227,13 +223,17 @@ for(var m = 0; m < monsters.length; m++){
   
   
   for(var p = 0; p < players.length; p++){
-    projectiles[p].updateShot(explosion_1[p], explosion_2[p]);
+    projectiles[p].updateShot(players[p],explosion_1[p], explosion_2[p]);
+   
+
     players[p].update(projectiles[p], sparks_low[p], sparks_high[p], thruster_animation[p], deathExplosionAnimation[p]); 
     
     
     for(var f = 0; f < powerUp.length; f++){      
     powerUp[f].updatePowerUps(players[p],powerup_capture_effect[f]);
     powerUp[f].PowerUpcollisionWithPlayer(players[p]);
+  
+    
     if(powerUp[f].destroyPush){
       powerUp.splice(f, 1);
     }
