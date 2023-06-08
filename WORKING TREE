@@ -3,13 +3,14 @@ https://themeforest.net/
 user:cesarsiri@live.com
 pass:525002cc
 
-
-working on -
-1) correct power ups some of them i cant take 
-them and fix the effect when taking them.
-
-2) Create a Super Bomb to use with energy 
-
+Wokring on --
+1) Two new gun Style (multiple guns)
+2) Power Bomb - use with energy and needs to be earned when killing a boss.
+3) UI item Storage 
+4) Mouse Movements spaceShip
+5) shotting using mouse click & auto shotting on options setttigns
+6) Fix Graphics sprites blicking problem. 
+7) burst when shotting
 
 
 const energy_powerup = [

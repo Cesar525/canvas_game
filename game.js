@@ -124,6 +124,7 @@ const powerUp = [
   new PowerUps(900, 100, "money"),
   new PowerUps(1000, 100, "health")
 ];
+
 const powerup_capture_effect = [];
 for(var f = 0; f < powerUp.length; f++){
   powerup_capture_effect.push(new Animation());

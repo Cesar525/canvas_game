@@ -1,6 +1,6 @@
 class PowerUps {
 constructor(posx, posy, type){
-  
+
     this.position = {
         x : posx, 
         y : posy
@@ -111,7 +111,7 @@ var health_points = 100;
             this.destroyPush = true
             this.powerUp_taken = false;
         }
-        this.healShowAnimation(health_points, player.position.x, player.position.y, "#8aff8a", this.powerUp_taken, "+");
+        this.healShowAnimation(health_points, player.position.x + 20, player.position.y + 100, "#8aff8a", this.powerUp_taken, "+");
     }
 }
 
@@ -142,7 +142,7 @@ energy(player, effect_taken ){
                 this.powerUp_taken = false;
             }
             }
-            this.healShowAnimation(energy_points, player.position.x, player.position.y, "#4484ff", this.powerUp_taken, "+");
+            this.healShowAnimation(energy_points, player.position.x + 20, player.position.y + 100, "#4484ff", this.powerUp_taken, "+");
       }
     
     }
@@ -173,7 +173,7 @@ energy(player, effect_taken ){
             }
 
             }
-            this.healShowAnimation(money_points, player.position.x, player.position.y - 20, "green", this.powerUp_taken, "$");
+            this.healShowAnimation(money_points, player.position.x + 20, player.position.y + 100, "green", this.powerUp_taken, "$");
         }
         }
 
