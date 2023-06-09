@@ -186,7 +186,8 @@ ctx.fillText(gameFrame, 50, 100);
 
 
 if(true){
-
+  
+  map_one[6].drawStars(1, 1); // background image
   if(gameFrame > 400){
     if(gameFrame > 1500){
     map_one[7].drawPlanet(2, 3);
@@ -207,10 +208,9 @@ if(true){
     map_one[13].asteroids(3);
     map_one[14].asteroids(20);
     map_one[15].asteroids(3);
-    }
   }
-  map_one[3].drawStars(2, 2); // background image
-  map_one[6].drawStars(1, 1); // background image
+}
+map_one[3].drawStars(2, 2); // background image
   
 
 //colliton Monsters wiht Players && Projectiles
