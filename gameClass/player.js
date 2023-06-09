@@ -108,23 +108,23 @@ if(this.body.health == 0){
 
 lifeBar(){
     //const lifebar = new Image();
-
+    
     if(Math.round((this.body.health / this.health_total) * 100) <= 50){
         ctx.fillStyle = "orange";
     }
-        if(Math.round((this.body.health / this.health_total) * 100) <= 20){
-            ctx.fillStyle = "red";
-        }
-        if(Math.round((this.body.health / this.health_total) * 100) <= 10){
-            ctx.fillStyle = " #720000";
-        }
-        if(Math.round((this.body.health / this.health_total) * 100) > 50){
-           ctx.fillStyle = "white"; 
+    if(Math.round((this.body.health / this.health_total) * 100) <= 20){
+        ctx.fillStyle = "red";
+    }
+    if(Math.round((this.body.health / this.health_total) * 100) <= 10){
+        ctx.fillStyle = " #720000";
+    }
+    if(Math.round((this.body.health / this.health_total) * 100) > 50){
+        //ctx.fillStyle = "white"; 
+        ctx.fillStyle = "#59ff59"
         }
    
         ctx.font = "15px Roboto Mono";
         ctx.fillText("Lvl:" + this.body.m_level, this.position.x - 70, this.position.y + 35);
- ctx.fillStyle = "#59ff59"
         ctx.fillText(this.body.m_name, this.position.x - 70, this.position.y - 25);
         ctx.fillText("HP: "+ this.body.health, this.position.x - 70, this.position.y + 15);
       

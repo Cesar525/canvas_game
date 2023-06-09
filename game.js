@@ -24,16 +24,16 @@ const map_one = [
   new Background(900, -900, 900, 900),
   new Background(0, 0), // stars
   new Background(0, -900, 100, 100),
-  new Background(100, 100, 100, 100),
-  new Background(100, 100, 100, 100),
-  new Background(100, 100, 100, 100),
-  new Background(100, 100, 100, 100),
-  new Background(100, 100, 100, 100),
-  new Background(100, 100, 100, 100),
-  new Background(100, 100, 100, 100),
-  new Background(100, 100, 100, 100),
-  new Background(100, 100, 100, 100),
-  new Background(100, 100, 100, 100)
+  new Background(-100, 100, 100, 100),
+  new Background(-100, -100, 100, 100),
+  new Background(-100, -100, 100, 100),
+  new Background(-100, -100, 100, 100),
+  new Background(-100, -100, 100, 100),
+  new Background(-100, -100, 100, 100),
+  new Background(-100, -100, 100, 100),
+  new Background(-100, -100, 100, 100),
+  new Background(-100, -100, 100, 100),
+  new Background(-100, -100, 100, 100)
 ];
 
 //testing
@@ -135,7 +135,7 @@ const projectiles = [];
 const explosion_1 = [];
 const explosion_2 = [];
 for(var p = 0; p < players.length; p++){
-projectiles.push(new shots( 5, 25, 25, 10, 20));
+projectiles.push(new shots( 5, 0, 50, 10, 20));
 explosion_1.push(new Animation());
 explosion_2.push(new Animation());
 }
@@ -186,24 +186,32 @@ ctx.fillText(gameFrame, 50, 100);
 
 
 if(true){
+
+  if(gameFrame > 400){
+    if(gameFrame > 1500){
     map_one[7].drawPlanet(2, 3);
-    map_one[6].drawStars(1, 1); // background image
     map_one[5].drawPlanet(1, 2);
     map_one[4].drawPlanet(1, 1);
+    }
+    if(gameFrame > 800){
     map_one[0].drawNebulas(5);
     map_one[1].drawNebulasBlue(2);
-    map_one[3].drawStars(2, 2); // background image
     map_one[2].drawNebulaMulti(2);
-    // map_one[8].asteroids(10);
-    // map_one[9].asteroids(10);
-    // map_one[10].asteroids(10);
-    // map_one[11].asteroids(15);
-    // map_one[12].asteroids(5);
-    // map_one[13].asteroids(3);
-    // map_one[14].asteroids(20);
-    // map_one[15].asteroids(3);
-
-
+    }
+    if(gameFrame > 600){
+    map_one[8].asteroids(10);
+    map_one[9].asteroids(10);
+    map_one[10].asteroids(10);
+    map_one[11].asteroids(15);
+    map_one[12].asteroids(5);
+    map_one[13].asteroids(3);
+    map_one[14].asteroids(20);
+    map_one[15].asteroids(3);
+    }
+  }
+  map_one[3].drawStars(2, 2); // background image
+  map_one[6].drawStars(1, 1); // background image
+  
 
 //colliton Monsters wiht Players && Projectiles
 for(var m = 0; m < monsters.length; m++){
