@@ -220,8 +220,6 @@ for(var m = 0; m < monsters.length; m++){
     explosion_onDeath_animation[m]
     );
 
-    
-    
     for(var pjct = 0; pjct < projectiles.length; pjct++){
       projectiles[pjct].collisionMonsterShot(monsters[m])
       players[pjct].playerCollitionMonsters(monsters[m])
