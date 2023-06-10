@@ -135,7 +135,7 @@ const projectiles = [];
 const explosion_1 = [];
 const explosion_2 = [];
 for(var p = 0; p < players.length; p++){
-projectiles.push(new shots( 5, 0, 50, 10, 20));
+projectiles.push(new shots( 5, 25, 25, 10, 20, 0, 7));
 explosion_1.push(new Animation());
 explosion_2.push(new Animation());
 }
