@@ -274,7 +274,7 @@ this.energy();
 this.playerMovemements();
 this.playerEffectSparks(animation_Sparks_low, animation_Sparks_high);
 this.playerDeathExplosion(player_death_explosionAnimation);
-this.playerGun(gun_type);
+//this.playerGun(gun_type);
 
     }
     }

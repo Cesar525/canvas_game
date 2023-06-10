@@ -135,7 +135,7 @@ const projectiles = [];
 const explosion_1 = [];
 const explosion_2 = [];
 for(var p = 0; p < players.length; p++){
-projectiles.push(new shots( 5, 25, 25, 10, 20, 0, 7));
+projectiles.push(new shots( 5, 25, 25, 200, 20, 0, 7));
 explosion_1.push(new Animation());
 explosion_2.push(new Animation());
 }
@@ -230,8 +230,6 @@ for(var m = 0; m < monsters.length; m++){
   
   for(var p = 0; p < players.length; p++){
     projectiles[p].updateShot(players[p],explosion_1[p], explosion_2[p]);
-   
-
     players[p].update(projectiles[p], sparks_low[p], sparks_high[p], thruster_animation[p], deathExplosionAnimation[p]); 
     
     
@@ -239,7 +237,6 @@ for(var m = 0; m < monsters.length; m++){
     powerUp[f].updatePowerUps(players[p],powerup_capture_effect[f]);
     powerUp[f].PowerUpcollisionWithPlayer(players[p]);
   
-    
     if(powerUp[f].destroyPush){
       powerUp.splice(f, 1);
     }
