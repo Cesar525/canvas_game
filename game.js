@@ -43,8 +43,8 @@ const animation_TESTING = new Animation();
 //players
 //CREATING A PLAYER Player(name, level, thruster_selection, get_health, energy, m_damage,  gunType, posx, posy, gun_speed)
 const players = [
-  new Player("Player One", 1230,  6, 100, 400, 50, 3, 100, 900, 50),
-  //  new Player("Player One", 1230,  6, 100, 400, 10, 2, 400, 900, 30),
+  new Player("PLAYER ONE", 1230,  6, 100, 400, 50, 3, 100, 900, 50),
+   new Player("PLAYER TWO", 1230,  6, 100, 400, 10, 2, 400, 900, 30),
   //  new Player("Player One", 1230,  6, 100, 400, 10, 1, 900, 900, 100),
   //  new Player("Player One", 1230,  6, 100, 400, 10, 2, 1500, 900, 100),
 ]
@@ -52,6 +52,10 @@ const players = [
 //CREATING A MONSTERS Monstrs( id, sprite,  pos_x, pos_y, health, name, speed, color, movements, s_width, s_height, damage)
 const monsters = [  
    new Monsters(2, asteroid_one,  100, 100 , 500000000, "Asteroid", 5, "orange", "none", 200, 200, 2),
+   new Monsters(2, asteroid_one,  400, 100 , 500000000, "Asteroid", 5, "orange", "none", 200, 200, 2),
+   new Monsters(2, asteroid_one,  600, 100 , 500000000, "Asteroid", 5, "orange", "none", 200, 200, 2),
+   new Monsters(2, asteroid_one,  900, 100 , 500000000, "Asteroid", 5, "orange", "none", 200, 200, 2),
+
   //  new Monsters(2, asteroid_two,  100, 100 , 50, "Asteroid 2", 5, "orange", "straightDown", 200, 200, 2),
   //  new Monsters(2, asteroid_three,  100, 100 , 50, "Asteroid 3", 5, "orange", "straightDown", 200, 200, 2),
   //  new Monsters(2, asteroid_four,  100, 100 , 50, "Asteroid 4", 5, "orange", "straightDown", 200, 200, 2),
@@ -116,12 +120,12 @@ const monsters = [
 
   //POWER UPS
 const powerUp = [
-  new PowerUps(100, 100, "health"),
-  new PowerUps(300, 100, "energy"),
-  new PowerUps(500, 100, "energy"),
-  new PowerUps(700, 100, "money"),
-  new PowerUps(900, 100, "money"),
-  new PowerUps(1000, 100, "health")
+  // new PowerUps(100, 100, "health"),
+  // new PowerUps(300, 100, "energy"),
+  // new PowerUps(500, 100, "energy"),
+  // new PowerUps(700, 100, "money"),
+  // new PowerUps(900, 100, "money"),
+  // new PowerUps(1000, 100, "health")
 ];
 
 const powerup_capture_effect = [];
@@ -188,28 +192,28 @@ ctx.fillText(gameFrame, 50, 100);
 if(true){
   
   map_one[6].drawStars(1, 1); // background image
-  if(gameFrame > 400){
-    if(gameFrame > 1500){
-    map_one[7].drawPlanet(2, 3);
-    map_one[5].drawPlanet(1, 2);
-    map_one[4].drawPlanet(1, 1);
-    }
-    if(gameFrame > 800){
-    map_one[0].drawNebulas(5);
-    map_one[1].drawNebulasBlue(2);
-    map_one[2].drawNebulaMulti(2);
-    }
-    if(gameFrame > 600){
-    map_one[8].asteroids(10);
-    map_one[9].asteroids(10);
-    map_one[10].asteroids(10);
-    map_one[11].asteroids(15);
-    map_one[12].asteroids(5);
-    map_one[13].asteroids(3);
-    map_one[14].asteroids(20);
-    map_one[15].asteroids(3);
-  }
-}
+  // if(gameFrame > 400){
+  //   if(gameFrame > 1500){
+  //   map_one[7].drawPlanet(2, 3);
+  //   map_one[5].drawPlanet(1, 2);
+  //   map_one[4].drawPlanet(1, 1);
+  //   }
+  //   if(gameFrame > 800){
+  //   map_one[0].drawNebulas(5);
+  //   map_one[1].drawNebulasBlue(2);
+  //   map_one[2].drawNebulaMulti(2);
+  //   }
+  //   if(gameFrame > 600){
+  //   map_one[8].asteroids(10);
+  //   map_one[9].asteroids(10);
+  //   map_one[10].asteroids(10);
+  //   map_one[11].asteroids(15);
+  //   map_one[12].asteroids(5);
+  //   map_one[13].asteroids(3);
+  //   map_one[14].asteroids(20);
+  //   map_one[15].asteroids(3);
+  // }
+//}
 map_one[3].drawStars(2, 2); // background image
   
 
@@ -223,7 +227,6 @@ for(var m = 0; m < monsters.length; m++){
     for(var pjct = 0; pjct < projectiles.length; pjct++){
       projectiles[pjct].collisionMonsterShot(monsters[m])
       players[pjct].playerCollitionMonsters(monsters[m])
-      
     }
   }
   
