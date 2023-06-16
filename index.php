@@ -18,7 +18,7 @@
 <script src="./gameClass/controller.js"></script>
 <script src="./gameClass/monsters.js"></script>
 <script src="./gameClass/map.js"></script>
-<script src="./gameClass/shotting.js"></script>
+<script src="./gameClass/shots.js"></script>
 <script src="./gameClass/player.js"></script>
 <script src="./game.js"></script>
 

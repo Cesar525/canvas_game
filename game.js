@@ -43,8 +43,8 @@ const animation_TESTING = new Animation();
 //players
 //CREATING A PLAYER Player(name, level, thruster_selection, get_health, energy, m_damage,  gunType, posx, posy, gun_speed)
 const players = [
-  new Player("PLAYER ONE", 1230,  6, 100, 400, 50, 3, 100, 900, 50),
-   new Player("PLAYER TWO", 1230,  6, 100, 400, 10, 2, 400, 900, 30),
+  new Player("PLAYER ONE", 1230,  6, 100, 400, 50, 1, 100, 900, 50),
+   new Player("PLAYER TWO", 1230,  6, 100, 400, 10, 1, 400, 900, 30),
   //  new Player("Player One", 1230,  6, 100, 400, 10, 1, 900, 900, 100),
   //  new Player("Player One", 1230,  6, 100, 400, 10, 2, 1500, 900, 100),
 ]
@@ -139,9 +139,11 @@ const projectiles = [];
 const explosion_1 = [];
 const explosion_2 = [];
 for(var p = 0; p < players.length; p++){
+
 projectiles.push(new shots( 5, 25, 25, 200, 20, 0, 7));
 explosion_1.push(new Animation());
 explosion_2.push(new Animation());
+
 }
 
 //onPlayer Animation sparks

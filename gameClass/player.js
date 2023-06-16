@@ -53,10 +53,7 @@ this.staggerFrame_sparks = 1;
     
 }
 
-shieldEquip(Shield_animation_turningOn, Shieldanimation_on, Shield_on_off){
-
-    
-}
+getGunType(){return this.body.m_gun_type;};
 
 draw(){
     
