@@ -92,12 +92,15 @@ var health_points = 100;
     if(!this.clearItem){
         // ctx.fillStyle = "pink";
         // ctx.fillRect(this.position.x, this.position.y += this.velocity.y , this.width , this.height)
-   
-        this.spriteProccessor(heart_powerup, 3, this.position.x, this.position.y += this.velocity.y, this.width, this.height)
+   const health_image = new Image();
+   health_image.src = 'assets/space_assets/10. Powerups/01 health 02/0000.png',
+
+        ctx.drawImage(health_image,this.position.x, this.position.y, this.width, this.height);
         }
-         if(this.collision.collision_with_player){
+
+    if(this.collision.collision_with_player){
          
-        console.log("health Taken <EFFECT HERE>")
+        console.log("health Taken <EFFECT HERE>");
         this.collision.collision_posX = this.position.x;
         this.collision.collision_posY = this.position.y;
         this.powerUp_taken = true;
@@ -126,7 +129,11 @@ energy(player, effect_taken ){
     if(!this.clearItem){
             // ctx.fillStyle = "blue";
                 // // ctx.fillRect(this.position.x, this.position.y += this.velocity.y , this.width , this.height);
-               this.spriteProccessor(energy_powerup, 3, this.position.x, this.position.y += this.velocity.y, this.width, this.height)
+              // this.spriteProccessor(energy_powerup, 3, this.position.x, this.position.y += this.velocity.y, this.width, this.height)
+            const energy_Image  = new Image();
+            energy_Image.src = 'assets/space_assets/10. Powerups/03 flash 02/0000.png';
+            ctx.drawImage(energy_Image, this.position.x, this.position.y, this.width, this.height);
+
             }
              if(this.collision.collision_with_player){
             console.log("ENERGY Taken <EFFECT HERE taken_energy sprite>");
@@ -155,7 +162,11 @@ energy(player, effect_taken ){
                 // ctx.fillStyle = "green";
                 //     ctx.fillRect(this.position.x, this.position.y += this.velocity.y, this.width , this.height)
                
-                   this.spriteProccessor(money_powerup, 3, this.position.x, this.position.y += this.velocity.y, this.width, this.height)
+                 //  this.spriteProccessor(money_powerup, 3, this.position.x, this.position.y += this.velocity.y, this.width, this.height)
+                const money_image = new Image();
+                money_image.src = 'assets/space_assets/10. Powerups/05 money 02/0000.png';
+                ctx.drawImage(money_image, this.position.x, this.position.y, this.width, this.height);
+                
                 }
                  if(this.collision.collision_with_player){
                 console.log("MONEY Taken <EFFECT HERE>");
