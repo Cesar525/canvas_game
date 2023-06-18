@@ -31,8 +31,9 @@ class Player{
         gameFrame : 0,
         staggerFrame : 0
     }
-    this.count = 0;
 
+    this.m_money =
+    this.count = 0;
     this.width = 100;
     this.height = 100;
     this.health_total = get_health;
@@ -159,7 +160,7 @@ playerCollitionMonsters(monsters){
       let damage = 1
         this.playerGetDamage(damage); 
       console.log("you have been damage your current life is  = " + this.body.health);
-      return      
+        
  //  }
   }
   }

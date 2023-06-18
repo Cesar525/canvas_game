@@ -90,10 +90,10 @@ health(player, effect_taken){
 var health_points = 100;
     if(this.m_type == "health"){
     if(!this.clearItem){
-    //    ctx.fillStyle = "pink";
-    //        ctx.fillRect(this.position.x, this.position.y += 10 , this.width , this.height)
+        // ctx.fillStyle = "pink";
+        // ctx.fillRect(this.position.x, this.position.y += this.velocity.y , this.width , this.height)
    
-         this.spriteProccessor(heart_powerup, 3, this.position.x, this.position.y += this.velocity.y, this.width, this.height)
+        this.spriteProccessor(heart_powerup, 3, this.position.x, this.position.y += this.velocity.y, this.width, this.height)
         }
          if(this.collision.collision_with_player){
          
@@ -125,8 +125,8 @@ energy(player, effect_taken ){
         var energy_points = 100;
     if(!this.clearItem){
             // ctx.fillStyle = "blue";
-            //     ctx.fillRect(this.position.x, this.position.y += 10, this.width , this.height);
-                this.spriteProccessor(energy_powerup, 3, this.position.x, this.position.y += this.velocity.y, this.width, this.height)
+                // // ctx.fillRect(this.position.x, this.position.y += this.velocity.y , this.width , this.height);
+               this.spriteProccessor(energy_powerup, 3, this.position.x, this.position.y += this.velocity.y, this.width, this.height)
             }
              if(this.collision.collision_with_player){
             console.log("ENERGY Taken <EFFECT HERE taken_energy sprite>");
@@ -153,16 +153,16 @@ energy(player, effect_taken ){
         if(!this.clearItem){
        
                 // ctx.fillStyle = "green";
-                //     ctx.fillRect(this.position.x, this.position.y += 10, this.width , this.height)
+                //     ctx.fillRect(this.position.x, this.position.y += this.velocity.y, this.width , this.height)
                
-                    this.spriteProccessor(money_powerup, 3, this.position.x, this.position.y += this.velocity.y, this.width, this.height)
+                   this.spriteProccessor(money_powerup, 3, this.position.x, this.position.y += this.velocity.y, this.width, this.height)
                 }
                  if(this.collision.collision_with_player){
                 console.log("MONEY Taken <EFFECT HERE>");
                 this.collision.collision_posX = this.position.x;
                 this.collision.collision_posY = this.position.y;
                 this.powerUp_taken = true;
-                player.body.money += money_points;     
+                player.m_money += money_points;     
                 this.clearItems();
           }
           if(this.powerUp_taken){
@@ -219,6 +219,7 @@ healShowAnimation(damage,pos_x, pos_y, color, if_true, sign){
                     }
             }
 updatePowerUps(player, effectTaken){
+    this.PowerUpcollisionWithPlayer(player);
     this.health(player, effectTaken);
     this.energy(player, effectTaken);
     this.money(player, effectTaken);
