@@ -55,8 +55,10 @@ if(this.frameX >= sprite_count_width - 1 && this.frameY >= sprite_count_height -
     this.show = false;
     this.reset();
     this.onAnimation = false;
+    return false;
 }else{
-    return this.onAnimation;
+
+    return true;
 }
 }
 
@@ -66,6 +68,8 @@ if(this.frameX >= sprite_count_width - 1 && this.frameY >= sprite_count_height -
 getFrameY(){
     return this.frameY;
 }
+
+
 reset(){
     this.frameX = 0;
     this.frameY = 0;

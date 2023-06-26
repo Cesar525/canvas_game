@@ -1,6 +1,6 @@
-class shots{
+class shots extends Animation{
     constructor(shot_type, start_posx, start_posy, set_damage, speed, angle, effect_hit){
-     
+     super();
     this.position = {
         x : 0,
         y : 0
@@ -9,6 +9,7 @@ class shots{
         x : speed,
         y : speed
     }
+
     this.width = 50;
     this.height = 100;
     this.clearRect = false;
@@ -50,7 +51,7 @@ this.staggerFrame = 10
     9 : "assets/shots/bean_9.png",
     10 : "assets/shots/bean_10.png"
     }
-    }
+}
 
 bullethitmonsters(){return this.collition.shot_collided;}
 
@@ -84,7 +85,6 @@ setDamageHit(damagehit){
 getDamageHit(){return this.damagesHit;}
 getGunDamage(){return this.m_damage;};
 shotDirectionUp(direction){
-
 
     //moving the shot to the left
     if(direction == 0){

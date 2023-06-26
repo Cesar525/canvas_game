@@ -10,8 +10,8 @@ constructor(posx, posy, type){
         m_sprite : NaN
     }
     this.velocity = {
-        y : 0,
-        x : 0
+        y : 5,
+        x : 5
     }
     this.collision ={
         collision_posX : NaN,
@@ -95,7 +95,7 @@ var health_points = 100;
    const health_image = new Image();
    health_image.src = 'assets/space_assets/10. Powerups/01 health 02/0000.png',
 
-        ctx.drawImage(health_image,this.position.x, this.position.y, this.width, this.height);
+        ctx.drawImage(health_image,this.position.x, this.position.y += this.velocity.y, this.width, this.height);
         }
 
     if(this.collision.collision_with_player){
@@ -110,11 +110,12 @@ var health_points = 100;
 
 
     if(this.powerUp_taken){
-        if(effect_taken.spriteProccessor(taken_health, 2, player.position.x - 100, player.position.y - 100, 300, 300)){
-            this.destroyPush = true
+        effect_taken.spritePage("assets/capture_effects/capture_health/spritesheet.png", player.position.x - 65, player.position.y - 60, 11264, 512, 22, 1, 512, 512, 2, true, -300, -300);
+        if(!effect_taken.getAnimationStatus()){
+            this.distroyPush = true;
             this.powerUp_taken = false;
         }
-        this.healShowAnimation(health_points, player.position.x + 20, player.position.y + 100, "#8aff8a", this.powerUp_taken, "+");
+        this.healShowAnimation(health_points, player.getPlayerPosX() + 20, player.getPlayerPosY() + 100, "#8aff8a", this.powerUp_taken, "+");
     }
 }
 
@@ -132,7 +133,7 @@ energy(player, effect_taken ){
               // this.spriteProccessor(energy_powerup, 3, this.position.x, this.position.y += this.velocity.y, this.width, this.height)
             const energy_Image  = new Image();
             energy_Image.src = 'assets/space_assets/10. Powerups/03 flash 02/0000.png';
-            ctx.drawImage(energy_Image, this.position.x, this.position.y, this.width, this.height);
+            ctx.drawImage(energy_Image, this.position.x, this.position.y += this.velocity.y, this.width, this.height);
 
             }
              if(this.collision.collision_with_player){
@@ -144,12 +145,13 @@ energy(player, effect_taken ){
             this.clearItems();    
              }
           if(this.powerUp_taken){
-            if(effect_taken.spriteProccessor(taken_energy, 5, player.position.x - 100, player.position.y - 100, 300, 300)){
-                this.destroyPush = true
+            effect_taken.spritePage("assets/capture_effects/capture_energy/spritesheet.png", player.position.x - 65, player.position.y - 60, 11264, 512, 22, 1, 512, 512, 2, true, -300, -300);
+            if(!effect_taken.getAnimationStatus()){
+                this.distroyPush = true;
                 this.powerUp_taken = false;
             }
             }
-            this.healShowAnimation(energy_points, player.position.x + 20, player.position.y + 100, "#4484ff", this.powerUp_taken, "+");
+            this.healShowAnimation(energy_points, player.getPlayerPosX() + 20, player.getPlayerPosY() + 100, "#4484ff", this.powerUp_taken, "+");
       }
     
     }
@@ -160,12 +162,11 @@ energy(player, effect_taken ){
         if(!this.clearItem){
        
                 // ctx.fillStyle = "green";
-                //     ctx.fillRect(this.position.x, this.position.y += this.velocity.y, this.width , this.height)
-               
+                //     ctx.fillRect(this.position.x, this.position.y += this.velocity.y, this.width , this.height) 
                  //  this.spriteProccessor(money_powerup, 3, this.position.x, this.position.y += this.velocity.y, this.width, this.height)
                 const money_image = new Image();
                 money_image.src = 'assets/space_assets/10. Powerups/05 money 02/0000.png';
-                ctx.drawImage(money_image, this.position.x, this.position.y, this.width, this.height);
+                ctx.drawImage(money_image, this.position.x, this.position.y += this.velocity.y, this.width, this.height);
                 
                 }
                  if(this.collision.collision_with_player){
@@ -177,14 +178,14 @@ energy(player, effect_taken ){
                 this.clearItems();
           }
           if(this.powerUp_taken){
-           
-            if(effect_taken.spriteProccessor(taken_money, 2, player.position.x - 100, player.position.y - 100, 300, 300)){
+            effect_taken.spritePage("assets/capture_effects/capture_money/spritesheet2.png", player.position.x - 65, player.position.y - 60, 11264, 512, 22, 1, 512, 512, 2, true, -300, -300);
+            if(!effect_taken.getAnimationStatus()){
                 this.distroyPush = true;
                 this.powerUp_taken = false;
             }
 
             }
-            this.healShowAnimation(money_points, player.position.x + 20, player.position.y + 100, "green", this.powerUp_taken, "$");
+            this.healShowAnimation(money_points, player.getPlayerPosX() + 20, player.getPlayerPosY() + 100, "green", this.powerUp_taken, "$");
         }
         }
 
@@ -230,7 +231,6 @@ healShowAnimation(damage,pos_x, pos_y, color, if_true, sign){
                     }
             }
 updatePowerUps(player, effectTaken){
-    this.PowerUpcollisionWithPlayer(player);
     this.health(player, effectTaken);
     this.energy(player, effectTaken);
     this.money(player, effectTaken);

@@ -1,13 +1,13 @@
-class Player{
+class Player extends shots{
     constructor(name, level, thruster_selection, get_health, energy, m_damage,  gunType, posx, posy, gun_speed){
-  
+  super();
         this.position ={
         x: posx,
         y: posy
     },
     this.velocity ={
-        x:20,
-        y:20  
+        x:25,
+        y:25  
     },
     this.body = {
         m_name : name,
@@ -53,11 +53,14 @@ this.gameFrame_sparks = 0;
 this.staggerFrame_sparks = 1;
     
 }
+getPlayerPosX(){ return this.position.x; };
+getPlayerPosY(){return this.position.y; };
+
 
 getGunType(){return this.body.m_gun_type;};
 
 draw(){
-    
+
     if(!this.clearRect){
     const image = new Image();
     image.src = "assets/spaceship/spaceshipone.png";
@@ -70,14 +73,13 @@ draw(){
         this.body.health = this.health_total;
     }
 
-
     if(this.body.energy < 0 ){
         this.body.energy = 0;
     }
     if(this.body.energy > this.total_energy){
         this.body.energy = this.total_energy;
     }
-}
+  }
 }
 
 setPlayerVelocity(velocity){
@@ -173,7 +175,8 @@ reset(){
 }
 
 playerGun(gun){
-gun.shot(this);
+
+const playerGun = [];
 }
 
 playerMovemements(){
@@ -260,7 +263,12 @@ playerEffectSparks(spark_low_animation, spark_high_animation){
             }
 }
 
-
+showPlayerMoney(){
+    ctx.fillStyle = "white";
+    ctx.font = "50px Roboto Mono";
+    ctx.fillText("Money", c.width - 300, 100)
+    ctx.fillText("$"+this.m_money, c.width - 300, 150)
+}
 
 
 update(gun_type, animation_Sparks_low, animation_Sparks_high, thruster_animation, player_death_explosionAnimation){
@@ -272,6 +280,11 @@ this.energy();
 this.playerMovemements();
 this.playerEffectSparks(animation_Sparks_low, animation_Sparks_high);
 this.playerDeathExplosion(player_death_explosionAnimation);
+this.showPlayerMoney();
+this.updateShot(this,NULL, NULL);
+
+
+
 //this.playerGun(gun_type);
 
     }
