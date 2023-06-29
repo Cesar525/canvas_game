@@ -1,10 +1,28 @@
-var c = document.getElementById("canvasone");
+//game play canvas
+var c = document.getElementById("canvasGame");
 var ctx = c.getContext("2d");
+//ui
+var c_ui = document.getElementById("canvasUI");
+var ctx_ui = c_ui.getContext("2d");
+
+//ui Life bar
+var c_ui_status = document.getElementById("canvasUILifeBar");
+var ctx_ui_status = c_ui_status.getContext("2d");
 
 var gameFrame = 0;
 
-c.width = 1000
+//Gam Canvas size
+c.width = 2000
 c.height = 1500
+
+//Storage canvas size
+c_ui.width = 300
+c_ui.height = c.height
+
+//playerStatus Bar
+c_ui_status.width = c.width + c_ui.width + 8;
+c_ui_status.height = 200;
+
 
 // c.width = window.innerWidth;
 // c.height = window.innerHeight;
@@ -51,39 +69,39 @@ const players = [
 //Monsters
 //CREATING A MONSTERS Monstrs( id, sprite,  pos_x, pos_y, health, name, speed, color, movements, s_width, s_height, damage)
 const monsters = [  
-   new Monsters(2, asteroid_one,  100, 100 , 5000000, "Asteroid", 5, "orange", "none", 200, 200, 2),
-  //  new Monsters(2, asteroid_two,  400, 100 , 50, "Asteroid", 5, "orange", "straightDown", 200, 200, 2),
-  //  new Monsters(2, asteroid_three,  400, 100 , 50, "Asteroid", 5, "orange", "straightDown", 200, 200, 2),
-  //  new Monsters(2, asteroid_four,  400, 100 , 50, "Asteroid", 5, "orange", "straightDown", 200, 200, 2),
-  //  new Monsters(2, asteroid_five,  400, 100 , 50, "Asteroid", 5, "orange", "straightDown", 200, 200, 2),
-  //  new Monsters(2, asteroid_six,  400, 100 , 50, "Asteroid", 5, "orange", "straightDown", 200, 200, 2),
-  //  new Monsters(2, asteroid_seven,  400, 100 , 50, "Asteroid", 5, "orange", "straightDown", 200, 200, 2),
-  //  new Monsters(2, asteroid_eight,  400, 100 , 50, "Asteroid", 5, "orange", "straightDown", 200, 200, 2),
-  //  new Monsters(2, asteroid_nine,  400, 100 , 50, "Asteroid", 5, "orange", "straightDown", 200, 200, 2),
-  //  new Monsters(2, asteroid_ten,  400, 100 , 50, "Asteroid", 5, "orange", "straightDown", 200, 200, 2),
-  //  new Monsters(2, asteroid_eleven,  400, 100 , 50, "Asteroid", 5, "orange", "straightDown", 200, 200, 2),
-  //  new Monsters(2, asteroid_one,  100, 100 , 50, "Asteroid", 5, "orange", "straightDown", 200, 200, 2),
-  //  new Monsters(2, asteroid_two,  400, 100 , 50, "Asteroid", 5, "orange", "straightDown", 200, 200, 2),
-  //  new Monsters(2, asteroid_three,  400, 100 , 50, "Asteroid", 5, "orange", "straightDown", 200, 200, 2),
-  //  new Monsters(2, asteroid_four,  400, 100 , 50, "Asteroid", 5, "orange", "straightDown", 200, 200, 2),
-  //  new Monsters(2, asteroid_five,  400, 100 , 50, "Asteroid", 5, "orange", "straightDown", 200, 200, 2),
-  //  new Monsters(2, asteroid_six,  400, 100 , 50, "Asteroid", 5, "orange", "straightDown", 200, 200, 2),
-  //  new Monsters(2, asteroid_seven,  400, 100 , 50, "Asteroid", 5, "orange", "straightDown", 200, 200, 2),
-  //  new Monsters(2, asteroid_eight,  400, 100 , 50, "Asteroid", 5, "orange", "straightDown", 200, 200, 2),
-  //  new Monsters(2, asteroid_nine,  400, 100 , 50, "Asteroid", 5, "orange", "straightDown", 200, 200, 2),
-  //  new Monsters(2, asteroid_ten,  400, 100 , 50, "Asteroid", 5, "orange", "straightDown", 200, 200, 2),
-  //  new Monsters(2, asteroid_eleven,  400, 100 , 50, "Asteroid", 5, "orange", "straightDown", 200, 200, 2),
-  //  new Monsters(2, asteroid_one,  100, 100 , 50, "Asteroid", 5, "orange", "straightDown", 200, 200, 2),
-  //  new Monsters(2, asteroid_two,  400, 100 , 50, "Asteroid", 5, "orange", "straightDown", 200, 200, 2),
-  //  new Monsters(2, asteroid_three,  400, 100 , 50, "Asteroid", 5, "orange", "straightDown", 200, 200, 2),
-  //  new Monsters(2, asteroid_four,  400, 100 , 50, "Asteroid", 5, "orange", "straightDown", 200, 200, 2),
-  //  new Monsters(2, asteroid_five,  400, 100 , 50, "Asteroid", 5, "orange", "straightDown", 200, 200, 2),
-  //  new Monsters(2, asteroid_six,  400, 100 , 50, "Asteroid", 5, "orange", "straightDown", 200, 200, 2),
-  //  new Monsters(2, asteroid_seven,  400, 100 , 50, "Asteroid", 5, "orange", "straightDown", 200, 200, 2),
-  //  new Monsters(2, asteroid_eight,  400, 100 , 50, "Asteroid", 5, "orange", "straightDown", 200, 200, 2),
-  //  new Monsters(2, asteroid_nine,  400, 100 , 50, "Asteroid", 5, "orange", "straightDown", 200, 200, 2),
-  //  new Monsters(2, asteroid_ten,  400, 100 , 50, "Asteroid", 5, "orange", "straightDown", 200, 200, 2),
-  //  new Monsters(2, asteroid_eleven,  400, 100 , 50, "Asteroid", 5, "orange", "straightDown", 200, 200, 2),
+   new Monsters(2, asteroid_one,  100, 100 , 5000000, "Asteroid", 1, "orange", "none", 200, 200, 2),
+   new Monsters(2, asteroid_two,  400, 100 , 50, "Asteroid", 1, "orange", "straightDown", 200, 200, 2),
+   new Monsters(2, asteroid_three,  400, 100 , 50, "Asteroid", 1, "orange", "straightDown", 200, 200, 2),
+   new Monsters(2, asteroid_four,  400, 100 , 50, "Asteroid", 1, "orange", "straightDown", 200, 200, 2),
+   new Monsters(2, asteroid_five,  400, 100 , 50, "Asteroid", 1, "orange", "straightDown", 200, 200, 2),
+   new Monsters(2, asteroid_six,  400, 100 , 50, "Asteroid", 1, "orange", "straightDown", 200, 200, 2),
+   new Monsters(2, asteroid_seven,  400, 100 , 50, "Asteroid", 1, "orange", "straightDown", 200, 200, 2),
+   new Monsters(2, asteroid_eight,  400, 100 , 50, "Asteroid", 1, "orange", "straightDown", 200, 200, 2),
+   new Monsters(2, asteroid_nine,  400, 100 , 50, "Asteroid", 1, "orange", "straightDown", 200, 200, 2),
+   new Monsters(2, asteroid_ten,  400, 100 , 50, "Asteroid", 1, "orange", "straightDown", 200, 200, 2),
+   new Monsters(2, asteroid_eleven,  400, 100 , 50, "Asteroid", 1, "orange", "straightDown", 200, 200, 2),
+   new Monsters(2, asteroid_one,  100, 100 , 50, "Asteroid", 1, "orange", "straightDown", 200, 200, 2),
+   new Monsters(2, asteroid_two,  400, 100 , 50, "Asteroid", 1, "orange", "straightDown", 200, 200, 2),
+   new Monsters(2, asteroid_three,  400, 100 , 50, "Asteroid", 1, "orange", "straightDown", 200, 200, 2),
+   new Monsters(2, asteroid_four,  400, 100 , 50, "Asteroid", 1, "orange", "straightDown", 200, 200, 2),
+   new Monsters(2, asteroid_five,  400, 100 , 50, "Asteroid", 1, "orange", "straightDown", 200, 200, 2),
+   new Monsters(2, asteroid_six,  400, 100 , 50, "Asteroid", 1, "orange", "straightDown", 200, 200, 2),
+   new Monsters(2, asteroid_seven,  400, 100 , 50, "Asteroid", 1, "orange", "straightDown", 200, 200, 2),
+   new Monsters(2, asteroid_eight,  400, 100 , 50, "Asteroid", 1, "orange", "straightDown", 200, 200, 2),
+   new Monsters(2, asteroid_nine,  400, 100 , 50, "Asteroid", 1, "orange", "straightDown", 200, 200, 2),
+   new Monsters(2, asteroid_ten,  400, 100 , 50, "Asteroid", 1, "orange", "straightDown", 200, 200, 2),
+   new Monsters(2, asteroid_eleven,  400, 100 , 50, "Asteroid", 1, "orange", "straightDown", 200, 200, 2),
+   new Monsters(2, asteroid_one,  100, 100 , 50, "Asteroid", 1, "orange", "straightDown", 200, 200, 2),
+   new Monsters(2, asteroid_two,  400, 100 , 50, "Asteroid", 1, "orange", "straightDown", 200, 200, 2),
+   new Monsters(2, asteroid_three,  400, 100 , 50, "Asteroid", 1, "orange", "straightDown", 200, 200, 2),
+   new Monsters(2, asteroid_four,  400, 100 , 50, "Asteroid", 1, "orange", "straightDown", 200, 200, 2),
+   new Monsters(2, asteroid_five,  400, 100 , 50, "Asteroid", 1, "orange", "straightDown", 200, 200, 2),
+   new Monsters(2, asteroid_six,  400, 100 , 50, "Asteroid", 1, "orange", "straightDown", 200, 200, 2),
+   new Monsters(2, asteroid_seven,  400, 100 , 50, "Asteroid", 1, "orange", "straightDown", 200, 200, 2),
+   new Monsters(2, asteroid_eight,  400, 100 , 50, "Asteroid", 1, "orange", "straightDown", 200, 200, 2),
+   new Monsters(2, asteroid_nine,  400, 100 , 50, "Asteroid", 1, "orange", "straightDown", 200, 200, 2),
+   new Monsters(2, asteroid_ten,  400, 100 , 50, "Asteroid", 1, "orange", "straightDown", 200, 200, 2),
+   new Monsters(2, asteroid_eleven,  400, 100 , 50, "Asteroid", 1, "orange", "straightDown", 200, 200, 2),
 
   ];
 
@@ -100,17 +118,18 @@ for(var f = 0; f < powerUp.length; f++){
 }
 
 //Player Missiles & its effects
-const projectiles = [new shots( 5, 25, 25, 200, 50, 0, 7)];
+const projectiles = [];
 const explosion_1 = [];
 const explosion_2 = [];
 
-for(var f = 0; f < projectiles.length; f++){
+for(var f = 0; f < players.length; f++){
+  projectiles.push(new shots());
   explosion_1.push(new Animation());
   explosion_2.push(new Animation());
 }
 
 
-//onPlayer Animation sparks
+//onPlayer Animation sparks Global
 const sparks_low = [];
 const sparks_high = [];
 const thruster_animation = [];
@@ -195,7 +214,7 @@ for(var m = 0; m < monsters.length; m++){
     
     for(var pjct = 0; pjct  < players.length ; pjct ++){
       players[pjct].playerCollitionMonsters(monsters[m])
-      players[pjct].collisionMonsterShot(monsters[m]);
+      projectiles[pjct].collisionMonsterShot(monsters[m]);
       
     }
   }
@@ -213,22 +232,22 @@ for(var m = 0; m < monsters.length; m++){
         powerup_capture_effect.splice(f, 1);
       }
     }
-    
-    for(var f = 0; f < powerUp.length; f++){      
-      powerUp[f].updatePowerUps(players[0], powerup_capture_effect[f]);
-    }
-
-
-    
+ 
     players[p].update(projectiles[p], 
       sparks_low[p], 
       sparks_high[p], 
       thruster_animation[p], 
       deathExplosionAnimation[p]
       ); 
- 
+      projectiles[p].updateShot(
+        players[p], 
+        explosion_1[p], 
+        explosion_2[p])
+   
   }
-  
+   for(var f = 0; f < powerUp.length; f++){      
+      powerUp[f].updatePowerUps(players[0], powerup_capture_effect[f]);
+    }
 
   //animation_TESTING.spriteProccessor(taken_money, 2, players[0].position.x - 450, players[0].position.y - 450, 1000, 1000);
   //animation_TESTING.spritePage("assets/capture_effects/capture_health/spritesheet.png", players[0].position.x - 65, players[0].position.y - 60, 11264, 512, 22, 1, 512, 512, 2, true, -300, -300)

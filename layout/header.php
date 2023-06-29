@@ -9,7 +9,7 @@
     <meta name="author" content="Cesar">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Web tittle</title>
-    <link rel="icon" type="image/x-icon" href="layout/img/logo.png">
+    <!-- <link rel="ikcon" type="image/x-icon" href="layout/img/logo.png"> -->
     <link rel="stylesheet" href="layout/style.css">
    
 </head>

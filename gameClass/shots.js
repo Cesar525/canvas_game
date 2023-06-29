@@ -1,13 +1,13 @@
 class shots extends Animation{
-    constructor(shot_type, start_posx, start_posy, set_damage, speed, angle, effect_hit){
-     super();
+    constructor(){
+super();
     this.position = {
         x : 0,
         y : 0
     }
     this.velocity = {
-        x : speed,
-        y : speed
+        x : 10,
+        y : 10
     }
 
     this.width = 50;
@@ -21,14 +21,14 @@ class shots extends Animation{
         collision_posy : NaN
     }
 
-this.m_damage = set_damage;
-this.calibrating_starting_posx = start_posx;
-this.calibrating_starting_posy = start_posy;
-this.bullet_image = shot_type;
+this.m_damage = 0;
+this.calibrating_starting_posx = 25;
+this.calibrating_starting_posy = 25;
+this.bullet_image = 1;
 this.damages_total = 0;
 
-this.hiteffect = effect_hit
-this.shot_angle = angle;
+this.hiteffect = 7
+this.shot_angle = 0;
 this.random = true;
 this.randomNum;
 this.damagesHit;
@@ -55,7 +55,7 @@ this.staggerFrame = 10
 
 bullethitmonsters(){return this.collition.shot_collided;}
 
-shotsCreation(player,damage, direction){
+shotsCreation(player, direction){
     
    if(!this.clearRect){
     this.shotDirectionUp(direction);
@@ -165,7 +165,7 @@ shot(player){
 this.setDamageNumberColor("red");
 var totalDamage = player.body.m_damage + this.m_damage;
 this.damages_total = this.randomHit(1, totalDamage);
-this.shotsCreation(player,this.damages_total, this.shot_angle);
+this.shotsCreation(player,this.shot_angle);
 this.damage_effect = this.hiteffect;
 }
 
@@ -231,6 +231,9 @@ collisionMonsterShot(monsters){
                    }
 updateShot(player, explo_one_animation, explo_two_animation){
 //console.log(this.getCollitionWithMonster());
+var speed = player.body.m_gun_speed;
+this.velocity.x = speed;
+this.velocity.y = speed;
 this.shot(player)
 this.bulletHitMonsterEffect(explo_one_animation, explo_two_animation, this.getCollitionPosX(), this.getCollitionPosY() ,this.getCollitionWithMonster(), this.damage_effect, 1)
 this.damageShowAnimation(this.getDamageHit(), this.getCollitionPosX(), this.getCollitionPosY(), this.getDamageNumberColor(),this.getCollitionWithMonster());

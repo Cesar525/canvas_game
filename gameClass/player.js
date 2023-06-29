@@ -1,6 +1,6 @@
-class Player extends shots{
+class Player {
     constructor(name, level, thruster_selection, get_health, energy, m_damage,  gunType, posx, posy, gun_speed){
-  super();
+
         this.position ={
         x: posx,
         y: posy
@@ -21,6 +21,7 @@ class Player extends shots{
         deathPositionX : NaN,
         deathPositionY : NaN,
         shield_on_off : false
+    
     }
     this.collition = {
         collition_monsters : false,
@@ -264,14 +265,37 @@ playerEffectSparks(spark_low_animation, spark_high_animation){
 }
 
 showPlayerMoney(){
+    const image_money = new Image();
     ctx.fillStyle = "white";
-    ctx.font = "50px Roboto Mono";
+    ctx.font = "30px Roboto Mono";
     ctx.fillText("Money", c.width - 300, 100)
-    ctx.fillText("$"+this.m_money, c.width - 300, 150)
+    image_money.src = 'assets/space_assets/10. Powerups/05 money 02/0000.png';
+    ctx.drawImage(image_money,  50, c.height - 150, 100, 100)
+    ctx.fillText("$"+this.m_money, 100, c.height - 60)
+}
+
+showPlayerHealth(){
+    const health_images = new Image();
+    ctx_ui.fillStyle = "white";
+    ctx_ui.font = "30px Roboto Mono";
+    ctx_ui.fillText("Money", c.width - 300, 100)
+    health_images.src = 'assets/space_assets/10. Powerups/01 health 02/0000.png',
+    ctx_ui.drawImage(health_images,  200, c.height - 150, 100, 100)
+    ctx_ui.fillText("H+U: "+this.m_money, 250, c.height - 60)
+}
+
+showPlayerEnergy(){
+    const health_images = new Image();
+    ctx_ui.fillStyle = "white";
+    ctx_ui.font = "30px Roboto Mono";
+    ctx_ui.fillText("Money", c.width - 300, 100)
+    health_images.src = 'assets/space_assets/10. Powerups/03 flash 02/0000.png',
+    ctx_ui.drawImage(health_images,  400, c.height - 150, 100, 100)
+    ctx_ui.fillText("H+E: "+this.m_money, 450, c.height - 60)
 }
 
 
-update(gun_type, animation_Sparks_low, animation_Sparks_high, thruster_animation, player_death_explosionAnimation){
+update(animation_Sparks_low, animation_Sparks_high, thruster_animation, player_death_explosionAnimation){
 this.draw();
 thruster_animation.setPlayersThruster(this.body.thruster, this.position.x - this.thruster_position_x, this.position.y + this.thruster_position_y, this.thruster_size, this.thruster_size);       
 this.playerOnDeath();
@@ -281,11 +305,7 @@ this.playerMovemements();
 this.playerEffectSparks(animation_Sparks_low, animation_Sparks_high);
 this.playerDeathExplosion(player_death_explosionAnimation);
 this.showPlayerMoney();
-this.updateShot(this,NULL, NULL);
-
-
-
-//this.playerGun(gun_type);
-
+this.showPlayerHealth();
+this.showPlayerEnergy();
     }
     }

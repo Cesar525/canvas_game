@@ -67,7 +67,10 @@ getHealth(){return this.body.health;};
 
 drawMonster(sprite_animation){
     if(!this.clearRect){
-    sprite_animation.spriteProccessor(this.body.m_sprite, 2, this.position.x, this.position.y, this.width, this.height);
+   // sprite_animation.spriteProccessor(this.body.m_sprite, 2, this.position.x, this.position.y, this.width, this.height);
+   ctx.fillStyle = "white";
+   ctx.fillRect(this.position.x, this.position.y, 100, 100);
+   
 //monsters health
     if(this.body.m_health < 0){
         this.body.m_health = 0;
@@ -110,7 +113,7 @@ case "sidebyside":
    
 break;
 case "straightDown":
-    this.position.y += 5;
+    this.position.y += this.velocity.y;
 if(this.position.y > c.height){
     this.killMonster();
 }
