@@ -265,13 +265,9 @@ playerEffectSparks(spark_low_animation, spark_high_animation){
 }
 
 showPlayerMoney(){
-    const image_money = new Image();
-    ctx.fillStyle = "white";
-    ctx.font = "30px Roboto Mono";
-    ctx.fillText("Money", c.width - 300, 100)
-    image_money.src = 'assets/space_assets/10. Powerups/05 money 02/0000.png';
-    ctx.drawImage(image_money,  50, c.height - 150, 100, 100)
-    ctx.fillText("$"+this.m_money, 100, c.height - 60)
+    if(true){
+  
+    }
 }
 
 showPlayerHealth(){
@@ -280,8 +276,8 @@ showPlayerHealth(){
     ctx_ui.font = "30px Roboto Mono";
     ctx_ui.fillText("Money", c.width - 300, 100)
     health_images.src = 'assets/space_assets/10. Powerups/01 health 02/0000.png',
-    ctx_ui.drawImage(health_images,  200, c.height - 150, 100, 100)
-    ctx_ui.fillText("H+U: "+this.m_money, 250, c.height - 60)
+    ctx_ui.drawImage(health_images, 0, 0, 100, 100)
+    ctx_ui.fillText("H+U: "+this.m_money, 100, 100)
 }
 
 showPlayerEnergy(){
@@ -294,6 +290,34 @@ showPlayerEnergy(){
     ctx_ui.fillText("H+E: "+this.m_money, 450, c.height - 60)
 }
 
+playerStatus(){
+  //showin gplayer money
+    const image_money = new Image();
+    ctx_ui_status.fillStyle = "white";
+    ctx_ui_status.font = "30px Roboto Mono";
+    image_money.src = 'assets/space_assets/10. Powerups/05 money 02/0000.png';
+    ctx_ui_status.drawImage(image_money,  0, 0, 100, 100)
+    ctx_ui_status.fillText("$"+this.m_money, 100, 50,  c.height - 60);
+
+    //showing player health Levels
+    ctx_ui_status.fillStyle = "red";
+    ctx_ui_status.font = "30px Roboto Mono";
+    ctx_ui_status.fillRect(0, 100, c.width, 25);
+    
+    //green
+    ctx_ui_status.fillStyle = "green";
+    ctx_ui_status.font = "30px Roboto Mono";
+    ctx_ui_status.fillRect(0, 100, c.width - 400, 25);
+//Showing health amount.
+    ctx_ui_status.fillStyle = "white";
+    ctx_ui_status.font = "40px Roboto Mono";
+    ctx_ui_status.fillText("100"+this.m_money, c.width + 10, 125, c.height - 60);
+
+
+    //Showing player Energy Levels
+
+}
+
 
 update(animation_Sparks_low, animation_Sparks_high, thruster_animation, player_death_explosionAnimation){
 this.draw();
@@ -304,7 +328,13 @@ this.energy();
 this.playerMovemements();
 this.playerEffectSparks(animation_Sparks_low, animation_Sparks_high);
 this.playerDeathExplosion(player_death_explosionAnimation);
+
+
+//UI Status
+this.playerStatus();
 this.showPlayerMoney();
+
+//UI STORAGE
 this.showPlayerHealth();
 this.showPlayerEnergy();
     }

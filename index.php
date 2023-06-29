@@ -6,15 +6,16 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
 
-
+<!-- Canvas -->
 <div style="width:100%; height: 100%;">
     <div style="width: fit-content;height: fit-content;margin: 0 auto;">
-        <canvas style="border: solid 1px white;" id="canvasUILifeBar" class="canvasUILifeBar"></canvas><br>
+        <canvas style="border: solid 1px white;background: #0f0e0e;" id="canvasUILifeBar" class="canvasUILifeBar"></canvas><br>
         <canvas style="border: solid 1px white;" id="canvasGame" class="canvasGame"></canvas>
-        <canvas style="border: solid 1px white;" id="canvasUI" class="canvasUI"></canvas>
+        <canvas style="border: solid 1px white;background: #0f0e0e;" id="canvasUI" class="canvasUI"></canvas>
     </div>
 </div>
 
+<!-- js Files  -->
 <script src="./gameClass/powerups.js"></script>
 <script src="./gameClass/sprites.js"></script>
 <script src="./gameClass/functions.js"></script>
