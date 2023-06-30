@@ -166,6 +166,8 @@ function buffer(){
     //GAME 
     gameFrame ++;
     ctx.clearRect(0,0,c.width, c.height)
+    ctx_ui.clearRect(0,0,c_ui.width, c_ui.height)
+    ctx_ui_status.clearRect(0,0,c_ui_status.width, c_ui_status.height)
 
 ctx.font = "90px Roboto Mono";
 ctx.fillStyle = "white";
@@ -180,16 +182,16 @@ if(true){
   
   map_one[6].drawStars(1, 1); // background image
   if(gameFrame > 400){
-    // if(gameFrame > 1500){
-    // map_one[7].drawPlanet(2, 3);
-//     map_one[5].drawPlanet(1, 2);
-//     map_one[4].drawPlanet(1, 1);
-//     }
-//     if(gameFrame > 800){
-//     map_one[0].drawNebulas(5);
-//     map_one[1].drawNebulasBlue(2);
-//     map_one[2].drawNebulaMulti(2);
-//     }
+    if(gameFrame > 1500){
+    map_one[7].drawPlanet(2, 3);
+    map_one[5].drawPlanet(1, 2);
+    map_one[4].drawPlanet(1, 1);
+    }
+    if(gameFrame > 800){
+    map_one[0].drawNebulas(5);
+    map_one[1].drawNebulasBlue(2);
+    map_one[2].drawNebulaMulti(2);
+    }
 //     if(gameFrame > 600){
 //     // map_one[8].asteroids(10);
 //     // map_one[9].asteroids(10);

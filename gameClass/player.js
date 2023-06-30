@@ -33,6 +33,11 @@ class Player {
         staggerFrame : 0
     }
 
+    this.storage = {
+        energy : 400,
+        health : 500
+    }
+
     this.m_money =
     this.count = 0;
     this.width = 100;
@@ -272,22 +277,22 @@ showPlayerMoney(){
 
 showPlayerHealth(){
     const health_images = new Image();
-    ctx_ui.fillStyle = "white";
     ctx_ui.font = "30px Roboto Mono";
-    ctx_ui.fillText("Money", c.width - 300, 100)
     health_images.src = 'assets/space_assets/10. Powerups/01 health 02/0000.png',
     ctx_ui.drawImage(health_images, 0, 0, 100, 100)
-    ctx_ui.fillText("H+U: "+this.m_money, 100, 100)
+
+    ctx_ui.fillStyle = "white";
+    ctx_ui.fillText(this.storage.health, 0, 100)
 }
 
 showPlayerEnergy(){
     const health_images = new Image();
-    ctx_ui.fillStyle = "white";
     ctx_ui.font = "30px Roboto Mono";
-    ctx_ui.fillText("Money", c.width - 300, 100)
     health_images.src = 'assets/space_assets/10. Powerups/03 flash 02/0000.png',
-    ctx_ui.drawImage(health_images,  400, c.height - 150, 100, 100)
-    ctx_ui.fillText("H+E: "+this.m_money, 450, c.height - 60)
+    ctx_ui.drawImage(health_images, 0, 100, 100, 100)
+
+    ctx_ui.fillStyle = "white";
+    ctx_ui.fillText(this.storage.energy, 0, 200)
 }
 
 playerStatus(){
@@ -297,24 +302,41 @@ playerStatus(){
     ctx_ui_status.font = "30px Roboto Mono";
     image_money.src = 'assets/space_assets/10. Powerups/05 money 02/0000.png';
     ctx_ui_status.drawImage(image_money,  0, 0, 100, 100)
-    ctx_ui_status.fillText("$"+this.m_money, 100, 50,  c.height - 60);
+    ctx_ui_status.fillText("$"+this.m_money, 100, 50,  c_ui_status.height - 60);
 
+   
     //showing player health Levels
-    ctx_ui_status.fillStyle = "red";
+    ctx_ui_status.fillStyle = "red"; 
+ 
     ctx_ui_status.font = "30px Roboto Mono";
-    ctx_ui_status.fillRect(0, 100, c.width, 25);
+    ctx_ui_status.fillRect(25, 100, c.width, 25);
     
     //green
     ctx_ui_status.fillStyle = "green";
     ctx_ui_status.font = "30px Roboto Mono";
-    ctx_ui_status.fillRect(0, 100, c.width - 400, 25);
+    ctx_ui_status.fillRect(25, 100, Math.round((this.body.health / this.health_total) * c.width), 25);
 //Showing health amount.
     ctx_ui_status.fillStyle = "white";
     ctx_ui_status.font = "40px Roboto Mono";
-    ctx_ui_status.fillText("100"+this.m_money, c.width + 10, 125, c.height - 60);
+    ctx_ui_status.fillText(this.body.health, c.width + 30, 125, c_ui_status.height - 60);
 
 
     //Showing player Energy Levels
+
+ 
+  //showing player health Levels
+  ctx_ui_status.fillStyle = "gray";
+  ctx_ui_status.font = "30px Roboto Mono";
+  ctx_ui_status.fillRect(25, 150, c.width, 25);
+  
+  //green
+  ctx_ui_status.fillStyle = "blue";
+  ctx_ui_status.font = "30px Roboto Mono";
+  ctx_ui_status.fillRect(25, 150, Math.round((this.body.energy / this.total_energy) * c.width), 25);
+//Showing health amount.
+  ctx_ui_status.fillStyle = "white";
+  ctx_ui_status.font = "40px Roboto Mono";
+  ctx_ui_status.fillText(this.body.energy, c.width + 30, 176, c_ui_status.height - 60);
 
 }
 
@@ -332,7 +354,6 @@ this.playerDeathExplosion(player_death_explosionAnimation);
 
 //UI Status
 this.playerStatus();
-this.showPlayerMoney();
 
 //UI STORAGE
 this.showPlayerHealth();
