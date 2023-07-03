@@ -6,8 +6,8 @@ class Background extends Animation{
         y : posy
     },
     this.velocity = {
-        x : 500,
-        y : 500
+        x : 0,
+        y : 0
     }
     this.countingBackground  = 0;
     this.gameFramee = 0;

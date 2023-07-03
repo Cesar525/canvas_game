@@ -1,17 +1,17 @@
 class shots extends Animation{
     constructor(){
 super();
-    this.shotOne = {
+    this.position = {
         x : 0,
         y : 0
     }
     this.velocity = {
-        x : 10,
-        y : 10
+        x : 1,
+        y : 1
     }
 
-    this.width = 50;
-    this.height = 100;
+    this.width = 100;
+    this.height = 200;
     this.clearRect = false;
 
     this.collition = {
@@ -22,12 +22,12 @@ super();
     }
 
 this.m_damage = 0;
-this.calibrating_starting_posx = 25;
-this.calibrating_starting_posy = 25;
-this.bullet_image = 1;
+this.calibrating_starting_posx = 0;
+this.calibrating_starting_posy = 0;
+this.bullet_image = 3;
 this.damages_total = 0;
 
-this.hiteffect = 7
+this.hiteffect = 2
 this.shot_angle = 0;
 this.random = true;
 this.randomNum;
@@ -71,7 +71,7 @@ shotsCreation(player, direction){
     if(this.position.y <  - this.height){
     this.position.y = player.position.y - this.calibrating_starting_posy;
     this.position.x =  this.calibrating_starting_posx + player.position.x;
-            }   
+        }   
     }
 }
 
@@ -162,10 +162,11 @@ setDamageNumberColor(color){ this.DamageShowingcolorDefault = color;}
 
 shot(player){
 //single missile
+console.log("reading");
 this.setDamageNumberColor("red");
 var totalDamage = player.body.m_damage + this.m_damage;
 this.damages_total = this.randomHit(1, totalDamage);
-this.shotsCreation(player,this.shot_angle);
+this.shotsCreation(player,0);
 this.damage_effect = this.hiteffect;
 }
 
