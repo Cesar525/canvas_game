@@ -35,11 +35,11 @@ class Player {
 
     this.storage = {
         energy : 400,
-        health : 500
+        health : 500,
+        money : 0
     }
 
-    this.m_money =
-    this.count = 0;
+
     this.width = 100;
     this.height = 100;
     this.health_total = get_health;
@@ -302,7 +302,7 @@ playerStatus(){
     ctx_ui_status.font = "30px Roboto Mono";
     image_money.src = 'assets/space_assets/10. Powerups/05 money 02/0000.png';
     ctx_ui_status.drawImage(image_money,  0, 0, 100, 100)
-    ctx_ui_status.fillText("$"+this.m_money, 100, 50,  c_ui_status.height - 60);
+    ctx_ui_status.fillText("$"+this.storage.money, 100, 50,  c_ui_status.height - 60);
 
    
     //showing player health Levels

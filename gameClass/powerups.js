@@ -10,8 +10,8 @@ constructor(posx, posy, type){
         m_sprite : NaN
     }
     this.velocity = {
-        y : 5,
-        x : 5
+        y : 0,
+        x : 0
     }
     this.collision ={
         collision_posX : NaN,
@@ -174,7 +174,7 @@ energy(player, effect_taken ){
                 this.collision.collision_posX = this.position.x;
                 this.collision.collision_posY = this.position.y;
                 this.powerUp_taken = true;
-                player.m_money += money_points;     
+                player.storage.money += money_points;     
                 this.clearItems();
           }
           if(this.powerUp_taken){

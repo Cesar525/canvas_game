@@ -1,7 +1,7 @@
 class shots extends Animation{
     constructor(){
 super();
-    this.position = {
+    this.shotOne = {
         x : 0,
         y : 0
     }
@@ -54,9 +54,12 @@ this.staggerFrame = 10
 }
 
 bullethitmonsters(){return this.collition.shot_collided;}
+getDamageHit(){return this.damagesHit;}
+getGunDamage(){return this.m_damage;};
+setDamageHit(damagehit){this.damagesHit = damagehit;}
 
 shotsCreation(player, direction){
-    
+
    if(!this.clearRect){
     this.shotDirectionUp(direction);
     const shotimage = new Image()
@@ -79,11 +82,8 @@ randomHit(from, to){
 
 
 
-setDamageHit(damagehit){
-    this.damagesHit = damagehit;
-}
-getDamageHit(){return this.damagesHit;}
-getGunDamage(){return this.m_damage;};
+
+
 shotDirectionUp(direction){
 
     //moving the shot to the left
