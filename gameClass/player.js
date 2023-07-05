@@ -39,7 +39,7 @@ class Player {
         money : 0
     }
 
-this.gun_on = new shots(0, 0, 1, 0, 7, 100, 0);
+this.gun_on = new shots(0, 0, 1, 0, 7, 5, 0);
 this.explosionn = new Animation();
 this.explosionn2 = new Animation();
 
@@ -103,6 +103,9 @@ playerOnDeath(){
     if(!this.playerDead){
 if(this.body.health == 0){
     console.log("player is dead.");
+
+
+
     this.body.deathPositionX =  this.position.x;
     this.body.deathPositionY = this.position.y;
     this.playerDead = true;
@@ -115,7 +118,17 @@ if(this.body.health == 0){
 
 };
 };
+
+if(this.playerDead){
+        ctx.fillStyle = "white";
+        ctx.font = "90px Roboto Mono"
+ctx.fillText("player is dead.",c.width / 2 - 00 , c.height / 2)
+
+}
+
 };
+
+
 
 lifeBar(){
     //const lifebar = new Image();

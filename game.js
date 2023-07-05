@@ -64,20 +64,20 @@ const animation_TESTING = new Animation();
 //players
 //CREATING A PLAYER Player(name, level, thruster_selection, get_health, energy, m_damage,  gunType, posx, posy, gun_speed)
 const players = [
-  new Player("PLAYER ONE", 1230,  6, 100, 400, 50, 1, 100, 900, 30),
+  new Player("PLAYER ONE", 1230,  6, 100, 400, 1, 1, 100, 900, 50),
 ]
 //Monsters
 //CREATING A MONSTERS Monstrs( id, sprite,  pos_x, pos_y, health, name, speed, color, movements, s_width, s_height, damage)
 const monsters = [  
    new Monsters(2, asteroid_one,  500, 500 , 5000000, "Asteroid", 1, "orange", "none", 100, 100, 2),
-  //  new Monsters(2, asteroid_two,  400, 100 , 50, "Asteroid", 1, "orange", "straightDown", 200, 200, 2),
-  //  new Monsters(2, asteroid_two,  400, 100 , 50, "Asteroid", 1, "orange", "straightDown", 200, 200, 2),
-  //  new Monsters(2, asteroid_two,  400, 100 , 50, "Asteroid", 1, "orange", "straightDown", 200, 200, 2),
-  //  new Monsters(2, asteroid_two,  400, 100 , 50, "Asteroid", 1, "orange", "straightDown", 200, 200, 2),
-  //  new Monsters(2, asteroid_two,  400, 100 , 50, "Asteroid", 1, "orange", "straightDown", 200, 200, 2),
-  //  new Monsters(2, asteroid_two,  400, 100 , 50, "Asteroid", 1, "orange", "straightDown", 200, 200, 2),
-  //  new Monsters(2, asteroid_two,  400, 100 , 50, "Asteroid", 1, "orange", "straightDown", 200, 200, 2),
-  //  new Monsters(2, asteroid_two,  400, 100 , 50, "Asteroid", 1, "orange", "straightDown", 200, 200, 2),
+   new Monsters(2, asteroid_two,  400, 100 , 50, "Asteroid", 1, "orange", "straightDown", 200, 200, 2),
+   new Monsters(2, asteroid_two,  400, 100 , 50, "Asteroid", 1, "orange", "straightDown", 200, 200, 2),
+   new Monsters(2, asteroid_two,  400, 100 , 50, "Asteroid", 1, "orange", "straightDown", 200, 200, 2),
+   new Monsters(2, asteroid_two,  400, 100 , 50, "Asteroid", 1, "orange", "straightDown", 200, 200, 2),
+   new Monsters(2, asteroid_two,  400, 100 , 50, "Asteroid", 1, "orange", "straightDown", 200, 200, 2),
+   new Monsters(2, asteroid_two,  400, 100 , 50, "Asteroid", 1, "orange", "straightDown", 200, 200, 2),
+   new Monsters(2, asteroid_two,  400, 100 , 50, "Asteroid", 1, "orange", "straightDown", 200, 200, 2),
+   new Monsters(2, asteroid_two,  400, 100 , 50, "Asteroid", 1, "orange", "straightDown", 200, 200, 2),
   //  new Monsters(2, asteroid_two,  400, 100 , 50, "Asteroid", 1, "orange", "straightDown", 200, 200, 2),
   //  new Monsters(2, asteroid_two,  400, 100 , 50, "Asteroid", 1, "orange", "straightDown", 200, 200, 2),
   //  new Monsters(2, asteroid_two,  400, 100 , 50, "Asteroid", 1, "orange", "straightDown", 200, 200, 2),
