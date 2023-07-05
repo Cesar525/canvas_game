@@ -1,13 +1,13 @@
 class shots extends Animation{
-    constructor(){
+    constructor(start_posx, start_posy, shotype, shotdirection, explosion_type, shot_damage, shot_speed){
 super();
     this.position = {
         x : 0,
         y : 0
     }
     this.velocity = {
-        x : 1,
-        y : 1
+        x : shot_speed,
+        y : shot_speed
     }
 
     this.width = 100;
@@ -21,14 +21,14 @@ super();
         collision_posy : NaN
     }
 
-this.m_damage = 0;
-this.calibrating_starting_posx = 0;
-this.calibrating_starting_posy = 0;
-this.bullet_image = 3;
-this.damages_total = 0;
+this.m_damage = shot_damage;
+this.calibrating_starting_posx = start_posx;
+this.calibrating_starting_posy = start_posy;
+this.bullet_image = shotype;
+this.damages_total = shot_damage;
 
-this.hiteffect = 2
-this.shot_angle = 0;
+this.hiteffect = explosion_type
+this.shot_direction = shotdirection;
 this.random = true;
 this.randomNum;
 this.damagesHit;

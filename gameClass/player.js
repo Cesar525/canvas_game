@@ -39,6 +39,9 @@ class Player {
         money : 0
     }
 
+this.gun_on = new shots(0, 0, 1, 0, 7, 100, 0);
+this.explosionn = new Animation();
+this.explosionn2 = new Animation();
 
     this.width = 100;
     this.height = 100;
@@ -51,7 +54,7 @@ class Player {
     this.clearRect = false;
     this.playerDead = false;
     this.showdeathexplosion;
-
+this.interval = false;
 
 
 //sparks animation
@@ -107,7 +110,9 @@ if(this.body.health == 0){
     this.position.x = NaN;
     this.position.y = NaN;
     this.clearRect = true;
+    
     return this.playerDead;
+
 };
 };
 };
@@ -339,9 +344,23 @@ playerStatus(){
   ctx_ui_status.fillText(this.body.energy, c.width + 30, 176, c_ui_status.height - 60);
 
 }
+shotting(){
 
+this.gun_on.updateShot(
+      this, 
+      this.explosionn,
+      this.explosionn2
+      )
+
+}
+
+
+shottingCollition(monster){
+ this.gun_on.collisionMonsterShot(monster);
+}
 
 update(animation_Sparks_low, animation_Sparks_high, thruster_animation, player_death_explosionAnimation){
+this.shotting();
 this.draw();
 thruster_animation.setPlayersThruster(this.body.thruster, this.position.x - this.thruster_position_x, this.position.y + this.thruster_position_y, this.thruster_size, this.thruster_size);       
 this.playerOnDeath();
@@ -350,7 +369,6 @@ this.energy();
 this.playerMovemements();
 this.playerEffectSparks(animation_Sparks_low, animation_Sparks_high);
 this.playerDeathExplosion(player_death_explosionAnimation);
-
 
 //UI Status
 this.playerStatus();
