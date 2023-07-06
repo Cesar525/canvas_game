@@ -17,6 +17,7 @@ class Player {
         thruster : thruster_selection,
         m_damage : m_damage,
         m_gun_type : gunType,
+        gun_set : gunType,
         m_gun_speed : gun_speed,
         deathPositionX : NaN,
         deathPositionY : NaN,
@@ -53,6 +54,8 @@ class Player {
     this.showdeathexplosion;
 this.interval = false;
 
+
+//GUNS--------------
 //Gun one
 if(this.body.m_gun_type == 1){
     this.gun_on = [
@@ -68,15 +71,16 @@ if(this.body.m_gun_type == 1){
       ];
 }
 
+
 //Gun 10
-if(this.body.m_gun_type == 10){
+if(this.body.m_gun_type == 10 && this.body.energy > 0){
     var gun_damage = 10
     this.gun_on = [
-        new shots(-60, 0, 3, 0, 6, gun_damage, 0), 
-        new shots(60, 0, 3, 0, 6, gun_damage, 0), 
-        new shots(0, 0, 4, 0, 6, gun_damage, 0),
-        new shots(0, 0, 10, 3, 6, gun_damage, 0),
-        new shots(0, 0, 10, -3, 6, gun_damage, 0),
+        new shots(-60, 0, 3, 0, 6, gun_damage, 0, 2), 
+        new shots(60, 0, 3, 0, 6, gun_damage, 0, 2), 
+        new shots(0, 0, 4, 0, 6, gun_damage, 0, 2),
+        new shots(0, 0, 10, 3, 6, gun_damage, 0, 2),
+        new shots(0, 0, 10, -3, 6, gun_damage, 0, 2),
     ];
     this.explosionn = [new Animation(),new Animation(),new Animation(), new Animation(), new Animation()];
     this.explosionn2 = [new Animation(),new Animation(),new Animation(), new Animation(), new Animation()];
@@ -266,6 +270,14 @@ this.position.y =  0
 
 }
 
+energyUsage(){
+    if(this.body.energy <= 0){
+        this.body.m_gun_type = 1
+    }else{
+        this.body.m_gun_type = this.body.gun_set;
+    }
+}
+
 energy(){
     //const lifebar = new Image();
 
@@ -402,7 +414,10 @@ this.gun_on[counting_updating].updateShot(
 
 shottingCollition(monster){
     for(var countingss = 0; countingss < this.gun_on.length; countingss++){
- this.gun_on[countingss].collisionMonsterShot(monster);
+ if(this.gun_on[countingss].collisionMonsterShot(monster)){
+    this.body.energy -= this.gun_on[countingss].shot_energy_usage;
+ }
+ 
 }
 }
 
@@ -423,5 +438,6 @@ this.playerStatus();
 //UI STORAGE
 this.showPlayerHealth();
 this.showPlayerEnergy();
+this.energyUsage()
     }
     }

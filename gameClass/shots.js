@@ -1,5 +1,5 @@
 class shots extends Animation{
-    constructor(start_posx, start_posy, shotype, shotdirection, explosion_type, shot_damage, shot_speed){
+    constructor(start_posx, start_posy, shotype, shotdirection, explosion_type, shot_damage, shot_speed, energy_usage){
 super();
     this.position = {
         x : 0,
@@ -13,6 +13,7 @@ super();
     this.width = 100;
     this.height = 200;
     this.clearRect = false;
+    this.shot_energy_usage = energy_usage;
 
     this.collition = {
         shot_collided_with_monster : false,
@@ -215,7 +216,6 @@ if(if_true){this.showDamage = true;}
             ctx.font = "40px anton";
             ctx.fillText("-"+ damage, pos_x , pos_y);
             ctx.strokeText("-" + damage, pos_x, pos_y);
-                    
         } 
         if(this.gameFrameDamageAnimation >= 300){
                     this.showDamage = false;
@@ -223,6 +223,7 @@ if(if_true){this.showDamage = true;}
                     this.animationSlowsGoesUp = 0
                 }
         }
+
 
 collisionMonsterShot(monsters){
                     // collision monster to shot
