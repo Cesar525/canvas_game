@@ -39,9 +39,6 @@ class Player {
         money : 0
     }
 
-this.gun_on = new shots(0, 0, 1, 0, 7, 5, 0);
-this.explosionn = new Animation();
-this.explosionn2 = new Animation();
 
     this.width = 100;
     this.height = 100;
@@ -55,6 +52,15 @@ this.explosionn2 = new Animation();
     this.playerDead = false;
     this.showdeathexplosion;
 this.interval = false;
+
+
+this.gun_on = [
+    new shots(-60, 0, 3, 0, 6, 5, 0), 
+    new shots(60, 0, 3, 0, 6, 5, 0), 
+    new shots(0, 0, 9, 0, 6, 5, 0),
+];
+this.explosionn = [new Animation(),new Animation(),new Animation(), new Animation()];
+this.explosionn2 = [new Animation(),new Animation(),new Animation(), new Animation()];
 
 
 //sparks animation
@@ -122,7 +128,7 @@ if(this.body.health == 0){
 if(this.playerDead){
         ctx.fillStyle = "white";
         ctx.font = "90px Roboto Mono"
-ctx.fillText("player is dead.",c.width / 2 - 00 , c.height / 2)
+ctx.fillText("player is dead.",c.width / 2 , c.height / 2)
 
 }
 
@@ -358,18 +364,25 @@ playerStatus(){
 
 }
 shotting(){
-
-this.gun_on.updateShot(
+for(var counting_updating = 0 ; counting_updating < this.gun_on.length; counting_updating++){
+this.gun_on[counting_updating].updateShot(
       this, 
-      this.explosionn,
-      this.explosionn2
+      this.explosionn[counting_updating],
+      this.explosionn2[counting_updating]
       )
 
+    //   if(this.gun_on[counting_updating].clearRect && !this.gun_on[counting_updating].explosion_animation_status){
+    //     this.gun_on.splice(counting_updating , 1)
+    //     console.log("taken off");
+    //   }
+}
 }
 
 
 shottingCollition(monster){
- this.gun_on.collisionMonsterShot(monster);
+    for(var countingss = 0; countingss < this.gun_on.length; countingss++){
+ this.gun_on[countingss].collisionMonsterShot(monster);
+}
 }
 
 update(animation_Sparks_low, animation_Sparks_high, thruster_animation, player_death_explosionAnimation){

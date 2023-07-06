@@ -20,7 +20,7 @@ super();
         collision_posx : NaN,
         collision_posy : NaN
     }
-
+this.explosion_animation_status;
 this.m_damage = shot_damage;
 this.calibrating_starting_posx = start_posx;
 this.calibrating_starting_posy = start_posy;
@@ -166,7 +166,7 @@ console.log("reading");
 this.setDamageNumberColor("red");
 var totalDamage = player.body.m_damage + this.m_damage;
 this.damages_total = this.randomHit(1, totalDamage);
-this.shotsCreation(player,0);
+this.shotsCreation(player,this.shot_direction);
 this.damage_effect = this.hiteffect;
 }
 
@@ -186,6 +186,7 @@ bulletHitMonsterEffect(explosion_one, explosion_two, posx, posy,collition,hiteff
     var animationTwo;
    
     explosion_one.explosionEffect(hiteffect,posx - 100, posy - 100, collition, speed);
+    this.explosion_animation_status =  explosion_one.getAnimationStatus();
     if(explosion_one.getAnimationStatus() && collition){
      explosion_two.reset();
     animationTwo = true;
