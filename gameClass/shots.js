@@ -20,14 +20,13 @@ super();
         collision_posx : NaN,
         collision_posy : NaN
     }
-this.explosion_animation_status;
 this.m_damage = shot_damage;
 this.calibrating_starting_posx = start_posx;
 this.calibrating_starting_posy = start_posy;
 this.bullet_image = shotype;
 this.damages_total = shot_damage;
 
-this.hiteffect = explosion_type
+this.hiteffect = explosion_type;
 this.shot_direction = shotdirection;
 this.random = true;
 this.randomNum;
@@ -35,7 +34,7 @@ this.damagesHit;
 this.damage_effect;
 this.gameFrameDamageAnimation = 0;
 this.gameFrame = 0;
-this.staggerFrame = 10
+this.staggerFrame = 10;
 
     this.counter = 0;
     // here we add all guns images sprites
@@ -160,6 +159,7 @@ if(this.getCollitionWithMonster()){
 getDamageNumberColor(){return this.DamageShowingcolorDefault;};
 setDamageNumberColor(color){ this.DamageShowingcolorDefault = color;}
 
+
 shot(player){
 //single missile
 console.log("reading");
@@ -186,11 +186,19 @@ bulletHitMonsterEffect(explosion_one, explosion_two, posx, posy,collition,hiteff
     var animationTwo;
    
     explosion_one.explosionEffect(hiteffect,posx - 100, posy - 100, collition, speed);
-    this.explosion_animation_status =  explosion_one.getAnimationStatus();
+    
+    
+ 
     if(explosion_one.getAnimationStatus() && collition){
      explosion_two.reset();
     animationTwo = true;
      }
+
+if(!explosion_one.getAnimationStatus()){
+    this.explosion_animation_status = false
+}else{
+    this.explosion_animation_status = true;
+}
 
       explosion_two.explosionEffect(hiteffect, posx - 100, posy - 100, animationTwo, speed);
 }

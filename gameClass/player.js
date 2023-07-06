@@ -53,14 +53,34 @@ class Player {
     this.showdeathexplosion;
 this.interval = false;
 
+//Gun one
+if(this.body.m_gun_type == 1){
+    this.gun_on = [
+        new shots(0, 0, 1, 1, 6, 5, 0)
+    ];
 
-this.gun_on = [
-    new shots(-60, 0, 3, 0, 6, 5, 0), 
-    new shots(60, 0, 3, 0, 6, 5, 0), 
-    new shots(0, 0, 9, 0, 6, 5, 0),
-];
-this.explosionn = [new Animation(),new Animation(),new Animation(), new Animation()];
-this.explosionn2 = [new Animation(),new Animation(),new Animation(), new Animation()];
+    this.explosionn = [
+        new Animation(),
+      ];
+
+    this.explosionn2 = [
+        new Animation(),
+      ];
+}
+
+//Gun 10
+if(this.body.m_gun_type == 10){
+    var gun_damage = 10
+    this.gun_on = [
+        new shots(-60, 0, 3, 0, 6, gun_damage, 0), 
+        new shots(60, 0, 3, 0, 6, gun_damage, 0), 
+        new shots(0, 0, 4, 0, 6, gun_damage, 0),
+        new shots(0, 0, 10, 3, 6, gun_damage, 0),
+        new shots(0, 0, 10, -3, 6, gun_damage, 0),
+    ];
+    this.explosionn = [new Animation(),new Animation(),new Animation(), new Animation(), new Animation()];
+    this.explosionn2 = [new Animation(),new Animation(),new Animation(), new Animation(), new Animation()];
+}
 
 
 //sparks animation
@@ -128,10 +148,8 @@ if(this.body.health == 0){
 if(this.playerDead){
         ctx.fillStyle = "white";
         ctx.font = "90px Roboto Mono"
-ctx.fillText("player is dead.",c.width / 2 , c.height / 2)
-
-}
-
+    ctx.fillText("player is dead.",c.width / 2 , c.height / 2)
+    }
 };
 
 
@@ -364,6 +382,7 @@ playerStatus(){
 
 }
 shotting(){
+
 for(var counting_updating = 0 ; counting_updating < this.gun_on.length; counting_updating++){
 this.gun_on[counting_updating].updateShot(
       this, 
@@ -371,10 +390,12 @@ this.gun_on[counting_updating].updateShot(
       this.explosionn2[counting_updating]
       )
 
-    //   if(this.gun_on[counting_updating].clearRect && !this.gun_on[counting_updating].explosion_animation_status){
+
+
+    //   if(this.gun_on[counting_updating].clearRect){
     //     this.gun_on.splice(counting_updating , 1)
     //     console.log("taken off");
-    //   }
+    // }
 }
 }
 
