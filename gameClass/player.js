@@ -40,6 +40,7 @@ class Player {
         money : 0
     }
 
+    this.shotting_interval = 0;
 
     this.width = 100;
     this.height = 100;
@@ -52,29 +53,28 @@ class Player {
     this.clearRect = false;
     this.playerDead = false;
     this.showdeathexplosion;
-this.interval = false;
+    this.interval = false;
 
 
 //GUNS--------------
 //Gun one
-if(this.body.m_gun_type == 1){
-    this.gun_on = [
-        new shots(0, 0, 1, 1, 6, 5, 0)
-    ];
 
-    this.explosionn = [
-        new Animation(),
-      ];
+    // this.gun_on = [
+    //     new shots(0, 0, 1, 0, 6, 5, 0, 10)
+    // ];
 
-    this.explosionn2 = [
-        new Animation(),
-      ];
-}
+    // this.explosionn = [
+    //     new Animation(),
+    //   ];
+
+    // this.explosionn2 = [
+    //     new Animation(),
+    //   ];
+
 
 
 //Gun 10
-if(this.body.m_gun_type == 10 && this.body.energy > 0){
-    var gun_damage = 10
+var gun_damage = 10;
     this.gun_on = [
         new shots(-60, 0, 3, 0, 6, gun_damage, 0, 2), 
         new shots(60, 0, 3, 0, 6, gun_damage, 0, 2), 
@@ -82,15 +82,15 @@ if(this.body.m_gun_type == 10 && this.body.energy > 0){
         new shots(0, 0, 10, 3, 6, gun_damage, 0, 2),
         new shots(0, 0, 10, -3, 6, gun_damage, 0, 2),
     ];
+
     this.explosionn = [new Animation(),new Animation(),new Animation(), new Animation(), new Animation()];
     this.explosionn2 = [new Animation(),new Animation(),new Animation(), new Animation(), new Animation()];
-}
 
 
 //sparks animation
 this.gameFrame_sparks = 0;
 this.staggerFrame_sparks = 1;
-    
+
 }
 getPlayerPosX(){ return this.position.x; };
 getPlayerPosY(){return this.position.y; };
@@ -226,10 +226,7 @@ reset(){
     this.staggerFrame = 1;
 }
 
-playerGun(gun){
 
-const playerGun = [];
-}
 
 playerMovemements(){
         // player movements
@@ -273,6 +270,7 @@ this.position.y =  0
 energyUsage(){
     if(this.body.energy <= 0){
         this.body.m_gun_type = 1
+
     }else{
         this.body.m_gun_type = this.body.gun_set;
     }
@@ -404,10 +402,7 @@ this.gun_on[counting_updating].updateShot(
 
 
 
-    //   if(this.gun_on[counting_updating].clearRect){
-    //     this.gun_on.splice(counting_updating , 1)
-    //     console.log("taken off");
-    // }
+
 }
 }
 
@@ -416,9 +411,8 @@ shottingCollition(monster){
     for(var countingss = 0; countingss < this.gun_on.length; countingss++){
  if(this.gun_on[countingss].collisionMonsterShot(monster)){
     this.body.energy -= this.gun_on[countingss].shot_energy_usage;
- }
- 
-}
+     }
+    }
 }
 
 update(animation_Sparks_low, animation_Sparks_high, thruster_animation, player_death_explosionAnimation){
@@ -434,10 +428,13 @@ this.playerDeathExplosion(player_death_explosionAnimation);
 
 //UI Status
 this.playerStatus();
-
+if(keys.shotting.pressed){
+    console.log("key has been pressed");
+}
 //UI STORAGE
 this.showPlayerHealth();
 this.showPlayerEnergy();
 this.energyUsage()
+console.log(this.body.m_gun_type);
     }
     }

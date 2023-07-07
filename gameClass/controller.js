@@ -57,6 +57,9 @@ addEventListener("keydown", function ({keyCode}){
           case 39 :
           keys.right.pressed = false;
           break;
+          case 83 :
+            keys.shotting.pressed = false;
+            break;
       }
       
   });
