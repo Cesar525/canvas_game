@@ -57,22 +57,6 @@ class Player {
 
 
 //GUNS--------------
-//Gun one
-
-    // this.gun_on = [
-    //     new shots(0, 0, 1, 0, 6, 5, 0, 10)
-    // ];
-
-    // this.explosionn = [
-    //     new Animation(),
-    //   ];
-
-    // this.explosionn2 = [
-    //     new Animation(),
-    //   ];
-
-
-
 //Gun 10
 var gun_damage = 10;
     this.gun_on = [
@@ -399,10 +383,6 @@ this.gun_on[counting_updating].updateShot(
       this.explosionn[counting_updating],
       this.explosionn2[counting_updating]
       )
-
-
-
-
 }
 }
 

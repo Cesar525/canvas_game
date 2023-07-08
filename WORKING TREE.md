@@ -20,3 +20,9 @@ Wokring on --
 11) set the game multiplayer setting.
 
 
+///Currently doing wiht guns.
+
+control system for shotting.
+1) shotting can only be done by pressing "S" button.
+if the button is left pressed the it will contitnue shotting but with an interval set.
+every bullet has an interval time to shot.
