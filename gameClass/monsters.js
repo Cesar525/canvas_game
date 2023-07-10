@@ -56,13 +56,6 @@ this.drop_item = false;
 this.give_number = true;
 }
 
-reset(){
-        this.frameX = 0;
-        this.frameY = 0;
-        this.gameFrame = 0;
-        this.staggerFrame = 1;
-    }
-
 getHealth(){return this.body.health;};
 
 drawMonster(sprite_animation){

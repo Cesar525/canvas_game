@@ -109,16 +109,13 @@ setPlayerVelocity(velocity){
     this.velocity.x = velocity;
     this.velocity.y = velocity;
 }
-playerGetDamage(health_){ this.body.health -= health_;};
+setPlayerDamage(health_){ this.body.health -= health_;};
 getPlayerHealth(){return this.body.health;};
 
 
 playerOnDeath(){
     if(!this.playerDead){
 if(this.body.health == 0){
-    console.log("player is dead.");
-
-
 
     this.body.deathPositionX =  this.position.x;
     this.body.deathPositionY = this.position.y;
@@ -196,21 +193,12 @@ playerCollitionMonsters(monsters){
     if(collisionTouch(this, monsters)){
    // if(Math.floor(this.frames.gameFrame/this.frames.staggerFrame) % 5 == 4){
       let damage = 1
-        this.playerGetDamage(damage); 
+        this.setPlayerDamage(damage); 
       console.log("you have been damage your current life is  = " + this.body.health);
         
  //  }
   }
   }
-
-reset(){
-    this.frameX = 0;
-    this.frameY = 0;
-    this.gameFrame = 0;
-    this.staggerFrame = 1;
-}
-
-
 
 playerMovemements(){
         // player movements
@@ -391,6 +379,7 @@ shottingCollition(monster){
     for(var countingss = 0; countingss < this.gun_on.length; countingss++){
  if(this.gun_on[countingss].collisionMonsterShot(monster)){
     this.body.energy -= this.gun_on[countingss].shot_energy_usage;
+    
      }
     }
 }

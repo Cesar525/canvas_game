@@ -163,19 +163,11 @@ setDamageNumberColor(color){ this.DamageShowingcolorDefault = color;}
 
 shot(player){
 //single missile
-console.log("reading");
 this.setDamageNumberColor("red");
 var totalDamage = player.body.m_damage + this.m_damage;
 this.damages_total = this.randomHit(1, totalDamage);
 this.shotsCreation(player,this.shot_direction);
 this.damage_effect = this.hiteffect;
-}
-
-reset(){
-    this.frameX = 0;
-    this.frameY = 0;
-    this.gameFrame = 0;
-    this.staggerFrame = 1;
 }
 
 getAnimationStatus(){
@@ -185,11 +177,7 @@ getAnimationStatus(){
 
 bulletHitMonsterEffect(explosion_one, explosion_two, posx, posy,collition,hiteffect, speed){
     var animationTwo;
-   
     explosion_one.explosionEffect(hiteffect,posx - 100, posy - 100, collition, speed);
-    
-    
- 
     if(explosion_one.getAnimationStatus() && collition){
      explosion_two.reset();
     animationTwo = true;
@@ -200,7 +188,6 @@ if(!explosion_one.getAnimationStatus()){
 }else{
     this.explosion_animation_status = true;
 }
-
       explosion_two.explosionEffect(hiteffect, posx - 100, posy - 100, animationTwo, speed);
 }
 
