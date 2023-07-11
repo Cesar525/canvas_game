@@ -58,6 +58,8 @@ class Player {
 
 //GUNS--------------
 //Gun 10
+
+
 var gun_damage = 10;
     this.gun_on = [
         new shots(-60, 0, 3, 0, 6, gun_damage, 0, 2), 
@@ -65,6 +67,7 @@ var gun_damage = 10;
         new shots(0, 0, 4, 0, 6, gun_damage, 0, 2),
         new shots(0, 0, 10, 3, 6, gun_damage, 0, 2),
         new shots(0, 0, 10, -3, 6, gun_damage, 0, 2),
+        
     ];
 
     this.explosionn = [new Animation(),new Animation(),new Animation(), new Animation(), new Animation()];
@@ -397,9 +400,7 @@ this.playerDeathExplosion(player_death_explosionAnimation);
 
 //UI Status
 this.playerStatus();
-if(keys.shotting.pressed){
-    console.log("key has been pressed");
-}
+
 //UI STORAGE
 this.showPlayerHealth();
 this.showPlayerEnergy();
