@@ -42,6 +42,7 @@ class Player {
 
     this.shotting_interval = 0;
 
+    this.shot = true;
     this.width = 100;
     this.height = 100;
     this.health_total = get_health;
@@ -251,7 +252,7 @@ energyUsage(){
     }
 }
 
-energy(){
+energyBar(){
     //const lifebar = new Image();
 
     if(Math.round((this.body.energy / this.total_energy) * 100) <= 50){
@@ -369,12 +370,14 @@ playerStatus(){
 shotting(){
 
 for(var counting_updating = 0 ; counting_updating < this.gun_on.length; counting_updating++){
+  
 this.gun_on[counting_updating].updateShot(
       this, 
       this.explosionn[counting_updating],
       this.explosionn2[counting_updating]
       )
 }
+
 }
 
 
@@ -388,12 +391,14 @@ shottingCollition(monster){
 }
 
 update(animation_Sparks_low, animation_Sparks_high, thruster_animation, player_death_explosionAnimation){
+
+
 this.shotting();
 this.draw();
 thruster_animation.setPlayersThruster(this.body.thruster, this.position.x - this.thruster_position_x, this.position.y + this.thruster_position_y, this.thruster_size, this.thruster_size);       
 this.playerOnDeath();
 this.lifeBar();
-this.energy();
+this.energyBar();
 this.playerMovemements();
 this.playerEffectSparks(animation_Sparks_low, animation_Sparks_high);
 this.playerDeathExplosion(player_death_explosionAnimation);
@@ -405,6 +410,6 @@ this.playerStatus();
 this.showPlayerHealth();
 this.showPlayerEnergy();
 this.energyUsage()
-console.log(this.body.m_gun_type);
+
     }
     }
