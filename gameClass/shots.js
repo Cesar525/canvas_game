@@ -150,7 +150,7 @@ clearingBulletOnceHit(){
     
 if(this.getCollitionWithMonster()){
     this.clearRect = true;
-    //console.log("Bullet banished..");
+    console.log("Bullet banished..");
     this.position.x = - 50;
     this.position.y = - 50;
     this.setCollitionWithMonster(false);

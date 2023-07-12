@@ -59,20 +59,30 @@ class Player {
 
 //GUNS--------------
 //Gun 10
-
-
+ this.shottingInterval = 0;
 var gun_damage = 10;
     this.gun_on = [
-        new shots(-60, 0, 3, 0, 6, gun_damage, 0, 2), 
-        new shots(60, 0, 3, 0, 6, gun_damage, 0, 2), 
         new shots(0, 0, 4, 0, 6, gun_damage, 0, 2),
-        new shots(0, 0, 10, 3, 6, gun_damage, 0, 2),
-        new shots(0, 0, 10, -3, 6, gun_damage, 0, 2),
-        
+      
     ];
 
     this.explosionn = [new Animation(),new Animation(),new Animation(), new Animation(), new Animation()];
     this.explosionn2 = [new Animation(),new Animation(),new Animation(), new Animation(), new Animation()];
+
+
+
+// var gun_damage = 10;
+//     this.gun_on = [
+//         new shots(-60, 0, 3, 0, 6, gun_damage, 0, 2), 
+//         new shots(60, 0, 3, 0, 6, gun_damage, 0, 2), 
+//         new shots(0, 0, 4, 0, 6, gun_damage, 0, 2),
+//         new shots(0, 0, 10, 3, 6, gun_damage, 0, 2),
+//         new shots(0, 0, 10, -3, 6, gun_damage, 0, 2),
+        
+//     ];
+
+//     this.explosionn = [new Animation(),new Animation(),new Animation(), new Animation(), new Animation()];
+//     this.explosionn2 = [new Animation(),new Animation(),new Animation(), new Animation(), new Animation()];
 
 
 //sparks animation
@@ -137,7 +147,7 @@ if(this.body.health == 0){
 if(this.playerDead){
         ctx.fillStyle = "white";
         ctx.font = "90px Roboto Mono"
-    ctx.fillText("player is dead.",c.width / 2 , c.height / 2)
+    ctx.fillText("You are dead.",700 , c.height / 2)
     }
 };
 
