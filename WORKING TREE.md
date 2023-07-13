@@ -22,5 +22,6 @@ Wokring on --
 ///Currently doing wiht guns.
 
 control system for shotting. BUGS
-1) shotting need to have an interval when the button is pressed the button is not functional until 
-2) monsters arent Dropping Power ups propertly.
+1) shotting need to have an interval when the button is pressed the button is not functional until a couple seconds has passed to block bots
+2) monsters arent Dropping Power ups propertly. - Fixed
+3) when power is not taken and it pass the Canvas screen it should push itself out of the array.

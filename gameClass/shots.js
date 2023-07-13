@@ -152,7 +152,7 @@ clearingBulletOnceHit(){
     
 if(this.getCollitionWithMonster()){
     this.clearRect = true;
-    console.log("Bullet banished.. Hit Monsters!");
+   // console.log("Bullet banished.. Hit Monsters!");
     this.position.x = NaN;
     this.position.y = NaN;
     this.setCollitionWithMonster(false);
@@ -160,7 +160,7 @@ if(this.getCollitionWithMonster()){
 if(this.position.y < - this.height){
     this.position.x = NaN;
     this.position.y = NaN;
-    console.log("deleted");
+   // console.log("deleted");
 }
 
 }

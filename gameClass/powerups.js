@@ -27,8 +27,8 @@ this.powerUps_Selecting = {
 }
     this.m_type = type;
     this.look = NaN;
-    this.width = 150;
-    this.height = 150;
+    this.width = 100;
+    this.height = 100;
     this.clearItem = false;
     this.dropitem = false;
     this.gameFrame = 0;
@@ -85,6 +85,12 @@ selectingPowerUps(selecting_type){
 }
 }
 
+
+setDestroyPowerUps(set){
+this.destroyPush = set;
+}
+getDestroyPowerUps(){return this.destroyPush;}
+
 health(player, effect_taken){
 
 var health_points = 100;
@@ -112,7 +118,7 @@ var health_points = 100;
     if(this.powerUp_taken){
         effect_taken.spritePage("assets/capture_effects/capture_health/spritesheet.png", player.position.x - 65, player.position.y - 60, 11264, 512, 22, 1, 512, 512, 2, true, -300, -300);
         if(!effect_taken.getAnimationStatus()){
-            this.distroyPush = true;
+            this.setDestroyPowerUps(true);
             this.powerUp_taken = false;
         }
         this.healShowAnimation(health_points, player.getPlayerPosX() + 20, player.getPlayerPosY() + 100, "#8aff8a", this.powerUp_taken, "+");
@@ -147,7 +153,7 @@ energy(player, effect_taken ){
           if(this.powerUp_taken){
             effect_taken.spritePage("assets/capture_effects/capture_energy/spritesheet.png", player.position.x - 65, player.position.y - 60, 11264, 512, 22, 1, 512, 512, 2, true, -300, -300);
             if(!effect_taken.getAnimationStatus()){
-                this.distroyPush = true;
+              this.setDestroyPowerUps(true)
                 this.powerUp_taken = false;
             }
             }
@@ -180,7 +186,7 @@ energy(player, effect_taken ){
           if(this.powerUp_taken){
             effect_taken.spritePage("assets/capture_effects/capture_money/spritesheet2.png", player.position.x - 65, player.position.y - 60, 11264, 512, 22, 1, 512, 512, 2, true, -300, -300);
             if(!effect_taken.getAnimationStatus()){
-                this.distroyPush = true;
+                this.setDestroyPowerUps(true);
                 this.powerUp_taken = false;
             }
 

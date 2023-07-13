@@ -126,17 +126,17 @@ const monsters = [
    new Monsters(2, asteroid_one,  200, 200 , 100, "Asteroid", 1, "orange", "straightDown", 100, 100, 2),
   ];
 
-  //POWER UPS
+  //POWER UPS DROP
 const powerUp = [
-  new PowerUps(400, 100, "health"),
-  new PowerUps(700, 100, "money"),
-  new PowerUps(900, 100, "energy"),
+  //new PowerUps(400, 100, "health"),
+ // new PowerUps(700, 100, "money"),
+ // new PowerUps(900, 100, "energy"),
 ];
 
 const powerup_capture_effect = [];
-for(var f = 0; f < powerUp.length; f++){
-  powerup_capture_effect.push(new Animation());
-}
+// for(var f = 0; f < powerUp.length; f++){
+//   powerup_capture_effect.push(new Animation());
+// }
 
 
 
@@ -216,7 +216,9 @@ if(true){
 }
 map_one[3].drawStars(3, 2); // background image
   
-
+for(var f = 0; f < powerUp.length; f++){      
+  powerUp[f].updatePowerUps(players[0],powerup_capture_effect[f]);
+}
 
 //colliton Monsters wiht Players && Projectiles
 for(var m = 0; m < monsters.length; m++){
@@ -240,29 +242,18 @@ for(var m = 0; m < monsters.length; m++){
       powerUp[f].PowerUpcollisionWithPlayer(players[p]);
       if(powerUp[f].destroyPush){
         powerUp.splice(f, 1);
-      }
-      if(powerup_capture_effect[f].destroyPush){
         powerup_capture_effect.splice(f, 1);
       }
     }
- 
     players[p].update(
       sparks_low[p], 
       sparks_high[p], 
       thruster_animation[p], 
       deathExplosionAnimation[p]
       ); 
-      // projectiles[p].updateShot(
-      //   players[p], 
-      //   explosion_1[p], 
-      //   explosion_2[p]
-        
-      //   )
-   
+
   }
-   for(var f = 0; f < powerUp.length; f++){      
-      powerUp[f].updatePowerUps(players[0],powerup_capture_effect[f]);
-    }
+ 
 player_shield_effect_one[0].updateshield(players[0]);
   //animation_TESTING.spriteProccessor(taken_money, 2, players[0].position.x - 450, players[0].position.y - 450, 1000, 1000);
   //animation_TESTING.spritePage("assets/capture_effects/capture_health/spritesheet.png", players[0].position.x - 65, players[0].position.y - 60, 11264, 512, 22, 1, 512, 512, 2, true, -300, -300)

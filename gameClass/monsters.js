@@ -49,11 +49,12 @@ this.monsterGotHitDamages;
 //need for spawns
 this.spawnPositionX = pos_x;
 this.spawnPositionY = pos_y;
-
+this.deathexplosion_moveDown = 0;
 //powerUps
 this.dropPower_random;
 this.drop_item = false;
 this.give_number = true;
+this.droping_powerUp = true;
 }
 
 getHealth(){return this.body.health;};
@@ -146,6 +147,7 @@ if(this.spawnTime >= 100){
     this.drop_item = false;
     this.give_number = true;
     this.item_dropped = NaN;
+    this.droping_powerUp = true;
   
    
 }
@@ -224,7 +226,8 @@ monsterClearDeath(){
 }
 
 monsterDeathExplosion(explosion_deathAnimation){  
-    explosion_deathAnimation.explosionEffect(3,  this.body.m_deadPosX - 85, (this.body.m_deadPosY += 10) - 85 , this.monsterDeath());
+    this.deathexplosion_moveDown ++;
+    explosion_deathAnimation.explosionEffect(3,  this.body.m_deadPosX - 85, (this.body.m_deadPosY) - 85 , this.monsterDeath());
 }
 
 randomSelectingPowerUps(){
@@ -245,16 +248,17 @@ return this.item_dropped;
 }
 
 dropPowerUps(type){
-        if(this.collition.collition_with_shot && this.body.m_health == 0){
-            
-    switch(type){
-        
+
+        if(this.body.m_health == 0 && this.droping_powerUp == true){
+  
+    switch(type){      
         case 1 : 
         console.log("One = " + powerUp.length);
         powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, "health" ));
         powerup_capture_effect.push(new Animation());
         console.log(powerUp.length);
         this.drop_item = false;
+        this.droping_powerUp = false
         break;
         case 2 : 
         console.log("One = " + powerUp.length);
@@ -262,13 +266,15 @@ dropPowerUps(type){
         powerup_capture_effect.push(new Animation());
         console.log(powerUp.length);
         this.drop_item = false;
+        this.droping_powerUp = false;
         break;
-        case 3 : 
+        case  3: 
         console.log("One = " + powerUp.length);
         powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, "money" ));
         powerup_capture_effect.push(new Animation());
         console.log(powerUp.length);
         this.drop_item = false;
+        this.droping_powerUp = false;
         break;
     }
 }
@@ -279,14 +285,11 @@ this.drawMonster(sprite_animator);
 this.monsterlifeBar();
 this.movements(this.monsterMovement);
 this.monsterDeathExplosion(explosionOnDeathAnimation);
-this.dropPowerUps();
+//this.dropPowerUps();
+this.dropPowerUps(this.randomSpawnPositionX(1, 30))
 this.spawnMonster(powerUps);
-
 //Spawns
-
-if(this.body.m_dead){
-this.dropPowerUps(3)
-}
+console.log(powerUp.length)
 
 }
 }
