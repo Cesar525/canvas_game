@@ -234,8 +234,8 @@ randomSelectingPowerUps(){
         }
     }
     if(this.drop_item){
-var drop_power = this.powerUpRandomNum(1, 10);
-
+var drop_power = this.powerUpRandomNum(1, 4);
+console.log(drop_power);
 this.drop_item = false;
 this.give_number = false;
 
@@ -244,9 +244,10 @@ this.item_dropped = drop_power;
 return this.item_dropped;
 }
 
-dropPowerUps(){
+dropPowerUps(type){
         if(this.collition.collition_with_shot && this.body.m_health == 0){
-    switch(this.randomSelectingPowerUps()){
+            
+    switch(type){
         
         case 1 : 
         console.log("One = " + powerUp.length);
@@ -255,14 +256,14 @@ dropPowerUps(){
         console.log(powerUp.length);
         this.drop_item = false;
         break;
-        case 4 : 
+        case 2 : 
         console.log("One = " + powerUp.length);
         powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, "energy" ));
         powerup_capture_effect.push(new Animation());
         console.log(powerUp.length);
         this.drop_item = false;
         break;
-        case 6 : 
+        case 3 : 
         console.log("One = " + powerUp.length);
         powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, "money" ));
         powerup_capture_effect.push(new Animation());
@@ -281,7 +282,11 @@ this.monsterDeathExplosion(explosionOnDeathAnimation);
 this.dropPowerUps();
 this.spawnMonster(powerUps);
 
+//Spawns
 
+if(this.body.m_dead){
+this.dropPowerUps(3)
+}
 
 }
 }

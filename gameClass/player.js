@@ -56,18 +56,19 @@ class Player {
     this.showdeathexplosion;
     this.interval = false;
 
+    this.bullet_start = {
+        x : this.position.x/2,
+        y : this.position.y/2
+    }
 
 //GUNS--------------
 //Gun 10
  this.shottingInterval = 0;
 var gun_damage = 10;
-    this.gun_on = [
-        new shots(0, 0, 4, 0, 6, gun_damage, 0, 2),
-      
-    ];
+    this.gun_on = [];
 
-    this.explosionn = [new Animation(),new Animation(),new Animation(), new Animation(), new Animation()];
-    this.explosionn2 = [new Animation(),new Animation(),new Animation(), new Animation(), new Animation()];
+    this.explosionn = [new Animation()];
+    this.explosionn2 = [new Animation()];
 
 
 
@@ -248,19 +249,19 @@ this.position.y =  c.height - this.height
 }
 if(this.position.y < 0){
 this.position.y =  0
-
 }
-
 }
 
 energyUsage(){
     if(this.body.energy <= 0){
-        this.body.m_gun_type = 1
-
+        this.body.m_gun_type = 1;
     }else{
         this.body.m_gun_type = this.body.gun_set;
     }
 }
+
+
+
 
 energyBar(){
     //const lifebar = new Image();
@@ -380,28 +381,70 @@ playerStatus(){
 shotting(){
 
 for(var counting_updating = 0 ; counting_updating < this.gun_on.length; counting_updating++){
-  
 this.gun_on[counting_updating].updateShot(
       this, 
       this.explosionn[counting_updating],
       this.explosionn2[counting_updating]
       )
+
+if(this.gun_on[counting_updating].getDeleteShotStatus()){
+    this.gun_on.splice(counting_updating, 1);
+    this.explosionn.splice(counting_update, 1);
+    this.explosionn2.splice(counting_updating, 1);
 }
 
 }
-
+}
 
 shottingCollition(monster){
     for(var countingss = 0; countingss < this.gun_on.length; countingss++){
- if(this.gun_on[countingss].collisionMonsterShot(monster)){
-    this.body.energy -= this.gun_on[countingss].shot_energy_usage;
+ this.gun_on[countingss].collisionMonsterShot(monster)
+    }
+}
+
+shottingiinterval(){
+    if(keys.shotting.pressed){
+    this.shotting_interval++
     
-     }
+    if(this.shotting_interval == 1){
+      this.gunsType(this.body.m_gun_type);
+    }
+    if(this.shotting_interval == 30){
+        this.shotting_interval = 0;
+    }
+
+}else{
+    this.shotting_interval = 0;
+}
+    }
+
+
+gunsType(type)
+{
+    //Default Gun
+    if(type == 1){
+    this.gun_on.push(new shots(this.position.x, this.position.y, 4, 0, 6, 10, 0, 2));
+    this.explosionn.push(new Animation());
+    this.explosionn2.push(new Animation());
+    }
+
+    //Gun 10
+    if(type == 10){
+        var EnergyUse = 30;
+    this.gun_on.push(
+    new shots(this.position.x - 60, this.position.y, 3, 0, 6, 10, 0, 2), 
+    new shots(this.position.x + 60, this.position.y, 3, 0, 6, 10, 0, 2), 
+    new shots(this.position.x, this.position.y, 4, 0, 6, 10, 0, 2),
+    new shots(this.position.x, this.position.y, 10, 3, 7, 10, 0, 2),
+    new shots(this.position.x, this.position.y, 10, -3, 7, 10, 0, 2));
+
+    this.explosionn.push(new Animation(),new Animation(),new Animation(), new Animation(), new Animation());
+    this.explosionn2.push(new Animation(),new Animation(),new Animation(), new Animation(), new Animation());
+    this.body.energy -= EnergyUse;
     }
 }
 
 update(animation_Sparks_low, animation_Sparks_high, thruster_animation, player_death_explosionAnimation){
-
 
 this.shotting();
 this.draw();
@@ -415,7 +458,7 @@ this.playerDeathExplosion(player_death_explosionAnimation);
 
 //UI Status
 this.playerStatus();
-
+this.shottingiinterval();
 //UI STORAGE
 this.showPlayerHealth();
 this.showPlayerEnergy();

@@ -2,8 +2,8 @@ class shots extends Animation{
     constructor(start_posx, start_posy, shotype, shotdirection, explosion_type, shot_damage, shot_speed, energy_usage){
 super();
     this.position = {
-        x : 0,
-        y : 0
+        x : start_posx,
+        y : start_posy
     }
     this.velocity = {
         x : shot_speed,
@@ -12,6 +12,7 @@ super();
 
     this.width = 100;
     this.height = 200;
+    this.height_negative = -200;
     this.clearRect = false;
     this.shot_energy_usage = energy_usage;
 
@@ -36,6 +37,7 @@ this.damage_effect;
 this.gameFrameDamageAnimation = 0;
 this.gameFrame = 0;
 this.staggerFrame = 10;
+this.deleteshot = false;
 
     this.counter = 0;
     // here we add all guns images sprites
@@ -68,10 +70,10 @@ shotsCreation(player, direction){
     ctx.drawImage(shotimage, this.position.x, this.position.y ,this.width, this.height);
 
     //shot starting point
-    if(this.position.y <  - this.height){
-    this.position.y = player.position.y - this.calibrating_starting_posy;
-    this.position.x =  this.calibrating_starting_posx + player.position.x;
-        }   
+    // if(this.position.y <  - this.height){
+    // this.position.y = player.position.y - this.calibrating_starting_posy;
+    // this.position.x =  this.calibrating_starting_posx + player.position.x;
+    //     }   
     }
 }
 
@@ -150,13 +152,26 @@ clearingBulletOnceHit(){
     
 if(this.getCollitionWithMonster()){
     this.clearRect = true;
-    console.log("Bullet banished..");
-    this.position.x = - 50;
-    this.position.y = - 50;
+    console.log("Bullet banished.. Hit Monsters!");
+    this.position.x = NaN;
+    this.position.y = NaN;
     this.setCollitionWithMonster(false);
 }  
+if(this.position.y < - this.height){
+    this.position.x = NaN;
+    this.position.y = NaN;
+    console.log("deleted");
 }
 
+}
+
+deletingShots(){
+if(this.position.x == NaN && this.position.y == NaN){
+ this.deleteshot = true;
+}
+}
+getDeleteShotStatus(){ return this.deleteshot;}
+setDeleteShotStatus(set){ this.deleteshot = set;};
 getDamageNumberColor(){return this.DamageShowingcolorDefault;};
 setDamageNumberColor(color){ this.DamageShowingcolorDefault = color;}
 
@@ -182,7 +197,6 @@ bulletHitMonsterEffect(explosion_one, explosion_two, posx, posy,collition,hiteff
      explosion_two.reset();
     animationTwo = true;
      }
-
 if(!explosion_one.getAnimationStatus()){
     this.explosion_animation_status = false
 }else{
@@ -196,15 +210,14 @@ this.gameFrameDamageAnimation++;
 if(if_true){this.showDamage = true;}
 
 
-        if(this.showDamage){
-            
+        if(this.showDamage){  
             ctx.fillStyle = color;
             ctx.strokeStyle = "black"
             ctx.font = "40px anton";
             ctx.fillText("-"+ damage, pos_x , pos_y);
             ctx.strokeText("-" + damage, pos_x, pos_y);
         } 
-        if(this.gameFrameDamageAnimation >= 300){
+        if(this.gameFrameDamageAnimation >= 100){
                     this.showDamage = false;
                     this.gameFrameDamageAnimation = 0;
                     this.animationSlowsGoesUp = 0
@@ -236,7 +249,7 @@ this.shot(player)
 this.bulletHitMonsterEffect(explo_one_animation, explo_two_animation, this.getCollitionPosX(), this.getCollitionPosY() ,this.getCollitionWithMonster(), this.damage_effect, 1)
 this.damageShowAnimation(this.getDamageHit(), this.getCollitionPosX(), this.getCollitionPosY(), this.getDamageNumberColor(),this.getCollitionWithMonster());
 this.clearingBulletOnceHit();
-
+this.deletingShots();
 
     }
 }
