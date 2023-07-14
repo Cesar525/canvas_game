@@ -10,6 +10,7 @@ Hello this will be a multiplayer Spaceship game for players all around the world
     HTML
 
 ## Images ##
+![Scheme](space2.PNG)
 ![Scheme](space.PNG)
 
 
