@@ -116,7 +116,7 @@ var health_points = 100;
 
 
     if(this.powerUp_taken){
-        effect_taken.spritePage("assets/capture_effects/capture_health/spritesheet.png", player.position.x - 65, player.position.y - 60, 11264, 512, 22, 1, 512, 512, 2, true, -300, -300);
+        effect_taken.spritePage("assets/capture_effects/capture_health/spritesheet.png", player.position.x - 65, player.position.y - 60 , 11264, 512, 22, 1, 512, 512, 2, true, -300, -300);
         if(!effect_taken.getAnimationStatus()){
             this.setDestroyPowerUps(true);
             this.powerUp_taken = false;

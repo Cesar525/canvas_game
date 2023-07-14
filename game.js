@@ -254,7 +254,7 @@ for(var m = 0; m < monsters.length; m++){
 
   }
  
-player_shield_effect_one[0].updateshield(players[0]);
+//player_shield_effect_one[0].updateshield(players[0]);
   //animation_TESTING.spriteProccessor(taken_money, 2, players[0].position.x - 450, players[0].position.y - 450, 1000, 1000);
   //animation_TESTING.spritePage("assets/capture_effects/capture_health/spritesheet.png", players[0].position.x - 65, players[0].position.y - 60, 11264, 512, 22, 1, 512, 512, 2, true, -300, -300)
   
