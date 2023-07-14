@@ -3,9 +3,11 @@ Hello this will be a multiplayer Spaceship game for players all around the world
 
 ## where will this game be played? ##
 Brower-
-this game support-
+
+
+## this game support ##
     Firefox 
-    Chrome.
+    Chrome
 ## Lenguage Used ## 
     Javascript
     HTML
