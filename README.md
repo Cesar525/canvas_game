@@ -1,4 +1,4 @@
-## No man Space ##
+## Game Name: No man Space ##
 Hello this will be a multiplayer Spaceship game for players all around the world will have challenges and mission to do.
 
 ## where will this game be played? ##
