@@ -30,6 +30,4 @@
 <script src="./gameClass/player.js"></script>
 <script src="./game.js"></script>
 
-
-
 <?php include("layout/footer.php");?>
