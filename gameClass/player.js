@@ -41,7 +41,8 @@ class Player {
     }
 
     this.shotting_interval = 0;
-
+this.second_shot_delay = 0;
+this.second_shot_released = false;
   
     this.width = 100;
     this.height = 100;
@@ -393,20 +394,50 @@ shottingiinterval(){
 }
     }
 
+secondShotDelay(){
+    this.second_shot_delay ++
+    if(this.second_shot_delay == 30){
+        this.second_shot_released = true;
+        this.second_shot_delay = 0;
+    }else{
+        this,this.second_shot_released = false;
+    }
+}
 
 gunsType(type)
 {
+const lef_side_wign_shot = - 50;
+const right_side_wign_shot = + 50
 
-    // constructor(start_posx, start_posy, shotype, shotdirection, explosion_type, shot_damage, shot_speed, energy_usage){
+
+    // constructor(start_posx, start_posy, shotype, shotdirection, explosion_type, shot_damage, shot_speed, width, height){
     //Default Gun
     if(type == 1){
-        this.gun_on.push(new shots(this.position.x, this.position.y, 11, 0, 8, 10, 0, 2, 100, 50));
+        this.gun_on.push(new shots(this.position.x, this.position.y, 11, 0, 8, 1, 40, 100, 100));
         this.explosionn.push(new Animation());
         this.explosionn2.push(new Animation());
         }
 
     if(type == 2){
-    this.gun_on.push(new shots(this.position.x, this.position.y, 4, 0, 6, 10, 0, 2));
+        this.gun_on.push(new shots(this.position.x + lef_side_wign_shot, this.position.y, 11, 0, 8, 1, 40, 100, 100));
+        this.explosionn.push(new Animation());
+        this.explosionn2.push(new Animation());
+        
+        this.second_shot_delay++;
+        console.log(this.second_shot_delay);
+    setTimeout(() => {
+ this.gun_on.push(new shots(this.position.x + right_side_wign_shot, this.position.y, 11, 0, 8, 1, 40, 100, 100));
+        this.explosionn.push(new Animation());
+        this.explosionn2.push(new Animation());
+    }, 500)
+       
+     
+      
+    
+        }
+
+    if(type == 3){
+    this.gun_on.push(new shots(this.position.x, this.position.y, 4, 0, 6, 10,));
     this.explosionn.push(new Animation());
     this.explosionn2.push(new Animation());
     }
@@ -415,11 +446,11 @@ gunsType(type)
     if(type == 10){
         var EnergyUse = 30;
     this.gun_on.push(
-    new shots(this.position.x - 60, this.position.y, 3, 0, 6, 10, 0, 2), 
-    new shots(this.position.x + 60, this.position.y, 3, 0, 6, 10, 0, 2), 
-    new shots(this.position.x, this.position.y, 4, 0, 6, 10, 0, 2),
-    new shots(this.position.x, this.position.y, 10, 3, 7, 10, 0, 2),
-    new shots(this.position.x, this.position.y, 10, -3, 7, 10, 0, 2));
+    new shots(this.position.x + lef_side_wign_shot, this.position.y, 3, 0, 6, 10, 0), 
+    new shots(this.position.x + right_side_wign_shot, this.position.y, 3, 0, 6, 10, 0), 
+    new shots(this.position.x, this.position.y, 4, 0, 6, 10, 0),
+    new shots(this.position.x, this.position.y, 10, 3, 7, 10, 0),
+    new shots(this.position.x, this.position.y, 10, -3, 7, 10, 0));
 
     this.explosionn.push(new Animation(),new Animation(),new Animation(), new Animation(), new Animation());
     this.explosionn2.push(new Animation(),new Animation(),new Animation(), new Animation(), new Animation());
@@ -438,7 +469,7 @@ this.energyBar();
 this.playerMovemements();
 this.playerEffectSparks(animation_Sparks_low, animation_Sparks_high);
 this.playerDeathExplosion(player_death_explosionAnimation);
-
+this.secondShotDelay();
 //UI Status
 this.playerStatus();
 this.shottingiinterval();

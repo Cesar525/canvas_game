@@ -133,7 +133,7 @@ case 7 :
 this.spritePage("assets/explosions/explosion_7.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
 break;
 case 8 : 
-this.sparkForBullets(speed, posx, posy, 300, 300, send)
+this.sparkForBullets(speed, posx + 50, posy, 200, 200, send)
 }
 }
 getAnimationStatus(){

@@ -1,5 +1,5 @@
 class shots extends Animation{
-    constructor(start_posx, start_posy, shotype, shotdirection, explosion_type, shot_damage, shot_speed, energy_usage, width, height){
+    constructor(start_posx, start_posy, shotype, shotdirection, explosion_type, shot_damage, shot_speed, width, height){
 super();
     this.position = {
         x : start_posx,
@@ -18,8 +18,8 @@ if(width && height){
 }
     this.height_negative = -200;
     this.clearRect = false;
-    this.shot_energy_usage = energy_usage;
 
+    this.shot_speed_set = shot_speed; 
     this.collition = {
         shot_collided_with_monster : false,
         shot_collided_with_player : false,
@@ -242,7 +242,7 @@ collisionMonsterShot(monsters){
                    }
 updateShot(player, explo_one_animation, explo_two_animation){
 //console.log(this.getCollitionWithMonster());
-var speed = player.body.m_gun_speed;
+var speed = player.body.m_gun_speed + this.shot_speed_set;
 this.velocity.x = speed;
 this.velocity.y = speed;
 this.shot(player)
