@@ -41,8 +41,6 @@ class Player {
     }
 
     this.shotting_interval = 0;
-this.second_shot_delay = 0;
-this.second_shot_released = false;
   
     this.width = 100;
     this.height = 100;
@@ -385,7 +383,7 @@ shottingiinterval(){
     if(this.shotting_interval == 1){
       this.gunsType(this.body.m_gun_type);
     }
-    if(this.shotting_interval == 30){
+    if(this.shotting_interval == 20){
         this.shotting_interval = 0;
     }
 
@@ -394,15 +392,6 @@ shottingiinterval(){
 }
     }
 
-secondShotDelay(){
-    this.second_shot_delay ++
-    if(this.second_shot_delay == 30){
-        this.second_shot_released = true;
-        this.second_shot_delay = 0;
-    }else{
-        this,this.second_shot_released = false;
-    }
-}
 
 gunsType(type)
 {
@@ -429,7 +418,7 @@ const right_side_wign_shot = + 50
  this.gun_on.push(new shots(this.position.x + right_side_wign_shot, this.position.y, 11, 0, 8, 1, 40, 100, 100));
         this.explosionn.push(new Animation());
         this.explosionn2.push(new Animation());
-    }, 500)
+    }, 200)
        
      
       
@@ -469,7 +458,7 @@ this.energyBar();
 this.playerMovemements();
 this.playerEffectSparks(animation_Sparks_low, animation_Sparks_high);
 this.playerDeathExplosion(player_death_explosionAnimation);
-this.secondShotDelay();
+
 //UI Status
 this.playerStatus();
 this.shottingiinterval();
