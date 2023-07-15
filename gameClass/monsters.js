@@ -284,7 +284,7 @@ this.monsterDeathExplosion(explosionOnDeathAnimation);
 this.dropPowerUps(this.randomSpawnPositionX(1, 30))
 this.spawnMonster(powerUps);
 //Spawns
-console.log(powerUp.length)
+//console.log(powerUp.length)
 
 }
 }

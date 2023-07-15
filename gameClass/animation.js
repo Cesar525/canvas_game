@@ -133,7 +133,11 @@ case 7 :
 this.spritePage("assets/explosions/explosion_7.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
 break;
 case 8 : 
-this.sparkForBullets(speed, posx + 50, posy, 200, 200, send)
+this.sparkForBullets(speed, posx + 50, posy, 200, 200, send);
+break;
+case 9 : 
+this.burstForBullets(speed, posx, posy, 400, 400, send);
+break;
 }
 }
 getAnimationStatus(){
@@ -147,6 +151,40 @@ this.spritePage("assets/shield/shield_one.png", posx , posy, 2048, 1280, 8, 5, 2
 break;
 
 }
+}
+
+
+burstForBullets(speed, posx, posy, width, height, send){
+    var turn_on = send;
+
+ if(turn_on == true){
+     this.show = true;
+ } 
+     if(this.show){
+ 
+    const burst_bullets = new Image();
+    const burst_sprites = [
+    "assets/machinegun/burstbullet/MachineOne90000.png",
+    "assets/machinegun/burstbullet/MachineOne90001.png",
+    "assets/machinegun/burstbullet/MachineOne90002.png",
+    "assets/machinegun/burstbullet/MachineOne90003.png",
+    "assets/machinegun/burstbullet/MachineOne90004.png",
+    "assets/machinegun/burstbullet/MachineOne90004.png",
+    "assets/machinegun/burstbullet/MachineOne90005.png",
+    "assets/machinegun/burstbullet/MachineOne90006.png",
+    "assets/machinegun/burstbullet/MachineOne90007.png",
+
+]
+         this.gameFrame ++;
+         this.staggerFrame = speed;
+         burst_bullets.src = burst_sprites[Math.floor(this.gameFrame/this.staggerFrame) % 12];
+         ctx.drawImage(burst_bullets, posx, posy, width, height);
+ 
+         if((Math.floor(this.gameFrame/this.staggerFrame) % 12) == burst_sprites.length - 1){
+             this.show = false;
+         }
+     
+     }
 }
 
 sparkForBullets(speed, posx, posy, width, height, send){

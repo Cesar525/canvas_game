@@ -166,6 +166,8 @@ explosion_onDeath_animation.push(new Animation());
 }
 
 
+const burst_fire_test = new Animation();
+
 //Monster PowerUp Drop
 
 //BUFFERRRR
@@ -258,7 +260,8 @@ for(var m = 0; m < monsters.length; m++){
   //animation_TESTING.spriteProccessor(taken_money, 2, players[0].position.x - 450, players[0].position.y - 450, 1000, 1000);
   //animation_TESTING.spritePage("assets/capture_effects/capture_health/spritesheet.png", players[0].position.x - 65, players[0].position.y - 60, 11264, 512, 22, 1, 512, 512, 2, true, -300, -300)
   
-  
+  // explosionEffect(effect, posx, posy, send, speed)
+   burst_fire_test.explosionEffect(9, 500, 500, true, 1);
   
   
   

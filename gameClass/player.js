@@ -412,18 +412,12 @@ const right_side_wign_shot = + 50
         this.explosionn.push(new Animation());
         this.explosionn2.push(new Animation());
         
-        this.second_shot_delay++;
-        console.log(this.second_shot_delay);
     setTimeout(() => {
  this.gun_on.push(new shots(this.position.x + right_side_wign_shot, this.position.y, 11, 0, 8, 1, 40, 100, 100));
         this.explosionn.push(new Animation());
         this.explosionn2.push(new Animation());
     }, 200)
-       
-     
-      
-    
-        }
+}
 
     if(type == 3){
     this.gun_on.push(new shots(this.position.x, this.position.y, 4, 0, 6, 10,));
