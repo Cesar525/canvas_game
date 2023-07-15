@@ -238,7 +238,6 @@ randomSelectingPowerUps(){
     }
     if(this.drop_item){
 var drop_power = this.powerUpRandomNum(1, 4);
-console.log(drop_power);
 this.drop_item = false;
 this.give_number = false;
 
@@ -253,26 +252,22 @@ dropPowerUps(type){
   
     switch(type){      
         case 1 : 
-        console.log("One = " + powerUp.length);
         powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, "health" ));
         powerup_capture_effect.push(new Animation());
-        console.log(powerUp.length);
         this.drop_item = false;
         this.droping_powerUp = false
         break;
-        case 2 : 
-        console.log("One = " + powerUp.length);
+
+        case 2 :   
         powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, "energy" ));
         powerup_capture_effect.push(new Animation());
-        console.log(powerUp.length);
         this.drop_item = false;
         this.droping_powerUp = false;
         break;
+
         case  3: 
-        console.log("One = " + powerUp.length);
         powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, "money" ));
         powerup_capture_effect.push(new Animation());
-        console.log(powerUp.length);
         this.drop_item = false;
         this.droping_powerUp = false;
         break;

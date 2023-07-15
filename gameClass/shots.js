@@ -68,12 +68,7 @@ shotsCreation(player, direction){
     shotimage.src = this.shotImages[this.bullet_image];
     
     ctx.drawImage(shotimage, this.position.x, this.position.y ,this.width, this.height);
-
-    //shot starting point
-    // if(this.position.y <  - this.height){
-    // this.position.y = player.position.y - this.calibrating_starting_posy;
-    // this.position.x =  this.calibrating_starting_posx + player.position.x;
-    //     }   
+  
     }
 }
 

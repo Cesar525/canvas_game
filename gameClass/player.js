@@ -42,7 +42,7 @@ class Player {
 
     this.shotting_interval = 0;
 
-    this.shot = true;
+  
     this.width = 100;
     this.height = 100;
     this.health_total = get_health;
@@ -56,35 +56,10 @@ class Player {
     this.showdeathexplosion;
     this.interval = false;
 
-    this.bullet_start = {
-        x : this.position.x/2,
-        y : this.position.y/2
-    }
-
-//GUNS--------------
-//Gun 10
- this.shottingInterval = 0;
-var gun_damage = 10;
+    //Guns
     this.gun_on = [];
-
     this.explosionn = [new Animation()];
     this.explosionn2 = [new Animation()];
-
-
-
-// var gun_damage = 10;
-//     this.gun_on = [
-//         new shots(-60, 0, 3, 0, 6, gun_damage, 0, 2), 
-//         new shots(60, 0, 3, 0, 6, gun_damage, 0, 2), 
-//         new shots(0, 0, 4, 0, 6, gun_damage, 0, 2),
-//         new shots(0, 0, 10, 3, 6, gun_damage, 0, 2),
-//         new shots(0, 0, 10, -3, 6, gun_damage, 0, 2),
-        
-//     ];
-
-//     this.explosionn = [new Animation(),new Animation(),new Animation(), new Animation(), new Animation()];
-//     this.explosionn2 = [new Animation(),new Animation(),new Animation(), new Animation(), new Animation()];
-
 
 //sparks animation
 this.gameFrame_sparks = 0;
