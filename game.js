@@ -28,7 +28,7 @@ c_ui_status.height = 200;
 // c.height = window.innerHeight;
 const gravity = 10;
 const fps = 256;
-
+var map_speed = 5;
 //perfect Window size
 // 2000 -> width
 // 1500 -> height
@@ -64,13 +64,13 @@ const animation_TESTING = new Animation();
 //players
 //CREATING A PLAYER Player(name, level, thruster_selection, get_health, energy, m_damage,  gunType, posx, posy, gun_speed)
 const players = [
-  new Player("PLAYER ONE", 1230,  6, 100, 10000, 100, 10, 600, 900, 20),
+  new Player("PLAYER ONE", 1230,  6, 100, 10000, 100, 1, 600, 900, 20),
   // new Player("PLAYER ONE", 1230,  6, 100, 400, 100, 10, 800, 1000, 50),
 
 ]
 //Monsters
 //CREATING A MONSTERS Monstrs( id, sprite,  pos_x, pos_y, health, name, speed, color, movements, s_width, s_height, damage)
-const monsters = [  
+const monsters = [
    new Monsters(2, asteroid_one,  200, 200 , 5000000, "Asteroid", 1, "orange", "none", 100, 100, 2),
    new Monsters(2, asteroid_one,  200, 200 , 100, "Asteroid", 1, "orange", "straightDown", 100, 100, 2),
    new Monsters(2, asteroid_one,  200, 200 , 100, "Asteroid", 1, "orange", "straightDown", 100, 100, 2),

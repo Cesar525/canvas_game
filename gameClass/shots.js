@@ -1,5 +1,5 @@
 class shots extends Animation{
-    constructor(start_posx, start_posy, shotype, shotdirection, explosion_type, shot_damage, shot_speed, energy_usage){
+    constructor(start_posx, start_posy, shotype, shotdirection, explosion_type, shot_damage, shot_speed, energy_usage, width, height){
 super();
     this.position = {
         x : start_posx,
@@ -9,9 +9,13 @@ super();
         x : shot_speed,
         y : shot_speed
     }
-
+if(width && height){
+    this.width = width;
+    this.height = height;
+}else{
     this.width = 100;
     this.height = 200;
+}
     this.height_negative = -200;
     this.clearRect = false;
     this.shot_energy_usage = energy_usage;
@@ -51,7 +55,8 @@ this.deleteshot = false;
     7 : "assets/shots/bean_7.png",
     8 : "assets/shots/bean_8.png",
     9 : "assets/shots/bean_9.png",
-    10 : "assets/shots/bean_10.png"
+    10 : "assets/shots/bean_10.png",
+    11 : "assets/machinegun/bullet_11.png"
     }
 }
 

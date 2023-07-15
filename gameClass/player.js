@@ -396,8 +396,16 @@ shottingiinterval(){
 
 gunsType(type)
 {
+
+    // constructor(start_posx, start_posy, shotype, shotdirection, explosion_type, shot_damage, shot_speed, energy_usage){
     //Default Gun
     if(type == 1){
+        this.gun_on.push(new shots(this.position.x, this.position.y, 11, 0, 8, 10, 0, 2, 100, 50));
+        this.explosionn.push(new Animation());
+        this.explosionn2.push(new Animation());
+        }
+
+    if(type == 2){
     this.gun_on.push(new shots(this.position.x, this.position.y, 4, 0, 6, 10, 0, 2));
     this.explosionn.push(new Animation());
     this.explosionn2.push(new Animation());

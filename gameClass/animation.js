@@ -11,7 +11,7 @@ constructor(){
     this.staggerFrame = 1;
     this.show = false;
     this.onAnimation = false;
-    
+    this.counting;
     //thruster animation
     this.thruster_size =150;
     this.thruster_animation = 0;
@@ -130,9 +130,10 @@ case 6 :
 this.spritePage("assets/explosions/explosion_6.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
 break;
 case 7 : 
-
 this.spritePage("assets/explosions/explosion_7.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
 break;
+case 8 : 
+this.sparkForBullets(speed, posx, posy, 300, 300, send)
 }
 }
 getAnimationStatus(){
@@ -144,7 +145,44 @@ switch(effect){
 case 1 :
 this.spritePage("assets/shield/shield_one.png", posx , posy, 2048, 1280, 8, 5, 256, 256, 4, send);
 break;
+
 }
+}
+
+sparkForBullets(speed, posx, posy, width, height, send){
+   var turn_on = send;
+
+if(turn_on == true){
+    this.show = true;
+}
+
+    if(this.show){
+
+    const sparks = new Image();
+    const spark1 = [
+        'assets/sparks/spark1/MetallicHit010000.png',
+        'assets/sparks/spark1/MetallicHit010001.png',
+        'assets/sparks/spark1/MetallicHit010002.png',
+        'assets/sparks/spark1/MetallicHit010003.png',
+        'assets/sparks/spark1/MetallicHit010004.png',
+        'assets/sparks/spark1/MetallicHit010005.png',
+        'assets/sparks/spark1/MetallicHit010006.png',
+        'assets/sparks/spark1/MetallicHit010007.png',
+        'assets/sparks/spark1/MetallicHit010008.png',
+        'assets/sparks/spark1/MetallicHit010009.png',
+        'assets/sparks/spark1/MetallicHit010010.png',
+        'assets/sparks/spark1/MetallicHit010011.png',
+        ]
+        this.gameFrame ++;
+        this.staggerFrame = speed;
+        sparks.src = spark1[Math.floor(this.gameFrame/this.staggerFrame) % 12];
+        ctx.drawImage(sparks, posx,posy, width, height);
+
+        if((Math.floor(this.gameFrame/this.staggerFrame) % 12) == spark1.length - 1){
+            this.show = false;
+        }
+    
+    }
 }
 
 sparkOne(speed, posx, posy, width, height){
