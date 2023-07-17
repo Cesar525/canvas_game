@@ -21,8 +21,9 @@ class Player {
         m_gun_speed : gun_speed,
         deathPositionX : NaN,
         deathPositionY : NaN,
-        shield_on_off : false
-    
+        shield_on_off : false,
+         lef_side_wign_shot : - 50,
+         right_side_wign_shot : + 50
     }
     this.collition = {
         collition_monsters : false,
@@ -41,7 +42,6 @@ class Player {
     }
 
     this.shotting_interval = 0;
-  
     this.width = 100;
     this.height = 100;
     this.health_total = get_health;
@@ -361,12 +361,12 @@ this.gun_on[counting_updating].updateShot(
       this.explosionn[counting_updating],
       this.explosionn2[counting_updating]
       )
-
+// is not deleting the used shots.
 if(this.gun_on[counting_updating].getDeleteShotStatus()){
-    this.gun_on.splice(counting_updating, 1);
-    this.explosionn.splice(counting_update, 1);
-    this.explosionn2.splice(counting_updating, 1);
-    this.burst_animation.splice(counting_updating, 1);
+    this.gun_on.splice(counting_updating , 1);
+    this.explosionn.splice(counting_updating , 1);
+    this.explosionn2.splice(counting_updating , 1);
+    this.burst_animation.splice(counting_updating , 1);
 }
 
 }
@@ -397,8 +397,7 @@ shottingiinterval(){
 
 gunsType(type)
 {
-const lef_side_wign_shot = - 50;
-const right_side_wign_shot = + 50
+
 
 
     // constructor(start_posx, start_posy, shotype, shotdirection, explosion_type, shot_damage, shot_speed, width, height){
@@ -410,13 +409,13 @@ const right_side_wign_shot = + 50
         }
 
     if(type == 2){
-        this.gun_on.push(new shots(this.position.x + lef_side_wign_shot, this.position.y, 11, 0, 8, 1, 40, 100, 100));
+        this.gun_on.push(new shots(this.position.x + this.body.lef_side_wign_shot, this.position.y, 11, 0, 8, 1, 40, 100, 100));
         this.explosionn.push(new Animation());
         this.explosionn2.push(new Animation());
         
         
     setTimeout(() => {
-        this.gun_on.push(new shots(this.position.x + right_side_wign_shot, this.position.y, 11, 0, 8, 1, 40, 100, 100));
+        this.gun_on.push(new shots(this.position.x + this.body.right_side_wign_shot, this.position.y, 11, 0, 8, 1, 40, 100, 100));
         this.explosionn.push(new Animation());
         this.explosionn2.push(new Animation());
     }, 200)
@@ -433,8 +432,8 @@ const right_side_wign_shot = + 50
     if(type == 10){
         var EnergyUse = 30;
     this.gun_on.push(
-    new shots(this.position.x + lef_side_wign_shot, this.position.y, 3, 0, 6, 10, 0), 
-    new shots(this.position.x + right_side_wign_shot, this.position.y, 3, 0, 6, 10, 0), 
+    new shots(this.position.x + this.body.lef_side_wign_shot, this.position.y, 3, 0, 6, 10, 0), 
+    new shots(this.position.x + this.body.right_side_wign_shot, this.position.y, 3, 0, 6, 10, 0), 
     new shots(this.position.x, this.position.y, 4, 0, 6, 10, 0),
     new shots(this.position.x, this.position.y, 10, 3, 7, 10, 0),
     new shots(this.position.x, this.position.y, 10, -3, 7, 10, 0));

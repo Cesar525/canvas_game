@@ -17,9 +17,10 @@ if(width && height){
     this.height = 200;
 }
 
+    this.start_position_setX = start_posx;
+    this.start_position_setY = start_posy;
     this.height_negative = -200;
     this.clearRect = false;
-
     this.shot_speed_set = shot_speed; 
     this.collition = {
         shot_collided_with_monster : false,
@@ -28,10 +29,11 @@ if(width && height){
         collision_posy : NaN
     }
 this.m_damage = shot_damage;
-this.calibrating_starting_posx = start_posx;
-this.calibrating_starting_posy = start_posy;
+this.calibrating_burst = start_posx;
+this.calibrating__burst = start_posy;
 this.bullet_image = shotype;
 this.damages_total = shot_damage;
+
 
 this.burst_send = true;
 
@@ -246,17 +248,20 @@ collisionMonsterShot(monsters){
                      }
                    }
 
+bursting_bullets(player,burst_animation){
+burst_animation.burstEffect(1, this.start_position_setX - 50, this.start_position_setY - 150, this.burst_send, 1)
+this.burst_send = false;
+}
+
 updateShot(player, explo_one_animation, explo_two_animation){
-//console.log(this.getCollitionWithMonster());
 var speed = player.body.m_gun_speed + this.shot_speed_set;
 this.velocity.x = speed;
 this.velocity.y = speed;
-
-this.shot(player)
-this.bulletHitMonsterEffect(explo_one_animation, explo_two_animation, this.getCollitionPosX(), this.getCollitionPosY() ,this.getCollitionWithMonster(), this.damage_effect, 1)
+this.bursting_bullets(player,explo_two_animation);
+this.shot(player);
+this.bulletHitMonsterEffect(explo_one_animation, explo_two_animation, this.getCollitionPosX(), this.getCollitionPosY() ,this.getCollitionWithMonster(), this.damage_effect, 1);
 this.damageShowAnimation(this.getDamageHit(), this.getCollitionPosX(), this.getCollitionPosY(), this.getDamageNumberColor(),this.getCollitionWithMonster());
 this.clearingBulletOnceHit();
 this.deletingShots();
-
     }
 }

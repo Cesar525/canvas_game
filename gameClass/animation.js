@@ -16,7 +16,7 @@ constructor(){
     this.thruster_size =150;
     this.thruster_animation = 0;
 this.onSpriteProccessor = false;
-
+this.show_burst = false;
 }
 
 spritePage(sprite_path, posx, posy, sprite_page_width, sprite_page_height, sprite_count_width, sprite_count_height, sprite_size_w, sprite_size_h, speed, show, sprite_size_set_width, sprite_size_set_height, set_transparency){
@@ -135,11 +135,19 @@ break;
 case 8 : 
 this.sparkForBullets(speed, posx + 50, posy, 200, 200, send);
 break;
-case 9 : 
-this.burstForBullets(speed, posx, posy, 200,200, send);
-break;
 }
 }
+
+burstEffect(effect, posx, posy, send, speed){
+    switch(effect){
+    case 1 : 
+    this.burstForBullets(speed, posx, posy, 200,200, send);
+    break;
+    }
+}
+
+
+
 getAnimationStatus(){
     return this.onAnimation;
 }
@@ -155,14 +163,16 @@ break;
 
 
 burstForBullets(speed, posx, posy, width, height, send){
-    var turn_on = send;
-
- if(turn_on == true){
-     this.show = true;
- } 
-     if(this.show){
+if(send){
+    var turn_on_effect = send;
+if(turn_on_effect == true){
+    this.show_burst = true;
+}
+}
+     if(this.show_burst){
  
     const burst_bullets = new Image();
+
     const burst_sprites = [
     "assets/machinegun/burstbullet/MachineOne90000.png",
     "assets/machinegun/burstbullet/MachineOne90001.png",
@@ -173,20 +183,22 @@ burstForBullets(speed, posx, posy, width, height, send){
     "assets/machinegun/burstbullet/MachineOne90005.png",
     "assets/machinegun/burstbullet/MachineOne90006.png",
     "assets/machinegun/burstbullet/MachineOne90007.png",
-
 ]
          this.gameFrame ++;
          this.staggerFrame = speed;
-         burst_bullets.src = burst_sprites[Math.floor(this.gameFrame/this.staggerFrame) % 12];
+
+         burst_bullets.src = burst_sprites[Math.floor(this.gameFrame/this.staggerFrame) % burst_sprites.length];
          ctx.drawImage(burst_bullets, posx, posy, width, height);
  
-         if((Math.floor(this.gameFrame/this.staggerFrame) % 12) == burst_sprites.length){
-             this.show = false;
+         if((Math.floor(this.gameFrame/this.staggerFrame) % 12) == burst_sprites.length - 1){
+             this.show_burst = false;
+             //console.log("show == false")
          }
      
      }
 }
 
+getShowBurst(){return this.show_burst;};
 sparkForBullets(speed, posx, posy, width, height, send){
    var turn_on = send;
 
