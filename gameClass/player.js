@@ -400,37 +400,55 @@ gunsType(type)
 
 
 
-    // constructor(start_posx, start_posy, shotype, shotdirection, explosion_type, shot_damage, shot_speed, width, height){
-    //Default Gun
-    if(type == 1){
-        this.gun_on.push(new shots(this.position.x, this.position.y, 11, 0, 8, 1, 40, 100, 100, 1, -50, -150));
-        this.explosionn.push(new Animation());
-        this.explosionn2.push(new Animation());
-        }
-//GUN 2
-    if(type == 2){
-        this.gun_on.push(new shots(this.position.x + this.body.lef_side_wign_shot, this.position.y, 11, 0, 8, 1, 40, 100, 100, 1, -50 , -100));
-        this.explosionn.push(new Animation());
-        this.explosionn2.push(new Animation());
-        
-        
-    setTimeout(() => {
-        this.gun_on.push(new shots(this.position.x + this.body.right_side_wign_shot, this.position.y, 11, 0, 8, 1, 40, 100, 100, 1, -50, -100));
-        this.explosionn.push(new Animation());
-        this.explosionn2.push(new Animation());
-    }, 200)
-}
-
-//GUN 3
-    if(type == 3){
-    this.gun_on.push(new shots(this.position.x, this.position.y, 4, 0, 6, 10,));
+    // constructor(start_posx, start_posy, shotype, shotdirection, explosion_type, shot_damage, shot_speed, width, height, burst_selection, burst_position.x, burst position.y){
+//Default Gun  shotDamage == 1
+if(type == 1){
+    this.gun_on.push(new shots(this.position.x, this.position.y, 11, 0, 8, 1, 40, 100, 100, 1, -50, -150));
     this.explosionn.push(new Animation());
     this.explosionn2.push(new Animation());
     }
 
+//GUN machine gun double regular bullet each shotDamage == 1
+if(type == 2){
+    this.gun_on.push(new shots(this.position.x + this.body.lef_side_wign_shot, this.position.y, 11, 0, 8, 1, 40, 100, 100, 1, -50 , -100));
+    this.explosionn.push(new Animation());
+    this.explosionn2.push(new Animation());
+    
+    
+setTimeout(() => {
+    this.gun_on.push(new shots(this.position.x + this.body.right_side_wign_shot, this.position.y, 11, 0, 8, 1, 40, 100, 100, 1, -50, -100));
+    this.explosionn.push(new Animation());
+    this.explosionn2.push(new Animation());
+}, 200)
+}
+
+//GUN 3 single Lazer shot WORKING ON shotDamage == 5 energy used 
+    if(type == 3){
+        var EnergyUse_3 = 5;
+    this.gun_on.push(new shots(this.position.x + 25 , this.position.y, 3,0 ,1, 5, 0, 50, 100));
+    this.explosionn.push(new Animation());
+    this.explosionn2.push(new Animation());
+    this.body.energy -= EnergyUse_3;
+    }
+
+//gun 4 Double Lazer Shot shotDamage == 5 energy use 10 -- CURRENTLY WORKING ON.
+if(type == 2){
+    this.gun_on.push(new shots(this.position.x + this.body.lef_side_wign_shot, this.position.y, 11, 0, 8, 1, 40, 100, 100, 1, -50 , -100));
+    this.explosionn.push(new Animation());
+    this.explosionn2.push(new Animation());
+    
+    
+setTimeout(() => {
+    this.gun_on.push(new shots(this.position.x + this.body.right_side_wign_shot, this.position.y, 11, 0, 8, 1, 40, 100, 100, 1, -50, -100));
+    this.explosionn.push(new Animation());
+    this.explosionn2.push(new Animation());
+}, 200)
+}
+
+
     //Gun 10
     if(type == 10){
-        var EnergyUse = 30;
+        var EnergyUse_10 = 30;
     this.gun_on.push(
     new shots(this.position.x + this.body.lef_side_wign_shot, this.position.y, 3, 0, 6, 10, 0), 
     new shots(this.position.x + this.body.right_side_wign_shot, this.position.y, 3, 0, 6, 10, 0), 

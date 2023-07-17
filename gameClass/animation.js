@@ -135,6 +135,15 @@ break;
 case 8 : 
 this.sparkForBullets(speed, posx + 50, posy, 200, 200, send);
 break;
+case 9 : 
+this.spritePage("assets/explosions/lavaexplosion.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
+break;
+case 10 : 
+this.spritePage("assets/explosions/lavaexplosion2.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
+break;
+case 11 : 
+this.spritePage("assets/explosions/lavaexplosion3.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
+break;
 }
 }
 
