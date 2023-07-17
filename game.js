@@ -64,7 +64,7 @@ const animation_TESTING = new Animation();
 //players
 //CREATING A PLAYER Player(name, level, thruster_selection, get_health, energy, m_damage,  gunType, posx, posy, gun_speed)
 const players = [
-  new Player("PLAYER ONE", 1230,  6, 100, 10000, 30, 2, 600, 900, 20),
+  new Player("PLAYER ONE", 1230,  6, 100, 10000, 30, 10, 600, 900, 20),
   // new Player("PLAYER ONE", 1230,  6, 100, 400, 100, 10, 800, 1000, 50),
 
 ]
@@ -253,19 +253,19 @@ for(var m = 0; m < monsters.length; m++){
       thruster_animation[p], 
       deathExplosionAnimation[p]
       ); 
-      
-    }
-    
-    //player_shield_effect_one[0].updateshield(players[0]);
-    //animation_TESTING.spriteProccessor(taken_money, 2, players[0].position.x - 450, players[0].position.y - 450, 1000, 1000);
-    //animation_TESTING.spritePage("assets/capture_effects/capture_health/spritesheet.png", players[0].position.x - 65, players[0].position.y - 60, 11264, 512, 22, 1, 512, 512, 2, true, -300, -300)
-    
-    // explosionEffect(effect, posx, posy, send, speed)
-    
-    burst_fire_test.explosionEffect(9, 500, 500, false, 1);
-    
-    
-    
+
+  }
+ 
+//player_shield_effect_one[0].updateshield(players[0]);
+  //animation_TESTING.spriteProccessor(taken_money, 2, players[0].position.x - 450, players[0].position.y - 450, 1000, 1000);
+  //animation_TESTING.spritePage("assets/capture_effects/capture_health/spritesheet.png", players[0].position.x - 65, players[0].position.y - 60, 11264, 512, 22, 1, 512, 512, 2, true, -300, -300)
+  
+  // explosionEffect(effect, posx, posy, send, speed)
+   burst_fire_test.explosionEffect(9, 500, 500, true, 1);
+  
+  
+  
+  
   
 }
 

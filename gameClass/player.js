@@ -57,8 +57,9 @@ class Player {
 
     //Guns
     this.gun_on = [];
-    this.explosionn = [new Animation()];
-    this.explosionn2 = [new Animation()];
+    this.explosionn = [];
+    this.explosionn2 = [];
+    this.burst_animation = [];
 
 //sparks animation
 this.gameFrame_sparks = 0;
@@ -365,6 +366,7 @@ if(this.gun_on[counting_updating].getDeleteShotStatus()){
     this.gun_on.splice(counting_updating, 1);
     this.explosionn.splice(counting_update, 1);
     this.explosionn2.splice(counting_updating, 1);
+    this.burst_animation.splice(counting_updating, 1);
 }
 
 }
@@ -412,8 +414,9 @@ const right_side_wign_shot = + 50
         this.explosionn.push(new Animation());
         this.explosionn2.push(new Animation());
         
+        
     setTimeout(() => {
- this.gun_on.push(new shots(this.position.x + right_side_wign_shot, this.position.y, 11, 0, 8, 1, 40, 100, 100));
+        this.gun_on.push(new shots(this.position.x + right_side_wign_shot, this.position.y, 11, 0, 8, 1, 40, 100, 100));
         this.explosionn.push(new Animation());
         this.explosionn2.push(new Animation());
     }, 200)
@@ -423,6 +426,7 @@ const right_side_wign_shot = + 50
     this.gun_on.push(new shots(this.position.x, this.position.y, 4, 0, 6, 10,));
     this.explosionn.push(new Animation());
     this.explosionn2.push(new Animation());
+    this.burst_animation.push(new Animation());
     }
 
     //Gun 10
@@ -461,5 +465,6 @@ this.showPlayerHealth();
 this.showPlayerEnergy();
 this.energyUsage()
 
+console.log(this.gun_on.length);
     }
     }
