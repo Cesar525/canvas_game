@@ -136,7 +136,7 @@ case 8 :
 this.sparkForBullets(speed, posx + 50, posy, 200, 200, send);
 break;
 case 9 : 
-this.burstForBullets(speed, posx, posy, 400, 400, send);
+this.burstForBullets(speed, posx, posy, 200,200, send);
 break;
 }
 }
@@ -180,7 +180,7 @@ burstForBullets(speed, posx, posy, width, height, send){
          burst_bullets.src = burst_sprites[Math.floor(this.gameFrame/this.staggerFrame) % 12];
          ctx.drawImage(burst_bullets, posx, posy, width, height);
  
-         if((Math.floor(this.gameFrame/this.staggerFrame) % 12) == burst_sprites.length - 1){
+         if((Math.floor(this.gameFrame/this.staggerFrame) % 12) == burst_sprites.length){
              this.show = false;
          }
      
