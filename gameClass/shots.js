@@ -1,5 +1,5 @@
 class shots extends Animation{
-    constructor(start_posx, start_posy, shotype, shotdirection, explosion_type, shot_damage, shot_speed, width, height, burst_selection){
+    constructor(start_posx, start_posy, shotype, shotdirection, explosion_type, shot_damage, shot_speed, width, height, burst_selection, burst_posx, burst_posy){
 super();
     this.position = {
         x : start_posx,
@@ -29,8 +29,8 @@ if(width && height){
         collision_posy : NaN
     }
 this.m_damage = shot_damage;
-this.calibrating_burst = start_posx;
-this.calibrating__burst = start_posy;
+this.calibrating_burst_x = burst_posx;
+this.calibrating_burst_y = burst_posy;
 this.bullet_image = shotype;
 this.damages_total = shot_damage;
 
@@ -249,7 +249,7 @@ collisionMonsterShot(monsters){
                    }
 
 bursting_bullets(player,burst_animation){
-burst_animation.burstEffect(1, this.start_position_setX - 50, this.start_position_setY - 150, this.burst_send, 1)
+burst_animation.burstEffect(1, this.start_position_setX + this.calibrating_burst_x, this.start_position_setY + this.calibrating_burst_y, this.burst_send, 1)
 this.burst_send = false;
 }
 

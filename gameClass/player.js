@@ -59,7 +59,7 @@ class Player {
     this.gun_on = [];
     this.explosionn = [];
     this.explosionn2 = [];
-    this.burst_animation = [];
+  
 
 //sparks animation
 this.gameFrame_sparks = 0;
@@ -366,7 +366,7 @@ if(this.gun_on[counting_updating].getDeleteShotStatus()){
     this.gun_on.splice(counting_updating , 1);
     this.explosionn.splice(counting_updating , 1);
     this.explosionn2.splice(counting_updating , 1);
-    this.burst_animation.splice(counting_updating , 1);
+
 }
 
 }
@@ -403,29 +403,29 @@ gunsType(type)
     // constructor(start_posx, start_posy, shotype, shotdirection, explosion_type, shot_damage, shot_speed, width, height){
     //Default Gun
     if(type == 1){
-        this.gun_on.push(new shots(this.position.x, this.position.y, 11, 0, 8, 1, 40, 100, 100));
+        this.gun_on.push(new shots(this.position.x, this.position.y, 11, 0, 8, 1, 40, 100, 100, 1, -50, -150));
         this.explosionn.push(new Animation());
         this.explosionn2.push(new Animation());
         }
-
+//GUN 2
     if(type == 2){
-        this.gun_on.push(new shots(this.position.x + this.body.lef_side_wign_shot, this.position.y, 11, 0, 8, 1, 40, 100, 100));
+        this.gun_on.push(new shots(this.position.x + this.body.lef_side_wign_shot, this.position.y, 11, 0, 8, 1, 40, 100, 100, 1, -50 , -100));
         this.explosionn.push(new Animation());
         this.explosionn2.push(new Animation());
         
         
     setTimeout(() => {
-        this.gun_on.push(new shots(this.position.x + this.body.right_side_wign_shot, this.position.y, 11, 0, 8, 1, 40, 100, 100));
+        this.gun_on.push(new shots(this.position.x + this.body.right_side_wign_shot, this.position.y, 11, 0, 8, 1, 40, 100, 100, 1, -50, -100));
         this.explosionn.push(new Animation());
         this.explosionn2.push(new Animation());
     }, 200)
 }
 
+//GUN 3
     if(type == 3){
     this.gun_on.push(new shots(this.position.x, this.position.y, 4, 0, 6, 10,));
     this.explosionn.push(new Animation());
     this.explosionn2.push(new Animation());
-    this.burst_animation.push(new Animation());
     }
 
     //Gun 10
