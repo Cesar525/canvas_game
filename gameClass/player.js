@@ -121,7 +121,7 @@ if(this.body.health == 0){
 };
 
 if(this.playerDead){
-        ctx.fillStyle = "white";
+        ctx.fillStyle = "red";
         ctx.font = "90px Roboto Mono"
     ctx.fillText("You are dead.",700 , c.height / 2)
     }
@@ -425,21 +425,21 @@ setTimeout(() => {
 //GUN 3 single Lazer shot WORKING ON shotDamage == 5 energy used 
     if(type == 3){
         var EnergyUse_3 = 5;
-    this.gun_on.push(new shots(this.position.x + 25 , this.position.y, 3,0 ,1, 5, 0, 50, 100));
+    this.gun_on.push(new shots(this.position.x , this.position.y, 3,0 ,12, 5, 0, 100, 100));
     this.explosionn.push(new Animation());
     this.explosionn2.push(new Animation());
     this.body.energy -= EnergyUse_3;
     }
 
 //gun 4 Double Lazer Shot shotDamage == 5 energy use 10 -- CURRENTLY WORKING ON.
-if(type == 2){
-    this.gun_on.push(new shots(this.position.x + this.body.lef_side_wign_shot, this.position.y, 11, 0, 8, 1, 40, 100, 100, 1, -50 , -100));
+if(type == 4){
+    this.gun_on.push(new shots(this.position.x + this.body.lef_side_wign_shot, this.position.y, 3, 0, 12, 5, 0, 100, 100, 1, -50 , -100));
     this.explosionn.push(new Animation());
     this.explosionn2.push(new Animation());
     
     
 setTimeout(() => {
-    this.gun_on.push(new shots(this.position.x + this.body.right_side_wign_shot, this.position.y, 11, 0, 8, 1, 40, 100, 100, 1, -50, -100));
+    this.gun_on.push(new shots(this.position.x + this.body.right_side_wign_shot , this.position.y, 3, 0, 12, 5, 0, 100, 100, 1, -50, -100));
     this.explosionn.push(new Animation());
     this.explosionn2.push(new Animation());
 }, 200)
@@ -458,7 +458,7 @@ setTimeout(() => {
 
     this.explosionn.push(new Animation(),new Animation(),new Animation(), new Animation(), new Animation());
     this.explosionn2.push(new Animation(),new Animation(),new Animation(), new Animation(), new Animation());
-    this.body.energy -= EnergyUse;
+    this.body.energy -= EnergyUse_10;
     }
 }
 

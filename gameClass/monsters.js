@@ -125,7 +125,7 @@ randomSpawnPositionX(from, to){
     return this.dropPower_random;
   }
 
-spawnMonster(powerups){
+spawnMonster(){
 if(this.body.m_dead){
     this.spawnTime++;
   
@@ -275,14 +275,14 @@ dropPowerUps(type){
 }
 }
 
-updateMonster(sprite_animator, explosionOnDeathAnimation, powerUps){
+updateMonster(sprite_animator){
 this.drawMonster(sprite_animator);
 this.monsterlifeBar();
 this.movements(this.monsterMovement);
-this.monsterDeathExplosion(explosionOnDeathAnimation);
+
 //this.dropPowerUps();
 this.dropPowerUps(this.randomSpawnPositionX(1, 30))
-this.spawnMonster(powerUps);
+this.spawnMonster();
 //Spawns
 //console.log(powerUp.length)
 

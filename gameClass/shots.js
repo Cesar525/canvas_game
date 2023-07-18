@@ -22,6 +22,7 @@ if(width && height){
     this.height_negative = -200;
     this.clearRect = false;
     this.shot_speed_set = shot_speed; 
+
     this.collition = {
         shot_collided_with_monster : false,
         shot_collided_with_player : false,
@@ -36,7 +37,6 @@ this.damages_total = shot_damage;
 
 
 this.burst_send = true;
-
 this.hiteffect = explosion_type;
 this.shot_direction = shotdirection;
 this.random = true;
@@ -46,7 +46,9 @@ this.damage_effect;
 this.gameFrameDamageAnimation = 0;
 this.gameFrame = 0;
 this.staggerFrame = 10;
-this.deleteshot = false;
+
+this.deleteshot = false;   
+
 this.selecting_burst = burst_selection;
     this.counter = 0;
     // here we add all guns images sprites
@@ -171,13 +173,14 @@ if(this.position.y < - this.height){
 
 }
 
+//DELETING SHOT
 deletingShots(){
-if(this.position.x == NaN && this.position.y == NaN){
- this.deleteshot = true;
-}
-}
+        setTimeout(()=>{
+            this.deleteshot = true;
+        }, 2000)
+    }
 getDeleteShotStatus(){ return this.deleteshot;}
-setDeleteShotStatus(set){ this.deleteshot = set;};
+
 getDamageNumberColor(){return this.DamageShowingcolorDefault;};
 setDamageNumberColor(color){ this.DamageShowingcolorDefault = color;}
 
@@ -262,6 +265,6 @@ this.shot(player);
 this.bulletHitMonsterEffect(explo_one_animation, explo_two_animation, this.getCollitionPosX(), this.getCollitionPosY() ,this.getCollitionWithMonster(), this.damage_effect, 1);
 this.damageShowAnimation(this.getDamageHit(), this.getCollitionPosX(), this.getCollitionPosY(), this.getDamageNumberColor(),this.getCollitionWithMonster());
 this.clearingBulletOnceHit();
-this.deletingShots();
+this.deletingShots(explo_one_animation);
     }
 }

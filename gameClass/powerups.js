@@ -10,8 +10,8 @@ constructor(posx, posy, type){
         m_sprite : NaN
     }
     this.velocity = {
-        y : 0,
-        x : 0
+        y : 3,
+        x : 3
     }
     this.collision ={
         collision_posX : NaN,
@@ -116,7 +116,7 @@ var health_points = 100;
 
 
     if(this.powerUp_taken){
-        effect_taken.spritePage("assets/capture_effects/capture_health/spritesheet.png", player.position.x - 65, player.position.y - 60 , 11264, 512, 22, 1, 512, 512, 2, true, -300, -300);
+        effect_taken.spritePage("assets/capture_effects/capture_health/spritesheet.png", player.position.x - 115, player.position.y - 120 , 11264, 512, 22, 1, 512, 512, 2, true, -200, -200);
         if(!effect_taken.getAnimationStatus()){
             this.setDestroyPowerUps(true);
             this.powerUp_taken = false;
@@ -151,7 +151,7 @@ energy(player, effect_taken ){
             this.clearItems();    
              }
           if(this.powerUp_taken){
-            effect_taken.spritePage("assets/capture_effects/capture_energy/spritesheet.png", player.position.x - 65, player.position.y - 60, 11264, 512, 22, 1, 512, 512, 2, true, -300, -300);
+            effect_taken.spritePage("assets/capture_effects/capture_energy/spritesheet.png", player.position.x - 115, player.position.y - 120, 11264, 512, 22, 1, 512, 512, 2, true, -200, -200);
             if(!effect_taken.getAnimationStatus()){
               this.setDestroyPowerUps(true)
                 this.powerUp_taken = false;
@@ -184,7 +184,7 @@ energy(player, effect_taken ){
                 this.clearItems();
           }
           if(this.powerUp_taken){
-            effect_taken.spritePage("assets/capture_effects/capture_money/spritesheet2.png", player.position.x - 65, player.position.y - 60, 11264, 512, 22, 1, 512, 512, 2, true, -300, -300);
+            effect_taken.spritePage("assets/capture_effects/capture_money/spritesheet2.png", player.position.x - 115, player.position.y - 120, 11264, 512, 22, 1, 512, 512, 2, true, -200, -200);
             if(!effect_taken.getAnimationStatus()){
                 this.setDestroyPowerUps(true);
                 this.powerUp_taken = false;

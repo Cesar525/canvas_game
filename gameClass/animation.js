@@ -17,6 +17,8 @@ constructor(){
     this.thruster_animation = 0;
 this.onSpriteProccessor = false;
 this.show_burst = false;
+this.explosion_used = false;
+
 }
 
 spritePage(sprite_path, posx, posy, sprite_page_width, sprite_page_height, sprite_count_width, sprite_count_height, sprite_size_w, sprite_size_h, speed, show, sprite_size_set_width, sprite_size_set_height, set_transparency){
@@ -53,6 +55,7 @@ this.gameFrame += 1;
 
 if(this.frameX >= sprite_count_width - 1 && this.frameY >= sprite_count_height - 1){
     this.show = false;
+    this.explosion_used = true;
     this.reset();
     this.onAnimation = false;
     return false;
@@ -81,6 +84,7 @@ this.position.x = NaN;
 this.position.y = NaN;
 }
 
+getExplosionUseStatus(){return this.explosion_used;}
 monsterHit(animationOne, animationTwoo ,col, posx_, posy_, hiteffect, speed, shot){
     var animationTwo;
     
@@ -143,6 +147,9 @@ this.spritePage("assets/explosions/lavaexplosion2.png", posx , posy, 2048, 1280,
 break;
 case 11 : 
 this.spritePage("assets/explosions/lavaexplosion3.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
+break;
+case 12 : 
+this.spritePage("assets/explosions/explosion_yellow.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
 break;
 }
 }
