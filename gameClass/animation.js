@@ -151,6 +151,12 @@ break;
 case 12 : 
 this.spritePage("assets/explosions/explosion_yellow.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
 break;
+case 13 : 
+this.spritePage("assets/explosions/explosion_green.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
+break;
+case 14 : 
+this.spritePage("assets/explosions/radiation_explosion.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
+break;
 }
 }
 

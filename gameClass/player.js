@@ -482,7 +482,8 @@ if(type == 7){
     var EnergyUse_7 = 18;
     this.body.energy -= EnergyUse_7
     var damage_7 = 10;
-            this.gun_on.push(new shots(this.position.x, this.position.y,7, 0, 10, damage_7, 40, 100, 300, 1, -50, -150));
+            this.gun_on.push(
+            new shots(this.position.x, this.position.y,7, 0, 10, damage_7, 40, 100, 300, 1, -50, -150));
             this.explosionn.push(new Animation());
             this.explosionn2.push(new Animation());
             }
@@ -509,14 +510,31 @@ if(type == 9){
     var EnergyUse_9 = 18;
     this.body.energy -= EnergyUse_9
     var damage_9 = 8;
-            this.gun_on.push(new shots(this.position.x, this.position.y,9, 0, 10, damage_9, 40, 100, 300, 1, -50, -150));
+            this.gun_on.push(new shots(this.position.x, this.position.y,9, 0, 13, damage_9, 40, 100, 300, 1, -50, -150));
             this.explosionn.push(new Animation());
             this.explosionn2.push(new Animation());
             }
 
+//gun 10
+
+if(type == 10){
+    var EnergyUse_10 = 19;
+    this.body.energy -= EnergyUse_10;
+    var damage_10 = 10;
+    this.gun_on.push(new shots(this.position.x + this.body.lef_side_wign_shot, this.position.y,9, 0, 13, damage_10, 40, 100, 300, 1, -50, -150));
+    this.explosionn.push(new Animation());
+    this.explosionn2.push(new Animation());
+    
+setTimeout(() => {
+    this.gun_on.push(new shots(this.position.x + this.body.right_side_wign_shot, this.position.y,9, 0, 13, damage_10, 40, 100, 300, 1, -50, -150));
+    this.explosionn.push(new Animation());
+    this.explosionn2.push(new Animation());
+}, 200)
+}
+
     //Gun 10
-    if(type == 10){
-        var EnergyUse_10 = 30;
+    if(type == 20){
+        var EnergyUse_20 = 30;
     this.gun_on.push(
     new shots(this.position.x + this.body.lef_side_wign_shot, this.position.y, 3, 0, 6, 10, 0), 
     new shots(this.position.x + this.body.right_side_wign_shot, this.position.y, 3, 0, 6, 10, 0), 
@@ -526,7 +544,7 @@ if(type == 9){
 
     this.explosionn.push(new Animation(),new Animation(),new Animation(), new Animation(), new Animation());
     this.explosionn2.push(new Animation(),new Animation(),new Animation(), new Animation(), new Animation());
-    this.body.energy -= EnergyUse_10;
+    this.body.energy -= EnergyUse_20;
     }
 }
 
