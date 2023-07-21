@@ -59,7 +59,8 @@ class Player {
     this.gun_on = [];
     this.explosionn = [];
     this.explosionn2 = [];
-  
+    this.player_storage = [];
+
 
 //sparks animation
 this.gameFrame_sparks = 0;
@@ -303,23 +304,32 @@ showPlayerMoney(){
 }
 
 showPlayerHealth(){
-    const health_images = new Image();
-    ctx_ui.font = "30px Roboto Mono";
-    health_images.src = 'assets/space_assets/10. Powerups/01 health 02/0000.png',
-    ctx_ui.drawImage(health_images, 0, 0, 100, 100)
+    // const health_images = new Image();
+    // ctx_ui.font = "30px Roboto Mono";
+    // health_images.src = 'assets/space_assets/10. Powerups/01 health 02/0000.png',
+    // ctx_ui.drawImage(health_images, 0, 0, 100, 100)
 
-    ctx_ui.fillStyle = "white";
-    ctx_ui.fillText(this.storage.health, 0, 100)
+    // ctx_ui.fillStyle = "white";
+    // ctx_ui.fillText(this.storage.health, 0, 100)
 }
 
 showPlayerEnergy(){
+    // const health_images = new Image();
+    // ctx_ui.font = "30px Roboto Mono";
+    // health_images.src = 'assets/space_assets/10. Powerups/03 flash 02/0000.png',
+    // ctx_ui.drawImage(health_images, 100, 0, 100, 100)
+    // ctx_ui.drawImage(health_images, 100, 0, 100, 100)
+    // ctx_ui.fillStyle = "white";
+    // ctx_ui.fillText(this.storage.energy, 0, 100)
+}
+
+playerStorageSetup(posx, posy, item){
     const health_images = new Image();
     ctx_ui.font = "30px Roboto Mono";
     health_images.src = 'assets/space_assets/10. Powerups/03 flash 02/0000.png',
-    ctx_ui.drawImage(health_images, 0, 100, 100, 100)
-
+    ctx_ui.drawImage(health_images, posx, posy, 100, 100)
     ctx_ui.fillStyle = "white";
-    ctx_ui.fillText(this.storage.energy, 0, 200)
+    ctx_ui.fillText(this.storage.energy, 0, 100) 
 }
 
 playerStatus(){
@@ -580,6 +590,10 @@ this.showPlayerHealth();
 this.showPlayerEnergy();
 this.energyUsage()
 
+for(var counting_storage_tiems = 0 ; counting_storage_tiems < this.player_storage; counting_storage_tiems){
+   var position_x_starting = 100;
+    this.playerStorageSetup(0, counting_storage_tiems);
+}
 //console.log(this.gun_on.length);
     }
     }
