@@ -1,5 +1,5 @@
 class PowerUps {
-constructor(posx, posy, type){
+constructor(posx, posy, type, points_adding){
 
     this.position = {
         x : posx, 
@@ -19,6 +19,7 @@ constructor(posx, posy, type){
         collision_with_player : NaN
 
     }
+    this.m_points_adding = points_adding;
 this.powerUps_Selecting = {
     health : false,
     energy : false,
@@ -36,6 +37,12 @@ this.powerUps_Selecting = {
     this.health_powerUp_taken;
     this.destroyPush = false;
     this.gameFramePowerups = 0;
+    this.power_UPTaken = {
+        health : false,
+        energy : false,
+        money : false
+    }
+
 }
 setPos(posx, posy){
     this.position.x = posx;
@@ -93,7 +100,7 @@ getDestroyPowerUps(){return this.destroyPush;}
 
 health(player, effect_taken){
 
-var health_points = 100;
+
     if(this.m_type == "health"){
     if(!this.clearItem){
         // ctx.fillStyle = "pink";
@@ -110,29 +117,22 @@ var health_points = 100;
         this.collision.collision_posX = this.position.x;
         this.collision.collision_posY = this.position.y;
         this.powerUp_taken = true;
-        player.body.health += health_points;
+        player.body.health += this.m_points_adding;
         this.clearItems();
     }
 
-
-    if(this.powerUp_taken){
-        effect_taken.spritePage("assets/capture_effects/capture_health/spritesheet.png", player.position.x - 115, player.position.y - 120 , 11264, 512, 22, 1, 512, 512, 2, true, -200, -200);
-        if(!effect_taken.getAnimationStatus()){
-            this.setDestroyPowerUps(true);
-            this.powerUp_taken = false;
-        }
-        this.healShowAnimation(health_points, player.getPlayerPosX() + 20, player.getPlayerPosY() + 100, "#8aff8a", this.powerUp_taken, "+");
-    }
 }
 
 }
+
+powerup
 
 
 
 
 energy(player, effect_taken ){
     if(this.m_type == "energy"){
-        var energy_points = 100;
+      
     if(!this.clearItem){
             // ctx.fillStyle = "blue";
                 // // ctx.fillRect(this.position.x, this.position.y += this.velocity.y , this.width , this.height);
@@ -147,17 +147,10 @@ energy(player, effect_taken ){
             this.collision.collision_posX = this.position.x;
             this.collision.collision_posY = this.position.y;
             this.powerUp_taken = true;
-            player.body.energy += energy_points;
+            player.body.energy += this.m_ponts_adding;
             this.clearItems();    
              }
-          if(this.powerUp_taken){
-            effect_taken.spritePage("assets/capture_effects/capture_energy/spritesheet.png", player.position.x - 115, player.position.y - 120, 11264, 512, 22, 1, 512, 512, 2, true, -200, -200);
-            if(!effect_taken.getAnimationStatus()){
-              this.setDestroyPowerUps(true)
-                this.powerUp_taken = false;
-            }
-            }
-            this.healShowAnimation(energy_points, player.getPlayerPosX() + 20, player.getPlayerPosY() + 100, "#4484ff", this.powerUp_taken, "+");
+        
       }
     
     }
@@ -180,21 +173,48 @@ energy(player, effect_taken ){
                 this.collision.collision_posX = this.position.x;
                 this.collision.collision_posY = this.position.y;
                 this.powerUp_taken = true;
-                player.storage.money += money_points;     
+                player.storage.money += this.m_points_adding;     
                 this.clearItems();
           }
-          if(this.powerUp_taken){
-            effect_taken.spritePage("assets/capture_effects/capture_money/spritesheet2.png", player.position.x - 115, player.position.y - 120, 11264, 512, 22, 1, 512, 512, 2, true, -200, -200);
-            if(!effect_taken.getAnimationStatus()){
-                this.setDestroyPowerUps(true);
-                this.powerUp_taken = false;
-            }
-
-            }
-            this.healShowAnimation(money_points, player.getPlayerPosX() + 20, player.getPlayerPosY() + 100, "green", this.powerUp_taken, "$");
+      
         }
         }
 
+        powerUpTakenEffect(player, effects){
+
+            if(this.m_type == "health"){
+                if(this.powerUp_taken){
+                    effects.spritePage("assets/capture_effects/capture_health/spritesheet.png", player.position.x - 115, player.position.y - 120 , 11264, 512, 22, 1, 512, 512, 2, true, -200, -200);
+                    if(!effects.getAnimationStatus()){
+                        this.setDestroyPowerUps(true);
+                        this.powerUp_taken = false;
+                    }
+                    this.healShowAnimation(this.m_points_adding, player.getPlayerPosX() + 20, player.getPlayerPosY() + 100, "#8aff8a", this.powerUp_taken, "+");
+                }
+            }
+            if(this.m_type == "energy"){
+                if(this.powerUp_taken){
+                    effects.spritePage("assets/capture_effects/capture_energy/spritesheet.png", player.position.x - 115, player.position.y - 120, 11264, 512, 22, 1, 512, 512, 2, true, -200, -200);
+                    if(!effects.getAnimationStatus()){
+                      this.setDestroyPowerUps(true)
+                        this.powerUp_taken = false;
+                    }
+                    }
+                    this.healShowAnimation(this.m_points_adding, player.getPlayerPosX() + 20, player.getPlayerPosY() + 100, "#4484ff", this.powerUp_taken, "+");
+            }
+if(this.m_type == "money"){
+
+    if(this.powerUp_taken){
+        effects.spritePage("assets/capture_effects/capture_money/spritesheet2.png", player.position.x - 115, player.position.y - 120, 11264, 512, 22, 1, 512, 512, 2, true, -200, -200);
+        if(!effects.getAnimationStatus()){
+            this.setDestroyPowerUps(true);
+            this.powerUp_taken = false;
+        }
+
+        }
+        this.healShowAnimation(this.m_points_adding, player.getPlayerPosX() + 20, player.getPlayerPosY() + 100, "green", this.powerUp_taken, "$");
+}
+}
 
 
 clearItems(){
@@ -240,6 +260,7 @@ updatePowerUps(player, effectTaken){
     this.health(player, effectTaken);
     this.energy(player, effectTaken);
     this.money(player, effectTaken);
+    // this.powerUpTakenEffect(player, effectTaken);
 }
 
 }

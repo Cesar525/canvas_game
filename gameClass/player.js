@@ -59,8 +59,9 @@ class Player {
     this.gun_on = [];
     this.explosionn = [];
     this.explosionn2 = [];
-    this.player_storage = [];
 
+    this.player_storage = [1];
+    this.set_amount = 0;
 
 //sparks animation
 this.gameFrame_sparks = 0;
@@ -329,7 +330,7 @@ playerStorageSetup(posx, posy, item){
     health_images.src = 'assets/space_assets/10. Powerups/03 flash 02/0000.png',
     ctx_ui.drawImage(health_images, posx, posy, 100, 100)
     ctx_ui.fillStyle = "white";
-    ctx_ui.fillText(this.storage.energy, 0, 100) 
+    ctx_ui.fillText(this.storage.energy, 0, 100 ) 
 }
 
 playerStatus(){
@@ -554,7 +555,7 @@ setTimeout(() => {
 }, 200)
 }
 
-    //Gun 10
+    //Gun 20 LAVA SPREAD
     if(type == 20){
         var EnergyUse_20 = 30;
     this.gun_on.push(
@@ -589,11 +590,15 @@ this.shottingiinterval();
 this.showPlayerHealth();
 this.showPlayerEnergy();
 this.energyUsage()
+// WOKRING ON
+    this.playerStorageSetup(0, 0);
 
-for(var counting_storage_tiems = 0 ; counting_storage_tiems < this.player_storage; counting_storage_tiems){
-   var position_x_starting = 100;
-    this.playerStorageSetup(0, counting_storage_tiems);
-}
+    for(var f = 0; f < powerUp.length; f++){      
+        powerUp[f].updatePowerUps(this);
+      }
+    for(var f = 0; f < powerUp.length; f++){      
+        powerUp[f].powerUpTakenEffect(this, powerup_capture_effect[f])
+      }
 //console.log(this.gun_on.length);
     }
     }

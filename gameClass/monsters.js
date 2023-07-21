@@ -252,21 +252,21 @@ dropPowerUps(type){
   
     switch(type){      
         case 1 : 
-        powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, "health" ));
+        powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, "health" , 100));
         powerup_capture_effect.push(new Animation());
         this.drop_item = false;
         this.droping_powerUp = false
         break;
 
         case 2 :   
-        powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, "energy" ));
+        powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, "energy", 100 ));
         powerup_capture_effect.push(new Animation());
         this.drop_item = false;
         this.droping_powerUp = false;
         break;
 
         case  3: 
-        powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, "money" ));
+        powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, "money", 150 ));
         powerup_capture_effect.push(new Animation());
         this.drop_item = false;
         this.droping_powerUp = false;

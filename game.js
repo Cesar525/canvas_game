@@ -65,7 +65,7 @@ const animation_TESTING = new Animation();
 //players
 //CREATING A PLAYER Player(name, level, thruster_selection, get_health, energy, m_damage,  gunType, posx, posy, gun_speed)
 const players = [
-  new Player("PLAYER ONE", 1230,  6, 100, 10000, 1500, 20, 600, 900, 30),
+  new Player("PLAYER ONE", 1230,  6, 100, 10000, 1500, 10, 600, 900, 30),
   // new Player("PLAYER ONE", 1230,  6, 100, 400, 100, 10, 800, 1000, 50),
 
 ]
@@ -73,7 +73,7 @@ const players = [
 //CREATING A MONSTERS Monstrs( id, sprite,  pos_x, pos_y, health, name, speed, color, movements, s_width, s_height, damage)
 const monsters = [
    new Monsters(2, asteroid_one,  200, 200 , 5000000, "Asteroid", 5, "orange", "none", 100, 100, 7),
-  //  new Monsters(2, asteroid_one,  200, 200 , 100, "Asteroid", 5, "orange", "straightDown", 100, 100, 7),
+   new Monsters(2, asteroid_one,  200, 200 , 100, "Asteroid", 5, "orange", "straightDown", 100, 100, 7),
   //  new Monsters(2, asteroid_one,  200, 200 , 100, "Asteroid", 5, "orange", "straightDown", 100, 100, 7),
   //  new Monsters(2, asteroid_one,  200, 200 , 100, "Asteroid", 5, "orange", "straightDown", 100, 100, 7),
   //  new Monsters(2, asteroid_one,  200, 200 , 100, "Asteroid", 5, "orange", "straightDown", 100, 100, 7),
@@ -129,9 +129,9 @@ const monsters = [
 
   //POWER UPS DROP
 const powerUp = [
-  new PowerUps(400, 100, "health"),
- new PowerUps(700, 100, "money"),
- new PowerUps(900, 100, "energy"),
+  new PowerUps(400, 100, "health", 100),
+ new PowerUps(700, 100, "money", 100),
+ new PowerUps(900, 100, "energy", 134320),
 ];
 
 const powerup_capture_effect = [];
@@ -234,12 +234,7 @@ for(var m = 0; m < monsters.length; m++){
     }
   }
   
- for(var f = 0; f < powerUp.length; f++){      
-  powerUp[f].updatePowerUps(players[0],powerup_capture_effect[f]);
-}
-for(var m = 0; m < monsters.length; m++){
-  monsters[m].monsterDeathExplosion(explosion_onDeath_animation[m]);
-} 
+
   
   //powerUps updates and collision
   for(var p = 0; p < players.length; p++){
@@ -257,8 +252,12 @@ for(var m = 0; m < monsters.length; m++){
       deathExplosionAnimation[p]
       ); 
 
+      for(var m = 0; m < monsters.length; m++){
+        monsters[m].monsterDeathExplosion(explosion_onDeath_animation[m]);
+      } 
   }
 
+ 
 
 
  
