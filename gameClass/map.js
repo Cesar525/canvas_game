@@ -40,10 +40,33 @@ break;
     this.position.y = 0;
   }
         }
-        randomSpawnPositionX(from, to){
-            this.randomNum = Math.floor(Math.random() * to) + from   
-            return this.randomNum;
-          }
+
+
+        drawWater(speed, type_stars){
+            this.velocity.x = speed;
+            this.velocity.y = speed;
+            const background_image = new Image()
+            switch(type_stars){
+    case 1 : 
+    background_image.src = "assets/backgrounds/water.png";
+    break;
+    case 2 : 
+    background_image.src = "assets/backgrounds/water.png";
+    break;
+            }
+            this.position.y += this.velocity.y;
+            ctx.drawImage(background_image, this.position.x, this.position.y, c.width, c.height);
+            ctx.drawImage(background_image, this.position.x, this.position.y - c.height, c.width, c.height);
+      if(this.position.y == c.height){
+        this.position.y = 0;
+      }
+            }
+
+
+randomSpawnPositionX(from, to){
+    this.randomNum = Math.floor(Math.random() * to) + from   
+    return this.randomNum;
+    }
 
 asteroids(speed){
     this.velocity.x = speed;

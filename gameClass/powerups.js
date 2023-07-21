@@ -106,7 +106,7 @@ var health_points = 100;
 
     if(this.collision.collision_with_player){
          
-        console.log("health Taken <EFFECT HERE>");
+        //console.log("health Taken <EFFECT HERE>");
         this.collision.collision_posX = this.position.x;
         this.collision.collision_posY = this.position.y;
         this.powerUp_taken = true;
@@ -143,7 +143,7 @@ energy(player, effect_taken ){
 
             }
              if(this.collision.collision_with_player){
-            console.log("ENERGY Taken <EFFECT HERE taken_energy sprite>");
+           // console.log("ENERGY Taken <EFFECT HERE taken_energy sprite>");
             this.collision.collision_posX = this.position.x;
             this.collision.collision_posY = this.position.y;
             this.powerUp_taken = true;
@@ -176,7 +176,7 @@ energy(player, effect_taken ){
                 
                 }
                  if(this.collision.collision_with_player){
-                console.log("MONEY Taken <EFFECT HERE>");
+               // console.log("MONEY Taken <EFFECT HERE>");
                 this.collision.collision_posX = this.position.x;
                 this.collision.collision_posY = this.position.y;
                 this.powerUp_taken = true;

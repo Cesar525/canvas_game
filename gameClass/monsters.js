@@ -210,7 +210,7 @@ monsterDeath(){
       if(!this.body.m_dead){
         if(this.body.m_health == 0 ){
             this.clearRect = true;
-            console.log(this.body.m_name + " is dead life i set to " + this.getMonsterHealth());
+          //  console.log(this.body.m_name + " is dead life i set to " + this.getMonsterHealth());
             this.body.m_deadPosX = this.position.x;
             this.body.m_deadPosY = this.position.y;
             this.position.x = NaN;

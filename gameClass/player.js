@@ -184,7 +184,7 @@ playerCollitionMonsters(monsters){
    // if(Math.floor(this.frames.gameFrame/this.frames.staggerFrame) % 5 == 4){
       let damage = 1
         this.setPlayerDamage(damage); 
-      console.log("you have been damage your current life is  = " + this.body.health);
+      //console.log("you have been damage your current life is  = " + this.body.health);
         
  //  }
   }
@@ -192,6 +192,10 @@ playerCollitionMonsters(monsters){
 
 playerMovemements(){
         // player movements
+var keyboard_use = true;;
+
+
+if(keyboard_use){
 if(keys.right.pressed){
     this.position.x += this.velocity.x
 }
@@ -204,10 +208,19 @@ if(keys.up.pressed){
 if(keys.down.pressed){
     this.position.y += this.velocity.y
 }
-if(true){
-    
- }
+}else{
 
+
+            addEventListener("mousemove", (event) => {
+        //console.log(event);
+        console.log("X == " + event.clientX + "Y == " + event.clientY); 
+        this.position.x = event.clientX;
+        this.position.y = event.clientY;
+          });
+  
+
+
+}
 
 // player need to stay inside the canvas
 if(this.position.x + this.velocity.x > c.width - this.width + this.velocity.x){
@@ -397,9 +410,6 @@ shottingiinterval(){
 
 gunsType(type)
 {
-
-
-
     // constructor(start_posx, start_posy, shotype, shotdirection, explosion_type, shot_damage, shot_speed, width, height, burst_selection, burst_position.x, burst position.y){
 //Default Gun  shotDamage == 1
 if(type == 1){
@@ -493,7 +503,9 @@ if(type == 8){
     var EnergyUse_8 = 20;
     this.body.energy -= EnergyUse_8;
     var damage_8 = 10;
-    this.gun_on.push(new shots(this.position.x + this.body.lef_side_wign_shot, this.position.y,7, 0, 10, damage_8, 40, 100, 300, 1, -50, -150));
+    this.gun_on.push(
+        new shots(this.position.x + this.body.lef_side_wign_shot, this.position.y,7, 0, 10, damage_8, 40, 100, 300, 1, -50, -150)
+        );
     this.explosionn.push(new Animation());
     this.explosionn2.push(new Animation());
     
@@ -536,11 +548,11 @@ setTimeout(() => {
     if(type == 20){
         var EnergyUse_20 = 30;
     this.gun_on.push(
-    new shots(this.position.x + this.body.lef_side_wign_shot, this.position.y, 3, 0, 6, 10, 0), 
-    new shots(this.position.x + this.body.right_side_wign_shot, this.position.y, 3, 0, 6, 10, 0), 
-    new shots(this.position.x, this.position.y, 4, 0, 6, 10, 0),
-    new shots(this.position.x, this.position.y, 10, 3, 7, 10, 0),
-    new shots(this.position.x, this.position.y, 10, -3, 7, 10, 0));
+    new shots(this.position.x + this.body.lef_side_wign_shot, this.position.y,7, 0, 10, 10, 0, 100, 300, 1, -50, -150),
+    new shots(this.position.x + this.body.right_side_wign_shot, this.position.y,7, 0, 10, 10, 0, 100, 300, 1, -50, -150),
+    new shots(this.position.x, this.position.y, 7, 0, 10, 10, 0,  100, 300, 1, -50, -150),
+    new shots(this.position.x, this.position.y, 7, 3, 10, 10, 0,  100, 300, 1, -50, -150),
+    new shots(this.position.x, this.position.y, 7, -3, 10, 10, 0, 100, 300, 1, -50, -150));
 
     this.explosionn.push(new Animation(),new Animation(),new Animation(), new Animation(), new Animation());
     this.explosionn2.push(new Animation(),new Animation(),new Animation(), new Animation(), new Animation());
@@ -568,6 +580,6 @@ this.showPlayerHealth();
 this.showPlayerEnergy();
 this.energyUsage()
 
-console.log(this.gun_on.length);
+//console.log(this.gun_on.length);
     }
     }
