@@ -147,7 +147,7 @@ energy(player, effect_taken ){
             this.collision.collision_posX = this.position.x;
             this.collision.collision_posY = this.position.y;
             this.powerUp_taken = true;
-            player.body.energy += this.m_ponts_adding;
+            player.body.energy += this.m_points_adding;
             this.clearItems();    
              }
         

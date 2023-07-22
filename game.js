@@ -131,7 +131,7 @@ const monsters = [
 const powerUp = [
   new PowerUps(400, 100, "health", 100),
  new PowerUps(700, 100, "money", 100),
- new PowerUps(900, 100, "energy", 134320),
+ new PowerUps(900, 100, "energy", 100),
 ];
 
 const powerup_capture_effect = [];
