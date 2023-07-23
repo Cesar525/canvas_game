@@ -60,7 +60,7 @@ class Player {
     this.explosionn = [];
     this.explosionn2 = [];
 
-    this.player_storage = [1];
+    this.player_storage = [1, 2, 3];
     this.set_amount = 0;
 
 //sparks animation
@@ -324,16 +324,13 @@ showPlayerEnergy(){
     // ctx_ui.fillText(this.storage.energy, 0, 100)
 }
 
-playerStorageSetup(posx, posy, item){
-    const health_images = new Image();
-    ctx_ui.font = "30px Roboto Mono";
-    health_images.src = 'assets/space_assets/10. Powerups/03 flash 02/0000.png',
-    ctx_ui.drawImage(health_images, posx, posy, 100, 100)
-    ctx_ui.fillStyle = "white";
-    ctx_ui.fillText(this.storage.energy, 0, 100 ) 
-}
+
 
 playerStatus(){
+
+var bar_width = 500;
+var bar_height = 25
+
   //showin gplayer money
     const image_money = new Image();
     ctx_ui_status.fillStyle = "white";
@@ -347,34 +344,34 @@ playerStatus(){
     ctx_ui_status.fillStyle = "red"; 
  
     ctx_ui_status.font = "30px Roboto Mono";
-    ctx_ui_status.fillRect(25, 100, c.width, 25);
+    ctx_ui_status.fillRect(25, 100, bar_width, bar_height);
     
     //green
     ctx_ui_status.fillStyle = "green";
     ctx_ui_status.font = "30px Roboto Mono";
-    ctx_ui_status.fillRect(25, 100, Math.round((this.body.health / this.health_total) * c.width), 25);
+    ctx_ui_status.fillRect(25, 100, Math.round((this.body.health / this.health_total) * bar_width ), bar_height);
 //Showing health amount.
     ctx_ui_status.fillStyle = "white";
     ctx_ui_status.font = "40px Roboto Mono";
-    ctx_ui_status.fillText(this.body.health, c.width + 30, 125, c_ui_status.height - 60);
+    ctx_ui_status.fillText(this.body.health, bar_width / 2,100);
 
 
     //Showing player Energy Levels
 
  
-  //showing player health Levels
+  //showing player energy Levels
   ctx_ui_status.fillStyle = "gray";
   ctx_ui_status.font = "30px Roboto Mono";
-  ctx_ui_status.fillRect(25, 150, c.width, 25);
+  ctx_ui_status.fillRect(25, 150, bar_width, bar_height);
   
   //green
   ctx_ui_status.fillStyle = "blue";
   ctx_ui_status.font = "30px Roboto Mono";
-  ctx_ui_status.fillRect(25, 150, Math.round((this.body.energy / this.total_energy) * c.width), 25);
-//Showing health amount.
+  ctx_ui_status.fillRect(25, 150, Math.round((this.body.energy / this.total_energy) * bar_width), bar_height);
+//Showing energy amount.
   ctx_ui_status.fillStyle = "white";
   ctx_ui_status.font = "40px Roboto Mono";
-  ctx_ui_status.fillText(this.body.energy, c.width + 30, 176, c_ui_status.height - 60);
+  ctx_ui_status.fillText(this.body.energy, bar_width / 2, 150, c_ui_status.height - 60);
 
 }
 shotting(){
@@ -571,6 +568,7 @@ setTimeout(() => {
     }
 }
 
+
 update(animation_Sparks_low, animation_Sparks_high, thruster_animation, player_death_explosionAnimation){
 
 this.shotting();
@@ -591,7 +589,6 @@ this.showPlayerHealth();
 this.showPlayerEnergy();
 this.energyUsage()
 // WOKRING ON
-    this.playerStorageSetup(0, 0);
 
     for(var f = 0; f < powerUp.length; f++){      
         powerUp[f].updatePowerUps(this);

@@ -66,6 +66,6 @@ addEventListener("keydown", function ({keyCode}){
   
   addEventListener("mousemove", (event) => {
     //console.log(event);
-    console.log("X == "+event.clientX + "Y == " + event.clientY);
+    //console.log("X == "+event.clientX + "Y == " + event.clientY);
     
       });

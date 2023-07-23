@@ -11,7 +11,7 @@
     <div style="width: fit-content;height: fit-content;margin: 0 auto;">
         <canvas style="border: solid 1px white;background: #0f0e0e;" id="canvasUILifeBar" class="canvasUILifeBar"></canvas><br>
         <canvas style="border: solid 1px white;" id="canvasGame" class="canvasGame"></canvas>
-        <canvas style="border: solid 1px white;background: #0f0e0e;" id="canvasUI" class="canvasUI"></canvas>
+     
     </div>
 </div>
 
