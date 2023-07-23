@@ -328,7 +328,7 @@ showPlayerEnergy(){
 
 playerStatus(){
 
-var bar_width = 500;
+var bar_width = 700;
 var bar_height = 25
 
   //showin gplayer money

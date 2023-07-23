@@ -61,7 +61,15 @@ getHealth(){return this.body.health;};
 
 drawMonster(sprite_animation){
     if(!this.clearRect){
-   sprite_animation.spriteProccessor(this.body.m_sprite, 2, this.position.x, this.position.y, this.width, this.height);
+//    sprite_animation.spriteProccessor(this.body.m_sprite, 2, this.position.x, this.position.y, this.width, this.height);
+
+//Stand Still Image
+        const image_monster = new Image();
+        image_monster.src = this.body.m_sprite[0];
+        ctx.drawImage(image_monster, this.position.x, this.position.y, this.width, this.height)
+
+
+   //White square
 //    ctx.fillStyle = "white";
 //    ctx.fillRect(this.position.x, this.position.y, 100, 100);
    
