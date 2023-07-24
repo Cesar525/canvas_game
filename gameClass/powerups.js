@@ -10,8 +10,8 @@ constructor(posx, posy, type, points_adding, width, height){
         m_sprite : NaN
     }
     this.velocity = {
-        y : 0,
-        x : 0
+        y : 3,
+        x : 3
     }
     this.collision ={
         collision_posX : NaN,
