@@ -73,6 +73,7 @@ getPlayerPosY(){return this.position.y; };
 
 
 getGunType(){return this.body.m_gun_type;};
+setGunType(set){ this.body.gun_set = set;};
 
 draw(){
 

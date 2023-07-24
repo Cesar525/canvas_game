@@ -1,5 +1,5 @@
 class PowerUps {
-constructor(posx, posy, type, points_adding){
+constructor(posx, posy, type, points_adding, width, height){
 
     this.position = {
         x : posx, 
@@ -10,8 +10,8 @@ constructor(posx, posy, type, points_adding){
         m_sprite : NaN
     }
     this.velocity = {
-        y : 3,
-        x : 3
+        y : 0,
+        x : 0
     }
     this.collision ={
         collision_posX : NaN,
@@ -28,8 +28,13 @@ this.powerUps_Selecting = {
 }
     this.m_type = type;
     this.look = NaN;
+    if(!width && !height){
     this.width = 100;
     this.height = 100;
+    }else{
+        this.width = width;
+        this.height = height;
+    }
     this.clearItem = false;
     this.dropitem = false;
     this.gameFrame = 0;
@@ -124,10 +129,6 @@ health(player, effect_taken){
 }
 
 }
-
-powerup
-
-
 
 
 energy(player, effect_taken ){
@@ -256,11 +257,57 @@ healShowAnimation(damage,pos_x, pos_y, color, if_true, sign){
                         this.animationSlowsGoesUp = 0
                     }
             }
+
+
+            //guns upgrades
+            machineGunBeacon(player, effect_taken){
+
+
+                if(this.m_type == "machineGun"){
+                    var gundefault = 1;
+                    var gunTwo = 2;
+                if(!this.clearItem){
+                    // ctx.fillStyle = "pink";
+                    // ctx.fillRect(this.position.x, this.position.y += this.velocity.y , this.width , this.height)
+               const health_image = new Image();
+               health_image.src = 'assets/beacon/machineGunBeacon.png',
+            
+                    ctx.drawImage(health_image,this.position.x, this.position.y += this.velocity.y, this.width, this.height);
+                    }
+            
+                if(this.collision.collision_with_player){
+                     
+                    //console.log("health Taken <EFFECT HERE>");
+                    this.collision.collision_posX = this.position.x;
+                    this.collision.collision_posY = this.position.y;
+                    this.powerUp_taken = true;
+                if(player.getGunType() != gunTwo){
+                    if(player.getGunType() != gundefault){
+                        player.setGunType(gundefault);
+                        console.log("gun set to 1")
+                    }
+                }
+                    if(player.getGunType() == gundefault){
+                        player.setGunType(gunTwo);
+                        console.log("gun set to 2");
+                    }
+
+
+
+                    this.clearItems();
+                }
+            
+            }
+            
+            }
+
+
 updatePowerUps(player, effectTaken){
     this.health(player, effectTaken);
     this.energy(player, effectTaken);
     this.money(player, effectTaken);
-    // this.powerUpTakenEffect(player, effectTaken);
+    this.machineGunBeacon(player, effectTaken);
+    
 }
 
 }
