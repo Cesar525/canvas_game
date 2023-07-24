@@ -261,8 +261,6 @@ healShowAnimation(damage,pos_x, pos_y, color, if_true, sign){
 
             //guns upgrades
             machineGunBeacon(player, effect_taken){
-
-
                 if(this.m_type == "machineGun"){
                     var gundefault = 1;
                     var gunTwo = 2;
@@ -301,13 +299,173 @@ healShowAnimation(damage,pos_x, pos_y, color, if_true, sign){
             
             }
 
+            laserGunBeacon(player, effect_taken){
+                if(this.m_type == "energyShot"){
+                    var gundefault = 3;
+                    var gunTwo = 4;
+                if(!this.clearItem){
+                    // ctx.fillStyle = "pink";
+                    // ctx.fillRect(this.position.x, this.position.y += this.velocity.y , this.width , this.height)
+               const health_image = new Image();
+               health_image.src = 'assets/beacon/energyGunBeacon.png',
+            
+                    ctx.drawImage(health_image,this.position.x, this.position.y += this.velocity.y, this.width, this.height);
+                    }
+            
+                if(this.collision.collision_with_player){
+                     
+                    //console.log("health Taken <EFFECT HERE>");
+                    this.collision.collision_posX = this.position.x;
+                    this.collision.collision_posY = this.position.y;
+                    this.powerUp_taken = true;
+                if(player.getGunType() != gunTwo){
+                    if(player.getGunType() != gundefault){
+                        player.setGunType(gundefault);
+                       
+                    }
+                }
+                    if(player.getGunType() == gundefault){
+                        player.setGunType(gunTwo);
+                        
+                    }
+
+
+
+                    this.clearItems();
+                }
+            
+            }
+            
+            }
+
+            plasmaGunBeacon(player, effect_taken){
+                if(this.m_type == "energyPlasma"){
+                    var gundefault = 5;
+                    var gunTwo = 6;
+                if(!this.clearItem){
+                    // ctx.fillStyle = "pink";
+                    // ctx.fillRect(this.position.x, this.position.y += this.velocity.y , this.width , this.height)
+               const health_image = new Image();
+               health_image.src = 'assets/beacon/plasmaBeacon.png',
+            
+                    ctx.drawImage(health_image,this.position.x, this.position.y += this.velocity.y, this.width, this.height);
+                    }
+            
+                if(this.collision.collision_with_player){
+                     
+                    //console.log("health Taken <EFFECT HERE>");
+                    this.collision.collision_posX = this.position.x;
+                    this.collision.collision_posY = this.position.y;
+                    this.powerUp_taken = true;
+                if(player.getGunType() != gunTwo){
+                    if(player.getGunType() != gundefault){
+                        player.setGunType(gundefault);
+                       
+                    }
+                }
+                    if(player.getGunType() == gundefault){
+                        player.setGunType(gunTwo);
+                        
+                    }
+
+
+
+                    this.clearItems();
+                }
+            
+            }
+            
+            }
+
+            lavaGunBeacon(player, effect_taken){
+                if(this.m_type == "energyLava"){
+                    var gundefault = 7;
+                    var gunTwo = 8;
+                if(!this.clearItem){
+                    // ctx.fillStyle = "pink";
+                    // ctx.fillRect(this.position.x, this.position.y += this.velocity.y , this.width , this.height)
+               const health_image = new Image();
+               health_image.src = 'assets/beacon/lavaGunBeacon.png',
+            
+                    ctx.drawImage(health_image,this.position.x, this.position.y += this.velocity.y, this.width, this.height);
+                    }
+            
+                if(this.collision.collision_with_player){
+                     
+                    //console.log("health Taken <EFFECT HERE>");
+                    this.collision.collision_posX = this.position.x;
+                    this.collision.collision_posY = this.position.y;
+                    this.powerUp_taken = true;
+                if(player.getGunType() != gunTwo){
+                    if(player.getGunType() != gundefault){
+                        player.setGunType(gundefault);
+                       
+                    }
+                }
+                    if(player.getGunType() == gundefault){
+                        player.setGunType(gunTwo);
+                        
+                    }
+
+
+
+                    this.clearItems();
+                }
+            
+            }
+            
+            }
+
+
+            GreenBeacon(player, effect_taken){
+                if(this.m_type == "energyGreen"){
+                    var gundefault = 9;
+                    var gunTwo = 10;
+                if(!this.clearItem){
+                    // ctx.fillStyle = "pink";
+                    // ctx.fillRect(this.position.x, this.position.y += this.velocity.y , this.width , this.height)
+               const health_image = new Image();
+               health_image.src = 'assets/beacon/greenBeacon.png',
+            
+                    ctx.drawImage(health_image,this.position.x, this.position.y += this.velocity.y, this.width, this.height);
+                    }
+            
+                if(this.collision.collision_with_player){
+                     
+                    //console.log("health Taken <EFFECT HERE>");
+                    this.collision.collision_posX = this.position.x;
+                    this.collision.collision_posY = this.position.y;
+                    this.powerUp_taken = true;
+                if(player.getGunType() != gunTwo){
+                    if(player.getGunType() != gundefault){
+                        player.setGunType(gundefault);
+                       
+                    }
+                }
+                    if(player.getGunType() == gundefault){
+                        player.setGunType(gunTwo);
+                        
+                    }
+
+
+
+                    this.clearItems();
+                }
+            
+            }
+            
+            }
+
 
 updatePowerUps(player, effectTaken){
     this.health(player, effectTaken);
     this.energy(player, effectTaken);
     this.money(player, effectTaken);
     this.machineGunBeacon(player, effectTaken);
-    
+    this.laserGunBeacon(player, effectTaken);
+    this.plasmaGunBeacon(player, effectTaken);
+    this.lavaGunBeacon(player, effectTaken);
+    this.GreenBeacon(player, effectTaken);
 }
 
 }

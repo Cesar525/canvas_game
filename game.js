@@ -65,7 +65,7 @@ const players = [
 //CREATING A MONSTERS Monstrs( id, sprite,  pos_x, pos_y, health, name, speed, color, movements, s_width, s_height, damage)
 const monsters = [
    new Monsters(2, asteroid_one,  200, 200 , 5000000, "Asteroid", 5, "orange", "none", 200, 200, 7),
-  //  new Monsters(2, asteroid_two,  200, 200 , 100, "Asteroid", 5, "orange", "straightDown", 200, 200, 7),
+   new Monsters(2, asteroid_two,  200, 200 , 100, "Asteroid", 5, "orange", "straightDown", 200, 200, 7),
   //  new Monsters(2, asteroid_three,  200, 200 , 100, "Asteroid", 5, "orange", "straightDown", 200, 200, 7),
   //  new Monsters(2, asteroid_four,  200, 200 , 100, "Asteroid", 5, "orange", "straightDown", 200, 200, 7),
   //  new Monsters(2, asteroid_five,  200, 200 , 100, "Asteroid", 5, "orange", "straightDown", 200, 200, 7),
@@ -131,8 +131,9 @@ const powerUp = [
   new PowerUps(400, 100, "health", 100),
  new PowerUps(700, 100, "money", 100),
  new PowerUps(900, 100, "energy", 100),
- new PowerUps(1000, 100, "machineGun", 100, 200, 200),
- new PowerUps(1500, 100, "machineGun", 100, 200, 200),
+ new PowerUps(1000, 100, "energyGreen", 100, 200, 200),
+ new PowerUps(1500, 100, "energyGreen", 100, 200, 200),
+ new PowerUps(1500, 500, "energyGreen", 100, 200, 200),
 ];
 
 const powerup_capture_effect = [];

@@ -475,7 +475,7 @@ if(type == 5){
 var EnergyUse_5 = 11;
 this.body.energy -= EnergyUse_5
 var damage_5 = 7;
-    this.gun_on.push(new shots(this.position.x, this.position.y,5, 0, 7, damage_5, 40, 100, 150, 1, -50, -150));
+    this.gun_on.push(new shots(this.position.x, this.position.y,5, 0, 7, damage_5, 40, 100, 200, 1, -50, -150));
     this.explosionn.push(new Animation());
     this.explosionn2.push(new Animation());
     }

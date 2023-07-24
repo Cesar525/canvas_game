@@ -245,7 +245,7 @@ randomSelectingPowerUps(){
         }
     }
     if(this.drop_item){
-var drop_power = this.powerUpRandomNum(1, 4);
+var drop_power = this.powerUpRandomNum(1, 6);
 this.drop_item = false;
 this.give_number = false;
 
@@ -278,6 +278,44 @@ dropPowerUps(type){
         powerup_capture_effect.push(new Animation());
         this.drop_item = false;
         this.droping_powerUp = false;
+        break;
+        case  4: 
+        powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, "machineGun", 150, 200, 200 ));
+        powerup_capture_effect.push(new Animation());
+        this.drop_item = false;
+        this.droping_powerUp = false;
+        break;
+        case  5: 
+        powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, "machineGun", 150, 200, 200 ));
+        powerup_capture_effect.push(new Animation());
+        this.drop_item = false;
+        this.droping_powerUp = false;
+        break; 
+        case  6: 
+        powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, "energyShot", 150, 200, 200 ));
+        powerup_capture_effect.push(new Animation());
+        this.drop_item = false;
+        this.droping_powerUp = false;
+        break;
+        case  7: 
+        powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, "energyPlasma", 150, 200, 200 ));
+        powerup_capture_effect.push(new Animation());
+        this.drop_item = false;
+        this.droping_powerUp = false;
+        break;
+        case  8: 
+        powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, "energyLava", 150, 200, 200 ));
+        powerup_capture_effect.push(new Animation());
+        this.drop_item = false;
+        this.droping_powerUp = false;
+        break;
+
+        case  9: 
+        powerUp.pushs(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, "energyGreen", 150, 200, 200 ));
+        powerup_capture_effect.push(new Animation());
+        this.drop_item = false;
+        this.droping_powerUp = false;
+        
         break;
     }
 }
