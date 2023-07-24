@@ -131,7 +131,7 @@ const powerUp = [
   new PowerUps(400, 100, "health", 100),
  new PowerUps(700, 100, "money", 100),
  new PowerUps(900, 100, "energy", 100),
- new PowerUps(1000, 100, "energyGreen", 100, 200, 200),
+ new PowerUps(1000, 100, "energyLava", 100, 200, 200),
  new PowerUps(1500, 100, "energyGreen", 100, 200, 200),
  new PowerUps(1500, 500, "energyGreen", 100, 200, 200),
 ];
