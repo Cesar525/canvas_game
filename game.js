@@ -249,9 +249,9 @@ for(var m = 0; m < monsters.length; m++){
 
       
   }
-for(var searchingBackground = 0; searchingBackground < map_one.length; searchingBackground ++){
-  map_one[searchingBackground].updateBackground();
-}
+
+  map_one[0].updateBackground();
+
 
 }
 
