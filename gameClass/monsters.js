@@ -142,7 +142,7 @@ if(this.body.m_dead){
 if(this.spawnTime >= 100){
 
     this.position.x = this.randomSpawnPositionX(50, c.width - 300);
-    this.position.y = this.spawnPositionY;
+    this.position.y = this.randomSpawnPositionX(-100, -500);
     this.body.m_health = this.health_total; 
     this.moveRight = true;
     this.moveLeft = false;
