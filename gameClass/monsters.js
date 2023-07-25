@@ -1,7 +1,7 @@
 
 const powerups_drop = [];
 class Monsters{
-constructor( id, sprite,  pos_x, pos_y, health, name, speed, color, movements, s_width, s_height, damage, drop_loot){
+constructor( id, sprite,  pos_x, pos_y, health, name, speed, color, movements, s_width, s_height, damage, drop_loot, boss_Mode){
 
 this.position = {
     x : pos_x,
@@ -29,6 +29,13 @@ this.collition = {
     collition_shotX : NaN,
     collition_shotY :NaN
 }
+
+if(boss_Mode){
+    this.boss_mode_set = boss_Mode;
+}else{
+    this.boss_mode_set = false;
+}
+
 if(drop_loot){
 this.drop_loop_rating = drop_loot
 }else{
@@ -331,16 +338,79 @@ dropPowerUps(type){
 }
 }
 
+bossMode(){
+if(this.boss_mode_set){
+// boss position
+this.width = 500;
+this.height = 500;
+this.position.x = (c.width / 2) - (this.width / 2);
+if(this.position.y < 20){
+this.position.y += 10
+}
+var barwidth_ = 700;
+var barheight_ = 25;
+
+//showing Boss life levels
+
+
+
+//RED Backgorund
+  ctx.fillStyle = "red"; 
+  ctx.font = "30px Roboto Mono";
+  ctx.fillRect(this.position.x - 100, this.position.y + 150, barwidth_, barheight_);
+  
+  //GREEN Background
+  
+
+  if(Math.round((this.body.m_health / this.health_total) * barwidth_ ) > 350){
+    ctx.fillStyle = "green";
+}
+if(Math.round((this.body.m_health / this.health_total) * barwidth_ ) <= 350){
+    ctx.fillStyle = "yellow";
+}
+if(Math.round((this.body.m_health / this.health_total) * barwidth_ ) <= 280){
+    ctx.fillStyle = "Orange";
+}
+if(Math.round((this.body.m_health / this.health_total) * barwidth_ ) <= 180){
+    ctx.fillStyle = "#ae0000";
+}
+if(Math.round((this.body.m_health / this.health_total) * barwidth_ ) <= 100){
+    ctx.fillStyle = "#100000;"
+}
+
+  ctx.font = "30px Roboto Mono";
+  ctx.fillRect(this.position.x - 100, this.position.y + 150, Math.round((this.body.m_health / this.health_total) * barwidth_ ), barheight_);
+//Showing health amount.
+console.log(Math.round((this.body.m_health / this.health_total) * barwidth_ ))
+if(Math.round((this.body.m_health / this.health_total) * barwidth_ ) > 350){
+    ctx.fillStyle = "white";
+}
+if(Math.round((this.body.m_health / this.health_total) * barwidth_ ) <= 350){
+    ctx.fillStyle = "yellow";
+}
+if(Math.round((this.body.m_health / this.health_total) * barwidth_ ) <= 280){
+    ctx.fillStyle = "Orange";
+}
+if(Math.round((this.body.m_health / this.health_total) * barwidth_ ) <= 180){
+    ctx.fillStyle = "#ae0000";
+}
+if(Math.round((this.body.m_health / this.health_total) * barwidth_ ) <= 100){
+    ctx.fillStyle = "#100000;"
+}
+  ctx.font = "40px Roboto Mono";
+  ctx.fillText(this.body.m_name + "         " +  this.body.m_health, this.position.x  -100, this.position.y + 145);
+}
+}
+
 updateMonster(sprite_animator){
 this.drawMonster(sprite_animator);
+this.bossMode();
+if(!this.boss_mode_set){
 this.monsterlifeBar();
+}
 this.movements(this.monsterMovement);
-
-//this.dropPowerUps();
 this.dropPowerUps(this.randomSelectingPowerUps())
 this.spawnMonster();
-//Spawns
-//console.log(powerUp.length)
 
 }
 }

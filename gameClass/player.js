@@ -589,8 +589,8 @@ this.shottingiinterval();
 this.showPlayerHealth();
 this.showPlayerEnergy();
 this.energyUsage()
-// WOKRING ON
 
+// WOKRING ON
     for(var f = 0; f < powerUp.length; f++){      
         powerUp[f].updatePowerUps(this);
       }

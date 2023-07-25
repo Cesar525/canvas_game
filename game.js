@@ -29,25 +29,25 @@ var mode_set = 2;
 
 //mapOne
 const map_one = [
-  new Background(100, -900, 500, 500), 
-  new Background(200, -900, 200, 200), 
-  new Background(300, -900, 200, 200), 
-  new Background(0, 0), // stars
-  new Background(400, -900, 100, 100),
-  new Background(900, -900, 900, 900),
-  new Background(0, 0), // stars
-  new Background(0, -900, 500, 500),// plannet
-  new Background(-100, 100, 100, 100),
-  new Background(-100, -100, 100, 100),
-  new Background(-100, -100, 100, 100),
-  new Background(-100, -100, 100, 100),
-  new Background(-100, -100, 100, 100),
-  new Background(-100, -100, 100, 100),
-  new Background(-100, -100, 100, 100),
-  new Background(-100, -100, 100, 100),
-  new Background(-100, -100, 100, 100),
-  new Background(-100, -100, 100, 100),
-  new Background(0, 0)
+  new Background_Objects (100, -900, 500, 500), 
+  new Background_Objects (200, -900, 200, 200), 
+  new Background_Objects (300, -900, 200, 200), 
+  new Background_Objects (0, 0), // stars
+  new Background_Objects (400, -900, 100, 100),
+  new Background_Objects (900, -900, 900, 900),
+  new Background_Objects (0, 0), // stars
+  new Background_Objects (0, -900, 500, 500),// plannet
+  new Background_Objects (-100, 100, 100, 100),
+  new Background_Objects (-100, -100, 100, 100),
+  new Background_Objects (-100, -100, 100, 100),
+  new Background_Objects (-100, -100, 100, 100),
+  new Background_Objects (-100, -100, 100, 100),
+  new Background_Objects (-100, -100, 100, 100),
+  new Background_Objects (-100, -100, 100, 100),
+  new Background_Objects (-100, -100, 100, 100),
+  new Background_Objects (-100, -100, 100, 100),
+  new Background_Objects (-100, -100, 100, 100),
+  new Background_Objects (0, 0)
 ];
 
 //testing
@@ -66,7 +66,7 @@ const players = [
 
 
 const monsters = [
-   new Monsters(2, asteroid_one,  -200, 200 , 100, "Asteroid", 2, "orange", "none", 200, 200, 7),
+   new Monsters(2, asteroid_one,  -200, -200 , 100000, "Asteroid Boss", 2, "orange", "none", 200, 200, 7, NaN, true),
    new Monsters(2, asteroid_two,  -200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7, 10),
    new Monsters(2, asteroid_three,  -200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7, 10),
    new Monsters(2, asteroid_four,  -200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7, 10),
@@ -172,9 +172,10 @@ function buffer(){
     ctx.clearRect(0,0,c.width, c.height)
     ctx_ui_status.clearRect(0,0,c_ui_status.width, c_ui_status.height)
 
-ctx.font = "90px Roboto Mono";
-ctx.fillStyle = "white";
-ctx.fillText(gameFrame, 50, 100);
+  //SHOW FRAMES
+// ctx.font = "90px Roboto Mono";
+// ctx.fillStyle = "white";
+// ctx.fillText(gameFrame, c.width - 200, 100);
 
 powerUp.filter(function(){
   return true;
@@ -182,6 +183,9 @@ powerUp.filter(function(){
 
 
 if(true){
+
+
+  
 //map_one[16].drawWater(50, 1);
   map_one[6].drawStars(2, 1); // background image
   if(gameFrame > 400){
@@ -245,8 +249,9 @@ for(var m = 0; m < monsters.length; m++){
 
       
   }
-
-  
+for(var searchingBackground = 0; searchingBackground < map_one.length; searchingBackground ++){
+  map_one[searchingBackground].updateBackground();
+}
 
 }
 

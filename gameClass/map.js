@@ -1,5 +1,5 @@
-class Background extends Animation{
-    constructor(posx, posy, width, height, speed){
+class Background_Objects extends Animation{
+    constructor(posx, posy, width, height, speed, seconds, minutes){
         super();
     this.position = {
         x : posx,
@@ -15,13 +15,32 @@ class Background extends Animation{
     this.height = height;
     this.posx_set = posx;
     this.posy_set = posy;
+    this.timerSettings = {
+    timerTicking : 0,
+    seconds : 0,
+    minutes : 0,
+    hours : 0
     }
 
-getVelocity(){
-    return this.velocity.y;
+    if(seconds){
+    this.showObjectsAtSeconds = seconds;
+    }else{
+        this.showObjectsAtSeconds = NaN;
+    }
+    if(minutes){
+this.showobjectsAtMinutes = minutes
+    }else{
+         this.showObjectsAtMinutes = NaN;
+    }
+this.dispaear_object = false;
+
 }
+
+getDispaearObject(){return this.dispaear_object;}
+setDisapearObject(set){ this.dispaear_object = set}
+getVelocity(){ return this.velocity.y;}
     
-    drawStars(speed, type_stars){
+drawStars(speed, type_stars){
         this.velocity.x = speed;
         this.velocity.y = speed;
         const background_image = new Image()
@@ -98,6 +117,34 @@ asteroids(speed){
             this.position.y = this.posy_set;
            }
             }
+
+timer(){
+    console.log("timer is running");
+
+this.timerSettings.timerTicking ++;
+
+//adding seconds
+if(this.timerSettings.timerTicking == 100){
+    this.timerSettings.seconds += 1;
+    this.timerSettings.timerTicking = 0;
+}
+//adding minute
+if(this.timerSettings.seconds == 60){
+    this.timerSettings.minutes += 1;
+    this.timerSettings.seconds = 0;
+}
+//adding hours
+if(this.timerSettings.minutes == 60){
+    this.timerSettings.hours += 1
+    this.timerSettings.minutes = 0;
+}
+//Show timer
+ctx_ui_status.fillStyle = "white";
+ctx_ui_status.font = "70px Roboto Mono"
+ctx_ui_status.fillText(this.timerSettings.hours + ":" + this.timerSettings.minutes + ":" + this.timerSettings.seconds, c_ui_status.width - 250 , 70, 200, 100)
+
+}
+
     drawNebulasBlue(speed){
         this.velocity.x = speed;
         this.velocity.y = speed;
@@ -165,9 +212,17 @@ asteroids(speed){
                 }
                 }
         
-        update_backg(){
+        updateBackground(){
             this.gameFrame ++;
-        
+        this.timer();
+
+
+
+
+
+
+
+
         }
 
 }
