@@ -281,6 +281,19 @@ dropPowerUps(type){
         this.drop_item = false;
         this.droping_powerUp = false;
         break;
+        case 7 :   
+        powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, "energy", 1000, 200, 200 ));
+        powerup_capture_effect.push(new Animation());
+        this.drop_item = false;
+        this.droping_powerUp = false;
+        break;
+
+        case 9 : 
+        powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, "health" , 800, 200, 200));
+        powerup_capture_effect.push(new Animation());
+        this.drop_item = false;
+        this.droping_powerUp = false
+        break;
 
         //Guns
         case  12: 
@@ -301,7 +314,7 @@ dropPowerUps(type){
         this.drop_item = false;
         this.droping_powerUp = false;
         break;
-        case  7: 
+        case  30: 
         powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, "energyLava", 150, 200, 200 ));
         powerup_capture_effect.push(new Animation());
         this.drop_item = false;
@@ -313,12 +326,7 @@ dropPowerUps(type){
         this.drop_item = false;
         this.droping_powerUp = false;
         break;
-        case 16 :   
-        powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, "energy", 1000, 200, 200 ));
-        powerup_capture_effect.push(new Animation());
-        this.drop_item = false;
-        this.droping_powerUp = false;
-        break;
+        
     }
 }
 }

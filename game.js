@@ -57,7 +57,7 @@ const animation_TESTING = new Animation();
 //players
 //CREATING A PLAYER Player(name, level, thruster_selection, get_health, energy, m_damage,  gunType, posx, posy, gun_speed)
 const players = [
-  new Player("PLAYER ONE", 1230,  8, 1000, 2000, 1500, 1, 600, 900, 30),
+  new Player("PLAYER ONE", 1230,  8, 1000, 2000, 1500, 20, 600, 900, 30),
   // new Player("PLAYER ONE", 1230,  6, 100, 400, 100, 10, 800, 1000, 50),
 
 ]
@@ -66,11 +66,11 @@ const players = [
 const monsters = [
    new Monsters(2, asteroid_one,  200, 200 , 5000000, "Asteroid", 2, "orange", "none", 200, 200, 7),
    new Monsters(2, asteroid_two,  200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7, 10),
-   new Monsters(2, asteroid_three,  200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7, 30),
-   new Monsters(2, asteroid_four,  200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7),
-   new Monsters(2, asteroid_five,  200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7),
-   new Monsters(2, asteroid_six,  200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7),
-   new Monsters(2, asteroid_seven,  200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7),
+   new Monsters(2, asteroid_three,  200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7, 10),
+   new Monsters(2, asteroid_four,  200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7, 10),
+   new Monsters(2, asteroid_five,  200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7, 10),
+   new Monsters(2, asteroid_six,  200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7, 10),
+   new Monsters(2, asteroid_seven,  200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7, 10),
    new Monsters(2, asteroid_eight,  200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7),
    new Monsters(2, asteroid_nine,  200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7),
    new Monsters(2, asteroid_ten,  200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7),
@@ -264,7 +264,7 @@ for(var m = 0; m < monsters.length; m++){
  
 //player_shield_effect_one[0].updateshield(players[0]);
  //animation_TESTING.spriteProccessor(taken_money, 2, -200, -200, 2000, 2000);
-  //animation_TESTING.spritePage("assets/capture_effects/capture_health/spritesheet.png", players[0].position.x - 65, players[0].position.y - 60, 11264, 512, 22, 1, 512, 512, 2, true, -300, -300)
+  animation_TESTING.spritePage("assets/powerBombsEffect/lava.png", 0, 0, 11264, 512, 22, 1, 512, 512, 2, true, 1000, 1000)
   
   
    //explosionEffect(effect, posx, posy, send, speed)
