@@ -381,7 +381,7 @@ if(Math.round((this.body.m_health / this.health_total) * barwidth_ ) <= 100){
   ctx.font = "30px Roboto Mono";
   ctx.fillRect(this.position.x - 100, this.position.y + 150, Math.round((this.body.m_health / this.health_total) * barwidth_ ), barheight_);
 //Showing health amount.
-console.log(Math.round((this.body.m_health / this.health_total) * barwidth_ ))
+
 if(Math.round((this.body.m_health / this.health_total) * barwidth_ ) > 350){
     ctx.fillStyle = "white";
 }

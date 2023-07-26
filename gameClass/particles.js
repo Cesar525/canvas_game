@@ -1,42 +1,67 @@
 class Particles {
-constructor(){
+constructor(posx_start, posy_start, type){
 
-this.position_particle_one = {
-    x : 0,
-    y : 0
+this.p1 = {
+    x : posx_start,
+    y : posy_start
 }
-this.position_particle_two = {
-x : 0,
-y : 0
+this.p2 = {
+x : posx_start,
+y : posy_start
 }
-this.position_particle_thre = {
-x : 0,
-y : 0
+this.p3 = {
+x : posx_start,
+y : posy_start
 }
-this.position_particle_four = {
-x : 0,
-y : 0
+this.p4 = {
+x : posx_start,
+y : posy_start
 }
-this.position_particle_five = {
-x : 0,
-y : 0
+this.p5 = {
+x : posx_start,
+y : posy_start
 }
-this.position_particle_six = {
-x : 0,
-y : 0
+this.p6 = {
+x : posx_start,
+y : posy_start
 }
-this.position_particle_seven = {
-x : 0,
-y : 0
+this.p7 = {
+x : posx_start,
+y : posy_start
 }
-this.position_particle_eight = {
-x : 0,
-y : 0
-}
-
-
+this.p8 = {
+x : posx_start,
+y : posy_start
 }
 
+this.type = type;
+this.disapearObject = false;
+}
 
+getDisapearObject(){return this.disapearObject};
+setDisapearobject(set){this.disapearObject = set};
+
+
+selectParticles(){
+
+
+}
+
+
+particles(){
+   
+    console.log("particles Working")    
+const image_one = new Image();
+image_one.src = asteroid_one[1];
+ctx.drawImage(image_one, 200, 200, 200 , 200)
+
+ctx.drawImage(image_one, 200, 200, 200 , 200)
+
+}
+
+particleUpdates(){
+this.particles();
+
+}
 
 }

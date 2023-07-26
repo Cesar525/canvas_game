@@ -119,7 +119,7 @@ asteroids(speed){
             }
 
 timer(){
-    console.log("timer is running");
+   
 
 this.timerSettings.timerTicking ++;
 
