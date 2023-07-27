@@ -16,7 +16,6 @@
 </div>
 
 <!-- js Files  -->
-<script src="./gameClass/particles.js"></script>
 <script src="./gameClass/powerups.js"></script>
 <script src="./gameClass/sprites.js"></script>
 <script src="./gameClass/functions.js"></script>
@@ -28,6 +27,7 @@
 <script src="./gameClass/shots.js"></script>
 <script src="./gameClass/guns.js"></script>
 <script src="./gameClass/player.js"></script>
+<script src="./gameClass/particles.js"></script>
 <script src="./game.js"></script>
 
 <?php include("layout/footer.php");?>

@@ -130,7 +130,7 @@ for(var f = 0; f < powerUp.length; f++){
 }
 
 
-const particles = [new Particles(600, 600, "rocks")];
+const particles = [new Particles(400, 400, "rocks")];
 
 
 //onPlayer Animation sparks Global
@@ -257,8 +257,8 @@ for(var particlesCoutning = 0; particlesCoutning < particles.length; particlesCo
   particles[particlesCoutning].particleUpdates();
 }
 
-
-
+animation_TESTING.spritePage("assets/explosionparticles/explosion3.png", 500 , 500, 1000, 800, 10, 8, 100, 100, 1, true, 400, 400)
+animation_TESTING.explosionEffect(3, 500 + 100, 500 + 100, true, 4)
 }
 
 } 
