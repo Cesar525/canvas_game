@@ -243,13 +243,17 @@ monsterClearDeath(){
 }
 
 monsterDeathExplosion(explosion_deathAnimation){  
-    this.deathexplosion_moveDown ++;
+   
     explosion_deathAnimation.explosionEffect(3,  this.body.m_deadPosX - 85, (this.body.m_deadPosY += map_speed) - 85 , this.monsterDeath());
 }
 
 monsterBossDeathExplosion(explosion_deathAnimation, animation_two, animation_three, animation_four, animation_five){  
+    
+    
     this.deathexplosion_moveDown ++;
-    explosion_deathAnimation.explosionEffect(6,  this.body.m_deadPosX - 85, (this.body.m_deadPosY += map_speed) - 85 , this.monsterDeath(), 3, 600, 600);
+    if(this.deathexplosion_moveDown == 10){
+    explosion_deathAnimation.explosionEffect(6,  this.body.m_deadPosX - 85, (this.body.m_deadPosY += map_speed) - 85 , true, 3, 600, 600);
+    }
     animation_two.explosionEffect(7,  this.body.m_deadPosX - 85, (this.body.m_deadPosY += map_speed) - 150 , this.monsterDeath(), 3, 600, 600);
 }
 
