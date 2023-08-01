@@ -247,6 +247,12 @@ monsterDeathExplosion(explosion_deathAnimation){
     explosion_deathAnimation.explosionEffect(3,  this.body.m_deadPosX - 85, (this.body.m_deadPosY += map_speed) - 85 , this.monsterDeath());
 }
 
+monsterBossDeathExplosion(explosion_deathAnimation, animation_two, animation_three, animation_four, animation_five){  
+    this.deathexplosion_moveDown ++;
+    explosion_deathAnimation.explosionEffect(6,  this.body.m_deadPosX - 85, (this.body.m_deadPosY += map_speed) - 85 , this.monsterDeath(), 3, 600, 600);
+    animation_two.explosionEffect(7,  this.body.m_deadPosX - 85, (this.body.m_deadPosY += map_speed) - 150 , this.monsterDeath(), 3, 600, 600);
+}
+
 randomSelectingPowerUps(){
     if(this.body.m_dead){
         if(this.give_number){
@@ -337,6 +343,8 @@ dropPowerUps(type){
     }
 }
 }
+
+getBossMode(){return this.boss_mode_set;};
 
 bossMode(){
 if(this.boss_mode_set){

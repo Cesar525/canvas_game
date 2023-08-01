@@ -63,6 +63,11 @@ class Player {
     this.player_storage = [1, 2, 3];
     this.set_amount = 0;
 
+
+    this.alert = false;
+    this.alert_counting = 0;
+    this.alert_on_off = false;
+
 //sparks animation
 this.gameFrame_sparks = 0;
 this.staggerFrame_sparks = 1;
@@ -134,15 +139,18 @@ if(this.playerDead){
 
 lifeBar(){
     //const lifebar = new Image();
-    
-    if(Math.round((this.body.health / this.health_total) * 100) <= 50){
+    // live bar text colork
+    if(Math.round((this.body.health / this.health_total) * 100) <= 100/2){
         ctx.fillStyle = "orange";
     }
-    if(Math.round((this.body.health / this.health_total) * 100) <= 20){
+    if(Math.round((this.body.health / this.health_total) * 100) <= 100/3){
         ctx.fillStyle = "red";
     }
-    if(Math.round((this.body.health / this.health_total) * 100) <= 10){
+    if(Math.round((this.body.health / this.health_total) * 100) <= 100/5){
         ctx.fillStyle = " #720000";
+        this.alert = true;
+    }else{
+        this.alert = false;
     }
     if(Math.round((this.body.health / this.health_total) * 100) > 50){
         //ctx.fillStyle = "white"; 
@@ -155,19 +163,21 @@ lifeBar(){
         ctx.fillText("HP: "+ this.body.health, this.position.x - 70, this.position.y + 15);
       
         
-        //background
-        ctx.fillStyle = "red";
+        //Life bar
+        ctx.fillStyle = "gray";
         ctx.fillRect(this.position.x - 70 , this.position.y - 10, 100, 9);
         //life
 
-        if(Math.round((this.body.health / this.health_total) * 100) <= 50){
+        if(Math.round((this.body.health / this.health_total) * 100) <= 100/2){
             ctx.fillStyle = "orange";
         }
-       
-        if(Math.round((this.body.health / this.health_total) * 100) <= 10){
+        if(Math.round((this.body.health / this.health_total) * 100) <= 100/3){
+            ctx.fillStyle = "red";
+        }
+        if(Math.round((this.body.health / this.health_total) * 100) <= 100/5){
             ctx.fillStyle = " #720000";
         }
-        if(Math.round((this.body.health / this.health_total) * 100) > 50){
+        if(Math.round((this.body.health / this.health_total) * 100) > 100/2){
             ctx.fillStyle = "green"; 
          }
         ctx.fillRect(this.position.x - 70 , this.position.y - 10, Math.round((this.body.health / this.health_total) * 100), 9);
@@ -216,7 +226,7 @@ if(keys.down.pressed){
 
             addEventListener("mousemove", (event) => {
         //console.log(event);
-        console.log("X == " + event.clientX + "Y == " + event.clientY); 
+        // console.log("X == " + event.clientX + "Y == " + event.clientY); 
         this.position.x = event.clientX;
         this.position.y = event.clientY;
           });
@@ -257,13 +267,13 @@ energyUsage(){
 energyBar(){
     //const lifebar = new Image();
 
-    if(Math.round((this.body.energy / this.total_energy) * 100) <= 50){
+    if(Math.round((this.body.energy / this.total_energy) * 100) <= 100/2){
         ctx.fillStyle = "orange";
     }
-        if(Math.round((this.body.energy / this.total_energy) * 100) <= 20){
+        if(Math.round((this.body.energy / this.total_energy) * 100) <= 100/3){
             ctx.fillStyle = "red";
         }
-        if(Math.round((this.body.energy / this.total_energy) * 100) <= 10){
+        if(Math.round((this.body.energy / this.total_energy) * 100) <= 100/4){
             ctx.fillStyle = " #720000";
         }
         if(Math.round((this.body.energy / this.total_energy) * 100) > 50){
@@ -275,11 +285,11 @@ energyBar(){
         ctx.fillRect(this.position.x - 70 , this.position.y - 20, 100, 9);
         //life
 
-        if(Math.round((this.body.energy / this.total_energy) * 100) <= 50){
+        if(Math.round((this.body.energy / this.total_energy) * 100) <= 100/2){
             ctx.fillStyle = "orange";
         }
        
-        if(Math.round((this.body.energy / this.total_energy) * 100) <= 10){
+        if(Math.round((this.body.energy / this.total_energy) * 100) <= 100/3){
             ctx.fillStyle = " #720000";
         }
         if(Math.round((this.body.energy / this.total_energy) * 100) > 50){
@@ -342,17 +352,43 @@ var bar_height = 25
 
    
     //showing player health Levels
-    ctx_ui_status.fillStyle = "red"; 
+    ctx_ui_status.fillStyle = "gray"; 
  
     ctx_ui_status.font = "30px Roboto Mono";
     ctx_ui_status.fillRect(25, 100, bar_width, bar_height);
     
     //green
-    ctx_ui_status.fillStyle = "green";
+    // console.log(Math.round((this.body.health / this.health_total) * bar_width ))
+    if(Math.round((this.body.health / this.health_total) * bar_width ) >= bar_width / 2){
+         ctx_ui_status.fillStyle = "green";  
+    }
+    if(Math.round((this.body.health / this.health_total) * bar_width ) <= bar_width / 2){
+        ctx_ui_status.fillStyle = "orange";  
+    }
+    if(Math.round((this.body.health / this.health_total) * bar_width ) <= bar_width / 3){
+        ctx_ui_status.fillStyle = "red";  
+    }
+    if(Math.round((this.body.health / this.health_total) * bar_width ) <= bar_width / 5){
+        ctx_ui_status.fillStyle = "#720000";  
+    }
+ 
     ctx_ui_status.font = "30px Roboto Mono";
     ctx_ui_status.fillRect(25, 100, Math.round((this.body.health / this.health_total) * bar_width ), bar_height);
 //Showing health amount.
-    ctx_ui_status.fillStyle = "white";
+
+
+if(Math.round((this.body.health / this.health_total) * bar_width ) >= bar_width / 2){
+    ctx_ui_status.fillStyle = "white";  
+}
+if(Math.round((this.body.health / this.health_total) * bar_width ) <= bar_width / 2){
+   ctx_ui_status.fillStyle = "orange";  
+}
+if(Math.round((this.body.health / this.health_total) * bar_width ) <= bar_width / 3){
+   ctx_ui_status.fillStyle = "red";  
+}
+if(Math.round((this.body.health / this.health_total) * bar_width ) <= bar_width / 5){
+   ctx_ui_status.fillStyle = "#720000";  
+}
     ctx_ui_status.font = "40px Roboto Mono";
     ctx_ui_status.fillText(this.body.health, bar_width / 2,100);
 
@@ -570,8 +606,33 @@ setTimeout(() => {
 }
 
 
-update(animation_Sparks_low, animation_Sparks_high, thruster_animation, player_death_explosionAnimation){
 
+storageBlock(){
+
+
+}
+
+
+alerting(){
+if(this.alert)
+this.alert_counting ++
+if(this.alert_counting > 10){
+    this.alert_on_off = true;
+    if(this.alert_counting > 20){
+        this.alert_on_off = false;
+        this.alert_counting = 0;
+    }
+}
+if(this.alert_on_off){
+    ctx_ui_status.fillStyle = "red";
+    ctx_ui_status.font = "200px Anton";
+    ctx_ui_status.fillText("!", 800, 190, 200, 200)
+}
+}
+
+
+update(animation_Sparks_low, animation_Sparks_high, thruster_animation, player_death_explosionAnimation){
+this.alerting();
 this.shotting();
 this.draw();
 thruster_animation.setPlayersThruster(this.body.thruster, this.position.x - this.thruster_position_x, this.position.y + this.thruster_position_y, this.thruster_size, this.thruster_size);       
@@ -589,7 +650,7 @@ this.shottingiinterval();
 this.showPlayerHealth();
 this.showPlayerEnergy();
 this.energyUsage()
-
+this.storageBlock();
 // WOKRING ON
     for(var f = 0; f < powerUp.length; f++){      
         powerUp[f].updatePowerUps(this);

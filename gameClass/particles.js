@@ -56,7 +56,7 @@ selectParticles(){
 
 particles(p, sprite){
    
-    console.log("particles Working")    
+    // console.log("particles Working")    
 const image_one = new Image();
 image_one.src = sprite;
 ctx.fillRect(400, 400, 100, 100)

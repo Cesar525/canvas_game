@@ -1,3 +1,6 @@
+
+
+
 //game play canvas
 var c = document.getElementById("canvasGame");
 var ctx = c.getContext("2d");
@@ -66,8 +69,8 @@ const players = [
 
 
 const monsters = [
-   new Monsters(2, asteroid_one,  -200, -200 , 100000, "Asteroid Boss", 2, "orange", "none", 200, 200, 7, NaN, true),
-  //  new Monsters(2, asteroid_two,  -200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7, 10),
+   new Monsters(2, asteroid_one,  -200, -200 , 10, "Asteroid Boss", 2, "orange", "none", 200, 200, 7, NaN, true),
+  //  new Monsters(2, asteroid_two,  200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7, 10),
   //  new Monsters(2, asteroid_three,  -200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7, 10),
   //  new Monsters(2, asteroid_four,  -200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7, 10),
   //  new Monsters(2, asteroid_five,  -200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7, 10),
@@ -152,10 +155,17 @@ for(var p = 0; p < players.length; p++){
 //onMonster animation
 const sprite_animation = [];
 const explosion_onDeath_animation = [];
+const explosion_onDeath_animation2 = [];
+const explosion_onDeath_animation3 = [];
+const explosion_onDeath_animation4 = [];
 
 for(var m = 0; m < monsters.length; m++){
 sprite_animation.push(new Animation());
 explosion_onDeath_animation.push(new Animation());
+explosion_onDeath_animation2.push(new Animation());
+explosion_onDeath_animation3.push(new Animation());
+explosion_onDeath_animation4.push(new Animation());
+
 }
 
 
@@ -214,8 +224,6 @@ if(true){
 // }
  map_one[3].drawStars(10, 2); // background image
   
-
-
 //colliton Monsters wiht Players && Projectiles
 for(var m = 0; m < monsters.length; m++){
   monsters[m].updateMonster(
@@ -230,7 +238,11 @@ for(var m = 0; m < monsters.length; m++){
   }
   
 for(var m = 0; m < monsters.length; m++){
-        monsters[m].monsterDeathExplosion(explosion_onDeath_animation[m]);
+  if(monsters[m].getBossMode()){
+    monsters[m].monsterBossDeathExplosion(explosion_onDeath_animation[m], explosion_onDeath_animation2[m], explosion_onDeath_animation3[m], explosion_onDeath_animation4[m]);
+  }else{
+    monsters[m].monsterDeathExplosion(explosion_onDeath_animation[m]);
+  }
       } 
   
   //powerUps updates and collision
@@ -257,9 +269,12 @@ for(var particlesCoutning = 0; particlesCoutning < particles.length; particlesCo
   particles[particlesCoutning].particleUpdates();
 }
 
-animation_TESTING.spritePage("assets/explosionparticles/explosion3.png", 500 , 500, 1000, 800, 10, 8, 100, 100, 1, true, 400, 400)
-animation_TESTING.explosionEffect(3, 500 + 100, 500 + 100, true, 4)
+// animation_TESTING.spritePage("assets/explosionparticles/explosion3.png", 500 , 500, 1000, 800, 10, 8, 100, 100, 1, true, 400, 400)
+// animation_TESTING.explosionEffect(3, 500 + 100, 500 + 100, true, 4)
 }
+
+
+
 
 } 
 
