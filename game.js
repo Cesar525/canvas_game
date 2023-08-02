@@ -135,6 +135,15 @@ for(var f = 0; f < powerUp.length; f++){
 
 const particles = [new Particles(400, 400, "rocks")];
 
+//---
+const pushing_random_explsions = [new Explosions(7, 200, 200, 400, 400)];
+const explosions_animations_pushing =[]
+//---
+
+for(var counting_explosions_animation = 0; counting_explosions_animation < pushing_random_explsions.length; counting_explosions_animation++){
+  explosions_animations_pushing.push(new Animation());
+}
+
 
 //onPlayer Animation sparks Global
 const sparks_low = [];
@@ -155,17 +164,12 @@ for(var p = 0; p < players.length; p++){
 //onMonster animation
 const sprite_animation = [];
 const explosion_onDeath_animation = [];
-const explosion_onDeath_animation2 = [];
-const explosion_onDeath_animation3 = [];
-const explosion_onDeath_animation4 = [];
+
+
 
 for(var m = 0; m < monsters.length; m++){
 sprite_animation.push(new Animation());
 explosion_onDeath_animation.push(new Animation());
-explosion_onDeath_animation2.push(new Animation());
-explosion_onDeath_animation3.push(new Animation());
-explosion_onDeath_animation4.push(new Animation());
-
 }
 
 
@@ -239,7 +243,7 @@ for(var m = 0; m < monsters.length; m++){
   
 for(var m = 0; m < monsters.length; m++){
   if(monsters[m].getBossMode()){
-    monsters[m].monsterBossDeathExplosion(explosion_onDeath_animation[m], explosion_onDeath_animation2[m], explosion_onDeath_animation3[m], explosion_onDeath_animation4[m]);
+    monsters[m].monsterBossDeathExplosion(explosion_onDeath_animation[m]);
   }else{
     monsters[m].monsterDeathExplosion(explosion_onDeath_animation[m]);
   }
@@ -267,6 +271,18 @@ for(var m = 0; m < monsters.length; m++){
   map_one[0].timer();
 for(var particlesCoutning = 0; particlesCoutning < particles.length; particlesCoutning++){
   particles[particlesCoutning].particleUpdates();
+}
+
+
+for(var counting_explosions = 0 ; counting_explosions < pushing_random_explsions.length; counting_explosions++)
+{
+  pushing_random_explsions[counting_explosions].updateExplosions(explosions_animations_pushing[counting_explosions]);
+  if(explosions_animations_pushing[counting_explosions].getAnimationStatus() == false){
+    explosions_animations_pushing.splice(counting_explosions, 1);
+    pushing_random_explsions.splice(counting_explosions, 1);
+  }
+console.log("counting   " + explosions_animations_pushing.length + "  " + pushing_random_explsions.length)
+
 }
 
 // animation_TESTING.spritePage("assets/explosionparticles/explosion3.png", 500 , 500, 1000, 800, 10, 8, 100, 100, 1, true, 400, 400)

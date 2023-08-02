@@ -18,7 +18,9 @@ this.body = {
     m_dead : false,
     m_deadPosX : NaN,
     m_deadPosY : NaN,
-    m_sprite : sprite
+    m_sprite : sprite,
+    m_steady_deadPosX : NaN,
+    m_steady_deadPosY : NaN,
 }
 
 this.collition = {
@@ -64,6 +66,16 @@ this.dropPower_random;
 this.drop_item = false;
 this.give_number = true;
 this.droping_powerUp = true;
+
+this.exposions_boss = false;
+
+
+this.bulding_randomExplosions = {
+explosions_counter : 0,
+
+
+}
+
 }
 
 getHealth(){return this.body.health;};
@@ -230,6 +242,8 @@ monsterDeath(){
           //  console.log(this.body.m_name + " is dead life i set to " + this.getMonsterHealth());
             this.body.m_deadPosX = this.position.x;
             this.body.m_deadPosY = this.position.y;
+            this.body.m_steady_deadPosX = this.position.x;
+            this.body.m_steady_deadPosY = this.position.y;
             this.position.x = NaN;
             this.position.y = NaN;
             this.body.m_dead = true;
@@ -243,18 +257,24 @@ monsterClearDeath(){
 }
 
 monsterDeathExplosion(explosion_deathAnimation){  
-   
     explosion_deathAnimation.explosionEffect(3,  this.body.m_deadPosX - 85, (this.body.m_deadPosY += map_speed) - 85 , this.monsterDeath());
 }
 
-monsterBossDeathExplosion(explosion_deathAnimation, animation_two, animation_three, animation_four, animation_five){  
-    
-    
-    this.deathexplosion_moveDown ++;
-    if(this.deathexplosion_moveDown == 10){
-    explosion_deathAnimation.explosionEffect(6,  this.body.m_deadPosX - 85, (this.body.m_deadPosY += map_speed) - 85 , true, 3, 600, 600);
-    }
-    animation_two.explosionEffect(7,  this.body.m_deadPosX - 85, (this.body.m_deadPosY += map_speed) - 150 , this.monsterDeath(), 3, 600, 600);
+monsterBossDeathExplosion(){  
+    this.monsterDeath();
+    ctx.fillStyle = "white";
+    ctx.fillRect(this.body.m_deadPosX, this.body.m_deadPosY, 500, 500);
+
+//BUILDING RANDOM EXPLOSIONS
+
+// setTimeout(()=> {
+// explosions_animations_pushing.push(new Animation());
+//     pushing_random_explsions.push(new Explosions(7, 200, 200, 400, 400));
+
+// }, 800);
+  
+  
+
 }
 
 randomSelectingPowerUps(){

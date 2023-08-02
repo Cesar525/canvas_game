@@ -32,7 +32,7 @@
 <script src="./gameClass/monsters.js"></script>
 <script src="./gameClass/map.js"></script>
 <script src="./gameClass/shots.js"></script>
-<script src="./gameClass/guns.js"></script>
+<script src="./gameClass/explosion.js"></script>
 <script src="./gameClass/player.js"></script>
 <script src="./gameClass/particles.js"></script>
 <script src="./game.js"></script>

@@ -135,7 +135,7 @@ case 6 :
 this.spritePage("assets/explosions/explosion_6.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send, size_w, size_h);
 break;
 case 7 : 
-this.spritePage("assets/explosions/explosion_7.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
+this.spritePage("assets/explosions/explosion_7.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send, size_w, size_h);
 break;
 case 8 : 
 this.sparkForBullets(speed, posx + 50, posy, 200, 200, send);
