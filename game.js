@@ -71,53 +71,19 @@ const players = [
 const monsters = [
    new Monsters(2, asteroid_one,  -200, -200 , 10, "Asteroid Boss", 2, "orange", "none", 200, 200, 7, NaN, true),
   //  new Monsters(2, asteroid_two,  200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7, 10),
-  //  new Monsters(2, asteroid_three,  -200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7, 10),
-  //  new Monsters(2, asteroid_four,  -200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7, 10),
-  //  new Monsters(2, asteroid_five,  -200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7, 10),
-  //  new Monsters(2, asteroid_six,  -200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7, 10),
-  //  new Monsters(2, asteroid_seven,  -200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7, 10),
-  //  new Monsters(2, asteroid_eight,  -200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7),
-  //  new Monsters(2, asteroid_nine,  -200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7),
-  //  new Monsters(2, asteroid_ten,  -200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7),
-  //  new Monsters(2, asteroid_eleven,  -200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7),
-  //  new Monsters(2, asteroid_one,  -200, 200 , 100, "Asteroid", 2, "orange", "none", 200, 200, 7),
-  //  new Monsters(2, asteroid_two,  -200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7, 10),
-  //  new Monsters(2, asteroid_three,  -200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7, 10),
-  //  new Monsters(2, asteroid_four,  -200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7, 10),
-  //  new Monsters(2, asteroid_five,  -200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7, 10),
-  //  new Monsters(2, asteroid_six,  -200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7, 10),
-  //  new Monsters(2, asteroid_seven,  -200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7, 10),
-  //  new Monsters(2, asteroid_eight,  -200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7),
-  //  new Monsters(2, asteroid_nine,  -200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7),
-  //  new Monsters(2, asteroid_ten,  -200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7),
-  //  new Monsters(2, asteroid_eleven,  -200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7),
-  //  new Monsters(2, asteroid_one,  -200, 200 , 100, "Asteroid", 2, "orange", "none", 200, 200, 7),
-  //  new Monsters(2, asteroid_two,  -200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7, 10),
-  //  new Monsters(2, asteroid_three,  -200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7, 10),
-  //  new Monsters(2, asteroid_four,  -200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7, 10),
-  //  new Monsters(2, asteroid_five,  -200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7, 10),
-  //  new Monsters(2, asteroid_six,  -200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7, 10),
-  //  new Monsters(2, asteroid_seven,  -200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7, 10),
-  //  new Monsters(2, asteroid_eight,  -200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7),
-  //  new Monsters(2, asteroid_nine,  -200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7),
-  //  new Monsters(2, asteroid_ten,  -200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7),
-  //  new Monsters(2, asteroid_eleven,  -200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7),
-  //  new Monsters(2, asteroid_one,  -200, 200 , 100, "Asteroid", 2, "orange", "none", 200, 200, 7),
-  //  new Monsters(2, asteroid_two,  -200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7, 10),
-  //  new Monsters(2, asteroid_three,  -200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7, 10),
-  //  new Monsters(2, asteroid_four,  -200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7, 10),
-  //  new Monsters(2, asteroid_five,  -200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7, 10),
-  //  new Monsters(2, asteroid_six,  -200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7, 10),
-  //  new Monsters(2, asteroid_seven,  -200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7, 10),
-  //  new Monsters(2, asteroid_eight,  -200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7),
-  //  new Monsters(2, asteroid_nine,  -200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7),
-  //  new Monsters(2, asteroid_ten,  -200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7),
-  //  new Monsters(2, asteroid_eleven,  -200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7),
-
   ];
+  
+//onMonster animation
+const sprite_animation = [];
+const explosion_onDeath_animation = [];
 
+for(var m = 0; m < monsters.length; m++){
+sprite_animation.push(new Animation());
+explosion_onDeath_animation.push(new Animation());
+}
+//----------------------------------\
 
-  //POWER UPS DROP
+  //POWER UPS DROP---------
 const powerUp = [
   new PowerUps(400, 100, "health", 100),
  new PowerUps(700, 100, "money", 100),
@@ -131,18 +97,18 @@ const powerup_capture_effect = [];
 for(var f = 0; f < powerUp.length; f++){
   powerup_capture_effect.push(new Animation());
 }
-
+//---------------------------------
 
 const particles = [new Particles(400, 400, "rocks")];
 
 //---
-const pushing_random_explsions = [new Explosions(7, 200, 200, 400, 400)];
+const pushing_random_explsions = [];
 const explosions_animations_pushing =[]
 //---
 
-for(var counting_explosions_animation = 0; counting_explosions_animation < pushing_random_explsions.length; counting_explosions_animation++){
-  explosions_animations_pushing.push(new Animation());
-}
+// for(var counting_explosions_animation = 0; counting_explosions_animation < pushing_random_explsions.length; counting_explosions_animation++){
+//   explosions_animations_pushing.push(new Animation());
+// }
 
 
 //onPlayer Animation sparks Global
@@ -161,16 +127,10 @@ for(var p = 0; p < players.length; p++){
   player_shield_effect_two.push(new Animation());
 }
 
-//onMonster animation
-const sprite_animation = [];
-const explosion_onDeath_animation = [];
 
 
 
-for(var m = 0; m < monsters.length; m++){
-sprite_animation.push(new Animation());
-explosion_onDeath_animation.push(new Animation());
-}
+
 
 
 const burst_fire_test = new Animation();
@@ -233,6 +193,11 @@ for(var m = 0; m < monsters.length; m++){
   monsters[m].updateMonster(
     sprite_animation[m]
     );
+    if(monsters[m].getDeleteObject() == true){
+monsters.splice(m, 1);
+sprite_animation.splice(m, 1);
+explosion_onDeath_animation.splice(m, 1);
+    }
     
     for(var pjct = 0; pjct  < players.length ; pjct ++){
       players[pjct].playerCollitionMonsters(monsters[m])
@@ -268,18 +233,22 @@ for(var m = 0; m < monsters.length; m++){
       
   }
 
+  //Map Timer
   map_one[0].timer();
 for(var particlesCoutning = 0; particlesCoutning < particles.length; particlesCoutning++){
   particles[particlesCoutning].particleUpdates();
 }
 
 
+
+//Random explosions
 for(var counting_explosions = 0 ; counting_explosions < pushing_random_explsions.length; counting_explosions++)
 {
-  pushing_random_explsions[counting_explosions].updateExplosions(explosions_animations_pushing[counting_explosions]);
-  if(explosions_animations_pushing[counting_explosions].getAnimationStatus() == false){
-    explosions_animations_pushing.splice(counting_explosions, 1);
-    pushing_random_explsions.splice(counting_explosions, 1);
+pushing_random_explsions[counting_explosions].updateExplosions(explosions_animations_pushing[counting_explosions]);
+
+if(explosions_animations_pushing[counting_explosions].getAnimationStatus() == false){
+explosions_animations_pushing.splice(counting_explosions, 1);
+pushing_random_explsions.splice(counting_explosions, 1);
   }
 console.log("counting   " + explosions_animations_pushing.length + "  " + pushing_random_explsions.length)
 

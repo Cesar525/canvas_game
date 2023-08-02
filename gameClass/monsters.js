@@ -70,13 +70,20 @@ this.droping_powerUp = true;
 this.exposions_boss = false;
 
 
-this.bulding_randomExplosions = {
+this.building_randomExplosions = {
 explosions_counter : 0,
+explosion_start : false,
+explosion_end : false
+}
 
+this.delete_time_after_death = 0;
+this.destroy_object = false;
 
 }
 
-}
+
+setDeleteObject(set){this.destroy_object = set;};
+getDeleteObject(){return this.destroy_object;};
 
 getHealth(){return this.body.health;};
 
@@ -258,23 +265,37 @@ monsterClearDeath(){
 
 monsterDeathExplosion(explosion_deathAnimation){  
     explosion_deathAnimation.explosionEffect(3,  this.body.m_deadPosX - 85, (this.body.m_deadPosY += map_speed) - 85 , this.monsterDeath());
+
 }
 
-monsterBossDeathExplosion(){  
-    this.monsterDeath();
+monsterBossDeathExplosion(){ 
+    if(this.monsterDeath()){
+        this.building_randomExplosions.explosion_start = true;
+    }
+
+
+if(this.building_randomExplosions.explosion_start && !this.building_randomExplosions.explosion_end){
     ctx.fillStyle = "white";
     ctx.fillRect(this.body.m_deadPosX, this.body.m_deadPosY, 500, 500);
+this.building_randomExplosions.explosions_counter++
+//Creating the explosion Sequence
+if(this.building_randomExplosions.explosions_counter == 30){
+pushing_random_explsions.push(
+new Explosions(4,this.body.m_steady_deadPosX - 100, this.body.m_steady_deadPosY - 100, 100, 100),
+new Explosions(5,this.body.m_steady_deadPosX , this.body.m_steady_deadPosY, 300, 300) 
+);
 
-//BUILDING RANDOM EXPLOSIONS
+explosions_animations_pushing.push(
+new Animation(),
+new Animation()
+);
+}
 
-// setTimeout(()=> {
-// explosions_animations_pushing.push(new Animation());
-//     pushing_random_explsions.push(new Explosions(7, 200, 200, 400, 400));
-
-// }, 800);
-  
-  
-
+//setting to delete object
+  if(this.building_randomExplosions.explosions_counter == 100){
+//this.setDeleteObject(true);
+  }
+    }
 }
 
 randomSelectingPowerUps(){
@@ -442,7 +463,7 @@ this.monsterlifeBar();
 }
 this.movements(this.monsterMovement);
 this.dropPowerUps(this.randomSelectingPowerUps())
-this.spawnMonster();
+//this.spawnMonster();
 
 }
 }

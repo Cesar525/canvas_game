@@ -1,4 +1,5 @@
 function collisionTouch(obj1, obj2){
+if(obj1 && obj2){
   var player_posx1 = obj1.position.x;
   var player_posx2 = obj1.position.x + obj1.width;
   var playerposty1 = obj1.position.y;
@@ -21,6 +22,7 @@ function collisionTouch(obj1, obj2){
   }else{
       return false;
   }
+}
 }
 
 function getScreenWidth(){return c.width;};

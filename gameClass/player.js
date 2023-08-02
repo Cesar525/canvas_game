@@ -432,7 +432,9 @@ if(this.gun_on[counting_updating].getDeleteShotStatus()){
 
 shottingCollition(monster){
     for(var countingss = 0; countingss < this.gun_on.length; countingss++){
+        if(monster){
  this.gun_on[countingss].collisionMonsterShot(monster)
+        }
     }
 }
 

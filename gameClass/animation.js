@@ -117,19 +117,19 @@ explosionEffect(effect, posx, posy, send, speed, size_w, size_h){
  
 switch(effect){
 case 1 :
-this.spritePage("assets/explosions/explosion_1.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
+this.spritePage("assets/explosions/explosion_1.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send, size_w, size_h);
 break;
 case 2 :
-this.spritePage("assets/explosions/explosion_2.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
+this.spritePage("assets/explosions/explosion_2.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send, size_w, size_h);
 break;
 case 3 : 
 this.spritePage("assets/explosions/explosion_33.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send, size_w, size_h);
 break;
 case 4 : 
-this.spritePage("assets/explosions/explosion_4.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
+this.spritePage("assets/explosions/explosion_4.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send, size_w, size_h);
 break;
 case 5 : 
-this.spritePage("assets/explosions/explosion_5.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
+this.spritePage("assets/explosions/explosion_5.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send, size_w, size_h);
 break;
 case 6 : 
 this.spritePage("assets/explosions/explosion_6.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send, size_w, size_h);
@@ -141,25 +141,25 @@ case 8 :
 this.sparkForBullets(speed, posx + 50, posy, 200, 200, send);
 break;
 case 9 : 
-this.spritePage("assets/explosions/lavaexplosion.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
+this.spritePage("assets/explosions/lavaexplosion.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send, size_w, size_h);
 break;
 case 10 : 
-this.spritePage("assets/explosions/lavaexplosion2.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
+this.spritePage("assets/explosions/lavaexplosion2.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send, size_w, size_h);
 break;
 case 11 : 
-this.spritePage("assets/explosions/lavaexplosion3.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
+this.spritePage("assets/explosions/lavaexplosion3.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send, size_w, size_h);
 break;
 case 12 : 
-this.spritePage("assets/explosions/explosion_yellow.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
+this.spritePage("assets/explosions/explosion_yellow.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send, size_w, size_h);
 break;
 case 13 : 
-this.spritePage("assets/explosions/explosion_green.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
+this.spritePage("assets/explosions/explosion_green.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send, size_w, size_h);
 break;
 case 14 : 
-this.spritePage("assets/explosions/radiation_explosion.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send);
+this.spritePage("assets/explosions/radiation_explosion.png", posx , posy, 2048, 1280, 8, 5, 256, 256, speed, send, size_w, size_h);
 break;
 case 15 : 
-this.spritePage("assets/explosionparticles/explosion3.png", posx , posy, 1000, 800, 10, 8, 100, 100, speed, send, 400, 400)
+this.spritePage("assets/explosionparticles/explosion3.png", posx , posy, 1000, 800, 10, 8, 100, 100, speed, send, size_w, size_h)
 break;
 
 
