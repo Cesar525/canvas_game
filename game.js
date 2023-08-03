@@ -31,27 +31,9 @@ var map_speed = 5;
 var mode_set = 2;
 
 //mapOne
-const map_one = [
-  new Background_Objects (100, -900, 500, 500), 
-  new Background_Objects (200, -900, 200, 200), 
-  new Background_Objects (300, -900, 200, 200), 
-  new Background_Objects (0, 0), // stars
-  new Background_Objects (400, -900, 100, 100),
-  new Background_Objects (900, -900, 900, 900),
-  new Background_Objects (0, 0), // stars
-  new Background_Objects (0, -900, 500, 500),// plannet
-  new Background_Objects (-100, 100, 100, 100),
-  new Background_Objects (-100, -100, 100, 100),
-  new Background_Objects (-100, -100, 100, 100),
-  new Background_Objects (-100, -100, 100, 100),
-  new Background_Objects (-100, -100, 100, 100),
-  new Background_Objects (-100, -100, 100, 100),
-  new Background_Objects (-100, -100, 100, 100),
-  new Background_Objects (-100, -100, 100, 100),
-  new Background_Objects (-100, -100, 100, 100),
-  new Background_Objects (-100, -100, 100, 100),
-  new Background_Objects (0, 0)
-];
+var map_selected = 1
+const map_selection = new Mapbuilder();
+
 
 //testing
 const animation_TESTING = new Animation();
@@ -148,11 +130,7 @@ function buffer(){
     ctx.clearRect(0,0,c.width, c.height)
     ctx_ui_status.clearRect(0,0,c_ui_status.width, c_ui_status.height)
 
-  //SHOW FRAMES
-// ctx.font = "90px Roboto Mono";
-// ctx.fillStyle = "white";
-// ctx.fillText(gameFrame, c.width - 200, 100);
-
+ 
 powerUp.filter(function(){
   return true;
 })
@@ -161,33 +139,8 @@ powerUp.filter(function(){
 if(true){
 
 
-  
-//map_one[16].drawWater(50, 1);
-  map_one[6].drawStars(2, 1); // background image
-//   if(gameFrame > 400){
-//     if(gameFrame > 0){
-//     map_one[7].drawPlanet(2, 3);
-//     map_one[5].drawPlanet(1, 2);
-//     map_one[4].drawPlanet(1, 1);
-//     }
-//     if(gameFrame > 800){
-//     map_one[0].drawNebulas(5);
-//     map_one[1].drawNebulasBlue(7);
-//     map_one[2].drawNebulaMulti(7);
-//     }
-//     if(gameFrame > 600){
-//     map_one[8].asteroids(10);
-//     map_one[9].asteroids(10);
-//     map_one[10].asteroids(10);
-//     map_one[11].asteroids(15);
-//     map_one[12].asteroids(5);
-//     map_one[13].asteroids(3);
-//     map_one[14].asteroids(20);
-//     map_one[15].asteroids(3);
-//   }
-// }
- map_one[3].drawStars(10, 2); // background image
-  
+  map_selection.updateMap(map_selected)
+
 //colliton Monsters wiht Players && Projectiles
 for(var m = 0; m < monsters.length; m++){
   monsters[m].updateMonster(
@@ -233,8 +186,7 @@ for(var m = 0; m < monsters.length; m++){
       
   }
 
-  //Map Timer
-  map_one[0].timer();
+
 for(var particlesCoutning = 0; particlesCoutning < particles.length; particlesCoutning++){
   particles[particlesCoutning].particleUpdates();
 }

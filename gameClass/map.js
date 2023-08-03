@@ -35,6 +35,8 @@ this.showobjectsAtMinutes = minutes
 this.dispaear_object = false;
 
 }
+getMinutes(){ return this.timerSettings.minutes;};
+getSeconds(){return this.timerSettings.seconds;};
 
 getDispaearObject(){return this.dispaear_object;}
 setDisapearObject(set){ this.dispaear_object = set}

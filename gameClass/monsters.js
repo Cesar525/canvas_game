@@ -268,32 +268,195 @@ monsterDeathExplosion(explosion_deathAnimation){
 
 }
 
-monsterBossDeathExplosion(){ 
+monsterBossDeathExplosion(animation_effect){ 
+    
+   // animation_effect.explosionEffect(3,  this.body.m_deadPosX - 85, (this.body.m_deadPosY += map_speed) - 85 , this.monsterDeath());
+
+
+
     if(this.monsterDeath()){
         this.building_randomExplosions.explosion_start = true;
+        animation_effect.explosionEffect(3,  this.body.m_deadPosX - 85, (this.body.m_deadPosY += map_speed) - 85 , this.monsterDeath());
+
     }
-
-
 if(this.building_randomExplosions.explosion_start && !this.building_randomExplosions.explosion_end){
-    ctx.fillStyle = "white";
-    ctx.fillRect(this.body.m_deadPosX, this.body.m_deadPosY, 500, 500);
+    // ctx.fillStyle = "white";
+    // ctx.fillRect(this.body.m_deadPosX, this.body.m_deadPosY, 500, 500);
 this.building_randomExplosions.explosions_counter++
-//Creating the explosion Sequence
+
+////Creating the explosion Sequence
 if(this.building_randomExplosions.explosions_counter == 30){
 pushing_random_explsions.push(
 new Explosions(4,this.body.m_steady_deadPosX - 100, this.body.m_steady_deadPosY - 100, 100, 100),
-new Explosions(5,this.body.m_steady_deadPosX , this.body.m_steady_deadPosY, 300, 300) 
+new Explosions(5,this.body.m_steady_deadPosX , this.body.m_steady_deadPosY, 300, 300),
+new Explosions(6,this.body.m_steady_deadPosX + 300 , this.body.m_steady_deadPosY, 300, 300),
+new Explosions(6,this.body.m_steady_deadPosX , this.body.m_steady_deadPosY + 300, 300, 300),
+new Explosions(3,this.body.m_steady_deadPosX + 300 , this.body.m_steady_deadPosY + 300, 300, 300),
 );
 
 explosions_animations_pushing.push(
 new Animation(),
+new Animation(),
+new Animation(),
+new Animation(),
 new Animation()
 );
 }
+if(this.building_randomExplosions.explosions_counter == 50){
+    pushing_random_explsions.push(
+    new Explosions(4,this.body.m_steady_deadPosX + 100, this.body.m_steady_deadPosY + 100, 100, 100),
+    new Explosions(5,this.body.m_steady_deadPosX , this.body.m_steady_deadPosY, 300, 300),
+    new Explosions(6,this.body.m_steady_deadPosX - 300 , this.body.m_steady_deadPosY, 300, 300),
+    new Explosions(6,this.body.m_steady_deadPosX , this.body.m_steady_deadPosY + 300, 300, 300),
+    new Explosions(10,this.body.m_steady_deadPosX  - 100, this.body.m_steady_deadPosY + 300, 300, 300),
+    new Explosions(10,this.body.m_steady_deadPosX  - 300, this.body.m_steady_deadPosY + 300, 300, 300),
+    );
+    
+    explosions_animations_pushing.push(
+    new Animation(),
+    new Animation(),
+    new Animation(),
+    new Animation(),
+    new Animation(),
+    new Animation(),
+    
+
+    );
+    }
+
+    if(this.building_randomExplosions.explosions_counter == 70){
+        pushing_random_explsions.push(
+        new Explosions(4,this.body.m_steady_deadPosX - 100, this.body.m_steady_deadPosY - 100, 100, 100),
+        new Explosions(5,this.body.m_steady_deadPosX , this.body.m_steady_deadPosY, 300, 300),
+        new Explosions(6,this.body.m_steady_deadPosX + 300 , this.body.m_steady_deadPosY, 300, 300),
+        new Explosions(6,this.body.m_steady_deadPosX , this.body.m_steady_deadPosY + 300, 300, 300),
+        new Explosions(3,this.body.m_steady_deadPosX + 300 , this.body.m_steady_deadPosY + 300, 300, 300),
+        );
+        
+        explosions_animations_pushing.push(
+        new Animation(),
+        new Animation(),
+        new Animation(),
+        new Animation(),
+        new Animation()
+        );
+        }
+
+    if(this.building_randomExplosions.explosions_counter == 90){
+        pushing_random_explsions.push(
+        new Explosions(5,this.body.m_steady_deadPosX + 100, this.body.m_steady_deadPosY + 100, 100, 100),
+        new Explosions(4,this.body.m_steady_deadPosX , this.body.m_steady_deadPosY, 300, 300),
+        new Explosions(3,this.body.m_steady_deadPosX - 300 , this.body.m_steady_deadPosY, 300, 300),
+        new Explosions(6,this.body.m_steady_deadPosX , this.body.m_steady_deadPosY + 300, 300, 300),
+        new Explosions(3,this.body.m_steady_deadPosX  - 100, this.body.m_steady_deadPosY + 300, 300, 300),
+        new Explosions(4,this.body.m_steady_deadPosX  - 300, this.body.m_steady_deadPosY + 300, 300, 300),
+        new Explosions(2,this.body.m_steady_deadPosX + 300 , this.body.m_steady_deadPosY + 300, 300, 300),
+        );
+        
+        explosions_animations_pushing.push(
+        new Animation(),
+        new Animation(),
+        new Animation(),
+        new Animation(),
+        new Animation(),
+        new Animation(),
+        new Animation(),
+        );
+        }
+/////////////////////////////
+        if(this.building_randomExplosions.explosions_counter == 110){
+            pushing_random_explsions.push(
+            new Explosions(4,this.body.m_steady_deadPosX - 100, this.body.m_steady_deadPosY - 100, 100, 100),
+            new Explosions(5,this.body.m_steady_deadPosX , this.body.m_steady_deadPosY, 300, 300),
+            new Explosions(6,this.body.m_steady_deadPosX + 300 , this.body.m_steady_deadPosY, 300, 300),
+            new Explosions(6,this.body.m_steady_deadPosX , this.body.m_steady_deadPosY + 300, 300, 300),
+            new Explosions(2,this.body.m_steady_deadPosX + 300 , this.body.m_steady_deadPosY + 300, 300, 300),
+            );
+            
+            explosions_animations_pushing.push(
+            new Animation(),
+            new Animation(),
+            new Animation(),
+            new Animation(),
+            new Animation()
+            );
+            }
+
+            if(this.building_randomExplosions.explosions_counter == 130){
+                pushing_random_explsions.push(
+                new Explosions(5,this.body.m_steady_deadPosX + 100, this.body.m_steady_deadPosY + 100, 100, 100),
+                new Explosions(4,this.body.m_steady_deadPosX , this.body.m_steady_deadPosY, 300, 300),
+                new Explosions(3,this.body.m_steady_deadPosX - 300 , this.body.m_steady_deadPosY, 300, 300),
+                new Explosions(6,this.body.m_steady_deadPosX , this.body.m_steady_deadPosY + 300, 300, 300),
+                new Explosions(3,this.body.m_steady_deadPosX  - 100, this.body.m_steady_deadPosY + 300, 300, 300),
+                new Explosions(4,this.body.m_steady_deadPosX  - 300, this.body.m_steady_deadPosY + 300, 300, 300),
+                new Explosions(6,this.body.m_steady_deadPosX + 300 , this.body.m_steady_deadPosY + 300, 300, 300),
+                );
+                
+                explosions_animations_pushing.push(
+                new Animation(),
+                new Animation(),
+                new Animation(),
+                new Animation(),
+                new Animation(),
+                new Animation(),
+                new Animation(),
+                );
+                }
+
+                if(this.building_randomExplosions.explosions_counter == 150){
+                    pushing_random_explsions.push(
+                    new Explosions(4,this.body.m_steady_deadPosX - 100, this.body.m_steady_deadPosY - 100, 100, 100),
+                    new Explosions(5,this.body.m_steady_deadPosX , this.body.m_steady_deadPosY, 300, 300),
+                    new Explosions(6,this.body.m_steady_deadPosX + 300 , this.body.m_steady_deadPosY, 300, 300),
+                    new Explosions(5,this.body.m_steady_deadPosX , this.body.m_steady_deadPosY + 300, 300, 300),
+                    );
+                    
+                    explosions_animations_pushing.push(
+                    new Animation(),
+                    new Animation(),
+                    new Animation(),
+                    new Animation(),
+                    new Animation()
+                    );
+                    }
+                    if(this.building_randomExplosions.explosions_counter == 170){
+                        pushing_random_explsions.push(
+                        new Explosions(5,this.body.m_steady_deadPosX + 100, this.body.m_steady_deadPosY + 100, 100, 100),
+                        new Explosions(4,this.body.m_steady_deadPosX , this.body.m_steady_deadPosY, 300, 300),
+                        new Explosions(3,this.body.m_steady_deadPosX - 300 , this.body.m_steady_deadPosY, 300, 300),
+                        new Explosions(6,this.body.m_steady_deadPosX , this.body.m_steady_deadPosY + 300, 300, 300),
+                        new Explosions(3,this.body.m_steady_deadPosX  - 100, this.body.m_steady_deadPosY + 300, 300, 300),
+                        new Explosions(4,this.body.m_steady_deadPosX  - 300, this.body.m_steady_deadPosY + 300, 300, 300),
+                        new Explosions(10,this.body.m_steady_deadPosX + 300 , this.body.m_steady_deadPosY + 300, 300, 300),
+                        );
+                        
+                        explosions_animations_pushing.push(
+                        new Animation(),
+                        new Animation(),
+                        new Animation(),
+                        new Animation(),
+                        new Animation(),
+                        new Animation(),
+                        new Animation(),
+                        );
+                        }
+
+                        if(this.building_randomExplosions.explosions_counter == 180){
+                            pushing_random_explsions.push(
+                            new Explosions(1,this.body.m_steady_deadPosX - 1400 , this.body.m_steady_deadPosY -1400, 3000, 3000),
+                          
+                            );
+                            
+                            explosions_animations_pushing.push(
+                            new Animation(),
+                       
+                            );
+                            }
 
 //setting to delete object
-  if(this.building_randomExplosions.explosions_counter == 100){
-//this.setDeleteObject(true);
+  if(this.building_randomExplosions.explosions_counter == 200){
+this.setDeleteObject(true);
   }
     }
 }

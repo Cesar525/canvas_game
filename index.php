@@ -23,6 +23,7 @@
 </div>
 
 <!-- js Files  -->
+<script src="./gameClass/mapbuilder.js"></script>
 <script src="./gameClass/powerups.js"></script>
 <script src="./gameClass/sprites.js"></script>
 <script src="./gameClass/functions.js"></script>
