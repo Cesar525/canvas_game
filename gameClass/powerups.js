@@ -49,6 +49,9 @@ this.powerUps_Selecting = {
     }
 
 }
+
+setDestroyObject(set){this.destroyPush = set;};
+getDestroyObject(){return this.destroyPush;};
 setPos(posx, posy){
     this.position.x = posx;
     this .position.y = posy;
@@ -453,9 +456,13 @@ healShowAnimation(damage,pos_x, pos_y, color, if_true, sign){
                 }
             
             }
-            
+        }
+        
+        destroyPowerUps(){
+            if(this.position.y > c.height + 100){
+                this.setDestroyObject(true);
             }
-
+        }
 
 updatePowerUps(player, effectTaken){
     this.health(player, effectTaken);
@@ -466,6 +473,7 @@ updatePowerUps(player, effectTaken){
     this.plasmaGunBeacon(player, effectTaken);
     this.lavaGunBeacon(player, effectTaken);
     this.GreenBeacon(player, effectTaken);
+    this.destroyPowerUps();
 }
 
 }

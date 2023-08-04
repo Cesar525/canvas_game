@@ -92,7 +92,7 @@ randomSpawnPositionX(from, to){
 asteroids(speed){
     this.velocity.x = speed;
     this.velocity.y = speed;
-    ctx.globalAlpha = 0.5
+    ctx.globalAlpha = 1
     this.spriteProccessor(asteroid_one, 2, this.position.x, this.position.y += this.velocity.y, this.width, this.height);
     ctx.globalAlpha = 1
     if(this.position.y == c.height){

@@ -88,14 +88,24 @@ getDeleteObject(){return this.destroy_object;};
 getHealth(){return this.body.health;};
 
 drawMonster(sprite_animation){
+
+    //if bossmode set
+    if(this.boss_mode_set){
+        const image_monster = new Image();
+        image_monster.src = this.body.m_sprite[0];
+        ctx.drawImage(image_monster, this.position.x, this.position.y, this.width, this.height);
+
+        if(this.body.m_health < 0){
+            this.body.m_health = 0;
+                    }
+    }else{
+        //if boss mode not set
     if(!this.clearRect){
 //    sprite_animation.spriteProccessor(this.body.m_sprite, 2, this.position.x, this.position.y, this.width, this.height);
-
 //Stand Still Image
         const image_monster = new Image();
         image_monster.src = this.body.m_sprite[0];
         ctx.drawImage(image_monster, this.position.x, this.position.y, this.width, this.height)
-
 
    //White square
 //    ctx.fillStyle = "white";
@@ -106,6 +116,7 @@ drawMonster(sprite_animation){
         this.body.m_health = 0;
                 }
             }
+        }
 }
 getMonsterHealth(){ return this.body.m_health; }
 setMonsterHealth(sethit){
@@ -117,8 +128,7 @@ getPosY(){return this.position.y;}
 killMonster(){
     this.body.m_health = 0;
     this.body.m_dead = true;
-    this.position.x = NaN;
-    this.position.y = NaN;
+    this.setDeleteObject(true);
 }
 movements(move){
 
@@ -144,8 +154,8 @@ case "sidebyside":
 break;
 case "straightDown":
     this.position.y += this.velocity.y;
-if(this.position.y > c.height){
-    this.killMonster();
+if(this.position.y > c.height + 100){
+    this.setDeleteObject(true);
 }
 
 }
@@ -251,8 +261,14 @@ monsterDeath(){
             this.body.m_deadPosY = this.position.y;
             this.body.m_steady_deadPosX = this.position.x;
             this.body.m_steady_deadPosY = this.position.y;
+            if(!this.boss_mode_set){
             this.position.x = NaN;
             this.position.y = NaN;
+            this.delete_time_after_death ++
+            if(this.delete_time_after_death == 100){
+                this.setDeleteObject(true);
+            }
+            }
             this.body.m_dead = true;
             return this.body.m_dead;
             
@@ -271,8 +287,6 @@ monsterDeathExplosion(explosion_deathAnimation){
 monsterBossDeathExplosion(animation_effect){ 
     
    // animation_effect.explosionEffect(3,  this.body.m_deadPosX - 85, (this.body.m_deadPosY += map_speed) - 85 , this.monsterDeath());
-
-
 
     if(this.monsterDeath()){
         this.building_randomExplosions.explosion_start = true;
@@ -294,13 +308,9 @@ new Explosions(6,this.body.m_steady_deadPosX , this.body.m_steady_deadPosY + 300
 new Explosions(3,this.body.m_steady_deadPosX + 300 , this.body.m_steady_deadPosY + 300, 300, 300),
 );
 
-explosions_animations_pushing.push(
-new Animation(),
-new Animation(),
-new Animation(),
-new Animation(),
-new Animation()
-);
+for(var explosion_count = 0 ; explosion_count < pushing_random_explsions.length ; explosion_count++){
+    explosions_animations_pushing.push(new Animation());
+}
 }
 if(this.building_randomExplosions.explosions_counter == 50){
     pushing_random_explsions.push(
@@ -312,16 +322,9 @@ if(this.building_randomExplosions.explosions_counter == 50){
     new Explosions(10,this.body.m_steady_deadPosX  - 300, this.body.m_steady_deadPosY + 300, 300, 300),
     );
     
-    explosions_animations_pushing.push(
-    new Animation(),
-    new Animation(),
-    new Animation(),
-    new Animation(),
-    new Animation(),
-    new Animation(),
-    
-
-    );
+    for(var explosion_count = 0 ; explosion_count < pushing_random_explsions.length ; explosion_count++){
+        explosions_animations_pushing.push(new Animation());
+    }
     }
 
     if(this.building_randomExplosions.explosions_counter == 70){
@@ -333,13 +336,9 @@ if(this.building_randomExplosions.explosions_counter == 50){
         new Explosions(3,this.body.m_steady_deadPosX + 300 , this.body.m_steady_deadPosY + 300, 300, 300),
         );
         
-        explosions_animations_pushing.push(
-        new Animation(),
-        new Animation(),
-        new Animation(),
-        new Animation(),
-        new Animation()
-        );
+        for(var explosion_count = 0 ; explosion_count < pushing_random_explsions.length ; explosion_count++){
+            explosions_animations_pushing.push(new Animation());
+        }
         }
 
     if(this.building_randomExplosions.explosions_counter == 90){
@@ -353,15 +352,9 @@ if(this.building_randomExplosions.explosions_counter == 50){
         new Explosions(2,this.body.m_steady_deadPosX + 300 , this.body.m_steady_deadPosY + 300, 300, 300),
         );
         
-        explosions_animations_pushing.push(
-        new Animation(),
-        new Animation(),
-        new Animation(),
-        new Animation(),
-        new Animation(),
-        new Animation(),
-        new Animation(),
-        );
+        for(var explosion_count = 0 ; explosion_count < pushing_random_explsions.length ; explosion_count++){
+            explosions_animations_pushing.push(new Animation());
+        }
         }
 /////////////////////////////
         if(this.building_randomExplosions.explosions_counter == 110){
@@ -372,15 +365,12 @@ if(this.building_randomExplosions.explosions_counter == 50){
             new Explosions(6,this.body.m_steady_deadPosX , this.body.m_steady_deadPosY + 300, 300, 300),
             new Explosions(2,this.body.m_steady_deadPosX + 300 , this.body.m_steady_deadPosY + 300, 300, 300),
             );
-            
-            explosions_animations_pushing.push(
-            new Animation(),
-            new Animation(),
-            new Animation(),
-            new Animation(),
-            new Animation()
-            );
+          
+            for(var explosion_count = 0 ; explosion_count < pushing_random_explsions.length ; explosion_count++){
+                explosions_animations_pushing.push(new Animation());
             }
+            }
+        
 
             if(this.building_randomExplosions.explosions_counter == 130){
                 pushing_random_explsions.push(
@@ -393,15 +383,9 @@ if(this.building_randomExplosions.explosions_counter == 50){
                 new Explosions(6,this.body.m_steady_deadPosX + 300 , this.body.m_steady_deadPosY + 300, 300, 300),
                 );
                 
-                explosions_animations_pushing.push(
-                new Animation(),
-                new Animation(),
-                new Animation(),
-                new Animation(),
-                new Animation(),
-                new Animation(),
-                new Animation(),
-                );
+                for(var explosion_count = 0 ; explosion_count < pushing_random_explsions.length ; explosion_count++){
+                    explosions_animations_pushing.push(new Animation());
+                }
                 }
 
                 if(this.building_randomExplosions.explosions_counter == 150){
@@ -412,13 +396,9 @@ if(this.building_randomExplosions.explosions_counter == 50){
                     new Explosions(5,this.body.m_steady_deadPosX , this.body.m_steady_deadPosY + 300, 300, 300),
                     );
                     
-                    explosions_animations_pushing.push(
-                    new Animation(),
-                    new Animation(),
-                    new Animation(),
-                    new Animation(),
-                    new Animation()
-                    );
+                    for(var explosion_count = 0 ; explosion_count < pushing_random_explsions.length ; explosion_count++){
+                        explosions_animations_pushing.push(new Animation());
+                    }
                     }
                     if(this.building_randomExplosions.explosions_counter == 170){
                         pushing_random_explsions.push(
@@ -431,31 +411,24 @@ if(this.building_randomExplosions.explosions_counter == 50){
                         new Explosions(10,this.body.m_steady_deadPosX + 300 , this.body.m_steady_deadPosY + 300, 300, 300),
                         );
                         
-                        explosions_animations_pushing.push(
-                        new Animation(),
-                        new Animation(),
-                        new Animation(),
-                        new Animation(),
-                        new Animation(),
-                        new Animation(),
-                        new Animation(),
-                        );
+                        for(var explosion_count = 0 ; explosion_count < pushing_random_explsions.length ; explosion_count++){
+                            explosions_animations_pushing.push(new Animation());
+                        }
                         }
 
                         if(this.building_randomExplosions.explosions_counter == 180){
                             pushing_random_explsions.push(
-                            new Explosions(1,this.body.m_steady_deadPosX - 1400 , this.body.m_steady_deadPosY -1400, 3000, 3000),
+                            new Explosions(1,this.body.m_steady_deadPosX - 1400 , this.body.m_steady_deadPosY -1400, 3000, 3000, 3)
                           
                             );
                             
-                            explosions_animations_pushing.push(
-                            new Animation(),
-                       
-                            );
+                            for(var explosion_count = 0 ; explosion_count < pushing_random_explsions.length ; explosion_count++){
+                                explosions_animations_pushing.push(new Animation());
+                            }
                             }
 
 //setting to delete object
-  if(this.building_randomExplosions.explosions_counter == 200){
+  if(this.building_randomExplosions.explosions_counter == 250){
 this.setDeleteObject(true);
   }
     }

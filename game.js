@@ -185,11 +185,12 @@ for(var m = 0; m < monsters.length; m++){
 
       
   }
+console.log(powerUp.length)
+console.log("Monsters  " + monsters.length)
 
-
-for(var particlesCoutning = 0; particlesCoutning < particles.length; particlesCoutning++){
-  particles[particlesCoutning].particleUpdates();
-}
+// for(var particlesCoutning = 0; particlesCoutning < particles.length; particlesCoutning++){
+//   particles[particlesCoutning].particleUpdates();
+// }
 
 
 
