@@ -1,6 +1,4 @@
 
-
-
 //game play canvas
 var c = document.getElementById("canvasGame");
 var ctx = c.getContext("2d");
@@ -108,12 +106,6 @@ for(var p = 0; p < players.length; p++){
   player_shield_effect_one.push(new Animation());
   player_shield_effect_two.push(new Animation());
 }
-
-
-
-
-
-
 
 const burst_fire_test = new Animation();
 
