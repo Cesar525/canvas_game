@@ -199,7 +199,7 @@ console.log("counting   " + explosions_animations_pushing.length + "  " + pushin
 
 }
 
-// animation_TESTING.spritePage("assets/explosionparticles/explosion3.png", 500 , 500, 1000, 800, 10, 8, 100, 100, 1, true, 400, 400)
+//animation_TESTING.spritePage("assets/firesprites/PNG/1.png", 100 , -500, 2048, 2048, 8, 4, 256, 512, 1, true, 1000, 1900)
 // animation_TESTING.explosionEffect(3, 500 + 100, 500 + 100, true, 4)
 }
 

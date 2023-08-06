@@ -48,6 +48,8 @@ this.powerUps_Selecting = {
         money : false
     }
 
+this.destroy_timer = 0;
+
 }
 
 setDestroyObject(set){this.destroyPush = set;};
@@ -222,8 +224,8 @@ if(this.m_type == "money"){
 
 
 clearItems(){
-    this.position.x = NaN;
-    this.position.y = - NaN;
+    this.position.x = 500;
+    this.position.y =  c.height + 500;
     this.powerUps_Selecting.money = false;
     this.powerUps_Selecting.health = false;
     this.powerUps_Selecting.energy = false;
@@ -460,7 +462,10 @@ healShowAnimation(damage,pos_x, pos_y, color, if_true, sign){
         
         destroyPowerUps(){
             if(this.position.y > c.height + 100){
+                this.destroy_timer++
+                if(this.destroy_timer == 50){
                 this.setDestroyObject(true);
+                }
             }
         }
 
@@ -474,6 +479,7 @@ updatePowerUps(player, effectTaken){
     this.lavaGunBeacon(player, effectTaken);
     this.GreenBeacon(player, effectTaken);
     this.destroyPowerUps();
+
 }
 
 }

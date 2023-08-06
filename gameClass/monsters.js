@@ -78,7 +78,7 @@ explosion_end : false
 
 this.delete_time_after_death = 0;
 this.destroy_object = false;
-
+this.destroy_counter = 0;
 }
 
 
@@ -155,6 +155,8 @@ break;
 case "straightDown":
     this.position.y += this.velocity.y;
 if(this.position.y > c.height + 100){
+    this.destroy_counter ++;
+if(this.destroy_counter == 50)
     this.setDeleteObject(true);
 }
 
@@ -262,8 +264,8 @@ monsterDeath(){
             this.body.m_steady_deadPosX = this.position.x;
             this.body.m_steady_deadPosY = this.position.y;
             if(!this.boss_mode_set){
-            this.position.x = NaN;
-            this.position.y = NaN;
+            this.position.x = 500;
+            this.position.y = c.height + 500;
             this.delete_time_after_death ++
             if(this.delete_time_after_death == 100){
                 this.setDeleteObject(true);
