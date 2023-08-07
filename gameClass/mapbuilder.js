@@ -31,21 +31,26 @@ this.position_random = {
     x : 0,
     y : 0
 }
+
+this.counter_or_asteroids = 0;
+
 }
 
 randomSpawnPositionX(from, to){
-    this.randomNum_map = Math.floor(Math.random() * to) + from   
+    this.randomNum_mapX = Math.floor(Math.random() * to) + from   
     return this.randomNum_mapX;
   }
 
   randomSpawnPositionY(from, to){
-    this.randomNum_map = Math.floor(Math.random() * to) + from   
+    this.randomNum_mapY = Math.floor(Math.random() * to) + from   
     return this.randomNum_mapY;
   }
 
 
 //MAP ONE
 mapOneLoad(){
+    
+
 this.map_one[0].timer();
 var map_minutes = this.map_one[0].getMinutes();
 var map_seconds = this.map_one[0].getSeconds()
@@ -75,31 +80,184 @@ this.map_one[15].asteroids(3);
 this.map_one[3].drawStars(10, 2); // background image
 
 //pushing monsters in to map one.
-if(this.gameFrame == 300){
-    monsters.push(
-        new Monsters(2, asteroid_two,  this.randomSpawnPositionY(100, c.width - 100), - this.randomSpawnPositionX(100 , c.height - 100) , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7, 10),
-        new Monsters(2, asteroid_two,  this.randomSpawnPositionY(100, c.width - 100), - this.randomSpawnPositionX(100 , c.height - 100) , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7, 10),
 
-        
+this.metioriteStorm();
+
+}
+
+metioriteStorm(){
+var asteroid_speed = 20;
+    // if(this.counter_or_asteroids == 10)
+if(true){
+
+    this.counter_or_asteroids++
+    if(this.counter_or_asteroids == 10){
+    monsters.push(
+    new Monsters(2, asteroid_two, this.position_random.x,  this.position_random.y , 100, "Asteroid", asteroid_speed, "orange", "straightDown", 200, 200, 7, 10),
+   
     )
+
     for(var m = 0; m < monsters.length; m++){
         sprite_animation.push(new Animation());
         explosion_onDeath_animation.push(new Animation());
         }
 }
+if(this.counter_or_asteroids == 20){
+    monsters.push(
+    new Monsters(2, asteroid_three, this.position_random.x,  this.position_random.y , 100, "Asteroid", asteroid_speed, "orange", "straightDown", 200, 200, 7, 10),
+   
+    )
+
+    for(var m = 0; m < monsters.length; m++){
+        sprite_animation.push(new Animation());
+        explosion_onDeath_animation.push(new Animation());
+        }
+
+        
+
+}
+if(this.counter_or_asteroids == 30){
+    monsters.push(
+    new Monsters(2, asteroid_four, this.position_random.x,  this.position_random.y , 100, "Asteroid", asteroid_speed, "orange", "straightDown", 200, 200, 7, 10),
+   
+    )
+
+    for(var m = 0; m < monsters.length; m++){
+        sprite_animation.push(new Animation());
+        explosion_onDeath_animation.push(new Animation());
+        }
+
+        
+
+}
+if(this.counter_or_asteroids == 40){
+    monsters.push(
+    new Monsters(2, asteroid_five, this.position_random.x,  this.position_random.y , 100, "Asteroid", asteroid_speed, "orange", "straightDown", 200, 200, 7, 10),
+   
+    )
+
+    for(var m = 0; m < monsters.length; m++){
+        sprite_animation.push(new Animation());
+        explosion_onDeath_animation.push(new Animation());
+        }
+
+        
+
+}
+if(this.counter_or_asteroids == 50){
+    monsters.push(
+    new Monsters(2, asteroid_six, this.position_random.x,  this.position_random.y , 100, "Asteroid", asteroid_speed, "orange", "straightDown", 200, 200, 7, 10),
+   
+    )
+
+    for(var m = 0; m < monsters.length; m++){
+        sprite_animation.push(new Animation());
+        explosion_onDeath_animation.push(new Animation());
+        }
+
+        
+
+}
+if(this.counter_or_asteroids == 60){
+    monsters.push(
+    new Monsters(2, asteroid_seven, this.position_random.x,  this.position_random.y , 100, "Asteroid", asteroid_speed, "orange", "straightDown", 200, 200, 7, 10),
+   
+    )
+
+    for(var m = 0; m < monsters.length; m++){
+        sprite_animation.push(new Animation());
+        explosion_onDeath_animation.push(new Animation());
+        }
+
+        
+
+}
+if(this.counter_or_asteroids == 70){
+    monsters.push(
+    new Monsters(2, asteroid_eight, this.position_random.x,  this.position_random.y , 100, "Asteroid", asteroid_speed, "orange", "straightDown", 200, 200, 7, 10),
+   
+    )
+
+    for(var m = 0; m < monsters.length; m++){
+        sprite_animation.push(new Animation());
+        explosion_onDeath_animation.push(new Animation());
+        }
+
+        
+
+}
+if(this.counter_or_asteroids == 80){
+    monsters.push(
+    new Monsters(2, asteroid_nine, this.position_random.x,  this.position_random.y , 100, "Asteroid", asteroid_speed, "orange", "straightDown", 200, 200, 7, 10),
+   
+    )
+
+    for(var m = 0; m < monsters.length; m++){
+        sprite_animation.push(new Animation());
+        explosion_onDeath_animation.push(new Animation());
+        }
+
+        
+
+}
+if(this.counter_or_asteroids == 90){
+    monsters.push(
+    new Monsters(2, asteroid_ten, this.position_random.x,  this.position_random.y , 100, "Asteroid", asteroid_speed, "orange", "straightDown", 200, 200, 7, 10),
+   
+    )
+
+    for(var m = 0; m < monsters.length; m++){
+        sprite_animation.push(new Animation());
+        explosion_onDeath_animation.push(new Animation());
+        }
+
+        
+
+}
+if(this.counter_or_asteroids == 100){
+    monsters.push(
+    new Monsters(2, asteroid_eleven, this.position_random.x,  this.position_random.y , 100, "Asteroid", asteroid_speed, "orange", "straightDown", 200, 200, 7, 10),
+   
+    )
+
+    for(var m = 0; m < monsters.length; m++){
+        sprite_animation.push(new Animation());
+        explosion_onDeath_animation.push(new Animation());
+        }
+
+        
+
+}
+if(this.counter_or_asteroids == 110){
+    monsters.push(
+    new Monsters(2, asteroid_one, this.position_random.x,  this.position_random.y , 100, "Asteroid", asteroid_speed, "orange", "straightDown", 200, 200, 7, 10),
+   
+    )
+
+    for(var m = 0; m < monsters.length; m++){
+        sprite_animation.push(new Animation());
+        explosion_onDeath_animation.push(new Animation());
+        }
+
+        
+this.counter_or_asteroids = 0;
 }
 
-randomisingNumbers(){
-    this.position_random.y = this.randomSpawnPositionX(-100 , -(c.height - 100))
-  
-    this.position_random.x = this.randomSpawnPositionY(100, c.width - 100);
-    
+}
+}
+
+
+
+randomisingNumbers(){  
+    this.position_random.y = - this.randomSpawnPositionY(100, (c.height - 100))
+    this.position_random.x =  this.randomSpawnPositionX(100, c.width - 100);
+   // console.log(this.randomSpawnPositionX(100, 500));
 }
 
 
 
 updateMap(mapSelected){
-    
+this.randomisingNumbers(); 
 this.gameFrame++
 ctx.font = "90px Roboto Mono";
 ctx.fillStyle = "white";

@@ -72,13 +72,44 @@ class Player {
 this.gameFrame_sparks = 0;
 this.staggerFrame_sparks = 1;
 
+this.showDamageAnimation = {
+    gameFrameAnimationTime : 0,
+    damage_recorded : 0
 }
+this.showdamage__ ;
+this.random_number = 0;
+
+this.inventory = {
+    posx : c.width - 1000,
+    posy : 0,
+    w : 100,
+    h : 100
+}
+this.player_inventory = [1, 2, 4]
+
+
+}
+
+randomNumber(from, to){
+    this.random_number = Math.floor(Math.random() * to) + from   
+    return this.random_number;
+  }
 getPlayerPosX(){ return this.position.x; };
 getPlayerPosY(){return this.position.y; };
 
-
+setCollitionWithMonsters(set){this.collition.collition_monsters = set};
+getCollitionWithMonsters(){return this.collition.collition_monsters;};
 getGunType(){return this.body.m_gun_type;};
 setGunType(set){ this.body.gun_set = set;};
+
+getCursorPosition(canvas, event) {
+    const rect = canvas.getBoundingClientRect()
+    if(this.playerDead == false){
+    this.position.x = (event.clientX - rect.left) - 50
+    this.position.y = (event.clientY - rect.top) - 250
+    }
+    //console.log("x: " + x + " y: " + y)
+}
 
 draw(){
 
@@ -195,11 +226,14 @@ playerCollitionMonsters(monsters){
 
     if(collisionTouch(this, monsters)){
    // if(Math.floor(this.frames.gameFrame/this.frames.staggerFrame) % 5 == 4){
-      let damage = 1
+       this.setCollitionWithMonsters(collisionTouch(this, monsters));
+      let damage = this.randomNumber(1,monsters.getMonsterDamage()) ;
+      this.showDamageAnimation.damage_recorded = damage;
         this.setPlayerDamage(damage); 
       //console.log("you have been damage your current life is  = " + this.body.health);
         
  //  }
+
   }
   }
 
@@ -608,13 +642,6 @@ setTimeout(() => {
 }
 
 
-
-storageBlock(){
-
-
-}
-
-
 alerting(){
 if(this.alert)
 this.alert_counting ++
@@ -632,15 +659,98 @@ if(this.alert_on_off){
 }
 }
 
+setShowAnimation(set){this.showdamage__ = set;};
+
+damageShowAnimation(damage,pos_x, pos_y, color, if_true){
+    
+    if(if_true){this.setShowAnimation(true)}
+    
+    this.showDamageAnimation.gameFrameAnimationTime++;
+
+    if(this.showdamage__ == true){  
+        ctx.fillStyle = color;
+        ctx.strokeStyle = "black"
+        ctx.font = "90px anton";
+        ctx.fillText("-"+ damage + " ! ", pos_x , pos_y);
+        ctx.strokeText("-" + damage + " ! ", pos_x, pos_y);
+    } 
+    if(this.showDamageAnimation.gameFrameAnimationTime >= 300){
+        this.showdamage__ = false;
+        this.showDamageAnimation.gameFrameAnimationTime = 0;
+        this.collition.collition_monsters = false;
+            }
+}
+
+playerView(){
+    this.lifeBar();
+this.energyBar();   
+this.damageShowAnimation(this.showDamageAnimation.damage_recorded, this.position.x + 20, this.position.y + 90, "red", this.collition.collition_monsters)
+
+}
+
+
+playerInventory(){
+
+    ctx_ui_status.fillStyle = "black";
+    ctx_ui_status.fillRect(c.width - 1000, 0, 600 , c.height)
+    
+    const slot_images = new Image();
+    slot_images.src = "assets/inventory/mouseoffsquare.png";
+    ctx_ui_status.drawImage(slot_images, this.inventory.posx, this.inventory.posy, 100, 100);
+    console.log(this.inventory.posx);
+
+    const slot2_images = new Image();
+    slot2_images.src = "assets/inventory/mouseonsquare.png";
+    ctx_ui_status.drawImage(slot2_images, this.inventory.posx + 100, this.inventory.posy, 100, 100);
+    
+    const slot3_images = new Image();
+    slot3_images.src = "assets/inventory/mouseoffsquare.png";
+    ctx_ui_status.drawImage(slot3_images, this.inventory.posx + 200, this.inventory.posy, 100, 100);
+    
+    const slot4_images = new Image();
+    slot4_images.src = "assets/inventory/mouseoffsquare.png";
+    ctx_ui_status.drawImage(slot4_images, this.inventory.posx + 300, this.inventory.posy, 100, 100);
+    
+    const slot5_images = new Image();
+    slot5_images.src = "assets/inventory/mouseoffsquare.png";
+    ctx_ui_status.drawImage(slot5_images, this.inventory.posx + 400, this.inventory.posy, 100, 100);
+    
+    const slot6_images = new Image();
+    slot6_images.src = "assets/inventory/mouseoffsquare.png" ;
+    ctx_ui_status.drawImage(slot6_images, this.inventory.posx + 500, this.inventory.posy, 100, 100);
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    for(var counting_inventory = 0 ; counting_inventory < this.player_inventory.length; counting_inventory++){
+    
+
+    }
+
+
+
+}
+
 
 update(animation_Sparks_low, animation_Sparks_high, thruster_animation, player_death_explosionAnimation){
-this.alerting();
-this.shotting();
-this.draw();
-thruster_animation.setPlayersThruster(this.body.thruster, this.position.x - this.thruster_position_x, this.position.y + this.thruster_position_y, this.thruster_size, this.thruster_size);       
-this.playerOnDeath();
-this.lifeBar();
-this.energyBar();
+ 
+    addEventListener("mousemove", (event) => {
+        this.getCursorPosition(canvas, event)
+          });
+
+    this.playerInventory();
+    this.alerting();
+    this.shotting();
+    this.draw();
+    thruster_animation.setPlayersThruster(this.body.thruster, this.position.x - this.thruster_position_x, this.position.y + this.thruster_position_y, this.thruster_size, this.thruster_size);       
+    this.playerOnDeath();
+
 this.playerMovemements();
 this.playerEffectSparks(animation_Sparks_low, animation_Sparks_high);
 this.playerDeathExplosion(player_death_explosionAnimation);
@@ -652,7 +762,7 @@ this.shottingiinterval();
 this.showPlayerHealth();
 this.showPlayerEnergy();
 this.energyUsage()
-this.storageBlock();
+
 // WOKRING ON
     for(var f = 0; f < powerUp.length; f++){      
         powerUp[f].updatePowerUps(this);

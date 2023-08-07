@@ -81,7 +81,7 @@ this.destroy_object = false;
 this.destroy_counter = 0;
 }
 
-
+getMonsterDamage(){return this.body.m_damage;}
 setDeleteObject(set){this.destroy_object = set;};
 getDeleteObject(){return this.destroy_object;};
 
@@ -596,16 +596,18 @@ if(Math.round((this.body.m_health / this.health_total) * barwidth_ ) <= 100){
   ctx.fillText(this.body.m_name + "         " +  this.body.m_health, this.position.x  -100, this.position.y + 145);
 }
 }
+ monsterView(){
+    this.bossMode();
+    if(!this.boss_mode_set){
+    this.monsterlifeBar();
+    }
 
+ }
 updateMonster(sprite_animator){
 this.drawMonster(sprite_animator);
-this.bossMode();
-if(!this.boss_mode_set){
-this.monsterlifeBar();
-}
 this.movements(this.monsterMovement);
 this.dropPowerUps(this.randomSelectingPowerUps())
-//this.spawnMonster();
+
 
 }
 }

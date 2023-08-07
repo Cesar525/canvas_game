@@ -151,13 +151,7 @@ explosion_onDeath_animation.splice(m, 1);
     }
   }
   
-for(var m = 0; m < monsters.length; m++){
-  if(monsters[m].getBossMode()){
-    monsters[m].monsterBossDeathExplosion(explosion_onDeath_animation[m]);
-  }else{
-    monsters[m].monsterDeathExplosion(explosion_onDeath_animation[m]);
-  }
-      } 
+
   
   //powerUps updates and collision
   for(var p = 0; p < players.length; p++){
@@ -177,14 +171,16 @@ for(var m = 0; m < monsters.length; m++){
 
       
   }
-console.log(powerUp.length)
-console.log("Monsters  " + monsters.length)
+  
+  for(var m = 0; m < monsters.length; m++){
+  if(monsters[m].getBossMode()){
+    monsters[m].monsterBossDeathExplosion(explosion_onDeath_animation[m]);
+  }else{
+    monsters[m].monsterDeathExplosion(explosion_onDeath_animation[m]);
+  }
+      } 
 
-// for(var particlesCoutning = 0; particlesCoutning < particles.length; particlesCoutning++){
-//   particles[particlesCoutning].particleUpdates();
-// }
-
-
+     
 
 //Random explosions
 for(var counting_explosions = 0 ; counting_explosions < pushing_random_explsions.length; counting_explosions++)
@@ -195,17 +191,29 @@ if(explosions_animations_pushing[counting_explosions].getAnimationStatus() == fa
 explosions_animations_pushing.splice(counting_explosions, 1);
 pushing_random_explsions.splice(counting_explosions, 1);
   }
-//console.log("counting   " + explosions_animations_pushing.length + "  " + pushing_random_explsions.length)
 
-}
 
-//animation_TESTING.spritePage("assets/firesprites/PNG/1.png", 100 , -500, 2048, 2048, 8, 4, 256, 512, 1, true, 1000, 1900)
-// animation_TESTING.explosionEffect(3, 500 + 100, 500 + 100, true, 4)
 }
 
 
 
+//LIFE BARS AND STATUS
+for(var m = 0; m < monsters.length; m++){
+monsters[m].monsterView();
+}
 
+for(var p = 0; p < players.length; p++){
+players[p].playerView();
+}
+
+
+    }
+    
+    
+    
+    
+    //animation_TESTING.spritePage("assets/firesprites/PNG/1.png", 100 , -500, 2048, 2048, 8, 4, 256, 512, 1, true, 1000, 1900)
+    // animation_TESTING.explosionEffect(3, 500 + 100, 500 + 100, true, 4)
 } 
 
 buffer();
