@@ -25,12 +25,22 @@ this.map_one = [
 
 this.gameFrame = 0;
 this.gamestagged = 0;
-this.randomNum_map;
+this.randomNum_mapX;
+this.randomNum_mapY;
+this.position_random = {
+    x : 0,
+    y : 0
+}
 }
 
-randomSpawnPosition(from, to){
+randomSpawnPositionX(from, to){
     this.randomNum_map = Math.floor(Math.random() * to) + from   
-    return this.randomNum_map;
+    return this.randomNum_mapX;
+  }
+
+  randomSpawnPositionY(from, to){
+    this.randomNum_map = Math.floor(Math.random() * to) + from   
+    return this.randomNum_mapY;
   }
 
 
@@ -67,8 +77,8 @@ this.map_one[3].drawStars(10, 2); // background image
 //pushing monsters in to map one.
 if(this.gameFrame == 300){
     monsters.push(
-        new Monsters(2, asteroid_two,  this.randomSpawnPosition(100, c.width - 100), 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7, 10),
-        new Monsters(2, asteroid_two,  this.randomSpawnPosition(100, c.width - 100), 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7, 10),
+        new Monsters(2, asteroid_two,  this.randomSpawnPositionY(100, c.width - 100), - this.randomSpawnPositionX(100 , c.height - 100) , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7, 10),
+        new Monsters(2, asteroid_two,  this.randomSpawnPositionY(100, c.width - 100), - this.randomSpawnPositionX(100 , c.height - 100) , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7, 10),
 
         
     )
@@ -77,16 +87,25 @@ if(this.gameFrame == 300){
         explosion_onDeath_animation.push(new Animation());
         }
 }
-
-
-
 }
 
+randomisingNumbers(){
+    this.position_random.y = this.randomSpawnPositionX(-100 , -(c.height - 100))
+  
+    this.position_random.x = this.randomSpawnPositionY(100, c.width - 100);
+    
+}
+
+
+
 updateMap(mapSelected){
+    
 this.gameFrame++
 ctx.font = "90px Roboto Mono";
 ctx.fillStyle = "white";
 ctx.fillText(this.gameFrame, c.width - 200, 100);
+
+
 
  //SHOW FRAMES
 

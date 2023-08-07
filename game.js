@@ -195,11 +195,11 @@ if(explosions_animations_pushing[counting_explosions].getAnimationStatus() == fa
 explosions_animations_pushing.splice(counting_explosions, 1);
 pushing_random_explsions.splice(counting_explosions, 1);
   }
-console.log("counting   " + explosions_animations_pushing.length + "  " + pushing_random_explsions.length)
+//console.log("counting   " + explosions_animations_pushing.length + "  " + pushing_random_explsions.length)
 
 }
 
-animation_TESTING.spritePage("assets/firesprites/PNG/1.png", 100 , -500, 2048, 2048, 8, 4, 256, 512, 1, true, 1000, 1900)
+//animation_TESTING.spritePage("assets/firesprites/PNG/1.png", 100 , -500, 2048, 2048, 8, 4, 256, 512, 1, true, 1000, 1900)
 // animation_TESTING.explosionEffect(3, 500 + 100, 500 + 100, true, 4)
 }
 

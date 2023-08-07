@@ -322,6 +322,7 @@ if(this.building_randomExplosions.explosions_counter == 50){
     new Explosions(6,this.body.m_steady_deadPosX , this.body.m_steady_deadPosY + 300, 300, 300),
     new Explosions(10,this.body.m_steady_deadPosX  - 100, this.body.m_steady_deadPosY + 300, 300, 300),
     new Explosions(10,this.body.m_steady_deadPosX  - 300, this.body.m_steady_deadPosY + 300, 300, 300),
+    new Explosions(5,this.body.m_steady_deadPosX  , this.body.m_steady_deadPosY + 500, 300, 300),
     );
     
     for(var explosion_count = 0 ; explosion_count < pushing_random_explsions.length ; explosion_count++){
@@ -366,6 +367,7 @@ if(this.building_randomExplosions.explosions_counter == 50){
             new Explosions(6,this.body.m_steady_deadPosX + 300 , this.body.m_steady_deadPosY, 300, 300),
             new Explosions(6,this.body.m_steady_deadPosX , this.body.m_steady_deadPosY + 300, 300, 300),
             new Explosions(2,this.body.m_steady_deadPosX + 300 , this.body.m_steady_deadPosY + 300, 300, 300),
+            new Explosions(5,this.body.m_steady_deadPosX  , this.body.m_steady_deadPosY + 500, 300, 300),
             );
           
             for(var explosion_count = 0 ; explosion_count < pushing_random_explsions.length ; explosion_count++){
@@ -396,6 +398,8 @@ if(this.building_randomExplosions.explosions_counter == 50){
                     new Explosions(5,this.body.m_steady_deadPosX , this.body.m_steady_deadPosY, 300, 300),
                     new Explosions(6,this.body.m_steady_deadPosX + 300 , this.body.m_steady_deadPosY, 300, 300),
                     new Explosions(5,this.body.m_steady_deadPosX , this.body.m_steady_deadPosY + 300, 300, 300),
+                    new Explosions(5,this.body.m_steady_deadPosX  , this.body.m_steady_deadPosY + 500, 300, 300),
+
                     );
                     
                     for(var explosion_count = 0 ; explosion_count < pushing_random_explsions.length ; explosion_count++){
