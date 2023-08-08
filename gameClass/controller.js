@@ -1,4 +1,5 @@
 
+const canvas = document.querySelector('#canvasUILifeBar')
 const keys = {
     right : {
         pressed:false
@@ -72,7 +73,6 @@ addEventListener("keydown", function ({keyCode}){
 // }
 
 
-// const canvas = document.querySelector('#canvasUILifeBar')
 //   addEventListener("mousemove", (event) => {
 //     getCursorPosition(canvas, event)
 //       });

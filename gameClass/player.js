@@ -719,6 +719,34 @@ playerInventory(){
     slot6_images.src = "assets/inventory/mouseoffsquare.png" ;
     ctx_ui_status.drawImage(slot6_images, this.inventory.posx + 500, this.inventory.posy, 100, 100);
   
+//bottom inventory
+const slot7_images = new Image();
+slot7_images.src = "assets/inventory/mouseoffsquare.png";
+ctx_ui_status.drawImage(slot7_images, this.inventory.posx, this.inventory.posy + 100, 100, 100);
+console.log(this.inventory.posx);
+
+const slot8_images = new Image();
+slot8_images.src = "assets/inventory/mouseonsquare.png";
+ctx_ui_status.drawImage(slot8_images, this.inventory.posx + 100, this.inventory.posy + 100, 100, 100);
+
+const slot9_images = new Image();
+slot9_images.src = "assets/inventory/mouseoffsquare.png";
+ctx_ui_status.drawImage(slot9_images, this.inventory.posx + 200, this.inventory.posy + 100, 100, 100);
+
+const slot10_images = new Image();
+slot10_images.src = "assets/inventory/mouseoffsquare.png";
+ctx_ui_status.drawImage(slot10_images, this.inventory.posx + 300, this.inventory.posy + 100, 100, 100);
+
+const slot11_images = new Image();
+slot11_images.src = "assets/inventory/mouseoffsquare.png";
+ctx_ui_status.drawImage(slot11_images, this.inventory.posx + 400, this.inventory.posy + 100, 100, 100);
+
+const slot12_images = new Image();
+slot12_images.src = "assets/inventory/mouseoffsquare.png" ;
+ctx_ui_status.drawImage(slot12_images, this.inventory.posx + 500, this.inventory.posy + 100, 100, 100);
+
+
+
     
     
     

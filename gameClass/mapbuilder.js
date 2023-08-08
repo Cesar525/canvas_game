@@ -93,7 +93,7 @@ if(true){
     this.counter_or_asteroids++
     if(this.counter_or_asteroids == 10){
     monsters.push(
-    new Monsters(2, asteroid_two, this.position_random.x,  this.position_random.y , 100, "Asteroid", asteroid_speed, "orange", "straightDown", 200, 200, 7, 10),
+    new Monsters(2, asteroid_two, this.position_random.x,  this.position_random.y , 100, "Asteroid", asteroid_speed, "orange", "straightDown", 200, 200, 7, 30),
    
     )
 
@@ -104,7 +104,7 @@ if(true){
 }
 if(this.counter_or_asteroids == 20){
     monsters.push(
-    new Monsters(2, asteroid_three, this.position_random.x,  this.position_random.y , 100, "Asteroid", asteroid_speed, "orange", "straightDown", 200, 200, 7, 10),
+    new Monsters(2, asteroid_three, this.position_random.x,  this.position_random.y , 100, "Asteroid", asteroid_speed, "orange", "straightDown", 200, 200, 7, 30),
    
     )
 
@@ -118,7 +118,7 @@ if(this.counter_or_asteroids == 20){
 }
 if(this.counter_or_asteroids == 30){
     monsters.push(
-    new Monsters(2, asteroid_four, this.position_random.x,  this.position_random.y , 100, "Asteroid", asteroid_speed, "orange", "straightDown", 200, 200, 7, 10),
+    new Monsters(2, asteroid_four, this.position_random.x,  this.position_random.y , 100, "Asteroid", asteroid_speed, "orange", "straightDown", 200, 200, 7, 30),
    
     )
 
@@ -132,7 +132,7 @@ if(this.counter_or_asteroids == 30){
 }
 if(this.counter_or_asteroids == 40){
     monsters.push(
-    new Monsters(2, asteroid_five, this.position_random.x,  this.position_random.y , 100, "Asteroid", asteroid_speed, "orange", "straightDown", 200, 200, 7, 10),
+    new Monsters(2, asteroid_five, this.position_random.x,  this.position_random.y , 100, "Asteroid", asteroid_speed, "orange", "straightDown", 200, 200, 7, 30),
    
     )
 
@@ -146,7 +146,7 @@ if(this.counter_or_asteroids == 40){
 }
 if(this.counter_or_asteroids == 50){
     monsters.push(
-    new Monsters(2, asteroid_six, this.position_random.x,  this.position_random.y , 100, "Asteroid", asteroid_speed, "orange", "straightDown", 200, 200, 7, 10),
+    new Monsters(2, asteroid_six, this.position_random.x,  this.position_random.y , 100, "Asteroid", asteroid_speed, "orange", "straightDown", 200, 200, 7, 30),
    
     )
 
@@ -160,7 +160,7 @@ if(this.counter_or_asteroids == 50){
 }
 if(this.counter_or_asteroids == 60){
     monsters.push(
-    new Monsters(2, asteroid_seven, this.position_random.x,  this.position_random.y , 100, "Asteroid", asteroid_speed, "orange", "straightDown", 200, 200, 7, 10),
+    new Monsters(2, asteroid_seven, this.position_random.x,  this.position_random.y , 100, "Asteroid", asteroid_speed, "orange", "straightDown", 200, 200, 7, 30),
    
     )
 
@@ -174,7 +174,7 @@ if(this.counter_or_asteroids == 60){
 }
 if(this.counter_or_asteroids == 70){
     monsters.push(
-    new Monsters(2, asteroid_eight, this.position_random.x,  this.position_random.y , 100, "Asteroid", asteroid_speed, "orange", "straightDown", 200, 200, 7, 10),
+    new Monsters(2, asteroid_eight, this.position_random.x,  this.position_random.y , 100, "Asteroid", asteroid_speed, "orange", "straightDown", 200, 200, 7, 30),
    
     )
 
@@ -188,7 +188,7 @@ if(this.counter_or_asteroids == 70){
 }
 if(this.counter_or_asteroids == 80){
     monsters.push(
-    new Monsters(2, asteroid_nine, this.position_random.x,  this.position_random.y , 100, "Asteroid", asteroid_speed, "orange", "straightDown", 200, 200, 7, 10),
+    new Monsters(2, asteroid_nine, this.position_random.x,  this.position_random.y , 100, "Asteroid", asteroid_speed, "orange", "straightDown", 200, 200, 7, 30),
    
     )
 
@@ -202,7 +202,7 @@ if(this.counter_or_asteroids == 80){
 }
 if(this.counter_or_asteroids == 90){
     monsters.push(
-    new Monsters(2, asteroid_ten, this.position_random.x,  this.position_random.y , 100, "Asteroid", asteroid_speed, "orange", "straightDown", 200, 200, 7, 10),
+    new Monsters(2, asteroid_ten, this.position_random.x,  this.position_random.y , 100, "Asteroid", asteroid_speed, "orange", "straightDown", 200, 200, 7, 30),
    
     )
 
@@ -216,7 +216,7 @@ if(this.counter_or_asteroids == 90){
 }
 if(this.counter_or_asteroids == 100){
     monsters.push(
-    new Monsters(2, asteroid_eleven, this.position_random.x,  this.position_random.y , 100, "Asteroid", asteroid_speed, "orange", "straightDown", 200, 200, 7, 10),
+    new Monsters(2, asteroid_eleven, this.position_random.x,  this.position_random.y , 100, "Asteroid", asteroid_speed, "orange", "straightDown", 200, 200, 7, 30),
    
     )
 
@@ -230,7 +230,7 @@ if(this.counter_or_asteroids == 100){
 }
 if(this.counter_or_asteroids == 110){
     monsters.push(
-    new Monsters(2, asteroid_one, this.position_random.x,  this.position_random.y , 100, "Asteroid", asteroid_speed, "orange", "straightDown", 200, 200, 7, 10),
+    new Monsters(2, asteroid_one, this.position_random.x,  this.position_random.y , 100, "Asteroid", asteroid_speed, "orange", "straightDown", 200, 200, 7, 30),
    
     )
 

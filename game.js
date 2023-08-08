@@ -40,7 +40,7 @@ const animation_TESTING = new Animation();
 //players
 //CREATING A PLAYER Player(name, level, thruster_selection, get_health, energy, m_damage,  gunType, posx, posy, gun_speed)
 const players = [
-  new Player("PLAYER ONE", 1230,  8, 1000, 2000, 1500, 20, 600, 900, 30),
+  new Player("PLAYER ONE", 1230,  8, 1000, 2000, 150, 20, 600, 900, 30),
   // new Player("PLAYER ONE", 1230,  6, 100, 400, 100, 10, 800, 1000, 50),
 
 ]
@@ -49,7 +49,7 @@ const players = [
 
 
 const monsters = [
-   new Monsters(2, asteroid_one,  -200, -200 , 10, "Asteroid Boss", 2, "orange", "none", 200, 200, 7, NaN, true),
+   new Monsters(2, asteroid_one,  -200, -200 , 10000, "Asteroid Boss TESTING", 2, "orange", "none", 200, 200, 30, NaN, true),
   //  new Monsters(2, asteroid_two,  200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7, 10),
   ];
   
@@ -209,7 +209,7 @@ players[p].playerView();
 
     }
     
-    
+    console.log("Monsters"+ monsters.length)
     
     
     //animation_TESTING.spritePage("assets/firesprites/PNG/1.png", 100 , -500, 2048, 2048, 8, 4, 256, 512, 1, true, 1000, 1900)
