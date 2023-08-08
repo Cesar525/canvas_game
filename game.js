@@ -151,7 +151,6 @@ explosion_onDeath_animation.splice(m, 1);
     }
   }
   
-
   
   //powerUps updates and collision
   for(var p = 0; p < players.length; p++){
@@ -209,7 +208,7 @@ players[p].playerView();
 
     }
     
-    console.log("Monsters"+ monsters.length)
+   
     
     
     //animation_TESTING.spritePage("assets/firesprites/PNG/1.png", 100 , -500, 2048, 2048, 8, 4, 256, 512, 1, true, 1000, 1900)

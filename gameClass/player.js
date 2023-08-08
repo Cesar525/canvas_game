@@ -7,7 +7,7 @@ class Player {
     },
     this.velocity ={
         x:25,
-        y:25  
+        y:25
     },
     this.body = {
         m_name : name,
@@ -23,10 +23,12 @@ class Player {
         deathPositionY : NaN,
         shield_on_off : false,
          lef_side_wign_shot : - 50,
-         right_side_wign_shot : + 50
+         right_side_wign_shot : + 50,
+         powerBombEnergy : 950,
+         total_set_powerbombenergy : 1000
     }
     this.collition = {
-        collition_monsters : false,
+        collition_mons3ters : false,
         collition_posX : NaN,
         collition_posY : NaN
     }
@@ -86,6 +88,11 @@ this.inventory = {
     h : 100
 }
 this.player_inventory = [1, 2, 4]
+
+this.controller_movements = {
+    mouse : false,
+    keyboard : true
+}
 
 
 }
@@ -697,7 +704,7 @@ playerInventory(){
     const slot_images = new Image();
     slot_images.src = "assets/inventory/mouseoffsquare.png";
     ctx_ui_status.drawImage(slot_images, this.inventory.posx, this.inventory.posy, 100, 100);
-    console.log(this.inventory.posx);
+  
 
     const slot2_images = new Image();
     slot2_images.src = "assets/inventory/mouseonsquare.png";
@@ -723,7 +730,7 @@ playerInventory(){
 const slot7_images = new Image();
 slot7_images.src = "assets/inventory/mouseoffsquare.png";
 ctx_ui_status.drawImage(slot7_images, this.inventory.posx, this.inventory.posy + 100, 100, 100);
-console.log(this.inventory.posx);
+
 
 const slot8_images = new Image();
 slot8_images.src = "assets/inventory/mouseonsquare.png";
@@ -744,18 +751,6 @@ ctx_ui_status.drawImage(slot11_images, this.inventory.posx + 400, this.inventory
 const slot12_images = new Image();
 slot12_images.src = "assets/inventory/mouseoffsquare.png" ;
 ctx_ui_status.drawImage(slot12_images, this.inventory.posx + 500, this.inventory.posy + 100, 100, 100);
-
-
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
     for(var counting_inventory = 0 ; counting_inventory < this.player_inventory.length; counting_inventory++){
     
 
@@ -766,18 +761,49 @@ ctx_ui_status.drawImage(slot12_images, this.inventory.posx + 500, this.inventory
 }
 
 
+
+powerBombBar(){
+
+    
+    
+ctx_ui_status.fillStyle = "black";
+ctx_ui_status.fillRect(c.width - 1105, 5, 60, 190);
+   
+//bombenergy bar
+ctx_ui_status.fillStyle = "#00e7f2";
+ctx_ui_status.fillRect(c.width - 1100, 10, 50, 180);
+
+    //background Bar
+
+ctx_ui_status.fillStyle = "black";
+ctx_ui_status.fillRect(c.width - 1105, 5, 60, 200 - Math.round((this.body.powerBombEnergy / this.body.total_set_powerbombenergy) * 190 ));
+   
+ctx_ui_status.fillStyle = "red";
+ctx_ui_status.fillRect(c.width - 1100, 10, 50, 180 - Math.round((this.body.powerBombEnergy / this.body.total_set_powerbombenergy) * 180 ));
+ctx_ui_status.fillStyle = "white";
+ctx_ui_status.font = "30px Roboto Mono"
+ctx_ui_status.strokeStyle = "black"
+ctx_ui_status.fillText(this.body.powerBombEnergy + "/" + this.body.total_set_powerbombenergy, c.width - 1150, 190)
+ctx_ui_status.strokeText(this.body.powerBombEnergy + "/" + this.body.total_set_powerbombenergy, c.width - 1150, 190)
+
+console.log(Math.round((this.body.powerBombEnergy / this.body.total_set_powerbombenergy) * 180 ))
+
+}
+
+
 update(animation_Sparks_low, animation_Sparks_high, thruster_animation, player_death_explosionAnimation){
  
     addEventListener("mousemove", (event) => {
         this.getCursorPosition(canvas, event)
           });
-
-    this.playerInventory();
-    this.alerting();
-    this.shotting();
-    this.draw();
-    thruster_animation.setPlayersThruster(this.body.thruster, this.position.x - this.thruster_position_x, this.position.y + this.thruster_position_y, this.thruster_size, this.thruster_size);       
-    this.playerOnDeath();
+          
+this.powerBombBar();
+this.playerInventory();
+this.alerting();
+this.shotting();
+this.draw();
+thruster_animation.setPlayersThruster(this.body.thruster, this.position.x - this.thruster_position_x, this.position.y + this.thruster_position_y, this.thruster_size, this.thruster_size);       
+this.playerOnDeath();
 
 this.playerMovemements();
 this.playerEffectSparks(animation_Sparks_low, animation_Sparks_high);

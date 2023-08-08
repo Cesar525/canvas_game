@@ -64,20 +64,9 @@ addEventListener("keydown", function ({keyCode}){
       }
       
   });
+
+
+  addEventListener("mousemove", (event) => {
+    console.log(event)
+      });
   
-//   function getCursorPosition(canvas, event) {
-//     const rect = canvas.getBoundingClientRect()
-//     const x = event.clientX - rect.left
-//     const y = event.clientY - rect.top
-//     console.log("x: " + x + " y: " + y)
-// }
-
-
-//   addEventListener("mousemove", (event) => {
-//     getCursorPosition(canvas, event)
-//       });
-
-    //   addEventListener("mouseover", (event) => {console.log(event);
-    // })
-    
-    // document.getElementsByTagName("body").innerHTML = "HELLO";

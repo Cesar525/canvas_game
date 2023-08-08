@@ -79,6 +79,9 @@ explosion_end : false
 this.delete_time_after_death = 0;
 this.destroy_object = false;
 this.destroy_counter = 0;
+
+
+
 }
 
 getMonsterDamage(){return this.body.m_damage;}
