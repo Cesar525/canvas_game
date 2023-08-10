@@ -695,6 +695,14 @@ this.damageShowAnimation(this.showDamageAnimation.damage_recorded, this.position
 
 }
 
+// textWithStroke(text , textColor, strokeColor, text_size_and_style, which_canvas, text_posx, text_posy){
+//     which_canvas.fillStyle = textColor;
+//     which_canvas.font = text_size_and_style;
+//     which_canvas.strokeStyle = strokeColor;
+//     which_canvas.fillText(text, text_posx, text_posy)
+//     which_canvas.strokeText(text, text_posx, text_posy)
+
+// }
 
 playerInventory(){
 
@@ -704,7 +712,22 @@ playerInventory(){
     const slot_images = new Image();
     slot_images.src = "assets/inventory/mouseoffsquare.png";
     ctx_ui_status.drawImage(slot_images, this.inventory.posx, this.inventory.posy, 100, 100);
-  
+    //Item
+    const slot_images_ITEM = new Image();
+    slot_images_ITEM.src = heart_powerup[0];
+    ctx_ui_status.drawImage(slot_images_ITEM, this.inventory.posx, this.inventory.posy, 100, 100);
+    //Item Count
+    ctx_ui_status.fillStyle = "white";
+    ctx_ui_status.font = "40px Roboto Mono";
+    ctx_ui_status.fillText("100", this.inventory.posx,this.inventory.posy + 100)
+ 
+    //usage_show
+    ctx_ui_status.fillStyle = "white";
+    ctx_ui_status.font = "40px Anton";
+    ctx_ui_status.strokeStyle = "black";
+    ctx_ui_status.fillText("F1", this.inventory.posx,this.inventory.posy + 40)
+    ctx_ui_status.strokeText("F1", this.inventory.posx,this.inventory.posy + 40)
+
 
     const slot2_images = new Image();
     slot2_images.src = "assets/inventory/mouseonsquare.png";

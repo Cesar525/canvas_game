@@ -27,3 +27,4 @@ if(obj1 && obj2){
 
 function getScreenWidth(){return c.width;};
 function getScreenHeight(){return c.height;};
+
