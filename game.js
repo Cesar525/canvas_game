@@ -41,7 +41,7 @@ const animation_TESTING = new Animation();
 //CREATING A PLAYER Player(name, level, thruster_selection, get_health, energy, m_damage,  gunType, posx, posy, gun_speed)
 const players = [
   new Player("PLAYER ONE", 1230,  8, 1000, 2000, 150, 20, 600, 900, 30),
-  // new Player("PLAYER ONE", 1230,  6, 100, 400, 100, 10, 800, 1000, 50),
+   new Player("PLAYER ONE", 1230,  6, 100, 400, 100, 10, 800, 1000, 50),
 
 ]
 //Monsters
@@ -210,7 +210,7 @@ players[p].playerView();
     
    
     
-    
+    player_shield_effect_one[0].drawShield(players[0]);
     //animation_TESTING.spritePage("assets/firesprites/PNG/1.png", 100 , -500, 2048, 2048, 8, 4, 256, 512, 1, true, 1000, 1900)
     // animation_TESTING.explosionEffect(3, 500 + 100, 500 + 100, true, 4)
 } 

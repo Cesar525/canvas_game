@@ -147,7 +147,7 @@ setPlayerVelocity(velocity){
 }
 setPlayerDamage(health_){ this.body.health -= health_;};
 getPlayerHealth(){return this.body.health;};
-
+addPlayerHealth(amount){this.body.health += amount;};
 
 playerOnDeath(){
     if(!this.playerDead){
@@ -174,6 +174,12 @@ if(this.playerDead){
 };
 
 
+
+playerShield(shieldType, shield){
+if(this.shield_on_off){
+    player_shield_effect_one.drawShield(this);
+}
+}
 
 lifeBar(){
     //const lifebar = new Image();
@@ -709,9 +715,9 @@ playerInventory(){
     ctx_ui_status.fillStyle = "black";
     ctx_ui_status.fillRect(c.width - 1000, 0, 600 , c.height)
     
-    const slot_images = new Image();
-    slot_images.src = "assets/inventory/mouseoffsquare.png";
-    ctx_ui_status.drawImage(slot_images, this.inventory.posx, this.inventory.posy, 100, 100);
+    // const slot_images = new Image();
+    // slot_images.src = "assets/inventory/mouseoffsquare.png";
+    // ctx_ui_status.drawImage(slot_images, this.inventory.posx, this.inventory.posy, 100, 100);
     //Item
     const slot_images_ITEM = new Image();
     slot_images_ITEM.src = heart_powerup[0];
@@ -839,7 +845,7 @@ this.shottingiinterval();
 this.showPlayerHealth();
 this.showPlayerEnergy();
 this.energyUsage()
-
+this.playerShield()
 // WOKRING ON
     for(var f = 0; f < powerUp.length; f++){      
         powerUp[f].updatePowerUps(this);
