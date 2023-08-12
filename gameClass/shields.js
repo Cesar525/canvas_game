@@ -26,7 +26,7 @@ frame(){
 
 drawShield(player){
     const shieldImage = new Image();
-shieldImage.src = "assets/shields/shield_on.png";
+shieldImage.src = "assets/shields/shieldupdated.png";
 
 ctx.globalAlpha = 0.5;
 

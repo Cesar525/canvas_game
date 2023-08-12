@@ -65,8 +65,8 @@ addEventListener("keydown", function ({keyCode}){
       
   });
 
-
   addEventListener("mousemove", (event) => {
-    console.log(event)
+    mousePad[0].getCursorPosition(canvas, event)
       });
-  
+
+ 

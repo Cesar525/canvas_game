@@ -815,16 +815,13 @@ ctx_ui_status.strokeStyle = "black"
 ctx_ui_status.fillText(this.body.powerBombEnergy + "/" + this.body.total_set_powerbombenergy, c.width - 1150, 190)
 ctx_ui_status.strokeText(this.body.powerBombEnergy + "/" + this.body.total_set_powerbombenergy, c.width - 1150, 190)
 
-console.log(Math.round((this.body.powerBombEnergy / this.body.total_set_powerbombenergy) * 180 ))
 
 }
 
 
 update(animation_Sparks_low, animation_Sparks_high, thruster_animation, player_death_explosionAnimation){
  
-    addEventListener("mousemove", (event) => {
-        this.getCursorPosition(canvas, event)
-          });
+   
           
 this.powerBombBar();
 this.playerInventory();

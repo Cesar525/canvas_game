@@ -2,9 +2,8 @@ class Inventory{
 constructor(){
 this.position = {
 x : 0,
-y : 0
+y : 0, 
 }
-
 this.boxes_size = {
     w : 100,
     h : 100
@@ -27,7 +26,5 @@ console.log("loading inventory working")
 inventoryUpdate(){
 this.inventory();
 
-
 }
-
 }
