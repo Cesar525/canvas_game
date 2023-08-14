@@ -7,10 +7,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
 <!-- Zibkit -->
-<script type="text/javascript" src="uizeb/zebkit.min.js">
+<!-- <script type="text/javascript" src="uizeb/zebkit.min.js">
     </script>
     <meta name="viewport" content="user-scalable=no,width=device-width,initial-scale=1,maximum-scale=1">
-    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="msapplication-tap-highlight" content="no"> -->
 
 <!-- Canvas -->
 <div style="background-color:black;">

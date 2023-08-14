@@ -92,7 +92,7 @@ const explosions_animations_pushing =[]
 
 
 //onPlayer Animation sparks Global
-const mousePad = [new Mouse()];
+const mousePad = new Mouse();
 const sparks_low = [];
 const sparks_high = [];
 const thruster_animation = [];
@@ -106,6 +106,7 @@ for(var p = 0; p < players.length; p++){
   deathExplosionAnimation.push(new Animation());
   player_shield_effect_one.push(new Animation());
   player_shield_effect_two.push(new Animation());
+
 }
 
 const burst_fire_test = new Animation();
@@ -209,9 +210,13 @@ players[p].playerView();
 
     }
     
-   mousePad[0].updateMouse();
+    for(var p = 0; p < players.length; p++){
+
+    }
+
+   
     
-    player_shield_effect_one[0].drawShield(players[0]);
+    // player_shield_effect_one[0].drawShield(players[0]);
     //animation_TESTING.spritePage("assets/firesprites/PNG/1.png", 100 , -500, 2048, 2048, 8, 4, 256, 512, 1, true, 1000, 1900)
     // animation_TESTING.explosionEffect(3, 500 + 100, 500 + 100, true, 4)
 } 

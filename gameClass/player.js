@@ -81,13 +81,26 @@ this.showDamageAnimation = {
 this.showdamage__ ;
 this.random_number = 0;
 
-this.inventory = {
-    posx : c.width - 1000,
-    posy : 0,
-    w : 100,
-    h : 100
-}
-this.player_inventory = [1, 2, 4]
+
+
+this.inventory = [
+    new Inventory((c.width - 1000), 0),
+    new Inventory((c.width - 1000) + 100, 0),
+    new Inventory((c.width - 1000) + 200, 0),
+    new Inventory((c.width - 1000) + 300, 0),
+    new Inventory((c.width - 1000) + 400, 0),
+    new Inventory((c.width - 1000) + 500, 0),
+    new Inventory((c.width - 1000), 100),
+    new Inventory((c.width - 1000) + 100, 100),
+    new Inventory((c.width - 1000) + 200, 100),
+    new Inventory((c.width - 1000) + 300, 100),
+    new Inventory((c.width - 1000) + 400, 100),
+    new Inventory((c.width - 1000) + 500, 100),
+    
+
+];
+
+
 
 this.controller_movements = {
     mouse : false,
@@ -715,75 +728,75 @@ playerInventory(){
     ctx_ui_status.fillStyle = "black";
     ctx_ui_status.fillRect(c.width - 1000, 0, 600 , c.height)
     
-    // const slot_images = new Image();
-    // slot_images.src = "assets/inventory/mouseoffsquare.png";
-    // ctx_ui_status.drawImage(slot_images, this.inventory.posx, this.inventory.posy, 100, 100);
-    //Item
-    const slot_images_ITEM = new Image();
-    slot_images_ITEM.src = heart_powerup[0];
-    ctx_ui_status.drawImage(slot_images_ITEM, this.inventory.posx, this.inventory.posy, 100, 100);
-    //Item Count
-    ctx_ui_status.fillStyle = "white";
-    ctx_ui_status.font = "40px Roboto Mono";
-    ctx_ui_status.fillText("100", this.inventory.posx,this.inventory.posy + 100)
+    // // const slot_images = new Image();
+    // // slot_images.src = "assets/inventory/mouseoffsquare.png";
+    // // ctx_ui_status.drawImage(slot_images, this.inventory.posx, this.inventory.posy, 100, 100);
+    // //Item
+    // const slot_images_ITEM = new Image();
+    // slot_images_ITEM.src = heart_powerup[0];
+    // ctx_ui_status.drawImage(slot_images_ITEM, this.inventory.posx, this.inventory.posy, 100, 100);
+    // //Item Count
+    // ctx_ui_status.fillStyle = "white";
+    // ctx_ui_status.font = "40px Roboto Mono";
+    // ctx_ui_status.fillText("100", this.inventory.posx,this.inventory.posy + 100)
  
-    //usage_show
-    ctx_ui_status.fillStyle = "white";
-    ctx_ui_status.font = "40px Anton";
-    ctx_ui_status.strokeStyle = "black";
-    ctx_ui_status.fillText("F1", this.inventory.posx,this.inventory.posy + 40)
-    ctx_ui_status.strokeText("F1", this.inventory.posx,this.inventory.posy + 40)
+    // //usage_show
+    // ctx_ui_status.fillStyle = "white";
+    // ctx_ui_status.font = "40px Anton";
+    // ctx_ui_status.strokeStyle = "black";
+    // ctx_ui_status.fillText("F1", this.inventory.posx,this.inventory.posy + 40)
+    // ctx_ui_status.strokeText("F1", this.inventory.posx,this.inventory.posy + 40)
 
 
-    const slot2_images = new Image();
-    slot2_images.src = "assets/inventory/mouseonsquare.png";
-    ctx_ui_status.drawImage(slot2_images, this.inventory.posx + 100, this.inventory.posy, 100, 100);
+    // const slot2_images = new Image();
+    // slot2_images.src = "assets/inventory/mouseonsquare.png";
+    // ctx_ui_status.drawImage(slot2_images, this.inventory.posx + 100, this.inventory.posy, 100, 100);
     
-    const slot3_images = new Image();
-    slot3_images.src = "assets/inventory/mouseoffsquare.png";
-    ctx_ui_status.drawImage(slot3_images, this.inventory.posx + 200, this.inventory.posy, 100, 100);
+    // const slot3_images = new Image();
+    // slot3_images.src = "assets/inventory/mouseoffsquare.png";
+    // ctx_ui_status.drawImage(slot3_images, this.inventory.posx + 200, this.inventory.posy, 100, 100);
     
-    const slot4_images = new Image();
-    slot4_images.src = "assets/inventory/mouseoffsquare.png";
-    ctx_ui_status.drawImage(slot4_images, this.inventory.posx + 300, this.inventory.posy, 100, 100);
+    // const slot4_images = new Image();
+    // slot4_images.src = "assets/inventory/mouseoffsquare.png";
+    // ctx_ui_status.drawImage(slot4_images, this.inventory.posx + 300, this.inventory.posy, 100, 100);
     
-    const slot5_images = new Image();
-    slot5_images.src = "assets/inventory/mouseoffsquare.png";
-    ctx_ui_status.drawImage(slot5_images, this.inventory.posx + 400, this.inventory.posy, 100, 100);
+    // const slot5_images = new Image();
+    // slot5_images.src = "assets/inventory/mouseoffsquare.png";
+    // ctx_ui_status.drawImage(slot5_images, this.inventory.posx + 400, this.inventory.posy, 100, 100);
     
-    const slot6_images = new Image();
-    slot6_images.src = "assets/inventory/mouseoffsquare.png" ;
-    ctx_ui_status.drawImage(slot6_images, this.inventory.posx + 500, this.inventory.posy, 100, 100);
+    // const slot6_images = new Image();
+    // slot6_images.src = "assets/inventory/mouseoffsquare.png" ;
+    // ctx_ui_status.drawImage(slot6_images, this.inventory.posx + 500, this.inventory.posy, 100, 100);
   
 //bottom inventory
-const slot7_images = new Image();
-slot7_images.src = "assets/inventory/mouseoffsquare.png";
-ctx_ui_status.drawImage(slot7_images, this.inventory.posx, this.inventory.posy + 100, 100, 100);
+// const slot7_images = new Image();
+// slot7_images.src = "assets/inventory/mouseoffsquare.png";
+// ctx_ui_status.drawImage(slot7_images, this.inventory.posx, this.inventory.posy + 100, 100, 100);
 
 
-const slot8_images = new Image();
-slot8_images.src = "assets/inventory/mouseonsquare.png";
-ctx_ui_status.drawImage(slot8_images, this.inventory.posx + 100, this.inventory.posy + 100, 100, 100);
+// const slot8_images = new Image();
+// slot8_images.src = "assets/inventory/mouseonsquare.png";
+// ctx_ui_status.drawImage(slot8_images, this.inventory.posx + 100, this.inventory.posy + 100, 100, 100);
 
-const slot9_images = new Image();
-slot9_images.src = "assets/inventory/mouseoffsquare.png";
-ctx_ui_status.drawImage(slot9_images, this.inventory.posx + 200, this.inventory.posy + 100, 100, 100);
+// const slot9_images = new Image();
+// slot9_images.src = "assets/inventory/mouseoffsquare.png";
+// ctx_ui_status.drawImage(slot9_images, this.inventory.posx + 200, this.inventory.posy + 100, 100, 100);
 
-const slot10_images = new Image();
-slot10_images.src = "assets/inventory/mouseoffsquare.png";
-ctx_ui_status.drawImage(slot10_images, this.inventory.posx + 300, this.inventory.posy + 100, 100, 100);
+// const slot10_images = new Image();
+// slot10_images.src = "assets/inventory/mouseoffsquare.png";
+// ctx_ui_status.drawImage(slot10_images, this.inventory.posx + 300, this.inventory.posy + 100, 100, 100);
 
-const slot11_images = new Image();
-slot11_images.src = "assets/inventory/mouseoffsquare.png";
-ctx_ui_status.drawImage(slot11_images, this.inventory.posx + 400, this.inventory.posy + 100, 100, 100);
+// const slot11_images = new Image();
+// slot11_images.src = "assets/inventory/mouseoffsquare.png";
+// ctx_ui_status.drawImage(slot11_images, this.inventory.posx + 400, this.inventory.posy + 100, 100, 100);
 
-const slot12_images = new Image();
-slot12_images.src = "assets/inventory/mouseoffsquare.png" ;
-ctx_ui_status.drawImage(slot12_images, this.inventory.posx + 500, this.inventory.posy + 100, 100, 100);
-    for(var counting_inventory = 0 ; counting_inventory < this.player_inventory.length; counting_inventory++){
+// const slot12_images = new Image();
+// slot12_images.src = "assets/inventory/mouseoffsquare.png" ;
+// ctx_ui_status.drawImage(slot12_images, this.inventory.posx + 500, this.inventory.posy + 100, 100, 100);
+//     for(var counting_inventory = 0 ; counting_inventory < this.player_inventory.length; counting_inventory++){
     
 
-    }
+//     }
 
 
 
@@ -850,6 +863,13 @@ this.playerShield()
     for(var f = 0; f < powerUp.length; f++){      
         powerUp[f].powerUpTakenEffect(this, powerup_capture_effect[f])
       }
+
+      for(var counting_inventories = 0; counting_inventories < this.inventory.length; counting_inventories++){
+          mousePad.updateMouse();
+      this.inventory[counting_inventories].updateInventory();
+      this.inventory[counting_inventories].collisionWithMousePad(collisionTouch(mousePad, this.inventory[counting_inventories]))
+      }
+
 //console.log(this.gun_on.length);
     }
     }
