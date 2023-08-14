@@ -96,8 +96,6 @@ this.inventory = [
     new Inventory((c.width - 1000) + 300, 100),
     new Inventory((c.width - 1000) + 400, 100),
     new Inventory((c.width - 1000) + 500, 100),
-    
-
 ];
 
 

@@ -24,7 +24,7 @@ getCursorPosition(canvas, event) {
     const rect = canvas.getBoundingClientRect() 
     this.position.x = Math.floor((event.clientX - rect.left));
     this.position.y = Math.floor((event.clientY - rect.top))
-    console.log( this.position.x + "AND " + this.position.y)
+    
 }
 
 getMousePosX(){return this.position.x;};
