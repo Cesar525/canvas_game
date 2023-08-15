@@ -867,7 +867,8 @@ this.playerShield()
       this.inventory[counting_inventories].updateInventory();
       this.inventory[counting_inventories].collisionWithMousePad(collisionTouch(mousePad, this.inventory[counting_inventories]))
       }
+///Inventory
+this.inventory[2].clearInventorySlot();
 
-//console.log(this.gun_on.length);
     }
     }

@@ -15,12 +15,12 @@ this.boxes_mouseonsprite = "assets/inventory/mouseonsquare.png";
 
 this.item_info = {
 item_on : true,
-item : "type",
-item_count : 0,
+item_type : "type",
+item_count : 10,
 item_sprite : energy_powerup[0],
-
 }
 this.collision_with_mouse = false;
+this.clickOn = false;
 
 }
 
@@ -28,16 +28,19 @@ setCollision(set){this.collision_with_mouse = set;};
 getCollision(){return this.collision_with_mouse;};
 
 drawIventory(){
-    if(this.getCollision()){
+    if(this.getCollision() && this.getItemOn()){
     const slot1_images = new Image();
     slot1_images.src = this.boxes_mouseonsprite;
     ctx_ui_status.drawImage(slot1_images, this.position.x , this.position.y, 100, 100);
     }else{
+       
         const slot1_images = new Image();
     slot1_images.src = this.boxes_mouseoffsprite;
     ctx_ui_status.drawImage(slot1_images, this.position.x, this.position.y, 100, 100);
-    }
-if(this.item_info.item_on){
+
+}
+
+if(this.getItemOn()){
 const slot_images_ITEM = new Image();
     slot_images_ITEM.src = this.item_info.item_sprite;
     ctx_ui_status.drawImage(slot_images_ITEM, this.position.x, this.position.y, 100, 100);
@@ -48,9 +51,7 @@ const slot_images_ITEM = new Image();
     ctx_ui_status.fillText(this.item_info.item_count, this.position.x,this.position.y + 100)
     ctx_ui_status.strokeText(this.item_info.item_count, this.position.x,this.position.y + 100)
 }
-
-
-}
+    }
 
 collisionWithMousePad(collision){
     if(collision){
@@ -61,10 +62,26 @@ collisionWithMousePad(collision){
        
     }
 }
+//sets
+setItemCount(set){this.item_info.item_count = set;};
+setItemSprite(itemSprite){ this.item_info = itemSprite;};
+setItemCount(setCount){this.item_info = setCount;};
+setItemOn(set){this.item_info.item_on = set};
+setItemType(set_type){this.item_info.item_type = set_type};
+setOnClick(set){this.clickOn = set};
 
-setupItem(item_name){
+// gets
+getItemOn(){return this.item_info.item_on;};
 
+
+clearInventorySlot(){
+    this.item_info.item_count;
+    this.item_info.item_sprite = "";
+    this.item_info.item_type = "";
+    this.item_info.item_on = false;
 }
+
+
 
 updateInventory(){
 this.drawIventory();
