@@ -32,7 +32,6 @@ getMousePosY(){return this.position.y;};
 
 updateMouse(){
     this.draMouse();
-
-
+   
 }
 }

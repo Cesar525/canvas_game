@@ -19,6 +19,16 @@ const keys = {
     
     }
 
+const mouse = {
+    leftClick : {
+        pressed : false
+    },
+    rightClick : {
+        pressed : false
+    }
+}
+
+
 
 addEventListener("keydown", function ({keyCode}){
     //console.log(keyCode);
@@ -68,5 +78,11 @@ addEventListener("keydown", function ({keyCode}){
   addEventListener("mousemove", (event) => {
     mousePad.getCursorPosition(canvas, event)
       });
+
+      addEventListener("click", (event) => {
+       mouse.leftClick.pressed = event.bubbles;
+///as soon as the click does its function the function that does the effect should switch the click to false.
+          });
+    
 
  
