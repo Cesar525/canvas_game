@@ -18,3 +18,5 @@ currently working on - inventory system UI
 
 2) monsters Drop the shields if players get a shield the shield will apear where the inventoy is and they have to press a key to use it.
 
+ATTENTION : The only item that wil be use right away when the player have contact with it would be the
+PowerBomb Energy. Once player touch that it will automaticly increase his powerBomb bar.
