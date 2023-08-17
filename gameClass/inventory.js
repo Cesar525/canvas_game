@@ -63,9 +63,8 @@ collisionWithMousePad(collision){
     }
 }
 //sets
-setItemCount(set){this.item_info.item_count = set;};
-setItemSprite(itemSprite){ this.item_info = itemSprite;};
-setItemCount(setCount){this.item_info = setCount;};
+setItemCount(set){this.item_info.item_count += set;};
+setItemSprite(itemSprite){ this.item_info.item_sprite = itemSprite;};
 setItemOn(set){this.item_info.item_on = set};
 setItemType(set_type){this.item_info.item_type = set_type};
 setOnClick(set){this.clickOn = set};
@@ -74,10 +73,47 @@ setOnClick(set){this.clickOn = set};
 getItemOn(){return this.item_info.item_on;};
 
 
-clearInventorySlot(){
-    this.item_info.item_count;
+usingItem(){
+    if(mouse.leftClick.pressed && this.getCollision()){
+        this.setItemCount(-1);
+
+
+console.log("clocked");
+
+
+        mouse.leftClick.pressed = false;
+    }
+}
+
+
+setItemUp(item_type, itemSprite, item_count, item_status){
+this.item_info.item_type = item_type;
+this.item_info.item_count = item_count;
+this.item_info.item_on = item_status;
+this.item_info.item_sprite = itemSprite;
+}
+
+
+clearSlot(){
+    this.item_info.item_on = true;
+    this.item_info.item_type = "type";
+    this.item_info.item_count = 10;
     this.item_info.item_sprite = "";
-    this.item_info.item_type = "";
+}
+
+deleteEmptySlotItem(){
+
+    if(this.item_info.item_count <= 0){
+        this.clearInventorySlot();
+    }
+}
+
+getItemInSlot(){ return this.item_info.item_type;}
+
+clearInventorySlot(){
+    this.item_info.item_count = NaN;
+    this.item_info.item_sprite = NaN;
+    this.item_info.item_type = NaN;
     this.item_info.item_on = false;
 }
 
@@ -85,6 +121,7 @@ clearInventorySlot(){
 
 updateInventory(){
 this.drawIventory();
-
+this.usingItem();
+this.deleteEmptySlotItem();
 }
 }

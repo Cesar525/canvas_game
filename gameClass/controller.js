@@ -28,8 +28,6 @@ const mouse = {
     }
 }
 
-
-
 addEventListener("keydown", function ({keyCode}){
     //console.log(keyCode);
      switch(keyCode){
@@ -81,8 +79,11 @@ addEventListener("keydown", function ({keyCode}){
 
       addEventListener("click", (event) => {
        mouse.leftClick.pressed = event.bubbles;
-///as soon as the click does its function the function that does the effect should switch the click to false.
-          });
+       setTimeout(() => {
+        mouse.leftClick.pressed = false;
+       },50);
+     
+}, false);
     
 
  

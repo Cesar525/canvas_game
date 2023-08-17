@@ -868,7 +868,7 @@ this.playerShield()
       this.inventory[counting_inventories].collisionWithMousePad(collisionTouch(mousePad, this.inventory[counting_inventories]))
       }
 ///Inventory
-this.inventory[2].clearInventorySlot();
+this.inventory[0].clearInventorySlot();
 
     }
     }
