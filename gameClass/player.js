@@ -83,7 +83,7 @@ this.random_number = 0;
 
 
 
-this.inventory = [
+this.inventorySlots = [
     new Inventory((c.width - 1000), 0),
     new Inventory((c.width - 1000) + 100, 0),
     new Inventory((c.width - 1000) + 200, 0),
@@ -862,13 +862,13 @@ this.playerShield()
         powerUp[f].powerUpTakenEffect(this, powerup_capture_effect[f])
       }
 
-      for(var counting_inventories = 0; counting_inventories < this.inventory.length; counting_inventories++){
+      for(var counting_inventories = 0; counting_inventories < this.inventorySlots.length; counting_inventories++){
           mousePad.updateMouse();
-      this.inventory[counting_inventories].updateInventory();
-      this.inventory[counting_inventories].collisionWithMousePad(collisionTouch(mousePad, this.inventory[counting_inventories]))
+      this.inventorySlots[counting_inventories].updateInventory();
+      this.inventorySlots[counting_inventories].collisionWithMousePad(collisionTouch(mousePad, this.inventorySlots[counting_inventories]))
       }
 ///Inventory
-this.inventory[0].clearInventorySlot();
+this.inventorySlots[0].clearInventorySlot();
 
     }
     }
