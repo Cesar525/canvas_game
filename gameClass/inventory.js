@@ -15,13 +15,13 @@ this.boxes_mouseonsprite = "assets/inventory/mouseonsquare.png";
 
 this.item_info = {
 item_on : true,
-item_type : "type",
-item_count : 10,
+item_Name : "",
+item_count : 0,
 item_sprite : energy_powerup[0],
 }
 this.collision_with_mouse = false;
 this.clickOn = false;
-
+this.slot_status = this.item_info.item_on;
 }
 
 setCollision(set){this.collision_with_mouse = set;};
@@ -66,12 +66,12 @@ collisionWithMousePad(collision){
 setItemCount(set){this.item_info.item_count += set;};
 setItemSprite(itemSprite){ this.item_info.item_sprite = itemSprite;};
 setItemOn(set){this.item_info.item_on = set};
-setItemType(set_type){this.item_info.item_type = set_type};
+setItemName(set_Name){this.item_info.item_Name = set_Name};
 setOnClick(set){this.clickOn = set};
 
 // gets
 getItemOn(){return this.item_info.item_on;};
-
+getItemName(){return this.item_info.item_Name;}
 
 usingItem(){
     if(mouse.leftClick.pressed && this.getCollision()){

@@ -97,7 +97,7 @@ this.inventorySlots = [
     new Inventory((c.width - 1000) + 400, 100),
     new Inventory((c.width - 1000) + 500, 100),
 ];
-
+this.inventory = ["Health", "Energy", "Health"]
 
 
 this.controller_movements = {
@@ -862,13 +862,31 @@ this.playerShield()
         powerUp[f].powerUpTakenEffect(this, powerup_capture_effect[f])
       }
 
+
+
+      //inventory show
       for(var counting_inventories = 0; counting_inventories < this.inventorySlots.length; counting_inventories++){
           mousePad.updateMouse();
       this.inventorySlots[counting_inventories].updateInventory();
       this.inventorySlots[counting_inventories].collisionWithMousePad(collisionTouch(mousePad, this.inventorySlots[counting_inventories]))
       }
-///Inventory
-this.inventorySlots[0].clearInventorySlot();
+
+for(var counting_invent = 0; counting_invent < this.inventory.length; counting_invent++){
+    for(var countingSlots = 0 ; countingSlots < this.inventorySlots.length; countingSlots++){
+        if(this.inventory[counting_invent] == this.inventorySlots[counting_invent].getItemName()){
+            this.inventorySlots[countingSlots].setItemCount(1);
+        }else{
+            if(!this.inventorySlots[countingSlots].getItemOn()){
+            this.inventorySlots[countingSlots].setItemUp(this.inventory[counting_invent], energy_powerup[0], 1, true)
+            }
+        }
+    }
+}
 
     }
+
+
+///Inventory processing
+
+
     }
