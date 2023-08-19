@@ -24,8 +24,7 @@ this.clickOn = false;
 this.slot_status = this.item_info.item_on;
 }
 
-setCollision(set){this.collision_with_mouse = set;};
-getCollision(){return this.collision_with_mouse;};
+
 
 drawIventory(){
     if(this.getCollision() && this.getItemOn()){
@@ -68,10 +67,13 @@ setItemSprite(itemSprite){ this.item_info.item_sprite = itemSprite;};
 setItemOn(set){this.item_info.item_on = set};
 setItemName(set_Name){this.item_info.item_Name = set_Name};
 setOnClick(set){this.clickOn = set};
+setCollision(set){this.collision_with_mouse = set;};
 
 // gets
 getItemOn(){return this.item_info.item_on;};
 getItemName(){return this.item_info.item_Name;}
+getCollision(){return this.collision_with_mouse;};
+
 
 usingItem(){
     if(mouse.leftClick.pressed && this.getCollision()){
@@ -92,7 +94,14 @@ this.item_info.item_count = item_count;
 this.item_info.item_on = item_status;
 this.item_info.item_sprite = itemSprite;
 }
+emptySlot(){
+    if(!this.item_info.item_on){
+        return true;
+    }else{
+        return false;
+    }
 
+};
 
 clearSlot(){
     this.item_info.item_on = true;
