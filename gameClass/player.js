@@ -178,9 +178,11 @@ if(this.body.health == 0){
 };
 
 if(this.playerDead){
-        ctx.fillStyle = "red";
-        ctx.font = "90px Roboto Mono"
-    ctx.fillText("You are dead.",700 , c.height / 2)
+        ctx.fillStyle = "white";
+        ctx.font = "90px Anton"
+        ctx.textAlign = "center";
+    ctx.fillText("You are dead.", c.width/2 , c.height / 2 - 300)
+    ctx.textAlign = "start";
     }
 };
 

@@ -22,7 +22,8 @@ this.map_one = [
     new Background_Objects (-100, -100, 100, 100),
     new Background_Objects (0, 0)
 ]
-
+this.warning_timer_onOff = true;
+this.timerForWarning = 0;
 this.gameFrame = 0;
 this.gamestagged = 0;
 this.randomNum_mapX;
@@ -87,10 +88,12 @@ this.metioriteStorm();
 
 metioriteStorm(){
 var asteroid_speed = 20;
+this.counter_or_asteroids++
+
     // if(this.counter_or_asteroids == 10)
 if(true){
 
-    this.counter_or_asteroids++
+    
     if(this.counter_or_asteroids == 10){
     monsters.push(
     new Monsters(2, asteroid_two, this.position_random.x,  this.position_random.y , 100, "Asteroid", asteroid_speed, "orange", "straightDown", 200, 200, 7, 30),
@@ -244,6 +247,31 @@ this.counter_or_asteroids = 0;
 }
 
 }
+
+if(this.warning_timer_onOff){
+this.timerForWarning ++;
+if(this.timerForWarning >= 10){
+ctx.fillStyle = "red";
+ctx.globalAlpha = 0.1
+ctx.fillRect(0, 0, c.width, c.height);
+ctx.globalAlpha = 1
+
+ctx.fillStyle = "red";
+ctx.font = "100px Anton";
+ctx.textAlign = "center";
+ctx.fillText("Warning Asteroid Strom is comming!!", c.width/2, c.height/2);
+ctx.textAlign = "start";
+if(this.timerForWarning == 20){
+this.timerForWarning = 0;
+}
+setTimeout(() => {
+    this.warning_timer_onOff = false;
+}, 5000);
+
+
+}
+}
+
 }
 
 

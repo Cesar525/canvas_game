@@ -49,7 +49,7 @@ const players = [
 
 
 const monsters = [
-   new Monsters(2, asteroid_one,  -200, -200 , 10000, "Asteroid Boss TESTING", 2, "orange", "none", 200, 200, 30, NaN, true),
+   new Monsters(2, "assets/monsters/boss/mantis.png",  -200, -200 , 10000, "Asteroid Boss TESTING", 2, "orange", "none", 200, 200, 30, NaN, true),
   //  new Monsters(2, asteroid_two,  200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7, 10),
   ];
   
