@@ -11,7 +11,7 @@ var gameFrame = 0;
 
 //Gam Canvas size
 c.width = 2000
-c.height = 1500
+c.height = 2000
 
 //playerStatus Bar
 c_ui_status.width = c.width;
@@ -49,7 +49,7 @@ const players = [
 
 
 const monsters = [
-   new Monsters(2, "assets/monsters/boss/mantis.png",  -200, -200 , 10000, "Asteroid Boss TESTING", 2, "orange", "none", 200, 200, 30, NaN, true),
+ new Monsters(2, "assets/monsters/boss/mantis.png",  -200, -200 , 10000, "Bukara", 2, "orange", "none", 800, 800, 30, NaN, true),
   //  new Monsters(2, asteroid_two,  200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7, 10),
   ];
   

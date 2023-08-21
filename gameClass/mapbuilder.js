@@ -76,6 +76,7 @@ this.map_one[12].asteroids(5);
 this.map_one[13].asteroids(3);
 this.map_one[14].asteroids(20);
 this.map_one[15].asteroids(3);
+
 }
 }
 this.map_one[3].drawStars(10, 2); // background image
@@ -267,9 +268,9 @@ this.timerForWarning = 0;
 setTimeout(() => {
     this.warning_timer_onOff = false;
 }, 5000);
-
-
 }
+
+
 }
 
 }

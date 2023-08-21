@@ -66,7 +66,6 @@ this.dropPower_random;
 this.drop_item = false;
 this.give_number = true;
 this.droping_powerUp = true;
-
 this.exposions_boss = false;
 
 
@@ -95,7 +94,9 @@ drawMonster(sprite_animation){
     //if bossmode set
     if(this.boss_mode_set){
         const image_monster = new Image();
-        image_monster.src = this.body.m_sprite[0];
+
+        image_monster.src = this.body.m_sprite;
+      
         ctx.drawImage(image_monster, this.position.x, this.position.y, this.width, this.height);
 
         if(this.body.m_health < 0){
@@ -539,8 +540,10 @@ getBossMode(){return this.boss_mode_set;};
 bossMode(){
 if(this.boss_mode_set){
 // boss position
+if(this.width == NaN  && this.height == NaN){
 this.width = 500;
 this.height = 500;
+}
 this.position.x = (c.width / 2) - (this.width / 2);
 if(this.position.y < 20){
 this.position.y += 10

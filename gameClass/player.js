@@ -886,7 +886,7 @@ if(this.inventorySlots[countingSlots].getItemName() == this.inventory[0]){
 
     
 }
-console.log(this.inventory[0] + this.inventorySlots);
+// console.log(this.inventory[0] + this.inventorySlots);
 }
 
 }

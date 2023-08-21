@@ -8,7 +8,11 @@ sprites Designer
  games_unlimited
 
 Working on - 
-currently working on - inventory system UI
+monsters attacking players
+
+
+
+to do - inventory system UI
  set up mousePad - Done,
  setup Boxes onjects - DONE, 
  setup collitions - DONE
