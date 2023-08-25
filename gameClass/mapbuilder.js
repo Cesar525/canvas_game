@@ -83,7 +83,7 @@ this.map_one[3].drawStars(10, 2); // background image
 
 //pushing monsters in to map one.
 
-this.metioriteStorm();
+//this.metioriteStorm();
 
 }
 

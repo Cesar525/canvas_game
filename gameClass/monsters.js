@@ -79,6 +79,22 @@ this.delete_time_after_death = 0;
 this.destroy_object = false;
 this.destroy_counter = 0;
 
+this.monster_shotting_starting_pos = {
+    posOne : {
+    x : 0,
+    y : 0
+    },
+    posTwo :{
+    x : 0,
+    y : 0
+    },
+    posthree : {
+    x : 0,
+    y : 0
+    }
+}
+this.bossPositionReached = false;
+
 
 
 }
@@ -136,8 +152,9 @@ killMonster(){
 }
 movements(move){
 
+
     switch(move){
-case "sidebyside":    
+case "sidebysideGoingDown":    
         this.position.y += 0.6
     if(this.moveRight){
         this.position.x += this.velocity.x;
@@ -163,7 +180,26 @@ if(this.position.y > c.height + 100){
 if(this.destroy_counter == 50)
     this.setDeleteObject(true);
 }
-
+break;
+case "sidebyside":    
+        this.position.y += 0
+    if(this.moveRight){
+        this.position.x += this.velocity.x;
+    }
+    if(this.moveLeft){
+        this.position.x -= this.velocity.x;
+    }
+    
+    if(this.position.x < 1){
+        this.moveLeft = false;
+        this.moveRight = true;
+    }
+    if(this.position.x > c.width - this.width){
+        this.moveLeft = true;
+        this.moveRight = false;
+    }
+   
+break;
 }
 }
 
@@ -207,6 +243,33 @@ if(this.spawnTime >= 100){
 }
 
 }
+
+shottingPos(){
+    
+//postone
+
+this.monster_shotting_starting_pos.posOne.x = this.position.x + (this.width / 2 - 50);
+this.monster_shotting_starting_pos.posOne.y = this.position.y + (this.height / 2  + 200);
+ctx.fillStyle = "white";
+ctx.fillRect(this.monster_shotting_starting_pos.posOne.x, this.monster_shotting_starting_pos.posOne.y, 100, 100)
+
+//pos two
+this.monster_shotting_starting_pos.posTwo.x = this.position.x + (this.width - 200);
+this.monster_shotting_starting_pos.posTwo.y = this.position.y + (this.height - 100);
+ctx.fillStyle = "white";
+ctx.fillRect(this.monster_shotting_starting_pos.posTwo.x, this.monster_shotting_starting_pos.posTwo.y, 100, 100)
+
+//pos three
+this.monster_shotting_starting_pos.posTwo.x = this.position.x + 100;
+this.monster_shotting_starting_pos.posTwo.y = this.position.y + (this.height - 100);
+ctx.fillStyle = "white";
+ctx.fillRect(this.monster_shotting_starting_pos.posTwo.x, this.monster_shotting_starting_pos.posTwo.y, 100, 100)
+
+
+
+}
+
+
 resetColPos(){
     this.moveRight = true;
     this.moveLeft = false;
@@ -428,7 +491,7 @@ if(this.building_randomExplosions.explosions_counter == 50){
 
                         if(this.building_randomExplosions.explosions_counter == 180){
                             pushing_random_explsions.push(
-                            new Explosions(1,this.body.m_steady_deadPosX - 1400 , this.body.m_steady_deadPosY -1400, 3000, 3000, 3)
+                            new Explosions(1,this.body.m_steady_deadPosX - 1200 , this.body.m_steady_deadPosY -1200, 3000, 3000, 3)
                           
                             );
                             
@@ -540,6 +603,8 @@ getBossMode(){return this.boss_mode_set;};
 bossMode(){
 if(this.boss_mode_set){
 // boss position
+
+if(this.bossPositionReached == false){
 if(this.width == NaN  && this.height == NaN){
 this.width = 500;
 this.height = 500;
@@ -547,13 +612,22 @@ this.height = 500;
 this.position.x = (c.width / 2) - (this.width / 2);
 if(this.position.y < 20){
 this.position.y += 10
+if(this.position.y == 20){
+    this.bossPositionReached = true; 
+    console.log("position Reached")
 }
-var barwidth_ = 700;
-var barheight_ = 25;
+}
+
+console.log("still happening")
+}else{
+    console.log("movements");
+    this.movements(this.monsterMovement);
+}
 
 //showing Boss life levels
 
-
+var barwidth_ = 700;
+var barheight_ = 25;
 
 //RED Backgorund
   ctx.fillStyle = "red"; 
@@ -611,9 +685,19 @@ if(Math.round((this.body.m_health / this.health_total) * barwidth_ ) <= 100){
  }
 updateMonster(sprite_animator){
 this.drawMonster(sprite_animator);
-this.movements(this.monsterMovement);
-this.dropPowerUps(this.randomSelectingPowerUps())
 
+if(this.boss_mode_set){
+    if(this.body.m_dead){
+        this.position.x = this.body.m_steady_deadPosX;
+        this.position.y = this.body.m_steady_deadPosY;
+                }else{
+                    this.movements(this.monsterMovement);
+                }
+}else{
+this.movements(this.monsterMovement);
+}
+this.dropPowerUps(this.randomSelectingPowerUps())
+this.shottingPos();
 
 }
 }

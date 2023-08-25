@@ -878,11 +878,11 @@ this.playerShield()
       for(var counting_invent = 0; counting_invent < this.inventory.length; counting_invent++){
 if(this.inventorySlots[countingSlots].emptySlot()){
     this.inventorySlots[0].setItemUp(this.inventory[0], energy_powerup[0], 1, true);
-    console.log("setting inventories")
+  
 }
 if(this.inventorySlots[countingSlots].getItemName() == this.inventory[0]){
     this.inventorySlots[0].setItemCount(1);
-    console.log("add")
+
 
     
 }
