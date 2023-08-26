@@ -491,7 +491,7 @@ if(this.building_randomExplosions.explosions_counter == 50){
 
                         if(this.building_randomExplosions.explosions_counter == 180){
                             pushing_random_explsions.push(
-                            new Explosions(1,this.body.m_steady_deadPosX - 1200 , this.body.m_steady_deadPosY -1200, 3000, 3000, 3)
+                            new Explosions(1,this.body.m_steady_deadPosX - 1200 , this.body.m_steady_deadPosY -1200, 3000, 3000, 3),
                           
                             );
                             
