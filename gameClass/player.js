@@ -832,6 +832,26 @@ ctx_ui_status.strokeText(this.body.powerBombEnergy + "/" + this.body.total_set_p
 }
 
 
+playerInventoryProccess(){// need to setup an algorithm to make it work.
+    for(var counting_inventories = 0; counting_inventories < this.inventorySlots.length; counting_inventories++){
+        mousePad.updateMouse();
+    this.inventorySlots[counting_inventories].updateInventory();
+    this.inventorySlots[counting_inventories].collisionWithMousePad(collisionTouch(mousePad, this.inventorySlots[counting_inventories]))
+    }
+
+if(this.inventory.length > 0){
+for(var counting_inventory_ = 0; counting_inventory_ < this.inventory.length; counting_inventory_++ ){
+    if(this.inventorySlots[0].emptySlot()){
+       //setup inventory
+    }
+}
+
+
+}
+
+
+}
+
 update(animation_Sparks_low, animation_Sparks_high, thruster_animation, player_death_explosionAnimation){
  
    
@@ -855,6 +875,7 @@ this.shottingiinterval();
 this.showPlayerHealth();
 this.showPlayerEnergy();
 this.energyUsage()
+this.playerInventoryProccess();
 this.playerShield()
 // WOKRING ON
     for(var f = 0; f < powerUp.length; f++){      
@@ -866,30 +887,7 @@ this.playerShield()
 
 
 
-      //inventory show && al;gorithm
-    
-      for(var counting_inventories = 0; counting_inventories < this.inventorySlots.length; counting_inventories++){
-          mousePad.updateMouse();
-      this.inventorySlots[counting_inventories].updateInventory();
-      this.inventorySlots[counting_inventories].collisionWithMousePad(collisionTouch(mousePad, this.inventorySlots[counting_inventories]))
-      }
 
-      for(var countingSlots = 0 ; countingSlots < this.inventorySlots.length; countingSlots++){
-      for(var counting_invent = 0; counting_invent < this.inventory.length; counting_invent++){
-if(this.inventorySlots[countingSlots].emptySlot()){
-    this.inventorySlots[0].setItemUp(this.inventory[0], energy_powerup[0], 1, true);
-  
-}
-if(this.inventorySlots[countingSlots].getItemName() == this.inventory[0]){
-    this.inventorySlots[0].setItemCount(1);
-
-
-    
-}
-// console.log(this.inventory[0] + this.inventorySlots);
-}
-
-}
 
     }
 
