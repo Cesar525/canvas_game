@@ -9,6 +9,7 @@ sprites Designer
 
 Working on - 
 monsters attacking players
+workin gon making shots hit players.
 
 
 

@@ -76,7 +76,7 @@ setDamageHit(damagehit){this.damagesHit = damagehit;}
 shotsCreation(player, direction){
 
    if(!this.clearRect){
-    this.shotDirectionUp(direction);
+    this.shotDirectionUpDown(direction, "up");
     const shotimage = new Image()
     shotimage.src = this.shotImages[this.bullet_image];
     
@@ -94,9 +94,10 @@ randomHit(from, to){
 
 
 
-shotDirectionUp(direction){
+shotDirectionUpDown(direction, up_down){
 
     //moving the shot to the left
+    if(up_down == "up"){
     if(direction == 0){
         this.position.y -= this.velocity.y;  
     }
@@ -127,10 +128,54 @@ if(direction == -3){
     this.position.x -= 9;
 }
 
+    }
+
+if(up_down == "down"){
+
+    if(direction == 0){
+        this.position.y += this.velocity.y;  
+    }
+    if(direction == 1){
+    this.position.y += this.velocity.y;
+    this.position.x += 3;
+    }
+    if(direction == 2){
+        this.position.y += this.velocity.y;
+        this.position.x += 6;  
+    }
+    if(direction == 3){
+        this.position.y += this.velocity.y;
+    this.position.x += 9;
+    }
+
+// moving the shot to the right
+if(direction == -1){
+    this.position.y += this.velocity.y;
+    this.position.x -= 3;
+}
+if(direction == -2){
+    this.position.y += this.velocity.y;
+    this.position.x -= 6;
+}
+if(direction == -3){
+    this.position.y += this.velocity.y;
+    this.position.x -= 9;
+}
+
+
+}
+
+
 //moving shot
 //later on lets add shots moving side by side
 
 }
+
+
+
+
+
+
 //collitions in and outputs
 setCollisionPosition(posx, posy){
     this.collition.collision_posx = posx;

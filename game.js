@@ -90,7 +90,7 @@ const explosions_animations_pushing =[]
 //   explosions_animations_pushing.push(new Animation());
 // }
 
-
+const shot = new shots(100, 100, 11, 0, 8, 6, 40, 100, 100, 1, -50 , -100);
 //onPlayer Animation sparks Global
 const mousePad = new Mouse();
 const sparks_low = [];
@@ -210,6 +210,7 @@ players[p].playerView();
 
     }
 
+    
     
     // player_shield_effect_one[0].drawShield(players[0]);
     //animation_TESTING.spritePage("assets/firesprites/PNG/1.png", 100 , -500, 2048, 2048, 8, 4, 256, 512, 1, true, 1000, 1900)
