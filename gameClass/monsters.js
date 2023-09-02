@@ -32,6 +32,10 @@ this.collition = {
     collition_shotY :NaN
 }
 
+this.gun_on = [];
+this.explosionn = [];
+this.explosionn2 = [];
+
 if(boss_Mode){
     this.boss_mode_set = boss_Mode;
 }else{
@@ -245,12 +249,12 @@ if(this.spawnTime >= 100){
 }
 
 shottingPos(){
-    
+    if(this.boss_mode_set == true){
 //postone
-
+if(this.body.m_name == "Bukara"){
 this.monster_shotting_starting_pos.posOne.x = this.position.x + (this.width / 2 - 50);
 this.monster_shotting_starting_pos.posOne.y = this.position.y + (this.height / 2  + 200);
-ctx.fillStyle = "white";
+ctx.fillStyle = "red";
 ctx.fillRect(this.monster_shotting_starting_pos.posOne.x, this.monster_shotting_starting_pos.posOne.y, 100, 100)
 
 //pos two
@@ -262,13 +266,37 @@ ctx.fillRect(this.monster_shotting_starting_pos.posTwo.x, this.monster_shotting_
 //pos three
 this.monster_shotting_starting_pos.posTwo.x = this.position.x + 100;
 this.monster_shotting_starting_pos.posTwo.y = this.position.y + (this.height - 100);
-ctx.fillStyle = "white";
+ctx.fillStyle = "blue";
 ctx.fillRect(this.monster_shotting_starting_pos.posTwo.x, this.monster_shotting_starting_pos.posTwo.y, 100, 100)
 
 
-
+var damage_2 = 1;
+this.gun_on.push(new shots(100,100, 11, 0, 8, damage_2, 40, 100, 100, 1, -50 , -100, true));
+this.explosionn.push(new Animation());
+this.explosionn2.push(new Animation());
+console.log(this.gun_on.length);
+}
+}
 }
 
+
+shotting(){
+
+    for(var counting_updating = 0 ; counting_updating < this.gun_on.length; counting_updating++){
+    this.gun_on[counting_updating].updateShot(
+          this, 
+          this.explosionn[counting_updating],
+          this.explosionn2[counting_updating]
+          )
+    // is not deleting the used shots.
+    if(this.gun_on[counting_updating].getDeleteShotStatus()){
+        this.gun_on.splice(counting_updating , 1);
+        this.explosionn.splice(counting_updating , 1);
+        this.explosionn2.splice(counting_updating , 1);
+    
+    }
+}
+}
 
 resetColPos(){
     this.moveRight = true;
@@ -698,6 +726,6 @@ this.movements(this.monsterMovement);
 }
 this.dropPowerUps(this.randomSelectingPowerUps())
 this.shottingPos();
-
+this.shotting();
 }
 }

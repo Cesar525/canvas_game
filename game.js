@@ -49,9 +49,12 @@ const players = [
 
 
 const monsters = [
- new Monsters(2, "assets/monsters/boss/mantis.png",  -1000, -1000 , 1000, "Bukara", 7, "orange", "sidebyside", 800, 800, 30, NaN, true),
+ new Monsters(2, "assets/monsters/boss/mantis.png",  -1000, -1000 , 1000, "Bukara", 7, "orange", "none", 800, 800, 30, NaN, true),
   //  new Monsters(2, asteroid_two,  200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7, 10),
-  ];
+  //new Monsters(2, asteroid_eleven,  100, 100 , 1000, "Bukara", 7, "orange", "none", 300, 300, 30, NaN, false),
+  
+
+];
   
 //onMonster animation
 const sprite_animation = [];
@@ -108,6 +111,8 @@ for(var p = 0; p < players.length; p++){
   player_shield_effect_two.push(new Animation());
 
 }
+
+
 
 const burst_fire_test = new Animation();
 

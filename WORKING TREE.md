@@ -13,7 +13,7 @@ workin gon making shots hit players.
 
 
 
-to do - inventory system UI
+To do - inventory system UI
  set up mousePad - Done,
  setup Boxes onjects - DONE, 
  setup collitions - DONE
