@@ -7,10 +7,13 @@ sprites Designer
  ashishlko11
  games_unlimited
 
+
+READ!!!  -------------
 Working on - 
 monsters attacking players
 workin gon making shots hit players.
-
+currently changes -- i created a copy of shots just for the monster. monster will have their own shots class to shoot.!!!!!
+--------------
 
 
 To do - inventory system UI
