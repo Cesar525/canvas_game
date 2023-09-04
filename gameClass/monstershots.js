@@ -1,4 +1,4 @@
-class shots extends Animation{
+class Monstershots extends Animation{
     constructor(start_posx, start_posy, shotype, shotdirection, explosion_type, shot_damage, shot_speed, width, height, burst_selection, burst_posx, burst_posy){
 super();
     this.position = {
@@ -76,7 +76,7 @@ setDamageHit(damagehit){this.damagesHit = damagehit;}
 shotsCreation(player, direction){
 
    if(!this.clearRect){
-    this.shotDirectionUpDown(direction, "up");
+    this.shotDirectionUpDown(direction, "down");
     const shotimage = new Image()
     shotimage.src = this.shotImages[this.bullet_image];
     

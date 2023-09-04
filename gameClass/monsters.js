@@ -271,7 +271,7 @@ ctx.fillRect(this.monster_shotting_starting_pos.posTwo.x, this.monster_shotting_
 
 
 var damage_2 = 1;
-this.gun_on.push(new shots(100,100, 11, 0, 8, damage_2, 40, 100, 100, 1, -50 , -100, true));
+this.gun_on.push(new Monstershots(100,100, 11, 0, 8, damage_2, 40, 100, 100, 1, -50 , -100));
 this.explosionn.push(new Animation());
 this.explosionn2.push(new Animation());
 console.log(this.gun_on.length);
