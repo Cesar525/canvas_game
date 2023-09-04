@@ -10,9 +10,7 @@ sprites Designer
 
 READ!!!  -------------
 Working on - 
-monsters attacking players
-workin gon making shots hit players.
-currently changes -- i created a copy of shots just for the monster. monster will have their own shots class to shoot.!!!!!
+shot have to hit and damage player base on the damage of the monster.
 --------------
 
 

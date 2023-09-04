@@ -508,7 +508,6 @@ shottingiinterval(){
     if(this.shotting_interval == 20){
         this.shotting_interval = 0;
     }
-
 }else{
     this.shotting_interval = 0;
 }

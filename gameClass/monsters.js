@@ -1,7 +1,7 @@
 
 const powerups_drop = [];
 class Monsters{
-constructor( id, sprite,  pos_x, pos_y, health, name, speed, color, movements, s_width, s_height, damage, drop_loot, boss_Mode){
+constructor( id, sprite,  pos_x, pos_y, health, name, speed, color, movements, s_width, s_height, damage, drop_loot, boss_Mode, monster_gun){
 
 this.position = {
     x : pos_x,
@@ -23,6 +23,13 @@ this.body = {
     m_steady_deadPosY : NaN,
 }
 
+
+if(monster_gun){
+    this.monster_gun_type = monster_gun;
+}else{
+
+    this.monster_gun_type = 0;
+}
 this.collition = {
     collition_posX : NaN,
     collition_posY : NaN,
@@ -31,7 +38,7 @@ this.collition = {
     collition_shotX : NaN,
     collition_shotY :NaN
 }
-
+this.monster_shot_interval = 0;
 this.gun_on = [];
 this.explosionn = [];
 this.explosionn2 = [];
@@ -269,22 +276,39 @@ this.monster_shotting_starting_pos.posTwo.y = this.position.y + (this.height - 1
 ctx.fillStyle = "blue";
 ctx.fillRect(this.monster_shotting_starting_pos.posTwo.x, this.monster_shotting_starting_pos.posTwo.y, 100, 100)
 
-
-var damage_2 = 1;
-this.gun_on.push(new Monstershots(100,100, 11, 0, 8, damage_2, 40, 100, 100, 1, -50 , -100));
-this.explosionn.push(new Animation());
-this.explosionn2.push(new Animation());
-console.log(this.gun_on.length);
 }
 }
 }
 
+gunsType(type)
+{
+if(type == 1){
+    var damage_2 = 1;
+    this.gun_on.push(new Monstershots(200,200, 2, 0, 8, damage_2, 5, 100, 100, 1, -50 , -100));
+    this.explosionn.push(new Animation());
+    this.explosionn2.push(new Animation());
+}
+console.log(this.gun_on.length)
+}
+
+shottingiinterval(){
+    if(true){
+    this.monster_shot_interval++
+
+    if(this.monster_shot_interval == 1){
+      this.gunsType(this.monster_gun_type);
+    }
+    if(this.monster_shot_interval == 20){
+        this.monster_shot_interval = 0;
+    }
+}
+    }
 
 shotting(){
 
     for(var counting_updating = 0 ; counting_updating < this.gun_on.length; counting_updating++){
     this.gun_on[counting_updating].updateShot(
-          this, 
+          players[0], 
           this.explosionn[counting_updating],
           this.explosionn2[counting_updating]
           )
@@ -648,7 +672,7 @@ if(this.position.y == 20){
 
 console.log("still happening")
 }else{
-    console.log("movements");
+  
     this.movements(this.monsterMovement);
 }
 
@@ -727,5 +751,6 @@ this.movements(this.monsterMovement);
 this.dropPowerUps(this.randomSelectingPowerUps())
 this.shottingPos();
 this.shotting();
+this.shottingiinterval();
 }
 }

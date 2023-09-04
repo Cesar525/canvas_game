@@ -34,7 +34,7 @@ this.calibrating_burst_x = burst_posx;
 this.calibrating_burst_y = burst_posy;
 this.bullet_image = shotype;
 this.damages_total = shot_damage;
-
+this.shothit = false;
 
 this.burst_send = true;
 this.hiteffect = explosion_type;
@@ -222,6 +222,7 @@ if(this.position.y < - this.height){
 deletingShots(){
         setTimeout(()=>{
             this.deleteshot = true;
+            console.log("shot Deleted")
         }, 2000)
     }
 getDeleteShotStatus(){ return this.deleteshot;}
@@ -231,8 +232,8 @@ setDamageNumberColor(color){ this.DamageShowingcolorDefault = color;}
 
 
 shot(player){
-//single missile
 
+//single missile
 this.setDamageNumberColor("red");
 var totalDamage = player.body.m_damage + this.m_damage;
 this.damages_total = this.randomHit(1, totalDamage);
@@ -302,7 +303,7 @@ this.burst_send = false;
 }
 
 updateShot(player, explo_one_animation, explo_two_animation){
-var speed = player.body.m_gun_speed + this.shot_speed_set;
+var speed =  this.shot_speed_set;
 this.velocity.x = speed;
 this.velocity.y = speed;
 this.bursting_bullets(player,explo_two_animation);
@@ -310,6 +311,18 @@ this.shot(player);
 this.bulletHitMonsterEffect(explo_one_animation, explo_two_animation, this.getCollitionPosX(), this.getCollitionPosY() ,this.getCollitionWithMonster(), this.damage_effect, 1);
 this.damageShowAnimation(this.getDamageHit(), this.getCollitionPosX(), this.getCollitionPosY(), this.getDamageNumberColor(),this.getCollitionWithMonster());
 this.clearingBulletOnceHit();
-this.deletingShots(explo_one_animation);
+
+if(this.getCollitionWithPlayer()){
+    this.shothit = true;
+}
+
+if(this.shothit){
+    this.deletingShots(explo_one_animation);
+}
+
+if(this.position.y > c.height){
+    this.deletingShots(explo_one_animation);
+}
+
     }
 }
