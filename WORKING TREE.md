@@ -10,7 +10,8 @@ sprites Designer
 
 READ!!!  -------------
 Working on - 
-flip the monsters shot sprites and burst, making the weapons and setting it up to the boss Bukara. 
+1) shots object arent dispaearing when hitting player. they need to be Deleted.
+2) flip the monsters shot sprites and burst, making the weapons and setting it up to the boss Bukara. 
 --------------
 
 
