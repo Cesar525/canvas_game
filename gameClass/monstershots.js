@@ -222,7 +222,7 @@ if(this.position.y < - this.height){
 deletingShots(){
         setTimeout(()=>{
             this.deleteshot = true;
-            console.log("shot Deleted")
+            
         }, 2000)
     }
 getDeleteShotStatus(){ return this.deleteshot;}
@@ -281,17 +281,20 @@ if(if_true){this.showDamage = true;}
         }
 
 
-collisionMonsterShot(monsters){
+collisionMonsterShot(player){
+
+    //Need to add this fucntionalities to player.
                     // collision monster to shot
-                     if(collisionTouch(this, monsters)){
-                         monsters.setMonsterHealth(this.damages_total); // set up the hit depend on the shot
+                     if(collisionTouch(this, player)){
+                         player.subtractPlayerHealth(this.damages_total); // set up the hit depend on the shot
+                         player.setPlayerHitDamage(this.damages_total)
                          this.setCollitionWithMonster(true);
                          this.setDamageHit(this.damages_total);
                          this.setCollisionPosition(this.position.x, this.position.y);
-                        monsters.setMonsterCollitionWithShot(true);
+                        player.setCollitionWithMonsters(true);
                      return true;
                      }else{
-                        monsters.setMonsterCollitionWithShot(false);
+                     
                         
                        return false;
                      }
@@ -303,9 +306,7 @@ this.burst_send = false;
 }
 
 updateShot(player, explo_one_animation, explo_two_animation){
-var speed =  this.shot_speed_set;
-this.velocity.x = speed;
-this.velocity.y = speed;
+
 this.bursting_bullets(player,explo_two_animation);
 this.shot(player);
 this.bulletHitMonsterEffect(explo_one_animation, explo_two_animation, this.getCollitionPosX(), this.getCollitionPosY() ,this.getCollitionWithMonster(), this.damage_effect, 1);

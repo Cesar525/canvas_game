@@ -280,11 +280,20 @@ ctx.fillRect(this.monster_shotting_starting_pos.posTwo.x, this.monster_shotting_
 }
 }
 
+
+shottingCollition(player){
+    for(var countingss = 0; countingss < this.gun_on.length; countingss++){
+        if(player){
+ this.gun_on[countingss].collisionMonsterShot(player)
+        }
+    }
+    console.log("Reading");
+}
 gunsType(type)
 {
 if(type == 1){
-    var damage_2 = 1;
-    this.gun_on.push(new Monstershots(200,200, 2, 0, 8, damage_2, 5, 100, 100, 1, -50 , -100));
+   
+    this.gun_on.push(new Monstershots(200,200, 2, 0, 7, this.body.m_damage, 20, 100, 100, 1, -50 , -100));
     this.explosionn.push(new Animation());
     this.explosionn2.push(new Animation());
 }

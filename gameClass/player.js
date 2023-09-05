@@ -159,6 +159,7 @@ setPlayerVelocity(velocity){
 setPlayerDamage(health_){ this.body.health -= health_;};
 getPlayerHealth(){return this.body.health;};
 addPlayerHealth(amount){this.body.health += amount;};
+subtractPlayerHealth(set){ this.body.health -= set;}
 
 playerOnDeath(){
     if(!this.playerDead){
@@ -263,6 +264,7 @@ playerCollitionMonsters(monsters){
   }
   }
 
+  setPlayerHitDamage(set){this.showDamageAnimation.damage_recorded = set;};
 playerMovemements(){
         // player movements
 var keyboard_use = true;;

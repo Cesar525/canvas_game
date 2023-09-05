@@ -10,7 +10,7 @@ sprites Designer
 
 READ!!!  -------------
 Working on - 
-shot have to hit and damage player base on the damage of the monster.
+flip the monsters shot sprites and burst, making the weapons and setting it up to the boss Bukara. 
 --------------
 
 

@@ -154,7 +154,7 @@ explosion_onDeath_animation.splice(m, 1);
     for(var pjct = 0; pjct  < players.length ; pjct ++){
       players[pjct].playerCollitionMonsters(monsters[m])
       players[pjct].shottingCollition(monsters[m]);
-      
+      monsters[m].shottingCollition(players[pjct]);
     }
   }
   
