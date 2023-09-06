@@ -49,7 +49,7 @@ const players = [
 
 
 const monsters = [
- new Monsters(2, "assets/monsters/boss/mantis.png",  -1000, -1000 , 1000, "Bukara", 7, "orange", "none", 800, 800, 30, NaN, true,1),
+ new Monsters(2, "assets/monsters/boss/mantis.png",  -1000, -1000 , 10000, "Bukara", 7, "orange", "sidebyside", 800, 800, 30, NaN, true,1),
   //  new Monsters(2, asteroid_two,  200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7, 10),
   //new Monsters(2, asteroid_eleven,  100, 100 , 1000, "Bukara", 7, "orange", "none", 300, 300, 30, NaN, false),
   
@@ -154,7 +154,9 @@ explosion_onDeath_animation.splice(m, 1);
     for(var pjct = 0; pjct  < players.length ; pjct ++){
       players[pjct].playerCollitionMonsters(monsters[m])
       players[pjct].shottingCollition(monsters[m]);
+      if(monsters.length != 0){
       monsters[m].shottingCollition(players[pjct]);
+      }
     }
   }
   

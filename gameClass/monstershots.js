@@ -292,10 +292,12 @@ collisionMonsterShot(player){
                          this.setDamageHit(this.damages_total);
                          this.setCollisionPosition(this.position.x, this.position.y);
                         player.setCollitionWithMonsters(true);
+                        this.setCollitionWithPlayer(true);
                      return true;
                      }else{
                      
                         
+
                        return false;
                      }
                    }

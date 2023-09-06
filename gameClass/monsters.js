@@ -99,7 +99,7 @@ this.monster_shotting_starting_pos = {
     x : 0,
     y : 0
     },
-    posthree : {
+    posThree : {
     x : 0,
     y : 0
     }
@@ -271,10 +271,10 @@ ctx.fillStyle = "white";
 ctx.fillRect(this.monster_shotting_starting_pos.posTwo.x, this.monster_shotting_starting_pos.posTwo.y, 100, 100)
 
 //pos three
-this.monster_shotting_starting_pos.posTwo.x = this.position.x + 100;
-this.monster_shotting_starting_pos.posTwo.y = this.position.y + (this.height - 100);
+this.monster_shotting_starting_pos.posThree.x = this.position.x + 100;
+this.monster_shotting_starting_pos.posThree.y = this.position.y + (this.height - 100);
 ctx.fillStyle = "blue";
-ctx.fillRect(this.monster_shotting_starting_pos.posTwo.x, this.monster_shotting_starting_pos.posTwo.y, 100, 100)
+ctx.fillRect(this.monster_shotting_starting_pos.posThree.x, this.monster_shotting_starting_pos.posThree.y, 100, 100)
 
 }
 }
@@ -287,15 +287,24 @@ shottingCollition(player){
  this.gun_on[countingss].collisionMonsterShot(player)
         }
     }
-    console.log("Reading");
+   
 }
 gunsType(type)
 {
 if(type == 1){
    
-    this.gun_on.push(new Monstershots(200,200, 2, 0, 7, this.body.m_damage, 20, 100, 100, 1, -50 , -100));
+    this.gun_on.push(
+        new Monstershots(this.monster_shotting_starting_pos.posOne.x,this.monster_shotting_starting_pos.posOne.y, 2, 0, 10, this.body.m_damage, 60, 100, 100, 1, -50 , -100),
+        new Monstershots(this.monster_shotting_starting_pos.posTwo.x,this.monster_shotting_starting_pos.posTwo.y, 2, 0, 10, this.body.m_damage, 30, 100, 100, 1, -50 , -100),
+        new Monstershots(this.monster_shotting_starting_pos.posThree.x,this.monster_shotting_starting_pos.posThree.y, 2, 0, 10, this.body.m_damage, 30, 100, 100, 1, -50 , -100),
+
+        );
+    
+    
+    for(var counting_bullets = 0; counting_bullets < this.gun_on.length; counting_bullets++){
     this.explosionn.push(new Animation());
     this.explosionn2.push(new Animation());
+    }
 }
 console.log(this.gun_on.length)
 }
@@ -675,11 +684,11 @@ if(this.position.y < 20){
 this.position.y += 10
 if(this.position.y == 20){
     this.bossPositionReached = true; 
-    console.log("position Reached")
+   
 }
 }
 
-console.log("still happening")
+
 }else{
   
     this.movements(this.monsterMovement);
