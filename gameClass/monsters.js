@@ -23,7 +23,7 @@ this.body = {
     m_steady_deadPosY : NaN,
 }
 
-
+this.shotting_interval = 20
 if(monster_gun){
     this.monster_gun_type = monster_gun;
 }else{
@@ -79,6 +79,7 @@ this.give_number = true;
 this.droping_powerUp = true;
 this.exposions_boss = false;
 
+this.interval_changes = false;
 
 this.building_randomExplosions = {
 explosions_counter : 0,
@@ -261,25 +262,28 @@ shottingPos(){
 if(this.body.m_name == "Bukara"){
 this.monster_shotting_starting_pos.posOne.x = this.position.x + (this.width / 2 - 50);
 this.monster_shotting_starting_pos.posOne.y = this.position.y + (this.height / 2  + 200);
-ctx.fillStyle = "red";
-ctx.fillRect(this.monster_shotting_starting_pos.posOne.x, this.monster_shotting_starting_pos.posOne.y, 100, 100)
+// ctx.fillStyle = "red";
+// ctx.fillRect(this.monster_shotting_starting_pos.posOne.x, this.monster_shotting_starting_pos.posOne.y, 100, 100)
 
 //pos two
 this.monster_shotting_starting_pos.posTwo.x = this.position.x + (this.width - 200);
 this.monster_shotting_starting_pos.posTwo.y = this.position.y + (this.height - 100);
-ctx.fillStyle = "white";
-ctx.fillRect(this.monster_shotting_starting_pos.posTwo.x, this.monster_shotting_starting_pos.posTwo.y, 100, 100)
+// ctx.fillStyle = "white";
+// ctx.fillRect(this.monster_shotting_starting_pos.posTwo.x, this.monster_shotting_starting_pos.posTwo.y, 100, 100)
 
 //pos three
 this.monster_shotting_starting_pos.posThree.x = this.position.x + 100;
 this.monster_shotting_starting_pos.posThree.y = this.position.y + (this.height - 100);
-ctx.fillStyle = "blue";
-ctx.fillRect(this.monster_shotting_starting_pos.posThree.x, this.monster_shotting_starting_pos.posThree.y, 100, 100)
-
+// ctx.fillStyle = "blue";
+// ctx.fillRect(this.monster_shotting_starting_pos.posThree.x, this.monster_shotting_starting_pos.posThree.y, 100, 100)
+if(this.body.m_health < (this.health_total / 2) / 2){
+this.velocity.y = 15;
+        this.velocity.x = 15; 
+}
+    }
 }
 }
-}
-
+setShottinginterval(set){this.shotting_interval = set;};
 
 shottingCollition(player){
     for(var countingss = 0; countingss < this.gun_on.length; countingss++){
@@ -305,20 +309,31 @@ if(type == 1){
     this.explosionn.push(new Animation());
     this.explosionn2.push(new Animation());
     }
+
+
 }
 console.log(this.gun_on.length)
 }
 
-shottingiinterval(){
+shottingiinterval(shotting_interval){
     if(true){
     this.monster_shot_interval++
-
+console.log(this.monster_shot_interval)
     if(this.monster_shot_interval == 1){
       this.gunsType(this.monster_gun_type);
     }
-    if(this.monster_shot_interval == 20){
+    if(this.body.m_health < (this.health_total / 2) / 2){
+        if(this.monster_shot_interval == 3){
+            this.monster_shot_interval = 0;
+        }
+        if(this.monster_shot_interval == shotting_interval){
+            this.monster_shot_interval = 0;
+        }
+    }else{
+
+    if(this.monster_shot_interval == shotting_interval){
         this.monster_shot_interval = 0;
-    }
+    }}
 }
     }
 
@@ -767,8 +782,10 @@ if(this.boss_mode_set){
 this.movements(this.monsterMovement);
 }
 this.dropPowerUps(this.randomSelectingPowerUps())
+
 this.shottingPos();
 this.shotting();
-this.shottingiinterval();
+this.shottingiinterval(this.shotting_interval);
+
 }
 }

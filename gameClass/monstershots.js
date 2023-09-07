@@ -53,16 +53,16 @@ this.selecting_burst = burst_selection;
     this.counter = 0;
     // here we add all guns images sprites
     this.shotImages = {
-    1 : "assets/shots/bean_1.png",
-    2 : "assets/shots/bean_2.png",
-    3 : "assets/shots/bean_3.png",
-    4 : "assets/shots/bean_4.png",
-    5 : "assets/shots/bean_5.png",
-    6 : "assets/shots/bean_6.png",
-    7 : "assets/shots/bean_7.png",
-    8 : "assets/shots/bean_8.png",
-    9 : "assets/shots/bean_9.png",
-    10 : "assets/shots/bean_10.png",
+    1 : "assets/monstershots/bean_1.png",
+    2 : "assets/monstershots/bean_2.png",
+    3 : "assets/monstershots/bean_3.png",
+    4 : "assets/monstershots/bean_4.png",
+    5 : "assets/monstershots/bean_5.png",
+    6 : "assets/monstershots/bean_6.png",
+    7 : "assets/monstershots/bean_7.png",
+    8 : "assets/monstershots/bean_8.png",
+    9 : "assets/monstershots/bean_9.png",
+    10 : "assets/monstershots/bean_10.png",
     11 : "assets/machinegun/bullet_11.png"
     }
     

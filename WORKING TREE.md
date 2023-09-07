@@ -10,7 +10,13 @@ sprites Designer
 
 READ!!!  -------------
 Working on - 
-1) rotate the sprite and change the burst looks only for monster. make sure to create a folder.
+1) when monsters is near death there should be a change on his sprite. (Maybe a red glow and turning red);
+2) develop the power bomb
+        a) the token that monsters will drop that will increase the power bomb bar.
+        b) set the power bomb to drop.
+        c) when power bomb its been dropped the effect should be a a charging effec ton the spaceship and then throw the power bomb.
+        d) powerbomb should last 1 second taking HP from who ever it makes contact with it.
+        
 --------------
 
 
