@@ -84,6 +84,10 @@ this.position.x = NaN;
 this.position.y = NaN;
 }
 
+decreasePos(set){ 
+    this.position.x -= set;
+    this.position.y += set;}
+    
 getExplosionUseStatus(){return this.explosion_used;}
 monsterHit(animationOne, animationTwoo ,col, posx_, posy_, hiteffect, speed, shot){
     var animationTwo;

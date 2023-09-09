@@ -120,6 +120,18 @@ asteroids(speed){
            }
             }
 
+bigAsteroidsOnFire(){
+      // player_shield_effect_one[0].drawShield(players[0]);
+//WORKIG ON
+  ctx.rotate((45 * Math.PI) / 180);
+  animation_TESTING.spritePage("assets/firesprites/PNG/1.png", asteroid_fire_x , asteroid_fire_y, 2048, 2048, 8, 4, 256, 512, 1, true, 1000, 1900)
+  ctx.setTransform(1, 0, 0, 1, 0, 0); 
+  animation_TESTING.decreasePos(1)
+   // animation_TESTING.explosionEffect(3, 500 + 100, 500 + 100, true, 4)
+ 
+ 
+}
+
 timer(){
    
 
