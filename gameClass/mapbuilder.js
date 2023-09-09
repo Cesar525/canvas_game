@@ -20,7 +20,10 @@ this.map_one = [
     new Background_Objects (-100, -100, 100, 100),
     new Background_Objects (-100, -100, 100, 100),
     new Background_Objects (-100, -100, 100, 100),
-    new Background_Objects (0, 0)
+    new Background_Objects (0, 0),
+    new Background_Objects (1000, -3500, 100, 100), // bigfire asteroid
+    new Background_Objects (2500, -7500, 100, 100), // bigfire asteroid
+    new Background_Objects (500, -6500, 100, 100), // bigfire asteroid
 ]
 this.warning_timer_onOff = true;
 this.timerForWarning = 0;
@@ -84,7 +87,9 @@ this.map_one[3].drawStars(10, 2); // background image
 //pushing monsters in to map one.
 
 this.metioriteStorm();
-
+this.map_one[19].bigAsteroidsOnFire()
+this.map_one[20].bigAsteroidsOnFire()
+this.map_one[21].bigAsteroidsOnFire()
 }
 
 metioriteStorm(){

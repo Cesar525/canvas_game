@@ -279,6 +279,9 @@ this.monster_shotting_starting_pos.posThree.y = this.position.y + (this.height -
 if(this.body.m_health < (this.health_total / 2) / 2){
 this.velocity.y = 15;
         this.velocity.x = 15; 
+
+this.body.m_sprite = bukara.diying_state;
+
 }
     }
 }

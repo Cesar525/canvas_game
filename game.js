@@ -10,7 +10,7 @@ var ctx_ui_status = c_ui_status.getContext("2d");
 var gameFrame = 0;
 
 //Gam Canvas size
-c.width = 2000
+c.width = 3000
 c.height = 2000
 
 //playerStatus Bar
@@ -32,8 +32,7 @@ var mode_set = 2;
 var map_selected = 1
 const map_selection = new Mapbuilder();
 
-var asteroid_fire_y = -3500;
-var asteroid_fire_x = 1000;
+
 
 //testing
 const animation_TESTING = new Animation();
@@ -42,7 +41,7 @@ const animation_TESTING = new Animation();
 //players
 //CREATING A PLAYER Player(name, level, thruster_selection, get_health, energy, m_damage,  gunType, posx, posy, gun_speed)
 const players = [
-  new Player("PLAYER ONE", 1230,  8, 11000, 2000, 150, 20, 600, 900, 30),
+  new Player("PLAYER ONE", 1230,  8, 11000, 2000, 150, 10, 600, 900, 30),
   //  new Player("PLAYER ONE", 1230,  6, 100, 400, 100, 10, 800, 1000, 50),
 
 ]
@@ -51,7 +50,7 @@ const players = [
 
 
 const monsters = [
- new Monsters(2, "assets/monsters/boss/mantis.png",  -1000, -1000 , 10000, "Bukara", 7, "orange", "sidebyside", 800, 800, 30, NaN, true,1),
+ new Monsters(2, bukara.normal_state,  -1000, -1000 , 10000, "Bukara", 7, "orange", "sidebyside", 800, 800, 30, NaN, true,1),
   //  new Monsters(2, asteroid_two,  200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7, 10),
   //new Monsters(2, asteroid_eleven,  100, 100 , 1000, "Bukara", 7, "orange", "none", 300, 300, 30, NaN, false),
   
@@ -144,18 +143,6 @@ if(true){
 
 
 
-  asteroid_fire_x -= 3;
-  asteroid_fire_y += 25;
-  
-  // player_shield_effect_one[0].drawShield(players[0]);
- 
-  ctx.rotate((45 * Math.PI) / 180);
- animation_TESTING.spritePage("assets/firesprites/PNG/1.png", asteroid_fire_x , asteroid_fire_y, 2048, 2048, 8, 4, 256, 512, 1, true, 1000, 1900)
- ctx.setTransform(1, 0, 0, 1, 0, 0); 
- animation_TESTING.decreasePos(1)
-  // animation_TESTING.explosionEffect(3, 500 + 100, 500 + 100, true, 4)
-
-
 
 //colliton Monsters wiht Players && Projectiles
 for(var m = 0; m < monsters.length; m++){
@@ -205,7 +192,9 @@ explosion_onDeath_animation.splice(m, 1);
   }
       } 
 
-     
+//showing shield example.s     
+player_shield_effect_one[0].drawShield(players[0]);
+
 
 //Random explosions
 for(var counting_explosions = 0 ; counting_explosions < pushing_random_explsions.length; counting_explosions++)
@@ -235,6 +224,18 @@ players[p].playerView();
     }
 
  
+//   asteroid_fire_x -= 3;
+//   asteroid_fire_y += 25;
+  
+  
+ 
+//   ctx.rotate((45 * Math.PI) / 180);
+//  animation_TESTING.spritePage("assets/firesprites/PNG/1.png", asteroid_fire_x , asteroid_fire_y, 2048, 2048, 8, 4, 256, 512, 1, true, 1000, 1900)
+//  ctx.setTransform(1, 0, 0, 1, 0, 0); 
+//  animation_TESTING.decreasePos(1)
+  // animation_TESTING.explosionEffect(3, 500 + 100, 500 + 100, true, 4)
+
+
 } 
 
 buffer();

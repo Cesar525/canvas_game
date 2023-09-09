@@ -23,7 +23,7 @@
 </div>
 
 <!-- js Files  -->
-
+<script src="./gameClass/monstersprites.js"></script>
 <script src="./gameClass/monstershots.js"></script>
 <script src="./gameClass/mouse.js"></script>
 <script src="./gameClass/inventory.js"></script>

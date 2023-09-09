@@ -10,8 +10,11 @@ sprites Designer
 
 READ!!!  -------------
 Working on - 
-1) when monsters is near death there should be a change on his sprite. (Maybe a red glow and turning red);
 
+
+3) 
+about sprite = the onster will drop a spruite that look the same at the shield but more bright.
+shield should be dropped by monsters once player make contact with the shield they will be able to obtain the shield for acouple of 30 second shield will cover the player from any hit. for 30 seconds.
 
 2) develop the power bomb
         a) the token that monsters will drop that will increase the power bomb bar.
