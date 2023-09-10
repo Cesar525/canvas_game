@@ -11,19 +11,13 @@ sprites Designer
 READ!!!  -------------
 Working on - 
 
-
-3) 
+3) Develop Shield
 about sprite = the onster will drop a spruite that look the same at the shield but more bright.
 shield should be dropped by monsters once player make contact with the shield they will be able to obtain the shield for acouple of 30 second shield will cover the player from any hit. for 30 seconds.
 were i stopped --
-1) i need to make the collition with monster bullet
-2) setup the player to not loose any HP.
-3) make the monsters drop the shield and set it up on the powerUps.js file.
-
-
-
-
-
+a) i need to make the collition with monster bullet
+b) setup the player to not loose any HP.
+c) make the monsters drop the shield and set it up on the powerUps.js file.
 
 
 2) develop the power bomb
@@ -36,6 +30,8 @@ were i stopped --
 4) developing Inventory section.
 5) develop 10 monsters to kill.
 6) setup a HUGE asteroid in Flame comming side ways on the map to make it more Epic
+ 7) show on status what level of Weapon he has and what shield he has.
+
 --------------
 
 
