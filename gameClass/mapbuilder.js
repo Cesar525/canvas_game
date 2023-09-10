@@ -21,7 +21,7 @@ this.map_one = [
     new Background_Objects (-100, -100, 100, 100),
     new Background_Objects (-100, -100, 100, 100),
     new Background_Objects (0, 0),
-    new Background_Objects (1000, -3500, 100, 100), // bigfire asteroid
+    new Background_Objects (1500, -5500, 100, 100), // bigfire asteroid
     new Background_Objects (2500, -7500, 100, 100), // bigfire asteroid
     new Background_Objects (500, -6500, 100, 100), // bigfire asteroid
 ]
@@ -35,6 +35,7 @@ this.position_random = {
     x : 0,
     y : 0
 }
+this.resetTimer = 0;
 
 this.counter_or_asteroids = 0;
 
@@ -90,6 +91,18 @@ this.metioriteStorm();
 this.map_one[19].bigAsteroidsOnFire()
 this.map_one[20].bigAsteroidsOnFire()
 this.map_one[21].bigAsteroidsOnFire()
+
+
+this.resetTimer++;
+if(this.resetTimer == 390){
+    
+   this.map_one[20].resetFireAsteroid(); 
+    this.map_one[21].resetFireAsteroid();
+    this.resetTimer = 0;
+}
+if(this.resetTimer == 270){
+this.map_one[19].resetFireAsteroid();
+}
 }
 
 metioriteStorm(){
@@ -122,7 +135,6 @@ if(this.counter_or_asteroids == 20){
         explosion_onDeath_animation.push(new Animation());
         }
 
-        
 
 }
 if(this.counter_or_asteroids == 30){

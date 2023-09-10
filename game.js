@@ -41,7 +41,7 @@ const animation_TESTING = new Animation();
 //players
 //CREATING A PLAYER Player(name, level, thruster_selection, get_health, energy, m_damage,  gunType, posx, posy, gun_speed)
 const players = [
-  new Player("PLAYER ONE", 1230,  8, 11000, 2000, 150, 10, 600, 900, 30),
+  new Player("PLAYER ONE", 1230,  8, 11000, 2000, 30, 10, 600, 900, 30),
   //  new Player("PLAYER ONE", 1230,  6, 100, 400, 100, 10, 800, 1000, 50),
 
 ]
@@ -193,7 +193,7 @@ explosion_onDeath_animation.splice(m, 1);
       } 
 
 //showing shield example.s     
-player_shield_effect_one[0].drawShield(players[0]);
+//player_shield_effect_one[0].drawShield(players[0]);
 
 
 //Random explosions

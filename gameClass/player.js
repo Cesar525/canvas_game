@@ -501,13 +501,21 @@ shottingCollition(monster){
 }
 
 shottingiinterval(){
+
+if(this.body.m_gun_type == 1 || this.body.m_gun_type == 2){
+    var shottinInterval = 5
+}else{
+   var shottinInterval = 10 
+}
+
+    
     if(keys.shotting.pressed){
     this.shotting_interval++
     
     if(this.shotting_interval == 1){
       this.gunsType(this.body.m_gun_type);
     }
-    if(this.shotting_interval == 20){
+    if(this.shotting_interval == shottinInterval){
         this.shotting_interval = 0;
     }
 }else{

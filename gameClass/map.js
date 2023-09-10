@@ -9,6 +9,9 @@ class Background_Objects extends Animation{
         x : 0,
         y : 0
     }
+this.posx_set = posx;
+this.posy_set = posy;
+
     this.countingBackground  = 0;
     this.gameFramee = 0;
     this.width = width;
@@ -119,6 +122,11 @@ asteroids(speed){
             this.position.y = this.posy_set;
            }
             }
+
+resetFireAsteroid(){
+    this.position.x = this.posx_set;
+    this.position.y = this.posy_set;
+}
 
 bigAsteroidsOnFire(){
       // player_shield_effect_one[0].drawShield(players[0]);
