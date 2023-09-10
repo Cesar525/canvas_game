@@ -8,6 +8,8 @@ this.velocity = {
     x : 0,
     y : 0
 }
+
+this.m_shieldType = 0;
 this.counting_sprite_width = 5;
 this.counting_sprite_height = 3;
 this.width = 960 / this.counting_sprite_width;
@@ -18,19 +20,36 @@ this.gameFrame = 0;
 this.staggerFrame = 3;
 this.size_height = 200;
 this.size_width = 200;
+
 }
 // shield animation
 frame(){
 
 }
 
+setShieldType(set){
+    this.m_shieldType = set;
+};
+getShieldType(){return this.m_shieldType;};
+
 drawShield(player){
-    const shieldImage = new Image();
-shieldImage.src = "assets/shields/shieldupdated.png";
+    
+
+    //Shield Apearance
+if(player.getPlayerShieldStatus() == false){
+}else{
+
+//geting player cordinates for shields    
+const shieldImage = new Image();
+
+if(player.getPlayerShieldType() == 1){
+shieldImage.src = shield_spritesSheet.blue_shield;
+}
+if(player.getPlayerShieldType() == 2){
+    shieldImage.src = shield_spritesSheet.red_shield;
+}
 
 ctx.globalAlpha = 0.5;
-
-
 
 //console.log("bottom" + this.sprite_bottom);
 //console.log( "right" + this.sprite_right);
@@ -49,6 +68,8 @@ this.frameY = positionY;
 //console.log( "Showing" + this.frameX);
 
 this.gameFrame++;
+
+}
 }
 
 

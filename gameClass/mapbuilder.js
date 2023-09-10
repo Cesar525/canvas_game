@@ -87,7 +87,7 @@ this.map_one[3].drawStars(10, 2); // background image
 
 //pushing monsters in to map one.
 
-this.metioriteStorm();
+// this.metioriteStorm();
 this.map_one[19].bigAsteroidsOnFire()
 this.map_one[20].bigAsteroidsOnFire()
 this.map_one[21].bigAsteroidsOnFire()

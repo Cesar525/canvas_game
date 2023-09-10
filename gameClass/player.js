@@ -21,7 +21,8 @@ class Player {
         m_gun_speed : gun_speed,
         deathPositionX : NaN,
         deathPositionY : NaN,
-        shield_on_off : false,
+        shield_on_off : true,
+        m_shield_type : 2,
          lef_side_wign_shot : - 50,
          right_side_wign_shot : + 50,
          powerBombEnergy : 950,
@@ -42,6 +43,7 @@ class Player {
         health : 500,
         money : 0
     }
+    
 
     this.shotting_interval = 0;
     this.width = 100;
@@ -56,6 +58,9 @@ class Player {
     this.playerDead = false;
     this.showdeathexplosion;
     this.interval = false;
+
+//shields
+this.shields_class = new Shields();
 
     //Guns
     this.gun_on = [];
@@ -188,10 +193,22 @@ if(this.playerDead){
 };
 
 
-
-playerShield(shieldType, shield){
-if(this.shield_on_off){
-    player_shield_effect_one.drawShield(this);
+//about shields
+getPlayerShieldType(){ return this.body.m_shield_type;};
+setPlayerShieldType(set){this.body.m_shield_type = set;};
+getPlayerShieldStatus(){return this.body.shield_on_off;};
+setPlayerShieldStatus(set){this.body.shield_on_off = set;};
+AddShield(setShieldType){
+this.setPlayerShieldType(setShieldType);
+this.setPlayerShieldStatus(true);
+}
+shieldOff(){
+    this.setPlayerShieldStatus(false);
+}
+playerShield(){
+if(this.getPlayerShieldStatus()){
+    this.shields_class.drawShield(this,1);
+    console.log("shield is on")
 }
 }
 

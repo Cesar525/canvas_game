@@ -15,6 +15,16 @@ Working on -
 3) 
 about sprite = the onster will drop a spruite that look the same at the shield but more bright.
 shield should be dropped by monsters once player make contact with the shield they will be able to obtain the shield for acouple of 30 second shield will cover the player from any hit. for 30 seconds.
+were i stopped --
+1) i need to make the collition with monster bullet
+2) setup the player to not loose any HP.
+3) make the monsters drop the shield and set it up on the powerUps.js file.
+
+
+
+
+
+
 
 2) develop the power bomb
         a) the token that monsters will drop that will increase the power bomb bar.
