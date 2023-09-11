@@ -41,7 +41,7 @@ const animation_TESTING = new Animation();
 //players
 //CREATING A PLAYER Player(name, level, thruster_selection, get_health, energy, m_damage,  gunType, posx, posy, gun_speed)
 const players = [
-  new Player("PLAYER ONE", 1230,  8, 11000, 2000, 30, 10, 600, 900, 30),
+  new Player("PLAYER ONE", 1230,  8, 2000, 4000, 500, 10, 600, 900, 30),
   //  new Player("PLAYER ONE", 1230,  6, 100, 400, 100, 10, 800, 1000, 50),
 
 ]
@@ -75,6 +75,8 @@ const powerUp = [
  new PowerUps(1000, 100, "energyLava", 100, 100, 100),
  new PowerUps(1500, 100, "energyGreen", 100, 100, 100),
  new PowerUps(1500, 500, "energyGreen", 100, 100, 100),
+ new PowerUps(1500, 400, "blueShield", 100, 100, 100),
+ new PowerUps(1500, 800, "redShield", 100, 100, 100),
 ];
 
 const powerup_capture_effect = [];

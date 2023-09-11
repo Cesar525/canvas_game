@@ -60,7 +60,7 @@ class Player {
     this.interval = false;
 
 //shields
-this.shields_class = new Shields();
+this.shields_class = [];
 
     //Guns
     this.gun_on = [];
@@ -113,6 +113,8 @@ this.controller_movements = {
 
 }
 
+clearShield(){ this.shields_class.splice(0, 1); };
+
 randomNumber(from, to){
     this.random_number = Math.floor(Math.random() * to) + from   
     return this.random_number;
@@ -133,7 +135,9 @@ getCursorPosition(canvas, event) {
     }
     //console.log("x: " + x + " y: " + y)
 }
-
+pushShield(type){
+    this.shields_class.push(new Shields(type));
+}
 draw(){
 
     if(!this.clearRect){
@@ -202,14 +206,17 @@ AddShield(setShieldType){
 this.setPlayerShieldType(setShieldType);
 this.setPlayerShieldStatus(true);
 }
+
 shieldOff(){
     this.setPlayerShieldStatus(false);
 }
 playerShield(){
+    if(this.shields_class.length > 0){
 if(this.getPlayerShieldStatus()){
-    this.shields_class.drawShield(this,1);
-    console.log("shield is on")
+    this.shields_class[0].drawShield(this);
+ 
 }
+    }
 }
 
 lifeBar(){
@@ -736,8 +743,11 @@ damageShowAnimation(damage,pos_x, pos_y, color, if_true){
 playerView(){
     this.lifeBar();
 this.energyBar();   
+if(this.getPlayerShieldStatus()){
+    this.damageShowAnimation(this.showDamageAnimation.damage_recorded, this.position.x + 20, this.position.y + 90, "blue", this.collition.collition_monsters)
+}else{
 this.damageShowAnimation(this.showDamageAnimation.damage_recorded, this.position.x + 20, this.position.y + 90, "red", this.collition.collition_monsters)
-
+}
 }
 
 // textWithStroke(text , textColor, strokeColor, text_size_and_style, which_canvas, text_posx, text_posy){
@@ -910,11 +920,14 @@ this.playerShield()
     for(var f = 0; f < powerUp.length; f++){      
         powerUp[f].powerUpTakenEffect(this, powerup_capture_effect[f])
       }
-
-
-
-
-
+      if(this.shields_class.length > 0){
+if(this.shields_class[0].getDeleteObject()){
+    this.shields_class.splice(0, 1)
+}
+this.setPlayerShieldStatus(true);
+      }else{
+        this.setPlayerShieldStatus(false);
+      }
     }
 
 

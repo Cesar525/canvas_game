@@ -315,13 +315,13 @@ if(type == 1){
 
 
 }
-console.log(this.gun_on.length)
+
 }
 
 shottingiinterval(shotting_interval){
     if(true){
     this.monster_shot_interval++
-console.log(this.monster_shot_interval)
+
     if(this.monster_shot_interval == 1){
       this.gunsType(this.monster_gun_type);
     }
@@ -344,7 +344,7 @@ shotting(){
 
     for(var counting_updating = 0 ; counting_updating < this.gun_on.length; counting_updating++){
     this.gun_on[counting_updating].updateShot(
-          players[0], 
+          this, 
           this.explosionn[counting_updating],
           this.explosionn2[counting_updating]
           )
@@ -623,27 +623,27 @@ dropPowerUps(type){
         this.droping_powerUp = false
         break;
 
-        case 5 :   
+        case 2 :   
         powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, "energy", 250 ));
         powerup_capture_effect.push(new Animation());
         this.drop_item = false;
         this.droping_powerUp = false;
         break;
 
-        case  6: 
+        case  3: 
         powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, "money", 150 ));
         powerup_capture_effect.push(new Animation());
         this.drop_item = false;
         this.droping_powerUp = false;
         break;
-        case 7 :   
+        case 4 :   
         powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, "energy", 1000));
         powerup_capture_effect.push(new Animation());
         this.drop_item = false;
         this.droping_powerUp = false;
         break;
 
-        case 9 : 
+        case 5 : 
         powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, "health" , 800));
         powerup_capture_effect.push(new Animation());
         this.drop_item = false;
@@ -651,32 +651,44 @@ dropPowerUps(type){
         break;
 
         //Guns
-        case  12: 
+        case  6: 
         powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, "machineGun", 150));
         powerup_capture_effect.push(new Animation());
         this.drop_item = false;
         this.droping_powerUp = false;
         break;    
-        case  20: 
+        case  7: 
         powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, "energyShot", 150));
         powerup_capture_effect.push(new Animation());
         this.drop_item = false;
         this.droping_powerUp = false;
         break;
-        case  25: 
+        case  8: 
         powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, "energyPlasma", 150));
         powerup_capture_effect.push(new Animation());
         this.drop_item = false;
         this.droping_powerUp = false;
         break;
-        case  30: 
+        case  9: 
         powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, "energyLava", 150));
         powerup_capture_effect.push(new Animation());
         this.drop_item = false;
         this.droping_powerUp = false;
         break;
-        case  28: 
+        case  10: 
         powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, "energyGreen", 150));
+        powerup_capture_effect.push(new Animation());
+        this.drop_item = false;
+        this.droping_powerUp = false;
+        break;
+        case  11: 
+        powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, "blueShield", 150));
+        powerup_capture_effect.push(new Animation());
+        this.drop_item = false;
+        this.droping_powerUp = false;
+        break;
+        case  12: 
+        powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, "redShield", 150));
         powerup_capture_effect.push(new Animation());
         this.drop_item = false;
         this.droping_powerUp = false;

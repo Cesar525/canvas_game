@@ -286,10 +286,17 @@ collisionMonsterShot(player){
     //Need to add this fucntionalities to player.
                     // collision monster to shot
                      if(collisionTouch(this, player)){
-                         player.subtractPlayerHealth(this.damages_total); // set up the hit depend on the shot
-                         player.setPlayerHitDamage(this.damages_total)
-                         this.setCollitionWithMonster(true);
+                        if(player.getPlayerShieldStatus()){
+                            player.subtractPlayerHealth(0); // set up the hit depend on the shot
+                            player.setPlayerHitDamage(0);
+                            this.setDamageHit(0);
+                        }else{
+                               player.subtractPlayerHealth(this.damages_total); // set up the hit depend on the shot
+                         player.setPlayerHitDamage(this.damages_total);
                          this.setDamageHit(this.damages_total);
+                        }
+                      
+                         this.setCollitionWithMonster(true);
                          this.setCollisionPosition(this.position.x, this.position.y);
                         player.setCollitionWithMonsters(true);
                         this.setCollitionWithPlayer(true);

@@ -86,12 +86,12 @@ this.map_one[15].asteroids(3);
 this.map_one[3].drawStars(10, 2); // background image
 
 //pushing monsters in to map one.
-
-// this.metioriteStorm();
+if(map_seconds >= 10){
+this.metioriteStorm();
 this.map_one[19].bigAsteroidsOnFire()
 this.map_one[20].bigAsteroidsOnFire()
 this.map_one[21].bigAsteroidsOnFire()
-
+}
 
 this.resetTimer++;
 if(this.resetTimer == 390){
@@ -106,16 +106,16 @@ this.map_one[19].resetFireAsteroid();
 }
 
 metioriteStorm(){
-var asteroid_speed = 20;
+var asteroid_speed = 10;
 this.counter_or_asteroids++
-
+var loo_Drop = 15
     // if(this.counter_or_asteroids == 10)
 if(true){
 
     
     if(this.counter_or_asteroids == 10){
     monsters.push(
-    new Monsters(2, asteroid_two, this.position_random.x,  this.position_random.y , 100, "Asteroid", asteroid_speed, "orange", "straightDown", 200, 200, 7, 30),
+    new Monsters(2, asteroid_two, this.position_random.x,  this.position_random.y , 100, "Asteroid", asteroid_speed, "orange", "straightDown", 200, 200, 7, loo_Drop),
    
     )
 
@@ -126,7 +126,7 @@ if(true){
 }
 if(this.counter_or_asteroids == 20){
     monsters.push(
-    new Monsters(2, asteroid_three, this.position_random.x,  this.position_random.y , 100, "Asteroid", asteroid_speed, "orange", "straightDown", 200, 200, 7, 30),
+    new Monsters(2, asteroid_three, this.position_random.x,  this.position_random.y , 100, "Asteroid", asteroid_speed, "orange", "straightDown", 200, 200, 7, loo_Drop),
    
     )
 
@@ -139,7 +139,7 @@ if(this.counter_or_asteroids == 20){
 }
 if(this.counter_or_asteroids == 30){
     monsters.push(
-    new Monsters(2, asteroid_four, this.position_random.x,  this.position_random.y , 100, "Asteroid", asteroid_speed, "orange", "straightDown", 200, 200, 7, 30),
+    new Monsters(2, asteroid_four, this.position_random.x,  this.position_random.y , 100, "Asteroid", asteroid_speed, "orange", "straightDown", 200, 200, 7, loo_Drop),
    
     )
 
@@ -153,7 +153,7 @@ if(this.counter_or_asteroids == 30){
 }
 if(this.counter_or_asteroids == 40){
     monsters.push(
-    new Monsters(2, asteroid_five, this.position_random.x,  this.position_random.y , 100, "Asteroid", asteroid_speed, "orange", "straightDown", 200, 200, 7, 30),
+    new Monsters(2, asteroid_five, this.position_random.x,  this.position_random.y , 100, "Asteroid", asteroid_speed, "orange", "straightDown", 200, 200, 7, loo_Drop),
    
     )
 
@@ -167,7 +167,7 @@ if(this.counter_or_asteroids == 40){
 }
 if(this.counter_or_asteroids == 50){
     monsters.push(
-    new Monsters(2, asteroid_six, this.position_random.x,  this.position_random.y , 100, "Asteroid", asteroid_speed, "orange", "straightDown", 200, 200, 7, 30),
+    new Monsters(2, asteroid_six, this.position_random.x,  this.position_random.y , 100, "Asteroid", asteroid_speed, "orange", "straightDown", 200, 200, 7, loo_Drop),
    
     )
 
@@ -181,7 +181,7 @@ if(this.counter_or_asteroids == 50){
 }
 if(this.counter_or_asteroids == 60){
     monsters.push(
-    new Monsters(2, asteroid_seven, this.position_random.x,  this.position_random.y , 100, "Asteroid", asteroid_speed, "orange", "straightDown", 200, 200, 7, 30),
+    new Monsters(2, asteroid_seven, this.position_random.x,  this.position_random.y , 100, "Asteroid", asteroid_speed, "orange", "straightDown", 200, 200, 7, loo_Drop),
    
     )
 
@@ -195,7 +195,7 @@ if(this.counter_or_asteroids == 60){
 }
 if(this.counter_or_asteroids == 70){
     monsters.push(
-    new Monsters(2, asteroid_eight, this.position_random.x,  this.position_random.y , 100, "Asteroid", asteroid_speed, "orange", "straightDown", 200, 200, 7, 30),
+    new Monsters(2, asteroid_eight, this.position_random.x,  this.position_random.y , 100, "Asteroid", asteroid_speed, "orange", "straightDown", 200, 200, 7, loo_Drop),
    
     )
 
@@ -209,7 +209,7 @@ if(this.counter_or_asteroids == 70){
 }
 if(this.counter_or_asteroids == 80){
     monsters.push(
-    new Monsters(2, asteroid_nine, this.position_random.x,  this.position_random.y , 100, "Asteroid", asteroid_speed, "orange", "straightDown", 200, 200, 7, 30),
+    new Monsters(2, asteroid_nine, this.position_random.x,  this.position_random.y , 100, "Asteroid", asteroid_speed, "orange", "straightDown", 200, 200, 7, loo_Drop),
    
     )
 
@@ -223,7 +223,7 @@ if(this.counter_or_asteroids == 80){
 }
 if(this.counter_or_asteroids == 90){
     monsters.push(
-    new Monsters(2, asteroid_ten, this.position_random.x,  this.position_random.y , 100, "Asteroid", asteroid_speed, "orange", "straightDown", 200, 200, 7, 30),
+    new Monsters(2, asteroid_ten, this.position_random.x,  this.position_random.y , 100, "Asteroid", asteroid_speed, "orange", "straightDown", 200, 200, 7, loo_Drop),
    
     )
 
@@ -237,7 +237,7 @@ if(this.counter_or_asteroids == 90){
 }
 if(this.counter_or_asteroids == 100){
     monsters.push(
-    new Monsters(2, asteroid_eleven, this.position_random.x,  this.position_random.y , 100, "Asteroid", asteroid_speed, "orange", "straightDown", 200, 200, 7, 30),
+    new Monsters(2, asteroid_eleven, this.position_random.x,  this.position_random.y , 100, "Asteroid", asteroid_speed, "orange", "straightDown", 200, 200, 7, loo_Drop),
    
     )
 
@@ -251,7 +251,7 @@ if(this.counter_or_asteroids == 100){
 }
 if(this.counter_or_asteroids == 110){
     monsters.push(
-    new Monsters(2, asteroid_one, this.position_random.x,  this.position_random.y , 100, "Asteroid", asteroid_speed, "orange", "straightDown", 200, 200, 7, 30),
+    new Monsters(2, asteroid_one, this.position_random.x,  this.position_random.y , 100, "Asteroid", asteroid_speed, "orange", "straightDown", 200, 200, 7, loo_Drop),
    
     )
 

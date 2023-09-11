@@ -1,13 +1,6 @@
 
 
-//Shield Sprites
-const shields_icon ={
-    blue_shield : "assets/shields/blueshieldicon.png",
-}
-const shield_spritesSheet = {
- blue_shield :   "assets/shields/blueshield.png",
- red_shield :   "assets/shields/redshield.png",
-}
+
 
 const taken_health = [ 
     'assets/capture_effects/capture_health/Capture050000.png',

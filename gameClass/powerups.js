@@ -10,8 +10,8 @@ constructor(posx, posy, type, points_adding, width, height){
         m_sprite : NaN
     }
     this.velocity = {
-        y : 3,
-        x : 3
+        y : 0,
+        x : 0
     }
     this.collision ={
         collision_posX : NaN,
@@ -304,6 +304,10 @@ healShowAnimation(damage,pos_x, pos_y, color, if_true, sign){
             
             }
 
+ 
+
+
+
             laserGunBeacon(player, effect_taken){
                 if(this.m_type == "energyShot"){
                     var gundefault = 3;
@@ -451,9 +455,6 @@ healShowAnimation(damage,pos_x, pos_y, color, if_true, sign){
                         player.setGunType(gunTwo);
                         
                     }
-
-
-
                     this.clearItems();
                 }
             
@@ -469,10 +470,70 @@ healShowAnimation(damage,pos_x, pos_y, color, if_true, sign){
             }
         }
 
+//Shield
+
+blueShield(player){
+    if(this.m_type == "blueShield"){
+        var gundefault = 3;
+        var gunTwo = 4;
+    if(!this.clearItem){
+        // ctx.fillStyle = "pink";
+        // ctx.fillRect(this.position.x, this.position.y += this.velocity.y , this.width , this.height)
+   const health_image = new Image();
+   health_image.src = shield_spritesSheet.blue_shield.icon;
+        ctx.drawImage(health_image,this.position.x, this.position.y += this.velocity.y, this.width, this.height);
+        }
+
+    if(this.collision.collision_with_player){
+        player.clearShield();
+        player.pushShield(1)
+         
+        //console.log("health Taken <EFFECT HERE>");
+        this.collision.collision_posX = this.position.x;
+        this.collision.collision_posY = this.position.y;
+        this.clearItems();
+    }
+
+}
+
+}
+
+redShield(player){
+    if(this.m_type == "redShield"){
+        var gundefault = 3;
+        var gunTwo = 4;
+    if(!this.clearItem){
+        // ctx.fillStyle = "pink";
+        // ctx.fillRect(this.position.x, this.position.y += this.velocity.y , this.width , this.height)
+   const health_image = new Image();
+   health_image.src = shield_spritesSheet.red_shield.icon;
+
+        ctx.drawImage(health_image,this.position.x, this.position.y += this.velocity.y, this.width, this.height);
+        }
+
+    if(this.collision.collision_with_player){
+        player.clearShield();
+         player.pushShield(2)
+        //console.log("health Taken <EFFECT HERE>");
+        this.collision.collision_posX = this.position.x;
+        this.collision.collision_posY = this.position.y;
+        this.clearItems();
+    }
+
+}
+
+}
+
+
+
+
 updatePowerUps(player, effectTaken){
     this.health(player, effectTaken);
     this.energy(player, effectTaken);
     this.money(player, effectTaken);
+    this.blueShield(player);
+    this.redShield(player)
+
     this.machineGunBeacon(player, effectTaken);
     this.laserGunBeacon(player, effectTaken);
     this.plasmaGunBeacon(player, effectTaken);
