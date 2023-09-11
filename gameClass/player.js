@@ -58,6 +58,7 @@ class Player {
     this.playerDead = false;
     this.showdeathexplosion;
     this.interval = false;
+    this.gun_carry = 0;
 
 //shields
 this.shields_class = [];
@@ -427,6 +428,45 @@ playerStatus(){
 
 var bar_width = 700;
 var bar_height = 25
+
+//Showing current Weapon
+
+const image_weapon = new Image();
+    ctx_ui_status.fillStyle = "white";
+    ctx_ui_status.font = "40px Anton";
+    image_weapon.src = UI.inventory_sprite_off;
+    ctx_ui_status.drawImage(image_weapon,  ((c.width / 2) / 2) + 100 , 0, 200, 200)
+    image_weapon.src = weapon_icon[2];
+    ctx_ui_status.drawImage(image_weapon,  ((c.width / 2) / 2) + 100 , 0, 200, 200)
+
+
+
+    ctx_ui_status.strokeStyle = "black"
+    ctx_ui_status.fillText("Gun", ((c.width / 2) / 2) + 100, 50);
+    ctx_ui_status.strokeText("Gun", ((c.width / 2) / 2) + 100, 50);
+    //gun level
+    ctx_ui_status.fillText("Level - 9", ((c.width / 2) / 2) + 100, 190);
+    ctx_ui_status.strokeText("Level - 9", ((c.width / 2) / 2) + 100, 190);
+
+//Showing current shield
+    const image_shield= new Image();
+    ctx_ui_status.fillStyle = "white";
+    ctx_ui_status.font = "40px Anton";
+    image_shield.src = UI.inventory_sprite_off;
+    ctx_ui_status.drawImage(image_shield,  ((c.width / 2) / 2) + 350 , 0, 200, 200)
+    image_shield.src = shield_spritesSheet.red_shield.icon;
+    ctx_ui_status.drawImage(image_shield,  ((c.width / 2) / 2) + 350 , 0, 200, 200)
+   
+
+
+    ctx_ui_status.strokeStyle = "black"
+    ctx_ui_status.fillText("Shield", ((c.width / 2) / 2) + 350, 50);
+    ctx_ui_status.strokeText("Shield", ((c.width / 2) / 2) + 350, 50);
+    //gun level
+    ctx_ui_status.fillText("Expire: 9 - 5", ((c.width / 2) / 2) + 350, 190);
+    ctx_ui_status.strokeText("Expire: 9 - 5 ", ((c.width / 2) / 2) + 350, 190);
+
+
 
   //showin gplayer money
     const image_money = new Image();

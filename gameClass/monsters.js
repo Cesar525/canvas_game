@@ -319,7 +319,7 @@ if(type == 1){
 }
 
 shottingiinterval(shotting_interval){
-    if(true){
+    if(this.body.m_dead == false){
     this.monster_shot_interval++
 
     if(this.monster_shot_interval == 1){

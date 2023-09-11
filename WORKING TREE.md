@@ -10,6 +10,14 @@ sprites Designer
 
 READ!!!  -------------
 Working on - 
+setting up the guns on the status for player know what gun he has. and what shield he has.
+its set up its just need the back-end job.
+
+
+
+
+
+#################  work to be done  ##################
 
 2) develop the power bomb
         a) powerStar that monsters will drop that will increase the power bomb bar.
@@ -17,11 +25,7 @@ Working on -
         c) when power bomb its been dropped the effect should be a a charging effect on the spaceship and then throw the power bomb.
         d) powerbomb should last 2 second taking HP from who ever it makes contact with it.
         e) powerbomb look - shiny star that once it collide with an object it explode big hurting others around for 2 seconds. if it doesnt hit anything then its lost.
-
-
-#################  work to be done  ##################
-
-4) developing Inventory section.
+4) CANCEL THE INVENTORY SYSTEM DO NOT MAKE AN INVENTORY SYSTEM
 5) develop 10 monsters to kill.
 6) setup a HUGE asteroid in Flame comming side ways on the map to make it more Epic
 7) show on status what level of Weapon he has and what shield he has.

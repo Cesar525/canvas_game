@@ -11,7 +11,7 @@ var gameFrame = 0;
 
 //Gam Canvas size
 c.width = 3000
-c.height = 2000
+c.height = 2500
 
 //playerStatus Bar
 c_ui_status.width = c.width;
@@ -41,7 +41,7 @@ const animation_TESTING = new Animation();
 //players
 //CREATING A PLAYER Player(name, level, thruster_selection, get_health, energy, m_damage,  gunType, posx, posy, gun_speed)
 const players = [
-  new Player("PLAYER ONE", 1230,  8, 2000, 4000, 500, 10, 600, 900, 30),
+  new Player("PLAYER ONE", 1230,  8, 2000, 4000, 500, 20, 600, 900, 30),
   //  new Player("PLAYER ONE", 1230,  6, 100, 400, 100, 10, 800, 1000, 50),
 
 ]
@@ -226,16 +226,16 @@ players[p].playerView();
     }
 
  
-//   asteroid_fire_x -= 3;
-//   asteroid_fire_y += 25;
+  asteroid_fire_x -= 3;
+  asteroid_fire_y += 25;
   
   
  
-//   ctx.rotate((45 * Math.PI) / 180);
-//  animation_TESTING.spritePage("assets/firesprites/PNG/1.png", asteroid_fire_x , asteroid_fire_y, 2048, 2048, 8, 4, 256, 512, 1, true, 1000, 1900)
-//  ctx.setTransform(1, 0, 0, 1, 0, 0); 
-//  animation_TESTING.decreasePos(1)
-  // animation_TESTING.explosionEffect(3, 500 + 100, 500 + 100, true, 4)
+  ctx.rotate((45 * Math.PI) / 180);
+ animation_TESTING.spritePage("assets/firesprites/PNG/1.png", asteroid_fire_x , asteroid_fire_y, 2048, 2048, 8, 4, 256, 512, 1, true, 1000, 1900)
+ ctx.setTransform(1, 0, 0, 1, 0, 0); 
+ animation_TESTING.decreasePos(1)
+  animation_TESTING.explosionEffect(3, 500 + 100, 500 + 100, true, 4)
 
 
 } 

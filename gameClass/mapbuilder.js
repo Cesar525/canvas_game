@@ -86,14 +86,14 @@ this.map_one[15].asteroids(3);
 this.map_one[3].drawStars(10, 2); // background image
 
 //pushing monsters in to map one.
-if(map_seconds >= 10){
+if(map_seconds >= 1){
 this.metioriteStorm();
 this.map_one[19].bigAsteroidsOnFire()
 this.map_one[20].bigAsteroidsOnFire()
 this.map_one[21].bigAsteroidsOnFire()
+this.resetTimer++;
 }
 
-this.resetTimer++;
 if(this.resetTimer == 390){
     
    this.map_one[20].resetFireAsteroid(); 

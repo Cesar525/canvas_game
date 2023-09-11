@@ -1,6 +1,17 @@
 
+const UI = {
+    invenotry_sprite_on : "assets/inventory/mouseonsquare.png",
+    inventory_sprite_off : "assets/inventory/mouseoffsquare.png"
+}
 
 
+const weapon_icon ={
+    1 : 'assets/beacon/machineGunBeacon.png',
+    2 : 'assets/beacon/energyGunBeacon.png',
+    3 : 'assets/beacon/plasmaBeacon.png',
+    4 : 'assets/beacon/lavaGunBeacon.png',
+    5 : 'assets/beacon/greenBeacon.png',
+}
 
 const taken_health = [ 
     'assets/capture_effects/capture_health/Capture050000.png',
