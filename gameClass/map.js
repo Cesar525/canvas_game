@@ -135,7 +135,7 @@ this.position.x -= 3;
 this.position.y += 20;
 
   ctx.rotate((45 * Math.PI) / 180);
-  this.spritePage("assets/firesprites/PNG/1.png", this.position.x , this.position.y, 2048, 2048, 8, 4, 256, 512, 1, true, 1000, 1900)
+  this.spritePage("assets/firesprites/PNG/1ast.png", this.position.x , this.position.y, 2048, 2048, 8, 4, 256, 512, 1, true, 1000, 1900)
   ctx.setTransform(1, 0, 0, 1, 0, 0); 
   this.decreasePos(1)
    // animation_TESTING.explosionEffect(3, 500 + 100, 500 + 100, true, 4)
