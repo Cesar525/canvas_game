@@ -3,6 +3,11 @@ https://themeforest.net/
 user:cesarsiri@live.com
 pass:525002cc
 
+UPDATED:
+electron has been added to the game.
+
+
+
 sprites Designer
  ashishlko11
  games_unlimited
