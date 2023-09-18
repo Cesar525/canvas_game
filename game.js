@@ -14,8 +14,8 @@ var gameFrame = 0;
 
 // var heightRatio = 1.5;
 // c.height = canvas.width * heightRatio;
-c.width = 2000;
-c.height = 2000;
+c.width = 3000;
+c.height = 3000;
 
 //playerStatus Bar
 c_ui_status.width = c.width;
