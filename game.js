@@ -10,8 +10,12 @@ var ctx_ui_status = c_ui_status.getContext("2d");
 var gameFrame = 0;
 
 //Gam Canvas size
-c.width = 3000
-c.height = 2500
+
+
+// var heightRatio = 1.5;
+// c.height = canvas.width * heightRatio;
+c.width = 2000;
+c.height = 2000;
 
 //playerStatus Bar
 c_ui_status.width = c.width;

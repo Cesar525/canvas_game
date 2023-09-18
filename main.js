@@ -1,14 +1,16 @@
-const { app, BrowserWindow } = require("electron");
-const url = require("url");
+const { app, BrowserWindow } = require('electron');
 
-function newApp() {
-  win = new BrowserWindow();
-  win.loadURL(
-    url.format({
-      pathname: "index.html",
-      slashes: true
-    })
-  );
+function createWindow() {
+  const win = new BrowserWindow({
+    width: 800,
+    height: 600,
+    webPreferences: {
+      nodeIntegration: false
+    },
+    resizable: true
+  });
+
+  win.loadFile('index.html');
 }
 
-app.on("ready", newApp);
+app.on('ready', createWindow);
