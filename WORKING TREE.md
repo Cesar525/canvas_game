@@ -19,6 +19,9 @@ setting up the guns on the status for player know what gun he has. and what shie
 its set up its just need the back-end job.
 
 
+BUGS
+When monster die take a momment to delete its Objects then Delete the Monster to leave no memory leaks.
+
 
 
 
