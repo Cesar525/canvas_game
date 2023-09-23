@@ -104,7 +104,6 @@ this.damageShowAnimation(this.timerSettings.seconds,player.position.x, player.po
 
 if(this.getshieldtime() == this.timerSettings.seconds){
     this.doDeleteObjecT();
-    console.log(this.getDeleteObject());
 }  
 }
 
