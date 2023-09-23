@@ -94,7 +94,6 @@ ctx.globalAlpha = 1;
 this.frameX = positionX;
 this.frameY = positionY;
 
-//console.log( "Showing" + this.frameX);
  this.timer(); 
 
 this.gameFrame++;
