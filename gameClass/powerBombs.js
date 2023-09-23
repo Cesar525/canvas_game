@@ -10,11 +10,10 @@ this.velocity = {
 }
 this.m_Damage = 20;
 this.m_type = type;
+this.destroyObject = false;
     }
 
 powerBean(effect){
-
-
 
 }
 
