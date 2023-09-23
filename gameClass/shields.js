@@ -34,18 +34,12 @@ this.timerSettings = {
     hours : 0
     }
 this.shield_time = 0;
-  
 this.deleteObject = false;
-
 }
-
-
 
 timer(){
    
-
     this.timerSettings.timerTicking ++;
-    
     //adding seconds
     if(this.timerSettings.timerTicking == 100){
         this.timerSettings.seconds += 1;
@@ -61,13 +55,7 @@ timer(){
         this.timerSettings.hours += 1
         this.timerSettings.minutes = 0;
     }
-
     }
-
-// shield animation
-frame(){
-
-}
 
 
 
@@ -123,15 +111,12 @@ if(this.getshieldtime() == this.timerSettings.seconds){
     this.doDeleteObjecT();
     console.log(this.getDeleteObject());
 }  
-
 }
 
 damageShowAnimation(damage,pos_x, pos_y, color, if_true){
     
-    if(if_true){this.setShowAnimation(true)}
-    
+    if(if_true){this.setShowAnimation(true)} 
     this.showDamageAnimation.gameFrameAnimationTime++;
-
     if(this.showdamage__ == true){  
         ctx.fillStyle = color;
         ctx.strokeStyle = "black"
@@ -139,27 +124,15 @@ damageShowAnimation(damage,pos_x, pos_y, color, if_true){
         ctx.fillText(this.getshieldtime() + " - " + damage + " ! ", pos_x + 100, pos_y + 300);
         ctx.strokeText(this.getshieldtime() + " - " + damage + " ! ", pos_x + 100, pos_y + 300);
     } 
-
 }
 
 doDeleteObjecT(){ this.deleteObject = true;};
 getDeleteObject(){return this.deleteObject;};
 setShowAnimation(set){this.showdamage__ = set;};
-
-updateshield(player){
-    
-
-
-}
-
-
+updateshield(player){}
 };
 
-
-
-
 //Shield Sprites
-
 const shield_spritesSheet = {
  blue_shield : {
     sprite :   "assets/shields/blueshield.png",
