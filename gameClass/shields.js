@@ -83,9 +83,6 @@ if(this.getShieldType() == 2){
 
 ctx.globalAlpha = 0.5;
 
-//console.log("bottom" + this.sprite_bottom);
-//console.log( "right" + this.sprite_right);
-
 let positionX = Math.floor(this.gameFrame/this.staggerFrame) % 5;
 let positionY = Math.floor(this.gameFrame/(this.staggerFrame * 5)) % this.counting_sprite_height;
 
@@ -104,9 +101,8 @@ this.gameFrame++;
 
 //showing countdown
 this.damageShowAnimation(this.timerSettings.seconds,player.position.x, player.position.y, "white", true);
-
-
 }
+
 if(this.getshieldtime() == this.timerSettings.seconds){
     this.doDeleteObjecT();
     console.log(this.getDeleteObject());
