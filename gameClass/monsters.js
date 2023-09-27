@@ -1,5 +1,4 @@
 
-const powerups_drop = [];
 class Monsters{
 constructor( id, sprite,  pos_x, pos_y, health, name, speed, color, movements, s_width, s_height, damage, drop_loot, boss_Mode, monster_gun){
 
