@@ -33,7 +33,7 @@ var map_speed = 5;
 var mode_set = 2;
 
 //mapOne
-var map_selected = 1
+var map_selected = 0
 const map_selection = new Mapbuilder();
 
 
@@ -45,19 +45,16 @@ const animation_TESTING = new Animation();
 //players
 //CREATING A PLAYER Player(name, level, thruster_selection, get_health, energy, m_damage,  gunType, posx, posy, gun_speed)
 const players = [
-  new Player("PLAYER ONE", 1230,  8, 2000, 400000, 500, 1, 600, 900, 30),
-   
+  new Player("PLAYER ONE", 1230,  8, 2000, 400000, 5000, 20, 600, 900, 30),
 ]
+
+
 //Monsters
 //CREATING A MONSTERS Monstrs( id, sprite,  pos_x, pos_y, health, name, speed, color, movements, s_width, s_height, damage)
-
-
 const monsters = [
  new Monsters(2, bukara.normal_state,  -1000, -1000 , 100000, "Bukara", 7, "orange", "sidebyside", 800, 800, 30, NaN, true,1),
   //  new Monsters(2, asteroid_two,  200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7, 10),
   //new Monsters(2, asteroid_eleven,  100, 100 , 1000, "Bukara", 7, "orange", "none", 300, 300, 30, NaN, false),
-  
-
 ];
   
 //onMonster animation
@@ -71,25 +68,8 @@ explosion_onDeath_animation.push(new Animation());
 //----------------------------------\
 
   //POWER UPS DROP---------
-const powerUp = [
-  new PowerUps(400, 100, "health", 100),
- new PowerUps(700, 100, "money", 100),
- new PowerUps(900, 100, "energy", 100),
- new PowerUps(1000, 100, "energyLava", 100, 100, 100),
- new PowerUps(1500, 100, "energyGreen", 100, 100, 100),
- new PowerUps(1500, 500, "energyGreen", 100, 100, 100),
- new PowerUps(1500, 400, "blueShield", 100, 100, 100),
- new PowerUps(1500, 800, "redShield", 100, 100, 100),
-];
-
+const powerUp = [];
 const powerup_capture_effect = [];
-for(var f = 0; f < powerUp.length; f++){
-  powerup_capture_effect.push(new Animation());
-}
-//---------------------------------
-
-const particles = [new Particles(400, 400, "rocks")];
-
 //---
 const pushing_random_explsions = [];
 const explosions_animations_pushing =[]
@@ -99,7 +79,7 @@ const explosions_animations_pushing =[]
 //   explosions_animations_pushing.push(new Animation());
 // }
 
-const shot = new shots(100, 100, 11, 0, 8, 6, 40, 100, 100, 1, -50 , -100);
+
 //onPlayer Animation sparks Global
 const mousePad = new Mouse();
 const sparks_low = [];
@@ -145,9 +125,6 @@ if(true){
 
 
   map_selection.updateMap(map_selected)
-
-
-
 
 //colliton Monsters wiht Players && Projectiles
 for(var m = 0; m < monsters.length; m++){
@@ -214,13 +191,10 @@ pushing_random_explsions.splice(counting_explosions, 1);
 
 }
 
-
-
-//LIFE BARS AND STATUS
+//LIFE BARS AND STATUS ON TOP OF MONSTERS AND PLAYER
 for(var m = 0; m < monsters.length; m++){
 monsters[m].monsterView();
 }
-
 for(var p = 0; p < players.length; p++){
 players[p].playerView();
 }

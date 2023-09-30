@@ -1,11 +1,11 @@
 body{
-    background-color:black;
+  background-color:black;
 }
 
 #canvasGame {
-    width: 2000px;
-    height: 2000px;
-  }
-  #canvasUILifeBar {
-    width: 2000px;
-  }
+  width: 800px;
+  height: 800px;
+}
+#canvasUILifeBar {
+  width: 800px;
+}

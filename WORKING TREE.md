@@ -9,48 +9,51 @@ electron has been added to the game.
 
 
 sprites Designer
- ashishlko11
+ ashishlko11 
  games_unlimited
+
 
 
 READ!!!  -------------
 Working on - 
-setting up the guns on the status for player know what gun he has. and what shield he has.
-its set up its just need the back-end job.
+build a monster system that is easier to make them.
+Example
+const Monsters= {
+        Bukara = {
+                name : "Bukara",
+                Gun : "Space pistol",
+                sprite: "path/path.png",
+                Health : 10000,
+                Boss : true,
+                Speed : 10,
+                Damage : 300,
+                addGun  = {
+                        addGun : true,
+                        Show_shottingFrom : false  // thi sis to show where the shot is gonna come from.
+                        shot_one  = {
+                                posx : 0,
+                                posy : 0
+                        }
+                        shot_one  = {
+                                posx : 0,
+                                posy : 0
+                        }
+                        shot_one  = {
+                                posx : 0,
+                                posy : 0
+                        }
+                speed_Change = {
+                        speedChange : true,
+                        Speed : 30,
+                        onHealth : 3000,
+                        ShottingSpeedChangeInterval  : 
+                }                   
+        }
+}
+}
+ 
 
 
-BUGS
-When monster die take a momment to delete its Objects then Delete the Monster to leave no memory leaks.
-
-
-
-
-#################  work to be done  ##################
-
-2) develop the power bomb
-        a) powerStar that monsters will drop that will increase the power bomb bar.
-        b) set the power bomb to drop.
-        c) when power bomb its been dropped the effect should be a a charging effect on the spaceship and then throw the power bomb.
-        d) powerbomb should last 2 second taking HP from who ever it makes contact with it.
-        e) powerbomb look - shiny star that once it collide with an object it explode big hurting others around for 2 seconds. if it doesnt hit anything then its lost.
-4) CANCEL THE INVENTORY SYSTEM DO NOT MAKE AN INVENTORY SYSTEM
-5) develop 10 monsters to kill.
-6) setup a HUGE asteroid in Flame comming side ways on the map to make it more Epic
-7) show on status what level of Weapon he has and what shield he has.
-8) the fire balls asteroid should also do damage.
-
---------------
-
-
-To do - inventory system UI
- set up mousePad - Done,
- setup Boxes onjects - DONE, 
- setup collitions - DONE
- setup effect after click when both collided - to do
- setup the items count number and image - to do
- setup use item on click
-
-2) monsters Drop the shields if players get a shield the shield will apear where the inventoy is and they have to press a key to use it.
 
 ATTENTION : The only item that wil be use right away when the player have contact with it would be the
 PowerBomb Energy. Once player touch that it will automaticly increase his powerBomb bar.

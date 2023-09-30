@@ -952,7 +952,8 @@ this.showPlayerHealth();
 this.showPlayerEnergy();
 this.energyUsage()
 this.playerInventoryProccess();
-this.playerShield()
+this.playerShield();
+
 // WOKRING ON
     for(var f = 0; f < powerUp.length; f++){      
         powerUp[f].updatePowerUps(this);
