@@ -21,15 +21,11 @@ c.height = 3000;
 c_ui_status.width = c.width;
 c_ui_status.height = 200;
 
-
-// c.width = window.innerWidth;
-// c.height = window.innerHeight;
 const gravity = 10;
 const fps = 256;
+
+//gameset
 var map_speed = 5;
-//perfect Window size
-// 2000 -> width
-// 1500 -> height
 var mode_set = 2;
 
 //mapOne
