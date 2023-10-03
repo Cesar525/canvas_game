@@ -23,18 +23,20 @@ this.size_width = 200;
 
 
 this.showDamageAnimation = {
-    gameFrameAnimationTime : 0,
-    damage_recorded : 0
+gameFrameAnimationTime : 0,
+damage_recorded : 0
 }
 this.showdamage__ ;
+
 this.timerSettings = {
-    timerTicking : 0,
-    seconds : 0,
-    minutes : 0,
-    hours : 0
-    }
+timerTicking : 0,
+seconds : 0,
+minutes : 0,
+hours : 0
+}
 this.shield_time = 0;
 this.deleteObject = false;
+
 }
 
 timer(){
@@ -135,7 +137,7 @@ const shield_spritesSheet = {
  },
  red_shield  : {
     sprite : "assets/shields/redshield.png",
-    time : 5,
+    time : 10,
     icon : "assets/shields/icon/redshield.png",
  }
 }

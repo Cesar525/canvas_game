@@ -21,7 +21,6 @@ c.height = 3000;
 c_ui_status.width = c.width;
 c_ui_status.height = 200;
 
-
 // c.width = window.innerWidth;
 // c.height = window.innerHeight;
 const gravity = 10;
@@ -33,10 +32,16 @@ var map_speed = 5;
 var mode_set = 2;
 
 //mapOne
-var map_selected = 0
+var map_selected = 1
 const map_selection = new Mapbuilder();
 
-
+//Game Effects
+const effects_global = [ 
+  new Effects("HEALTH_TAKEN_EFFECT", 0, 0, 0, 0),
+  new Effects("ENERGY_TAKEN_EFFECT", 200, 0, 0, 0),
+  new Effects("MONEY_TAKEN_EFFECT", 400, 0, 0, 0),
+  new Effects("EXPLOSION_ONE_EFFECT", 600, -100, 400, 400),
+];
 
 //testing
 const animation_TESTING = new Animation();
@@ -46,13 +51,14 @@ const animation_TESTING = new Animation();
 //CREATING A PLAYER Player(name, level, thruster_selection, get_health, energy, m_damage,  gunType, posx, posy, gun_speed)
 const players = [
   new Player("PLAYER ONE", 1230,  8, 2000, 400000, 5000, 20, 600, 900, 30),
+  new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 900, 1000, 30),
 ]
 
 
 //Monsters
 //CREATING A MONSTERS Monstrs( id, sprite,  pos_x, pos_y, health, name, speed, color, movements, s_width, s_height, damage)
 const monsters = [
- new Monsters(2, bukara.normal_state,  -1000, -1000 , 100000, "Bukara", 7, "orange", "sidebyside", 800, 800, 30, NaN, true,1),
+ //new Monsters(2, bukara.normal_state,  -1000, -1000 , 100000, "Bukara", 7, "orange", "sidebyside", 800, 800, 30, NaN, true,1),
   //  new Monsters(2, asteroid_two,  200, 200 , 100, "Asteroid", 2, "orange", "straightDown", 200, 200, 7, 10),
   //new Monsters(2, asteroid_eleven,  100, 100 , 1000, "Bukara", 7, "orange", "none", 300, 300, 30, NaN, false),
 ];
@@ -68,8 +74,8 @@ explosion_onDeath_animation.push(new Animation());
 //----------------------------------\
 
   //POWER UPS DROP---------
-const powerUp = [];
-const powerup_capture_effect = [];
+const powerUp = [ new PowerUps( 400, 400,"health", 100, -200, -200)];
+const powerup_capture_effect = [new Animation()];
 //---
 const pushing_random_explsions = [];
 const explosions_animations_pushing =[]
@@ -124,85 +130,113 @@ powerUp.filter(function(){
 if(true){
 
 
-  map_selection.updateMap(map_selected)
+//   map_selection.updateMap(map_selected)
 
-//colliton Monsters wiht Players && Projectiles
-for(var m = 0; m < monsters.length; m++){
-  monsters[m].updateMonster(
-    sprite_animation[m]
-    );
-    if(monsters[m].getDeleteObject() == true){
-monsters.splice(m, 1);
-sprite_animation.splice(m, 1);
-explosion_onDeath_animation.splice(m, 1);
-    }
+// //colliton Monsters wiht Players && Projectiles
+// for(var m = 0; m < monsters.length; m++){
+//   monsters[m].updateMonster(
+//     sprite_animation[m]
+//     );
+//     if(monsters[m].getDeleteObject() == true){
+// monsters.splice(m, 1);
+// sprite_animation.splice(m, 1);
+// explosion_onDeath_animation.splice(m, 1);
+//     }
     
-    for(var pjct = 0; pjct  < players.length ; pjct ++){
-      players[pjct].playerCollitionMonsters(monsters[m])
-      players[pjct].shottingCollition(monsters[m]);
-      if(monsters.length != 0){
-      monsters[m].shottingCollition(players[pjct]);
-      }
-    }
-  }
+//     for(var pjct = 0; pjct  < players.length ; pjct ++){
+//       players[pjct].playerCollitionMonsters(monsters[m])
+//       players[pjct].shottingCollition(monsters[m]);
+//       if(monsters.length != 0){
+//       monsters[m].shottingCollition(players[pjct]);
+//       }
+//     }
+//   }
   
   
-  //powerUps updates and collision
-  for(var p = 0; p < players.length; p++){
-    for(var f = 0; f < powerUp.length; f++){      
-      powerUp[f].PowerUpcollisionWithPlayer(players[p]);
-      if(powerUp[f].destroyPush){
-        powerUp.splice(f, 1);
-        powerup_capture_effect.splice(f, 1);
-      }
-    }
-    players[p].update(
-      sparks_low[p], 
-      sparks_high[p], 
-      thruster_animation[p], 
-      deathExplosionAnimation[p]
-      ); 
+  // //powerUps updates and collision
+  // for(var p = 0; p < players.length; p++){
+  //   for(var f = 0; f < powerUp.length; f++){      
+  //     powerUp[f].PowerUpcollisionWithPlayer(players[p]);
+  //     if(powerUp[f].destroyPush){
+  //       powerUp.splice(f, 1);
+  //       powerup_capture_effect.splice(f, 1);
+  //     }
+  //   }
+  //   players[p].update(
+  //     sparks_low[p], 
+  //     sparks_high[p], 
+  //     thruster_animation[p], 
+  //     deathExplosionAnimation[p]
+  //     ); 
 
       
-  }
+//   }
   
-  for(var m = 0; m < monsters.length; m++){
-  if(monsters[m].getBossMode()){
-    monsters[m].monsterBossDeathExplosion(explosion_onDeath_animation[m]);
-  }else{
-    monsters[m].monsterDeathExplosion(explosion_onDeath_animation[m]);
-  }
-      } 
+//   for(var m = 0; m < monsters.length; m++){
+//   if(monsters[m].getBossMode()){
+//     monsters[m].monsterBossDeathExplosion(explosion_onDeath_animation[m]);
+//   }else{
+//     monsters[m].monsterDeathExplosion(explosion_onDeath_animation[m]);
+//   }
+//       } 
 
-//showing shield example.s     
-//player_shield_effect_one[0].drawShield(players[0]);
+// //showing shield example.s     
+// //player_shield_effect_one[0].drawShield(players[0]);
 
 
-//Random explosions
-for(var counting_explosions = 0 ; counting_explosions < pushing_random_explsions.length; counting_explosions++)
-{
-pushing_random_explsions[counting_explosions].updateExplosions(explosions_animations_pushing[counting_explosions]);
+// //Random explosions
+// for(var counting_explosions = 0 ; counting_explosions < pushing_random_explsions.length; counting_explosions++)
+// {
+// pushing_random_explsions[counting_explosions].updateExplosions(explosions_animations_pushing[counting_explosions]);
 
-if(explosions_animations_pushing[counting_explosions].getAnimationStatus() == false){
-explosions_animations_pushing.splice(counting_explosions, 1);
-pushing_random_explsions.splice(counting_explosions, 1);
-  }
+// if(explosions_animations_pushing[counting_explosions].getAnimationStatus() == false){
+// explosions_animations_pushing.splice(counting_explosions, 1);
+// pushing_random_explsions.splice(counting_explosions, 1);
+//   }
+
+
+// }
+
+// //LIFE BARS AND STATUS ON TOP OF MONSTERS AND PLAYER
+// for(var m = 0; m < monsters.length; m++){
+// monsters[m].monsterView();
+// }
+// for(var p = 0; p < players.length; p++){
+// players[p].playerView();
+// }
+
+
+
+
+}
+// POWERUP GLOBAL
+// for(var f = 0; f < powerUp.length; f++){      
+//   powerUp[f].updatePowerUps();
+// }
+// for(var f = 0; f < powerUp.length; f++){      
+//   powerUp[f].powerUpTakenEffect(this, powerup_capture_effect[f])
+// }
+
+// EFFECTS
+if(effects_global.length > 0){
+for(var i = 0 ; i < effects_global.length; i ++){
+effects_global[i].updateEffects();
+if(effects_global[i].getDestroyObject()){
+  effects_global.splice(i, 1);
+}}
+
+
+
 
 
 }
 
-//LIFE BARS AND STATUS ON TOP OF MONSTERS AND PLAYER
-for(var m = 0; m < monsters.length; m++){
-monsters[m].monsterView();
-}
-for(var p = 0; p < players.length; p++){
-players[p].playerView();
-}
 
 
-    }
 
- 
+
+
+
 } 
 
 buffer();
