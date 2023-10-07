@@ -955,7 +955,14 @@ this.playerInventoryProccess();
 this.playerShield();
 
 // WOKRING ON
-  
+// POWERUP GLOBAL
+for(var f = 0; f < powerUp.length; f++){      
+  powerUp[f].updatePowerUps(this);
+}
+
+
+
+
       if(this.shields_class.length > 0){
 if(this.shields_class[0].getDeleteObject()){
     this.shields_class.splice(0, 1)

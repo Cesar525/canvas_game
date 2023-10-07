@@ -16,7 +16,6 @@ sprites Designer
 
 READ!!!  -------------
 Working on -
-Fixing Power Ups.
 
 IDEAS
 build a monster system that is easier to make them.

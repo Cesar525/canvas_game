@@ -129,6 +129,7 @@ health(player, effect_taken){
         this.powerUp_taken = true;
         player.body.health += this.m_points_adding;
         this.clearItems();
+        effects_global.push(new Effects("HEALTH_TAKEN_EFFECT", player.position.x - 115, player.position.y - 120, 0, 0, "+"+this.m_points_adding, "white"))
     }
 
 }
@@ -155,6 +156,8 @@ energy(player, effect_taken ){
             this.powerUp_taken = true;
             player.body.energy += this.m_points_adding;
             this.clearItems();    
+            effects_global.push(new Effects("ENERGY_TAKEN_EFFECT", player.position.x - 115, player.position.y - 120, 0, 0, "+"+this.m_points_adding, "blue"))
+
              }
         
       }
@@ -181,47 +184,12 @@ energy(player, effect_taken ){
                 this.powerUp_taken = true;
                 player.storage.money += this.m_points_adding;     
                 this.clearItems();
+                effects_global.push(new Effects("MONEY_TAKEN_EFFECT", player.position.x - 115, player.position.y - 120, 0, 0, "+"+this.m_points_adding, "green"))
+
           }
       
         }
         }
-
-powerUpTakenEffect(player, effects){
-
-    if(this.m_type == "health"){
-        if(this.powerUp_taken){
-            effects.spritePage("assets/capture_effects/capture_health/spritesheet.png", player.position.x - 115, player.position.y - 120 , 11264, 512, 22, 1, 512, 512, 2, true, -200, -200);
-            if(!effects.getAnimationStatus()){
-                this.setDestroyPowerUps(true);
-                this.powerUp_taken = false;
-            }
-            this.healShowAnimation(this.m_points_adding, player.getPlayerPosX() + 20, player.getPlayerPosY() + 100, "#8aff8a", this.powerUp_taken, "+");
-        }
-    }
-    if(this.m_type == "energy"){
-        if(this.powerUp_taken){
-            effects.spritePage("assets/capture_effects/capture_energy/spritesheet.png", player.position.x - 115, player.position.y - 120, 11264, 512, 22, 1, 512, 512, 2, true, -200, -200);
-            if(!effects.getAnimationStatus()){
-                this.setDestroyPowerUps(true)
-                this.powerUp_taken = false;
-                effects_global.push(new Effects("ENERGY_TAKEN_EFFECT", player.position.x - 115, player.position.y - 120, 0, 0));
-            }
-            }
-            this.healShowAnimation(this.m_points_adding, player.getPlayerPosX() + 20, player.getPlayerPosY() + 100, "#4484ff", this.powerUp_taken, "+");
-    }
-if(this.m_type == "money"){
-if(this.powerUp_taken){
-effects.spritePage("assets/capture_effects/capture_money/spritesheet2.png", player.position.x - 115, player.position.y - 120, 11264, 512, 22, 1, 512, 512, 2, true, -200, -200);
-if(!effects.getAnimationStatus()){
-    this.setDestroyPowerUps(true);
-    this.powerUp_taken = false;
-}
-
-}
-this.healShowAnimation(this.m_points_adding, player.getPlayerPosX() + 20, player.getPlayerPosY() + 100, "green", this.powerUp_taken, "$");
-}
-}
-
 
 clearItems(){
     this.position.x = 500;

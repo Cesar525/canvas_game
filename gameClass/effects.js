@@ -1,5 +1,5 @@
 class Effects extends Animation {
-constructor(effect_type, posx, posy, width, height){
+constructor(effect_type, posx, posy, width, height, damage, color){
 super();
 this.position = {
     x : posx,
@@ -11,6 +11,11 @@ this.size = {
 }
 this.effect_selected = effect_type;
 this.destroy_object = false;
+
+
+
+this.damage = damage;
+this.textColor = color;
 
 
 }
@@ -42,10 +47,20 @@ break;
 
 }
 
+
+healShowAnimation(){
+        
+                ctx.fillStyle = this.textColor;
+                ctx.strokeStyle = "black"
+                ctx.font = "90px anton";
+                ctx.fillText( this.damage, this.position.x + 100 , this.position.y + 200);
+                ctx.strokeText(this.damage, this.position.x + 100 , this.position.y + 200);                       
+  
+}
+
     updateEffects(){
-    
         this.effects();
-console.log("Hello This are the effects");
+        this.healShowAnimation();
     }
 
 }
