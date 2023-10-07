@@ -21,14 +21,14 @@ c.height = 3000;
 c_ui_status.width = c.width;
 c_ui_status.height = 200;
 
+
 // c.width = window.innerWidth;
 // c.height = window.innerHeight;
 const gravity = 10;
 const fps = 256;
+
+//gameset
 var map_speed = 5;
-//perfect Window size
-// 2000 -> width
-// 1500 -> height
 var mode_set = 2;
 
 //mapOne
@@ -40,7 +40,6 @@ const effects_global = [
   new Effects("HEALTH_TAKEN_EFFECT", 0, 0, 0, 0),
   new Effects("ENERGY_TAKEN_EFFECT", 200, 0, 0, 0),
   new Effects("MONEY_TAKEN_EFFECT", 400, 0, 0, 0),
-  new Effects("EXPLOSION_ONE_EFFECT", 600, -100, 400, 400),
 ];
 
 //testing
@@ -224,8 +223,6 @@ effects_global[i].updateEffects();
 if(effects_global[i].getDestroyObject()){
   effects_global.splice(i, 1);
 }}
-
-
 
 
 

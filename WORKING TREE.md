@@ -16,7 +16,7 @@ sprites Designer
 
 READ!!!  -------------
 Working on -
-setting all the effects in one array and calling!
+Fixing Power Ups.
 
 IDEAS
 build a monster system that is easier to make them.
