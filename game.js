@@ -25,7 +25,7 @@ c_ui_status.height = 200;
 // c.width = window.innerWidth;
 // c.height = window.innerHeight;
 const gravity = 10;
-const fps = 256;
+const fps = 200;
 
 //gameset
 var map_speed = 5;
@@ -46,7 +46,7 @@ const animation_TESTING = new Animation();
 //CREATING A PLAYER Player(name, level, thruster_selection, get_health, energy, m_damage,  gunType, posx, posy, gun_speed)
 const players = [
   new Player("PLAYER ONE", 1230,  8, 2000, 400000, 5000, 20, 600, 900, 30),
-  new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 900, 1000, 30),
+  new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 2000, 1000, 30),
 ]
 
 

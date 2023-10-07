@@ -141,16 +141,13 @@ energy(player, effect_taken ){
     if(this.m_type == "energy"){
       
     if(!this.clearItem){
-            // ctx.fillStyle = "blue";
-                // // ctx.fillRect(this.position.x, this.position.y += this.velocity.y , this.width , this.height);
-              // this.spriteProccessor(energy_powerup, 3, this.position.x, this.position.y += this.velocity.y, this.width, this.height)
+           
             const energy_Image  = new Image();
             energy_Image.src = 'assets/space_assets/10. Powerups/03 flash 02/0000.png';
             ctx.drawImage(energy_Image, this.position.x, this.position.y += this.velocity.y, this.width, this.height);
 
             }
              if(this.collision.collision_with_player){
-           // console.log("ENERGY Taken <EFFECT HERE taken_energy sprite>");
             this.collision.collision_posX = this.position.x;
             this.collision.collision_posY = this.position.y;
             this.powerUp_taken = true;
@@ -168,10 +165,6 @@ energy(player, effect_taken ){
         if(this.m_type == "money"){
             var money_points = 100;
         if(!this.clearItem){
-       
-                // ctx.fillStyle = "green";
-                //     ctx.fillRect(this.position.x, this.position.y += this.velocity.y, this.width , this.height) 
-                 //  this.spriteProccessor(money_powerup, 3, this.position.x, this.position.y += this.velocity.y, this.width, this.height)
                 const money_image = new Image();
                 money_image.src = 'assets/space_assets/10. Powerups/05 money 02/0000.png';
                 ctx.drawImage(money_image, this.position.x, this.position.y += this.velocity.y, this.width, this.height);
@@ -185,9 +178,7 @@ energy(player, effect_taken ){
                 player.storage.money += this.m_points_adding;     
                 this.clearItems();
                 effects_global.push(new Effects("MONEY_TAKEN_EFFECT", player.position.x - 115, player.position.y - 120, 0, 0, "+"+this.m_points_adding, "green"))
-
-          }
-      
+          }     
         }
         }
 
@@ -262,9 +253,6 @@ healShowAnimation(damage,pos_x, pos_y, color, if_true, sign){
                         player.setGunType(gunTwo);
                         console.log("gun set to 2");
                     }
-
-
-
                     this.clearItems();
                 }
             
@@ -281,8 +269,6 @@ healShowAnimation(damage,pos_x, pos_y, color, if_true, sign){
                     var gundefault = 3;
                     var gunTwo = 4;
                 if(!this.clearItem){
-                    // ctx.fillStyle = "pink";
-                    // ctx.fillRect(this.position.x, this.position.y += this.velocity.y , this.width , this.height)
                const health_image = new Image();
                health_image.src = 'assets/beacon/energyGunBeacon.png',
             
@@ -305,9 +291,6 @@ healShowAnimation(damage,pos_x, pos_y, color, if_true, sign){
                         player.setGunType(gunTwo);
                         
                     }
-
-
-
                     this.clearItems();
                 }
             
@@ -344,9 +327,6 @@ healShowAnimation(damage,pos_x, pos_y, color, if_true, sign){
                         player.setGunType(gunTwo);
                         
                     }
-
-
-
                     this.clearItems();
                 }
             
@@ -383,9 +363,6 @@ healShowAnimation(damage,pos_x, pos_y, color, if_true, sign){
                         player.setGunType(gunTwo);
                         
                     }
-
-
-
                     this.clearItems();
                 }
             
