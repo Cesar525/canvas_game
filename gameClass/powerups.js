@@ -10,8 +10,8 @@ constructor(posx, posy, type, points_adding, width, height){
         m_sprite : NaN
     }
     this.velocity = {
-        y : 5,
-        x : 5
+        y : 1,
+        x : 1
     }
     this.collision ={
         collision_posX : NaN,
@@ -129,7 +129,7 @@ health(player, effect_taken){
         this.powerUp_taken = true;
         player.body.health += this.m_points_adding;
         this.clearItems();
-        effects_global.push(new Effects("HEALTH_TAKEN_EFFECT", player.position.x - 115, player.position.y - 120, 0, 0, "+"+this.m_points_adding, "white"))
+        effects_global.push(new Effects("HEALTH_TAKEN_EFFECT", player.position.x - 115, player.position.y - 120, 0, 0, "+"+this.m_points_adding, "#ff6c6c"))
     }
 
 }
@@ -153,7 +153,7 @@ energy(player, effect_taken ){
             this.powerUp_taken = true;
             player.body.energy += this.m_points_adding;
             this.clearItems();    
-            effects_global.push(new Effects("ENERGY_TAKEN_EFFECT", player.position.x - 115, player.position.y - 120, 0, 0, "+"+this.m_points_adding, "blue"))
+            effects_global.push(new Effects("ENERGY_TAKEN_EFFECT", player.position.x - 115, player.position.y - 120, 0, 0, "+"+this.m_points_adding, "#23e0ff"))
 
              }
         
@@ -177,7 +177,7 @@ energy(player, effect_taken ){
                 this.powerUp_taken = true;
                 player.storage.money += this.m_points_adding;     
                 this.clearItems();
-                effects_global.push(new Effects("MONEY_TAKEN_EFFECT", player.position.x - 115, player.position.y - 120, 0, 0, "+"+this.m_points_adding, "green"))
+                effects_global.push(new Effects("MONEY_TAKEN_EFFECT", player.position.x - 115, player.position.y - 120, 0, 0, "+$"+this.m_points_adding, "#7cff7e"))
           }     
         }
         }

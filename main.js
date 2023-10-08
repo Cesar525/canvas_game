@@ -9,8 +9,15 @@ function createWindow() {
     },
     resizable: true
   });
+setTimeout(() => {
+  console.log(win.getSize())
+  
+},  5000);
+
+  
 
   win.loadFile('index.html');
 }
+
 
 app.on('ready', createWindow);
