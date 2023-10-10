@@ -83,7 +83,7 @@ this.map_one[15].asteroids(3);
 
 }
 }
-this.map_one[3].drawStars(10, 2); // background image
+this.map_one[3].drawStars(1, 2); // background image
 
 //pushing monsters in to map one.
 if(map_seconds >= 1){
@@ -300,21 +300,12 @@ randomisingNumbers(){
    // console.log(this.randomSpawnPositionX(100, 500));
 }
 
-
-
 updateMap(mapSelected){
 this.randomisingNumbers(); 
 this.gameFrame++
 ctx.font = "90px Roboto Mono";
 ctx.fillStyle = "white";
 ctx.fillText(this.gameFrame, c.width - 200, 100);
-
-
-
- //SHOW FRAMES
-
-
-
 
 if(mapSelected == 1){ this.mapOneLoad(); }
 
