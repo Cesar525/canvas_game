@@ -616,34 +616,34 @@ dropPowerUps(type){
   
     switch(type){      
         case 1 : 
-        powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, "health" , 100));
+        powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, powerUpsSelect.HEALTH , 100));
        
         this.drop_item = false;
         this.droping_powerUp = false
         break;
 
         case 2 :   
-        powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, "energy", 250 ));
+        powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, powerUpsSelect.ENERGY, 250 ));
        
         this.drop_item = false;
         this.droping_powerUp = false;
         break;
 
         case  3: 
-        powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, "money", 150 ));
+        powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, powerUpsSelect.MONEY, 150 ));
       
         this.drop_item = false;
         this.droping_powerUp = false;
         break;
         case 4 :   
-        powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, "energy", 1000));
+        powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, powerUpsSelect.ENERGY, 1000));
      
         this.drop_item = false;
         this.droping_powerUp = false;
         break;
 
         case 5 : 
-        powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, "health" , 800));
+        powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, powerUpsSelect.HEALTH , 800));
  
         this.drop_item = false;
         this.droping_powerUp = false
@@ -651,37 +651,37 @@ dropPowerUps(type){
 
         //Guns
         case  6: 
-        powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, "machineGun", 150));
+        powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, powerUpsSelect.MACHINE_GUN, 150));
         this.drop_item = false;
         this.droping_powerUp = false;
         break;    
         case  7: 
-        powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, "energyShot", 150));
+        powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, powerUpsSelect.LAZER_GUN, 150));
         this.drop_item = false;
         this.droping_powerUp = false;
         break;
         case  8: 
-        powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, "energyPlasma", 150));
+        powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, powerUpsSelect.PLASMA_GUN, 150));
         this.drop_item = false;
         this.droping_powerUp = false;
         break;
         case  9: 
-        powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, "energyLava", 150));
+        powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, powerUpsSelect.LAVA_GUN, 150));
         this.drop_item = false;
         this.droping_powerUp = false;
         break;
         case  10: 
-        powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, "energyGreen", 150));
+        powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, powerUpsSelect.GREEN_GUN, 150));
         this.drop_item = false;
         this.droping_powerUp = false;
         break;
         case  11: 
-        powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, "blueShield", 150));
+        powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, powerUpsSelect.BLUE_SHIELD, 150));
         this.drop_item = false;
         this.droping_powerUp = false;
         break;
         case  12: 
-        powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, "redShield", 150));
+        powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, powerUpsSelect.RED_SHIELD, 150));
         this.drop_item = false;
         this.droping_powerUp = false;
         break;
