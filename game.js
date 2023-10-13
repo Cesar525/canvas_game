@@ -46,16 +46,16 @@ const animation_TESTING = new Animation();
 //CREATING A PLAYER Player(name, level, thruster_selection, get_health, energy, m_damage,  gunType, posx, posy, gun_speed)
 const players = [
   new Player("PLAYER ONE", 1230,  8, 2000, 400000, 500, 1, 100, 900, 30),
-  new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 300, 900, 30),
-  new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 600, 900, 30),
-  new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 900, 900, 30),
-  new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 1200, 900, 30),
-  new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 1400, 900, 30),
-  new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 1600, 900, 30),
-  new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 1800, 900, 30),
-  new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 2000, 900, 30),
-  new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 2200, 900, 30),
-  new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 2400, 900, 30),
+  // new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 300, 900, 30),
+  // new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 600, 900, 30),
+  // new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 900, 900, 30),
+  // new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 1200, 900, 30),
+  // new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 1400, 900, 30),
+  // new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 1600, 900, 30),
+  // new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 1800, 900, 30),
+  // new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 2000, 900, 30),
+  // new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 2200, 900, 30),
+  // new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 2400, 900, 30),
 ]
 
 

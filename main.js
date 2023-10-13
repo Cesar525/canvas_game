@@ -4,10 +4,16 @@ function createWindow() {
   const win = new BrowserWindow({
     width: 800,
     height: 600,
+   title : "Space Game",
+    resizable: true,
+    icon : "imagepath/",
+    darkTheme : true,
+
     webPreferences: {
-      nodeIntegration: false
+      nodeIntegration: false,
+       
     },
-    resizable: true
+   
   });
 setTimeout(() => {
   console.log(win.getSize())
