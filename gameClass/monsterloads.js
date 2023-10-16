@@ -26,6 +26,7 @@ boss : true,
 speed : 10,
 damage : 300,
 shotting_interval : 20,
+
 //Guns
 addGuns  : {
 addGun : false,
@@ -43,13 +44,17 @@ shot_one  : {
 posx : 0,
 posy : 0
 },
-},   
+}, 
+
+//Monster Power up
 speed_Change : {
 speedChange : true,
 Speed : 30,
 onHealth : 3000,
 ShottingSpeedChangeInterval  : 10
 } ,
+
+//Monster Loot
 loot : {
 dropping_loot : true,
 dropping_loot_rating : 300,
