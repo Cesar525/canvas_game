@@ -1,30 +1,30 @@
 
 class Monsters{
-constructor( id, sprite,  pos_x, pos_y, health, name, speed, color, movements, s_width, s_height, damage, drop_loot, boss_Mode, monster_gun){
+constructor( monster){
 
 this.position = {
-    x : pos_x,
-    y : pos_y
+    x : monster.position.x,
+    y : monster.position.y
 },
 this.velocity = {
-    x : speed,
-    y : speed
+    x : monster.speed,
+    y : monster.speed
 },
 this.body = {
-    m_name : name,
-    m_health : health,
-    m_damage : damage,
+    m_name : monster.name,
+    m_health : monster.health,
+    m_damage : monster.damage,
     m_dead : false,
     m_deadPosX : NaN,
     m_deadPosY : NaN,
-    m_sprite : sprite,
+    m_sprite : monster.sprite,
     m_steady_deadPosX : NaN,
     m_steady_deadPosY : NaN,
 }
 
-this.shotting_interval = 20
-if(monster_gun){
-    this.monster_gun_type = monster_gun;
+this.shotting_interval = monster.shotting_interval;
+if(monster.addGuns.addGun){
+    this.monster_gun_type = 1;
 }else{
 
     this.monster_gun_type = 0;
@@ -42,34 +42,32 @@ this.gun_on = [];
 this.explosionn = [];
 this.explosionn2 = [];
 
-if(boss_Mode){
-    this.boss_mode_set = boss_Mode;
+if(monster.boss){
+    this.boss_mode_set = monster.boss;
 }else{
     this.boss_mode_set = false;
 }
 
-if(drop_loot){
-this.drop_loop_rating = drop_loot
+if(monster.loot.dropping_loot){
+this.drop_loop_rating = monster.loot.dropping_loot_rating;
 }else{
 this.drop_loop_rating = 300;
 }
 this.spawnTime = 0
-this.monster_color = color
-this.monster_id = id
-this.width = s_width;
-this.height = s_height;
+this.width = monster.size.width;
+this.height = monster.size.height;
 this.moveRight = true;
 this.moveLeft = false;
 this.clearRect = false;
 this.collision_bool  = false;
-this.monsterMovement = movements;
+this.monsterMovement = monster.movements;
 this.explosion_dead = false;
 this.explosion = false;
-this.health_total = health;
+this.health_total = monster.health;
 this.monsterGotHitDamages;
 //need for spawns
-this.spawnPositionX = pos_x;
-this.spawnPositionY = pos_y;
+this.spawnPositionX = monster.position.x;
+this.spawnPositionY = monster.position.y;
 this.deathexplosion_moveDown = 0;
 //powerUps
 this.dropPower_random;

@@ -19,41 +19,7 @@ Working on -
 
 IDEAS
 build a monster system that is easier to make them.
-Example
-const Monsters= {
-        Bukara = {
-                name : "Bukara",
-                Gun : "Space pistol",
-                sprite: "path/path.png",
-                Health : 10000,
-                Boss : true,
-                Speed : 10,
-                Damage : 300,
-                addGun  = {
-                        addGun : true,
-                        Show_shottingFrom : false  // thi sis to show where the shot is gonna come from.
-                        shot_one  = {
-                                posx : 0,
-                                posy : 0
-                        }
-                        shot_one  = {
-                                posx : 0,
-                                posy : 0
-                        }
-                        shot_one  = {
-                                posx : 0,
-                                posy : 0
-                        }
-                speed_Change = {
-                        speedChange : true,
-                        Speed : 30,
-                        onHealth : 3000,
-                        ShottingSpeedChangeInterval  : 
-                }                   
-        }
-}
-}
- 
+Working on setting up the monsters
 
 
 
