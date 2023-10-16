@@ -147,6 +147,11 @@ if(true){
 
 
   map_selection.updateMap(map_selected)
+  
+// PowerUps draw
+for(var f = 0; f < powerUp.length; f++){  
+  powerUp[f].updatePowerUps();
+}
 
 //colliton Monsters wiht Players && Projectiles
 for(var m = 0; m < monsters.length; m++){
@@ -221,10 +226,6 @@ players[p].playerView();
 }
 }
 
-// PowerUps draw
-for(var f = 0; f < powerUp.length; f++){  
-  powerUp[f].updatePowerUps();
-}
 
 
 
