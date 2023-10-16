@@ -18,18 +18,18 @@ size : {
     width : 800,
 },
 movements : "sidebyside",
-name : "Bukaraaaaa",
+name : "Bukara",
 Gun : "Space pistol",
 sprite: "assets/monsters/boss/bukara.png",
 health : 10000,
 boss : true,
 speed : 10,
-damage : 300,
+damage : 20,
 shotting_interval : 20,
 
 //Guns
 addGuns  : {
-addGun : false,
+addGun : true,
 gun_type : 1,
 Show_shottingFrom : false,  // thi sis to show where the shot is gonna come from.
 shot_one  : {
