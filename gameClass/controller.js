@@ -1,10 +1,6 @@
 
-var gameOn = false;
-if(gameOn){
-var control_on = false;
-}else{
-    control_on = true;
-}
+
+var control_on = true;
 
 const canvas = document.querySelector('#canvasUILifeBar')
 const keys = {
