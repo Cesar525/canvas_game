@@ -1,4 +1,11 @@
 
+var gameOn = false;
+if(gameOn){
+var control_on = false;
+}else{
+    control_on = true;
+}
+
 const canvas = document.querySelector('#canvasUILifeBar')
 const keys = {
     right : {
@@ -27,7 +34,7 @@ const mouse = {
         pressed : false
     }
 }
-
+if(control_on){
 addEventListener("keydown", function ({keyCode}){
     //console.log(keyCode);
      switch(keyCode){
@@ -72,7 +79,7 @@ addEventListener("keydown", function ({keyCode}){
       }
       
   });
-
+}
   addEventListener("mousemove", (event) => {
     mousePad.getCursorPosition(canvas, event)
       });

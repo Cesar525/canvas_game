@@ -5,6 +5,7 @@ pass:525002cc
 
 UPDATED:
 electron has been added to the game.
+the game needs to run with fire fox using positron => https://github.com/mozilla/positron
 
 
 
@@ -15,13 +16,4 @@ sprites Designer
 
 
 READ!!!  -------------
-Working on -
-
-IDEAS
-build a monster system that is easier to make them.
-Working on setting up the monsters
-
-
-
-ATTENTION : The only item that wil be use right away when the player have contact with it would be the
-PowerBomb Energy. Once player touch that it will automaticly increase his powerBomb bar.
+Player start post.

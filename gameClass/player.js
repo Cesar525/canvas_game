@@ -2,8 +2,8 @@ class Player {
     constructor(name, level, thruster_selection, get_health, energy, m_damage,  gunType, posx, posy, gun_speed){
 
         this.position ={
-        x: posx,
-        y: posy
+        x: (c.width / 2),  //posx,
+        y: (c.height / 2), //posy
     },
     this.velocity ={
         x:25,
@@ -43,7 +43,16 @@ class Player {
         health : 500,
         money : 0
     }
-    
+    this.StartingPlayer = {
+        player_start_status : false,
+        playerSet_onStarting_position : false,
+        player_starting_pos : {
+            x : c.width / 2 - (this.width / 2),
+            y : c.height / 2 - (this.height / 2)
+        }
+
+
+    }
 
     this.shotting_interval = 0;
     this.width = 100;
@@ -113,6 +122,8 @@ this.controller_movements = {
 
 
 }
+setPlatyerStart(set){ this.player_start_status = set;};
+getPlayerStart(){return this.player_start_status;};
 
 clearShield(){ this.shields_class.splice(0, 1); };
 
@@ -197,6 +208,12 @@ if(this.playerDead){
     }
 };
 
+
+playerStart(){
+if(!this.getPlayerStart()){
+
+}
+}
 
 //about shields
 getPlayerShieldType(){ return this.body.m_shield_type;};
@@ -953,13 +970,11 @@ this.showPlayerEnergy();
 this.energyUsage()
 this.playerInventoryProccess();
 this.playerShield();
+ this.playerStart();
 
 for(var f = 0; f < powerUp.length; f++){  
     powerUp[f].updatePowerUpsFunctionality(this);
   }
-  
-
-
       if(this.shields_class.length > 0){
 if(this.shields_class[0].getDeleteObject()){
     this.shields_class.splice(0, 1)
@@ -969,7 +984,7 @@ this.setPlayerShieldStatus(true);
         this.setPlayerShieldStatus(false);
       }
     }
-
+   
 
 ///Inventory processing
 
