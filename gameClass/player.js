@@ -3,7 +3,7 @@ class Player {
 
         this.position ={
         x: (c.width / 2),  //posx,
-        y: (c.height / 2), //posy
+        y: c.height + c.height / 2, //posy
     },
     this.velocity ={
         x:25,
@@ -48,7 +48,7 @@ class Player {
         playerSet_onStarting_position : false,
         player_starting_pos : {
             x : c.width / 2 - (this.width / 2),
-            y : c.height / 2 - (this.height / 2)
+            y : c.height + c.height / 2
         }
 
 
@@ -122,8 +122,8 @@ this.controller_movements = {
 
 
 }
-setPlatyerStart(set){ this.player_start_status = set;};
-getPlayerStart(){return this.player_start_status;};
+setPlatyerStart(set){ this.StartingPlayer.player_start_status = set;};
+getPlayerStart(){return this.StartingPlayer.player_start_status;};
 
 clearShield(){ this.shields_class.splice(0, 1); };
 
@@ -210,9 +210,20 @@ if(this.playerDead){
 
 
 playerStart(){
-if(!this.getPlayerStart()){
-
+//pushing player foawrd
+if(this.getPlayerStart() == false){
+    //getting player into place
+    control_on = false;
+    this.position.y -= this.velocity.y;
+    console.log("updating position");   
 }
+
+if(this.position.y == c.height / 2){
+    console.log("destination reached");
+   this.StartingPlayer.player_start_status = true;
+    control_on = true;
+}
+console.log(this.position.x);
 }
 
 //about shields
