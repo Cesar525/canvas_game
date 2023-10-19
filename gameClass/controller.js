@@ -1,6 +1,6 @@
 
 
-var control_on = true;
+const control_on = true;
 
 const canvas = document.querySelector('#canvasUILifeBar')
 const keys = {
