@@ -4,7 +4,7 @@ const bukara = {
 }
 
 
-const Monsters_Loads= {
+const getMonsters = {
 
 //BUKARA
 "Bukara" : {

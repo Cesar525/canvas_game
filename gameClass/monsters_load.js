@@ -1,34 +1,35 @@
 
-class Monsters{
-constructor( id, sprite,  pos_x, pos_y, health, name, speed, color, movements, s_width, s_height, damage, drop_loot, boss_Mode, monster_gun){
+class Monsters_Load{
+constructor( monster){
 
 this.position = {
-    x : pos_x,
-    y : pos_y
+    x : monster.position.x,
+    y : monster.position.y
 },
 this.velocity = {
-    x : speed,
-    y : speed
+    x : monster.speed,
+    y : monster.speed
 },
 this.body = {
-    m_name : name,
-    m_health : health,
-    m_damage : damage,
+    m_name : monster.name,
+    m_health : monster.health,
+    m_damage : monster.damage,
     m_dead : false,
     m_deadPosX : NaN,
     m_deadPosY : NaN,
-    m_sprite : sprite,
+    m_sprite : monster.sprite,
     m_steady_deadPosX : NaN,
     m_steady_deadPosY : NaN,
 }
 
-this.shotting_interval = 20
-if(monster_gun){
-    this.monster_gun_type = monster_gun;
+this.shotting_interval = monster.shotting_interval;
+if(monster.addGuns.addGun){
+    this.monster_gun_type = 1;
 }else{
 
     this.monster_gun_type = 0;
 }
+this.addGun = monster.addGuns.addGun;
 this.collition = {
     collition_posX : NaN,
     collition_posY : NaN,
@@ -42,34 +43,32 @@ this.gun_on = [];
 this.explosionn = [];
 this.explosionn2 = [];
 
-if(boss_Mode){
-    this.boss_mode_set = boss_Mode;
+if(monster.boss){
+    this.boss_mode_set = monster.boss;
 }else{
     this.boss_mode_set = false;
 }
 
-if(drop_loot){
-this.drop_loop_rating = drop_loot
+if(monster.loot.dropping_loot){
+this.drop_loop_rating = monster.loot.dropping_loot_rating;
 }else{
 this.drop_loop_rating = 300;
 }
 this.spawnTime = 0
-this.monster_color = color
-this.monster_id = id
-this.width = s_width;
-this.height = s_height;
+this.width = monster.size.width;
+this.height = monster.size.height;
 this.moveRight = true;
 this.moveLeft = false;
 this.clearRect = false;
 this.collision_bool  = false;
-this.monsterMovement = movements;
+this.monsterMovement = monster.movements;
 this.explosion_dead = false;
 this.explosion = false;
-this.health_total = health;
+this.health_total = monster.health;
 this.monsterGotHitDamages;
 //need for spawns
-this.spawnPositionX = pos_x;
-this.spawnPositionY = pos_y;
+this.spawnPositionX = monster.position.x;
+this.spawnPositionY = monster.position.y;
 this.deathexplosion_moveDown = 0;
 //powerUps
 this.dropPower_random;
@@ -256,25 +255,32 @@ if(this.spawnTime >= 100){
 }
 
 shottingPos(){
-    if(this.boss_mode_set == true){
+    if( this.addGun == true){
+
+        
 //postone
-if(this.body.m_name == "Bukara"){
+
 this.monster_shotting_starting_pos.posOne.x = this.position.x + (this.width / 2 - 50);
 this.monster_shotting_starting_pos.posOne.y = this.position.y + (this.height / 2  + 200);
-// ctx.fillStyle = "red";
-// ctx.fillRect(this.monster_shotting_starting_pos.posOne.x, this.monster_shotting_starting_pos.posOne.y, 100, 100)
 
 //pos two
 this.monster_shotting_starting_pos.posTwo.x = this.position.x + (this.width - 200);
 this.monster_shotting_starting_pos.posTwo.y = this.position.y + (this.height - 100);
-// ctx.fillStyle = "white";
-// ctx.fillRect(this.monster_shotting_starting_pos.posTwo.x, this.monster_shotting_starting_pos.posTwo.y, 100, 100)
 
 //pos three
 this.monster_shotting_starting_pos.posThree.x = this.position.x + 100;
 this.monster_shotting_starting_pos.posThree.y = this.position.y + (this.height - 100);
-// ctx.fillStyle = "blue";
-// ctx.fillRect(this.monster_shotting_starting_pos.posThree.x, this.monster_shotting_starting_pos.posThree.y, 100, 100)
+
+
+ctx.fillStyle = "red";
+ctx.fillRect(this.monster_shotting_starting_pos.posOne.x, this.monster_shotting_starting_pos.posOne.y, 100, 100)
+
+ctx.fillStyle = "white";
+ctx.fillRect(this.monster_shotting_starting_pos.posTwo.x, this.monster_shotting_starting_pos.posTwo.y, 100, 100)
+
+ctx.fillStyle = "blue";
+ctx.fillRect(this.monster_shotting_starting_pos.posThree.x, this.monster_shotting_starting_pos.posThree.y, 100, 100)
+
 if(this.body.m_health < (this.health_total / 2) / 2){
 this.velocity.y = 15;
         this.velocity.x = 15; 
@@ -282,7 +288,7 @@ this.velocity.y = 15;
 this.body.m_sprite = bukara.diying_state;
 
 }
-    }
+
 }
 }
 setShottinginterval(set){this.shotting_interval = set;};
@@ -320,7 +326,7 @@ if(type == 1){
 shottingiinterval(shotting_interval){
     if(this.body.m_dead == false){
     this.monster_shot_interval++
-
+    
     if(this.monster_shot_interval == 1){
       this.gunsType(this.monster_gun_type);
     }
