@@ -30,7 +30,7 @@ const mouse = {
         pressed : false
     }
 }
-if(control_on){
+
 addEventListener("keydown", function ({keyCode}){
     //console.log(keyCode);
      switch(keyCode){
@@ -75,7 +75,7 @@ addEventListener("keydown", function ({keyCode}){
       }
       
   });
-}
+
   addEventListener("mousemove", (event) => {
     mousePad.getCursorPosition(canvas, event)
       });

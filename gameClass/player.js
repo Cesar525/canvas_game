@@ -49,8 +49,11 @@ class Player {
         player_starting_pos : {
             x : c.width / 2 - (this.width / 2),
             y : c.height + c.height / 2
-        }
-
+        },
+        playerStart_blinking : 0,
+player_no_damage : true,
+player_blinking_start : true,
+timer_to_start : 0
 
     }
 
@@ -122,8 +125,7 @@ this.controller_movements = {
 
 
 }
-setPlatyerStart(set){ this.StartingPlayer.player_start_status = set;};
-getPlayerStart(){return this.StartingPlayer.player_start_status;};
+
 
 clearShield(){ this.shields_class.splice(0, 1); };
 
@@ -152,6 +154,8 @@ pushShield(type){
 }
 draw(){
 
+
+
     if(!this.clearRect){
     const image = new Image();
     image.src = "assets/spaceship/spaceshipone.png";
@@ -171,6 +175,7 @@ draw(){
         this.body.energy = this.total_energy;
     }
   }
+
 }
 
 setPlayerVelocity(velocity){
@@ -209,22 +214,7 @@ if(this.playerDead){
 };
 
 
-playerStart(){
-//pushing player foawrd
-if(this.getPlayerStart() == false){
-    //getting player into place
-    control_on = false;
-    this.position.y -= this.velocity.y;
-    console.log("updating position");   
-}
 
-if(this.position.y == c.height / 2){
-    console.log("destination reached");
-   this.StartingPlayer.player_start_status = true;
-    control_on = true;
-}
-console.log(this.position.x);
-}
 
 //about shields
 getPlayerShieldType(){ return this.body.m_shield_type;};
@@ -300,6 +290,7 @@ playerDeathExplosion(explosion_animation){
 }
 
 playerCollitionMonsters(monsters){
+    if(!this.StartingPlayer.player_no_damage){
     // player collision with monsters
   this.frames.gameFrame ++;
   this.frames.staggerFrame = 10;
@@ -315,14 +306,15 @@ playerCollitionMonsters(monsters){
  //  }
 
   }
+}
   }
 
   setPlayerHitDamage(set){this.showDamageAnimation.damage_recorded = set;};
 playerMovemements(){
         // player movements
-var keyboard_use = true;;
+var keyboard_use = true;
 
-
+if(this.StartingPlayer.player_start_status){
 if(keyboard_use){
 if(keys.right.pressed){
     this.position.x += this.velocity.x
@@ -337,19 +329,15 @@ if(keys.down.pressed){
     this.position.y += this.velocity.y
 }
 }else{
-
-
             addEventListener("mousemove", (event) => {
         //console.log(event);
         // console.log("X == " + event.clientX + "Y == " + event.clientY); 
         this.position.x = event.clientX;
         this.position.y = event.clientY;
           });
-  
-
-
+     
 }
-
+ } 
 // player need to stay inside the canvas
 if(this.position.x + this.velocity.x > c.width - this.width + this.velocity.x){
 
@@ -366,6 +354,11 @@ this.position.y =  c.height - this.height
 if(this.position.y < 0){
 this.position.y =  0
 }
+
+
+
+
+
 }
 
 energyUsage(){
@@ -956,16 +949,54 @@ for(var counting_inventory_ = 0; counting_inventory_ < this.inventory.length; co
 
 }
 
+
+setPlatyerStart(set){ this.StartingPlayer.player_start_status = set;};
+getPlayerStart(){return this.StartingPlayer.player_start_status;};
+
+playerStart(){
+    //pushing player foawrd
+    if(this.getPlayerStart() == false){
+        //getting player into place
+        this.position.y -= this.velocity.y;
+        console.log("updating position");   
+    }
+    if(this.position.y == ((c.height / 2) + ((c.height / 2) / 2))){
+        console.log("destination reached");
+       this.StartingPlayer.player_start_status = true; 
+    }
+    console.log(this.position.x);
+    }
+
 update(animation_Sparks_low, animation_Sparks_high, thruster_animation, player_death_explosionAnimation){
- 
-   
-          
+      
 this.powerBombBar();
 this.playerInventory();
 this.alerting();
 this.shotting();
-this.draw();
-thruster_animation.setPlayersThruster(this.body.thruster, this.position.x - this.thruster_position_x, this.position.y + this.thruster_position_y, this.thruster_size, this.thruster_size);       
+
+
+if(this.StartingPlayer.player_blinking_start){
+    this.StartingPlayer.playerStart_blinking ++
+    if(this.StartingPlayer.playerStart_blinking > 5){
+        if(this.StartingPlayer.playerStart_blinking > 7){
+        this.StartingPlayer.playerStart_blinking = 0;
+        }
+        
+        this.StartingPlayer.timer_to_start ++
+        if(this.StartingPlayer.timer_to_start == 90){
+            this.StartingPlayer.player_start_status = true;
+            this.StartingPlayer.player_no_damage = false;
+            this.StartingPlayer.player_blinking_start = false;
+          
+        }
+        this.draw();
+        thruster_animation.setPlayersThruster(this.body.thruster, this.position.x - this.thruster_position_x, this.position.y + this.thruster_position_y, this.thruster_size, this.thruster_size);       
+    }
+    }else{
+        this.draw();
+        thruster_animation.setPlayersThruster(this.body.thruster, this.position.x - this.thruster_position_x, this.position.y + this.thruster_position_y, this.thruster_size, this.thruster_size);       
+
+    }
 this.playerOnDeath();
 
 this.playerMovemements();

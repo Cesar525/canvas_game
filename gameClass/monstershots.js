@@ -282,7 +282,7 @@ if(if_true){this.showDamage = true;}
 
 
 collisionMonsterShot(player){
-
+if(!player.StartingPlayer.player_no_damage){
     //Need to add this fucntionalities to player.
                     // collision monster to shot
                      if(collisionTouch(this, player)){
@@ -302,11 +302,9 @@ collisionMonsterShot(player){
                         this.setCollitionWithPlayer(true);
                      return true;
                      }else{
-                     
-                        
-
                        return false;
                      }
+                    }
                    }
 
 bursting_bullets(player,burst_animation){
