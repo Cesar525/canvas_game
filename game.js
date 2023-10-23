@@ -69,7 +69,7 @@ const monsters = [
 ];
   
 const Monsters_loads = [
-new Monsters_Load(getMonsters["Bukara"]),
+new Monsters_Load(getMonsters["Invader"]),
 ]
 
 //onMonster Loads  animation

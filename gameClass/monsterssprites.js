@@ -4,4 +4,7 @@ const Monsters_Sprites = {
     diying_state : "assets/monsters/boss/bukarared.png"
     },
     
+    Invader_one : {
+        normal_state : "assets/monsters/invader_one.png",
+    }
 }

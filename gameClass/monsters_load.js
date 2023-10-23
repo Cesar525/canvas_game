@@ -107,14 +107,17 @@ this.monster_shotting_starting_pos = {
 }
 this.shot_starting_point_set = {
     posOne : {
+        active : monster.addGuns.shot_one.active,
         x :  monster.addGuns.shot_one.x,
         y :  monster.addGuns.shot_one.y
         },
         posTwo :{
+        active : monster.addGuns.shot_two.active,
         x :  monster.addGuns.shot_two.x,
         y :  monster.addGuns.shot_two.y
         },
         posThree : {
+        active : monster.addGuns.shot_three.active,
         x :  monster.addGuns.shot_three.x,
         y : monster.addGuns.shot_three.y
         }
@@ -285,8 +288,8 @@ this.monster_shotting_starting_pos.posTwo.x = this.position.x + this.shot_starti
 this.monster_shotting_starting_pos.posTwo.y = this.position.y + this.shot_starting_point_set.posTwo.y;
 
 // pos three
-this.monster_shotting_starting_pos.posThree.x = this.position.x + this.shot_starting_point_set.posThree.x;
-this.monster_shotting_starting_pos.posThree.y = this.position.y + this.shot_starting_point_set.posThree.y;
+ this.monster_shotting_starting_pos.posThree.x = this.position.x + this.shot_starting_point_set.posThree.x;
+ this.monster_shotting_starting_pos.posThree.y = this.position.y + this.shot_starting_point_set.posThree.y;
 
 if(this.showshotstartpoint){
 ctx.fillStyle = "red";
@@ -322,15 +325,18 @@ shottingCollition(player){
 gunsType(type)
 {
 if(type == 1){
-   
-    this.gun_on.push(
-        new Monstershots(this.monster_shotting_starting_pos.posOne.x,this.monster_shotting_starting_pos.posOne.y, 2, 0, 10, this.body.m_damage, 60, 100, 100, 1, -50 , -100),
-        new Monstershots(this.monster_shotting_starting_pos.posTwo.x,this.monster_shotting_starting_pos.posTwo.y, 2, 0, 10, this.body.m_damage, 30, 100, 100, 1, -50 , -100),
-        new Monstershots(this.monster_shotting_starting_pos.posThree.x,this.monster_shotting_starting_pos.posThree.y, 2, 0, 10, this.body.m_damage, 30, 100, 100, 1, -50 , -100),
-
-        );
-    
-    
+   //one
+   if(this.shot_starting_point_set.posOne.active){
+    this.gun_on.push(new Monstershots(this.monster_shotting_starting_pos.posOne.x,this.monster_shotting_starting_pos.posOne.y, 2, 0, 10, this.body.m_damage, 60, 100, 100, 1, -50 , -100));
+    }
+    //Two
+    if(this.shot_starting_point_set.posTwo.active){
+    this.gun_on.push(new Monstershots(this.monster_shotting_starting_pos.posTwo.x,this.monster_shotting_starting_pos.posTwo.y, 2, 0, 10, this.body.m_damage, 30, 100, 100, 1, -50 , -100))
+    }
+    //three
+    if(this.shot_starting_point_set.posThree.active){
+    this.gun_on.push(new Monstershots(this.monster_shotting_starting_pos.posThree.x,this.monster_shotting_starting_pos.posThree.y, 2, 0, 10, this.body.m_damage, 30, 100, 100, 1, -50 , -100))
+    }
     for(var counting_bullets = 0; counting_bullets < this.gun_on.length; counting_bullets++){
     this.explosionn.push(new Animation());
     this.explosionn2.push(new Animation());
