@@ -90,6 +90,7 @@ this.destroy_object = false;
 this.destroy_counter = 0;
 this.showshotstartpoint = monster.addGuns.Show_shottingFrom;
 this.diying_state_sprite = monster.speed_Change.sprite_change;
+this.diying_state_speed = monster.speed_Change.SpeedChange;
 this.monster_shotting_starting_pos = {
     posOne : {
     x : 0,
@@ -180,7 +181,7 @@ movements(move){
 
 
     switch(move){
-case "sidebysideGoingDown":    
+case "SideBysideGoingDown":    
         this.position.y += 0.6
     if(this.moveRight){
         this.position.x += this.velocity.x;
@@ -299,8 +300,8 @@ ctx.fillRect(this.monster_shotting_starting_pos.posThree.x, this.monster_shottin
 }
 
 if(this.body.m_health < (this.health_total / 2) / 2){
-this.velocity.y = 15;
-        this.velocity.x = 15; 
+this.velocity.y = this.diying_state_speed;
+        this.velocity.x = this.diying_state_speed; 
 
 this.body.m_sprite = this.diying_state_sprite;
 

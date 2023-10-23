@@ -11,15 +11,15 @@ size : {
     height : 400,
     width : 400,
 },
-movements : "straightDown",
+movements : "SideBysideGoingDown",
 name : "Bukara",
 Gun : "Space pistol",
 sprite: Monsters_Sprites.Bukara.normal_state,
 health : 10000,
 boss : false,
-speed : 1,
+speed : 10,
 damage : 20,
-shotting_interval : 20,
+shotting_interval : 2,
 
 //Guns
 addGuns  : {
@@ -44,7 +44,7 @@ y : (800 - 100)
 speed_Change : {
 sprite_change : Monsters_Sprites.Bukara.diying_state,
 speedChange : true,
-SpeedChange : 30,
+SpeedChange : 50,
 onHealth : 3000,
 ShottingSpeedChangeInterval  : 10
 } ,
