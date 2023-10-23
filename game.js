@@ -68,9 +68,18 @@ const monsters = [
   //new Monsters(2, asteroid_eleven,  100, 100 , 1000, "Bukara", 7, "orange", "none", 300, 300, 30, NaN, false),
 ];
   
-const monsters_loads = [
+const Monsters_loads = [
 new Monsters_Load(getMonsters["Bukara"]),
 ]
+
+//onMonster Loads  animation
+const sprite_animation_L = [];
+const explosion_onDeath_animation_L = [];
+
+for(var m = 0; m < Monsters_loads.length; m++){
+sprite_animation_L.push(new Animation());
+explosion_onDeath_animation_L.push(new Animation());
+}
 
 //onMonster animation
 const sprite_animation = [];
@@ -80,6 +89,7 @@ for(var m = 0; m < monsters.length; m++){
 sprite_animation.push(new Animation());
 explosion_onDeath_animation.push(new Animation());
 }
+
 //----------------------------------\
 
   //POWER UPS DROP---------
@@ -177,6 +187,27 @@ explosion_onDeath_animation.splice(m, 1);
       }
     }
   }
+
+//colliton Monsters_Loads
+for(var m = 0; m < Monsters_loads.length; m++){
+  Monsters_loads[m].updateMonster(
+    sprite_animation_L[m]
+    );
+    if(Monsters_loads[m].getDeleteObject() == true){
+      Monsters_loads.splice(m, 1);
+sprite_animation_L.splice(m, 1);
+explosion_onDeath_animation_L.splice(m, 1);
+    }
+    
+    for(var pjct = 0; pjct  < players.length ; pjct ++){
+      players[pjct].playerCollitionMonsters(Monsters_loads[m])
+      players[pjct].shottingCollition(Monsters_loads[m]);
+      if(Monsters_loads.length != 0){
+        Monsters_loads[m].shottingCollition(players[pjct]);
+      }
+    }
+  }
+
   
   
   //powerUps updates and collision
@@ -204,6 +235,15 @@ explosion_onDeath_animation.splice(m, 1);
     monsters[m].monsterDeathExplosion(explosion_onDeath_animation[m]);
   }
       } 
+// Monster Loads
+for(var m = 0; m < Monsters_loads.length; m++){
+  if(Monsters_loads[m].getBossMode()){
+    Monsters_loads[m].monsterBossDeathExplosion(explosion_onDeath_animation_L[m]);
+  }else{
+    Monsters_loads[m].monsterDeathExplosion(explosion_onDeath_animation_L[m]);
+  }
+      } 
+
 
 //showing shield example.s     
 //player_shield_effect_one[0].drawShield(players[0]);
@@ -226,6 +266,10 @@ pushing_random_explsions.splice(i, 1);
 for(var m = 0; m < monsters.length; m++){
 monsters[m].monsterView();
 }
+//Monster Loads
+for(var m = 0; m < Monsters_loads.length; m++){
+  Monsters_loads[m].monsterView();
+  }
 for(var p = 0; p < players.length; p++){
 players[p].playerView();
 }

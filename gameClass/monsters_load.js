@@ -88,7 +88,8 @@ explosion_end : false
 this.delete_time_after_death = 0;
 this.destroy_object = false;
 this.destroy_counter = 0;
-
+this.showshotstartpoint = monster.addGuns.Show_shottingFrom;
+this.diying_state_sprite = monster.speed_Change.sprite_change;
 this.monster_shotting_starting_pos = {
     posOne : {
     x : 0,
@@ -99,9 +100,24 @@ this.monster_shotting_starting_pos = {
     y : 0
     },
     posThree : {
-    x : 0,
-    y : 0
-    }
+    x :  0,
+    y :  0
+}
+}
+this.shot_starting_point_set = {
+    posOne : {
+        x :  monster.addGuns.shot_one.x,
+        y :  monster.addGuns.shot_one.y
+        },
+        posTwo :{
+        x :  monster.addGuns.shot_two.x,
+        y :  monster.addGuns.shot_two.y
+        },
+        posThree : {
+        x :  monster.addGuns.shot_three.x,
+        y : monster.addGuns.shot_three.y
+        }
+
 }
 this.bossPositionReached = false;
 
@@ -115,7 +131,7 @@ getDeleteObject(){return this.destroy_object;};
 
 getHealth(){return this.body.health;};
 
-drawMonster(sprite_animation){
+drawMonster(){
 
     //if bossmode set
     if(this.boss_mode_set){
@@ -134,7 +150,7 @@ drawMonster(sprite_animation){
 //    sprite_animation.spriteProccessor(this.body.m_sprite, 2, this.position.x, this.position.y, this.width, this.height);
 //Stand Still Image
         const image_monster = new Image();
-        image_monster.src = this.body.m_sprite[0];
+        image_monster.src = this.body.m_sprite;
         ctx.drawImage(image_monster, this.position.x, this.position.y, this.width, this.height)
 
    //White square
@@ -258,20 +274,20 @@ shottingPos(){
     if( this.addGun == true){
 
         
-//postone
+// postone
 
-this.monster_shotting_starting_pos.posOne.x = this.position.x + (this.width / 2 - 50);
-this.monster_shotting_starting_pos.posOne.y = this.position.y + (this.height / 2  + 200);
+this.monster_shotting_starting_pos.posOne.x = this.position.x + this.shot_starting_point_set.posOne.x;
+this.monster_shotting_starting_pos.posOne.y = this.position.y + this.shot_starting_point_set.posOne.y;
 
-//pos two
-this.monster_shotting_starting_pos.posTwo.x = this.position.x + (this.width - 200);
-this.monster_shotting_starting_pos.posTwo.y = this.position.y + (this.height - 100);
+// pos two
+this.monster_shotting_starting_pos.posTwo.x = this.position.x + this.shot_starting_point_set.posTwo.x;
+this.monster_shotting_starting_pos.posTwo.y = this.position.y + this.shot_starting_point_set.posTwo.y;
 
-//pos three
-this.monster_shotting_starting_pos.posThree.x = this.position.x + 100;
-this.monster_shotting_starting_pos.posThree.y = this.position.y + (this.height - 100);
+// pos three
+this.monster_shotting_starting_pos.posThree.x = this.position.x + this.shot_starting_point_set.posThree.x;
+this.monster_shotting_starting_pos.posThree.y = this.position.y + this.shot_starting_point_set.posThree.y;
 
-
+if(this.showshotstartpoint){
 ctx.fillStyle = "red";
 ctx.fillRect(this.monster_shotting_starting_pos.posOne.x, this.monster_shotting_starting_pos.posOne.y, 100, 100)
 
@@ -280,12 +296,13 @@ ctx.fillRect(this.monster_shotting_starting_pos.posTwo.x, this.monster_shotting_
 
 ctx.fillStyle = "blue";
 ctx.fillRect(this.monster_shotting_starting_pos.posThree.x, this.monster_shotting_starting_pos.posThree.y, 100, 100)
+}
 
 if(this.body.m_health < (this.health_total / 2) / 2){
 this.velocity.y = 15;
         this.velocity.x = 15; 
 
-this.body.m_sprite = bukara.diying_state;
+this.body.m_sprite = this.diying_state_sprite;
 
 }
 

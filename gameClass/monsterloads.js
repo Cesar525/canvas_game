@@ -1,55 +1,50 @@
-const bukara = {
-    normal_state : "assets/monsters/boss/bukara.png",
-    diying_state : "assets/monsters/boss/bukarared.png"
-}
-
-
 const getMonsters = {
 
 //BUKARA
 "Bukara" : {
 
 position : {
-    x : - 1000,
-    y : - 1000
+    x : 0,
+    y : 500
 },
 size : {
-    height : 800,
-    width : 800,
+    height : 400,
+    width : 400,
 },
-movements : "sidebyside",
+movements : "straightDown",
 name : "Bukara",
 Gun : "Space pistol",
-sprite: "assets/monsters/boss/bukara.png",
+sprite: Monsters_Sprites.Bukara.normal_state,
 health : 10000,
-boss : true,
-speed : 10,
+boss : false,
+speed : 1,
 damage : 20,
 shotting_interval : 20,
 
 //Guns
 addGuns  : {
 addGun : true,
-gun_type : 1,
-Show_shottingFrom : false,  // thi sis to show where the shot is gonna come from.
+gun_type : 2,
+Show_shottingFrom : true,  // thi sis to show where the shot is gonna come from.
 shot_one  : {
-posx : 0,
-posy : 0
+x : (800 / 2 - 50),
+y : (800 / 2  + 200)
 },
-shot_one  : {
-posx : 0,
-posy : 0
+shot_two  : {
+x : (800 - 200),
+y : (800 - 100)
 },
-shot_one  : {
-posx : 0,
-posy : 0
+shot_three  : {
+x : 100,
+y : (800 - 100)
 },
 }, 
 
 //Monster Power up
 speed_Change : {
+sprite_change : Monsters_Sprites.Bukara.diying_state,
 speedChange : true,
-Speed : 30,
+SpeedChange : 30,
 onHealth : 3000,
 ShottingSpeedChangeInterval  : 10
 } ,

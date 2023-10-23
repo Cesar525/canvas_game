@@ -13,6 +13,9 @@ sprites Designer
  ashishlko11 
  games_unlimited
 
+Add new Monsters and Test them up.
+
+
 
 
 READ!!!  -------------

@@ -86,13 +86,13 @@ this.map_one[2].drawNebulaMulti(7);
 this.map_one[3].drawStars(1, 2); // background image
 
 //pushing monsters in to map one.
-if(map_seconds >= 1){
-this.metioriteStorm();
-this.map_one[19].bigAsteroidsOnFire()
-this.map_one[20].bigAsteroidsOnFire()
-this.map_one[21].bigAsteroidsOnFire()
-this.resetTimer++;
-}
+// if(map_seconds >= 1){
+// this.metioriteStorm();
+// this.map_one[19].bigAsteroidsOnFire()
+// this.map_one[20].bigAsteroidsOnFire()
+// this.map_one[21].bigAsteroidsOnFire()
+// this.resetTimer++;
+// }
 
 if(this.resetTimer == 390){
     
