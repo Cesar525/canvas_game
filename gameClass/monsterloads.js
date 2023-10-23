@@ -4,7 +4,7 @@ const getMonsters = {
 "Bukara" : {
 
 position : {
-    x : 0,
+    x : 500,
     y : 500
 },
 size : {
@@ -27,14 +27,17 @@ addGun : true,
 gun_type : 2,
 Show_shottingFrom : true,  // thi sis to show where the shot is gonna come from.
 shot_one  : {
+    active : true,
 x : (800 / 2 - 50),
 y : (800 / 2  + 200)
 },
 shot_two  : {
+    active :  true,
 x : (800 - 200),
 y : (800 - 100)
 },
 shot_three  : {
+    active : true,
 x : 100,
 y : (800 - 100)
 },
