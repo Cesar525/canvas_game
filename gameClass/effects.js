@@ -42,6 +42,10 @@ case "MONEY_TAKEN_EFFECT" :
 this.spritePage("assets/capture_effects/capture_money/spritesheet.png", this.position.x, this.position.y, 11264, 512, 22, 1, 512, 512, 2, true, this.size.width, this.size.height);
 this.deleteOnceShows();
 break;
+case "BLUE_SHIELD_TAKEN_EFFECT" : 
+this.spritePage("assets/shields/shield_arm_top.png", this.position.x, this.position.y, 960, 768, 5, 4, 192, 192, 3, true, this.size.width, this.size.height);
+this.deleteOnceShows();
+break;
 }
 
 
