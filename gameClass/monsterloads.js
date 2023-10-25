@@ -4,27 +4,27 @@ const getMonsters = {
 "Bukara" : {
 
 position : {
-    x : 500,
-    y : 500
+    x : -1000,
+    y : -1000
 },
 size : {
-    height : 400,
-    width : 400,
+    height : 800,
+    width : 800,
 },
-movements : "SideBysideGoingDown",
+movements : "sidebyside",
 name : "Bukara",
 Gun : "Space pistol",
 sprite: Monsters_Sprites.Bukara.normal_state,
-health : 10000,
-boss : false,
+health : 10000000,
+boss : true,
 speed : 10,
 damage : 20,
-shotting_interval : 2,
+shotting_interval : 10,
 
 //Guns
 addGuns  : {
 addGun : true,
-gun_type : 2,
+gun_type : 1,
 Show_shottingFrom : true,  // thi sis to show where the shot is gonna come from.
 shot_one  : {
     active : true,
@@ -63,8 +63,8 @@ dropping_loot_rating : 300,
 "Invader" : {
 
     position : {
-        x : 0,
-        y : 500
+        x : -500,
+        y : - 500
     },
     size : {
         height : 400,
@@ -74,16 +74,16 @@ dropping_loot_rating : 300,
     name : "Invader",
     Gun : "Space pistol",
     sprite: Monsters_Sprites.Invader_one.normal_state,
-    health : 10000,
+    health : 10000000,
     boss : false,
     speed : 10,
     damage : 20,
-    shotting_interval : 10,
+    shotting_interval : 6,
     
     //Guns
     addGuns  : {
     addGun : true,
-    gun_type : 2,
+    gun_type : 1,
     Show_shottingFrom : false,  // thi sis to show where the shot is gonna come from.
     shot_one  : {
         active : true,

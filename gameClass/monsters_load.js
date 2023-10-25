@@ -24,7 +24,7 @@ this.body = {
 
 this.shotting_interval = monster.shotting_interval;
 if(monster.addGuns.addGun){
-    this.monster_gun_type = 1;
+    this.monster_gun_type = monster.addGuns.gun_type;
 }else{
 
     this.monster_gun_type = 0;
@@ -344,6 +344,22 @@ if(type == 1){
 
 
 }
+
+    if(type == 20){
+
+    this.gun_on.push(
+    new shots(this.monster_shotting_starting_pos.posOne.x, this.monster_shotting_starting_pos.posOne.y,7, 0, 10, 10, 0, 100, 300, 1, -50, -150),
+    new shots(this.monster_shotting_starting_pos.posOne.x, this.monster_shotting_starting_pos.posOne.y,7, 0, 10, 10, 0, 100, 300, 1, -50, -150),
+    new shots(this.monster_shotting_starting_pos.posOne.x, this.monster_shotting_starting_pos.posOne.y, 7, 0, 10, 10, 0,  100, 300, 1, -50, -150),
+    new shots(this.monster_shotting_starting_pos.posOne.x, this.monster_shotting_starting_pos.posOne.y, 7, 3, 10, 10, 0,  100, 300, 1, -50, -150),
+    new shots(this.monster_shotting_starting_pos.posOne.x, this.monster_shotting_starting_pos.posOne.y, 7, -3, 10, 10, 0, 100, 300, 1, -50, -150));
+
+    this.explosionn.push(new Animation(),new Animation(),new Animation(), new Animation(), new Animation());
+    this.explosionn2.push(new Animation(),new Animation(),new Animation(), new Animation(), new Animation());
+
+    }
+ 
+
 
 }
 

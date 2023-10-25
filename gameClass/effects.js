@@ -46,6 +46,10 @@ case "BLUE_SHIELD_TAKEN_EFFECT" :
 this.spritePage("assets/shields/shield_arm_top.png", this.position.x, this.position.y, 960, 768, 5, 4, 192, 192, 3, true, this.size.width, this.size.height);
 this.deleteOnceShows();
 break;
+case "RED_SHIELD_TAKEN_EFFECT" : 
+this.spritePage("assets/shields/redshield_arm_top.png", this.position.x, this.position.y, 960, 768, 5, 4, 192, 192, 3, true, this.size.width, this.size.height);
+this.deleteOnceShows();
+break;
 }
 
 
