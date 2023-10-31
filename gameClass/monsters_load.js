@@ -84,7 +84,7 @@ explosions_counter : 0,
 explosion_start : false,
 explosion_end : false
 }
-
+this.addition_animation = new Animation();
 this.delete_time_after_death = 0;
 this.destroy_object = false;
 this.destroy_counter = 0;
@@ -821,6 +821,11 @@ if(Math.round((this.body.m_health / this.health_total) * barwidth_ ) <= 100){
     }
 
  }
+
+additionalAnimation(){
+    this.addition_animation.setPlayersThruster(1, this.position.x, this.position.y, 300, 300)
+}
+
 updateMonster(sprite_animator){
 this.drawMonster(sprite_animator);
 
@@ -835,7 +840,7 @@ if(this.boss_mode_set){
 this.movements(this.monsterMovement);
 }
 this.dropPowerUps(this.randomSelectingPowerUps())
-
+this.additionalAnimation()
 this.shottingPos();
 this.shotting();
 this.shottingiinterval(this.shotting_interval);
