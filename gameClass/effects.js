@@ -1,5 +1,5 @@
 class Effects extends Animation {
-constructor(effect_type, posx, posy, width, height, damage, color){
+constructor(effect_type, posx, posy, width, height, damage, color, follow, TargetName){
 super();
 this.position = {
     x : posx,
@@ -11,12 +11,20 @@ this.size = {
 }
 this.effect_selected = effect_type;
 this.destroy_object = false;
-
-
-
 this.damage = damage;
 this.textColor = color;
 
+if(follow){
+    this.followTarget = follow;
+}else{
+    this.followTarget = false;
+}
+
+if(TargetName){
+    this.getPlayerName = TargetName;
+}else{
+    this.getPlayerName = "";
+}
 
 }
 
@@ -65,7 +73,7 @@ healShowAnimation(){
                 ctx.strokeText(this.damage, this.position.x + 100 , this.position.y + 200);                       
   
 }
-
+getTargetName(){ this.getPlayerName;}
     updateEffects(){
         this.effects();
         this.healShowAnimation();

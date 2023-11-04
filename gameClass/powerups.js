@@ -408,7 +408,7 @@ blueShield(player){
         //console.log("health Taken <EFFECT HERE>");
         this.collision.collision_posX = this.position.x;
         this.collision.collision_posY = this.position.y;
-        effects_global.push(new Effects("BLUE_SHIELD_TAKEN_EFFECT", player.position.x - 160 , player.position.y - 160, 400, 400, "", "#7cff7e"))
+        effects_global.push(new Effects("BLUE_SHIELD_TAKEN_EFFECT", player.position.x - 160 , player.position.y - 160, 400, 400, "", "#7cff7e", true, player.body.m_name))
         this.clearItems();
     }
 
@@ -423,7 +423,7 @@ redShield(player){
         //console.log("health Taken <EFFECT HERE>");
         this.collision.collision_posX = this.position.x;
         this.collision.collision_posY = this.position.y;
-        effects_global.push(new Effects("RED_SHIELD_TAKEN_EFFECT", player.position.x - 160 , player.position.y - 160, 400, 400, "", "#7cff7e"))
+        effects_global.push(new Effects("RED_SHIELD_TAKEN_EFFECT", player.position.x - 160 , player.position.y - 160, 400, 400, "", "#7cff7e", true, player.body.m_name))
 
         this.clearItems();
     }

@@ -14,8 +14,8 @@ var gameFrame = 0;
 
 // var heightRatio = 1.5;
 // c.height = canvas.width * heightRatio;
-c.width = 2000;
-c.height = 2000;
+c.width = 3000;
+c.height = 3000;
 
 //playerStatus Bar
 c_ui_status.width = c.width;
@@ -45,11 +45,11 @@ const animation_TESTING = new Animation();
 //players
 //CREATING A PLAYER Player(name, level, thruster_selection, get_health, energy, m_damage,  gunType, posx, posy, gun_speed)
 const players = [
-  new Player("PLAYER ONE", 1230,  8, 2000, 400000, 500, 20, 100, 900, 30),
-  // new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 300, 900, 30),
-  // new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 600, 900, 30),
-  // new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 900, 900, 30),
-  // new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 1200, 900, 30),
+  new Player("PLAYER ONE", 1230,  8, 2000, 400000, 500, 20, 500, 900, 30),
+ new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 800, 900, 30),
+   new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 600, 900, 30),
+ new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 900, 900, 30),
+   new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 1200, 900, 30),
   // new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 1400, 900, 30),
   // new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 1600, 900, 30),
   // new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 1800, 900, 30),
@@ -69,8 +69,8 @@ const monsters = [
 ];
   
 const Monsters_loads = [
-new Monsters_Load(getMonsters["Invader"]),
-new Monsters_Load(getMonsters["Bukara"]),
+//new Monsters_Load(getMonsters["Invader"]),
+//new Monsters_Load(getMonsters["Bukara"]),
 ]
 
 //onMonster Loads  animation
@@ -224,11 +224,13 @@ explosion_onDeath_animation_L.splice(m, 1);
       sparks_high[p], 
       thruster_animation[p], 
       deathExplosionAnimation[p]
-      ); 
-
-      
+      );  
   }
   
+
+
+
+
   for(var m = 0; m < monsters.length; m++){
   if(monsters[m].getBossMode()){
     monsters[m].monsterBossDeathExplosion(explosion_onDeath_animation[m]);
@@ -285,11 +287,16 @@ players[p].playerView();
 
 // EFFECTS
 if(effects_global.length > 0){
+
 for(var i = 0 ; i < effects_global.length; i ++){
 effects_global[i].updateEffects();
 if(effects_global[i].getDestroyObject()){
   effects_global.splice(i, 1);
-}}
+  
+    
+  }
+
+}
 
 
 

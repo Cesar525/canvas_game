@@ -2,8 +2,8 @@ class Player {
     constructor(name, level, thruster_selection, get_health, energy, m_damage,  gunType, posx, posy, gun_speed){
 
         this.position ={
-        x: (c.width / 2),  //posx,
-        y: c.height + c.height / 2, //posy
+        x: posx,//(c.width / 2),  //
+        y: posy//c.height + c.height / 2, //
     },
     this.velocity ={
         x:25,
@@ -44,15 +44,15 @@ class Player {
         money : 0
     }
     this.StartingPlayer = {
-        player_start_status : false,
-        playerSet_onStarting_position : false,
+        player_start_status : true,
+        playerSet_onStarting_position : true,
         player_starting_pos : {
             x : c.width / 2 - (this.width / 2),
             y : c.height + c.height / 2
         },
         playerStart_blinking : 0,
-player_no_damage : true,
-player_blinking_start : true,
+player_no_damage : false,
+player_blinking_start : false,
 timer_to_start : 0
 
     }
