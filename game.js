@@ -47,9 +47,9 @@ const animation_TESTING = new Animation();
 const players = [
   new Player("PLAYER ONE", 1230,  8, 2000, 400000, 500, 20, 500, 900, 30),
  new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 800, 900, 30),
-   new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 600, 900, 30),
- new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 900, 900, 30),
-   new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 1200, 900, 30),
+//    new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 600, 900, 30),
+//  new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 900, 900, 30),
+//    new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 1200, 900, 30),
   // new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 1400, 900, 30),
   // new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 1600, 900, 30),
   // new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 1800, 900, 30),
@@ -162,7 +162,7 @@ powerUp.filter(function(){
 if(true){
 
 
-  map_selection.updateMap(map_selected)
+  //map_selection.updateMap(map_selected)
 
 // PowerUps draw
 for(var f = 0; f < powerUp.length; f++){  
