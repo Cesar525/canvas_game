@@ -46,7 +46,7 @@ const animation_TESTING = new Animation();
 //CREATING A PLAYER Player(name, level, thruster_selection, get_health, energy, m_damage,  gunType, posx, posy, gun_speed)
 const players = [
   new Player("PLAYER ONE", 1230,  8, 2000, 400000, 500, 20, 500, 900, 30),
- new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 800, 900, 30),
+ //new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 800, 900, 30),
 //    new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 600, 900, 30),
 //  new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 900, 900, 30),
 //    new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 1200, 900, 30),
@@ -105,6 +105,7 @@ const powerUp = [
   new PowerUps(800, 100, powerUpsSelect.GREEN_GUN, 100, 100, 100),
   new PowerUps(900, 100, powerUpsSelect.BLUE_SHIELD, 100, 100, 100),
   new PowerUps(1000, 100, powerUpsSelect.RED_SHIELD, 100, 100, 100),
+  new PowerUps(1400, 100, powerUpsSelect.POWER, 100, 100, 100),
 
 ];
 
@@ -279,28 +280,15 @@ players[p].playerView();
 }
 
 
-
-
-
-
-
-
 // EFFECTS
+//update Effects
 if(effects_global.length > 0){
-
 for(var i = 0 ; i < effects_global.length; i ++){
 effects_global[i].updateEffects();
 if(effects_global[i].getDestroyObject()){
   effects_global.splice(i, 1);
-  
-    
   }
-
-}
-
-
-
-}
+}}
 
 
 

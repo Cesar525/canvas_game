@@ -83,7 +83,7 @@ if(this.getShieldType() == 2){
     this.setShieldtime(shield_spritesSheet.red_shield.time)
 }
 
-ctx.globalAlpha = 0.5;
+ctx.globalAlpha = 0.8;
 
 let positionX = Math.floor(this.gameFrame/this.staggerFrame) % 5;
 let positionY = Math.floor(this.gameFrame/(this.staggerFrame * 5)) % this.counting_sprite_height;

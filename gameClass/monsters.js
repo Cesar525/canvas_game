@@ -685,6 +685,11 @@ dropPowerUps(type){
         this.drop_item = false;
         this.droping_powerUp = false;
         break;
+        case  13: 
+        powerUp.push(new PowerUps(this.body.m_deadPosX, this.body.m_deadPosY, powerUpsSelect.POWER, 2000));
+        this.drop_item = false;
+        this.droping_powerUp = false;
+        break;
         
     }
 }

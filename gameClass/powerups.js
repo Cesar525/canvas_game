@@ -160,6 +160,14 @@ drawHealth(){
         health_image.src = shield_spritesSheet.red_shield.icon;
         ctx.drawImage(health_image,this.position.x, this.position.y += this.velocity.y, this.width, this.height);
     }
+    if(this.m_type == powerUpsSelect.POWER){
+        const health_image = new Image();
+        health_image.src = shield_spritesSheet.red_shield.icon;
+        //ctx.drawImage(health_image,this.position.x, this.position.y += this.velocity.y, this.width, this.height);
+        ctx.fillStyle = "yellow";
+        ctx.fillRect(this.position.x, this.position.y += this.velocity.y, this.width, this.height);
+    }
+   
 }
 
 health(player){
@@ -206,6 +214,20 @@ if(this.m_type == powerUpsSelect.MONEY){
 }     
 }
 }
+
+powerB(player){
+    if(this.m_type == powerUpsSelect.POWER){
+            if(this.collision.collision_with_player){
+        // console.log("MONEY Taken <EFFECT HERE>");
+        this.collision.collision_posX = this.position.x;
+        this.collision.collision_posY = this.position.y;
+        this.powerUp_taken = true;
+        player.body.powerBombEnergy += 1400;//this.m_points_adding;     
+        this.clearItems();
+        player.efffects_added_to_players.push(new Effects("MONEY_TAKEN_EFFECT", player.position.x - 115, player.position.y - 120, 0, 0, "+$"+this.m_points_adding, "#7cff7e"))
+    }     
+    }
+    }
 
 clearItems(){
     this.position.x = 500;
@@ -408,7 +430,7 @@ blueShield(player){
         //console.log("health Taken <EFFECT HERE>");
         this.collision.collision_posX = this.position.x;
         this.collision.collision_posY = this.position.y;
-        effects_global.push(new Effects("BLUE_SHIELD_TAKEN_EFFECT", player.position.x - 160 , player.position.y - 160, 400, 400, "", "#7cff7e", true, player.body.m_name))
+        player.efffects_added_to_players.push(new Effects("BLUE_SHIELD_TAKEN_EFFECT", player.position.x - 160 , player.position.y - 160, 400, 400, "", "#7cff7e"))
         this.clearItems();
     }
 
@@ -423,7 +445,7 @@ redShield(player){
         //console.log("health Taken <EFFECT HERE>");
         this.collision.collision_posX = this.position.x;
         this.collision.collision_posY = this.position.y;
-        effects_global.push(new Effects("RED_SHIELD_TAKEN_EFFECT", player.position.x - 160 , player.position.y - 160, 400, 400, "", "#7cff7e", true, player.body.m_name))
+        player.efffects_added_to_players.push(new Effects("RED_SHIELD_TAKEN_EFFECT", player.position.x - 160 , player.position.y - 160, 400, 400, "", "#7cff7e"))
 
         this.clearItems();
     }
@@ -437,6 +459,7 @@ updatePowerUpsFunctionality(player){
     this.money(player);
     this.blueShield(player);
     this.redShield(player);
+    this.powerB(player);
 
     this.machineGunBeacon(player);
     this.laserGunBeacon(player);

@@ -14,5 +14,6 @@ const powerUpsSelect = {
     LAVA_GUN : "LAVA_GUN",
     GREEN_GUN : "GREEN_GUN",
     BLUE_SHIELD : "BLUE_SHIELD",
-    RED_SHIELD : "RED_SHIELD"
+    RED_SHIELD : "RED_SHIELD", 
+    POWER : "POWER",
 }

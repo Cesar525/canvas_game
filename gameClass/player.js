@@ -25,7 +25,7 @@ class Player {
         m_shield_type : 2,
          lef_side_wign_shot : - 50,
          right_side_wign_shot : + 50,
-         powerBombEnergy : 950,
+         powerBombEnergy : 400,
          total_set_powerbombenergy : 1000
     }
     this.collition = {
@@ -75,11 +75,12 @@ timer_to_start : 0
 //shields
 this.shields_class = [];
 
-    //Guns
+    //OBJECTS
     this.gun_on = [];
     this.explosionn = [];
     this.explosionn2 = [];
-
+    this.efffects_added_to_players = [];
+//
     this.player_storage = [1, 2, 3];
     this.set_amount = 0;
 
@@ -124,6 +125,12 @@ this.controller_movements = {
 }
 
 
+}
+
+powerEnergyLock(){
+    if(this.body.powerBombEnergy > this.body.total_set_powerbombenergy){
+        this.body.powerBombEnergy = this.body.total_set_powerbombenergy;
+    }
 }
 
 
@@ -958,13 +965,13 @@ playerStart(){
     if(this.getPlayerStart() == false){
         //getting player into place
         this.position.y -= this.velocity.y;
-        console.log("updating position");   
+        //console.log("updating position");   
     }
     if(this.position.y == ((c.height / 2) + ((c.height / 2) / 2))){
-        console.log("destination reached");
+        //console.log("destination reached");
        this.StartingPlayer.player_start_status = true; 
     }
-    console.log(this.position.x);
+    //console.log(this.position.x);
     }
 
 update(animation_Sparks_low, animation_Sparks_high, thruster_animation, player_death_explosionAnimation){
@@ -1013,7 +1020,7 @@ this.energyUsage()
 this.playerInventoryProccess();
 this.playerShield();
  this.playerStart();
-
+ this.powerEnergyLock();
 for(var f = 0; f < powerUp.length; f++){  
     powerUp[f].updatePowerUpsFunctionality(this);
   }
@@ -1025,10 +1032,23 @@ this.setPlayerShieldStatus(true);
       }else{
         this.setPlayerShieldStatus(false);
       }
-    }
+
+
+//EFFECTS
+if(this.efffects_added_to_players.length > 0){
+    for(var i = 0 ; i < this.efffects_added_to_players.length; i ++){
+        this.efffects_added_to_players[i].updateEffects();
+this.efffects_added_to_players[i].followingPlayer(this.position.x, this.position.y)
+
+    if(this.efffects_added_to_players[i].getDestroyObject()){
+        this.efffects_added_to_players.splice(i, 1);
+      }
+    }}
+}
    
 
-///Inventory processing
+
+
 
 
     }

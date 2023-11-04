@@ -1,5 +1,5 @@
 class Effects extends Animation {
-constructor(effect_type, posx, posy, width, height, damage, color, follow, TargetName){
+constructor(effect_type, posx, posy, width, height, damage, color){
 super();
 this.position = {
     x : posx,
@@ -13,18 +13,6 @@ this.effect_selected = effect_type;
 this.destroy_object = false;
 this.damage = damage;
 this.textColor = color;
-
-if(follow){
-    this.followTarget = follow;
-}else{
-    this.followTarget = false;
-}
-
-if(TargetName){
-    this.getPlayerName = TargetName;
-}else{
-    this.getPlayerName = "";
-}
 
 }
 
@@ -64,19 +52,24 @@ break;
 }
 
 
-healShowAnimation(){
-        
-                ctx.fillStyle = this.textColor;
-                ctx.strokeStyle = "black"
-                ctx.font = "90px anton";
-                ctx.fillText( this.damage, this.position.x + 100 , this.position.y + 200);
-                ctx.strokeText(this.damage, this.position.x + 100 , this.position.y + 200);                       
-  
+healShowAnimation(){        
+    ctx.fillStyle = this.textColor;
+    ctx.strokeStyle = "black"
+    ctx.font = "90px anton";
+    ctx.fillText( this.damage, this.position.x + 100 , this.position.y + 200);
+    ctx.strokeText(this.damage, this.position.x + 100 , this.position.y + 200);                       
 }
+
+followingPlayer(pos_x, pos_y){
+    this.position.x = pos_x - 150;
+    this.position.y = pos_y - 150;
+}
+
 getTargetName(){ this.getPlayerName;}
     updateEffects(){
         this.effects();
         this.healShowAnimation();
+console.log(this.getPlayerName + " took the powerup")
     }
 
 }
