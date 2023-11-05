@@ -818,15 +818,6 @@ this.damageShowAnimation(this.showDamageAnimation.damage_recorded, this.position
 }
 }
 
-// textWithStroke(text , textColor, strokeColor, text_size_and_style, which_canvas, text_posx, text_posy){
-//     which_canvas.fillStyle = textColor;
-//     which_canvas.font = text_size_and_style;
-//     which_canvas.strokeStyle = strokeColor;
-//     which_canvas.fillText(text, text_posx, text_posy)
-//     which_canvas.strokeText(text, text_posx, text_posy)
-
-// }
-
 playerInventory(){
 
     ctx_ui_status.fillStyle = "black";
