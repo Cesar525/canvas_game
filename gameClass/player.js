@@ -969,7 +969,6 @@ this.efffects_added_to_players[i].followingPlayer(this.position.x, this.position
 
 
 
-
     }
 
     

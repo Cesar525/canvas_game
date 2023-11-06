@@ -210,8 +210,7 @@ explosion_onDeath_animation_L.splice(m, 1);
     }
   }
 
-  
-  
+
   //powerUps updates and collision
   for(var p = 0; p < players.length; p++){
     for(var f = 0; f < powerUp.length; f++){      
@@ -291,7 +290,10 @@ if(effects_global[i].getDestroyObject()){
 }}
 
 
+  ///TEsting Super Powerbomb Aura
+animation_TESTING.spritePage("assets/powerBombsEffect/fullychargedsprite/rreed.png", players[0].position.x - 170, players[0].position.y - 150, 2575, 2575, 5, 5, 515, 515, 0, true, -100, -100);
 
+  
 
 
 
