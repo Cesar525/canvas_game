@@ -40,7 +40,7 @@ const effects_global = [];
 
 //testing
 const animation_TESTING = new Animation();
-
+const shotTESTING = new shots();
 
 //players
 //CREATING A PLAYER Player(name, level, thruster_selection, get_health, energy, m_damage,  gunType, posx, posy, gun_speed)
@@ -163,7 +163,7 @@ powerUp.filter(function(){
 if(true){
 
 
-  //map_selection.updateMap(map_selected)
+ map_selection.updateMap(map_selected)
 
 // PowerUps draw
 for(var f = 0; f < powerUp.length; f++){  
@@ -290,10 +290,26 @@ if(effects_global[i].getDestroyObject()){
 }}
 
 
-  ///TEsting Super Powerbomb Aura
-animation_TESTING.spritePage("assets/powerBombsEffect/fullychargedsprite/rreed.png", players[0].position.x - 170, players[0].position.y - 150, 2575, 2575, 5, 5, 515, 515, 0, true, -100, -100);
+//   ///TEsting Super Powerbomb Aura
 
-  
+//   //charging 1/4
+// animation_TESTING.spritePage("assets/powerBombsEffect/fullychargedsprite/white.png", players[0].position.x - 170, players[0].position.y - 150, 2575, 2575, 5, 5, 515, 515, 0, true, -100, -100);
+// //charged 1/2
+// animation_TESTING.spritePage("assets/powerBombsEffect/fullychargedsprite/white.png", players[0].position.x - 170, players[0].position.y - 150, 2575, 2575, 5, 5, 515, 515, 0, true, -100, -100);
+// //charged 3/4
+// animation_TESTING.spritePage("assets/powerBombsEffect/fullychargedsprite/white.png", players[0].position.x - 170, players[0].position.y - 150, 2575, 2575, 5, 5, 515, 515, 0, true, -100, -100);
+// //charged 100%
+// animation_TESTING.spritePage("assets/powerBombsEffect/fullychargedsprite/white.png", players[0].position.x - 170, players[0].position.y - 150, 2575, 2575, 5, 5, 515, 515, 0, true, -100, -100);
+
+// //ShottingBusrt
+//animation_TESTING.spritePage("assets/powerBombsEffect/fullychargedsprite/charge/charge01/charging.png", players[0].position.x - 400, players[0].position.y - 440, 6180, 515, 12, 1, 515, 515, 10, true, 500, 500);
+
+//SHOT
+//animation_TESTING.spritePage("assets/powerBombsEffect/fullychargedsprite/charge/charge01/shot.png", 1000, 1000, 4120, 515, 8, 1, 515, 515, 2, true, -100, -100);
+
+
+
+
 
 
 
