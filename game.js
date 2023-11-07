@@ -302,7 +302,7 @@ if(effects_global[i].getDestroyObject()){
 // animation_TESTING.spritePage("assets/powerBombsEffect/fullychargedsprite/white.png", players[0].position.x - 170, players[0].position.y - 150, 2575, 2575, 5, 5, 515, 515, 0, true, -100, -100);
 
 // //ShottingBusrt
-//animation_TESTING.spritePage("assets/powerBombsEffect/fullychargedsprite/charge/charge01/charging.png", players[0].position.x - 400, players[0].position.y - 440, 6180, 515, 12, 1, 515, 515, 10, true, 500, 500);
+animation_TESTING.spritePage("assets/powerBombsEffect/fullychargedsprite/charge/charge01/charging.png", players[0].position.x - 400, players[0].position.y - 440, 6180, 515, 12, 1, 515, 515, 7, true, 500, 500);
 
 //SHOT
 //animation_TESTING.spritePage("assets/powerBombsEffect/fullychargedsprite/charge/charge01/shot.png", 1000, 1000, 4120, 515, 8, 1, 515, 515, 2, true, -100, -100);
