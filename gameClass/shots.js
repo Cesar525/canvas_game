@@ -1,5 +1,5 @@
 class shots extends Animation{
-    constructor(start_posx, start_posy, shotype, shotdirection, explosion_type, shot_damage, shot_speed, width, height, burst_selection, burst_posx, burst_posy){
+    constructor(start_posx, start_posy, shotype, shotdirection, explosion_type, shot_damage, shot_speed, width, height, burst_selection, burst_posx, burst_posy, powerBomb, powerBombType){
 super();
     this.position = {
         x : start_posx,
@@ -65,7 +65,31 @@ this.selecting_burst = burst_selection;
     10 : "assets/shots/bean_10.png",
     11 : "assets/machinegun/bullet_11.png"
     }
+
+    //POWER BOMB VARIABLES
+this.powerBombShotsSheet = {
+1 : "assets/powerBombsEffect/fullychargedsprite/charge/charge01/shot.png",
+}
+this.powerBombBurstSheet = {
+1 : "assets/powerBombsEffect/fullychargedsprite/charge/charge01/charging.png",
+}
+
+
+    if(powerBomb){
+
+        this.powerBomb_init = powerBomb;
+     this.PowerBomb = {
+        powerBomb_burst : new Animation(),
+        powerBomb_shot : new Animation(),
+        powerBomb_explosion : new Animation(),
+}    
+this.Powerbomb__burst = true;   
+    }else{
+        this.powerBomb_init = false;
+    }  
     
+
+
 }
 
 bullethitmonsters(){return this.collition.shot_collided;}
@@ -296,17 +320,64 @@ collisionMonsterShot(monsters){
                      }
                    }
 
+
+DrawPowerBomb(){
+
+if(this.Powerbomb__burst){
+this.PowerBomb.powerBomb_burst.spritePage(this.powerBombBurstSheet[1], this.start_position_setX - 250, this.start_position_setY - 200, 6180, 515, 12, 1, 515, 515, 7, true, 500, 500);
+//Burst Burst Happening
+}
+if(!this.PowerBomb.powerBomb_burst.getAnimationStatus()){
+//once burst h appen we closing the burst
+    this.Powerbomb__burst = false;
+// and we shotting the shot.
+
+}
+}
+PowerBombShot(player){
+    //single missile
+    
+    this.setDamageNumberColor("red");
+    var totalDamage = player.body.m_damage + this.m_damage;
+    this.damages_total = this.randomHit(1, totalDamage);
+    this.powerBombCreation(player, this.shot_direction);
+    this.damage_effect = this.hiteffect;
+    }
+
+    powerBombCreation(player, direction){
+
+        if(!this.clearRect){
+         this.shotDirectionUpDown(direction, "up");
+         this.PowerBomb.powerBomb_shot.spritePage(this.powerBombShotsSheet[1], this.position.x, this.position.y, 4120, 515, 8, 1, 515, 515, 2, true, -100, -100);
+       
+         }
+     }
+
+
+
 bursting_bullets(player,burst_animation){
 burst_animation.burstEffect(1, this.start_position_setX + this.calibrating_burst_x, this.start_position_setY + this.calibrating_burst_y, this.burst_send, 1)
 this.burst_send = false;
 }
 
 updateShot(player, explo_one_animation, explo_two_animation){
+//PowerBomb
+this.DrawPowerBomb();
+if(!this.Powerbomb__burst){
+this.PowerBombShot(player);
+};
+//End of power bomb
+if(!this.powerBomb_init){
 var speed = player.body.m_gun_speed + this.shot_speed_set;
 this.velocity.x = speed;
 this.velocity.y = speed;
+}else{
+    this.velocity.x = 3;
+    this.velocity.y = 3; 
+}
+
 this.bursting_bullets(player,explo_two_animation);
-this.shot(player);
+//this.shot(player);
 this.bulletHitMonsterEffect(explo_one_animation, explo_two_animation, this.getCollitionPosX(), this.getCollitionPosY() ,this.getCollitionWithMonster(), this.damage_effect, 1);
 this.damageShowAnimation(this.getDamageHit(), this.getCollitionPosX(), this.getCollitionPosY(), this.getDamageNumberColor(),this.getCollitionWithMonster());
 this.clearingBulletOnceHit();

@@ -38,9 +38,10 @@ const map_selection = new Mapbuilder();
 //Game Effects
 const effects_global = [];
 
-//testing
+//TE$STING
 const animation_TESTING = new Animation();
-const shotTESTING = new shots();
+const shotTESTING = new shots(1000, 2000, 7, 0, 10, 10, 0, 100, 300, 1, -50, -150, true, 1);
+const testingAnimations = [new Animation(), new Animation()];
 
 //players
 //CREATING A PLAYER Player(name, level, thruster_selection, get_health, energy, m_damage,  gunType, posx, posy, gun_speed)
@@ -302,12 +303,14 @@ if(effects_global[i].getDestroyObject()){
 // animation_TESTING.spritePage("assets/powerBombsEffect/fullychargedsprite/white.png", players[0].position.x - 170, players[0].position.y - 150, 2575, 2575, 5, 5, 515, 515, 0, true, -100, -100);
 
 // //ShottingBusrt
-animation_TESTING.spritePage("assets/powerBombsEffect/fullychargedsprite/charge/charge01/charging.png", players[0].position.x - 400, players[0].position.y - 440, 6180, 515, 12, 1, 515, 515, 7, true, 500, 500);
+//animation_TESTING.spritePage("assets/powerBombsEffect/fullychargedsprite/charge/charge01/charging.png", players[0].position.x - 400, players[0].position.y - 440, 6180, 515, 12, 1, 515, 515, 7, true, 500, 500);
 
 //SHOT
 //animation_TESTING.spritePage("assets/powerBombsEffect/fullychargedsprite/charge/charge01/shot.png", 1000, 1000, 4120, 515, 8, 1, 515, 515, 2, true, -100, -100);
 
 
+
+shotTESTING.updateShot(players[0], testingAnimations[0], testingAnimations[1]);
 
 
 
