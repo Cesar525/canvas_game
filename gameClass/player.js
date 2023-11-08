@@ -622,7 +622,9 @@ gunsType(type)
 //Default Gun  shotDamage == 1
 if(type == 1){
     var damage_1 = 1;
-    this.gun_on.push(new shots(this.position.x, this.position.y, 11, 0, 8, damage_1, 40, 100, 100, 1, -50, -150));
+    this.gun_on.push(
+    new shots(this.position.x, this.position.y, 11, 0, 8, damage_1, 40, 100, 100, 1, -50, -150),
+    );
     this.explosionn.push(new Animation());
     this.explosionn2.push(new Animation());
     }

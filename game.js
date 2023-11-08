@@ -46,7 +46,7 @@ const testingAnimations = [new Animation(), new Animation()];
 //players
 //CREATING A PLAYER Player(name, level, thruster_selection, get_health, energy, m_damage,  gunType, posx, posy, gun_speed)
 const players = [
-  new Player("PLAYER ONE", 1230,  8, 2000, 400000, 500, 20, 500, 900, 30),
+  new Player("PLAYER ONE", 1230,  8, 2000, 400000, 500, 1, 500, 900, 30),
  //new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 800, 900, 30),
 //    new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 600, 900, 30),
 //  new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 900, 900, 30),
@@ -164,7 +164,7 @@ powerUp.filter(function(){
 if(true){
 
 
- map_selection.updateMap(map_selected)
+// map_selection.updateMap(map_selected)
 
 // PowerUps draw
 for(var f = 0; f < powerUp.length; f++){  

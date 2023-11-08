@@ -370,6 +370,7 @@ var speed = player.body.m_gun_speed + this.shot_speed_set;
 this.velocity.x = speed;
 this.velocity.y = speed;
 this.shot(player);
+this.bursting_bullets(player,explo_two_animation);
 }else{
     this.DrawPowerBomb();
 if(!this.Powerbomb__burst){
@@ -379,7 +380,6 @@ this.PowerBombShot(player);
     this.velocity.y = 3; 
 }
 
-this.bursting_bullets(player,explo_two_animation);
 
 this.bulletHitMonsterEffect(explo_one_animation, explo_two_animation, this.getCollitionPosX(), this.getCollitionPosY() ,this.getCollitionWithMonster(), this.damage_effect, 1);
 this.damageShowAnimation(this.getDamageHit(), this.getCollitionPosX(), this.getCollitionPosY(), this.getDamageNumberColor(),this.getCollitionWithMonster());
