@@ -87,7 +87,7 @@ this.Powerbomb__burst = true;
     }else{
         this.powerBomb_init = false;
     }  
-    
+// POWER BOMB END VARIBALES
 
 
 }
@@ -244,9 +244,11 @@ if(this.position.y < - this.height){
 
 //DELETING SHOT
 deletingShots(){
-        setTimeout(()=>{
-            this.deleteshot = true;
-        }, 2000)
+    if(this.position.y < 0){
+         setTimeout(()=>{
+             this.deleteshot = true;
+         }, 2000)
+        }
     }
 getDeleteShotStatus(){ return this.deleteshot;}
 

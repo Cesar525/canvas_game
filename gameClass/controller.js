@@ -18,7 +18,11 @@ const keys = {
     },
     shotting : {
         pressed: false
+    },
+    powerbombactivation : {
+        pressed : false
     }
+
     
     }
 
@@ -32,7 +36,7 @@ const mouse = {
 }
 
 addEventListener("keydown", function ({keyCode}){
-    //console.log(keyCode);
+   // console.log(keyCode);
      switch(keyCode){
          case 38 :
          keys.up.pressed = true;
@@ -49,7 +53,9 @@ addEventListener("keydown", function ({keyCode}){
          case 83 : 
          keys.shotting.pressed = true
          break;
-         
+         case 65 : 
+         keys.powerbombactivation.pressed = true
+         break;
      }
      
  });
@@ -72,6 +78,9 @@ addEventListener("keydown", function ({keyCode}){
           case 83 :
             keys.shotting.pressed = false;
             break;
+            case 65 : 
+         keys.powerbombactivation.pressed = false;
+         break;
       }
       
   });

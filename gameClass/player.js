@@ -319,10 +319,10 @@ playerCollitionMonsters(monsters){
   setPlayerHitDamage(set){this.showDamageAnimation.damage_recorded = set;};
 playerMovemements(){
         // player movements
-var keyboard_use = true;
+
 
 if(this.StartingPlayer.player_start_status){
-if(keyboard_use){
+if(this.controller_movements.keyboard){
 if(keys.right.pressed){
     this.position.x += this.velocity.x
 }
@@ -336,13 +336,15 @@ if(keys.down.pressed){
     this.position.y += this.velocity.y
 }
 }else{
+
+    if(this.controller_movements.mouse){
             addEventListener("mousemove", (event) => {
         //console.log(event);
         // console.log("X == " + event.clientX + "Y == " + event.clientY); 
         this.position.x = event.clientX;
         this.position.y = event.clientY;
           });
-     
+        }
 }
  } 
 // player need to stay inside the canvas
@@ -575,6 +577,7 @@ this.gun_on[counting_updating].updateShot(
       )
 // is not deleting the used shots.
 if(this.gun_on[counting_updating].getDeleteShotStatus()){
+    console.log(this.gun_on[counting_updating].getDeleteShotStatus())
     this.gun_on.splice(counting_updating , 1);
     this.explosionn.splice(counting_updating , 1);
     this.explosionn2.splice(counting_updating , 1);
@@ -624,6 +627,7 @@ if(type == 1){
     var damage_1 = 1;
     this.gun_on.push(
     new shots(this.position.x, this.position.y, 11, 0, 8, damage_1, 40, 100, 100, 1, -50, -150),
+    
     );
     this.explosionn.push(new Animation());
     this.explosionn2.push(new Animation());
@@ -768,6 +772,33 @@ setTimeout(() => {
     this.explosionn2.push(new Animation(),new Animation(),new Animation(), new Animation(), new Animation());
     this.body.energy -= EnergyUse_20;
     }
+// END OF SHOTS
+
+
+
+
+
+//POWER BOMB
+if(this.body.powerBombEnergy >= 1000 && keys.powerbombactivation.pressed){
+
+    this.controller_movements.keyboard = false
+    var damage_1 = 1;
+    this.gun_on.push(new shots(this.position.x - 150, this.position.y - 230, 7, 0, 10, 10, 0, 100, 300, 1, -50, -150, true, 1));
+    this.explosionn.push(new Animation());
+    this.explosionn2.push(new Animation());
+this.body.powerBombEnergy = 0;   
+setTimeout(() => {
+    this.controller_movements.keyboard = true;
+}, 2000); 
+}
+
+
+
+
+
+
+
+
 }
 
 
@@ -965,9 +996,8 @@ this.efffects_added_to_players[i].followingPlayer(this.position.x, this.position
         this.efffects_added_to_players.splice(i, 1);
       }
     }}
+    
 }
-   
-
 
 
 

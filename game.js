@@ -164,7 +164,7 @@ powerUp.filter(function(){
 if(true){
 
 
-// map_selection.updateMap(map_selected)
+map_selection.updateMap(map_selected)
 
 // PowerUps draw
 for(var f = 0; f < powerUp.length; f++){  
