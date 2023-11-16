@@ -13,6 +13,13 @@ sprites Designer
  ashishlko11 
  games_unlimited
 
+
+
+
+
+currently workin gon power bombs. 
+
+
 Monsters - 
 1) add new monster moves.
 2) I should be able to assign any gun on any shotting post point.
