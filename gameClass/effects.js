@@ -69,7 +69,7 @@ getTargetName(){ this.getPlayerName;}
     updateEffects(){
         this.effects();
         this.healShowAnimation();
-console.log(this.getPlayerName + " took the powerup")
+
     }
 
 }

@@ -13,11 +13,11 @@ this.mouse_pointer_look = {
 this.mouse_collision = false;
 
 }
-// CLASS FUNTIONS
+//CLASS FUNTIONS
 draMouse(){
-// const mouse_pointer = new Image();
-// mouse_pointer.src = "sprite here";
-// ctx_ui_status.drawImage(mouse_pointer, 100, 100, 100)
+const mouse_pointer = new Image();
+mouse_pointer.src = "sprite here";
+ctx_ui_status.drawImage(mouse_pointer, 100, 100, 100)
 }
 
 getCursorPosition(canvas, event) {

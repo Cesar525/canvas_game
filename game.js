@@ -4,8 +4,6 @@ var c = document.getElementById("canvasGame");
 var ctx = c.getContext("2d");
 
 //ui Life bar
-var c_ui_status = document.getElementById("canvasUILifeBar");
-var ctx_ui_status = c_ui_status.getContext("2d");
 
 var gameFrame = 0;
 
@@ -17,9 +15,6 @@ var gameFrame = 0;
 c.width = 3000;
 c.height = 3000;
 
-//playerStatus Bar
-c_ui_status.width = c.width;
-c_ui_status.height = 200;
 
 
 // c.width = window.innerWidth;
@@ -39,9 +34,9 @@ const map_selection = new Mapbuilder();
 const effects_global = [];
 
 //TE$STING
-const animation_TESTING = new Animation();
-const shotTESTING = new shots(1000, 2000, 7, 0, 10, 10, 0, 100, 300, 1, -50, -150, true, 1);
-const testingAnimations = [new Animation(), new Animation()];
+//const animation_TESTING = new Animation();
+//const shotTESTING = new shots(1000, 2000, 7, 0, 10, 10, 0, 100, 300, 1, -50, -150, true, 1);
+//const testingAnimations = [new Animation(), new Animation()];
 
 //players
 //CREATING A PLAYER Player(name, level, thruster_selection, get_health, energy, m_damage,  gunType, posx, posy, gun_speed)
@@ -153,7 +148,6 @@ function buffer(){
     //GAME 
     gameFrame ++;
     ctx.clearRect(0,0,c.width, c.height)
-    ctx_ui_status.clearRect(0,0,c_ui_status.width, c_ui_status.height)
 
  
 powerUp.filter(function(){
@@ -310,7 +304,6 @@ if(effects_global[i].getDestroyObject()){
 
 
 
-shotTESTING.updateShot(players[0], testingAnimations[0], testingAnimations[1]);
 
 
 

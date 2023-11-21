@@ -326,7 +326,8 @@ collisionMonsterShot(monsters){
 DrawPowerBomb(){
 
 if(this.Powerbomb__burst){
-this.PowerBomb.powerBomb_burst.spritePage(this.powerBombBurstSheet[1], this.start_position_setX - 250, this.start_position_setY - 200, 6180, 515, 12, 1, 515, 515, 7, true, 500, 500);
+    
+this.PowerBomb.powerBomb_burst.spritePage(this.powerBombBurstSheet[1], this.start_position_setX - 250, this.start_position_setY - 200, 6180, 515, 12, 1, 515, 515, 7, true, this.width, this.width);
 //Burst Burst Happening
 }
 if(!this.PowerBomb.powerBomb_burst.getAnimationStatus()){
@@ -350,7 +351,7 @@ PowerBombShot(player){
 
         if(!this.clearRect){
          this.shotDirectionUpDown(direction, "up");
-         this.PowerBomb.powerBomb_shot.spritePage(this.powerBombShotsSheet[1], this.position.x, this.position.y, 4120, 515, 8, 1, 515, 515, 2, true, -100, -100);
+         this.PowerBomb.powerBomb_shot.spritePage(this.powerBombShotsSheet[1], this.position.x, this.position.y, 4120, 515, 8, 1, 515, 515, 2, true, 200, 200);
        
          }
      }

@@ -164,9 +164,9 @@ if(this.timerSettings.minutes == 60){
     this.timerSettings.minutes = 0;
 }
 //Show timer
-ctx_ui_status.fillStyle = "white";
-ctx_ui_status.font = "70px Roboto Mono"
-ctx_ui_status.fillText(this.timerSettings.hours + ":" + this.timerSettings.minutes + ":" + this.timerSettings.seconds, c_ui_status.width - 250 , 70, 200, 100)
+ctx.fillStyle = "white";
+ctx.font = "70px Roboto Mono"
+ctx.fillText(this.timerSettings.hours + ":" + this.timerSettings.minutes + ":" + this.timerSettings.seconds, c.width - 250 , 70, 200, 100)
 
 }
 

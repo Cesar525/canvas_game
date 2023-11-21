@@ -30,25 +30,25 @@ drawIventory(){
     if(this.getCollision() && this.getItemOn()){
     const slot1_images = new Image();
     slot1_images.src = this.boxes_mouseonsprite;
-    ctx_ui_status.drawImage(slot1_images, this.position.x , this.position.y, 100, 100);
+    ctx.drawImage(slot1_images, this.position.x , this.position.y, 100, 100);
     }else{
        
         const slot1_images = new Image();
     slot1_images.src = this.boxes_mouseoffsprite;
-    ctx_ui_status.drawImage(slot1_images, this.position.x, this.position.y, 100, 100);
+    ctx.drawImage(slot1_images, this.position.x, this.position.y, 100, 100);
 
 }
 
 if(this.getItemOn()){
 const slot_images_ITEM = new Image();
     slot_images_ITEM.src = this.item_info.item_sprite;
-    ctx_ui_status.drawImage(slot_images_ITEM, this.position.x, this.position.y, 100, 100);
+    ctx.drawImage(slot_images_ITEM, this.position.x, this.position.y, 100, 100);
     //Item Count
-    ctx_ui_status.fillStyle = "white";
-    ctx_ui_status.font = "40px Roboto Mono";
-    ctx_ui_status.strokeStyle = "black";
-    ctx_ui_status.fillText(this.item_info.item_count, this.position.x,this.position.y + 100)
-    ctx_ui_status.strokeText(this.item_info.item_count, this.position.x,this.position.y + 100)
+    ctx.fillStyle = "white";
+    ctx.font = "40px Roboto Mono";
+    ctx.strokeStyle = "black";
+    ctx.fillText(this.item_info.item_count, this.position.x,this.position.y + 100)
+    ctx.strokeText(this.item_info.item_count, this.position.x,this.position.y + 100)
 }
     }
 

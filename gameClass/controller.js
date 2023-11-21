@@ -54,7 +54,7 @@ addEventListener("keydown", function ({keyCode}){
          keys.shotting.pressed = true
          break;
          case 65 : 
-         keys.powerbombactivation.pressed = true
+        // keys.powerbombactivation.pressed = true
          break;
      }
      
@@ -79,14 +79,13 @@ addEventListener("keydown", function ({keyCode}){
             keys.shotting.pressed = false;
             break;
             case 65 : 
-         keys.powerbombactivation.pressed = false;
+         //keys.powerbombactivation.pressed = false;
          break;
       }
-      
   });
 
   addEventListener("mousemove", (event) => {
-    mousePad.getCursorPosition(canvas, event)
+   // mousePad.getCursorPosition(canvas, event)
       });
 
       addEventListener("click", (event) => {

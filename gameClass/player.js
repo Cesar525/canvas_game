@@ -2,8 +2,8 @@ class Player {
     constructor(name, level, thruster_selection, get_health, energy, m_damage,  gunType, posx, posy, gun_speed){
 
         this.position ={
-        x: posx,//(c.width / 2),  //
-        y: posy//c.height + c.height / 2, //
+        x: (c.width / 2),  //
+        y: c.height + c.height / 2, //
     },
     this.velocity ={
         x:25,
@@ -44,15 +44,15 @@ class Player {
         money : 0
     }
     this.StartingPlayer = {
-        player_start_status : true,
-        playerSet_onStarting_position : true,
+        player_start_status : false,
+        playerSet_onStarting_position : false,
         player_starting_pos : {
             x : c.width / 2 - (this.width / 2),
             y : c.height + c.height / 2
         },
         playerStart_blinking : 0,
-player_no_damage : false,
-player_blinking_start : false,
+player_no_damage : true,
+player_blinking_start : true,
 timer_to_start : 0
 
     }
@@ -462,109 +462,109 @@ var bar_height = 25
 //Showing current Weapon
 
 const image_weapon = new Image();
-    ctx_ui_status.fillStyle = "white";
-    ctx_ui_status.font = "40px Anton";
+    ctx.fillStyle = "white";
+    ctx.font = "40px Anton";
     image_weapon.src = UI.inventory_sprite_off;
-    ctx_ui_status.drawImage(image_weapon,  ((c.width / 2) / 2) + 100 , 0, 200, 200)
+    ctx.drawImage(image_weapon,  ((c.width / 2) / 2) + 100 , 0, 200, 200)
     image_weapon.src = weapon_icon[2];
-    ctx_ui_status.drawImage(image_weapon,  ((c.width / 2) / 2) + 100 , 0, 200, 200)
+    ctx.drawImage(image_weapon,  ((c.width / 2) / 2) + 100 , 0, 200, 200)
 
 
 
-    ctx_ui_status.strokeStyle = "black"
-    ctx_ui_status.fillText("Gun", ((c.width / 2) / 2) + 100, 50);
-    ctx_ui_status.strokeText("Gun", ((c.width / 2) / 2) + 100, 50);
+    ctx.strokeStyle = "black"
+    ctx.fillText("Gun", ((c.width / 2) / 2) + 100, 50);
+    ctx.strokeText("Gun", ((c.width / 2) / 2) + 100, 50);
     //gun level
-    ctx_ui_status.fillText("Level - 9", ((c.width / 2) / 2) + 100, 190);
-    ctx_ui_status.strokeText("Level - 9", ((c.width / 2) / 2) + 100, 190);
+    ctx.fillText("Level - 9", ((c.width / 2) / 2) + 100, 190);
+    ctx.strokeText("Level - 9", ((c.width / 2) / 2) + 100, 190);
 
 //Showing current shield
     const image_shield= new Image();
-    ctx_ui_status.fillStyle = "white";
-    ctx_ui_status.font = "40px Anton";
+    ctx.fillStyle = "white";
+    ctx.font = "40px Anton";
     image_shield.src = UI.inventory_sprite_off;
-    ctx_ui_status.drawImage(image_shield,  ((c.width / 2) / 2) + 350 , 0, 200, 200)
+    ctx.drawImage(image_shield,  ((c.width / 2) / 2) + 350 , 0, 200, 200)
     image_shield.src = shield_spritesSheet.red_shield.icon;
-    ctx_ui_status.drawImage(image_shield,  ((c.width / 2) / 2) + 350 , 0, 200, 200)
+    ctx.drawImage(image_shield,  ((c.width / 2) / 2) + 350 , 0, 200, 200)
    
 
 
-    ctx_ui_status.strokeStyle = "black"
-    ctx_ui_status.fillText("Shield", ((c.width / 2) / 2) + 350, 50);
-    ctx_ui_status.strokeText("Shield", ((c.width / 2) / 2) + 350, 50);
+    ctx.strokeStyle = "black"
+    ctx.fillText("Shield", ((c.width / 2) / 2) + 350, 50);
+    ctx.strokeText("Shield", ((c.width / 2) / 2) + 350, 50);
     //gun level
-    ctx_ui_status.fillText("Expire: 9 - 5", ((c.width / 2) / 2) + 350, 190);
-    ctx_ui_status.strokeText("Expire: 9 - 5 ", ((c.width / 2) / 2) + 350, 190);
+    ctx.fillText("Expire: 9 - 5", ((c.width / 2) / 2) + 350, 190);
+    ctx.strokeText("Expire: 9 - 5 ", ((c.width / 2) / 2) + 350, 190);
 
 
 
   //showin gplayer money
     const image_money = new Image();
-    ctx_ui_status.fillStyle = "white";
-    ctx_ui_status.font = "30px Roboto Mono";
+    ctx.fillStyle = "white";
+    ctx.font = "30px Roboto Mono";
     image_money.src = 'assets/space_assets/10. Powerups/05 money 02/0000.png';
-    ctx_ui_status.drawImage(image_money,  0, 0, 100, 100)
-    ctx_ui_status.fillText("$"+this.storage.money, 100, 50,  c_ui_status.height - 60);
+    ctx.drawImage(image_money,  0, 0, 100, 100)
+    ctx.fillText("$"+this.storage.money, 100, 50,  c.height - 60);
 
    
     //showing player health Levels
-    ctx_ui_status.fillStyle = "gray"; 
+    ctx.fillStyle = "gray"; 
  
-    ctx_ui_status.font = "30px Roboto Mono";
-    ctx_ui_status.fillRect(25, 100, bar_width, bar_height);
+    ctx.font = "30px Roboto Mono";
+    ctx.fillRect(25, 100, bar_width, bar_height);
     
     //green
     // console.log(Math.round((this.body.health / this.health_total) * bar_width ))
     if(Math.round((this.body.health / this.health_total) * bar_width ) >= bar_width / 2){
-         ctx_ui_status.fillStyle = "green";  
+         ctx.fillStyle = "green";  
     }
     if(Math.round((this.body.health / this.health_total) * bar_width ) <= bar_width / 2){
-        ctx_ui_status.fillStyle = "orange";  
+        ctx.fillStyle = "orange";  
     }
     if(Math.round((this.body.health / this.health_total) * bar_width ) <= bar_width / 3){
-        ctx_ui_status.fillStyle = "red";  
+        ctx.fillStyle = "red";  
     }
     if(Math.round((this.body.health / this.health_total) * bar_width ) <= bar_width / 5){
-        ctx_ui_status.fillStyle = "#720000";  
+        ctx.fillStyle = "#720000";  
     }
  
-    ctx_ui_status.font = "30px Roboto Mono";
-    ctx_ui_status.fillRect(25, 100, Math.round((this.body.health / this.health_total) * bar_width ), bar_height);
+    ctx.font = "30px Roboto Mono";
+    ctx.fillRect(25, 100, Math.round((this.body.health / this.health_total) * bar_width ), bar_height);
 //Showing health amount.
 
 
 if(Math.round((this.body.health / this.health_total) * bar_width ) >= bar_width / 2){
-    ctx_ui_status.fillStyle = "white";  
+    ctx.fillStyle = "white";  
 }
 if(Math.round((this.body.health / this.health_total) * bar_width ) <= bar_width / 2){
-   ctx_ui_status.fillStyle = "orange";  
+   ctx.fillStyle = "orange";  
 }
 if(Math.round((this.body.health / this.health_total) * bar_width ) <= bar_width / 3){
-   ctx_ui_status.fillStyle = "red";  
+   ctx.fillStyle = "red";  
 }
 if(Math.round((this.body.health / this.health_total) * bar_width ) <= bar_width / 5){
-   ctx_ui_status.fillStyle = "#720000";  
+   ctx.fillStyle = "#720000";  
 }
-    ctx_ui_status.font = "40px Roboto Mono";
-    ctx_ui_status.fillText(this.body.health, bar_width / 2,100);
+    ctx.font = "40px Roboto Mono";
+    ctx.fillText(this.body.health, bar_width / 2,100);
 
 
     //Showing player Energy Levels
 
  
   //showing player energy Levels
-  ctx_ui_status.fillStyle = "gray";
-  ctx_ui_status.font = "30px Roboto Mono";
-  ctx_ui_status.fillRect(25, 150, bar_width, bar_height);
+  ctx.fillStyle = "gray";
+  ctx.font = "30px Roboto Mono";
+  ctx.fillRect(25, 150, bar_width, bar_height);
   
   //green
-  ctx_ui_status.fillStyle = "blue";
-  ctx_ui_status.font = "30px Roboto Mono";
-  ctx_ui_status.fillRect(25, 150, Math.round((this.body.energy / this.total_energy) * bar_width), bar_height);
+  ctx.fillStyle = "blue";
+  ctx.font = "30px Roboto Mono";
+  ctx.fillRect(25, 150, Math.round((this.body.energy / this.total_energy) * bar_width), bar_height);
 //Showing energy amount.
-  ctx_ui_status.fillStyle = "white";
-  ctx_ui_status.font = "40px Roboto Mono";
-  ctx_ui_status.fillText(this.body.energy, bar_width / 2, 150, c_ui_status.height - 60);
+  ctx.fillStyle = "white";
+  ctx.font = "40px Roboto Mono";
+  ctx.fillText(this.body.energy, bar_width / 2, 150, c.height - 60);
 
 }
 shotting(){
@@ -813,9 +813,9 @@ if(this.alert_counting > 10){
     }
 }
 if(this.alert_on_off){
-    ctx_ui_status.fillStyle = "red";
-    ctx_ui_status.font = "200px Anton";
-    ctx_ui_status.fillText("!", 800, 190, 200, 200)
+    ctx.fillStyle = "red";
+    ctx.font = "200px Anton";
+    ctx.fillText("!", 800, 190, 200, 200)
 }
 }
 
@@ -853,8 +853,8 @@ this.damageShowAnimation(this.showDamageAnimation.damage_recorded, this.position
 
 playerInventory(){
 
-    ctx_ui_status.fillStyle = "black";
-    ctx_ui_status.fillRect(c.width - 1000, 0, 600 , c.height)
+    ctx.fillStyle = "black";
+    ctx.fillRect(c.width - 1000, 0, 600 , c.height)
 
 }
 
@@ -864,25 +864,25 @@ powerBombBar(){
 
     
     
-ctx_ui_status.fillStyle = "black";
-ctx_ui_status.fillRect(c.width - 1105, 5, 60, 190);
+ctx.fillStyle = "black";
+ctx.fillRect(c.width - 1105, 5, 60, 190);
    
 //bombenergy bar
-ctx_ui_status.fillStyle = "#00e7f2";
-ctx_ui_status.fillRect(c.width - 1100, 10, 50, 180);
+ctx.fillStyle = "#00e7f2";
+ctx.fillRect(c.width - 1100, 10, 50, 180);
 
     //background Bar
 
-ctx_ui_status.fillStyle = "black";
-ctx_ui_status.fillRect(c.width - 1105, 5, 60, 200 - Math.round((this.body.powerBombEnergy / this.body.total_set_powerbombenergy) * 190 ));
+ctx.fillStyle = "black";
+ctx.fillRect(c.width - 1105, 5, 60, 200 - Math.round((this.body.powerBombEnergy / this.body.total_set_powerbombenergy) * 190 ));
    
-ctx_ui_status.fillStyle = "red";
-ctx_ui_status.fillRect(c.width - 1100, 10, 50, 180 - Math.round((this.body.powerBombEnergy / this.body.total_set_powerbombenergy) * 180 ));
-ctx_ui_status.fillStyle = "white";
-ctx_ui_status.font = "30px Roboto Mono"
-ctx_ui_status.strokeStyle = "black"
-ctx_ui_status.fillText(this.body.powerBombEnergy + "/" + this.body.total_set_powerbombenergy, c.width - 1150, 190)
-ctx_ui_status.strokeText(this.body.powerBombEnergy + "/" + this.body.total_set_powerbombenergy, c.width - 1150, 190)
+ctx.fillStyle = "red";
+ctx.fillRect(c.width - 1100, 10, 50, 180 - Math.round((this.body.powerBombEnergy / this.body.total_set_powerbombenergy) * 180 ));
+ctx.fillStyle = "white";
+ctx.font = "30px Roboto Mono"
+ctx.strokeStyle = "black"
+ctx.fillText(this.body.powerBombEnergy + "/" + this.body.total_set_powerbombenergy, c.width - 1150, 190)
+ctx.strokeText(this.body.powerBombEnergy + "/" + this.body.total_set_powerbombenergy, c.width - 1150, 190)
 
 
 }
@@ -928,9 +928,9 @@ playerStart(){
 
 update(animation_Sparks_low, animation_Sparks_high, thruster_animation, player_death_explosionAnimation){
       
-this.powerBombBar();
-this.playerInventory();
-this.alerting();
+// this.powerBombBar();
+//this.playerInventory();
+//this.alerting();
 this.shotting();
 
 
@@ -969,7 +969,7 @@ this.shottingiinterval();
 this.showPlayerHealth();
 this.showPlayerEnergy();
 this.energyUsage()
-this.playerInventoryProccess();
+//this.playerInventoryProccess();
 this.playerShield();
  this.playerStart();
  this.powerEnergyLock();
