@@ -518,8 +518,8 @@ if(this.getPlayerShieldStatus() && this.getPlayerShieldStatus){
     ctx.fillText("Shield", ((c.width / 2) / 2) + 350, 50);
     ctx.strokeText("Shield", ((c.width / 2) / 2) + 350, 50);
     //gun level
-    ctx.fillText("Expire: 9 - 5", ((c.width / 2) / 2) + 350, 190);
-    ctx.strokeText("Expire: 9 - 5 ", ((c.width / 2) / 2) + 350, 190);
+    // ctx.fillText("Expire: 9 - 5", ((c.width / 2) / 2) + 350, 190);
+    // ctx.strokeText("Expire: 9 - 5 ", ((c.width / 2) / 2) + 350, 190);
 
 
 
