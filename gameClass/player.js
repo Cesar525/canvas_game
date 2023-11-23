@@ -22,7 +22,7 @@ class Player {
         deathPositionX : NaN,
         deathPositionY : NaN,
         shield_on_off : true,
-        m_shield_type : 2,
+        m_shield_type : 0,
          lef_side_wign_shot : - 50,
          right_side_wign_shot : + 50,
          powerBombEnergy : 400,
@@ -158,6 +158,7 @@ getCursorPosition(canvas, event) {
 }
 pushShield(type){
     this.shields_class.push(new Shields(type));
+    this.setPlayerShieldType(type);
 }
 draw(){
 
@@ -479,14 +480,38 @@ const image_weapon = new Image();
     ctx.strokeText("Level - 9", ((c.width / 2) / 2) + 100, 190);
 
 //Showing current shield
+if(!this.getPlayerShieldStatus()){
     const image_shield= new Image();
     ctx.fillStyle = "white";
     ctx.font = "40px Anton";
     image_shield.src = UI.inventory_sprite_off;
-    ctx.drawImage(image_shield,  ((c.width / 2) / 2) + 350 , 0, 200, 200)
-    image_shield.src = shield_spritesSheet.red_shield.icon;
-    ctx.drawImage(image_shield,  ((c.width / 2) / 2) + 350 , 0, 200, 200)
-   
+    ctx.drawImage(image_shield,  ((c.width / 2) / 2) + 350 , 0, 200, 200);
+    image_shield.src = shield_spritesSheet.empty_shield;
+    ctx.drawImage(image_shield,  ((c.width / 2) / 2) + 350 , 0, 200, 200);
+}
+if(this.getPlayerShieldStatus() && this.getPlayerShieldStatus){
+    if(this.getPlayerShieldType() == 1){
+        const image_shield= new Image();
+        ctx.fillStyle = "white";
+        ctx.font = "40px Anton";
+        image_shield.src = UI.inventory_sprite_off;
+        ctx.drawImage(image_shield,  ((c.width / 2) / 2) + 350 , 0, 200, 200);
+        image_shield.src = shield_spritesSheet.blue_shield.icon;
+        ctx.drawImage(image_shield,  ((c.width / 2) / 2) + 350 , 0, 200, 200);
+
+    }
+    if(this.getPlayerShieldStatus() && this.getPlayerShieldType() == 2){
+        const image_shield= new Image();
+        ctx.fillStyle = "white";
+        ctx.font = "40px Anton";
+        image_shield.src = UI.inventory_sprite_off;
+        ctx.drawImage(image_shield,  ((c.width / 2) / 2) + 350 , 0, 200, 200);
+        image_shield.src = shield_spritesSheet.red_shield.icon;
+        ctx.drawImage(image_shield,  ((c.width / 2) / 2) + 350 , 0, 200, 200);
+    }
+}
+
+
 
 
     ctx.strokeStyle = "black"

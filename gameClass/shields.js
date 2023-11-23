@@ -80,7 +80,7 @@ this.setShieldtime(shield_spritesSheet.blue_shield.time)
 }
 if(this.getShieldType() == 2){
     shieldImage.src = shield_spritesSheet.red_shield.sprite;
-    this.setShieldtime(shield_spritesSheet.red_shield.time)
+    this.setShieldtime(shield_spritesSheet.red_shield.time);
 }
 
 ctx.globalAlpha = 0.8;
@@ -104,10 +104,14 @@ this.gameFrame++;
 this.damageShowAnimation(this.timerSettings.seconds,player.position.x, player.position.y, "white", true);
 }
 
+
+
 if(this.getshieldtime() == this.timerSettings.seconds){
     this.doDeleteObjecT();
 }  
 }
+getSeconds(){ this.timerSettings.seconds;}
+secondSettedOnShield(){ this.shield_time;}
 
 damageShowAnimation(damage,pos_x, pos_y, color, if_true){
     
@@ -139,5 +143,6 @@ const shield_spritesSheet = {
     sprite : "assets/shields/redshield.png",
     time : 10,
     icon : "assets/shields/icon/redshield.png",
+ },
+ empty_shield : "assets/shields/icon/black.png",
  }
-}
