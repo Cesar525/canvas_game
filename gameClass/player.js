@@ -475,7 +475,7 @@ const image_weapon = new Image();
     ctx.strokeText("Gun", ((c.width / 2) / 2) + 100, 50);
 //gun level
     ctx.fillText(guns_status_show[gunType_player].gun_name, ((c.width / 2) / 2) + 100, 190);
-    ctx.strokeText("Level - 9", ((c.width / 2) / 2) + 100, 190);
+    ctx.strokeText(guns_status_show[gunType_player].gun_name, ((c.width / 2) / 2) + 100, 190);
 
 //Showing current shield
 if(!this.getPlayerShieldStatus()){
@@ -931,7 +931,7 @@ update(animation_Sparks_low, animation_Sparks_high, thruster_animation, player_d
       
 // this.powerBombBar();
 //this.playerInventory();
-//this.alerting();
+this.alerting();
 this.shotting();
 
 
