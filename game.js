@@ -3,7 +3,37 @@
 var c = document.getElementById("canvasGame");
 var ctx = c.getContext("2d");
 
-//ui Life bar
+//LEARNING ZIBKIT
+zebkit.require("ui", "layout", function(ui, layout) {
+  var root = new ui.zCanvas(300, 300).root;
+  root.properties({
+      border:  "plain", 
+      padding: 8,
+      layout:  new layout.BorderLayout(30),
+      kids  : {
+          "center": new ui.TextArea("A text ... "),
+          "bottom": new ui.Button("test") ,
+          "right" : new ui.Button("clear"),
+      }
+  });
+ 
+});
+
+
+  zebkit.require(function() {
+  
+    // find first component whose class is zebkit.ui.Button
+    root.on("ui.Button", function() {
+        // find first component whose class is zebkit.ui.TextArea
+        // and clear it
+        root.byPath("ui.TextArea").setValue("");
+    })
+});
+
+
+
+
+
 
 var gameFrame = 0;
 
