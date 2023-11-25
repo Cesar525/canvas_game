@@ -87,18 +87,6 @@ explosion_onDeath_animation.push(new Animation());
 
   //POWER UPS DROP---------
 const powerUp = [
-  new PowerUps(100, 100, powerUpsSelect.HEALTH, 100, 100, 100),
-  new PowerUps(200, 100, powerUpsSelect.ENERGY, 100, 100, 100),
-  new PowerUps(300, 100, powerUpsSelect.MONEY, 100, 100, 100),
-  new PowerUps(400, 100, powerUpsSelect.MACHINE_GUN, 100, 100, 100),
-  new PowerUps(500, 100, powerUpsSelect.LAZER_GUN, 100, 100, 100),
-  new PowerUps(600, 100, powerUpsSelect.PLASMA_GUN, 100, 100, 100),
-  new PowerUps(700, 100, powerUpsSelect.LAVA_GUN, 100, 100, 100),
-  new PowerUps(800, 100, powerUpsSelect.GREEN_GUN, 100, 100, 100),
-  new PowerUps(900, 100, powerUpsSelect.BLUE_SHIELD, 100, 100, 100),
-  new PowerUps(1000, 100, powerUpsSelect.RED_SHIELD, 100, 100, 100),
-  new PowerUps(1400, 100, powerUpsSelect.POWER, 100, 100, 100),
-
 ];
 
 //---
