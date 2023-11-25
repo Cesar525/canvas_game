@@ -1,14 +1,17 @@
 ## Game Name: No man Space ##
-Hello this will be a multiplayer Spaceship game for players all around the world will have challenges and mission to do.
+I was working on this game for Canvas learning purposes
+Game is not done and it won be because of life reasons.
+i hope is useful for others learning purposes.
 ## Where will this game be played? ##
     Brower
 ## This game support ##
-    Firefox 
-    Chrome
+    Firefox - for better Game play
+    Chrome - lags a little
 ## Lenguage Used ## 
     Javascript
-    HTML
-
+    HTML - Canvas
+## INSTALL ##
+Setup all the files in the htdocs folder if using Xampp and go to localhost.
 ## Images ##
 ![Scheme](space2.PNG)
 ![Scheme](space.PNG)
