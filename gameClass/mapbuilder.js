@@ -55,7 +55,7 @@ randomSpawnPositionX(from, to){
 //MAP ONE
 mapOneLoad(){
     
-
+this.gameFrame++
 this.map_one[0].timer();
 var map_minutes = this.map_one[0].getMinutes();
 var map_seconds = this.map_one[0].getSeconds()
@@ -89,10 +89,10 @@ this.map_one[3].drawStars(1, 2); // background image
 if(map_seconds >= 1){
 this.metioriteStorm();
 this.metioriteStorm();
-this.metioriteStorm();
-this.metioriteStorm();
-this.metioriteStorm();
-this.metioriteStorm();
+
+
+
+
 
 
 this.map_one[19].bigAsteroidsOnFire()

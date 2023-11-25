@@ -49,9 +49,9 @@ if(boss_Mode){
 }
 
 if(drop_loot){
-this.drop_loop_rating = 1000
+this.drop_loop_rating = 100
 }else{
-this.drop_loop_rating = 1000;
+this.drop_loop_rating = 100;
 }
 this.spawnTime = 0
 this.monster_color = color
