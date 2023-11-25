@@ -30,68 +30,52 @@
 
 <body>
     <!-- Canvas -->
-<div class="GameWindow">
+    <div class="GameWindow">
 
-    <?php
-if(!$_POST["player_name"]){
+        <?php
+if(empty($_POST["player_name"])){
 ?>
 
-      <div style="border: solid">
-            <form action="" method="POST">
-                <table style="margin: 0 auto;padding-top: 33%;">
-                    <tr>
-                        <th>0</th>
-                        <th>1</th>
-                    </tr>
-
-                    <tr>
-                        <td>
-                            <font color="white"
-                                style="font-size: 60px;padding: 51px;font-family: Roboto Mono;margin: 0 auto;color: #07ff07;">
-                                Player Name</font>
-                        </td>
-                    </tr>
-                    <td>
-                        <center><input name="player_name" type="text"
-                                style="font-size: 40px;border: solid 1px red;border-radius: 31px;margin: 0 auto;padding-left: 21px;font-family:Roboto Mono;"
-                                maxlength="10" placeholder="Enter Player Name"></center>
-                    </td>
-                    </td>
-                    <tr>
-
-                        <td>
-                            <center style="padding: 81px;"><input
-                                    style="background-color: #2f2c2c;font-size: 40px;color: white;border: solid 1px #ffb300;border-radius: 11px;padding: 1px;padding-left: 80px;padding-right: 80px;font-family: Roboto Mono;cursor: pointer;"
-                                    type="submit" value="Submit"></center>
-                        </td>
-                    </tr>
-                </table>
+        <div class="playerNameWindow">
+            <form class="playerNameForm" action="" method="POST">
+                <center>
+                    <font class="blink_me" color="white"
+                        style="font-size: 60px;padding: 51px;font-family: Roboto Mono;margin: 0 auto;color: #07ff07;">
+                        Player Name</font>
+                    <br>
+                    <input name="player_name" type="text"
+                    style="font-size: 40px;border: solid 1px red;border-radius: 31px;margin: 0 auto;padding-left: 21px;font-family:Roboto Mono;margin-top: 60px;"
+                        maxlength="19" placeholder="Enter Player Name">
+                  <br>
+                    <input class="submit_button" type="submit" value="Submit">
+                </center>
 
             </form>
         </div>
 
 
 
-<?php
+        <?php
 }else{
 ?>
-<?php
+        <?php
 
 
 ?>
-<font id="playerName" hidden><?php echo $_POST["player_name"];?></font>
- <canvas style="border: solid 1px white;z-index:2;background-color:black;" id="canvasGame" class="canvasGame"></canvas>
+        <font id="playerName" hidden><?php echo $_POST["player_name"];?></font>
+        <canvas style="border: solid 1px white;z-index:2;background-color:black;" id="canvasGame"
+            class="canvasGame"></canvas>
 
-<?php
+        <?php
 }
     ?>
-    
-  
-       
-   
-   
-   
-   
+
+
+
+
+
+
+
     </div>
 
 
