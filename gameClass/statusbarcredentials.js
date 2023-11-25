@@ -53,6 +53,11 @@ const guns_status_show = {
         icon : weapon_icon[5],
         level : "10",
         gun_name : "Green Bean II"
+    },
+    11 : {
+        icon : weapon_icon[5],
+        level : "10",
+        gun_name : "Green Bean II"
     }
 }
 

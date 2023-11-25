@@ -759,7 +759,7 @@ setTimeout(() => {
 }
 
     //Gun 20 LAVA SPREAD
-    if(type == 20){
+    if(type == 11){
         var EnergyUse_20 = 30;
     this.gun_on.push(
     new shots(this.position.x + this.body.lef_side_wign_shot, this.position.y,7, 0, 10, 10, 0, 100, 300, 1, -50, -150),

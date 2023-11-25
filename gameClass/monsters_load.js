@@ -52,7 +52,7 @@ if(monster.boss){
 if(monster.loot.dropping_loot){
 this.drop_loop_rating = monster.loot.dropping_loot_rating;
 }else{
-this.drop_loop_rating = 300;
+this.drop_loop_rating = 10;
 }
 this.spawnTime = 0
 this.width = monster.size.width;

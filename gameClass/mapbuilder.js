@@ -88,6 +88,13 @@ this.map_one[3].drawStars(1, 2); // background image
 //pushing monsters in to map one.
 if(map_seconds >= 1){
 this.metioriteStorm();
+this.metioriteStorm();
+this.metioriteStorm();
+this.metioriteStorm();
+this.metioriteStorm();
+this.metioriteStorm();
+
+
 this.map_one[19].bigAsteroidsOnFire()
 this.map_one[20].bigAsteroidsOnFire()
 this.map_one[21].bigAsteroidsOnFire()
@@ -302,10 +309,6 @@ randomisingNumbers(){
 
 updateMap(mapSelected){
 this.randomisingNumbers(); 
-this.gameFrame++
-ctx.font = "90px Roboto Mono";
-ctx.fillStyle = "white";
-ctx.fillText(this.gameFrame, c.width - 200, 100);
 
 if(mapSelected == 1){ this.mapOneLoad(); }
 
