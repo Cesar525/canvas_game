@@ -23,7 +23,7 @@ name : "Bukara",
 Gun : "Space pistol",
 
 sprite : Bukara_sprites.normal_state,
-health : 1000000000,
+health : 10000,
 boss : true,
 speed : 10,
 damage : 20,

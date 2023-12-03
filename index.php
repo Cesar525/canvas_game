@@ -44,9 +44,9 @@ if(empty($_POST["player_name"])){
                         Player Name</font>
                     <br>
                     <input name="player_name" type="text"
-                    style="font-size: 40px;border: solid 1px red;border-radius: 31px;margin: 0 auto;padding-left: 21px;font-family:Roboto Mono;margin-top: 60px;"
+                        style="font-size: 40px;border: solid 1px red;border-radius: 31px;margin: 0 auto;padding-left: 21px;font-family:Roboto Mono;margin-top: 60px;"
                         maxlength="19" placeholder="Enter Player Name">
-                  <br>
+                    <br>
                     <input class="submit_button" type="submit" value="Submit">
                 </center>
 
@@ -78,12 +78,12 @@ if(empty($_POST["player_name"])){
 
     </div>
 
-<!-- Load monsters -->
-<script src="./gameClass/monsters/monsterproccessingdata/movements.js"></script>
-<script src="./gameClass/monsters/bukara.js"></script>
-<script src="./gameClass/monsters/invader.js"></script>
+    <!-- Load monsters -->
+    <script src="./gameClass/monsters/monsterproccessingdata/movements.js"></script>
+    <script src="./gameClass/monsters/bukara.js"></script>
+    <script src="./gameClass/monsters/invader.js"></script>
 
-<script src="./gameClass/monsters/monsterproccessingdata/monsters_load.js"></script>
+    <script src="./gameClass/monsters/monsterproccessingdata/monsters_load.js"></script>
 
     <!-- js Files  -->
     <script src="./gameClass/sprites.js"></script>
@@ -102,7 +102,7 @@ if(empty($_POST["player_name"])){
     <script src="./gameClass/shields.js"></script>
     <script src="./gameClass/controller.js"></script>
     <script src="./gameClass/monsters.js"></script>
-    
+
     <script src="./gameClass/map.js"></script>
     <script src="./gameClass/shots.js"></script>
     <script src="./gameClass/explosion.js"></script>
@@ -110,7 +110,6 @@ if(empty($_POST["player_name"])){
     <script src="./gameClass/particles.js"></script>
     <script src="./gameClass/effects.js"></script>
     <script src="./game.js"></script>
-
 </body>
 
 </html>
