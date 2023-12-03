@@ -38,16 +38,7 @@ const effects_global = [];
 //CREATING A PLAYER Player(name, level, thruster_selection, get_health, energy, m_damage,  gunType, posx, posy, gun_speed)
 const players = [
   new Player(player_name, 1230,  8, 2000, 400000, 500, 1, 500, 900, 30),
- //new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 800, 900, 30),
-//    new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 600, 900, 30),
-//  new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 900, 900, 30),
-//    new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 1200, 900, 30),
-  // new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 1400, 900, 30),
-  // new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 1600, 900, 30),
-  // new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 1800, 900, 30),
-  // new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 2000, 900, 30),
-  // new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 2200, 900, 30),
-  // new Player("PLAYER TWO", 1230,  8, 2000, 400000, 5000, 20, 2400, 900, 30),
+
 ]
 
 
@@ -61,8 +52,8 @@ const monsters = [
 ];
   
 const Monsters_loads = [
-//new Monsters_Load(getMonsters["Invader"]),
-//new Monsters_Load(getMonsters["Bukara"]),
+// new Monsters_Load(Invader),
+new Monsters_Load(Bukara),
 ]
 
 //onMonster Loads  animation
@@ -94,9 +85,7 @@ const pushing_random_explsions = [];
 const explosions_animations_pushing =[]
 //---
 
-// for(var i_animation = 0; i_animation < pushing_random_explsions.length; i_animation++){
-//   explosions_animations_pushing.push(new Animation());
-// }
+
 
 
 //onPlayer Animation sparks Global
@@ -116,8 +105,6 @@ for(var p = 0; p < players.length; p++){
   player_shield_effect_two.push(new Animation());
 
 }
-
-
 
 const burst_fire_test = new Animation();
 

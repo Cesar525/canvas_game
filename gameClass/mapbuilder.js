@@ -310,7 +310,9 @@ randomisingNumbers(){
 updateMap(mapSelected){
 this.randomisingNumbers(); 
 
-if(mapSelected == 1){ this.mapOneLoad(); }
+if(mapSelected == 1){ 
+    // this.mapOneLoad(); 
+}
 
 }
 

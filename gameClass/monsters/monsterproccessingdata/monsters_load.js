@@ -20,6 +20,7 @@ this.body = {
     m_sprite : monster.sprite,
     m_steady_deadPosX : NaN,
     m_steady_deadPosY : NaN,
+    m_damage_sprite : monster.damageSprite,
 }
 
 this.shotting_interval = monster.shotting_interval;
@@ -84,6 +85,7 @@ explosions_counter : 0,
 explosion_start : false,
 explosion_end : false
 }
+this.normal_sprite = monster.sprite;
 this.addition_animation = new Animation();
 this.delete_time_after_death = 0;
 this.destroy_object = false;
@@ -138,17 +140,18 @@ getHealth(){return this.body.health;};
 drawMonster(){
 
     //if bossmode set
-    if(this.boss_mode_set){
-        const image_monster = new Image();
+if(this.boss_mode_set){
+    const image_monster = new Image();
 
-        image_monster.src = this.body.m_sprite;
-      
-        ctx.drawImage(image_monster, this.position.x, this.position.y, this.width, this.height);
-
-        if(this.body.m_health < 0){
-            this.body.m_health = 0;
-                    }
-    }else{
+    image_monster.src = this.body.m_sprite;
+    ctx.filter = '#white';
+   
+    ctx.drawImage(image_monster, this.position.x, this.position.y, this.width, this.height);
+    ctx.filter = 'none';
+    if(this.body.m_health < 0){
+        this.body.m_health = 0;
+                }
+}else{
         //if boss mode not set
     if(!this.clearRect){
 //    sprite_animation.spriteProccessor(this.body.m_sprite, 2, this.position.x, this.position.y, this.width, this.height);
@@ -230,6 +233,13 @@ case "sidebyside":
     }
    
 break;
+
+case "testingMode":    
+    this.position.x = c.width / 2 - (this.width/ 2);
+    this.position.y = 300;
+
+   
+break;
 }
 }
 
@@ -308,6 +318,12 @@ this.velocity.y = this.diying_state_speed;
 
 this.body.m_sprite = this.diying_state_sprite;
 
+}
+if(this.collition.collition_with_shot){
+    this.body.m_sprite = this.diying_state_sprite;
+
+}else{
+this.body.m_sprite = this.normal_sprite;    
 }
 
 }
@@ -742,7 +758,12 @@ bossMode(){
 if(this.boss_mode_set){
 // boss position
 
+//Reaching position before fight starts. 
+if(this.monsterMovement == monster_movements.testingmode){
+        
+    }else{ 
 if(this.bossPositionReached == false){
+   
 if(this.width == NaN  && this.height == NaN){
 this.width = 500;
 this.height = 500;
@@ -761,7 +782,7 @@ if(this.position.y == 20){
   
     this.movements(this.monsterMovement);
 }
-
+    }
 //showing Boss life levels
 
 var barwidth_ = 700;
@@ -823,11 +844,13 @@ if(Math.round((this.body.m_health / this.health_total) * barwidth_ ) <= 100){
  }
 
 additionalAnimation(){
-    this.addition_animation.setPlayersThruster(1, this.position.x, this.position.y, 300, 300)
+    this.addition_animation.setPlayersThruster(1, this.position.x, this.position.y + 100, 300, 300)
 }
 
 updateMonster(sprite_animator){
+    
 this.drawMonster(sprite_animator);
+
 
 if(this.boss_mode_set){
     if(this.body.m_dead){
@@ -840,7 +863,7 @@ if(this.boss_mode_set){
 this.movements(this.monsterMovement);
 }
 this.dropPowerUps(this.randomSelectingPowerUps())
-this.additionalAnimation()
+//this.additionalAnimation() addingh aditional animation to monsters not set yet
 this.shottingPos();
 this.shotting();
 this.shottingiinterval(this.shotting_interval);
