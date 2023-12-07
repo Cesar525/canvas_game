@@ -78,6 +78,8 @@ if(empty($_POST["player_name"])){
 
     </div>
 
+
+
     <!-- Load monsters -->
     <script src="./gameClass/monsters/monsterproccessingdata/movements.js"></script>
     <script src="./gameClass/monsters/bukara.js"></script>
@@ -109,6 +111,9 @@ if(empty($_POST["player_name"])){
     <script src="./gameClass/player.js"></script>
     <script src="./gameClass/particles.js"></script>
     <script src="./gameClass/effects.js"></script>
+    <!-- game config -->
+    <script src="./config.js"></script>
+    <!-- game init -->
     <script src="./game.js"></script>
 </body>
 
