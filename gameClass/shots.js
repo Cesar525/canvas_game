@@ -15,8 +15,8 @@ class shots extends Animation {
     powerBomb,
     powerBombType,
     shotter_name,
-    shotter_damage,
-    player_or_monster
+    shotter_damage_skills,
+    cid_type  // true = player /////  false = Monster
   ) {
     super();
     this.position = {
