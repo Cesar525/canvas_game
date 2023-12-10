@@ -145,7 +145,7 @@ function buffer() {
       }
     }
 
-    //colliton Monsters_Loads
+    //colliton Monsters_Loads and deletions
     for (var m = 0; m < Monsters_loads.length; m++) {
       Monsters_loads[m].updateMonster(sprite_animation_L[m]);
       if (Monsters_loads[m].getDeleteObject() == true) {
