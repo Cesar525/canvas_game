@@ -37,7 +37,7 @@ const Shots_global = [];
 //players
 //CREATING A PLAYER Player(name, level, thruster_selection, get_health, energy, m_damage,  gunType, posx, posy, gun_speed)
 const players = [
-  new Player(player_name, 1230, 8, 2000, 400000, 500, 1, 500, 900, 30, game_config.flags.players),
+  new Player(player_name, 1230, 8, 2000, 400000, 500, 8, 500, 900, 30, game_config.flags.players),
 ];
 
 //Monsters

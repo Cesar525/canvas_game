@@ -182,8 +182,8 @@ class Player {
       const image = new Image();
       image.src = "assets/spaceship/spaceshipone.png";
       if ((this.body.turn = true)) {
+        // turning image
       }
-ctx.setTransform(0, 1, -1, 1, 1, 0);
       ctx.drawImage(
         image,
         this.position.x,
@@ -193,7 +193,7 @@ ctx.setTransform(0, 1, -1, 1, 1, 0);
       );
 
       if ((this.body.turn = true)) {
-        
+        //Turning image
       }
       if (this.body.health < 0) {
         this.body.health = 0;
