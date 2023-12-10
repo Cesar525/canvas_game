@@ -39,7 +39,7 @@ class Player {
         powerBombEnergy: 400,
         total_set_powerbombenergy: 1000,
         m_flag: flag,
-        turn: true,
+        turn: false,
       });
     this.collition = {
       collition_mons3ters: false,
@@ -179,6 +179,7 @@ class Player {
   }
   draw() {
     if (!this.clearRect) {
+      if(this.body.turn == false){
       const image = new Image();
       image.src = "assets/spaceship/spaceshipone.png";
       if ((this.body.turn = true)) {
@@ -191,6 +192,25 @@ class Player {
         this.width,
         this.height
       );
+      }else{
+        //ctx.rotate(180 * Math.PI / 180);
+  const image = new Image();
+  image.src = "assets/spaceship/spaceshipone.png";
+ 
+  ctx.drawImage(
+    image,
+    - this.position.x - this.width,
+    - this.position.y - this.height,
+    this.width,
+    this.height
+  );
+ 
+}
+
+
+
+
+
 
       if ((this.body.turn = true)) {
         //Turning image
