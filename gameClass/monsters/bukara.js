@@ -8,6 +8,7 @@ const Bukara_sprites = {
 
 //BUKARA DATA
 const Bukara = {
+  flag : 0,
   position: {
     x: -1000,
     y: -1000,
@@ -42,7 +43,7 @@ const Bukara = {
       interval: NaN,
     },
     shot_two: {
-      active: false,
+      active: true,
       x: 800 - 200,
       y: 800 - 100,
       shottype: NaN,

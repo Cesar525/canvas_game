@@ -358,19 +358,46 @@ class shots extends Animation {
     }
   }
 
-  collisionMonsterShot(monsters) {
-    // collision monster to shot
-    if (collisionTouch(this, monsters)) {
-      monsters.setMonsterHealth(this.damages_total); // set up the hit depend on the shot
-      this.setCollitionWithMonster(true);
-      this.setDamageHit(this.damages_total);
-      this.setCollisionPosition(this.position.x, this.position.y);
-      monsters.setMonsterCollitionWithShot(true);
-      return true;
-    } else {
-      monsters.setMonsterCollitionWithShot(false);
+  collisionShot(monsters, player, gamemaster) {
+    // // WHEN SHOT HIT MONSTER
+    if (this.body.flag == 1 || 2) {
+      if (collisionTouch(this, monsters)) {
+        monsters.setMonsterHealth(this.damages_total); // set up the hit depend on the shot
+        this.setCollitionWithMonster(true);
+        this.setDamageHit(this.damages_total);
+        this.setCollisionPosition(this.position.x, this.position.y);
+        monsters.setMonsterCollitionWithShot(true);
+        return true;
+      } else {
+        monsters.setMonsterCollitionWithShot(false);
 
-      return false;
+        return false;
+      }
+    }
+
+    //SHOT COLLITION WITH PLAYER EFFECT DAMAGE
+    if (this.body.flag == 0 || 2) {
+      if (!player.StartingPlayer.player_no_damage) {
+        if (collisionTouch(this, player)) {
+          if (player.getPlayerShieldStatus()) {
+            player.subtractPlayerHealth(0); // set up the hit depend on the shot
+            player.setPlayerHitDamage(0);
+            this.setDamageHit(0);
+          } else {
+            player.subtractPlayerHealth(this.damages_total); // set up the hit depend on the shot
+            player.setPlayerHitDamage(this.damages_total);
+            this.setDamageHit(this.damages_total);
+          }
+
+          this.setCollitionWithMonster(true);
+          this.setCollisionPosition(this.position.x, this.position.y);
+          player.setCollitionWithMonsters(true);
+          this.setCollitionWithPlayer(true);
+          return true;
+        } else {
+          return false;
+        }
+      }
     }
   }
 

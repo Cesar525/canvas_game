@@ -281,31 +281,7 @@ if(if_true){this.showDamage = true;}
         }
 
 
-collisionMonsterShot(player){
-if(!player.StartingPlayer.player_no_damage){
-    //Need to add this fucntionalities to player.
-                    // collision monster to shot
-                     if(collisionTouch(this, player)){
-                        if(player.getPlayerShieldStatus()){
-                            player.subtractPlayerHealth(0); // set up the hit depend on the shot
-                            player.setPlayerHitDamage(0);
-                            this.setDamageHit(0);
-                        }else{
-                               player.subtractPlayerHealth(this.damages_total); // set up the hit depend on the shot
-                         player.setPlayerHitDamage(this.damages_total);
-                         this.setDamageHit(this.damages_total);
-                        }
-                      
-                         this.setCollitionWithMonster(true);
-                         this.setCollisionPosition(this.position.x, this.position.y);
-                        player.setCollitionWithMonsters(true);
-                        this.setCollitionWithPlayer(true);
-                     return true;
-                     }else{
-                       return false;
-                     }
-                    }
-                   }
+
 
 bursting_bullets(player,burst_animation){
 burst_animation.burstEffect(1, this.start_position_setX + this.calibrating_burst_x, this.start_position_setY + this.calibrating_burst_y, this.burst_send, 1)

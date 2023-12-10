@@ -19,6 +19,7 @@ class Monsters_Load {
         m_steady_deadPosX: NaN,
         m_steady_deadPosY: NaN,
         m_damage_sprite: monster.damageSprite,
+        m_flag : monster.flag,
       });
 
     this.shotting_interval = monster.shotting_interval;
@@ -518,7 +519,7 @@ class Monsters_Load {
       this.monster_shot_interval++;
 
       if (this.monster_shot_interval == 1) {
-        this.gunsType(this.monster_gun_type);
+        gunsType(this.monster_gun_type,this, this.position.x, this.position.y, this.body.m_name, this.body.m_flag );
       }
       if (this.body.m_health < this.health_total / 2 / 2) {
         if (this.monster_shot_interval == 3) {

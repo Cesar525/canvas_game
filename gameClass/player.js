@@ -192,25 +192,20 @@ class Player {
         this.width,
         this.height
       );
-      }else{
-        //ctx.rotate(180 * Math.PI / 180);
+      }
+
+//rotated 180degree image
+if(this.body.turn == true){
   const image = new Image();
   image.src = "assets/spaceship/spaceshipone.png";
- 
   ctx.drawImage(
     image,
-    - this.position.x - this.width,
-    - this.position.y - this.height,
+    this.position.x ,
+    this.position.y ,
     this.width,
     this.height
   );
- 
 }
-
-
-
-
-
 
       if ((this.body.turn = true)) {
         //Turning image
