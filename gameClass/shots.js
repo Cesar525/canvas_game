@@ -1,472 +1,461 @@
 class shots extends Animation {
-  constructor(
-    start_posx,
-    start_posy,
-    shotype,
-    shotdirection,
-    explosion_type,
-    shot_damage,
-    shot_speed,
-    width,
-    height,
-    burst_selection,
-    burst_posx,
-    burst_posy,
-    powerBomb,
-    powerBombType,
-    shotter_name,
-    shotter_damage_skills,
-    cid_type  // true = player /////  false = Monster
-  ) {
-    super();
-    this.position = {
-      x: start_posx,
-      y: start_posy,
-    };
-    this.velocity = {
-      x: shot_speed,
-      y: shot_speed,
-    };
-    if (width && height) {
-      this.width = width;
-      this.height = height;
-    } else {
-      this.width = 100;
-      this.height = 200;
-    }
+	constructor(
+		start_posx,
+		start_posy,
+		shotype,
+		shotdirection,
+		explosion_type,
+		shot_damage,
+		shot_speed,
+		width,
+		height,
+		burst_selection,
+		burst_posx,
+		burst_posy,
+		powerBomb,
+		powerBombType,
+		shotter_name,
+		flag // true = player /////  false = Monster
+	) {
+		super();
+		this.position = {
+			x: start_posx,
+			y: start_posy,
+		};
+		this.velocity = {
+			x: shot_speed,
+			y: shot_speed,
+		};
+		if (width && height) {
+			this.width = width;
+			this.height = height;
+		} else {
+			this.width = 100;
+			this.height = 200;
+		}
 
-    this.start_position_setX = start_posx;
-    this.start_position_setY = start_posy;
-    this.height_negative = -200;
-    this.clearRect = false;
-    this.shot_speed_set = shot_speed;
+		this.shot_data = {
+			name_of_shotter: shotter_name,
+			shotter_flag: flag,
+		};
 
-    this.collition = {
-      shot_collided_with_monster: false,
-      shot_collided_with_player: false,
-      collision_posx: NaN,
-      collision_posy: NaN,
-    };
-    this.m_damage = shot_damage;
-    this.calibrating_burst_x = burst_posx;
-    this.calibrating_burst_y = burst_posy;
-    this.bullet_image = shotype;
-    this.damages_total = shot_damage;
+		this.start_position_setX = start_posx;
+		this.start_position_setY = start_posy;
+		this.height_negative = -200;
+		this.clearRect = false;
+		this.shot_speed_set = shot_speed;
 
-    this.burst_send = true;
-    this.hiteffect = explosion_type;
-    this.shot_direction = shotdirection;
-    this.random = true;
-    this.randomNum;
-    this.damagesHit;
-    this.damage_effect;
-    this.gameFrameDamageAnimation = 0;
-    this.gameFrame = 0;
-    this.staggerFrame = 10;
+		this.collition = {
+			shot_collided_with_monster: false,
+			shot_collided_with_player: false,
+			collision_posx: NaN,
+			collision_posy: NaN,
+		};
+		this.m_damage = shot_damage;
+		this.calibrating_burst_x = burst_posx;
+		this.calibrating_burst_y = burst_posy;
+		this.bullet_image = shotype;
+		this.damages_total = shot_damage;
 
-    this.deleteshot = false;
+		this.burst_send = true;
+		this.hiteffect = explosion_type;
+		this.shot_direction = shotdirection;
+		this.random = true;
+		this.randomNum;
+		this.damagesHit;
+		this.damage_effect;
+		this.gameFrameDamageAnimation = 0;
+		this.gameFrame = 0;
+		this.staggerFrame = 10;
 
-    this.selecting_burst = burst_selection;
-    this.counter = 0;
-    // here we add all guns images sprites
-    this.shotImages = {
-      1: "assets/shots/bean_1.png",
-      2: "assets/shots/bean_2.png",
-      3: "assets/shots/bean_3.png",
-      4: "assets/shots/bean_4.png",
-      5: "assets/shots/bean_5.png",
-      6: "assets/shots/bean_6.png",
-      7: "assets/shots/bean_7.png",
-      8: "assets/shots/bean_8.png",
-      9: "assets/shots/bean_9.png",
-      10: "assets/shots/bean_10.png",
-      11: "assets/machinegun/bullet_11.png",
-    };
+		this.deleteshot = false;
 
-    //POWER BOMB VARIABLES
-    this.powerBombShotsSheet = {
-      1: "assets/powerBombsEffect/fullychargedsprite/charge/charge01/shot.png",
-    };
-    this.powerBombBurstSheet = {
-      1: "assets/powerBombsEffect/fullychargedsprite/charge/charge01/charging.png",
-    };
+		this.selecting_burst = burst_selection;
+		this.counter = 0;
+		// here we add all guns images sprites
+		this.shotImages = {
+			1: 'assets/shots/bean_1.png',
+			2: 'assets/shots/bean_2.png',
+			3: 'assets/shots/bean_3.png',
+			4: 'assets/shots/bean_4.png',
+			5: 'assets/shots/bean_5.png',
+			6: 'assets/shots/bean_6.png',
+			7: 'assets/shots/bean_7.png',
+			8: 'assets/shots/bean_8.png',
+			9: 'assets/shots/bean_9.png',
+			10: 'assets/shots/bean_10.png',
+			11: 'assets/machinegun/bullet_11.png',
+		};
 
-    if (powerBomb) {
-      this.powerBomb_init = powerBomb;
-      this.PowerBomb = {
-        powerBomb_burst: new Animation(),
-        powerBomb_shot: new Animation(),
-        powerBomb_explosion: new Animation(),
-      };
-      this.Powerbomb__burst = true;
-    } else {
-      this.powerBomb_init = false;
-    }
-    // POWER BOMB END VARIBALES
-  }
+		// Shots Objects
+		this.explosion1effect = new Animation();
+		this.explosion2effect = new Animation();
+		this.burstEffect = new Animation();
 
-  bullethitmonsters() {
-    return this.collition.shot_collided;
-  }
-  getDamageHit() {
-    return this.damagesHit;
-  }
-  getGunDamage() {
-    return this.m_damage;
-  }
-  setDamageHit(damagehit) {
-    this.damagesHit = damagehit;
-  }
+		//POWER BOMB VARIABLES
+		this.powerBombShotsSheet = {
+			1: 'assets/powerBombsEffect/fullychargedsprite/charge/charge01/shot.png',
+		};
+		this.powerBombBurstSheet = {
+			1: 'assets/powerBombsEffect/fullychargedsprite/charge/charge01/charging.png',
+		};
 
-  shotsCreation(player, direction) {
-    if (!this.clearRect) {
-      this.shotDirectionUpDown(direction, "up");
-      const shotimage = new Image();
-      shotimage.src = this.shotImages[this.bullet_image];
+		if (powerBomb) {
+			this.powerBomb_init = powerBomb;
+			this.PowerBomb = {
+				powerBomb_burst: new Animation(),
+				powerBomb_shot: new Animation(),
+				powerBomb_explosion: new Animation(),
+			};
+			this.Powerbomb__burst = true;
+		} else {
+			this.powerBomb_init = false;
+		}
+		// POWER BOMB END VARIBALES
+	}
 
-      ctx.drawImage(
-        shotimage,
-        this.position.x,
-        this.position.y,
-        this.width,
-        this.height
-      );
-    }
-  }
+	bullethitmonsters() {
+		return this.collition.shot_collided;
+	}
+	getDamageHit() {
+		return this.damagesHit;
+	}
+	getGunDamage() {
+		return this.m_damage;
+	}
+	setDamageHit(damagehit) {
+		this.damagesHit = damagehit;
+	}
 
-  randomHit(from, to) {
-    this.randomNum = Math.floor(Math.random() * to) + from;
-    return this.randomNum;
-  }
+	shotsCreation(player, direction) {
+		if (!this.clearRect) {
+			this.shotDirectionUpDown(direction, 'up');
+			const shotimage = new Image();
+			shotimage.src = this.shotImages[this.bullet_image];
 
-  shotDirectionUpDown(direction, up_down) {
-    //moving the shot to the left
-    if (up_down == "up") {
-      if (direction == 0) {
-        this.position.y -= this.velocity.y;
-      }
-      if (direction == 1) {
-        this.position.y -= this.velocity.y;
-        this.position.x += 3;
-      }
-      if (direction == 2) {
-        this.position.y -= this.velocity.y;
-        this.position.x += 6;
-      }
-      if (direction == 3) {
-        this.position.y -= this.velocity.y;
-        this.position.x += 9;
-      }
+			ctx.drawImage(shotimage, this.position.x, this.position.y, this.width, this.height);
+		}
+	}
 
-      // moving the shot to the right
-      if (direction == -1) {
-        this.position.y -= this.velocity.y;
-        this.position.x -= 3;
-      }
-      if (direction == -2) {
-        this.position.y -= this.velocity.y;
-        this.position.x -= 6;
-      }
-      if (direction == -3) {
-        this.position.y -= this.velocity.y;
-        this.position.x -= 9;
-      }
-    }
+	randomHit(from, to) {
+		this.randomNum = Math.floor(Math.random() * to) + from;
+		return this.randomNum;
+	}
 
-    if (up_down == "down") {
-      if (direction == 0) {
-        this.position.y += this.velocity.y;
-      }
-      if (direction == 1) {
-        this.position.y += this.velocity.y;
-        this.position.x += 3;
-      }
-      if (direction == 2) {
-        this.position.y += this.velocity.y;
-        this.position.x += 6;
-      }
-      if (direction == 3) {
-        this.position.y += this.velocity.y;
-        this.position.x += 9;
-      }
+	shotDirectionUpDown(direction, up_down) {
+		//moving the shot to the left
+		if (up_down == 'up') {
+			if (direction == 0) {
+				this.position.y -= this.velocity.y;
+			}
+			if (direction == 1) {
+				this.position.y -= this.velocity.y;
+				this.position.x += 3;
+			}
+			if (direction == 2) {
+				this.position.y -= this.velocity.y;
+				this.position.x += 6;
+			}
+			if (direction == 3) {
+				this.position.y -= this.velocity.y;
+				this.position.x += 9;
+			}
 
-      // moving the shot to the right
-      if (direction == -1) {
-        this.position.y += this.velocity.y;
-        this.position.x -= 3;
-      }
-      if (direction == -2) {
-        this.position.y += this.velocity.y;
-        this.position.x -= 6;
-      }
-      if (direction == -3) {
-        this.position.y += this.velocity.y;
-        this.position.x -= 9;
-      }
-    }
+			// moving the shot to the right
+			if (direction == -1) {
+				this.position.y -= this.velocity.y;
+				this.position.x -= 3;
+			}
+			if (direction == -2) {
+				this.position.y -= this.velocity.y;
+				this.position.x -= 6;
+			}
+			if (direction == -3) {
+				this.position.y -= this.velocity.y;
+				this.position.x -= 9;
+			}
+		}
 
-    //moving shot
-    //later on lets add shots moving side by side
-  }
+		if (up_down == 'down') {
+			if (direction == 0) {
+				this.position.y += this.velocity.y;
+			}
+			if (direction == 1) {
+				this.position.y += this.velocity.y;
+				this.position.x += 3;
+			}
+			if (direction == 2) {
+				this.position.y += this.velocity.y;
+				this.position.x += 6;
+			}
+			if (direction == 3) {
+				this.position.y += this.velocity.y;
+				this.position.x += 9;
+			}
 
-  //collitions in and outputs
-  setCollisionPosition(posx, posy) {
-    this.collition.collision_posx = posx;
-    this.collition.collision_posy = posy;
-  }
+			// moving the shot to the right
+			if (direction == -1) {
+				this.position.y += this.velocity.y;
+				this.position.x -= 3;
+			}
+			if (direction == -2) {
+				this.position.y += this.velocity.y;
+				this.position.x -= 6;
+			}
+			if (direction == -3) {
+				this.position.y += this.velocity.y;
+				this.position.x -= 9;
+			}
+		}
 
-  setCollitionWithMonster(input) {
-    this.collition.shot_collided_with_monster = input;
-  }
-  getCollitionWithMonster() {
-    return this.collition.shot_collided_with_monster;
-  }
-  setCollitionWithPlayer(input) {
-    this.collition.shot_collided_with_player = input;
-  }
-  getCollitionWithPlayer() {
-    return this.collition.shot_collided_with_player;
-  }
-  getCollitionPosX() {
-    return this.collition.collision_posx;
-  }
-  getCollitionPosY() {
-    return this.collition.collision_posy;
-  }
-  clearCollisionShot() {
-    this.collition.collision_posx = NaN;
-    this.collition.collision_posy = NaN;
-  }
+		//moving shot
+		//later on lets add shots moving side by side
+	}
 
-  clearingBulletOnceHit() {
-    //bullet disapear collision
-    this.counter += 1;
-    if (this.counter > 5 && this.clearRect) {
-      //  console.log("reset");
-      this.clearRect = false;
-    }
+	//collitions in and outputs
+	setCollisionPosition(posx, posy) {
+		this.collition.collision_posx = posx;
+		this.collition.collision_posy = posy;
+	}
 
-    if (this.getCollitionWithMonster()) {
-      this.clearRect = true;
-      // console.log("Bullet banished.. Hit Monsters!");
-      this.position.x = NaN;
-      this.position.y = NaN;
-      this.setCollitionWithMonster(false);
-    }
-    if (this.position.y < -this.height) {
-      this.position.x = NaN;
-      this.position.y = NaN;
-      // console.log("deleted");
-    }
-  }
+	setCollitionWithMonster(input) {
+		this.collition.shot_collided_with_monster = input;
+	}
+	getCollitionWithMonster() {
+		return this.collition.shot_collided_with_monster;
+	}
+	setCollitionWithPlayer(input) {
+		this.collition.shot_collided_with_player = input;
+	}
+	getCollitionWithPlayer() {
+		return this.collition.shot_collided_with_player;
+	}
+	getCollitionPosX() {
+		return this.collition.collision_posx;
+	}
+	getCollitionPosY() {
+		return this.collition.collision_posy;
+	}
+	clearCollisionShot() {
+		this.collition.collision_posx = NaN;
+		this.collition.collision_posy = NaN;
+	}
 
-  //DELETING SHOT
-  deletingShots() {
-    if (this.position.y < 0) {
-      setTimeout(() => {
-        this.deleteshot = true;
-      }, 2000);
-    }
-  }
-  getDeleteShotStatus() {
-    return this.deleteshot;
-  }
+	clearingBulletOnceHit() {
+		//bullet disapear collision
+		this.counter += 1;
+		if (this.counter > 5 && this.clearRect) {
+			//  console.log("reset");
+			this.clearRect = false;
+		}
 
-  getDamageNumberColor() {
-    return this.DamageShowingcolorDefault;
-  }
-  setDamageNumberColor(color) {
-    this.DamageShowingcolorDefault = color;
-  }
+		if (this.getCollitionWithMonster()) {
+			this.clearRect = true;
+			// console.log("Bullet banished.. Hit Monsters!");
+			this.position.x = NaN;
+			this.position.y = NaN;
+			this.setCollitionWithMonster(false);
+		}
+		if (this.position.y < -this.height) {
+			this.position.x = NaN;
+			this.position.y = NaN;
+			// console.log("deleted");
+		}
+	}
 
-  shot(player) {
-    //single missile
+	//DELETING SHOT
+	deletingShots() {
+		if (this.position.y < 0 || this.collisionTouch == true) {
+			setTimeout(() => {
+				this.deleteshot = true;
+			}, 2000);
+		}
 
-    this.setDamageNumberColor("red");
-    var totalDamage = player.body.m_damage + this.m_damage;
-    this.damages_total = this.randomHit(1, totalDamage);
-    this.shotsCreation(player, this.shot_direction);
-    this.damage_effect = this.hiteffect;
-  }
 
-  getAnimationStatus() {
-    return this.onAnimation;
-  }
+	}
+	getDeleteShotStatus() {
+		return this.deleteshot;
+	}
 
-  bulletHitMonsterEffect(
-    explosion_one,
-    explosion_two,
-    posx,
-    posy,
-    collition,
-    hiteffect,
-    speed
-  ) {
-    var animationTwo;
-    explosion_one.explosionEffect(
-      hiteffect,
-      posx - 100,
-      posy - 100,
-      collition,
-      speed
-    );
-    if (explosion_one.getAnimationStatus() && collition) {
-      explosion_two.reset();
-      animationTwo = true;
-    }
-    if (!explosion_one.getAnimationStatus()) {
-      this.explosion_animation_status = false;
-    } else {
-      this.explosion_animation_status = true;
-    }
-    explosion_two.explosionEffect(
-      hiteffect,
-      posx - 100,
-      posy - 100,
-      animationTwo,
-      speed
-    );
-  }
+	getDamageNumberColor() {
+		return this.DamageShowingcolorDefault;
+	}
+	setDamageNumberColor(color) {
+		this.DamageShowingcolorDefault = color;
+	}
 
-  damageShowAnimation(damage, pos_x, pos_y, color, if_true) {
-    this.gameFrameDamageAnimation++;
-    if (if_true) {
-      this.showDamage = true;
-    }
+	shot(player) {
+		//single missile
 
-    if (this.showDamage) {
-      ctx.fillStyle = color;
-      ctx.strokeStyle = "black";
-      ctx.font = "40px anton";
-      ctx.fillText("-" + damage, pos_x, pos_y);
-      ctx.strokeText("-" + damage, pos_x, pos_y);
-    }
-    if (this.gameFrameDamageAnimation >= 100) {
-      this.showDamage = false;
-      this.gameFrameDamageAnimation = 0;
-      this.animationSlowsGoesUp = 0;
-    }
-  }
+		this.setDamageNumberColor('red');
+		var totalDamage = player.body.m_damage + this.m_damage;
+		this.damages_total = this.randomHit(1, totalDamage);
+		this.shotsCreation(player, this.shot_direction);
+		this.damage_effect = this.hiteffect;
+	}
 
-  collisionMonsterShot(monsters) {
-    // collision monster to shot
-    if (collisionTouch(this, monsters)) {
-      monsters.setMonsterHealth(this.damages_total); // set up the hit depend on the shot
-      this.setCollitionWithMonster(true);
-      this.setDamageHit(this.damages_total);
-      this.setCollisionPosition(this.position.x, this.position.y);
-      monsters.setMonsterCollitionWithShot(true);
-      return true;
-    } else {
-      monsters.setMonsterCollitionWithShot(false);
+	getAnimationStatus() {
+		return this.onAnimation;
+	}
 
-      return false;
-    }
-  }
+	bulletHitMonsterEffect(explosion_one, explosion_two, posx, posy, collition, hiteffect, speed) {
+		var animationTwo;
+		explosion_one.explosionEffect(hiteffect, posx - 100, posy - 100, collition, speed);
+		if (explosion_one.getAnimationStatus() && collition) {
+			explosion_two.reset();
+			animationTwo = true;
+		}
+		if (!explosion_one.getAnimationStatus()) {
+			this.explosion_animation_status = false;
+		} else {
+			this.explosion_animation_status = true;
+		}
+		explosion_two.explosionEffect(hiteffect, posx - 100, posy - 100, animationTwo, speed);
+	}
 
-  DrawPowerBomb() {
-    if (this.Powerbomb__burst) {
-      this.PowerBomb.powerBomb_burst.spritePage(
-        this.powerBombBurstSheet[1],
-        this.start_position_setX - 250,
-        this.start_position_setY - 200,
-        6180,
-        515,
-        12,
-        1,
-        515,
-        515,
-        7,
-        true,
-        this.width,
-        this.width
-      );
-      //Burst Burst Happening
-    }
-    if (!this.PowerBomb.powerBomb_burst.getAnimationStatus()) {
-      //once burst h appen we closing the burst
-      this.Powerbomb__burst = false;
-      // and we shotting the shot.
-    }
-  }
-  PowerBombShot(player) {
-    //single missile
+	damageShowAnimation(damage, pos_x, pos_y, color, if_true) {
+		this.gameFrameDamageAnimation++;
+		if (if_true) {
+			this.showDamage = true;
+		}
 
-    this.setDamageNumberColor("red");
-    var totalDamage = player.body.m_damage + this.m_damage;
-    this.damages_total = this.randomHit(1, totalDamage);
-    this.powerBombCreation(player, this.shot_direction);
-    this.damage_effect = this.hiteffect;
-  }
+		if (this.showDamage) {
+			ctx.fillStyle = color;
+			ctx.strokeStyle = 'black';
+			ctx.font = '40px anton';
+			ctx.fillText('-' + damage, pos_x, pos_y);
+			ctx.strokeText('-' + damage, pos_x, pos_y);
+		}
+		if (this.gameFrameDamageAnimation >= 100) {
+			this.showDamage = false;
+			this.gameFrameDamageAnimation = 0;
+			this.animationSlowsGoesUp = 0;
+		}
+	}
 
-  powerBombCreation(player, direction) {
-    if (!this.clearRect) {
-      this.shotDirectionUpDown(direction, "up");
-      this.PowerBomb.powerBomb_shot.spritePage(
-        this.powerBombShotsSheet[1],
-        this.position.x,
-        this.position.y,
-        4120,
-        515,
-        8,
-        1,
-        515,
-        515,
-        2,
-        true,
-        200,
-        200
-      );
-    }
-  }
+	collisionMonsterShot(monsters) {
+		// collision monster to shot
+		if (collisionTouch(this, monsters)) {
+			monsters.setMonsterHealth(this.damages_total); // set up the hit depend on the shot
+			this.setCollitionWithMonster(true);
+			this.setDamageHit(this.damages_total);
+			this.setCollisionPosition(this.position.x, this.position.y);
+			monsters.setMonsterCollitionWithShot(true);
+			return true;
+		} else {
+			monsters.setMonsterCollitionWithShot(false);
 
-  bursting_bullets(player, burst_animation) {
-    burst_animation.burstEffect(
-      1,
-      this.start_position_setX + this.calibrating_burst_x,
-      this.start_position_setY + this.calibrating_burst_y,
-      this.burst_send,
-      1
-    );
-    this.burst_send = false;
-  }
+			return false;
+		}
+	}
 
-  updateShot(player, explo_one_animation, explo_two_animation) {
-    //PowerBomb
+	DrawPowerBomb() {
+		if (this.Powerbomb__burst) {
+			this.PowerBomb.powerBomb_burst.spritePage(
+				this.powerBombBurstSheet[1],
+				this.start_position_setX - 250,
+				this.start_position_setY - 200,
+				6180,
+				515,
+				12,
+				1,
+				515,
+				515,
+				7,
+				true,
+				this.width,
+				this.width
+			);
+			//Burst Burst Happening
+		}
+		if (!this.PowerBomb.powerBomb_burst.getAnimationStatus()) {
+			//once burst h appen we closing the burst
+			this.Powerbomb__burst = false;
+			// and we shotting the shot.
+		}
+	}
+	PowerBombShot(player) {
+		//single missile
 
-    //End of power bomb
-    if (!this.powerBomb_init) {
-      var speed = player.body.m_gun_speed + this.shot_speed_set;
-      this.velocity.x = speed;
-      this.velocity.y = speed;
-      this.shot(player);
-      this.bursting_bullets(player, explo_two_animation);
-    } else {
-      this.DrawPowerBomb();
-      if (!this.Powerbomb__burst) {
-        this.PowerBombShot(player);
-      }
-      this.velocity.x = 3;
-      this.velocity.y = 3;
-    }
+		this.setDamageNumberColor('red');
+		var totalDamage = player.body.m_damage + this.m_damage;
+		this.damages_total = this.randomHit(1, totalDamage);
+		this.powerBombCreation(player, this.shot_direction);
+		this.damage_effect = this.hiteffect;
+	}
 
-    this.bulletHitMonsterEffect(
-      explo_one_animation,
-      explo_two_animation,
-      this.getCollitionPosX(),
-      this.getCollitionPosY(),
-      this.getCollitionWithMonster(),
-      this.damage_effect,
-      1
-    );
-    this.damageShowAnimation(
-      this.getDamageHit(),
-      this.getCollitionPosX(),
-      this.getCollitionPosY(),
-      this.getDamageNumberColor(),
-      this.getCollitionWithMonster()
-    );
-    this.clearingBulletOnceHit();
-    this.deletingShots(explo_one_animation);
-  }
+	powerBombCreation(player, direction) {
+		if (!this.clearRect) {
+			this.shotDirectionUpDown(direction, 'up');
+			this.PowerBomb.powerBomb_shot.spritePage(
+				this.powerBombShotsSheet[1],
+				this.position.x,
+				this.position.y,
+				4120,
+				515,
+				8,
+				1,
+				515,
+				515,
+				2,
+				true,
+				200,
+				200
+			);
+		}
+	}
+
+	bursting_bullets(player, burst_animation) {
+		burst_animation.burstEffect(
+			1,
+			this.start_position_setX + this.calibrating_burst_x,
+			this.start_position_setY + this.calibrating_burst_y,
+			this.burst_send,
+			1
+		);
+		this.burst_send = false;
+	}
+
+	updateShot(player) {
+		//PowerBomb
+
+		//End of power bomb
+		if (!this.powerBomb_init) {
+			var speed = player.body.m_gun_speed + this.shot_speed_set;
+			this.velocity.x = speed;
+			this.velocity.y = speed;
+			this.shot(player);
+			this.bursting_bullets(player, this.burstEffect);
+		} else {
+			this.DrawPowerBomb();
+			if (!this.Powerbomb__burst) {
+				this.PowerBombShot(player);
+			}
+			this.velocity.x = 3;
+			this.velocity.y = 3;
+		}
+
+		this.bulletHitMonsterEffect(
+			this.explosion1effect,
+			this.explosion2effect,
+			this.getCollitionPosX(),
+			this.getCollitionPosY(),
+			this.getCollitionWithMonster(),
+			this.damage_effect,
+			1
+		);
+		this.damageShowAnimation(
+			this.getDamageHit(),
+			this.getCollitionPosX(),
+			this.getCollitionPosY(),
+			this.getDamageNumberColor(),
+			this.getCollitionWithMonster()
+		);
+		this.clearingBulletOnceHit();
+		this.deletingShots(this.explosion1effect);
+
+
+
+    console.log("shot fired" + " Flag = " + this.shot_data.shotter_flag)
+	}
 }

@@ -92,7 +92,7 @@ if(empty($_POST["player_name"])){
     <script src="./gameClass/statusbarcredentials.js"></script>
 
 
-
+    <script src="./gameClass/guns.js"></script>
     <script src="./gameClass/items.js"></script>
     <script src="./gameClass/monstershots.js"></script>
     <script src="./gameClass/mouse.js"></script>
