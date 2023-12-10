@@ -352,20 +352,27 @@ class Monsters_Load {
   //     }
   //   }
   // }
+  shotting() {
+    for (
+      var counting_updating = 0;
+      counting_updating < this.gun_on.length;
+      counting_updating++
+    ) {
+      this.gun_on[counting_updating].updateShot(this);
+      // is not deleting the used shots.
+      if (this.gun_on[counting_updating].getDeleteShotStatus()) {
+        console.log(this.gun_on[counting_updating].getDeleteShotStatus());
+        this.gun_on.splice(counting_updating, 1);
+      }
+    }
+  }
 
   shottingiinterval(shotting_interval) {
     if (this.body.m_dead == false) {
       this.monster_shot_interval++;
 
       if (this.monster_shot_interval == 1) {
-        gunsType(
-          1,
-          this,
-          this.position.x,
-          this.position.y,
-          this.body.m_name,
-          this.body.m_flag
-        );
+        gunsType(1, this, 2000, 2000, this.body.m_name, 0);
       }
       if (this.body.m_health < this.health_total / 2 / 2) {
         if (this.monster_shot_interval == 3) {
@@ -378,21 +385,6 @@ class Monsters_Load {
         if (this.monster_shot_interval == shotting_interval) {
           this.monster_shot_interval = 0;
         }
-      }
-    }
-  }
-
-  shotting() {
-    for (
-      var counting_updating = 0;
-      counting_updating < this.gun_on.length;
-      counting_updating++
-    ) {
-      this.gun_on[counting_updating].updateShot(this);
-      // is not deleting the used shots.
-      if (this.gun_on[counting_updating].getDeleteShotStatus()) {
-        console.log(this.gun_on[counting_updating].getDeleteShotStatus());
-        this.gun_on.splice(counting_updating, 1);
       }
     }
   }

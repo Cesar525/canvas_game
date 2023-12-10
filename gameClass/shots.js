@@ -130,7 +130,12 @@ class shots extends Animation {
 
   shotsCreation(player, direction) {
     if (!this.clearRect) {
-      this.shotDirectionUpDown(direction, "up");
+      if (this.shot_data.shotter_flag == 0) {
+        this.shotDirectionUpDown(direction, "down");
+      }
+      if (this.shot_data.shotter_flag == 1) {
+        this.shotDirectionUpDown(direction, "up");
+      }
       const shotimage = new Image();
       shotimage.src = this.shotImages[this.bullet_image];
 
@@ -273,6 +278,12 @@ class shots extends Animation {
   //DELETING SHOT
   deletingShots() {
     if (this.position.y < 0 || this.bullet_hit == true) {
+      setTimeout(() => {
+        this.deleteshot = true;
+      }, 2000);
+    }
+
+    if (this.position.y > 0 || this.bullet_hit == true) {
       setTimeout(() => {
         this.deleteshot = true;
       }, 2000);
@@ -484,20 +495,19 @@ class shots extends Animation {
   updateShot(player) {
     this.detectshotHit();
 
-    if (!this.powerBomb_init) {
-      var speed = player.body.m_gun_speed + this.shot_speed_set;
+    var speed = player.body.m_gun_speed + this.shot_speed_set;
+    if (speed) {
       this.velocity.x = speed;
       this.velocity.y = speed;
-      this.shot(player);
-      this.bursting_bullets(player, this.burstEffect);
     } else {
-      this.DrawPowerBomb();
-      if (!this.Powerbomb__burst) {
-        this.PowerBombShot(player);
-      }
-      this.velocity.x = 3;
-      this.velocity.y = 3;
+      this.velocity.x = this.shot_speed_set;
+      this.velocity.y = this.shot_speed_set;
     }
+    this.shot(player);
+    this.bursting_bullets(player, this.burstEffect);
+
+    this.velocity.x = 3;
+    this.velocity.y = 3;
 
     this.bulletHitMonsterEffect(
       this.explosion1effect,
