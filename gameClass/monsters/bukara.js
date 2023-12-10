@@ -8,7 +8,7 @@ const Bukara_sprites = {
 
 //BUKARA DATA
 const Bukara = {
-  flag : 0,
+  flag: 0,
   position: {
     x: -1000,
     y: -1000,
@@ -35,7 +35,7 @@ const Bukara = {
     Show_shottingFrom: true, // thi sis to show where the shot is gonna come from.
 
     shot_one: {
-      active: false,
+      active: true,
       x: 800 / 2 - 50,
       y: 800 / 2 + 200,
       shottype: NaN,
@@ -51,7 +51,7 @@ const Bukara = {
       interval: NaN,
     },
     shot_three: {
-      active: false,
+      active: true,
       x: 100,
       y: 800 - 100,
       shottype: NaN,

@@ -37,7 +37,19 @@ const Shots_global = [];
 //players
 //CREATING A PLAYER Player(name, level, thruster_selection, get_health, energy, m_damage,  gunType, posx, posy, gun_speed)
 const players = [
-  new Player(player_name, 1230, 8, 2000, 400000, 500, 8, 500, 900, 30, game_config.flags.players),
+  new Player(
+    player_name,
+    1230,
+    8,
+    2000,
+    400000,
+    500,
+    1,
+    500,
+    900,
+    30,
+    game_config.flags.players
+  ),
 ];
 
 //Monsters
@@ -127,9 +139,10 @@ function buffer() {
       powerUp[f].updatePowerUps();
     }
 
-    //colliton Monsters wiht Players && Projectiles
+    //colliton Monsters wiht Players
     for (var m = 0; m < monsters.length; m++) {
       monsters[m].updateMonster(sprite_animation[m]);
+      // deleting destroyed monsters
       if (monsters[m].getDeleteObject() == true) {
         monsters.splice(m, 1);
         sprite_animation.splice(m, 1);
@@ -156,14 +169,14 @@ function buffer() {
 
       for (var pjct = 0; pjct < players.length; pjct++) {
         players[pjct].playerCollitionMonsters(Monsters_loads[m]);
-        players[pjct].shottingCollition(Monsters_loads[m]);
+        //players[pjct].shottingCollition(Monsters_loads[m]);
         if (Monsters_loads.length != 0) {
-          Monsters_loads[m].shottingCollition(players[pjct]);
+          // Monsters_loads[m].shottingCollition(players[pjct]);
         }
       }
     }
 
-    //powerUps updates and collision
+    //powerUps updates and collision with player
     for (var p = 0; p < players.length; p++) {
       for (var f = 0; f < powerUp.length; f++) {
         powerUp[f].PowerUpcollisionWithPlayer(players[p]);
@@ -179,25 +192,25 @@ function buffer() {
       );
     }
 
-    for (var m = 0; m < monsters.length; m++) {
-      if (monsters[m].getBossMode()) {
-        monsters[m].monsterBossDeathExplosion(explosion_onDeath_animation[m]);
-      } else {
-        monsters[m].monsterDeathExplosion(explosion_onDeath_animation[m]);
-      }
-    }
-    // Monster Loads
-    for (var m = 0; m < Monsters_loads.length; m++) {
-      if (Monsters_loads[m].getBossMode()) {
-        Monsters_loads[m].monsterBossDeathExplosion(
-          explosion_onDeath_animation_L[m]
-        );
-      } else {
-        Monsters_loads[m].monsterDeathExplosion(
-          explosion_onDeath_animation_L[m]
-        );
-      }
-    }
+    // for (var m = 0; m < monsters.length; m++) {
+    //   if (monsters[m].getBossMode()) {
+    //     monsters[m].monsterBossDeathExplosion(explosion_onDeath_animation[m]);
+    //   } else {
+    //     monsters[m].monsterDeathExplosion(explosion_onDeath_animation[m]);
+    //   }
+    // }
+    // // Monster Loads
+    // for (var m = 0; m < Monsters_loads.length; m++) {
+    //   if (Monsters_loads[m].getBossMode()) {
+    //     Monsters_loads[m].monsterBossDeathExplosion(
+    //       explosion_onDeath_animation_L[m]
+    //     );
+    //   } else {
+    //     Monsters_loads[m].monsterDeathExplosion(
+    //       explosion_onDeath_animation_L[m]
+    //     );
+    //   }
+    // }
 
     //showing shield example.s
     //player_shield_effect_one[0].drawShield(players[0]);

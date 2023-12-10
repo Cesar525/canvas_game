@@ -81,11 +81,9 @@ if(empty($_POST["player_name"])){
 
 
     <!-- Load monsters -->
-    <script src="./gameClass/monsters/monsterproccessingdata/movements.js"></script>
-    <script src="./gameClass/monsters/bukara.js"></script>
-    <script src="./gameClass/monsters/invader.js"></script>
 
-    <script src="./gameClass/monsters/monsterproccessingdata/monsters_load.js"></script>
+
+
 
     <!-- js Files  -->
     <script src="./gameClass/sprites.js"></script>
@@ -111,6 +109,18 @@ if(empty($_POST["player_name"])){
     <script src="./gameClass/player.js"></script>
     <script src="./gameClass/particles.js"></script>
     <script src="./gameClass/effects.js"></script>
+
+    <!-- Monsters Loads -->
+    <script src="./gameClass/monsters/monsterproccessingdata/monsters_load.js"></script>
+    <script src="./gameClass/monsters/monsterproccessingdata/movements.js"></script>
+    <script src="./gameClass/monsters/bukara.js"></script>
+    <script src="./gameClass/monsters/invader.js"></script>
+
+
+
+
+
+
     <!-- game config -->
     <script src="./config.js"></script>
     <!-- game init -->

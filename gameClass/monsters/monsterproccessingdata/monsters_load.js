@@ -19,7 +19,7 @@ class Monsters_Load {
         m_steady_deadPosX: NaN,
         m_steady_deadPosY: NaN,
         m_damage_sprite: monster.damageSprite,
-        m_flag : monster.flag,
+        m_flag: monster.flag,
       });
 
     this.shotting_interval = monster.shotting_interval;
@@ -39,8 +39,6 @@ class Monsters_Load {
     };
     this.monster_shot_interval = 0;
     this.gun_on = [];
-    this.explosionn = [];
-    this.explosionn2 = [];
 
     if (monster.boss) {
       this.boss_mode_set = monster.boss;
@@ -347,179 +345,27 @@ class Monsters_Load {
     this.shotting_interval = set;
   }
 
-  shottingCollition(player) {
-    for (var countingss = 0; countingss < this.gun_on.length; countingss++) {
-      if (player) {
-        this.gun_on[countingss].collisionMonsterShot(player);
-      }
-    }
-  }
-  gunsType(type) {
-    if (type == 1) {
-      //one
-      if (this.shot_starting_point_set.posOne.active) {
-        this.gun_on.push(
-          new Monstershots(
-            this.monster_shotting_starting_pos.posOne.x,
-            this.monster_shotting_starting_pos.posOne.y,
-            2,
-            0,
-            10,
-            this.body.m_damage,
-            60,
-            100,
-            100,
-            1,
-            -50,
-            -100
-          )
-        );
-      }
-      //Two
-      if (this.shot_starting_point_set.posTwo.active) {
-        this.gun_on.push(
-          new Monstershots(
-            this.monster_shotting_starting_pos.posTwo.x,
-            this.monster_shotting_starting_pos.posTwo.y,
-            2,
-            0,
-            10,
-            this.body.m_damage,
-            30,
-            100,
-            100,
-            1,
-            -50,
-            -100
-          )
-        );
-      }
-      //three
-      if (this.shot_starting_point_set.posThree.active) {
-        this.gun_on.push(
-          new Monstershots(
-            this.monster_shotting_starting_pos.posThree.x,
-            this.monster_shotting_starting_pos.posThree.y,
-            2,
-            0,
-            10,
-            this.body.m_damage,
-            30,
-            100,
-            100,
-            1,
-            -50,
-            -100
-          )
-        );
-      }
-      for (
-        var counting_bullets = 0;
-        counting_bullets < this.gun_on.length;
-        counting_bullets++
-      ) {
-        this.explosionn.push(new Animation());
-        this.explosionn2.push(new Animation());
-      }
-    }
-
-    if (type == 20) {
-      this.gun_on.push(
-        new shots(
-          this.monster_shotting_starting_pos.posOne.x,
-          this.monster_shotting_starting_pos.posOne.y,
-          7,
-          0,
-          10,
-          10,
-          0,
-          100,
-          300,
-          1,
-          -50,
-          -150
-        ),
-        new shots(
-          this.monster_shotting_starting_pos.posOne.x,
-          this.monster_shotting_starting_pos.posOne.y,
-          7,
-          0,
-          10,
-          10,
-          0,
-          100,
-          300,
-          1,
-          -50,
-          -150
-        ),
-        new shots(
-          this.monster_shotting_starting_pos.posOne.x,
-          this.monster_shotting_starting_pos.posOne.y,
-          7,
-          0,
-          10,
-          10,
-          0,
-          100,
-          300,
-          1,
-          -50,
-          -150
-        ),
-        new shots(
-          this.monster_shotting_starting_pos.posOne.x,
-          this.monster_shotting_starting_pos.posOne.y,
-          7,
-          3,
-          10,
-          10,
-          0,
-          100,
-          300,
-          1,
-          -50,
-          -150
-        ),
-        new shots(
-          this.monster_shotting_starting_pos.posOne.x,
-          this.monster_shotting_starting_pos.posOne.y,
-          7,
-          -3,
-          10,
-          10,
-          0,
-          100,
-          300,
-          1,
-          -50,
-          -150
-        )
-      );
-
-      this.explosionn.push(
-        new Animation(),
-        new Animation(),
-        new Animation(),
-        new Animation(),
-        new Animation()
-      );
-      this.explosionn2.push(
-        new Animation(),
-        new Animation(),
-        new Animation(),
-        new Animation(),
-        new Animation()
-      );
-    }
-  }
+  // shottingCollition(player) {
+  //   for (var countingss = 0; countingss < this.gun_on.length; countingss++) {
+  //     if (player) {
+  //       this.gun_on[countingss].collisionMonsterShot(player);
+  //     }
+  //   }
+  // }
 
   shottingiinterval(shotting_interval) {
     if (this.body.m_dead == false) {
       this.monster_shot_interval++;
 
       if (this.monster_shot_interval == 1) {
-        gunsType(this.monster_gun_type,this, this.position.x, this.position.y, this.body.m_name, this.body.m_flag );
+        gunsType(
+          1,
+          this,
+          this.position.x,
+          this.position.y,
+          this.body.m_name,
+          this.body.m_flag
+        );
       }
       if (this.body.m_health < this.health_total / 2 / 2) {
         if (this.monster_shot_interval == 3) {
@@ -542,16 +388,11 @@ class Monsters_Load {
       counting_updating < this.gun_on.length;
       counting_updating++
     ) {
-      this.gun_on[counting_updating].updateShot(
-        this,
-        this.explosionn[counting_updating],
-        this.explosionn2[counting_updating]
-      );
+      this.gun_on[counting_updating].updateShot(this);
       // is not deleting the used shots.
       if (this.gun_on[counting_updating].getDeleteShotStatus()) {
+        console.log(this.gun_on[counting_updating].getDeleteShotStatus());
         this.gun_on.splice(counting_updating, 1);
-        this.explosionn.splice(counting_updating, 1);
-        this.explosionn2.splice(counting_updating, 1);
       }
     }
   }
@@ -1475,5 +1316,7 @@ class Monsters_Load {
     this.shottingPos();
     this.shotting();
     this.shottingiinterval(this.shotting_interval);
+
+    console.log(this.gun_on.length);
   }
 }
