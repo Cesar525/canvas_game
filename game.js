@@ -44,7 +44,7 @@ const players = [
     2000,
     400000,
     500,
-    1,
+    3,
     500,
     900,
     30,
@@ -166,12 +166,12 @@ function buffer() {
         sprite_animation_L.splice(m, 1);
         explosion_onDeath_animation_L.splice(m, 1);
       }
-
+      //collition shot monsters to player an dplayer to monsters
       for (var pjct = 0; pjct < players.length; pjct++) {
         players[pjct].playerCollitionMonsters(Monsters_loads[m]);
-        //players[pjct].shottingCollition(Monsters_loads[m]);
+        players[pjct].shottingCollition(Monsters_loads[m]);
         if (Monsters_loads.length != 0) {
-          // Monsters_loads[m].shottingCollition(players[pjct]);
+          Monsters_loads[m].shottingCollition(players[pjct]);
         }
       }
     }
@@ -192,25 +192,25 @@ function buffer() {
       );
     }
 
-    // for (var m = 0; m < monsters.length; m++) {
-    //   if (monsters[m].getBossMode()) {
-    //     monsters[m].monsterBossDeathExplosion(explosion_onDeath_animation[m]);
-    //   } else {
-    //     monsters[m].monsterDeathExplosion(explosion_onDeath_animation[m]);
-    //   }
-    // }
-    // // Monster Loads
-    // for (var m = 0; m < Monsters_loads.length; m++) {
-    //   if (Monsters_loads[m].getBossMode()) {
-    //     Monsters_loads[m].monsterBossDeathExplosion(
-    //       explosion_onDeath_animation_L[m]
-    //     );
-    //   } else {
-    //     Monsters_loads[m].monsterDeathExplosion(
-    //       explosion_onDeath_animation_L[m]
-    //     );
-    //   }
-    // }
+    for (var m = 0; m < monsters.length; m++) {
+      if (monsters[m].getBossMode()) {
+        monsters[m].monsterBossDeathExplosion(explosion_onDeath_animation[m]);
+      } else {
+        monsters[m].monsterDeathExplosion(explosion_onDeath_animation[m]);
+      }
+    }
+    // Monster Loads
+    for (var m = 0; m < Monsters_loads.length; m++) {
+      if (Monsters_loads[m].getBossMode()) {
+        Monsters_loads[m].monsterBossDeathExplosion(
+          explosion_onDeath_animation_L[m]
+        );
+      } else {
+        Monsters_loads[m].monsterDeathExplosion(
+          explosion_onDeath_animation_L[m]
+        );
+      }
+    }
 
     //showing shield example.s
     //player_shield_effect_one[0].drawShield(players[0]);

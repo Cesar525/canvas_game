@@ -179,33 +179,33 @@ class Player {
   }
   draw() {
     if (!this.clearRect) {
-      if(this.body.turn == false){
-      const image = new Image();
-      image.src = "assets/spaceship/spaceshipone.png";
-      if ((this.body.turn = true)) {
-        // turning image
-      }
-      ctx.drawImage(
-        image,
-        this.position.x,
-        this.position.y,
-        this.width,
-        this.height
-      );
+      if (this.body.turn == false) {
+        const image = new Image();
+        image.src = "assets/spaceship/spaceshipone.png";
+        if ((this.body.turn = true)) {
+          // turning image
+        }
+        ctx.drawImage(
+          image,
+          this.position.x,
+          this.position.y,
+          this.width,
+          this.height
+        );
       }
 
-//rotated 180degree image
-if(this.body.turn == true){
-  const image = new Image();
-  image.src = "assets/spaceship/spaceshipone.png";
-  ctx.drawImage(
-    image,
-    this.position.x ,
-    this.position.y ,
-    this.width,
-    this.height
-  );
-}
+      //rotated 180degree image
+      if (this.body.turn == true) {
+        const image = new Image();
+        image.src = "assets/spaceship/spaceshipone.png";
+        ctx.drawImage(
+          image,
+          this.position.x,
+          this.position.y,
+          this.width,
+          this.height
+        );
+      }
 
       if ((this.body.turn = true)) {
         //Turning image
@@ -674,9 +674,10 @@ if(this.body.turn == true){
   }
 
   shottingCollition(monster) {
+    console.log("Im here!");
     for (var countingss = 0; countingss < this.gun_on.length; countingss++) {
       if (monster) {
-        this.gun_on[countingss].collisionMonsterShot(monster);
+        this.gun_on[countingss].collisionShotMonsters(monster);
       }
     }
   }

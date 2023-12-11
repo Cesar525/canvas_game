@@ -31,7 +31,7 @@ const Bukara = {
   //Guns
   addGuns: {
     addGun: true,
-    gun_type: 1,
+    gun_type: 3,
     Show_shottingFrom: true, // thi sis to show where the shot is gonna come from.
 
     shot_one: {

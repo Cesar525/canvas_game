@@ -369,25 +369,25 @@ class shots extends Animation {
     }
   }
 
-  collisionShot(monsters, player, gamemaster) {
+  collisionShotMonsters(monsters) {
     // // WHEN SHOT HIT MONSTER
-    if (this.body.flag == 1 || 2) {
-      if (collisionTouch(this, monsters)) {
-        monsters.setMonsterHealth(this.damages_total); // set up the hit depend on the shot
-        this.setCollitionWithMonster(true);
-        this.setDamageHit(this.damages_total);
-        this.setCollisionPosition(this.position.x, this.position.y);
-        monsters.setMonsterCollitionWithShot(true);
-        return true;
-      } else {
-        monsters.setMonsterCollitionWithShot(false);
 
-        return false;
-      }
+    if (collisionTouch(this, monsters)) {
+      console.log("touched monster");
+      monsters.setMonsterHealth(this.damages_total); // set up the hit depend on the shot
+      this.setCollitionWithMonster(true);
+      this.setDamageHit(this.damages_total);
+      this.setCollisionPosition(this.position.x, this.position.y);
+      monsters.setMonsterCollitionWithShot(true);
+      return true;
+    } else {
+      return false;
     }
 
-    //SHOT COLLITION WITH PLAYER EFFECT DAMAGE
-    if (this.body.flag == 0 || 2) {
+    // SHOT COLLITION WITH PLAYER EFFECT DAMAGE
+  }
+  collisionShotPlayers(player) {
+    if (true) {
       if (!player.StartingPlayer.player_no_damage) {
         if (collisionTouch(this, player)) {
           if (player.getPlayerShieldStatus()) {
