@@ -108,7 +108,7 @@ class Monsters_Load {
         active: monster.addGuns.shot_one.active,
         x: monster.addGuns.shot_one.x,
         y: monster.addGuns.shot_one.y,
-        shottype: ,
+        shottype: 1,
       },
       posTwo: {
         active: monster.addGuns.shot_two.active,
