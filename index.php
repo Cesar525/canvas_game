@@ -80,9 +80,9 @@ if(empty($_POST["player_name"])){
 
 
 
-    <!-- Load monsters -->
 
-
+    <!-- game config -->
+    <script src="./config.js"></script>
 
 
     <!-- js Files  -->
@@ -121,8 +121,7 @@ if(empty($_POST["player_name"])){
 
 
 
-    <!-- game config -->
-    <script src="./config.js"></script>
+
     <!-- game init -->
     <script src="./game.js"></script>
 </body>

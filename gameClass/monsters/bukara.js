@@ -31,7 +31,7 @@ const Bukara = {
   //Guns
   addGuns: {
     addGun: true,
-    gun_type: 3,
+    gun_type: 1,
     Show_shottingFrom: true, // thi sis to show where the shot is gonna come from.
 
     shot_one: {
@@ -41,6 +41,7 @@ const Bukara = {
       shottype: NaN,
       damage: NaN,
       interval: NaN,
+      speed: NaN,
     },
     shot_two: {
       active: true,
@@ -49,6 +50,7 @@ const Bukara = {
       shottype: NaN,
       damage: NaN,
       interval: NaN,
+      speed: NaN,
     },
     shot_three: {
       active: true,
@@ -57,6 +59,7 @@ const Bukara = {
       shottype: NaN,
       damage: NaN,
       interval: NaN,
+      speed: NaN,
     },
   },
   damageSprite: Bukara_sprites.diying_state,

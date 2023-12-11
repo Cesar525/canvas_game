@@ -108,16 +108,19 @@ class Monsters_Load {
         active: monster.addGuns.shot_one.active,
         x: monster.addGuns.shot_one.x,
         y: monster.addGuns.shot_one.y,
+        shottype: ,
       },
       posTwo: {
         active: monster.addGuns.shot_two.active,
         x: monster.addGuns.shot_two.x,
         y: monster.addGuns.shot_two.y,
+        shottype: 1,
       },
       posThree: {
         active: monster.addGuns.shot_three.active,
         x: monster.addGuns.shot_three.x,
         y: monster.addGuns.shot_three.y,
+        shottype: 2,
       },
     };
     this.bossPositionReached = false;
@@ -372,14 +375,38 @@ class Monsters_Load {
       this.monster_shot_interval++;
 
       if (this.monster_shot_interval == 1) {
-        gunsType(
-          3,
-          this,
-          this.position.x,
-          this.position.y,
-          this.body.m_name,
-          0
-        );
+        if (this.shot_starting_point_set.posOne.active == true) {
+          gunsType(
+            this.shot_starting_point_set.posOne.shottype,
+            this,
+            this.monster_shotting_starting_pos.posOne.x,
+            this.monster_shotting_starting_pos.posOne.y,
+            this.body.m_name,
+            this.body.m_flag
+          );
+        }
+
+        if (this.shot_starting_point_set.posTwo.active == true) {
+          gunsType(
+            this.shot_starting_point_set.posTwo.shottype,
+            this,
+            this.monster_shotting_starting_pos.posTwo.x,
+            this.monster_shotting_starting_pos.posTwo.y,
+            this.body.m_name,
+            this.body.m_flag
+          );
+        }
+
+        if (this.shot_starting_point_set.posThree.active == true) {
+          gunsType(
+            this.shot_starting_point_set.posThree.shottype,
+            this,
+            this.monster_shotting_starting_pos.posThree.x,
+            this.monster_shotting_starting_pos.posThree.y,
+            this.body.m_name,
+            this.body.m_flag
+          );
+        }
       }
       if (this.body.m_health < this.health_total / 2 / 2) {
         if (this.monster_shot_interval == 3) {
