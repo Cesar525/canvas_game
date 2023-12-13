@@ -151,41 +151,96 @@ function gunsType(type, cid, start_posx, start_posy, name, flag) {
   if (type == 4) {
     var EnergyUse_4 = 10;
     var damage_4 = 5;
-    cid.gun_on.push(
-      new shots(
-        start_posx + cid.body.lef_side_wign_shot,
-        start_posy,
-        3,
-        0,
-        12,
-        damage_4,
-        0,
-        100,
-        150,
-        1,
-        -50,
-        -100
-      )
-    );
 
-    cid.body.energy -= EnergyUse_4;
+    if (flag == 0) {
+      cid.gun_on.push(
+        new shots(
+          start_posx - 20,
+          start_posy,
+          3,
+          0,
+          12,
+          damage_4,
+          30,
+          100,
+          150,
+          1,
+          -50,
+          -100,
+          false,
+          false,
+          name,
+          flag
+        )
+      );
 
-    cid.gun_on.push(
-      new shots(
-        start_posx + cid.body.right_side_wign_shot,
-        start_posy,
-        3,
-        0,
-        12,
-        damage_4,
-        0,
-        100,
-        150,
-        1,
-        -50,
-        -100
-      )
-    );
+      cid.body.energy -= EnergyUse_4;
+
+      cid.gun_on.push(
+        new shots(
+          start_posx + 20,
+          start_posy,
+          3,
+          0,
+          12,
+          damage_4,
+          30,
+          100,
+          150,
+          1,
+          -50,
+          -100,
+          false,
+          false,
+          name,
+          flag
+        )
+      );
+    } else {
+      cid.gun_on.push(
+        new shots(
+          start_posx + cid.body.lef_side_wign_shot,
+          start_posy,
+          3,
+          0,
+          12,
+          damage_4,
+          30,
+          100,
+          150,
+          1,
+          -50,
+          -100,
+          false,
+          false,
+          name,
+          flag
+        )
+      );
+
+      cid.body.energy -= EnergyUse_4;
+
+      cid.gun_on.push(
+        new shots(
+          start_posx + cid.body.right_side_wign_shot,
+          start_posy,
+          3,
+          0,
+          12,
+          damage_4,
+          30,
+          100,
+          150,
+          1,
+          -50,
+          -100,
+          false,
+          false,
+          name,
+          flag
+        )
+      );
+    }
   }
 
   //gun 5 single lazer purple damage 7 energy used 11
@@ -206,7 +261,11 @@ function gunsType(type, cid, start_posx, start_posy, name, flag) {
         200,
         1,
         -50,
-        -150
+        -100,
+        false,
+        false,
+        name,
+        flag
       )
     );
   }
@@ -216,41 +275,94 @@ function gunsType(type, cid, start_posx, start_posy, name, flag) {
     var EnergyUse_6 = 15;
     cid.body.energy -= EnergyUse_6;
     var damage_6 = 7;
-    cid.gun_on.push(
-      new shots(
-        start_posx + cid.body.lef_side_wign_shot,
-        start_posy,
-        5,
-        0,
-        7,
-        damage_6,
-        40,
-        100,
-        150,
-        1,
-        -50,
-        -150
-      )
-    );
 
-    cid.gun_on.push(
-      new shots(
-        start_posx + cid.body.right_side_wign_shot,
-        start_posy,
-        5,
-        0,
-        7,
-        damage_6,
-        40,
-        100,
-        150,
-        1,
-        -50,
-        -150
-      )
-    );
+    if (flag == 0) {
+      cid.gun_on.push(
+        new shots(
+          start_posx + 20,
+          start_posy,
+          5,
+          0,
+          7,
+          damage_6,
+          40,
+          100,
+          150,
+          1,
+          -50,
+          -100,
+          false,
+          false,
+          name,
+          flag
+        )
+      );
+
+      cid.gun_on.push(
+        new shots(
+          start_posx - 20,
+          start_posy,
+          5,
+          0,
+          7,
+          damage_6,
+          40,
+          100,
+          150,
+          1,
+          -50,
+          -100,
+          false,
+          false,
+          name,
+          flag
+        )
+      );
+    } else {
+      cid.gun_on.push(
+        new shots(
+          start_posx + cid.body.lef_side_wign_shot,
+          start_posy,
+          5,
+          0,
+          7,
+          damage_6,
+          40,
+          100,
+          150,
+          1,
+          -50,
+          -100,
+          false,
+          false,
+          name,
+          flag
+        )
+      );
+
+      cid.gun_on.push(
+        new shots(
+          start_posx + cid.body.right_side_wign_shot,
+          start_posy,
+          5,
+          0,
+          7,
+          damage_6,
+          40,
+          100,
+          150,
+          1,
+          -50,
+          -100,
+          false,
+          false,
+          name,
+          flag
+        )
+      );
+    }
   }
-
+  //CURRENTLY WORKING ON
   //gun 7 single Lava shots damage = 10 energy 18
   if (type == 7) {
     var EnergyUse_7 = 18;
@@ -269,7 +381,11 @@ function gunsType(type, cid, start_posx, start_posy, name, flag) {
         300,
         1,
         -50,
-        -150
+        -100,
+        false,
+        false,
+        name,
+        flag
       )
     );
   }

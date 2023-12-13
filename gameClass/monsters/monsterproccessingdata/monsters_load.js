@@ -108,19 +108,19 @@ class Monsters_Load {
         active: monster.addGuns.shot_one.active,
         x: monster.addGuns.shot_one.x,
         y: monster.addGuns.shot_one.y,
-        shottype: 1,
+        shottype: 5,
       },
       posTwo: {
         active: monster.addGuns.shot_two.active,
         x: monster.addGuns.shot_two.x,
         y: monster.addGuns.shot_two.y,
-        shottype: 1,
+        shottype: 6,
       },
       posThree: {
         active: monster.addGuns.shot_three.active,
         x: monster.addGuns.shot_three.x,
         y: monster.addGuns.shot_three.y,
-        shottype: 2,
+        shottype: 7,
       },
     };
     this.bossPositionReached = false;
