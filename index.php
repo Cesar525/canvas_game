@@ -70,17 +70,7 @@ if(empty($_POST["player_name"])){
 }
     ?>
 
-
-
-
-
-
-
     </div>
-
-
-
-
     <!-- game config -->
     <script src="./config.js"></script>
 
@@ -102,6 +92,8 @@ if(empty($_POST["player_name"])){
     <script src="./gameClass/shields.js"></script>
     <script src="./gameClass/controller.js"></script>
     <script src="./gameClass/monsters.js"></script>
+
+
 
     <script src="./gameClass/map.js"></script>
     <script src="./gameClass/shots.js"></script>
