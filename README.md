@@ -2,7 +2,7 @@
 I was working on this game for Canvas learning purposes
 Game is not done and it won be because of life reasons.
 i hope is useful for others learning purposes.
-## Where will this game be played? ##
+## Where can this game be played? ##
     Brower
 ## This game support ##
     Firefox - for better Game play
