@@ -63,7 +63,7 @@ const monsters = [
 
 const Monsters_loads = [
   // new Monsters_Load(Invader),
-  new Monsters_Load(Bukara),
+  //new Monsters_Load(Bukara),
 ];
 //TESTING MODE PURPOSE ONLY FOR ANIMATIONS TESTING
 const animation_TESTING = new Animation();
