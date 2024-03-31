@@ -30,7 +30,7 @@
 
 <body>
     <!-- Canvas -->
-    <div class="GameWindow">
+    <div class="GameWindow"SS>
 
         <?php
 if(empty($_POST["player_name"])){
@@ -63,7 +63,7 @@ if(empty($_POST["player_name"])){
 
 ?>
         <font id="playerName" hidden><?php echo $_POST["player_name"];?></font>
-        <canvas style="resize:both;border: solid 1px white;z-index:2;background-color:black;" id="canvasGame"
+        <canvas style="border: solid 1px white;z-index:2;background-color:black;" id="canvasGame"
             class="canvasGame"></canvas>
 
         <?php
