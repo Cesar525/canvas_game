@@ -44,7 +44,7 @@ const players = [
     2000,
     400000,
     500,
-    3,
+    11,
     500,
     900,
     30,
@@ -63,7 +63,7 @@ const monsters = [
 
 const Monsters_loads = [
   // new Monsters_Load(Invader),
-  //new Monsters_Load(Bukara),
+  // new Monsters_Load(Bukara),
 ];
 //TESTING MODE PURPOSE ONLY FOR ANIMATIONS TESTING
 const animation_TESTING = new Animation();

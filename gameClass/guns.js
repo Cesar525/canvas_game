@@ -408,7 +408,11 @@ function gunsType(type, cid, start_posx, start_posy, name, flag) {
         300,
         1,
         -50,
-        -150
+        -150,
+        false,
+        false,
+        name,
+        flag
       )
     );
 
@@ -425,7 +429,11 @@ function gunsType(type, cid, start_posx, start_posy, name, flag) {
         300,
         1,
         -50,
-        -150
+        -150,
+        false,
+        false,
+        name,
+        flag
       )
     );
   }
@@ -448,7 +456,11 @@ function gunsType(type, cid, start_posx, start_posy, name, flag) {
         300,
         1,
         -50,
-        -150
+        -150,
+        false,
+        false,
+        name,
+        flag
       )
     );
   }
@@ -472,7 +484,11 @@ function gunsType(type, cid, start_posx, start_posy, name, flag) {
         300,
         1,
         -50,
-        -150
+        -150,
+        false,
+        false,
+        name,
+        flag
       )
     );
 
@@ -489,7 +505,11 @@ function gunsType(type, cid, start_posx, start_posy, name, flag) {
         300,
         1,
         -50,
-        -150
+        -150,
+        false,
+        false,
+        name,
+        flag
       )
     );
   }
@@ -510,7 +530,11 @@ function gunsType(type, cid, start_posx, start_posy, name, flag) {
         300,
         1,
         -50,
-        -150
+        -150,
+        false,
+        false,
+        name,
+        flag
       ),
       new shots(
         start_posx + cid.body.right_side_wign_shot,
@@ -524,7 +548,11 @@ function gunsType(type, cid, start_posx, start_posy, name, flag) {
         300,
         1,
         -50,
-        -150
+        -150,
+        false,
+        false,
+        name,
+        flag
       ),
       new shots(
         start_posx,
@@ -538,7 +566,11 @@ function gunsType(type, cid, start_posx, start_posy, name, flag) {
         300,
         1,
         -50,
-        -150
+        -150,
+        false,
+        false,
+        name,
+        flag
       ),
       new shots(
         start_posx,
@@ -552,7 +584,11 @@ function gunsType(type, cid, start_posx, start_posy, name, flag) {
         300,
         1,
         -50,
-        -150
+        -150,
+        false,
+        false,
+        name,
+        flag
       ),
       new shots(
         start_posx,
@@ -566,7 +602,11 @@ function gunsType(type, cid, start_posx, start_posy, name, flag) {
         300,
         1,
         -50,
-        -150
+        -150,
+        false,
+        false,
+        name,
+        flag
       )
     );
 
