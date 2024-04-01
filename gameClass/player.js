@@ -85,7 +85,7 @@ class Player {
     this.gun_carry = 0;
 
     //shields
-    this.shields_class = [];
+    this.shields_class = [new Shields(1)];
 
     //OBJECTS
     this.gun_on = [];
@@ -322,7 +322,9 @@ class Player {
       this.position.x - 70,
       this.position.y + 35
     );
+    ctx.font = "30px Roboto Mono";
     ctx.fillText(this.body.m_name, this.position.x - 70, this.position.y - 25);
+    ctx.font = "15px Roboto Mono";
     ctx.fillText(
       "HP: " + this.body.health,
       this.position.x - 70,
@@ -523,21 +525,21 @@ class Player {
     ctx.fillStyle = "white";
     ctx.font = "40px Anton";
     image_weapon.src = guns_status_show[gunType_player].icon;
-    ctx.drawImage(image_weapon, c.width / 2 / 2 + 100, 0, 200, 200);
+    ctx.drawImage(image_weapon, c.width / 2 / 2 + 300, 0, 200, 200);
 
     ctx.strokeStyle = "black";
-    ctx.fillText("Gun", c.width / 2 / 2 + 100, 50);
-    ctx.strokeText("Gun", c.width / 2 / 2 + 100, 50);
+    ctx.fillText("Gun", c.width / 2 / 2 + 300, 50);
+    ctx.strokeText("Gun", c.width / 2 / 2 + 300, 50);
     //gun level
     ctx.fillText(
       guns_status_show[gunType_player].gun_name,
-      c.width / 2 / 2 + 100,
-      190
+      c.width / 2 / 2 + 300,
+      200
     );
     ctx.strokeText(
       guns_status_show[gunType_player].gun_name,
-      c.width / 2 / 2 + 100,
-      190
+      c.width / 2 / 2 + 300,
+      200
     );
 
     //Showing current shield
@@ -549,15 +551,22 @@ class Player {
     ctx.fillStyle = "white";
     ctx.font = "40px Anton";
     image_shield.src = shield_status_show[shield_type].icon;
-    ctx.drawImage(image_shield, c.width / 2 / 2 + 350, 0, 200, 200);
+    ctx.drawImage(image_shield, c.width / 2 / 2 + 600, 0, 200, 200);
     //console.log(shield_type);
 
     ctx.strokeStyle = "black";
-    ctx.fillText("Shield", c.width / 2 / 2 + 350, 50);
-    ctx.strokeText("Shield", c.width / 2 / 2 + 350, 50);
-    //gun level
-    // ctx.fillText("Expire: 9 - 5", ((c.width / 2) / 2) + 350, 190);
-    // ctx.strokeText("Expire: 9 - 5 ", ((c.width / 2) / 2) + 350, 190);
+    ctx.fillText("Shield", c.width / 2 / 2 + 600, 50);
+    ctx.strokeText("Shield", c.width / 2 / 2 + 600, 50);
+    ctx.fillText(
+      shield_status_show[shield_type].name_of_shield,
+      c.width / 2 / 2 + 600,
+      200
+    );
+    ctx.strokeText(
+      shield_status_show[shield_type].name_of_shield,
+      c.width / 2 / 2 + 600,
+      200
+    );
 
     //showin gplayer money
     const image_money = new Image();
