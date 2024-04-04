@@ -319,21 +319,21 @@ class Player {
     ctx.font = "15px Roboto Mono";
     ctx.fillText(
       "Lvl:" + this.body.m_level,
-      this.position.x - 70,
+      this.position.x - 100,
       this.position.y + 35
     );
-    ctx.font = "30px Roboto Mono";
-    ctx.fillText(this.body.m_name, this.position.x - 70, this.position.y - 25);
+    ctx.font = "40px Roboto Mono";
+    ctx.fillText(this.body.m_name, this.position.x - 100, this.position.y - 25);
     ctx.font = "15px Roboto Mono";
     ctx.fillText(
       "HP: " + this.body.health,
-      this.position.x - 70,
+      this.position.x - 100,
       this.position.y + 15
     );
 
     //Life bar
     ctx.fillStyle = "gray";
-    ctx.fillRect(this.position.x - 70, this.position.y - 10, 100, 9);
+    ctx.fillRect(this.position.x - 100, this.position.y - 10, 100, 9);
     //life
 
     if (Math.round((this.body.health / this.health_total) * 100) <= 100 / 2) {
@@ -349,7 +349,7 @@ class Player {
       ctx.fillStyle = "green";
     }
     ctx.fillRect(
-      this.position.x - 70,
+      this.position.x - 100,
       this.position.y - 10,
       Math.round((this.body.health / this.health_total) * 100),
       9
@@ -461,7 +461,7 @@ class Player {
 
     //life bar background
     ctx.fillStyle = "gray";
-    ctx.fillRect(this.position.x - 70, this.position.y - 20, 100, 9);
+    ctx.fillRect(this.position.x - 100, this.position.y - 20, 100, 9);
     //life
 
     if (Math.round((this.body.energy / this.total_energy) * 100) <= 100 / 2) {
@@ -476,7 +476,7 @@ class Player {
     }
     //lifebar
     ctx.fillRect(
-      this.position.x - 70,
+      this.position.x - 100,
       this.position.y - 20,
       Math.round((this.body.energy / this.total_energy) * 100),
       9

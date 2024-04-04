@@ -250,21 +250,21 @@ function buffer() {
 
   // TESTING ANIMATION MODE ONLY PURPOSES
   if (game_config.test_mode) {
-    animation_TESTING.spritePage(
-      "assets/powerBombsEffect/fullychargedsprite/white.png",
-      players[0].position.x - 170,
-      players[0].position.y - 150,
-      2575,
-      2575,
-      5,
-      5,
-      515,
-      515,
-      0,
-      true,
-      -100,
-      -100
-    );
+    // animation_TESTING.spritePage(
+    //   "assets/powerBombsEffect/fullychargedsprite/white.png",
+    //   players[0].position.x - 170,
+    //   players[0].position.y - 150,
+    //   2575,
+    //   2575,
+    //   5,
+    //   5,
+    //   515,
+    //   515,
+    //   0,
+    //   true,
+    //   -100,
+    //   -100
+    // );
   }
 }
 
