@@ -30,7 +30,7 @@ const effects_global = [];
 const Shots_global = [];
 
 //TE$STING
-//const animation_TESTING = new Animation();
+const animation_TESTING = new Animation();
 //const shotTESTING = new shots(1000, 2000, 7, 0, 10, 10, 0, 100, 300, 1, -50, -150, true, 1);
 //const testingAnimations = [new Animation(), new Animation()];
 
@@ -52,7 +52,7 @@ const players = [
   ),
 ];
 
-//Monsters
+// Old monster system.
 //CREATING A MONSTERS Monstrs( id, sprite,  pos_x, pos_y, health, name, speed, color, movements, s_width, s_height, damage)
 const monsters = [
   //new Monsters(Monsters_Loads["Bukara"]),
@@ -61,12 +61,8 @@ const monsters = [
   //new Monsters(2, asteroid_eleven,  100, 100 , 1000, "Bukara", 7, "orange", "none", 300, 300, 30, NaN, false),
 ];
 
-const Monsters_loads = [
-  // new Monsters_Load(Invader),
-  // new Monsters_Load(Bukara),
-];
-//TESTING MODE PURPOSE ONLY FOR ANIMATIONS TESTING
-const animation_TESTING = new Animation();
+//Global Game Monsters push into the array and they will apear on the map
+const Monsters_loads = [new Monsters_Load(Bukara)];
 
 //onMonster Loads  animation
 const sprite_animation_L = [];
@@ -88,7 +84,7 @@ for (var m = 0; m < monsters.length; m++) {
 
 //----------------------------------\
 
-//POWER UPS DROP---------
+//POWER UPS DROP GLOBAL---------
 const powerUp = [];
 
 //---
@@ -97,7 +93,7 @@ const explosions_animations_pushing = [];
 //---
 
 //onPlayer Animation sparks Global
-const mousePad = new Mouse();
+const mousePad = new Mouse(); // not in use yet.
 const sparks_low = [];
 const sparks_high = [];
 const thruster_animation = [];
@@ -112,10 +108,6 @@ for (var p = 0; p < players.length; p++) {
   player_shield_effect_one.push(new Animation());
   player_shield_effect_two.push(new Animation());
 }
-
-const burst_fire_test = new Animation();
-
-//Monster PowerUp Drop
 
 //BUFFERRRR
 function buffer() {
@@ -158,7 +150,7 @@ function buffer() {
       }
     }
 
-    //colliton Monsters_Loads and deletions
+    //colliton and deletion for Monster_Loads system.
     for (var m = 0; m < Monsters_loads.length; m++) {
       Monsters_loads[m].updateMonster(sprite_animation_L[m]);
       if (Monsters_loads[m].getDeleteObject() == true) {
@@ -192,6 +184,11 @@ function buffer() {
       );
     }
 
+    //     there are Two Monster system
+    //     Monsters and Monsters_loads.
+    // im trying to impletment a system easier to load monsters and create them
+
+    //Monster Explosion onDeath update for the regular old monster System.
     for (var m = 0; m < monsters.length; m++) {
       if (monsters[m].getBossMode()) {
         monsters[m].monsterBossDeathExplosion(explosion_onDeath_animation[m]);
@@ -199,7 +196,7 @@ function buffer() {
         monsters[m].monsterDeathExplosion(explosion_onDeath_animation[m]);
       }
     }
-    // Monster Loads
+    // Monster Explosion onDeath for Monster_Load system.
     for (var m = 0; m < Monsters_loads.length; m++) {
       if (Monsters_loads[m].getBossMode()) {
         Monsters_loads[m].monsterBossDeathExplosion(
@@ -215,7 +212,7 @@ function buffer() {
     //showing shield example.s
     //player_shield_effect_one[0].drawShield(players[0]);
 
-    //Random explosions
+    //Random explosions effect when killing a big boss.
     for (var i = 0; i < pushing_random_explsions.length; i++) {
       pushing_random_explsions[i].updateExplosions(
         explosions_animations_pushing[i]
@@ -227,7 +224,7 @@ function buffer() {
       }
     }
 
-    //LIFE BARS AND STATUS ON TOP OF MONSTERS AND PLAYER
+    //LIFE BARS AND STATUS Updates ON TOP OF MONSTERS AND PLAYER
     for (var m = 0; m < monsters.length; m++) {
       monsters[m].monsterView();
     }
@@ -241,7 +238,7 @@ function buffer() {
   }
 
   // EFFECTS
-  //update Effects
+  //Global Effects.
   if (effects_global.length > 0) {
     for (var i = 0; i < effects_global.length; i++) {
       effects_global[i].updateEffects();
@@ -253,21 +250,21 @@ function buffer() {
 
   // TESTING ANIMATION MODE ONLY PURPOSES
   if (game_config.test_mode) {
-    //   animation_TESTING.spritePage(
-    //     "assets/powerBombsEffect/fullychargedsprite/white.png",
-    //     players[0].position.x - 170,
-    //     players[0].position.y - 150,
-    //     2575,
-    //     2575,
-    //     5,
-    //     5,
-    //     515,
-    //     515,
-    //     0,
-    //     true,
-    //     -100,
-    //     -100
-    //   );
+    animation_TESTING.spritePage(
+      "assets/powerBombsEffect/fullychargedsprite/white.png",
+      players[0].position.x - 170,
+      players[0].position.y - 150,
+      2575,
+      2575,
+      5,
+      5,
+      515,
+      515,
+      0,
+      true,
+      -100,
+      -100
+    );
   }
 }
 

@@ -85,7 +85,7 @@ class Player {
     this.gun_carry = 0;
 
     //shields
-    this.shields_class = [new Shields(1)];
+    this.shields_class = [];
 
     //OBJECTS
     this.gun_on = [];

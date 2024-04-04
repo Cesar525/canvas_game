@@ -83,7 +83,7 @@ class Mapbuilder {
 
     //pushing monsters in to map one.
     if (map_seconds >= 1) {
-      this.metioriteStorm();
+      // this.metioriteStorm();
       // this.metioriteStorm();
       // this.map_one[19].bigAsteroidsOnFire();
       // this.map_one[20].bigAsteroidsOnFire();
