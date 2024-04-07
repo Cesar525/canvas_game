@@ -38,6 +38,8 @@ class Monsters_Load {
       collition_shotY: NaN,
     };
     this.monster_shot_interval = 0;
+
+    // where all shots are stored.
     this.gun_on = [];
 
     if (monster.boss) {
@@ -108,19 +110,19 @@ class Monsters_Load {
         active: monster.addGuns.shot_one.active,
         x: monster.addGuns.shot_one.x,
         y: monster.addGuns.shot_one.y,
-        shottype: 5,
+        shottype: monster.addGuns.shot_one.shottype,
       },
       posTwo: {
         active: monster.addGuns.shot_two.active,
         x: monster.addGuns.shot_two.x,
         y: monster.addGuns.shot_two.y,
-        shottype: 6,
+        shottype: monster.addGuns.shot_two.shottype,
       },
       posThree: {
         active: monster.addGuns.shot_three.active,
         x: monster.addGuns.shot_three.x,
         y: monster.addGuns.shot_three.y,
-        shottype: 7,
+        shottype: monster.addGuns.shot_three.shottype,
       },
     };
     this.bossPositionReached = false;
@@ -526,7 +528,7 @@ class Monsters_Load {
   }
 
   monsterBossDeathExplosion(animation_effect) {
-    // animation_effect.explosionEffect(3,  this.body.m_deadPosX - 85, (this.body.m_deadPosY += map_speed) - 85 , this.monsterDeath());
+    animation_effect.explosionEffect(3,  this.body.m_deadPosX - 85, (this.body.m_deadPosY += map_speed) - 85 , this.monsterDeath());
 
     if (this.monsterDeath()) {
       this.building_randomExplosions.explosion_start = true;
@@ -541,11 +543,11 @@ class Monsters_Load {
       this.building_randomExplosions.explosion_start &&
       !this.building_randomExplosions.explosion_end
     ) {
-      // ctx.fillStyle = "white";
-      // ctx.fillRect(this.body.m_deadPosX, this.body.m_deadPosY, 500, 500);
+      ctx.fillStyle = "white";
+      ctx.fillRect(this.body.m_deadPosX, this.body.m_deadPosY, 500, 500);
       this.building_randomExplosions.explosions_counter++;
 
-      ////Creating the explosion Sequence
+      //Creating the explosion Sequence
       if (this.building_randomExplosions.explosions_counter == 30) {
         pushing_random_explsions.push(
           new Explosions(
@@ -764,7 +766,7 @@ class Monsters_Load {
           explosions_animations_pushing.push(new Animation());
         }
       }
-      /////////////////////////////
+      ///////////////////////////
       if (this.building_randomExplosions.explosions_counter == 110) {
         pushing_random_explsions.push(
           new Explosions(
@@ -1012,7 +1014,7 @@ class Monsters_Load {
         }
       }
 
-      //setting to delete object
+      setting to delete object
       if (this.building_randomExplosions.explosions_counter == 250) {
         this.setDeleteObject(true);
       }

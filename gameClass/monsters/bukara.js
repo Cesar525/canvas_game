@@ -17,7 +17,7 @@ const Bukara = {
     height: 800,
     width: 800,
   },
-  movements: monster_movements.sidebyside_boss,
+  movements: monster_movements.testingmode,
   name: "Bukara",
   Gun: "Space pistol",
 
@@ -35,19 +35,21 @@ const Bukara = {
     Show_shottingFrom: true, // thi sis to show where the shot is gonna come from.
 
     shot_one: {
+      // red Square
       active: true,
       x: 800 / 2 - 50,
       y: 800 / 2 + 200,
-      shottype: 6,
+      shottype: 2,
       damage: NaN,
       interval: NaN,
       speed: NaN,
     },
     shot_two: {
+      // white square
       active: true,
       x: 800 - 200,
       y: 800 - 100,
-      shottype: 7,
+      shottype: 5,
       damage: NaN,
       interval: NaN,
       speed: NaN,
