@@ -528,7 +528,12 @@ class Monsters_Load {
   }
 
   monsterBossDeathExplosion(animation_effect) {
-    animation_effect.explosionEffect(3,  this.body.m_deadPosX - 85, (this.body.m_deadPosY += map_speed) - 85 , this.monsterDeath());
+    animation_effect.explosionEffect(
+      3,
+      this.body.m_deadPosX - 85,
+      (this.body.m_deadPosY += map_speed) - 85,
+      this.monsterDeath()
+    );
 
     if (this.monsterDeath()) {
       this.building_randomExplosions.explosion_start = true;
@@ -1014,7 +1019,7 @@ class Monsters_Load {
         }
       }
 
-      setting to delete object
+      // setting to delete object
       if (this.building_randomExplosions.explosions_counter == 250) {
         this.setDeleteObject(true);
       }

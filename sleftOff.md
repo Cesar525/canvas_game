@@ -1,1 +1,0 @@
-I left off learning how to switch images 180 angle.

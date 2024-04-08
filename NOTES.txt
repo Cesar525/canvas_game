@@ -1,0 +1,11 @@
+Fixing Monster shotting.  -- currently Working on 
+-- fix shots sprites directions.
+-- fix burst direction.
+-- make avaliable for monsters to use all players weapons.
+
+Next
+
+- Explosion Separately.
+-- Boss big onDeath explosion will be taken out of the 
+   Monster_load and place on another object by itself.
+ 
