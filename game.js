@@ -51,7 +51,7 @@ const players = [
   ),
 ];
 
-//Monsters
+//Monsters/
 //CREATING A MONSTERS Monstrs( id, sprite,  pos_x, pos_y, health, name, speed, color, movements, s_width, s_height, damage)
 const monsters = [
   //new Monsters(Monsters_Loads["Bukara"]),
