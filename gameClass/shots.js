@@ -373,7 +373,7 @@ class shots extends Animation {
     // // WHEN SHOT HIT MONSTER
 
     if (collisionTouch(this, monsters)) {
-      console.log("touched monster");
+      //console.log("touched monster");
       monsters.setMonsterHealth(this.damages_total); // set up the hit depend on the shot
       this.setCollitionWithMonster(true);
       this.setDamageHit(this.damages_total);

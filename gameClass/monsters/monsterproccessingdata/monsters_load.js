@@ -366,7 +366,6 @@ class Monsters_Load {
       this.gun_on[counting_updating].updateShot(this);
       // is not deleting the used shots.
       if (this.gun_on[counting_updating].getDeleteShotStatus()) {
-        console.log(this.gun_on[counting_updating].getDeleteShotStatus());
         this.gun_on.splice(counting_updating, 1);
       }
     }
@@ -505,12 +504,15 @@ class Monsters_Load {
           this.position.x = 500;
           this.position.y = c.height + 500;
           this.delete_time_after_death++;
+
           if (this.delete_time_after_death == 100) {
             this.setDeleteObject(true);
           }
         }
-        this.body.m_dead = true;
-        return this.body.m_dead;
+
+        return true;
+      } else {
+        return false;
       }
     }
   }
@@ -534,8 +536,9 @@ class Monsters_Load {
       (this.body.m_deadPosY += map_speed) - 85,
       this.monsterDeath()
     );
-
+    console.log("Loading" + this.monsterDeath());
     if (this.monsterDeath()) {
+      this.body.m_dead = true;
       this.building_randomExplosions.explosion_start = true;
       animation_effect.explosionEffect(
         3,
@@ -548,8 +551,13 @@ class Monsters_Load {
       this.building_randomExplosions.explosion_start &&
       !this.building_randomExplosions.explosion_end
     ) {
-      ctx.fillStyle = "white";
-      ctx.fillRect(this.body.m_deadPosX, this.body.m_deadPosY, 500, 500);
+      // ctx.fillStyle = "white";
+      // ctx.fillRect(
+      //   this.body.m_steady_deadPosX + 200,
+      //   this.body.m_steady_deadPosY + 200,
+      //   500,
+      //   500
+      // );
       this.building_randomExplosions.explosions_counter++;
 
       //Creating the explosion Sequence
@@ -1349,7 +1357,5 @@ class Monsters_Load {
     this.shottingPos();
     this.shotting();
     this.shottingiinterval(this.shotting_interval);
-
-    console.log(this.gun_on.length);
   }
 }

@@ -676,14 +676,13 @@ class Player {
       // is not deleting the used shots.
 
       if (this.gun_on[counting_updating].getDeleteShotStatus()) {
-        console.log(this.gun_on[counting_updating].getDeleteShotStatus());
+        // console.log(this.gun_on[counting_updating].getDeleteShotStatus());
         this.gun_on.splice(counting_updating, 1);
       }
     }
   }
 
   shottingCollition(monster) {
-    console.log("Im here!");
     for (var countingss = 0; countingss < this.gun_on.length; countingss++) {
       if (monster) {
         this.gun_on[countingss].collisionShotMonsters(monster);
