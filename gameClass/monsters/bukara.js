@@ -17,7 +17,7 @@ const Bukara = {
     height: 800,
     width: 800,
   },
-  movements: monster_movements.testingmode,
+  movements: monster_movements.sidebyside,
   name: "Bukara",
   Gun: "Space pistol",
 
