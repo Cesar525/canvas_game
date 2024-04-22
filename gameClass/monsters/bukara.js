@@ -36,7 +36,7 @@ const Bukara = {
 
     shot_one: {
       // red Square
-      active: true,
+      active: false,
       x: 800 / 2 - 50,
       y: 800 / 2 + 200,
       shottype: 2,
@@ -46,7 +46,7 @@ const Bukara = {
     },
     shot_two: {
       // white square
-      active: true,
+      active: false,
       x: 800 - 200,
       y: 800 - 100,
       shottype: 5,
@@ -58,7 +58,7 @@ const Bukara = {
       active: true,
       x: 100,
       y: 800 - 100,
-      shottype: 8,
+      shottype: 7,
       damage: NaN,
       interval: NaN,
       speed: NaN,
